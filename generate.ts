@@ -126,7 +126,7 @@ function linkBugs(text: string): string {
             extra?: string
         ) =>
             `<bug>[${text}](${BUG_URLS[type]}${issue})${
-                extra != null ? "\n" + extra : ""
+            extra != null ? "\n" + extra : ""
             }</bug>`
     );
 }
@@ -136,7 +136,7 @@ function handleRenderContext(text: string): string {
         RENDER_REGEX,
         (_, hook: "true" | "false", type: "3D" | "2D") =>
             `\n${EMJOI[type]} **NOTE**: ${
-                hook == "true" ? "Provides" : "Requires"
+            hook == "true" ? "Provides" : "Requires"
             } a ${type} rendering context\n`
     );
 }
@@ -194,6 +194,9 @@ function getArgDoc(arg: FuncArg): string {
         return `--- @vararg ${type} ${desc}`;
     }
     let name = getArgName(arg);
+    if (arg.default != undefined) {
+        name = name + "?";
+    }
     return `--- @param ${name} ${type} ${desc}`;
 }
 

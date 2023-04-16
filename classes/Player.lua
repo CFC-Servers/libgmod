@@ -49,7 +49,7 @@ end
 --- @param slot number @Gesture slot using Enums/GESTURE_SLOT
 --- @param sequenceId number @The sequence ID to play, can be retrieved with Entity:LookupSequence.
 --- @param cycle number @The cycle to start the animation at, ranges from 0 to 1.
---- @param autokill boolean @If the animation should not loop
+--- @param autokill? boolean @If the animation should not loop
 function Player:AddVCDSequenceToGestureSlot(slot, sequenceId, cycle, autokill)
 end
 
@@ -77,7 +77,7 @@ end
 --- ⚠ **WARNING**: This is not automatically networked. This function has to be called on the client to be seen by said client.  
 --- @param slot number @Gesture slot using Enums/GESTURE_SLOT
 --- @param activity number @The activity ( see Enums/ACT ) or sequence that should be played
---- @param autokill boolean @Whether the animation should be automatically stopped
+--- @param autokill? boolean @Whether the animation should be automatically stopped
 function Player:AnimRestartGesture(slot, activity, autokill)
 end
 
@@ -104,7 +104,7 @@ end
 
 --- Bans the player from the server for a certain amount of minutes.  
 --- @param minutes number @Duration of the ban in minutes (0 is permanent)
---- @param kick boolean @Whether to kick the player after banning them or not
+--- @param kick? boolean @Whether to kick the player after banning them or not
 function Player:Ban(minutes, kick)
 end
 
@@ -196,7 +196,7 @@ end
 
 --- Show/Hide the player's weapon's viewmodel.  
 --- @param draw boolean @Should draw
---- @param vm number @Which view model to show/hide, 0-2.
+--- @param vm? number @Which view model to show/hide, 0-2.
 function Player:DrawViewModel(draw, vm)
 end
 
@@ -207,8 +207,8 @@ end
 
 --- Drops the players' weapon of a specific class.  
 --- @param class string @The class to drop.
---- @param target Vector @If set, launches the weapon at given position
---- @param velocity Vector @If set and previous argument is unset, launches the weapon with given velocity
+--- @param target? Vector @If set, launches the weapon at given position
+--- @param velocity? Vector @If set and previous argument is unset, launches the weapon with given velocity
 function Player:DropNamedWeapon(class, target, velocity)
 end
 
@@ -217,9 +217,9 @@ function Player:DropObject()
 end
 
 --- Forces the player to drop the specified weapon  
---- @param weapon Weapon @Weapon to be dropped
---- @param target Vector @If set, launches the weapon at given position
---- @param velocity Vector @If set and previous argument is unset, launches the weapon with given velocity
+--- @param weapon? Weapon @Weapon to be dropped
+--- @param target? Vector @If set, launches the weapon at given position
+--- @param velocity? Vector @If set and previous argument is unset, launches the weapon with given velocity
 function Player:DropWeapon(weapon, target, velocity)
 end
 
@@ -257,7 +257,7 @@ end
 --- Freeze the player. Frozen players cannot move, look around, or attack. Key bindings are still called. Similar to Player:Lock but the player can still take damage.  
 --- Adds or removes the FL_FROZEN flag from the player.  
 --- 🦟 **BUG**: Frozen bots will still be able to look around.  
---- @param frozen boolean @Whether the player should be frozen.
+--- @param frozen? boolean @Whether the player should be frozen.
 function Player:Freeze(frozen)
 end
 
@@ -315,7 +315,7 @@ end
 
 --- Gets total count of entities of same class.  
 --- @param type string @Entity type to get count of.
---- @param minus number @If specified, it will reduce the counter by this value
+--- @param minus? number @If specified, it will reduce the counter by this value
 function Player:GetCount(type, minus)
 end
 
@@ -467,7 +467,7 @@ end
 --- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
 --- ℹ **NOTE**: PData is not networked from servers to clients!  
 --- @param key string @Name of the PData key
---- @param default any @Default value if PData key doesn't exist.
+--- @param default? any @Default value if PData key doesn't exist.
 --- @return string @The data in the SQL database or the default value given.
 function Player:GetPData(key, default)
 end
@@ -551,7 +551,7 @@ function Player:GetTimeoutSeconds()
 end
 
 --- Returns TOOL table of players current tool, or of the one specified.  
---- @param mode string @Classname of the tool to retrieve
+--- @param mode? string @Classname of the tool to retrieve
 --- @return table @TOOL table, or nil if the table wasn't found or the player doesn't have a tool gun.
 function Player:GetTool(mode)
 end
@@ -580,7 +580,7 @@ end
 --- Each player has 3 view models by default, but only the first one is used.  
 --- To use the other viewmodels in your SWEP, see Entity:SetWeaponModel.  
 --- ℹ **NOTE**: In the Client realm, other players' viewmodels are not available unless they are being spectated.  
---- @param index number @optional index of the view model to return, can range from 0 to 2
+--- @param index? number @optional index of the view model to return, can range from 0 to 2
 --- @return Entity @The view model entity
 function Player:GetViewModel(index)
 end
@@ -627,7 +627,7 @@ end
 --- Gives the player a weapon.  
 --- ℹ **NOTE**: While this function is meant for weapons/pickupables only, it is **not** restricted to weapons. Any entity can be spawned using this function, including NPCs and SENTs.  
 --- @param weaponClassName string @Class name of weapon to give the player
---- @param bNoAmmo boolean @Set to true to not give any ammo on weapon spawn
+--- @param bNoAmmo? boolean @Set to true to not give any ammo on weapon spawn
 --- @return Weapon @The weapon given to the player, if one was given
 function Player:Give(weaponClassName, bNoAmmo)
 end
@@ -635,7 +635,7 @@ end
 --- Gives ammo to a player  
 --- @param amount number @Amount of ammo
 --- @param type string @Type of ammo
---- @param hidePopup boolean @Hide display popup when giving the ammo
+--- @param hidePopup? boolean @Hide display popup when giving the ammo
 --- @return number @Ammo given.
 function Player:GiveAmmo(amount, type, hidePopup)
 end
@@ -790,7 +790,7 @@ end
 
 --- Kicks the player from the server.  
 --- ℹ **NOTE**: This can not be run before the player has fully joined in. Use game.KickID for that.  
---- @param reason string @Reason to show for disconnection
+--- @param reason? string @Reason to show for disconnection
 function Player:Kick(reason)
 end
 
@@ -915,13 +915,13 @@ end
 --- Forces the player to say whatever the first argument is. Works on bots too.  
 --- ℹ **NOTE**: This function ignores the default chat message cooldown  
 --- @param text string @The text to force the player to say.
---- @param teamOnly boolean @Whether to send this message to our own team only.
+--- @param teamOnly? boolean @Whether to send this message to our own team only.
 function Player:Say(text, teamOnly)
 end
 
 --- Fades the screen  
 --- @param flags number @Fade flags defined with Enums/SCREENFADE.
---- @param clr number @The color of the screenfade
+--- @param clr? number @The color of the screenfade
 --- @param fadeTime number @Fade(in/out) effect transition time ( From no fade to full fade and vice versa )
 --- @param fadeHold number @Fade effect hold time
 function Player:ScreenFade(flags, clr, fadeTime, fadeHold)
@@ -1035,8 +1035,8 @@ end
 
 --- Set a player's FOV (Field Of View) over a certain amount of time.  
 --- @param fov number @the angle of perception (FOV)
---- @param time number @the time it takes to transition to the FOV expressed in a floating point.
---- @param requester Entity @The requester or "owner" of the zoom event.
+--- @param time? number @the time it takes to transition to the FOV expressed in a floating point.
+--- @param requester? Entity @The requester or "owner" of the zoom event.
 function Player:SetFOV(fov, time, requester)
 end
 
@@ -1053,7 +1053,7 @@ function Player:SetHands(hands)
 end
 
 --- Sets the widget that is currently hovered by the player's mouse.  
---- @param widget Entity @The widget entity that the player is hovering.
+--- @param widget? Entity @The widget entity that the player is hovering.
 function Player:SetHoveredWidget(widget)
 end
 
@@ -1139,7 +1139,7 @@ end
 
 --- Sets the widget that is currently in use by the player's mouse.  
 --- Having a pressed widget stops the player from firing his weapon to allow input to be passed onto the widget.  
---- @param pressedWidget Entity @The widget the player is currently using.
+--- @param pressedWidget? Entity @The widget the player is currently using.
 function Player:SetPressedWidget(pressedWidget)
 end
 
@@ -1424,7 +1424,7 @@ function Player:ViewPunch(PunchAngle)
 end
 
 --- Resets the player's view punch ( Player:ViewPunch ) effect back to normal.  
---- @param tolerance number @Reset all ViewPunch below this threshold.
+--- @param tolerance? number @Reset all ViewPunch below this threshold.
 function Player:ViewPunchReset(tolerance)
 end
 

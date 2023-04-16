@@ -359,7 +359,7 @@ end
 
 --- Sets the position of the physobject.  
 --- @param position Vector @The new position of the physobject.
---- @param teleport boolean 
+--- @param teleport? boolean 
 function PhysObj:SetPos(position, teleport)
 end
 

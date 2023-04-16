@@ -89,11 +89,11 @@ end
 --- Returns the closest CNavArea to given position at the same height, or beneath it.  
 --- This function will ignore blocked CNavAreas. See navmesh.GetNavArea for a function that does see blocked areas.  
 --- @param pos Vector @The position to look from
---- @param anyZ boolean @This argument is ignored and has no effect
---- @param maxDist number @This is the maximum distance from the given position that the function will look for a CNavArea
---- @param checkLOS boolean @If this is set to true then the function will internally do a util.TraceLine from the starting position to each potential CNavArea with a [M
---- @param checkGround boolean @If checkGround is true then this function will internally call navmesh.GetNavArea to check if there is a CNavArea directly below the positio
---- @param team number @This will internally call CNavArea:IsBlocked to check if the target CNavArea is not to be navigated by the given team
+--- @param anyZ? boolean @This argument is ignored and has no effect
+--- @param maxDist? number @This is the maximum distance from the given position that the function will look for a CNavArea
+--- @param checkLOS? boolean @If this is set to true then the function will internally do a util.TraceLine from the starting position to each potential CNavArea with a [M
+--- @param checkGround? boolean @If checkGround is true then this function will internally call navmesh.GetNavArea to check if there is a CNavArea directly below the positio
+--- @param team? number @This will internally call CNavArea:IsBlocked to check if the target CNavArea is not to be navigated by the given team
 --- @return CNavArea @The closest CNavArea found with the given parameters, or a NULL CNavArea if one was not found.
 function navmesh.GetNearestNavArea(pos, anyZ, maxDist, checkLOS, checkGround, team)
 end

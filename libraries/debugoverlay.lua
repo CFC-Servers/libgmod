@@ -7,8 +7,8 @@ _G.debugoverlay = {}
 --- @param origin Vector @Position origin
 --- @param ang Angle @Angle of the axis
 --- @param size number @Size of the axis
---- @param lifetime number @Number of seconds to appear
---- @param ignoreZ boolean @If true, will draw on top of everything; ignoring the Z buffer
+--- @param lifetime? number @Number of seconds to appear
+--- @param ignoreZ? boolean @If true, will draw on top of everything; ignoring the Z buffer
 function debugoverlay.Axis(origin, ang, size, lifetime, ignoreZ)
 end
 
@@ -17,8 +17,8 @@ end
 --- @param origin Vector @Position origin
 --- @param mins Vector @Minimum bounds of the box
 --- @param maxs Vector @Maximum bounds of the box
---- @param lifetime number @Number of seconds to appear
---- @param color table @The color of the box
+--- @param lifetime? number @Number of seconds to appear
+--- @param color? table @The color of the box
 function debugoverlay.Box(origin, mins, maxs, lifetime, color)
 end
 
@@ -28,8 +28,8 @@ end
 --- @param mins Vector @The mins of the box (lowest corner)
 --- @param maxs Vector @The maxs of the box (highest corner)
 --- @param ang Angle @The angle to draw the box at
---- @param lifetime number @Amount of seconds to show the box
---- @param color table @The color of the box
+--- @param lifetime? number @Amount of seconds to show the box
+--- @param color? table @The color of the box
 function debugoverlay.BoxAngles(pos, mins, maxs, ang, lifetime, color)
 end
 
@@ -37,9 +37,9 @@ end
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param position Vector @Position origin
 --- @param size number @Size of the cross
---- @param lifetime number @Number of seconds the cross to appear
---- @param color table @The color of the cross
---- @param ignoreZ boolean @If true, will draw on top of everything; ignoring the Z buffer
+--- @param lifetime? number @Number of seconds the cross to appear
+--- @param color? table @The color of the cross
+--- @param ignoreZ? boolean @If true, will draw on top of everything; ignoring the Z buffer
 function debugoverlay.Cross(position, size, lifetime, color, ignoreZ)
 end
 
@@ -48,8 +48,8 @@ end
 --- @param pos Vector @The position in 3D to display the text.
 --- @param line number @Line of text, will offset text on the to display the new line unobstructed
 --- @param text string @The text to display
---- @param lifetime number @Number of seconds to appear
---- @param color table @The color of the box
+--- @param lifetime? number @Number of seconds to appear
+--- @param color? table @The color of the box
 function debugoverlay.EntityTextAtPosition(pos, line, text, lifetime, color)
 end
 
@@ -63,9 +63,9 @@ end
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param pos1 Vector @First position of the line
 --- @param pos2 Vector @Second position of the line
---- @param lifetime number @Number of seconds to appear
---- @param color table @The color of the line
---- @param ignoreZ boolean @If true, will draw on top of everything; ignoring the Z buffer
+--- @param lifetime? number @Number of seconds to appear
+--- @param color? table @The color of the line
+--- @param ignoreZ? boolean @If true, will draw on top of everything; ignoring the Z buffer
 function debugoverlay.Line(pos1, pos2, lifetime, color, ignoreZ)
 end
 
@@ -74,8 +74,8 @@ end
 --- @param x number @The position of the text, from 0 ( left ) to 1 ( right ).
 --- @param y number @The position of the text, from 0 ( top ) to 1 ( bottom ).
 --- @param text string @The text to display
---- @param lifetime number @Number of seconds to appear
---- @param color table @The color of the box
+--- @param lifetime? number @Number of seconds to appear
+--- @param color? table @The color of the box
 function debugoverlay.ScreenText(x, y, text, lifetime, color)
 end
 
@@ -83,9 +83,9 @@ end
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param origin Vector @Position origin
 --- @param size number @Size of the sphere
---- @param lifetime number @Number of seconds to appear
---- @param color table @The color of the sphere
---- @param ignoreZ boolean @If true, will draw on top of everything; ignoring the Z buffer
+--- @param lifetime? number @Number of seconds to appear
+--- @param color? table @The color of the sphere
+--- @param ignoreZ? boolean @If true, will draw on top of everything; ignoring the Z buffer
 function debugoverlay.Sphere(origin, size, lifetime, color, ignoreZ)
 end
 
@@ -96,8 +96,8 @@ end
 --- @param vMins Vector @The "minimum" edge of the box.
 --- @param vMaxs Vector @The "maximum" edge of the box.
 --- @param ang Angle 
---- @param lifetime number @Number of seconds to appear
---- @param color table @The color of the box
+--- @param lifetime? number @Number of seconds to appear
+--- @param color? table @The color of the box
 function debugoverlay.SweptBox(vStart, vEnd, vMins, vMaxs, ang, lifetime, color)
 end
 
@@ -105,8 +105,8 @@ end
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param origin Vector @Position origin
 --- @param text string @String message to display
---- @param lifetime number @Number of seconds to appear
---- @param viewCheck boolean @Clip text that is obscured
+--- @param lifetime? number @Number of seconds to appear
+--- @param viewCheck? boolean @Clip text that is obscured
 function debugoverlay.Text(origin, text, lifetime, viewCheck)
 end
 
@@ -115,9 +115,9 @@ end
 --- @param pos1 Vector @First point of the triangle
 --- @param pos2 Vector @Second point of the triangle
 --- @param pos3 Vector @Third point of the triangle
---- @param lifetime number @Number of seconds to appear
---- @param color table @The color of the box
---- @param ignoreZ boolean @If true, will draw on top of everything; ignoring the Z buffer
+--- @param lifetime? number @Number of seconds to appear
+--- @param color? table @The color of the box
+--- @param ignoreZ? boolean @If true, will draw on top of everything; ignoring the Z buffer
 function debugoverlay.Triangle(pos1, pos2, pos3, lifetime, color, ignoreZ)
 end
 

@@ -104,7 +104,7 @@ function Vehicle:GetVehicleParams()
 end
 
 --- Returns the view position and forward angle of a given passenger seat.  
---- @param role number @The passenger role
+--- @param role? number @The passenger role
 --- @return Vector @The view position, will be 0, 0, 0 on failure
 --- @return Angle @The view angles, will be 0, 0, 0 on failure
 --- @return number @The field of view, will be 0 on failure

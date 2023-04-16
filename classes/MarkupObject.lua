@@ -6,7 +6,7 @@ local MarkupObject = {}
 --- @param yOffset number @The Y coordinate on the screen.
 --- @param xAlign number @The alignment of the x coordinate using Enums/TEXT_ALIGN
 --- @param yAlign number @The alignment of the y coordinate using Enums/TEXT_ALIGN
---- @param alphaoverride number @Sets the alpha of all drawn objects to this.
+--- @param alphaoverride? number @Sets the alpha of all drawn objects to this.
 function MarkupObject:Draw(xOffset, yOffset, xAlign, yAlign, alphaoverride)
 end
 

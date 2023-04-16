@@ -18,7 +18,7 @@ function debug.getfenv(object)
 end
 
 --- Returns the current hook settings of the passed thread. The thread argument can be omitted. This is unrelated to . More information on hooks can be found at http://www.lua.org/pil/23.2.html  
---- @param thread thread @Which thread to retrieve its hook from
+--- @param thread? thread @Which thread to retrieve its hook from
 --- @return function @Hook function
 --- @return string @Hook mask
 --- @return number @Hook count
@@ -27,14 +27,14 @@ end
 
 --- Returns debug information about a function.  
 --- @param funcOrStackLevel function @Takes either a function or a number representing the stack level as an argument
---- @param fields string @A string whose characters specify the information to be retrieved
+--- @param fields? string @A string whose characters specify the information to be retrieved
 --- @return table @A table as a Structures/DebugInfo containing information about the function you passed
 function debug.getinfo(funcOrStackLevel, fields)
 end
 
 --- Gets the name and value of a local variable indexed from the level  
 --- ⚠ **WARNING**: When a function has a tailcall return, you cannot access the locals of this function  
---- @param thread thread @The thread
+--- @param thread? thread @The thread
 --- @param level number @The level above the thread
 --- @param index number @The variable's index you want to get
 --- @return string @The name of the variable
@@ -81,10 +81,10 @@ end
 
 --- <removed>This function was removed due to security concerns.</removed>  
 --- Sets a local variable's value.  
---- @param thread thread @The thread
+--- @param thread? thread @The thread
 --- @param level number @The level above the thread
 --- @param index number @The variable's index you want to get
---- @param value any @The value to set the local to
+--- @param value? any @The value to set the local to
 --- @return string @The name of the local variable if the local at the index exists, otherwise nil is returned.
 function debug.setlocal(thread, level, index, value)
 end
@@ -100,15 +100,15 @@ end
 --- Sets the variable indexed from func  
 --- @param func function @The function to index the upvalue from
 --- @param index number @The index from func
---- @param val any @The value to set the upvalue to.
+--- @param val? any @The value to set the upvalue to.
 --- @return string @Returns nil if there is no upvalue with the given index, otherwise it returns the upvalue's name.
 function debug.setupvalue(func, index, val)
 end
 
 --- Returns a full execution stack trace.  
---- @param thread thread @Thread (ie
---- @param message string @Appended at the beginning of the traceback.
---- @param level number @Which level to start the traceback.
+--- @param thread? thread @Thread (ie
+--- @param message? string @Appended at the beginning of the traceback.
+--- @param level? number @Which level to start the traceback.
 --- @return string @A dump of the execution stack.
 function debug.traceback(thread, message, level)
 end

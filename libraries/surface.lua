@@ -27,7 +27,7 @@ end
 --- @param r number @The red value of the color to draw the circle with, or a Color.
 --- @param g number @The green value of the color to draw the circle with
 --- @param b number @The blue value of the color to draw the circle with
---- @param a number @The alpha value of the color to draw the circle with
+--- @param a? number @The alpha value of the color to draw the circle with
 function surface.DrawCircle(originX, originY, radius, r, g, b, a)
 end
 
@@ -203,7 +203,7 @@ end
 --- @param r number @The red value of color, or a Color.
 --- @param g number @The green value of color
 --- @param b number @The blue value of color
---- @param a number @The alpha value of color
+--- @param a? number @The alpha value of color
 function surface.SetDrawColor(r, g, b, a)
 end
 
@@ -231,7 +231,7 @@ end
 --- @param r number @The red value of color, or a Color.
 --- @param g number @The green value of color
 --- @param b number @The blue value of color
---- @param a number @The alpha value of color
+--- @param a? number @The alpha value of color
 function surface.SetTextColor(r, g, b, a)
 end
 

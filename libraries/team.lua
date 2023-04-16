@@ -99,7 +99,7 @@ end
 --- @param teamIndex number @The team index.
 --- @param teamName string @The team name.
 --- @param teamColor table @The team color
---- @param isJoinable boolean @Whether the team is joinable or not.
+--- @param isJoinable? boolean @Whether the team is joinable or not.
 function team.SetUp(teamIndex, teamName, teamColor, isJoinable)
 end
 

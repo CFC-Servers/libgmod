@@ -9,7 +9,7 @@ _G.GWEN = {}
 --- @param top number @Top width of border
 --- @param right number @Right width of border
 --- @param bottom number @Bottom width of border
---- @param source IMaterial @Texture of source image to create a bordered rectangle from
+--- @param source? IMaterial @Texture of source image to create a bordered rectangle from
 --- @return function @The drawing function
 function GWEN.CreateTextureBorder(x, y, w, h, left, top, right, bottom, source)
 end

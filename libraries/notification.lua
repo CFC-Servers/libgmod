@@ -10,7 +10,7 @@ end
 --- Adds a notification with an animated progress bar.  
 --- @param id any @Can be any type
 --- @param strText string @The text to show
---- @param frac number @If set, overrides the progress bar animation with given percentage
+--- @param frac? number @If set, overrides the progress bar animation with given percentage
 function notification.AddProgress(id, strText, frac)
 end
 

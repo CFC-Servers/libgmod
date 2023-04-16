@@ -154,7 +154,7 @@ end
 --- ⚠ **WARNING**: Each net message has a length limit of 64KB!  
 --- ⚠ **WARNING**: The message name must be pooled with util.AddNetworkString beforehand!  
 --- @param messageName string @The name of the message to send
---- @param unreliable boolean @If set to true, the message is not guaranteed to reach its destination
+--- @param unreliable? boolean @If set to true, the message is not guaranteed to reach its destination
 --- @return boolean @True if the message has been started.
 function net.Start(messageName, unreliable)
 end

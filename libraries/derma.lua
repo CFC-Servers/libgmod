@@ -71,7 +71,7 @@ end
 --- Returns a function to draw a specified texture of panels skin.  
 --- @param name string @The identifier of the texture
 --- @param pnl Panel @Panel to get the skin of.
---- @param fallback any @What to return if we failed to retrieve the texture
+--- @param fallback? any @What to return if we failed to retrieve the texture
 --- @return function @A function that is created with the GWEN to draw a texture.
 function derma.SkinTexture(name, pnl, fallback)
 end

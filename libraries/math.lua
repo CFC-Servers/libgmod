@@ -105,7 +105,7 @@ end
 
 --- Rounds the given value to the nearest whole number or to the given decimal places.  
 --- @param value number @The value to round.
---- @param decimals number @The decimal places to round to.
+--- @param decimals? number @The decimal places to round to.
 --- @return number @The rounded value.
 function math.Round(value, decimals)
 end
@@ -120,7 +120,7 @@ end
 
 --- Rounds towards zero.  
 --- @param num number @The number to truncate
---- @param digits number @The amount of digits to keep after the point.
+--- @param digits? number @The amount of digits to keep after the point.
 function math.Truncate(num, digits)
 end
 
@@ -219,7 +219,7 @@ end
 --- With one argument, return the natural logarithm of x (to base e).  
 --- With two arguments, return the logarithm of x to the given base, calculated as log(x)/log(base).  
 --- @param x number @The value to get the base from exponent from.
---- @param base number @The logarithmic base.
+--- @param base? number @The logarithmic base.
 --- @return number @Logarithm of x to the given base
 function math.log(x, base)
 end
@@ -274,8 +274,8 @@ end
 --- When called with an integer number m, returns a uniform pseudo-random integer in the range 1 to m inclusive.  
 --- When called with two integer numbers m and n, returns a uniform pseudo-random integer in the range m to n inclusive.  
 --- See also math.Rand  
---- @param m number @If m is the only parameter: upper limit
---- @param n number @Upper limit
+--- @param m? number @If m is the only parameter: upper limit
+--- @param n? number @Upper limit
 --- @return number @Random value
 function math.random(m, n)
 end

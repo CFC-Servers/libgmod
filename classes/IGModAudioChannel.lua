@@ -188,7 +188,7 @@ end
 
 --- Sets position of sound channel in case the sound channel has a 3d option set.  
 --- @param pos Vector @The position to put the sound into
---- @param dir Vector @The direction of the sound
+--- @param dir? Vector @The direction of the sound
 function IGModAudioChannel:SetPos(pos, dir)
 end
 

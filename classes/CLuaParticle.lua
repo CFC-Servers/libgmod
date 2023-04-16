@@ -228,7 +228,7 @@ function CLuaParticle:SetVelocity(vel)
 end
 
 --- Scales the velocity based on the particle speed.  
---- @param doScale boolean @Use velocity scaling.
+--- @param doScale? boolean @Use velocity scaling.
 function CLuaParticle:SetVelocityScale(doScale)
 end
 

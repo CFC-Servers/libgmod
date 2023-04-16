@@ -28,8 +28,8 @@ end
 --- 🦟 **BUG**: [Calling this in a ENTITY:StartTouch or ENTITY:Touch hook will crash the game.](https://github.com/Facepunch/garrysmod-issues/issues/1142)  
 --- 🦟 **BUG**: [Calling this destroys all BASS streams.](https://github.com/Facepunch/garrysmod-issues/issues/2874)  
 --- 🦟 **BUG**: [This can crash when removing _firesmoke entities.](https://github.com/Facepunch/garrysmod-issues/issues/3637)  
---- @param dontSendToClients boolean @If set to true, don't run this functions on all clients.
---- @param ExtraFilters table @Entity classes not to reset during cleanup.
+--- @param dontSendToClients? boolean @If set to true, don't run this functions on all clients.
+--- @param ExtraFilters? table @Entity classes not to reset during cleanup.
 function game.CleanUpMap(dontSendToClients, ExtraFilters)
 end
 
@@ -159,7 +159,7 @@ end
 
 --- Kicks a player from the server. This can be ran before the player has spawned.  
 --- @param id string @UserID or SteamID of the player to kick.
---- @param reason string @Reason to display to the player
+--- @param reason? string @Reason to display to the player
 function game.KickID(id, reason)
 end
 

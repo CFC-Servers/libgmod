@@ -3,18 +3,18 @@ _G.constraint = {}
 --- Stores information about constraints in an entity's table.  
 --- @param ent1 Entity @The entity to store the information on.
 --- @param constrt Entity @The constraint to store in the entity's table.
---- @param ent2 Entity @Optional
---- @param ent3 Entity @Optional
---- @param ent4 Entity @Optional
+--- @param ent2? Entity @Optional
+--- @param ent3? Entity @Optional
+--- @param ent4? Entity @Optional
 function constraint.AddConstraintTable(ent1, constrt, ent2, ent3, ent4)
 end
 
 --- Stores info about the constraints on the entity's table. The only difference between this and constraint.AddConstraintTable is that the constraint does not get deleted when the entity is removed.  
 --- @param ent1 Entity @The entity to store the information on.
 --- @param constrt Entity @The constraint to store in the entity's table.
---- @param ent2 Entity @Optional
---- @param ent3 Entity @Optional
---- @param ent4 Entity @Optional
+--- @param ent2? Entity @Optional
+--- @param ent3? Entity @Optional
+--- @param ent4? Entity @Optional
 function constraint.AddConstraintTableNoDelete(ent1, constrt, ent2, ent3, ent4)
 end
 
@@ -161,7 +161,7 @@ end
 
 --- Returns a table of all entities recursively constrained to an entitiy.  
 --- @param ent Entity @The entity to check
---- @param ResultTable table @Table used to return result
+--- @param ResultTable? table @Table used to return result
 --- @return table @A table containing all of the constrained entities
 function constraint.GetAllConstrainedEntities(ent, ResultTable)
 end
