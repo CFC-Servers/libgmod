@@ -4,17 +4,17 @@ _G.vgui = {}
 --- Creates a panel by the specified classname.  
 --- ℹ **NOTE**: Custom VGUI elements are not loaded instantly. Use GM:OnGamemodeLoaded to create them on startup.  
 --- @param classname string @Classname of the panel to create
---- @param parent GPanel @Parent of the created panel.
+--- @param parent Panel @Parent of the created panel.
 --- @param name string @Name of the created panel.
---- @return GPanel @panel
+--- @return Panel @panel
 function vgui.Create(classname, parent, name)
 end
 
 --- Creates a panel from table.  
 --- @param metatable table @Your PANEL table
---- @param parent GPanel @Which panel to parent the newly created panel to
+--- @param parent Panel @Which panel to parent the newly created panel to
 --- @param name string @Name of your panel
---- @return GPanel @Created panel
+--- @return Panel @Created panel
 function vgui.CreateFromTable(metatable, parent, name)
 end
 
@@ -24,7 +24,7 @@ function vgui.CursorVisible()
 end
 
 --- Returns whether the currently focused panel is a child of the given one.  
---- @param parent GPanel @The parent panel to check the currently focused one against
+--- @param parent Panel @The parent panel to check the currently focused one against
 --- @return boolean @Whether or not the focused panel is a child of the passed one.
 function vgui.FocusedHasParent(parent)
 end
@@ -38,18 +38,18 @@ end
 --- Returns the panel the cursor is hovering above.  
 --- ⚠ **WARNING**: This returns a cached value that is only updated after rendering and `before` the next VGUI Think/Layout pass.  
 --- ie. it lags one frame behind panel layout and is completely unhelpful for PANEL:Paint if your panels are moving around under the mouse a lot every frame.  
---- @return GPanel @The panel that the user is currently hovering over with their cursor.
+--- @return Panel @The panel that the user is currently hovering over with their cursor.
 function vgui.GetHoveredPanel()
 end
 
 --- Returns the panel which is currently receiving keyboard input.  
---- @return GPanel @The panel with keyboard focus
+--- @return Panel @The panel with keyboard focus
 function vgui.GetKeyboardFocus()
 end
 
 --- Returns the global world panel which is the parent to all others.  
 --- See also Global.GetHUDPanel.  
---- @return GPanel @The world panel
+--- @return Panel @The world panel
 function vgui.GetWorldPanel()
 end
 

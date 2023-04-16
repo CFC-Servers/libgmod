@@ -1,7 +1,7 @@
 --- The undo library allows you to add custom entities to the undo list, allowing users to "undo" their creation with their undo (default: `Z`) key.  
 _G.undo = {}
 --- Adds an entity to the current undo block  
---- @param ent GEntity @The entity to add
+--- @param ent Entity @The entity to add
 function undo.AddEntity(ent)
 end
 
@@ -33,8 +33,8 @@ function undo.GetTable()
 end
 
 --- Replaces any instance of the "from" reference with the "to" reference, in any existing undo block. Returns true if something was replaced  
---- @param from GEntity @The old entity
---- @param to GEntity @The new entity to replace the old one
+--- @param from Entity @The old entity
+--- @param to Entity @The new entity to replace the old one
 --- @return boolean @somethingReplaced
 function undo.ReplaceEntity(from, to)
 end
@@ -45,7 +45,7 @@ function undo.SetCustomUndoText(customText)
 end
 
 --- Sets the player which the current undo block belongs to  
---- @param ply GPlayer @The player responsible for undoing the block
+--- @param ply Player @The player responsible for undoing the block
 function undo.SetPlayer(ply)
 end
 

@@ -7,12 +7,12 @@ end
 
 --- Activates tools context menu in specified tool tab.  
 --- @param tab number @The tabID of the tab to open the context menu in
---- @param cp GPanel @The control panel to open
+--- @param cp Panel @The control panel to open
 function spawnmenu.ActivateToolPanel(tab, cp)
 end
 
 --- Returns currently opened control panel of a tool, post process effect or some other menu in spawnmenu.  
---- @return GPanel @The currently opened control panel, if any.
+--- @return Panel @The currently opened control panel, if any.
 function spawnmenu.ActiveControlPanel()
 end
 
@@ -80,9 +80,9 @@ end
 
 --- Creates a new content icon.  
 --- @param type string @The type of the content icon.
---- @param parent GPanel @The parent to add the content icon to.
+--- @param parent Panel @The parent to add the content icon to.
 --- @param data table @The data to send to the content icon in spawnmenu.AddContentType
---- @return GPanel @The created content icon, if it was returned by spawnmenu.AddContentType
+--- @return Panel @The created content icon, if it was returned by spawnmenu.AddContentType
 function spawnmenu.CreateContentIcon(type, parent, data)
 end
 
@@ -129,7 +129,7 @@ function spawnmenu.PopulateFromTextFiles(callback)
 end
 
 --- Sets currently active control panel to be returned by spawnmenu.ActiveControlPanel.  
---- @param pnl GPanel @The panel to set.
+--- @param pnl Panel @The panel to set.
 function spawnmenu.SetActiveControlPanel(pnl)
 end
 

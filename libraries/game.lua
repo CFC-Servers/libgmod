@@ -147,7 +147,7 @@ function game.GetTimeScale()
 end
 
 --- Returns the worldspawn entity.  
---- @return GEntity @The world
+--- @return Entity @The world
 function game.GetWorld()
 end
 
@@ -225,7 +225,7 @@ function game.SinglePlayer()
 end
 
 --- Returns position the player should start from, this is not the same thing as spawn points, it is used to properly transit the player between maps.  
---- @return GVector @startSpot
+--- @return Vector @startSpot
 function game.StartSpot()
 end
 

@@ -2,8 +2,8 @@
 --- The navigation mesh is used by NextBot to calculate path to its target.  
 _G.navmesh = {}
 --- Add this position and normal to the list of walkable positions, used before map generation with navmesh.BeginGeneration  
---- @param pos GVector @The terrain position.
---- @param dir GVector @The normal of this terrain position.
+--- @param pos Vector @The terrain position.
+--- @param dir Vector @The normal of this terrain position.
 function navmesh.AddWalkableSeed(pos, dir)
 end
 
@@ -17,14 +17,14 @@ function navmesh.ClearWalkableSeeds()
 end
 
 --- Creates a new CNavArea.  
---- @param corner GVector @The first corner of the new CNavArea
---- @param opposite_corner GVector @The opposite (diagonally) corner of the new CNavArea
---- @return GCNavArea @The new CNavArea or nil if we failed for some reason.
+--- @param corner Vector @The first corner of the new CNavArea
+--- @param opposite_corner Vector @The opposite (diagonally) corner of the new CNavArea
+--- @return CNavArea @The new CNavArea or nil if we failed for some reason.
 function navmesh.CreateNavArea(corner, opposite_corner)
 end
 
 --- Returns a bunch of areas within distance, used to find hiding spots by NextBots for example.  
---- @param pos GVector @The position to search around
+--- @param pos Vector @The position to search around
 --- @param radius number @Radius to search within
 --- @param stepdown number @Maximum stepdown( fall distance ) allowed
 --- @param stepup number @Maximum stepup( jump height ) allowed
@@ -38,40 +38,40 @@ function navmesh.GetAllNavAreas()
 end
 
 --- Returns the position of the edit cursor when nav_edit is set to 1.  
---- @return GVector @The position of the edit cursor.
+--- @return Vector @The position of the edit cursor.
 function navmesh.GetEditCursorPosition()
 end
 
 --- Finds the closest standable ground at, above, or below the provided position.  
 --- ℹ **NOTE**: The ground must have at least 32 units of empty space above it to be considered by this function, unless 16 layers are tested without finding valid ground.  
---- @param pos GVector @Position to find the closest ground for.
+--- @param pos Vector @Position to find the closest ground for.
 --- @return number @The height of the ground layer.
---- @return GVector @The normal of the ground layer.
+--- @return Vector @The normal of the ground layer.
 function navmesh.GetGroundHeight(pos)
 end
 
 --- Returns the currently marked CNavArea, for use with editing console commands.  
---- @return GCNavArea @The currently marked CNavArea.
+--- @return CNavArea @The currently marked CNavArea.
 function navmesh.GetMarkedArea()
 end
 
 --- Returns the currently marked CNavLadder, for use with editing console commands.  
---- @return GCNavLadder @The currently marked CNavLadder.
+--- @return CNavLadder @The currently marked CNavLadder.
 function navmesh.GetMarkedLadder()
 end
 
 --- Returns the Nav Area contained in this position that also satisfies the elevation limit.  
 --- This function will properly see blocked CNavAreas. See navmesh.GetNearestNavArea.  
---- @param pos GVector @The position to search for.
+--- @param pos Vector @The position to search for.
 --- @param beneathLimit number @The elevation limit at which the Nav Area will be searched.
---- @return GCNavArea @The nav area.
+--- @return CNavArea @The nav area.
 function navmesh.GetNavArea(pos, beneathLimit)
 end
 
 --- Returns a CNavArea by the given ID.  
 --- ℹ **NOTE**: Avoid calling this function every frame, as internally it does a lookup trough all the CNavAreas, call this once and store the result  
 --- @param id number @ID of the CNavArea to get
---- @return GCNavArea @The CNavArea with given ID.
+--- @return CNavArea @The CNavArea with given ID.
 function navmesh.GetNavAreaByID(id)
 end
 
@@ -82,19 +82,19 @@ end
 
 --- Returns a CNavLadder by the given ID.  
 --- @param id number @ID of the CNavLadder to get
---- @return GCNavLadder @The CNavLadder with given ID.
+--- @return CNavLadder @The CNavLadder with given ID.
 function navmesh.GetNavLadderByID(id)
 end
 
 --- Returns the closest CNavArea to given position at the same height, or beneath it.  
 --- This function will ignore blocked CNavAreas. See navmesh.GetNavArea for a function that does see blocked areas.  
---- @param pos GVector @The position to look from
+--- @param pos Vector @The position to look from
 --- @param anyZ boolean @This argument is ignored and has no effect
 --- @param maxDist number @This is the maximum distance from the given position that the function will look for a CNavArea
 --- @param checkLOS boolean @If this is set to true then the function will internally do a util.TraceLine from the starting position to each potential CNavArea with a [M
 --- @param checkGround boolean @If checkGround is true then this function will internally call navmesh.GetNavArea to check if there is a CNavArea directly below the positio
 --- @param team number @This will internally call CNavArea:IsBlocked to check if the target CNavArea is not to be navigated by the given team
---- @return GCNavArea @The closest CNavArea found with the given parameters, or a NULL CNavArea if one was not found.
+--- @return CNavArea @The closest CNavArea found with the given parameters, or a NULL CNavArea if one was not found.
 function navmesh.GetNearestNavArea(pos, anyZ, maxDist, checkLOS, checkGround, team)
 end
 
@@ -126,12 +126,12 @@ function navmesh.Save()
 end
 
 --- Sets the CNavArea as marked, so it can be used with editing console commands.  
---- @param area GCNavArea @The CNavArea to set as the marked area.
+--- @param area CNavArea @The CNavArea to set as the marked area.
 function navmesh.SetMarkedArea(area)
 end
 
 --- Sets the CNavLadder as marked, so it can be used with editing console commands.  
---- @param area GCNavLadder @The CNavLadder to set as the marked ladder.
+--- @param area CNavLadder @The CNavLadder to set as the marked ladder.
 function navmesh.SetMarkedLadder(area)
 end
 

@@ -1,9 +1,9 @@
 --- The cleanup library allows you to control what happens to custom entities when the clean-up buttons are pressed in the Utilities tab of the Spawn menu (default Q).  
 _G.cleanup = {}
 --- Adds an entity to a player's cleanup list.  
---- @param pl GPlayer @Who's cleanup list to add the entity to.
+--- @param pl Player @Who's cleanup list to add the entity to.
 --- @param type string @The type of cleanup.
---- @param ent GEntity @The entity to add to the player's cleanup list.
+--- @param ent Entity @The entity to add to the player's cleanup list.
 function cleanup.Add(pl, type, ent)
 end
 
@@ -22,8 +22,8 @@ function cleanup.Register(type)
 end
 
 --- Replaces one entity in the cleanup module with another  
---- @param from GEntity @Old entity
---- @param to GEntity @New entity
+--- @param from Entity @Old entity
+--- @param to Entity @New entity
 --- @return boolean @Whether any action was taken.
 function cleanup.ReplaceEntity(from, to)
 end

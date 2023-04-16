@@ -1,63 +1,63 @@
---- @class GVMatrix
+--- @class VMatrix
 --- List of all possible functions to manipulate matrices.  
 --- This object can be created by Global.Matrix.  
-local GVMatrix = {}
+local VMatrix = {}
 --- Returns the absolute rotation of the matrix.  
---- @return GAngle @Absolute rotation of the matrix
-function GVMatrix:GetAngles()
+--- @return Angle @Absolute rotation of the matrix
+function VMatrix:GetAngles()
 end
 
 --- Returns a specific field in the matrix.  
 --- @param row number @Row of the field whose value is to be retrieved, from 1 to 4
 --- @param column number @Column of the field whose value is to be retrieved, from 1 to 4
 --- @return number @The value of the specified field
-function GVMatrix:GetField(row, column)
+function VMatrix:GetField(row, column)
 end
 
 --- Gets the forward direction of the matrix.  
 --- ie. The first column of the matrix, excluding the w coordinate.  
---- @return GVector @The forward direction of the matrix.
-function GVMatrix:GetForward()
+--- @return Vector @The forward direction of the matrix.
+function VMatrix:GetForward()
 end
 
 --- Returns an inverted matrix without modifying the original matrix.  
 --- Inverting the matrix will fail if its [determinant](https://en.wikipedia.org/wiki/Determinant) is 0 or close to 0. (ie. its "scale" in any direction is 0.)  
 --- See also VMatrix:GetInverseTR.  
---- @return GVMatrix @The inverted matrix if possible, nil otherwise
-function GVMatrix:GetInverse()
+--- @return VMatrix @The inverted matrix if possible, nil otherwise
+function VMatrix:GetInverse()
 end
 
 --- Returns an inverted matrix without modifying the original matrix. This function will not fail, but only works correctly on matrices that contain only translation and/or rotation.  
 --- Using this function on a matrix with modified scale may return an incorrect inverted matrix.  
 --- To get the inverse of a matrix that contains other modifications, see VMatrix:GetInverse.  
---- @return GVMatrix @The inverted matrix.
-function GVMatrix:GetInverseTR()
+--- @return VMatrix @The inverted matrix.
+function VMatrix:GetInverseTR()
 end
 
 --- Gets the right direction of the matrix.  
 --- ie. The second column of the matrix, negated, excluding the w coordinate.  
---- @return GVector @The right direction of the matrix.
-function GVMatrix:GetRight()
+--- @return Vector @The right direction of the matrix.
+function VMatrix:GetRight()
 end
 
 --- Returns the absolute scale of the matrix.  
---- @return GVector @Absolute scale of the matrix
-function GVMatrix:GetScale()
+--- @return Vector @Absolute scale of the matrix
+function VMatrix:GetScale()
 end
 
 --- Returns the absolute translation of the matrix.  
---- @return GVector @Absolute translation of the matrix
-function GVMatrix:GetTranslation()
+--- @return Vector @Absolute translation of the matrix
+function VMatrix:GetTranslation()
 end
 
 --- Gets the up direction of the matrix.  
 --- ie. The third column of the matrix, excluding the w coordinate.  
---- @return GVector @The up direction of the matrix.
-function GVMatrix:GetUp()
+--- @return Vector @The up direction of the matrix.
+function VMatrix:GetUp()
 end
 
 --- Initializes the matrix as Identity matrix.  
-function GVMatrix:Identity()
+function VMatrix:Identity()
 end
 
 --- Inverts the matrix.  
@@ -65,85 +65,85 @@ end
 --- If the matrix cannot be inverted, it does not get modified.  
 --- See also VMatrix:InvertTR.  
 --- @return boolean @Whether the matrix was inverted or not
-function GVMatrix:Invert()
+function VMatrix:Invert()
 end
 
 --- Inverts the matrix. This function will not fail, but only works correctly on matrices that contain only translation and/or rotation.  
 --- Using this function on a matrix with modified scale may return an incorrect inverted matrix.  
 --- To invert a matrix that contains other modifications, see VMatrix:Invert.  
-function GVMatrix:InvertTR()
+function VMatrix:InvertTR()
 end
 
 --- Returns whether the matrix is equal to Identity matrix or not.  
 --- @return boolean @Is the matrix an Identity matrix or not
-function GVMatrix:IsIdentity()
+function VMatrix:IsIdentity()
 end
 
 --- Returns whether the matrix is a rotation matrix or not.  
 --- Technically it checks if the forward, right and up vectors are orthogonal and normalized.  
 --- @return boolean @Is the matrix a rotation matrix or not
-function GVMatrix:IsRotationMatrix()
+function VMatrix:IsRotationMatrix()
 end
 
 --- Checks whenever all fields of the matrix are 0, aka if this is a [null matrix](https://en.wikipedia.org/wiki/Zero_matrix).  
 --- @return boolean @If the matrix is a null matrix.
-function GVMatrix:IsZero()
+function VMatrix:IsZero()
 end
 
 --- Rotates the matrix by the given angle.  
 --- Postmultiplies the matrix by a rotation matrix (A = AR).  
---- @param rotation GAngle @Rotation.
-function GVMatrix:Rotate(rotation)
+--- @param rotation Angle @Rotation.
+function VMatrix:Rotate(rotation)
 end
 
 --- Scales the matrix by the given vector.  
 --- Postmultiplies the matrix by a scaling matrix (A = AS).  
---- @param scale GVector @Vector to scale with matrix with.
-function GVMatrix:Scale(scale)
+--- @param scale Vector @Vector to scale with matrix with.
+function VMatrix:Scale(scale)
 end
 
 --- Scales the absolute translation with the given value.  
 --- @param scale number @Value to scale the translation with.
-function GVMatrix:ScaleTranslation(scale)
+function VMatrix:ScaleTranslation(scale)
 end
 
 --- Copies values from the given matrix object.  
---- @param src GVMatrix @The matrix to copy values from.
-function GVMatrix:Set(src)
+--- @param src VMatrix @The matrix to copy values from.
+function VMatrix:Set(src)
 end
 
 --- Sets the absolute rotation of the matrix.  
---- @param angle GAngle @New angles.
-function GVMatrix:SetAngles(angle)
+--- @param angle Angle @New angles.
+function VMatrix:SetAngles(angle)
 end
 
 --- Sets a specific field in the matrix.  
 --- @param row number @Row of the field to be set, from 1 to 4
 --- @param column number @Column of the field to be set, from 1 to 4
 --- @param value number @The value to set in that field
-function GVMatrix:SetField(row, column, value)
+function VMatrix:SetField(row, column, value)
 end
 
 --- Sets the forward direction of the matrix.  
 --- ie. The first column of the matrix, excluding the w coordinate.  
---- @param forward GVector @The forward direction of the matrix.
-function GVMatrix:SetForward(forward)
+--- @param forward Vector @The forward direction of the matrix.
+function VMatrix:SetForward(forward)
 end
 
 --- Sets the right direction of the matrix.  
 --- ie. The second column of the matrix, negated, excluding the w coordinate.  
---- @param forward GVector @The right direction of the matrix.
-function GVMatrix:SetRight(forward)
+--- @param forward Vector @The right direction of the matrix.
+function VMatrix:SetRight(forward)
 end
 
 --- Modifies the scale of the matrix while preserving the rotation and translation.  
---- @param scale GVector @The scale to set.
-function GVMatrix:SetScale(scale)
+--- @param scale Vector @The scale to set.
+function VMatrix:SetScale(scale)
 end
 
 --- Sets the absolute translation of the matrix.  
---- @param translation GVector @New translation.
-function GVMatrix:SetTranslation(translation)
+--- @param translation Vector @New translation.
+function VMatrix:SetTranslation(translation)
 end
 
 --- Sets each component of the matrix.  
@@ -163,24 +163,24 @@ end
 --- @param e42 number 
 --- @param e43 number 
 --- @param e44 number 
-function GVMatrix:SetUnpacked(e11, e12, e13, e14, e21, e22, e23, e24, e31, e32, e33, e34, e41, e42, e43, e44)
+function VMatrix:SetUnpacked(e11, e12, e13, e14, e21, e22, e23, e24, e31, e32, e33, e34, e41, e42, e43, e44)
 end
 
 --- Sets the up direction of the matrix.  
 --- ie. The third column of the matrix, excluding the w coordinate.  
---- @param forward GVector @The up direction of the matrix.
-function GVMatrix:SetUp(forward)
+--- @param forward Vector @The up direction of the matrix.
+function VMatrix:SetUp(forward)
 end
 
 --- Converts the matrix to a 4x4 table. See Global.Matrix function.  
 --- @return table @The 4x4 table.
-function GVMatrix:ToTable()
+function VMatrix:ToTable()
 end
 
 --- Translates the matrix by the given vector aka. adds the vector to the translation.  
 --- Postmultiplies the matrix by a translation matrix (A = AT).  
---- @param translation GVector @Vector to translate the matrix by.
-function GVMatrix:Translate(translation)
+--- @param translation Vector @Vector to translate the matrix by.
+function VMatrix:Translate(translation)
 end
 
 --- Returns each component of the matrix, expanding rows before columns.  
@@ -200,11 +200,11 @@ end
 --- @return number @VMatrix:GetField(4, 2)
 --- @return number @VMatrix:GetField(4, 3)
 --- @return number @VMatrix:GetField(4, 4)
-function GVMatrix:Unpack()
+function VMatrix:Unpack()
 end
 
 --- Sets all components of the matrix to 0, also known as a [null matrix](https://en.wikipedia.org/wiki/Zero_matrix).  
 --- This function is more efficient than setting each element manually.  
-function GVMatrix:Zero()
+function VMatrix:Zero()
 end
 

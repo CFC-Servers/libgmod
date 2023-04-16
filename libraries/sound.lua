@@ -34,7 +34,7 @@ end
 --- Plays a sound from the specified position in the world.  
 --- If you want to play a sound without a position, such as a UI sound, use surface.PlaySound instead.  
 --- @param Name string @A string path to the sound.
---- @param Pos GVector @A vector describing where the sound should play.
+--- @param Pos Vector @A vector describing where the sound should play.
 --- @param Level number @Sound level in decibels
 --- @param Pitch number @An integer describing the sound pitch
 --- @param Volume number @A float ranging from 0-1 describing the output volume of the sound.

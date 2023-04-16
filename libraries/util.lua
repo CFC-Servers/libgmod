@@ -17,13 +17,13 @@ end
 
 --- Function used to calculate aim vector from 2D screen position. It is used in SuperDOF calculate Distance.  
 --- Essentially a generic version of gui.ScreenToVector.  
---- @param ViewAngles GAngle @View angles
+--- @param ViewAngles Angle @View angles
 --- @param ViewFOV number @View Field of View
 --- @param x number @Mouse X position
 --- @param y number @Mouse Y position
 --- @param scrWidth number @Screen width
 --- @param scrHeight number @Screen height
---- @return GVector @Calculated aim vector
+--- @return Vector @Calculated aim vector
 function util.AimVector(ViewAngles, ViewFOV, x, y, scrWidth, scrHeight)
 end
 
@@ -40,17 +40,17 @@ function util.Base64Encode(str)
 end
 
 --- Applies explosion damage to all entities in the specified radius.  
---- @param inflictor GEntity @The entity that caused the damage.
---- @param attacker GEntity @The entity that attacked.
---- @param damageOrigin GVector @The center of the explosion
+--- @param inflictor Entity @The entity that caused the damage.
+--- @param attacker Entity @The entity that attacked.
+--- @param damageOrigin Vector @The center of the explosion
 --- @param damageRadius number @The radius in which entities will be damaged.
 --- @param damage number @The amount of damage to be applied.
 function util.BlastDamage(inflictor, attacker, damageOrigin, damageRadius, damage)
 end
 
 --- Applies spherical damage based on damage info to all entities in the specified radius.  
---- @param dmg GCTakeDamageInfo @The information about the damage
---- @param damageOrigin GVector @Center of the spherical damage
+--- @param dmg CTakeDamageInfo @The information about the damage
+--- @param damageOrigin Vector @Center of the spherical damage
 --- @param damageRadius number @The radius in which entities will be damaged.
 function util.BlastDamageInfo(dmg, damageOrigin, damageRadius)
 end
@@ -75,18 +75,18 @@ end
 
 --- Performs a trace and paints a decal to the surface hit.  
 --- @param name string @The name of the decal to paint.
---- @param start GVector @The start of the trace.
---- @param end_ GVector @The end of the trace.
---- @param filter GEntity @If set, the decal will not be able to be placed on given entity
+--- @param start Vector @The start of the trace.
+--- @param end_ Vector @The end of the trace.
+--- @param filter Entity @If set, the decal will not be able to be placed on given entity
 function util.Decal(name, start, end_, filter)
 end
 
 --- Performs a trace and paints a decal to the surface hit.  
 --- ℹ **NOTE**: This function has trouble spanning across multiple brushes on the map.  
---- @param material GIMaterial @The name of the decal to paint
---- @param ent GEntity @The entity to apply the decal to
---- @param position GVector @The position of the decal.
---- @param normal GVector @The direction of the decal.
+--- @param material IMaterial @The name of the decal to paint
+--- @param ent Entity @The entity to apply the decal to
+--- @param position Vector @The position of the decal.
+--- @param normal Vector @The direction of the decal.
 --- @param color table @The color of the decal
 --- @param w number @The width scale of the decal.
 --- @param h number @The height scale of the decal.
@@ -107,11 +107,11 @@ function util.Decompress(compressedString, maxSize)
 end
 
 --- Gets the distance between a line and a point in 3d space.  
---- @param lineStart GVector @Start of the line.
---- @param lineEnd GVector @End of the line.
---- @param pointPos GVector @The position of the point.
+--- @param lineStart Vector @Start of the line.
+--- @param lineEnd Vector @End of the line.
+--- @param pointPos Vector @The position of the point.
 --- @return number @Distance from line.
---- @return GVector @Nearest point on line.
+--- @return Vector @Nearest point on line.
 --- @return number @Distance along line from start.
 function util.DistanceToLine(lineStart, lineEnd, pointPos)
 end
@@ -121,7 +121,7 @@ end
 --- ℹ **NOTE**: When dispatching an effect from the server, some values may be clamped for networking optimizations. Visit the Set accessors on CEffectData to see which ones are affected.  
 --- ℹ **NOTE**: You will need to couple this function with Global.IsFirstTimePredicted if you want to use it in predicted hook.  
 --- @param effectName string @The name of the effect to create.
---- @param effectData GCEffectData @The effect data describing the effect.
+--- @param effectData CEffectData @The effect data describing the effect.
 --- @param allowOverride boolean @Whether Lua-defined effects should override engine-defined effects with the same name for this/single function call.
 --- @param ignorePredictionOrRecipientFilter any @Can either be a boolean to ignore the prediction filter or a CRecipientFilter
 function util.Effect(effectName, effectData, allowOverride, ignorePredictionOrRecipientFilter)
@@ -170,8 +170,8 @@ function util.GetPixelVisibleHandle()
 end
 
 --- Utility function to quickly generate a trace table that starts at the players view position, and ends 16384 units along a specified direction.  
---- @param ply GPlayer @The player the trace should be based on
---- @param dir GVector @The direction of the trace
+--- @param ply Player @The player the trace should be based on
+--- @param dir Vector @The direction of the trace
 --- @return table @The trace data
 function util.GetPlayerTrace(ply, dir)
 end
@@ -208,29 +208,29 @@ function util.GetUserGroups()
 end
 
 --- Performs a "ray" box intersection and returns position, normal and the fraction.  
---- @param rayStart GVector @Origin/start position of the ray.
---- @param rayDelta GVector @The ray vector itself
---- @param boxOrigin GVector @The center of the box.
---- @param boxAngles GAngle @The angles of the box.
---- @param boxMins GVector @The min position of the box.
---- @param boxMaxs GVector @The max position of the box.
---- @return GVector @Hit position, nil if not hit.
---- @return GVector @Normal/direction vector, nil if not hit.
+--- @param rayStart Vector @Origin/start position of the ray.
+--- @param rayDelta Vector @The ray vector itself
+--- @param boxOrigin Vector @The center of the box.
+--- @param boxAngles Angle @The angles of the box.
+--- @param boxMins Vector @The min position of the box.
+--- @param boxMaxs Vector @The max position of the box.
+--- @return Vector @Hit position, nil if not hit.
+--- @return Vector @Normal/direction vector, nil if not hit.
 --- @return number @Fraction of trace used, nil if not hit.
 function util.IntersectRayWithOBB(rayStart, rayDelta, boxOrigin, boxAngles, boxMins, boxMaxs)
 end
 
 --- Performs a [ray-plane intersection](https://en.wikipedia.org/wiki/Line%E2%80%93plane_intersection) and returns the hit position or nil.  
---- @param rayOrigin GVector @Origin/start position of the ray.
---- @param rayDirection GVector @The direction of the ray.
---- @param planePosition GVector @Any position of the plane.
---- @param planeNormal GVector @The normal vector of the plane.
---- @return GVector @The position of intersection, nil if not hit.
+--- @param rayOrigin Vector @Origin/start position of the ray.
+--- @param rayDirection Vector @The direction of the ray.
+--- @param planePosition Vector @Any position of the plane.
+--- @param planeNormal Vector @The normal vector of the plane.
+--- @return Vector @The position of intersection, nil if not hit.
 function util.IntersectRayWithPlane(rayOrigin, rayDirection, planePosition, planeNormal)
 end
 
 --- Checks if a certain position is within the world bounds.  
---- @param position GVector @Position to check.
+--- @param position Vector @Position to check.
 --- @return boolean @Whether the vector is in world.
 function util.IsInWorld(position)
 end
@@ -243,7 +243,7 @@ end
 
 --- Check whether the skybox is visibile from the point specified.  
 --- ℹ **NOTE**: This will always return true in fullbright maps  
---- @param position GVector @The position to check the skybox visibility from.
+--- @param position Vector @The position to check the skybox visibility from.
 --- @return boolean @Whether the skybox is visible from the position.
 function util.IsSkyboxVisibleFromPoint(position)
 end
@@ -272,7 +272,7 @@ function util.IsValidModel(modelName)
 end
 
 --- Checks if given numbered physics object of given entity is valid or not. Most useful for ragdolls.  
---- @param ent GEntity @The entity
+--- @param ent Entity @The entity
 --- @param physobj number @Number of the physics object to test
 --- @return boolean @true is valid, false otherwise
 function util.IsValidPhysicsObject(ent, physobj)
@@ -317,10 +317,10 @@ function util.KeyValuesToTablePreserveOrder(keyvals, usesEscapeSequences, preser
 end
 
 --- Returns a vector in world coordinates based on an entity and local coordinates  
---- @param ent GEntity @The entity lpos is local to
---- @param lpos GVector @Coordinates local to the ent
+--- @param ent Entity @The entity lpos is local to
+--- @param lpos Vector @Coordinates local to the ent
 --- @param bonenum number @The bonenumber of the ent lpos is local to
---- @return GVector @wpos
+--- @return Vector @wpos
 function util.LocalToWorld(ent, lpos, bonenum)
 end
 
@@ -344,16 +344,16 @@ end
 
 --- Creates a tracer effect with the given parameters.  
 --- @param name string @The name of the tracer effect.
---- @param startPos GVector @The start position of the tracer.
---- @param endPos GVector @The end position of the tracer.
+--- @param startPos Vector @The start position of the tracer.
+--- @param endPos Vector @The end position of the tracer.
 --- @param doWhiz boolean @Play the hit miss(whiz) sound.
 function util.ParticleTracer(name, startPos, endPos, doWhiz)
 end
 
 --- Creates a tracer effect with the given parameters.  
 --- @param name string @The name of the tracer effect.
---- @param startPos GVector @The start position of the tracer.
---- @param endPos GVector @The end position of the tracer.
+--- @param startPos Vector @The start position of the tracer.
+--- @param endPos Vector @The end position of the tracer.
 --- @param doWhiz boolean @Play the hit miss(whiz) sound.
 --- @param entityIndex number @Entity index of the emitting entity.
 --- @param attachmentIndex number @Attachment index to be used as origin.
@@ -361,7 +361,7 @@ function util.ParticleTracerEx(name, startPos, endPos, doWhiz, entityIndex, atta
 end
 
 --- Returns the visibility of a sphere in the world.  
---- @param position GVector @The center of the visibility test.
+--- @param position Vector @The center of the visibility test.
 --- @param radius number @The radius of the sphere to check for visibility.
 --- @param PixVis pixelvis_handle_t @The PixVis handle created with util.GetPixelVisibleHandle
 --- @return number @Visibility, ranges from 0-1
@@ -369,7 +369,7 @@ function util.PixelVisible(position, radius, PixVis)
 end
 
 --- Returns the contents of the position specified.  
---- @param position GVector @Position to get the contents sample from.
+--- @param position Vector @Position to get the contents sample from.
 --- @return number @Contents bitflag, see Enums/CONTENTS
 function util.PointContents(position)
 end
@@ -390,9 +390,9 @@ function util.PrecacheSound(soundName)
 end
 
 --- Performs a trace with the given origin, direction and filter.  
---- @param origin GVector @The origin of the trace.
---- @param endpos GVector @The end point of the trace, relative to the start
---- @param filter GEntity @Entity which should be ignored by the trace
+--- @param origin Vector @The origin of the trace.
+--- @param endpos Vector @The end point of the trace, relative to the start
+--- @param filter Entity @Entity which should be ignored by the trace
 --- @return table @Trace result
 function util.QuickTrace(origin, endpos, filter)
 end
@@ -411,7 +411,7 @@ function util.RemovePData(steamID, name)
 end
 
 --- Makes the screen shake  
---- @param pos GVector @The origin of the effect
+--- @param pos Vector @The origin of the effect
 --- @param amplitude number @The strength of the effect
 --- @param frequency number @The frequency of the effect in hz
 --- @param duration number @The duration of the effect in seconds
@@ -438,7 +438,7 @@ function util.SharedRandom(uniqueName, min, max, additionalSeed)
 end
 
 --- Adds a trail to the specified entity.  
---- @param ent GEntity @Entity to attach trail to
+--- @param ent Entity @Entity to attach trail to
 --- @param attachmentID number @Attachment ID of the entities model to attach trail to
 --- @param color table @Color of the trail, use Global.Color
 --- @param additive boolean @Should the trail be additive or not
@@ -447,12 +447,12 @@ end
 --- @param lifetime number @How long it takes to transition from startWidth to endWidth
 --- @param textureRes number @The resolution of trails texture
 --- @param texture string @Path to the texture to use as a trail.
---- @return GEntity @Entity of created trail ([env_spritetrail](https://developer.valvesoftware.com/wiki/Env_spritetrail))
+--- @return Entity @Entity of created trail ([env_spritetrail](https://developer.valvesoftware.com/wiki/Env_spritetrail))
 function util.SpriteTrail(ent, attachmentID, color, additive, startWidth, endWidth, lifetime, textureRes, texture)
 end
 
 --- Returns a new Stack object  
---- @return GStack @A brand new stack object
+--- @return Stack @A brand new stack object
 function util.Stack()
 end
 
@@ -511,15 +511,15 @@ end
 --- Runs a trace using the entity's collisionmodel between two points. This does not take the entity's angles into account and will trace its unrotated collisionmodel.  
 --- ℹ **NOTE**: Clientside entities will not be hit by traces.  
 --- @param tracedata table @Trace data
---- @param ent GEntity @The entity to use
+--- @param ent Entity @The entity to use
 --- @return table @Trace result
 function util.TraceEntity(tracedata, ent)
 end
 
 --- 🛑 **DEPRECATED**: This function is broken and returns the same values all the time  
 --- Traces from one entity to another.  
---- @param ent1 GEntity @The first entity to trace from
---- @param ent2 GEntity @The second entity to trace to
+--- @param ent1 Entity @The first entity to trace from
+--- @param ent2 Entity @The second entity to trace to
 --- @return table @Trace result
 function util.TraceEntityHull(ent1, ent2)
 end

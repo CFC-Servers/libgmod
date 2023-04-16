@@ -6,7 +6,7 @@ _G.player = {}
 --- Also keep in mind that these bots still use player slots, so you won't be able to spawn them in singleplayer!  
 --- ℹ **NOTE**: Any Bot created using this method will be considered UnAuthed by Garry's Mod  
 --- @param botName string @The name of the bot, using an already existing name will append brackets at the end of it with a number pertaining it
---- @return GPlayer @The newly created Player bot
+--- @return Player @The newly created Player bot
 function player.CreateNextBot(botName)
 end
 
@@ -24,7 +24,7 @@ end
 
 --- Gets the player with the specified AccountID.  
 --- @param accountID string @The Player:AccountID to find the player by.
---- @return GPlayer @Player if one is found, false otherwise.
+--- @return Player @Player if one is found, false otherwise.
 function player.GetByAccountID(accountID)
 end
 
@@ -33,26 +33,26 @@ end
 --- For a function that returns a player based on their Entity:EntIndex, see Global.Entity.  
 --- For a function that returns a player based on their Player:UserID, see Global.Player.  
 --- @param connectionID number @The connection ID to find the player by.
---- @return GPlayer @Player if one is found, nil otherwise
+--- @return Player @Player if one is found, nil otherwise
 function player.GetByID(connectionID)
 end
 
 --- Gets the player with the specified SteamID.  
 --- @param steamID string @The Player:SteamID to find the player by.
---- @return GPlayer @Player if one is found, false otherwise.
+--- @return Player @Player if one is found, false otherwise.
 function player.GetBySteamID(steamID)
 end
 
 --- Gets the player with the specified SteamID64.  
 --- @param steamID64 string @The Player:SteamID64 to find the player by
---- @return GPlayer @Player if one is found, false otherwise.
+--- @return Player @Player if one is found, false otherwise.
 function player.GetBySteamID64(steamID64)
 end
 
 --- Gets the player with the specified uniqueID (not recommended way to identify players).  
 --- ⚠ **WARNING**: It is highly recommended to use player.GetByAccountID, player.GetBySteamID or player.GetBySteamID64 instead as this function can have collisions ( be same for different people ) while SteamID is guaranteed to unique to each player.  
 --- @param uniqueID string @The Player:UniqueID to find the player by.
---- @return GPlayer @Player if one is found, false otherwise.
+--- @return Player @Player if one is found, false otherwise.
 function player.GetByUniqueID(uniqueID)
 end
 

@@ -7,15 +7,15 @@ end
 
 --- Called by the engine from OnBind  
 --- @param uname string 
---- @param mat GIMaterial 
---- @param ent GEntity 
+--- @param mat IMaterial 
+--- @param ent Entity 
 function matproxy.Call(uname, mat, ent)
 end
 
 --- Called by the engine from OnBind  
 --- @param name string 
 --- @param uname string 
---- @param mat GIMaterial 
+--- @param mat IMaterial 
 --- @param values table 
 function matproxy.Init(name, uname, mat, values)
 end

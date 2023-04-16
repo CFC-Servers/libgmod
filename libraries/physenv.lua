@@ -12,7 +12,7 @@ function physenv.GetAirDensity()
 end
 
 --- Gets the global gravity.  
---- @return GVector @gravity
+--- @return Vector @gravity
 function physenv.GetGravity()
 end
 
@@ -27,7 +27,7 @@ function physenv.SetAirDensity(airDensity)
 end
 
 --- Sets the directional gravity, does not work on players.  
---- @param gravity GVector @The new gravity.
+--- @param gravity Vector @The new gravity.
 function physenv.SetGravity(gravity)
 end
 

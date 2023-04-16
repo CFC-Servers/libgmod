@@ -100,7 +100,7 @@ end
 --- util.AimVector is a more generic version of this, using a custom view instead of the player's current view.  
 --- @param x number @X coordinate on the screen.
 --- @param y number @Y coordinate on the screen.
---- @return GVector @Direction
+--- @return Vector @Direction
 function gui.ScreenToVector(x, y)
 end
 

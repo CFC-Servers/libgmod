@@ -1,20 +1,20 @@
 --- The drive library is for adding custom control modes to the new "remote control" entity piloting system in Garry's Mod 13.  
 _G.drive = {}
 --- Player has stopped driving the entity.  
---- @param ply GPlayer @The player
---- @param ent GEntity @The entity
+--- @param ply Player @The player
+--- @param ent Entity @The entity
 function drive.End(ply, ent)
 end
 
 --- Starts driving for the player.  
---- @param ply GPlayer @The player to affect
---- @param ent GEntity @The entity to drive
+--- @param ply Player @The player to affect
+--- @param ent Entity @The entity to drive
 --- @param mode string @The driving mode
 function drive.PlayerStartDriving(ply, ent, mode)
 end
 
 --- Stops the player from driving anything. ( For example a prop in sandbox )  
---- @param ply GPlayer @The player to affect
+--- @param ply Player @The player to affect
 function drive.PlayerStopDriving(ply)
 end
 
@@ -26,8 +26,8 @@ function drive.Register(name, data, base)
 end
 
 --- Called when the player first starts driving this entity  
---- @param ply GPlayer @The player
---- @param ent GEntity @The entity
+--- @param ply Player @The player
+--- @param ent Entity @The entity
 function drive.Start(ply, ent)
 end
 

@@ -2,7 +2,7 @@
 _G.derma = {}
 --- Gets the color from a Derma skin of a panel and returns default color if not found  
 --- @param name string 
---- @param pnl GPanel 
+--- @param pnl Panel 
 --- @param default table @The default color in case of failure.
 function derma.Color(name, pnl, default)
 end
@@ -61,7 +61,7 @@ end
 --- Calls the specified hook for the given panel  
 --- @param type string @The type of hook to run
 --- @param name string @The name of the hook to run
---- @param panel GPanel @The panel to call the hook for
+--- @param panel Panel @The panel to call the hook for
 --- @param w number @The width of the panel
 --- @param h number @The height of the panel
 --- @return any @The returned variable from the skin hook
@@ -70,7 +70,7 @@ end
 
 --- Returns a function to draw a specified texture of panels skin.  
 --- @param name string @The identifier of the texture
---- @param pnl GPanel @Panel to get the skin of.
+--- @param pnl Panel @Panel to get the skin of.
 --- @param fallback any @What to return if we failed to retrieve the texture
 --- @return function @A function that is created with the GWEN to draw a texture.
 function derma.SkinTexture(name, pnl, fallback)

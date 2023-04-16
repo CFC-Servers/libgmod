@@ -28,7 +28,7 @@ end
 --- @param tDiff number @From 0 to 1, where alongside the spline the point will be.
 --- @param tPoints table @A table of Vectors
 --- @param tMax number @Just leave this at 1.
---- @return GVector @Point on Bezier curve, related to tDiff.
+--- @return Vector @Point on Bezier curve, related to tDiff.
 function math.BSplinePoint(tDiff, tPoints, tMax)
 end
 

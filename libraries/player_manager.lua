@@ -20,19 +20,19 @@ function player_manager.AllValidModels()
 end
 
 --- Clears a player's class association by setting their ClassID to 0  
---- @param ply GPlayer @Player to clear class from
+--- @param ply Player @Player to clear class from
 function player_manager.ClearPlayerClass(ply)
 end
 
 --- Gets a players class  
---- @param ply GPlayer @Player to get class
+--- @param ply Player @Player to get class
 --- @return string @The players class
 function player_manager.GetPlayerClass(ply)
 end
 
 --- Applies basic class variables when the player spawns.  
 --- Called from GM:PlayerSpawn in the base gamemode.  
---- @param ply GPlayer @Player to setup
+--- @param ply Player @Player to setup
 function player_manager.OnPlayerSpawn(ply)
 end
 
@@ -44,7 +44,7 @@ function player_manager.RegisterClass(name, table, base)
 end
 
 --- Execute a named function within the player's set class  
---- @param ply GPlayer @Player to execute function on.
+--- @param ply Player @Player to execute function on.
 --- @param funcName string @Name of function.
 --- @vararg any @Optional arguments
 --- @return any @The values returned by the called function.
@@ -52,7 +52,7 @@ function player_manager.RunClass(ply, funcName, ...)
 end
 
 --- Sets a player's class  
---- @param ply GPlayer @Player to set class
+--- @param ply Player @Player to set class
 --- @param classname string @Name of class to set
 function player_manager.SetPlayerClass(ply, classname)
 end

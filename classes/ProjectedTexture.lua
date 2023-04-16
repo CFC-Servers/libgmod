@@ -1,50 +1,50 @@
---- @class GProjectedTexture
+--- @class ProjectedTexture
 --- A client side projected texture, created by Global.ProjectedTexture.  
-local GProjectedTexture = {}
+local ProjectedTexture = {}
 --- Returns the angle of the ProjectedTexture, which were previously set by ProjectedTexture:SetAngles  
---- @return GAngle @The angles of the ProjectedTexture.
-function GProjectedTexture:GetAngles()
+--- @return Angle @The angles of the ProjectedTexture.
+function ProjectedTexture:GetAngles()
 end
 
 --- Returns the brightness of the ProjectedTexture, which was previously set by ProjectedTexture:SetBrightness  
 --- @return number @The brightness of the ProjectedTexture.
-function GProjectedTexture:GetBrightness()
+function ProjectedTexture:GetBrightness()
 end
 
 --- Returns the color of the ProjectedTexture, which was previously set by ProjectedTexture:SetColor.  
 --- 🦟 **BUG**: [The returned color will not have the color metatable.](https://github.com/Facepunch/garrysmod-issues/issues/2407)  
 --- @return table @Color, the color of the ProjectedTexture.
-function GProjectedTexture:GetColor()
+function ProjectedTexture:GetColor()
 end
 
 --- Returns the constant attenuation of the projected texture, which can also be set by ProjectedTexture:SetConstantAttenuation.  
 --- @return number @The constant attenuation
-function GProjectedTexture:GetConstantAttenuation()
+function ProjectedTexture:GetConstantAttenuation()
 end
 
 --- Returns whether shadows are enabled for this ProjectedTexture, which was previously set by ProjectedTexture:SetEnableShadows  
 --- @return boolean @Whether shadows are enabled.
-function GProjectedTexture:GetEnableShadows()
+function ProjectedTexture:GetEnableShadows()
 end
 
 --- Returns the projection distance of the ProjectedTexture, which was previously set by ProjectedTexture:SetFarZ  
 --- @return number @The projection distance of the ProjectedTexture.
-function GProjectedTexture:GetFarZ()
+function ProjectedTexture:GetFarZ()
 end
 
 --- Returns the horizontal FOV of the ProjectedTexture, which was previously set by ProjectedTexture:SetHorizontalFOV or ProjectedTexture:SetFOV  
 --- @return number @The horizontal FOV of the ProjectedTexture.
-function GProjectedTexture:GetHorizontalFOV()
+function ProjectedTexture:GetHorizontalFOV()
 end
 
 --- Returns the linear attenuation of the projected texture, which can also be set by ProjectedTexture:SetLinearAttenuation.  
 --- @return number @The linear attenuation.
-function GProjectedTexture:GetLinearAttenuation()
+function ProjectedTexture:GetLinearAttenuation()
 end
 
 --- Returns the NearZ value of the ProjectedTexture, which was previously set by ProjectedTexture:SetNearZ  
 --- @return number @NearZ of the ProjectedTexture.
-function GProjectedTexture:GetNearZ()
+function ProjectedTexture:GetNearZ()
 end
 
 --- Returns the current orthographic settings of the Projected Texture. To set these values, use ProjectedTexture:SetOrthographic.  
@@ -53,32 +53,32 @@ end
 --- @return number @top
 --- @return number @right
 --- @return number @bottom
-function GProjectedTexture:GetOrthographic()
+function ProjectedTexture:GetOrthographic()
 end
 
 --- Returns the position of the ProjectedTexture, which was previously set by ProjectedTexture:SetPos  
---- @return GVector @The position of the ProjectedTexture.
-function GProjectedTexture:GetPos()
+--- @return Vector @The position of the ProjectedTexture.
+function ProjectedTexture:GetPos()
 end
 
 --- Returns the quadratic attenuation of the projected texture, which can also be set by ProjectedTexture:SetQuadraticAttenuation.  
 --- @return number @The quadratic attenuation
-function GProjectedTexture:GetQuadraticAttenuation()
+function ProjectedTexture:GetQuadraticAttenuation()
 end
 
 --- Returns the texture of the ProjectedTexture, which was previously set by ProjectedTexture:SetTexture  
---- @return GITexture @The texture of the ProjectedTexture.
-function GProjectedTexture:GetTexture()
+--- @return ITexture @The texture of the ProjectedTexture.
+function ProjectedTexture:GetTexture()
 end
 
 --- Returns the texture frame of the ProjectedTexture, which was previously set by ProjectedTexture:SetTextureFrame  
 --- @return number @The texture frame.
-function GProjectedTexture:GetTextureFrame()
+function ProjectedTexture:GetTextureFrame()
 end
 
 --- Returns the vertical FOV of the ProjectedTexture, which was previously set by ProjectedTexture:SetVerticalFOV or ProjectedTexture:SetFOV  
 --- @return number @The vertical FOV of the ProjectedTexture.
-function GProjectedTexture:GetVerticalFOV()
+function ProjectedTexture:GetVerticalFOV()
 end
 
 --- Returns true if the projected texture is valid (i.e. has not been removed), false otherwise.  
@@ -88,36 +88,36 @@ end
 --- ```  
 --- This not only checks whether the projected texture is valid - but also checks whether it's nil.  
 --- @return boolean @Whether the projected texture is valid.
-function GProjectedTexture:IsValid()
+function ProjectedTexture:IsValid()
 end
 
 --- Removes the projected texture. After calling this, ProjectedTexture:IsValid will return false, and any hooks with the projected texture as the identifier will be automatically deleted.  
-function GProjectedTexture:Remove()
+function ProjectedTexture:Remove()
 end
 
 --- Sets the angles (direction) of the projected texture.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
---- @param angle GAngle 
-function GProjectedTexture:SetAngles(angle)
+--- @param angle Angle 
+function ProjectedTexture:SetAngles(angle)
 end
 
 --- Sets the brightness of the projected texture.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param brightness number @The brightness to give the projected texture.
-function GProjectedTexture:SetBrightness(brightness)
+function ProjectedTexture:SetBrightness(brightness)
 end
 
 --- Sets the color of the projected texture.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param color table @Must be a Color
-function GProjectedTexture:SetColor(color)
+function ProjectedTexture:SetColor(color)
 end
 
 --- Sets the constant attenuation of the projected texture.  
 --- See also ProjectedTexture:SetLinearAttenuation and ProjectedTexture:SetQuadraticAttenuation.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param constAtten number 
-function GProjectedTexture:SetConstantAttenuation(constAtten)
+function ProjectedTexture:SetConstantAttenuation(constAtten)
 end
 
 --- Enable or disable shadows cast from the projected texture.  
@@ -126,25 +126,25 @@ end
 ---  where limit is the new limit. Naturally, many projected lights with shadows enabled will drastically decrease framerate.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param newState boolean 
-function GProjectedTexture:SetEnableShadows(newState)
+function ProjectedTexture:SetEnableShadows(newState)
 end
 
 --- Sets the angle of projection.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param fov number @Must be higher than 0 and lower than 180
-function GProjectedTexture:SetFOV(fov)
+function ProjectedTexture:SetFOV(fov)
 end
 
 --- Sets the distance at which the projected texture ends.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param farZ number 
-function GProjectedTexture:SetFarZ(farZ)
+function ProjectedTexture:SetFarZ(farZ)
 end
 
 --- Sets the horizontal angle of projection without affecting the vertical angle.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param hFOV number @The new horizontal Field Of View for the projected texture
-function GProjectedTexture:SetHorizontalFOV(hFOV)
+function ProjectedTexture:SetHorizontalFOV(hFOV)
 end
 
 --- Sets the linear attenuation of the projected texture.  
@@ -152,7 +152,7 @@ end
 --- The default value of linear attenuation when the projected texture is created is 100. (others are 0, as you are not supposed to mix them)  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param linearAtten number 
-function GProjectedTexture:SetLinearAttenuation(linearAtten)
+function ProjectedTexture:SetLinearAttenuation(linearAtten)
 end
 
 --- Sets the distance at which the projected texture begins its projection.  
@@ -160,7 +160,7 @@ end
 --- ℹ **NOTE**: Setting this to 0 will disable the projected texture completely! This may be useful if you want to disable a projected texture without actually removing it  
 --- ℹ **NOTE**: This seems to affect the rendering of shadows - a higher Near Z value will have shadows begin to render closer to their casting object. Comparing a low Near Z value (like 1) with a normal one (12) or high one (1000) is the easiest way to understand this artifact  
 --- @param nearZ number 
-function GProjectedTexture:SetNearZ(nearZ)
+function ProjectedTexture:SetNearZ(nearZ)
 end
 
 --- Changes the current projected texture between orthographic and perspective projection.  
@@ -170,41 +170,41 @@ end
 --- @param top number @The amount of units upwards from the projected texture's origin to project.
 --- @param right number @The amount of units right from the projected texture's origin to project.
 --- @param bottom number @The amount of units downwards from the projected texture's origin to project.
-function GProjectedTexture:SetOrthographic(orthographic, left, top, right, bottom)
+function ProjectedTexture:SetOrthographic(orthographic, left, top, right, bottom)
 end
 
 --- Move the Projected Texture to the specified position.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
---- @param position GVector 
-function GProjectedTexture:SetPos(position)
+--- @param position Vector 
+function ProjectedTexture:SetPos(position)
 end
 
 --- Sets the quadratic attenuation of the projected texture.  
 --- See also ProjectedTexture:SetLinearAttenuation and ProjectedTexture:SetConstantAttenuation.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param quadAtten number 
-function GProjectedTexture:SetQuadraticAttenuation(quadAtten)
+function ProjectedTexture:SetQuadraticAttenuation(quadAtten)
 end
 
 --- Sets the texture to be projected.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param texture string @The name of the texture
-function GProjectedTexture:SetTexture(texture)
+function ProjectedTexture:SetTexture(texture)
 end
 
 --- For animated textures, this will choose which frame in the animation will be projected.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param frame number @The frame index to use.
-function GProjectedTexture:SetTextureFrame(frame)
+function ProjectedTexture:SetTextureFrame(frame)
 end
 
 --- Sets the vertical angle of projection without affecting the horizontal angle.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param vFOV number @The new vertical Field Of View for the projected texture
-function GProjectedTexture:SetVerticalFOV(vFOV)
+function ProjectedTexture:SetVerticalFOV(vFOV)
 end
 
 --- Updates the Projected Light and applies all previously set parameters.  
-function GProjectedTexture:Update()
+function ProjectedTexture:Update()
 end
 

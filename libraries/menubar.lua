@@ -6,13 +6,13 @@ function menubar.Init()
 end
 
 --- Checks if the supplied panel is parent to the menubar  
---- @param pnl GPanel @The panel to check
+--- @param pnl Panel @The panel to check
 --- @return boolean @Is parent or not
 function menubar.IsParent(pnl)
 end
 
 --- Parents the menubar to the panel and displays the menubar.  
---- @param pnl GPanel @The panel to parent to
+--- @param pnl Panel @The panel to parent to
 function menubar.ParentTo(pnl)
 end
 

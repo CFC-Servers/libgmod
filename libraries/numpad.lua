@@ -1,14 +1,14 @@
 --- The numpad module allows you to execute functions on a key press or release.  
 _G.numpad = {}
 --- Activates numpad key owned by the player  
---- @param ply GPlayer @The player whose numpad should be simulated
+--- @param ply Player @The player whose numpad should be simulated
 --- @param key number @The key to press, see Enums/KEY
 --- @param isButton boolean @Should this keypress pretend to be a from a gmod_button? (causes numpad.FromButton to return true)
 function numpad.Activate(ply, key, isButton)
 end
 
 --- Deactivates numpad key owned by the player  
---- @param ply GPlayer @The player whose numpad should be simulated
+--- @param ply Player @The player whose numpad should be simulated
 --- @param key number @The key to press, corresponding to Enums/KEY
 --- @param isButton boolean @Should this keypress pretend to be a from a gmod_button? (causes numpad.FromButton to return true)
 function numpad.Deactivate(ply, key, isButton)
@@ -22,7 +22,7 @@ end
 
 --- Calls a function registered with numpad.Register when a player presses specified key.  
 --- See for key released action: numpad.OnUp  
---- @param ply GPlayer @The player whose numpad should be watched
+--- @param ply Player @The player whose numpad should be watched
 --- @param key number @The key, corresponding to Enums/KEY
 --- @param name string @The name of the function to run, corresponding with the one used in numpad.Register
 --- @vararg any @Arguments to pass to the function passed to numpad.Register.
@@ -32,7 +32,7 @@ end
 
 --- Calls a function registered with numpad.Register when a player releases specified key.  
 --- See for key pressed action: numpad.OnDown  
---- @param ply GPlayer @The player whose numpad should be watched
+--- @param ply Player @The player whose numpad should be watched
 --- @param key number @The key, corresponding to Enums/KEY
 --- @param name string @The name of the function to run, corresponding with the one used in numpad.Register
 --- @vararg any @Arguments to pass to the function passed to numpad.Register.
@@ -52,7 +52,7 @@ function numpad.Remove(ID)
 end
 
 --- Either runs numpad.Activate or numpad.Deactivate depending on the key's current state  
---- @param ply GPlayer @The player whose numpad should be simulated
+--- @param ply Player @The player whose numpad should be simulated
 --- @param key number @The key to press, corresponding to Enums/KEY
 function numpad.Toggle(ply, key)
 end

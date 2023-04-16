@@ -1,9 +1,9 @@
---- @class GIGModAudioChannel
+--- @class IGModAudioChannel
 --- A sound channel returned by a callback of sound.PlayURL and sound.PlayFile.  
-local GIGModAudioChannel = {}
+local IGModAudioChannel = {}
 --- Enables or disables looping of audio channel, requires noblock flag.  
 --- @param enable boolean @Enable or disable looping of this audio channel.
-function GIGModAudioChannel:EnableLooping(enable)
+function IGModAudioChannel:EnableLooping(enable)
 end
 
 --- Computes the [DFT (discrete Fourier transform)](https://en.wikipedia.org/wiki/Discrete_Fourier_transform) of the sound channel.  
@@ -15,196 +15,196 @@ end
 --- @param tbl table @The table to output the DFT magnitudes (numbers between 0 and 1) into
 --- @param size number @The number of samples to use
 --- @return number @The number of frequency bins that have been filled in the output table.
-function GIGModAudioChannel:FFT(tbl, size)
+function IGModAudioChannel:FFT(tbl, size)
 end
 
 --- Returns 3D cone of the sound channel. See IGModAudioChannel:Set3DCone.  
 --- @return number @The angle of the inside projection cone in degrees.
 --- @return number @The angle of the outside projection cone in degrees.
 --- @return number @The delta-volume outside the outer projection cone.
-function GIGModAudioChannel:Get3DCone()
+function IGModAudioChannel:Get3DCone()
 end
 
 --- Returns if the sound channel is currently in 3D mode or not. This value will be affected by IGModAudioChannel:Set3DEnabled.  
 --- @return boolean @Is currently 3D or not.
-function GIGModAudioChannel:Get3DEnabled()
+function IGModAudioChannel:Get3DEnabled()
 end
 
 --- Returns 3D fade distances of a sound channel.  
 --- @return number @The minimum distance
 --- @return number @The maximum distance
-function GIGModAudioChannel:Get3DFadeDistance()
+function IGModAudioChannel:Get3DFadeDistance()
 end
 
 --- Returns the average bit rate of the sound channel.  
 --- @return number @The average bit rate of the sound channel.
-function GIGModAudioChannel:GetAverageBitRate()
+function IGModAudioChannel:GetAverageBitRate()
 end
 
 --- Retrieves the number of bits per sample of the sound channel.  
 --- Doesn't work for mp3 and ogg files.  
 --- @return number @Number of bits per sample, or 0 if unknown.
-function GIGModAudioChannel:GetBitsPerSample()
+function IGModAudioChannel:GetBitsPerSample()
 end
 
 --- Returns the filename for the sound channel.  
 --- @return string @The file name
-function GIGModAudioChannel:GetFileName()
+function IGModAudioChannel:GetFileName()
 end
 
 --- Returns the length of sound played by the sound channel.  
 --- @return number @The length of the sound
-function GIGModAudioChannel:GetLength()
+function IGModAudioChannel:GetLength()
 end
 
 --- Returns the right and left levels of sound played by the sound channel.  
 --- @return number @The left sound level
 --- @return number @The right sound level
-function GIGModAudioChannel:GetLevel()
+function IGModAudioChannel:GetLevel()
 end
 
 --- Gets the relative volume of the left and right channels.  
 --- @return number @Relative volume between the left and right channels
-function GIGModAudioChannel:GetPan()
+function IGModAudioChannel:GetPan()
 end
 
 --- Returns the playback rate of the sound channel.  
 --- @return number @The current playback rate of the sound channel
-function GIGModAudioChannel:GetPlaybackRate()
+function IGModAudioChannel:GetPlaybackRate()
 end
 
 --- Returns position of the sound channel  
---- @return GVector @The position of the sound channel, previously set by IGModAudioChannel:SetPos
-function GIGModAudioChannel:GetPos()
+--- @return Vector @The position of the sound channel, previously set by IGModAudioChannel:SetPos
+function IGModAudioChannel:GetPos()
 end
 
 --- Returns the sample rate for currently playing sound.  
 --- @return number @The sample rate in Hz
-function GIGModAudioChannel:GetSamplingRate()
+function IGModAudioChannel:GetSamplingRate()
 end
 
 --- Returns the state of a sound channel  
 --- @return number @The state of the sound channel, see Enums/GMOD_CHANNEL
-function GIGModAudioChannel:GetState()
+function IGModAudioChannel:GetState()
 end
 
 --- Retrieves HTTP headers from a bass stream channel created by sound.PlayURL, if available.  
 --- @return table @Returns a table of HTTP headers
-function GIGModAudioChannel:GetTagsHTTP()
+function IGModAudioChannel:GetTagsHTTP()
 end
 
 --- Retrieves the ID3 version 1 info from a bass channel created by sound.PlayFile or sound.PlayURL, if available.  
 --- ID3v2 is not supported.  
 --- @return table @Returns a table containing the information
-function GIGModAudioChannel:GetTagsID3()
+function IGModAudioChannel:GetTagsID3()
 end
 
 --- Retrieves meta stream info from a bass stream channel created by sound.PlayURL, if available.  
 --- @return string @Returns a string containing the information
-function GIGModAudioChannel:GetTagsMeta()
+function IGModAudioChannel:GetTagsMeta()
 end
 
 --- Retrieves OGG media info tag, from a bass channel created by sound.PlayURL or sound.PlayFile, if available.  
 --- @return table @Returns a table containing the information
-function GIGModAudioChannel:GetTagsOGG()
+function IGModAudioChannel:GetTagsOGG()
 end
 
 --- Retrieves OGG Vendor tag, usually containing the application that created the file, from a bass channel created by sound.PlayURL or sound.PlayFile, if available.  
 --- @return string @Returns a string containing the information
-function GIGModAudioChannel:GetTagsVendor()
+function IGModAudioChannel:GetTagsVendor()
 end
 
 --- Returns the current time of the sound channel  
 --- @return number @The current time of the stream
-function GIGModAudioChannel:GetTime()
+function IGModAudioChannel:GetTime()
 end
 
 --- Returns volume of a sound channel  
 --- @return number @The volume of the sound channel
-function GIGModAudioChannel:GetVolume()
+function IGModAudioChannel:GetVolume()
 end
 
 --- Returns if the sound channel is in 3D mode or not.  
 --- @return boolean @Is 3D or not.
-function GIGModAudioChannel:Is3D()
+function IGModAudioChannel:Is3D()
 end
 
 --- Returns whether the audio stream is block streamed or not.  
 --- @return boolean @Is the audio stream block streamed or not.
-function GIGModAudioChannel:IsBlockStreamed()
+function IGModAudioChannel:IsBlockStreamed()
 end
 
 --- Returns if the sound channel is looping or not.  
 --- @return boolean @Is looping or not.
-function GIGModAudioChannel:IsLooping()
+function IGModAudioChannel:IsLooping()
 end
 
 --- Returns if the sound channel is streamed from the Internet or not.  
 --- @return boolean @Is online or not.
-function GIGModAudioChannel:IsOnline()
+function IGModAudioChannel:IsOnline()
 end
 
 --- Returns if the sound channel is valid or not.  
 --- @return boolean @Is the sound channel valid or not
-function GIGModAudioChannel:IsValid()
+function IGModAudioChannel:IsValid()
 end
 
 --- Pauses the stream. It can be started again using IGModAudioChannel:Play  
-function GIGModAudioChannel:Pause()
+function IGModAudioChannel:Pause()
 end
 
 --- Starts playing the stream.  
-function GIGModAudioChannel:Play()
+function IGModAudioChannel:Play()
 end
 
 --- Sets 3D cone of the sound channel.  
 --- @param innerAngle number @The angle of the inside projection cone in degrees
 --- @param outerAngle number @The angle of the outside projection cone in degrees
 --- @param outerVolume number @The delta-volume outside the outer projection cone
-function GIGModAudioChannel:Set3DCone(innerAngle, outerAngle, outerVolume)
+function IGModAudioChannel:Set3DCone(innerAngle, outerAngle, outerVolume)
 end
 
 --- Sets the 3D mode of the channel. This will affect IGModAudioChannel:Get3DEnabled but not IGModAudioChannel:Is3D.  
 --- This feature **requires** the channel to be initially created in 3D mode, i.e. IGModAudioChannel:Is3D should return true or this function will do nothing.  
 --- @param enable boolean @true to enable, false to disable 3D.
-function GIGModAudioChannel:Set3DEnabled(enable)
+function IGModAudioChannel:Set3DEnabled(enable)
 end
 
 --- Sets 3D fade distances of a sound channel.  
 --- @param min number @The minimum distance
 --- @param max number @The maximum distance
-function GIGModAudioChannel:Set3DFadeDistance(min, max)
+function IGModAudioChannel:Set3DFadeDistance(min, max)
 end
 
 --- Sets the relative volume of the left and right channels.  
 --- @param pan number @Relative volume between the left and right channels
-function GIGModAudioChannel:SetPan(pan)
+function IGModAudioChannel:SetPan(pan)
 end
 
 --- Sets the playback rate of the sound channel. May not work with high values for radio streams.  
 --- @param rate number @Playback rate to set to
-function GIGModAudioChannel:SetPlaybackRate(rate)
+function IGModAudioChannel:SetPlaybackRate(rate)
 end
 
 --- Sets position of sound channel in case the sound channel has a 3d option set.  
---- @param pos GVector @The position to put the sound into
---- @param dir GVector @The direction of the sound
-function GIGModAudioChannel:SetPos(pos, dir)
+--- @param pos Vector @The position to put the sound into
+--- @param dir Vector @The direction of the sound
+function IGModAudioChannel:SetPos(pos, dir)
 end
 
 --- Sets the sound channel to specified time ( Rewind to that position of the song ). Does not work on online radio streams.  
 --- Streamed sounds must have "noblock" parameter for this to work and IGModAudioChannel:IsBlockStreamed must return false.  
 --- @param secs number @The time to set the stream to, in seconds.
-function GIGModAudioChannel:SetTime(secs)
+function IGModAudioChannel:SetTime(secs)
 end
 
 --- Sets the volume of a sound channel  
 --- @param volume number @Volume to set
-function GIGModAudioChannel:SetVolume(volume)
+function IGModAudioChannel:SetVolume(volume)
 end
 
 --- Stop the stream. It can be started again using IGModAudioChannel:Play.  
 --- 🦟 **BUG**: [Calling this invalidates the IGModAudioChannel object rendering it unusable for further functions.](https://github.com/Facepunch/garrysmod-issues/issues/1497)  
-function GIGModAudioChannel:Stop()
+function IGModAudioChannel:Stop()
 end
 

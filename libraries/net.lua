@@ -22,7 +22,7 @@ end
 
 --- Reads an angle from the received net message.  
 --- ⚠ **WARNING**: You **must** read information in same order as you write it.  
---- @return GAngle @The read angle, or Angle(0,0,0) if no angle could be read
+--- @return Angle @The read angle, or Angle(0,0,0) if no angle could be read
 function net.ReadAngle()
 end
 
@@ -59,7 +59,7 @@ end
 
 --- Reads an entity from the received net message. You should always check if the specified entity exists as it may have been removed and therefor NULL if it is outside of the players PVS or was already removed.  
 --- ⚠ **WARNING**: You **must** read information in same order as you write it.  
---- @return GEntity @The entity, or Entity(0) if no entity could be read.
+--- @return Entity @The entity, or Entity(0) if no entity could be read.
 function net.ReadEntity()
 end
 
@@ -78,13 +78,13 @@ end
 
 --- Reads a VMatrix from the received net message.  
 --- ⚠ **WARNING**: You **must** read information in same order as you write it.  
---- @return GVMatrix @The matrix, or an empty matrix if no matrix could be read.
+--- @return VMatrix @The matrix, or an empty matrix if no matrix could be read.
 function net.ReadMatrix()
 end
 
 --- Reads a normal vector from the net message.  
 --- ⚠ **WARNING**: You **must** read information in same order as you write it.  
---- @return GVector @The normalized vector ( length = 1 ), or Vector(0,0,1) if no normal could be read.
+--- @return Vector @The normalized vector ( length = 1 ), or Vector(0,0,1) if no normal could be read.
 function net.ReadNormal()
 end
 
@@ -112,7 +112,7 @@ end
 
 --- Reads a vector from the received net message.  Vectors sent by this function are compressed, which may result in precision loss. See net.WriteVector for more information.  
 --- ⚠ **WARNING**: You **must** read information in same order as you write it.  
---- @return GVector @The read vector, or Vector(0,0,0) if no vector could be read.
+--- @return Vector @The read vector, or Vector(0,0,0) if no vector could be read.
 function net.ReadVector()
 end
 
@@ -127,22 +127,22 @@ function net.Receive(messageName, callback)
 end
 
 --- Sends the current message to the specified player, or to all players listed in the table.  
---- @param ply GPlayer @The player(s) to send the message to
+--- @param ply Player @The player(s) to send the message to
 function net.Send(ply)
 end
 
 --- Sends the current message to all except the specified, or to all except all players in the table.  
---- @param ply GPlayer @The player(s) to NOT send the message to
+--- @param ply Player @The player(s) to NOT send the message to
 function net.SendOmit(ply)
 end
 
 --- Sends the message to all players that are in the same potentially audible set(PAS) as the position, or simply said, it adds all players that can potentially hear sounds from this position.  
---- @param position GVector @PAS position.
+--- @param position Vector @PAS position.
 function net.SendPAS(position)
 end
 
 --- Sends the message to all players the position is in the PVS of or, more simply said, sends the message to players that can potentially see this position.  
---- @param position GVector @Position that must be in players' visibility set.
+--- @param position Vector @Position that must be in players' visibility set.
 function net.SendPVS(position)
 end
 
@@ -160,7 +160,7 @@ function net.Start(messageName, unreliable)
 end
 
 --- Writes an angle to the current net message.  
---- @param angle GAngle @The angle to be sent.
+--- @param angle Angle @The angle to be sent.
 function net.WriteAngle(angle)
 end
 
@@ -192,7 +192,7 @@ function net.WriteDouble(double)
 end
 
 --- Appends an entity to the current net message.  
---- @param entity GEntity @The entity to be sent.
+--- @param entity Entity @The entity to be sent.
 function net.WriteEntity(entity)
 end
 
@@ -209,13 +209,13 @@ function net.WriteInt(integer, bitCount)
 end
 
 --- Writes a VMatrix to the current net message.  
---- @param matrix GVMatrix @The matrix to be sent.
+--- @param matrix VMatrix @The matrix to be sent.
 function net.WriteMatrix(matrix)
 end
 
 --- Writes a normalized/direction vector ( Vector with length of 1 ) to the net message.  
 --- This function uses less bandwidth compared to net.WriteVector and will not send vectors with length of > 1 properly.  
---- @param normal GVector @The normalized/direction vector to be send.
+--- @param normal Vector @The normalized/direction vector to be send.
 function net.WriteNormal(normal)
 end
 
@@ -240,7 +240,7 @@ end
 
 --- Appends a vector to the current net message.  
 --- Vectors sent by this function are compressed, which may result in precision loss.  XYZ components greater than 16384 or less than -16384 are irrecoverably altered (most significant bits are trimmed) and precision after the decimal point is low.  
---- @param vector GVector @The vector to be sent.
+--- @param vector Vector @The vector to be sent.
 function net.WriteVector(vector)
 end
 

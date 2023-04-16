@@ -6,7 +6,7 @@ end
 
 --- Returns (or creates if not exists) a controlpanel.  
 --- @param name string @The name of the panel.
---- @return GPanel @ControlPanel
+--- @return Panel @ControlPanel
 function controlpanel.Get(name)
 end
 

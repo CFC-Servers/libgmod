@@ -51,7 +51,7 @@ end
 --- @param fileName string @The files name
 --- @param fileMode string @The mode to open the file in
 --- @param path string @The path type
---- @return GFile @The opened file object, or nil if it failed to open due to it not existing or being used by another process.
+--- @return File @The opened file object, or nil if it failed to open due to it not existing or being used by another process.
 function file.Open(fileName, fileMode, path)
 end
 

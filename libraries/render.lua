@@ -1,7 +1,7 @@
 --- The render library is a powerful set of functions that let you control how the world and its contents are rendered. It can also be used to draw some 3D clientside effects such as beams, boxes and spheres.  
 _G.render = {}
 --- Adds a beam segment to the beam started by render.StartBeam.  
---- @param startPos GVector @Beam start position.
+--- @param startPos Vector @Beam start position.
 --- @param width number @The width of the beam.
 --- @param textureEnd number @The end coordinate of the texture used.
 --- @param color table @The color to be used
@@ -9,7 +9,7 @@ function render.AddBeam(startPos, width, textureEnd, color)
 end
 
 --- Blurs the render target ( or a given texture )  
---- @param rendertarget GITexture @The texture to blur
+--- @param rendertarget ITexture @The texture to blur
 --- @param blurx number @Horizontal amount of blur
 --- @param blury number @Vertical amount of blur
 --- @param passes number @Amount of passes to go through
@@ -17,7 +17,7 @@ function render.BlurRenderTarget(rendertarget, blurx, blury, passes)
 end
 
 --- This function overrides the brush material for next render operations. It can be used with Entity:DrawModel.  
---- @param mat GIMaterial 
+--- @param mat IMaterial 
 function render.BrushMaterialOverride(mat)
 end
 
@@ -60,7 +60,7 @@ end
 
 --- Clears a render target  
 --- It uses render.Clear then render.SetRenderTarget on the modified render target.  
---- @param texture GITexture 
+--- @param texture ITexture 
 --- @param color table @The color, see Color
 function render.ClearRenderTarget(texture, color)
 end
@@ -80,27 +80,27 @@ function render.ClearStencilBufferRectangle(originX, originY, endX, endY, stenci
 end
 
 --- Calculates the lighting caused by dynamic lights for the specified surface.  
---- @param position GVector @The position to sample from.
---- @param normal GVector @The normal of the surface.
---- @return GVector @A vector representing the light at that point.
+--- @param position Vector @The position to sample from.
+--- @param normal Vector @The normal of the surface.
+--- @return Vector @A vector representing the light at that point.
 function render.ComputeDynamicLighting(position, normal)
 end
 
 --- Calculates the light color of a certain surface.  
---- @param position GVector @The position of the surface to get the light from.
---- @param normal GVector @The normal of the surface to get the light from.
---- @return GVector @A vector representing the light at that point.
+--- @param position Vector @The position of the surface to get the light from.
+--- @param normal Vector @The normal of the surface to get the light from.
+--- @return Vector @A vector representing the light at that point.
 function render.ComputeLighting(position, normal)
 end
 
 --- Copies the currently active Render Target to the specified texture.  
---- @param Target GITexture @The texture to copy to
+--- @param Target ITexture @The texture to copy to
 function render.CopyRenderTargetToTexture(Target)
 end
 
 --- Copies the contents of one texture to another. Only works with rendertargets.  
---- @param texture_from GITexture 
---- @param texture_to GITexture 
+--- @param texture_from ITexture 
+--- @param texture_to ITexture 
 function render.CopyTexture(texture_from, texture_to)
 end
 
@@ -117,8 +117,8 @@ end
 
 --- Draws textured beam.  
 --- 🧱 **NOTE**: Requires a 3D rendering context  
---- @param startPos GVector @Beam start position.
---- @param endPos GVector @Beam end position.
+--- @param startPos Vector @Beam start position.
+--- @param endPos Vector @Beam end position.
 --- @param width number @The width of the beam.
 --- @param textureStart number @The start coordinate of the texture used.
 --- @param textureEnd number @The end coordinate of the texture used.
@@ -128,18 +128,18 @@ end
 
 --- Draws a box in 3D space.  
 --- 🧱 **NOTE**: Requires a 3D rendering context  
---- @param position GVector @Origin of the box.
---- @param angles GAngle @Orientation of the box.
---- @param mins GVector @Start position of the box, relative to origin.
---- @param maxs GVector @End position of the box, relative to origin.
+--- @param position Vector @Origin of the box.
+--- @param angles Angle @Orientation of the box.
+--- @param mins Vector @Start position of the box, relative to origin.
+--- @param maxs Vector @End position of the box, relative to origin.
 --- @param color table @The color of the box
 function render.DrawBox(position, angles, mins, maxs, color)
 end
 
 --- Draws a line in 3D space.  
 --- 🧱 **NOTE**: Requires a 3D rendering context  
---- @param startPos GVector @Line start position in world coordinates.
---- @param endPos GVector @Line end position in world coordinates.
+--- @param startPos Vector @Line start position in world coordinates.
+--- @param endPos Vector @Line end position in world coordinates.
 --- @param color table @The color to be used
 --- @param writeZ boolean @Whether or not to consider the Z buffer
 function render.DrawLine(startPos, endPos, color, writeZ)
@@ -147,18 +147,18 @@ end
 
 --- Draws 2 connected triangles. Expects material to be set by render.SetMaterial.  
 --- 🧱 **NOTE**: Requires a 3D rendering context  
---- @param vert1 GVector @First vertex.
---- @param vert2 GVector @The second vertex.
---- @param vert3 GVector @The third vertex.
---- @param vert4 GVector @The fourth vertex.
+--- @param vert1 Vector @First vertex.
+--- @param vert2 Vector @The second vertex.
+--- @param vert3 Vector @The third vertex.
+--- @param vert4 Vector @The fourth vertex.
 --- @param color table @The color of the quad
 function render.DrawQuad(vert1, vert2, vert3, vert4, color)
 end
 
 --- Draws a quad.  
 --- 🧱 **NOTE**: Requires a 3D rendering context  
---- @param position GVector @Origin of the sprite.
---- @param normal GVector @The face direction of the quad.
+--- @param position Vector @Origin of the sprite.
+--- @param normal Vector @The face direction of the quad.
 --- @param width number @The width of the quad.
 --- @param height number @The height of the quad.
 --- @param color table @The color of the quad
@@ -185,7 +185,7 @@ end
 --- Draws a sphere in 3D space. The material previously set with render.SetMaterial will be applied the sphere's surface.  
 --- See also render.DrawWireframeSphere for a wireframe equivalent.  
 --- 🧱 **NOTE**: Requires a 3D rendering context  
---- @param position GVector @Position of the sphere.
+--- @param position Vector @Position of the sphere.
 --- @param radius number @Radius of the sphere
 --- @param longitudeSteps number @The number of longitude steps
 --- @param latitudeSteps number @The number of latitude steps
@@ -195,7 +195,7 @@ end
 
 --- Draws a sprite in 3D space.  
 --- 🧱 **NOTE**: Requires a 3D rendering context  
---- @param position GVector @Position of the sprite.
+--- @param position Vector @Position of the sprite.
 --- @param width number @Width of the sprite.
 --- @param height number @Height of the sprite.
 --- @param color table @Color of the sprite
@@ -204,13 +204,13 @@ end
 
 --- Draws a texture over the whole screen.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @param tex GITexture @The texture to draw
+--- @param tex ITexture @The texture to draw
 function render.DrawTextureToScreen(tex)
 end
 
 --- Draws a textured rectangle.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @param tex GITexture @The texture to draw
+--- @param tex ITexture @The texture to draw
 --- @param x number @The x coordinate of the rectangle to draw.
 --- @param y number @The y coordinate of the rectangle to draw.
 --- @param width number @The width of the rectangle to draw.
@@ -220,10 +220,10 @@ end
 
 --- Draws a wireframe box in 3D space.  
 --- 🧱 **NOTE**: Requires a 3D rendering context  
---- @param position GVector @Position of the box.
---- @param angle GAngle @Angles of the box.
---- @param mins GVector @The lowest corner of the box.
---- @param maxs GVector @The highest corner of the box.
+--- @param position Vector @Position of the box.
+--- @param angle Angle @Angles of the box.
+--- @param mins Vector @The lowest corner of the box.
+--- @param maxs Vector @The highest corner of the box.
 --- @param color table @The color of the box
 --- @param writeZ boolean @Sets whenever to write to the zBuffer.
 function render.DrawWireframeBox(position, angle, mins, maxs, color, writeZ)
@@ -231,7 +231,7 @@ end
 
 --- Draws a wireframe sphere in 3d space.  
 --- 🧱 **NOTE**: Requires a 3D rendering context  
---- @param position GVector @Position of the sphere.
+--- @param position Vector @Position of the sphere.
 --- @param radius number @The size of the sphere.
 --- @param longitudeSteps number @The amount of longitude steps
 --- @param latitudeSteps number @The amount of latitude steps
@@ -280,7 +280,7 @@ function render.FogStart(fogStart)
 end
 
 --- Returns the ambient color of the map.  
---- @return GVector @color
+--- @return Vector @color
 function render.GetAmbientLightColor()
 end
 
@@ -289,11 +289,11 @@ end
 function render.GetBlend()
 end
 
---- @return GITexture @The bloom texture
+--- @return ITexture @The bloom texture
 function render.GetBloomTex0()
 end
 
---- @return GITexture 
+--- @return ITexture 
 function render.GetBloomTex1()
 end
 
@@ -327,100 +327,100 @@ function render.GetFogMode()
 end
 
 --- Returns the _rt_FullFrameDepth texture. Alias of _rt_PowerOfTwoFB  
---- @return GITexture 
+--- @return ITexture 
 function render.GetFullScreenDepthTexture()
 end
 
 --- Gets the light exposure on the specified position.  
---- @param position GVector @The position of the surface to get the light from.
---- @return GVector @lightColor
+--- @param position Vector @The position of the surface to get the light from.
+--- @return Vector @lightColor
 function render.GetLightColor(position)
 end
 
---- @return GITexture 
+--- @return ITexture 
 function render.GetMoBlurTex0()
 end
 
---- @return GITexture 
+--- @return ITexture 
 function render.GetMoBlurTex1()
 end
 
---- @return GITexture 
+--- @return ITexture 
 function render.GetMorphTex0()
 end
 
---- @return GITexture 
+--- @return ITexture 
 function render.GetMorphTex1()
 end
 
 --- Returns the render target's power of two texture.  
---- @return GITexture @The power of two texture, which is **_rt_poweroftwofb** by default.
+--- @return ITexture @The power of two texture, which is **_rt_poweroftwofb** by default.
 function render.GetPowerOfTwoTexture()
 end
 
 --- Alias of render.GetPowerOfTwoTexture.  
---- @return GITexture 
+--- @return ITexture 
 function render.GetRefractTexture()
 end
 
 --- Returns the currently active render target.  
 --- Instead of saving the current render target using this function and restoring to it later, it is generally better practice to use render.PushRenderTarget and render.PopRenderTarget.  
---- @return GITexture @The currently active Render Target
+--- @return ITexture @The currently active Render Target
 function render.GetRenderTarget()
 end
 
 --- Returns the _rt_ResolvedFullFrameDepth texture for SSAO depth.  
---- @return GITexture 
+--- @return ITexture 
 function render.GetResolvedFullFrameDepth()
 end
 
 --- Obtain an ITexture of the screen. You must call render.UpdateScreenEffectTexture in order to update this texture with the currently rendered scene.  
 --- This texture is mainly used within GM:RenderScreenspaceEffects  
 --- @param textureIndex number @Max index is 3, but engine only creates the first two for you.
---- @return GITexture 
+--- @return ITexture 
 function render.GetScreenEffectTexture(textureIndex)
 end
 
---- @return GITexture 
+--- @return ITexture 
 function render.GetSmallTex0()
 end
 
---- @return GITexture 
+--- @return ITexture 
 function render.GetSmallTex1()
 end
 
 --- Returns a floating point texture the same resolution as the screen.  
 --- ℹ **NOTE**: The gmodscreenspace doesn't behave as expected when drawing a floating-point texture to an integer texture (e.g. the default render target). Use an UnlitGeneric material instead  
---- @return GITexture @Render target named "__rt_supertexture1"
+--- @return ITexture @Render target named "__rt_supertexture1"
 function render.GetSuperFPTex()
 end
 
 --- See render.GetSuperFPTex  
---- @return GITexture @Render target named "__rt_supertexture2"
+--- @return ITexture @Render target named "__rt_supertexture2"
 function render.GetSuperFPTex2()
 end
 
 --- Performs a render trace and returns the color of the surface hit, this uses a low res version of the texture.  
---- @param startPos GVector @The start position to trace from.
---- @param endPos GVector @The end position of the trace.
---- @return GVector @color
+--- @param startPos Vector @The start position to trace from.
+--- @param endPos Vector @The end position of the trace.
+--- @return Vector @color
 function render.GetSurfaceColor(startPos, endPos)
 end
 
 --- Returns a vector representing linear tone mapping scale.  
---- @return GVector @The vector representing linear tone mapping scale.
+--- @return Vector @The vector representing linear tone mapping scale.
 function render.GetToneMappingScaleLinear()
 end
 
 --- Sets the render material override for all next calls of Entity:DrawModel. Also overrides render.MaterialOverrideByIndex.  
---- @param material GIMaterial @The material to use as override, use nil to disable.
+--- @param material IMaterial @The material to use as override, use nil to disable.
 function render.MaterialOverride(material)
 end
 
 --- Similar to render.MaterialOverride, but overrides the materials per index.  
 --- render.MaterialOverride overrides effects of this function.  
 --- @param index number @Starts with 0, the index of the material to override
---- @param material GIMaterial @The material to override with
+--- @param material IMaterial @The material to override with
 function render.MaterialOverrideByIndex(index, material)
 end
 
@@ -438,12 +438,12 @@ end
 --- ℹ **NOTE**: This function is only meant to be used in a single render pass kind of scenario, if you need to render a model continuously, use a cached Global.ClientsideModel and provide it as a second argument.  
 --- 🦟 **BUG**: [Using this with a map model (game.GetWorld():GetModel()) crashes the game.](https://github.com/Facepunch/garrysmod-issues/issues/3307)  
 --- @param settings table @Requires:
---- @param ent GCSEnt @If provided, this entity will be reused instead of creating a new one with Global.ClientsideModel
+--- @param ent CSEnt @If provided, this entity will be reused instead of creating a new one with Global.ClientsideModel
 function render.Model(settings, ent)
 end
 
 --- Sets a material to override a model's default material. Similar to Entity:SetMaterial except it uses an IMaterial argument and it can be used to change materials on models which are part of the world geometry.  
---- @param material GIMaterial @The material override.
+--- @param material IMaterial @The material override.
 function render.ModelMaterialOverride(material)
 end
 
@@ -520,7 +520,7 @@ end
 
 --- Pushes a new clipping plane of the clip plane stack and sets it as active.  
 --- ℹ **NOTE**: A max of 2 clip planes are supported on Linux/POSIX, and 6 on Windows.  
---- @param normal GVector @The normal of the clipping plane.
+--- @param normal Vector @The normal of the clipping plane.
 --- @param distance number @The distance of the plane from the world origin
 function render.PushCustomClipPlane(normal, distance)
 end
@@ -546,7 +546,7 @@ end
 --- See also render.PopRenderTarget.  
 --- ℹ **NOTE**: If you want to render to the render target in 2d mode and it is not the same size as the screen, use cam.Start2D and cam.End2D.  
 --- ℹ **NOTE**: If the render target is bigger than the screen, rendering done with the surface library will be clipped to the screen bounds unless you call Global.DisableClipping  
---- @param texture GITexture @The new render target to be used.
+--- @param texture ITexture @The new render target to be used.
 --- @param x number @X origin of the viewport.
 --- @param y number @Y origin of the viewport.
 --- @param w number @Width of the viewport.
@@ -666,14 +666,14 @@ end
 
 --- Sets the lighting origin.  
 --- 🦟 **BUG**: [This does not work for prop_physics.](https://github.com/Facepunch/garrysmod-issues/issues/2804)  
---- @param lightingOrigin GVector @The position from which the light should be "emitted".
+--- @param lightingOrigin Vector @The position from which the light should be "emitted".
 function render.SetLightingOrigin(lightingOrigin)
 end
 
 --- Sets the texture to be used as the lightmap in upcoming rendering operations. This is required when rendering meshes using a material with a lightmapped shader such as LightmappedGeneric.  
 --- 🧱 **NOTE**: Requires a 3D rendering context  
 --- <rendercontext hook="false" type="2D"></rendercontext>  
---- @param tex GITexture @The texture to be used as the lightmap.
+--- @param tex ITexture @The texture to be used as the lightmap.
 function render.SetLightmapTexture(tex)
 end
 
@@ -687,7 +687,7 @@ end
 --- Not to be confused with surface.SetMaterial.  
 --- 🧱 **NOTE**: Requires a 3D rendering context  
 --- <rendercontext hook="false" type="2D"></rendercontext>  
---- @param mat GIMaterial @The material to be used.
+--- @param mat IMaterial @The material to be used.
 function render.SetMaterial(mat)
 end
 
@@ -701,13 +701,13 @@ function render.SetModelLighting(lightDirection, red, green, blue)
 end
 
 --- Sets the render target to the specified rt.  
---- @param texture GITexture @The new render target to be used.
+--- @param texture ITexture @The new render target to be used.
 function render.SetRenderTarget(texture)
 end
 
 --- Sets the render target with the specified index to the specified rt.  
 --- @param rtIndex number @The index of the rt to set.
---- @param texture GITexture @The new render target to be used.
+--- @param texture ITexture @The new render target to be used.
 function render.SetRenderTargetEx(rtIndex, texture)
 end
 
@@ -728,7 +728,7 @@ function render.SetShadowColor(red, green, blue)
 end
 
 --- Sets the shadow projection direction.  
---- @param shadowDirections GVector @The new shadow direction.
+--- @param shadowDirections Vector @The new shadow direction.
 function render.SetShadowDirection(shadowDirections)
 end
 
@@ -786,7 +786,7 @@ end
 function render.SetStencilZFailOperation(zFailOperation)
 end
 
---- @param vec GVector 
+--- @param vec Vector 
 function render.SetToneMappingScaleLinear(vec)
 end
 
@@ -852,7 +852,7 @@ function render.UpdateFullScreenDepthTexture()
 end
 
 --- Updates the power of two texture.  
---- @return GITexture @Returns render.GetPowerOfTwoTexture.
+--- @return ITexture @Returns render.GetPowerOfTwoTexture.
 function render.UpdatePowerOfTwoTexture()
 end
 

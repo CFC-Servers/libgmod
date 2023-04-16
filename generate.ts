@@ -300,7 +300,7 @@ function handleClass(cls: FuncContainer): string {
             }
         }
     }
-    let name = getTypeName(cls.name);
+    let name = cls.name;
     let inherits = "";
     if (ENTITY_CHILDREN.includes(cls.name)) {
         inherits = " : " + getTypeName("Entity");
@@ -439,15 +439,8 @@ async function doClasses(data: FuncContainer[]): Promise<void> {
 }
 
 async function main() {
-    console.log("hello");
-
     try {
         let classes = await getClasses();
-        // I'm not entirely sure what EmmyLua does when you have a class and a
-        // function with the same name, so don't have that problem.
-        for (let cls of classes) {
-            GMOD_TYPES[cls.name] = "G" + cls.name;
-        }
 
         await Promise.all([
             doGlobals(),
@@ -455,7 +448,6 @@ async function main() {
             doClasses(classes),
             //
         ]);
-        console.log("woop");
     } catch (e) {
         console.error(e);
     }

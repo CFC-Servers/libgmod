@@ -2,8 +2,8 @@
 --- The matrix functions exist, but are mostly unusable unless you're familiar with the source engine's layout for each aspect.  
 _G.cam = {}
 --- Shakes the screen at a certain position.  
---- @param pos GVector @Origin of the shake.
---- @param angles GAngle @Angles of the shake.
+--- @param pos Vector @Origin of the shake.
+--- @param angles Angle @Angles of the shake.
 --- @param factor number @The shake factor.
 function cam.ApplyShake(pos, angles, factor)
 end
@@ -35,7 +35,7 @@ end
 
 --- Returns the currently active model matrix.  
 --- ⁉ **VALIDATE**: Does this actually mean the matrix on top of the stack? Probably  
---- @return GVMatrix @The currently active matrix.
+--- @return VMatrix @The currently active matrix.
 function cam.GetModelMatrix()
 end
 
@@ -50,7 +50,7 @@ end
 
 --- Pushes the specified matrix onto the render matrix stack. Unlike opengl, this will replace the current model matrix.  
 --- ℹ **NOTE**: This does not work with cam.Start3D2D if `multiply` is false.  
---- @param matrix GVMatrix @The matrix to push.
+--- @param matrix VMatrix @The matrix to push.
 --- @param multiply boolean @If set, multiplies given matrix with currently active matrix (cam.GetModelMatrix) before pushing.
 function cam.PushModelMatrix(matrix, multiply)
 end
@@ -75,8 +75,8 @@ end
 --- zNear also requires a value higher than 0.  
 --- 🦟 **BUG**: [Negative x/y values won't work.](https://github.com/Facepunch/garrysmod-issues/issues/1995)  
 --- 🦟 **BUG**: [This will not update current view properties.](https://github.com/Facepunch/garrysmod-issues/issues/2682)  
---- @param pos GVector @Render cam position.
---- @param angles GAngle @Render cam angles.
+--- @param pos Vector @Render cam position.
+--- @param angles Angle @Render cam angles.
 --- @param fov number @Field of view.
 --- @param x number @X coordinate of where to start the new view port.
 --- @param y number @Y coordinate of where to start the new view port.
@@ -98,8 +98,8 @@ end
 --- 🟥 **NOTE**: Provides a 2D rendering context  
 --- <rendercontext hook="false" type="3D"></rendercontext>  
 --- ⚠ **WARNING**: This should be closed by cam.End3D2D otherwise the game crashes  
---- @param pos GVector @Origin of the 3D2D context, ie
---- @param angles GAngle @Angles of the 3D2D context
+--- @param pos Vector @Origin of the 3D2D context, ie
+--- @param angles Angle @Angles of the 3D2D context
 --- @param scale number @The scale of the render context
 function cam.Start3D2D(pos, angles, scale)
 end

@@ -5,7 +5,7 @@ function mesh.AdvanceVertex()
 end
 
 --- Starts a new dynamic mesh. If an IMesh is passed, it will use that mesh instead.  
---- @param mesh GIMesh @Mesh to build
+--- @param mesh IMesh @Mesh to build
 --- @param primitiveType number @Primitive type, see Enums/MATERIAL.
 --- @param primiteCount number @The amount of primitives.
 function mesh.Begin(mesh, primitiveType, primiteCount)
@@ -24,26 +24,26 @@ function mesh.End()
 end
 
 --- Sets the normal to be used for the next vertex.  
---- @param normal GVector @The normal of the vertex.
+--- @param normal Vector @The normal of the vertex.
 function mesh.Normal(normal)
 end
 
 --- Sets the position to be used for the next vertex.  
---- @param position GVector @The position of the vertex.
+--- @param position Vector @The position of the vertex.
 function mesh.Position(position)
 end
 
 --- Draws a quad using 4 vertices.  
---- @param vertex1 GVector @The first vertex.
---- @param vertex2 GVector @The second vertex.
---- @param vertex3 GVector @The third vertex.
---- @param vertex4 GVector @The fourth vertex.
+--- @param vertex1 Vector @The first vertex.
+--- @param vertex2 Vector @The second vertex.
+--- @param vertex3 Vector @The third vertex.
+--- @param vertex4 Vector @The fourth vertex.
 function mesh.Quad(vertex1, vertex2, vertex3, vertex4)
 end
 
 --- Draws a quad using a position, a normal and the size.  
---- @param position GVector @The center of the quad.
---- @param normal GVector @The normal of the quad.
+--- @param position Vector @The center of the quad.
+--- @param normal Vector @The normal of the quad.
 --- @param sizeX number @X size in pixels.
 --- @param sizeY number @Y size in pixels.
 function mesh.QuadEasy(position, normal, sizeX, sizeY)
@@ -60,13 +60,13 @@ end
 
 --- Sets the s tangent to be used.  
 --- This function actually does nothing.  
---- @param sTanger GVector @The s tangent.
+--- @param sTanger Vector @The s tangent.
 function mesh.TangentS(sTanger)
 end
 
 --- Sets the T tangent to be used.  
 --- This function actually does nothing.  
---- @param tTanger GVector @The t tangent.
+--- @param tTanger Vector @The t tangent.
 function mesh.TangentT(tTanger)
 end
 

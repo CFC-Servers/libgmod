@@ -3,7 +3,7 @@
 --- ⚠ **WARNING**: Usermessages have a limit of only 256 bytes!  
 _G.umsg = {}
 --- Writes an angle to the usermessage.  
---- @param angle GAngle @The angle to be sent.
+--- @param angle Angle @The angle to be sent.
 function umsg.Angle(angle)
 end
 
@@ -22,7 +22,7 @@ function umsg.End()
 end
 
 --- Writes an entity object to the usermessage.  
---- @param entity GEntity @The entity to be sent.
+--- @param entity Entity @The entity to be sent.
 function umsg.Entity(entity)
 end
 
@@ -51,7 +51,7 @@ end
 --- Starts a new usermessage.  
 --- ⚠ **WARNING**: Usermessages have a limit of only 256 bytes!  
 --- @param name string @The name of the message to be sent.
---- @param filter GPlayer @If passed a player object, it will only be sent to the player, if passed a CRecipientFilter of players, it will be sent to all specified pla
+--- @param filter Player @If passed a player object, it will only be sent to the player, if passed a CRecipientFilter of players, it will be sent to all specified pla
 function umsg.Start(name, filter)
 end
 
@@ -61,12 +61,12 @@ function umsg.String(string)
 end
 
 --- Writes a Vector to the usermessage.  
---- @param vector GVector @The vector to be sent.
+--- @param vector Vector @The vector to be sent.
 function umsg.Vector(vector)
 end
 
 --- Writes a vector normal to the usermessage.  
---- @param normal GVector @The vector normal to be sent.
+--- @param normal Vector @The vector normal to be sent.
 function umsg.VectorNormal(normal)
 end
 

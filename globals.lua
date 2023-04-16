@@ -16,7 +16,7 @@ function _G.AddCSLuaFile(file)
 end
 
 --- Adds the specified vector to the PVS which is currently building. This allows all objects in visleafs visible from that vector to be drawn.  
---- @param position GVector @The origin to add.
+--- @param position Vector @The origin to add.
 function _G.AddOriginToPVS(position)
 end
 
@@ -28,8 +28,8 @@ end
 --- @param entindex number @**This argument is no longer used**; it has no effect on anything
 --- @param text string @The text for the world tip to display.
 --- @param dieTime number @**This argument is no longer used**; when you add a World Tip it will always last only 0.05 seconds
---- @param pos GVector @Where in the world you want the World Tip to be drawn
---- @param ent GEntity @Which entity you want to associate with the World Tip
+--- @param pos Vector @Where in the world you want the World Tip to be drawn
+--- @param ent Entity @Which entity you want to associate with the World Tip
 function _G.AddWorldTip(entindex, text, dieTime, pos, ent)
 end
 
@@ -41,7 +41,7 @@ end
 --- Loads the specified image from the /cache folder, used in combination steamworks.Download.  
 --- Most addons will provide a 512x512 png image.  
 --- @param name string @The name of the file.
---- @return GIMaterial @The material, returns nil if the cached file is not an image.
+--- @return IMaterial @The material, returns nil if the cached file is not an image.
 function _G.AddonMaterial(name)
 end
 
@@ -49,14 +49,14 @@ end
 --- @param pitch number @The pitch value of the angle
 --- @param yaw number @The yaw value of the angle.
 --- @param roll number @The roll value of the angle.
---- @return GAngle @Created angle
+--- @return Angle @Created angle
 function _G.Angle(pitch, yaw, roll)
 end
 
 --- Returns an angle with a randomized pitch, yaw, and roll between min(inclusive), max(exclusive).  
 --- @param min number @Min bound inclusive.
 --- @param max number @Max bound exclusive.
---- @return GAngle @The randomly generated angle.
+--- @return Angle @The randomly generated angle.
 function _G.AngleRand(min, max)
 end
 
@@ -72,7 +72,7 @@ function _G.BuildNetworkedVarsTable()
 end
 
 --- Automatically called by the engine when a panel is hovered over with the mouse  
---- @param panel GPanel @Panel that has been hovered over
+--- @param panel Panel @Panel that has been hovered over
 function _G.ChangeTooltip(panel)
 end
 
@@ -82,7 +82,7 @@ end
 --- 🦟 **BUG**: [Clientside models will occasionally delete themselves during high server lag.](https://github.com/Facepunch/garrysmod-issues/issues/3184)  
 --- @param model string @The file path to the model
 --- @param renderGroup number @The render group of the entity for the clientside leaf system, see Enums/RENDERGROUP.
---- @return GCSEnt @Created client-side model
+--- @return CSEnt @Created client-side model
 function _G.ClientsideModel(model, renderGroup)
 end
 
@@ -93,14 +93,14 @@ end
 --- 🦟 **BUG**: [Clientside entities are not garbage-collected, thus you must store a reference to the object and call CSEnt:Remove manually.](https://github.com/Facepunch/garrysmod-issues/issues/1387)  
 --- @param model string @The file path to the model
 --- @param renderGroup number @The Enums/RENDERGROUP to assign.
---- @return GCSEnt @The newly created client-side ragdoll
+--- @return CSEnt @The newly created client-side ragdoll
 function _G.ClientsideRagdoll(model, renderGroup)
 end
 
 --- Creates a scene entity based on the scene name and the entity.  
 --- @param name string @The name of the scene.
---- @param targetEnt GEntity @The entity to play the scene on.
---- @return GCSEnt @C_SceneEntity
+--- @param targetEnt Entity @The entity to play the scene on.
+--- @return CSEnt @C_SceneEntity
 function _G.ClientsideScene(name, targetEnt)
 end
 
@@ -177,7 +177,7 @@ end
 --- @param helptext string @Help text to display in the console.
 --- @param min number @If set, the convar cannot be changed to a number lower than this value.
 --- @param max number @If set, the convar cannot be changed to a number higher than this value.
---- @return GConVar @Created convar.
+--- @return ConVar @Created convar.
 function _G.CreateClientConVar(name, default, shouldsave, userinfo, helptext, min, max)
 end
 
@@ -189,7 +189,7 @@ end
 --- @param helptext string @The help text to show in the console.
 --- @param min number @If set, the ConVar cannot be changed to a number lower than this value.
 --- @param max number @If set, the ConVar cannot be changed to a number higher than this value.
---- @return GConVar @The convar created.
+--- @return ConVar @The convar created.
 function _G.CreateConVar(name, value, flags, helptext, min, max)
 end
 
@@ -201,26 +201,26 @@ end
 --- @param name string @The material name
 --- @param shaderName string @The shader name
 --- @param materialData table @Key-value table that contains shader parameters and proxies
---- @return GIMaterial @Created material
+--- @return IMaterial @Created material
 function _G.CreateMaterial(name, shaderName, materialData)
 end
 
 --- Creates a new particle system.  
 --- ℹ **NOTE**: The particle effect must be precached with Global.PrecacheParticleSystem and the file its from must be added via game.AddParticles before it can be used!  
---- @param ent GEntity @The entity to attach the control point to.
+--- @param ent Entity @The entity to attach the control point to.
 --- @param effect string @The name of the effect to create
 --- @param partAttachment number @See Enums/PATTACH.
 --- @param entAttachment number @The attachment ID on the entity to attach the particle system to
---- @param offset GVector @The offset from the Entity:GetPos of the entity we are attaching this CP to.
---- @return GCNewParticleEffect @The created particle system.
+--- @param offset Vector @The offset from the Entity:GetPos of the entity we are attaching this CP to.
+--- @return CNewParticleEffect @The created particle system.
 function _G.CreateParticleSystem(ent, effect, partAttachment, entAttachment, offset)
 end
 
 --- Creates a new PhysCollide from the given bounds.  
 --- 🦟 **BUG**: [This fails to create planes or points - no components of the mins or maxs can be the same.](https://github.com/Facepunch/garrysmod-issues/issues/3568)  
---- @param mins GVector @Min corner of the box
---- @param maxs GVector @Max corner of the box
---- @return GPhysCollide @The new PhysCollide
+--- @param mins Vector @Min corner of the box
+--- @param maxs Vector @Max corner of the box
+--- @return PhysCollide @The new PhysCollide
 function _G.CreatePhysCollideBox(mins, maxs)
 end
 
@@ -232,16 +232,16 @@ end
 
 --- Returns a sound parented to the specified entity.  
 --- ℹ **NOTE**: You can only create one CSoundPatch per audio file, per entity at the same time.  
---- @param targetEnt GEntity @The target entity.
+--- @param targetEnt Entity @The target entity.
 --- @param soundName string @The sound to play.
---- @param filter GCRecipientFilter @A CRecipientFilter of the players that will have this sound networked to them
---- @return GCSoundPatch @The sound object
+--- @param filter CRecipientFilter @A CRecipientFilter of the players that will have this sound networked to them
+--- @return CSoundPatch @The sound object
 function _G.CreateSound(targetEnt, soundName, filter)
 end
 
 --- Creates and returns a new DSprite element with the supplied material.  
---- @param material GIMaterial @Material the sprite should draw.
---- @return GPanel @The new DSprite element.
+--- @param material IMaterial @Material the sprite should draw.
+--- @return Panel @The new DSprite element.
 function _G.CreateSprite(material)
 end
 
@@ -277,7 +277,7 @@ end
 
 --- Returns an CTakeDamageInfo object.  
 --- 🦟 **BUG**: [This does not create a unique object, but instead returns a shared reference. That means you cannot use two or more of these objects at once.](https://github.com/Facepunch/garrysmod-issues/issues/2771)  
---- @return GCTakeDamageInfo @The CTakeDamageInfo object.
+--- @return CTakeDamageInfo @The CTakeDamageInfo object.
 function _G.DamageInfo()
 end
 
@@ -293,27 +293,27 @@ function _G.DeriveGamemode(base)
 end
 
 --- Creates a DMenu and closes any current menus.  
---- @param parent GPanel @The panel to parent the created menu to.
---- @return GPanel @The created DMenu
+--- @param parent Panel @The panel to parent the created menu to.
+--- @return Panel @The created DMenu
 function _G.DermaMenu(parent)
 end
 
 --- Creates a new derma animation.  
 --- @param name string @Name of the animation to create
---- @param panel GPanel @Panel to run the animation on
+--- @param panel Panel @Panel to run the animation on
 --- @param func function @Function to call to process the animation
 --- @return table @A lua metatable containing four methods:
 function _G.Derma_Anim(name, panel, func)
 end
 
 --- Draws background blur around the given panel.  
---- @param panel GPanel @Panel to draw the background blur around
+--- @param panel Panel @Panel to draw the background blur around
 --- @param startTime number @Time that the blur began being painted
 function _G.Derma_DrawBackgroundBlur(panel, startTime)
 end
 
 --- Creates panel method that calls the supplied Derma skin hook via derma.SkinHook  
---- @param panel GPanel @Panel to add the hook to
+--- @param panel Panel @Panel to add the hook to
 --- @param functionName string @Name of panel function to create
 --- @param hookName string @Name of Derma skin hook to call within the function
 --- @param typeName string @Type of element to call Derma skin hook for
@@ -330,7 +330,7 @@ end
 --- Panel:ConVarStringThink or  
 --- Panel:ConVarNumberThink  
 --- in its PANEL:Think hook and should call Panel:ConVarChanged when the panel's value has changed.  
---- @param target GPanel @The panel the functions should be added to.
+--- @param target Panel @The panel the functions should be added to.
 function _G.Derma_Install_Convar_Functions(target)
 end
 
@@ -338,7 +338,7 @@ end
 --- @param Text string @The text within the created panel.
 --- @param Title string @The title of the created panel.
 --- @param Button string @The text of the button to close the panel.
---- @return GPanel @The created DFrame
+--- @return Panel @The created DFrame
 function _G.Derma_Message(Text, Title, Button)
 end
 
@@ -353,7 +353,7 @@ end
 --- @param btn3func function @The function to run if the user clicks the third button.
 --- @param btn4text string @The text to display on the third button
 --- @param btn4func function @The function to run if the user clicks the fourth button.
---- @return GPanel @The Panel object of the created window.
+--- @return Panel @The Panel object of the created window.
 function _G.Derma_Query(text, title, btn1text, btn1func, btn2text, btn2func, btn3text, btn3func, btn4text, btn4func)
 end
 
@@ -365,7 +365,7 @@ end
 --- @param cancel function @The function to be called once the user has cancelled their input
 --- @param confirmText string @Allows you to override text of the "OK" button
 --- @param cancelText string @Allows you to override text of the "Cancel" button
---- @return GPanel @The created DFrame
+--- @return Panel @The created DFrame
 function _G.Derma_StringRequest(title, subtitle, default, confirm, cancel, confirmText, cancelText)
 end
 
@@ -440,7 +440,7 @@ function _G.DrawToyTown(Passes, Height)
 end
 
 --- Drops the specified entity if it is being held by any player with Gravity Gun or +use pickup.  
---- @param ent GEntity @The entity to drop.
+--- @param ent Entity @The entity to drop.
 function _G.DropEntityIfHeld(ent)
 end
 
@@ -456,7 +456,7 @@ end
 
 --- Returns a CEffectData object to be used with util.Effect.  
 --- 🦟 **BUG**: [This does not create a unique object, but instead returns a shared reference. That means you cannot use two or more of these objects at once.](https://github.com/Facepunch/garrysmod-issues/issues/2771)  
---- @return GCEffectData @The CEffectData object.
+--- @return CEffectData @The CEffectData object.
 function _G.EffectData()
 end
 
@@ -471,7 +471,7 @@ end
 
 --- Plays a sentence from `scripts/sentences.txt`  
 --- @param soundName string @The sound to play
---- @param position GVector @The position to play at
+--- @param position Vector @The position to play at
 --- @param entity number @The entity to emit the sound from
 --- @param channel number @The sound channel, see Enums/CHAN.
 --- @param volume number @The volume of the sound, from 0 to 1
@@ -485,7 +485,7 @@ end
 --- 🦟 **BUG**: Sounds must be precached serverside manually before they can be played. util.PrecacheSound does not work for this purpose, Entity.EmitSound does the trick  
 --- 🦟 **BUG**: This does not work with soundscripts. TODO: Is this a bug or intended?  
 --- @param soundName string @The sound to play
---- @param position GVector @The position to play at
+--- @param position Vector @The position to play at
 --- @param entity number @The entity to emit the sound from
 --- @param channel number @The sound channel, see Enums/CHAN.
 --- @param volume number @The volume of the sound, from 0 to 1
@@ -496,7 +496,7 @@ function _G.EmitSound(soundName, position, entity, channel, volume, soundLevel, 
 end
 
 --- Removes the currently active tool tip from the screen.  
---- @param panel GPanel @This is the panel that has a tool tip.
+--- @param panel Panel @This is the panel that has a tool tip.
 function _G.EndTooltip(panel)
 end
 
@@ -504,7 +504,7 @@ end
 --- Indices 1 through game.MaxPlayers() are always reserved for players.  
 --- ℹ **NOTE**: In examples on this wiki, **Entity( 1 )** is used when a player entity is needed (see ). In singleplayer and listen servers, **Entity( 1 )** will always be the first player. In dedicated servers, however, **Entity( 1 )** won't always be a valid player.  
 --- @param entityIndex number @The entity index.
---- @return GEntity @The entity if it exists, or NULL if it doesn't.
+--- @return Entity @The entity if it exists, or NULL if it doesn't.
 function _G.Entity(entityIndex)
 end
 
@@ -525,19 +525,19 @@ end
 
 --- Returns the angles of the current render context as calculated by GM:CalcView.  
 --- 🦟 **BUG**: [This function is only reliable inside rendering hooks.](https://github.com/Facepunch/garrysmod-issues/issues/2516)  
---- @return GAngle @The angle of the currently rendered scene.
+--- @return Angle @The angle of the currently rendered scene.
 function _G.EyeAngles()
 end
 
 --- Returns the origin of the current render context as calculated by GM:CalcView.  
 --- 🦟 **BUG**: [This function is only reliable inside rendering hooks.](https://github.com/Facepunch/garrysmod-issues/issues/2516)  
---- @return GVector @Camera position.
+--- @return Vector @Camera position.
 function _G.EyePos()
 end
 
 --- Returns the normal vector of the current render context as calculated by GM:CalcView, similar to Global.EyeAngles.  
 --- 🦟 **BUG**: [This function is only reliable inside rendering hooks.](https://github.com/Facepunch/garrysmod-issues/issues/2516)  
---- @return GVector @View direction of the currently rendered scene.
+--- @return Vector @View direction of the currently rendered scene.
 function _G.EyeVector()
 end
 
@@ -551,10 +551,10 @@ function _G.FindMetaTable(metaName)
 end
 
 --- Returns the tool-tip text and tool-tip-panel (if any) of the given panel as well as itself  
---- @param panel GPanel @Panel to find tool-tip of
+--- @param panel Panel @Panel to find tool-tip of
 --- @return string @tool-tip text
---- @return GPanel @tool-tip panel
---- @return GPanel @panel that the function was called with
+--- @return Panel @tool-tip panel
+--- @return Panel @panel that the function was called with
 function _G.FindTooltip(panel)
 end
 
@@ -579,7 +579,7 @@ end
 --- Gets the ConVar with the specified name.  
 --- ℹ **NOTE**: This function uses Global.GetConVar_Internal internally, but caches the result in Lua for quicker lookups.  
 --- @param name string @Name of the ConVar to get
---- @return GConVar @The ConVar object, or nil if no such ConVar was found.
+--- @return ConVar @The ConVar object, or nil if no such ConVar was found.
 function _G.GetConVar(name)
 end
 
@@ -599,8 +599,8 @@ end
 
 --- Returns an angle that is shared between the server and all clients.  
 --- @param index string @The unique index to identify the global value with.
---- @param default GAngle @The value to return if the global value is not set.
---- @return GAngle @The global value, or default if the global is not set.
+--- @param default Angle @The value to return if the global value is not set.
+--- @return Angle @The global value, or default if the global is not set.
 function _G.GetGlobalAngle(index, default)
 end
 
@@ -613,8 +613,8 @@ end
 
 --- Returns an entity that is shared between the server and all clients.  
 --- @param index string @The unique index to identify the global value with.
---- @param default GEntity @The value to return if the global value is not set.
---- @return GEntity @The global value, or the default if the global value is not set.
+--- @param default Entity @The value to return if the global value is not set.
+--- @return Entity @The global value, or the default if the global value is not set.
 function _G.GetGlobalEntity(index, default)
 end
 
@@ -642,14 +642,14 @@ end
 
 --- Returns a vector that is shared between the server and all clients.  
 --- @param Index string @The unique index to identify the global value with.
---- @param Default GVector @The value to return if the global value is not set.
---- @return GVector @The global value, or the default if the global value is not set.
+--- @param Default Vector @The value to return if the global value is not set.
+--- @return Vector @The global value, or the default if the global value is not set.
 function _G.GetGlobalVector(Index, Default)
 end
 
 --- Returns the panel that is used as a wrapper for the HUD.  
 --- See also vgui.GetWorldPanel  
---- @return GPanel @The HUD panel
+--- @return Panel @The HUD panel
 function _G.GetHUDPanel()
 end
 
@@ -659,7 +659,7 @@ function _G.GetHostName()
 end
 
 --- Returns the player whose movement commands are currently being processed. The player this returns can safely have Player:GetCurrentCommand() called on them. See Prediction.  
---- @return GPlayer @The player currently being predicted, or NULL if no command processing is currently being done.
+--- @return Player @The player currently being predicted, or NULL if no command processing is currently being done.
 function _G.GetPredictionPlayer()
 end
 
@@ -670,7 +670,7 @@ end
 --- @param width number @The width of the render target, must be power of 2
 --- @param height number @The height of the render target, must be power of 2
 --- @param additive boolean @Sets whenever the rt should be additive.
---- @return GITexture @The render target
+--- @return ITexture @The render target
 function _G.GetRenderTarget(name, width, height, additive)
 end
 
@@ -684,12 +684,12 @@ end
 --- @param textureFlags number @Bitflag that configurates the texture, see Enums/TEXTUREFLAGS
 --- @param rtFlags number @Flags that controll the HDR behaviour of the render target, see Enums/CREATERENDERTARGETFLAGS.
 --- @param imageFormat number @Image format, see Enums/IMAGE_FORMAT.
---- @return GITexture @The new render target.
+--- @return ITexture @The new render target.
 function _G.GetRenderTargetEx(name, width, height, sizeMode, depthMode, textureFlags, rtFlags, imageFormat)
 end
 
 --- Returns the entity the client is using to see from (such as the player itself, the camera, or another entity).  
---- @return GEntity @The view entity.
+--- @return Entity @The view entity.
 function _G.GetViewEntity()
 end
 
@@ -839,24 +839,24 @@ function _G.IsValid(toBeValidated)
 end
 
 --- Adds javascript function 'language.Update' to an HTML panel as a method to call Lua's language.GetPhrase function.  
---- @param htmlPanel GPanel @Panel to add javascript function 'language.Update' to.
+--- @param htmlPanel Panel @Panel to add javascript function 'language.Update' to.
 function _G.JS_Language(htmlPanel)
 end
 
 --- Adds javascript function 'util.MotionSensorAvailable' to an HTML panel as a method to call Lua's motionsensor.IsAvailable function.  
---- @param htmlPanel GPanel @Panel to add javascript function 'util.MotionSensorAvailable' to.
+--- @param htmlPanel Panel @Panel to add javascript function 'util.MotionSensorAvailable' to.
 function _G.JS_Utility(htmlPanel)
 end
 
 --- Adds workshop related javascript functions to an HTML panel, used by the "Dupes" and "Saves" tabs in the spawnmenu.  
---- @param htmlPanel GPanel @Panel to add javascript functions to.
+--- @param htmlPanel Panel @Panel to add javascript functions to.
 function _G.JS_Workshop(htmlPanel)
 end
 
 --- Convenience function that creates a DLabel, sets the text, and returns it  
 --- @param text string @The string to set the label's text to
---- @param parent GPanel @Optional
---- @return GPanel @The created DLabel
+--- @param parent Panel @Optional
+--- @return Panel @The created DLabel
 function _G.Label(text, parent)
 end
 
@@ -873,18 +873,18 @@ end
 --- Returns point between first and second angle using given fraction and linear interpolation  
 --- ℹ **NOTE**: This function is not meant to be used with constant value in the first argument, if you're dealing with animation! Use a value that changes over time  
 --- @param ratio number @Ratio of progress through values
---- @param angleStart GAngle @Angle to begin from
---- @param angleEnd GAngle @Angle to end at
---- @return GAngle @angle
+--- @param angleStart Angle @Angle to begin from
+--- @param angleEnd Angle @Angle to end at
+--- @return Angle @angle
 function _G.LerpAngle(ratio, angleStart, angleEnd)
 end
 
 --- Linear interpolation between two vectors. It is commonly used to smooth movement between two vectors  
 --- ℹ **NOTE**: This function is not meant to be used with constant value in the first argument, if you're dealing with animation! Use a value that changes over time  
 --- @param fraction number @Fraction ranging from 0 to 1
---- @param from GVector @The initial Vector
---- @param to GVector @The desired Vector
---- @return GVector @The lerped vector.
+--- @param from Vector @The initial Vector
+--- @param to Vector @The desired Vector
+--- @return Vector @The lerped vector.
 function _G.LerpVector(fraction, from, to)
 end
 
@@ -895,19 +895,19 @@ end
 
 --- Returns the player object of the current client.  
 --- ℹ **NOTE**: LocalPlayer() will return NULL until all entities have been initialized. See GM:InitPostEntity.  
---- @return GPlayer @The player object representing the client.
+--- @return Player @The player object representing the client.
 function _G.LocalPlayer()
 end
 
 --- Translates the specified position and angle from the specified local coordinate system into worldspace coordinates.  
 --- If you're working with an entity's local vectors, use Entity:LocalToWorld and/or Entity:LocalToWorldAngles instead.  
 --- See also: Global.WorldToLocal, the reverse of this function.  
---- @param localPos GVector @The position vector in the source coordinate system, that should be translated to world coordinates
---- @param localAng GAngle @The angle in the source coordinate system, that should be converted to a world angle
---- @param originPos GVector @The origin point of the source coordinate system, in world coordinates
---- @param originAngle GAngle @The angles of the source coordinate system, as a world angle
---- @return GVector @The world position of the supplied local position.
---- @return GAngle @The world angles of the supplied local angle.
+--- @param localPos Vector @The position vector in the source coordinate system, that should be translated to world coordinates
+--- @param localAng Angle @The angle in the source coordinate system, that should be converted to a world angle
+--- @param originPos Vector @The origin point of the source coordinate system, in world coordinates
+--- @param originAngle Angle @The angles of the source coordinate system, as a world angle
+--- @return Vector @The world position of the supplied local position.
+--- @return Angle @The world angles of the supplied local angle.
 function _G.LocalToWorld(localPos, localAng, originPos, originAngle)
 end
 
@@ -921,20 +921,20 @@ end
 --- ℹ **NOTE**: When using .png or .jpg textures, try to make their sizes Power Of 2 (1, 2, 4, 8, 16, 32, 64, etc). While images are no longer scaled to Power of 2 sizes since February 2019, it is a good practice for things like icons, etc.  
 --- @param materialName string @The material name or path
 --- @param pngParameters string @A string containing space separated keywords which will be used to add material parameters
---- @return GIMaterial @Generated material
+--- @return IMaterial @Generated material
 --- @return number @How long it took for the function to run
 function _G.Material(materialName, pngParameters)
 end
 
 --- Returns a VMatrix object.  
 --- @param data table @Initial data to initialize the matrix with
---- @return GVMatrix @New matrix.
+--- @return VMatrix @New matrix.
 function _G.Matrix(data)
 end
 
 --- Returns a new mesh object.  
---- @param mat GIMaterial @The material the mesh is intended to be rendered with
---- @return GIMesh @The created object.
+--- @param mat IMaterial @The material the mesh is intended to be rendered with
+--- @return IMesh @The created object.
 function _G.Mesh(mat)
 end
 
@@ -984,8 +984,8 @@ end
 
 --- Modifies the given vectors so that all of vector2's axis are larger than vector1's by switching them around. Also known as ordering vectors.  
 --- ℹ **NOTE**: This function will irreversibly modify the given vectors  
---- @param vector1 GVector @Bounding box min resultant
---- @param vector2 GVector @Bounding box max resultant
+--- @param vector1 Vector @Bounding box min resultant
+--- @param vector2 Vector @Bounding box max resultant
 function _G.OrderVectors(vector1, vector2)
 end
 
@@ -998,9 +998,9 @@ end
 --- Creates a particle effect.  
 --- ℹ **NOTE**: The particle effect must be precached with Global.PrecacheParticleSystem and the file its from must be added via game.AddParticles before it can be used!  
 --- @param particleName string @The name of the particle effect.
---- @param position GVector @The start position of the effect.
---- @param angles GAngle @The orientation of the effect.
---- @param parent GEntity @If set, the particle will be parented to the entity.
+--- @param position Vector @The start position of the effect.
+--- @param angles Angle @The orientation of the effect.
+--- @param parent Entity @If set, the particle will be parented to the entity.
 function _G.ParticleEffect(particleName, position, angles, parent)
 end
 
@@ -1008,22 +1008,22 @@ end
 --- ℹ **NOTE**: The particle effect must be precached with Global.PrecacheParticleSystem and the file its from must be added via game.AddParticles before it can be used!  
 --- @param particleName string @The name of the particle effect.
 --- @param attachType number @Attachment type using Enums/PATTACH.
---- @param entity GEntity @The entity to be used in the way specified by the attachType.
+--- @param entity Entity @The entity to be used in the way specified by the attachType.
 --- @param attachmentID number @The id of the attachment to be used in the way specified by the attachType.
 function _G.ParticleEffectAttach(particleName, attachType, entity, attachmentID)
 end
 
 --- Creates a new CLuaEmitter.  
 --- ℹ **NOTE**: Do not forget to delete the emitter with CLuaEmitter:Finish once you are done with it  
---- @param position GVector @The start position of the emitter
+--- @param position Vector @The start position of the emitter
 --- @param use3D boolean @Whenever to render the particles in 2D or 3D mode.
---- @return GCLuaEmitter @The new particle emitter.
+--- @return CLuaEmitter @The new particle emitter.
 function _G.ParticleEmitter(position, use3D)
 end
 
 --- Creates a path for the bot to follow  
 --- @param type string @The name of the path to create
---- @return GPathFollower @The path
+--- @return PathFollower @The path
 function _G.Path(type)
 end
 
@@ -1031,14 +1031,14 @@ end
 --- For a function that returns a player based on their Entity:EntIndex, see Global.Entity.  
 --- For a function that returns a player based on their connection ID, see player.GetByID.  
 --- @param playerIndex number @The player index.
---- @return GPlayer @The retrieved player.
+--- @return Player @The retrieved player.
 function _G.Player(playerIndex)
 end
 
 --- Moves the given model to the given position and calculates appropriate camera parameters for rendering the model to an icon.  
 --- The output table interacts nicely with Panel:RebuildSpawnIconEx with a few key renames.  
---- @param model GEntity @Model that is being rendered to the spawn icon
---- @param position GVector @Position that the model is being rendered at
+--- @param model Entity @Model that is being rendered to the spawn icon
+--- @param position Vector @Position that the model is being rendered at
 --- @param noAngles boolean @If true the function won't reset the angles to 0 for the model.
 --- @return table @Table of information of the view which can be used for rendering
 function _G.PositionSpawnIcon(model, position, noAngles)
@@ -1079,7 +1079,7 @@ function _G.PrintTable(tableToPrint, indent, done)
 end
 
 --- Creates a new ProjectedTexture.  
---- @return GProjectedTexture @Newly created projected texture.
+--- @return ProjectedTexture @Newly created projected texture.
 function _G.ProjectedTexture()
 end
 
@@ -1113,12 +1113,12 @@ function _G.RealTime()
 end
 
 --- Creates a new CRecipientFilter.  
---- @return GCRecipientFilter @The new created recipient filter.
+--- @return CRecipientFilter @The new created recipient filter.
 function _G.RecipientFilter()
 end
 
 --- Registers a Derma element to be closed the next time Global.CloseDermaMenus is called  
---- @param menu GPanel @Menu to be registered for closure
+--- @param menu Panel @Menu to be registered for closure
 function _G.RegisterDermaMenuForClose(menu)
 end
 
@@ -1132,14 +1132,14 @@ function _G.RemoveTooltip()
 end
 
 --- Returns the angle that the clients view is being rendered at  
---- @return GAngle @Render Angles
+--- @return Angle @Render Angles
 function _G.RenderAngles()
 end
 
 --- Renders a Depth of Field effect  
---- @param origin GVector @Origin to render the effect at
---- @param angle GAngle @Angle to render the effect at
---- @param usableFocusPoint GVector @Point to focus the effect at
+--- @param origin Vector @Origin to render the effect at
+--- @param angle Angle @Angle to render the effect at
+--- @param usableFocusPoint Vector @Point to focus the effect at
 --- @param angleSize number @Angle size of the effect
 --- @param radialSteps number @Amount of radial steps to render the effect with
 --- @param passes number @Amount of render passes
@@ -1150,14 +1150,14 @@ function _G.RenderDoF(origin, angle, usableFocusPoint, angleSize, radialSteps, p
 end
 
 --- Renders the stereoscopic post-process effect  
---- @param viewOrigin GVector @Origin to render the effect at
---- @param viewAngles GAngle @Angles to render the effect at
+--- @param viewOrigin Vector @Origin to render the effect at
+--- @param viewAngles Angle @Angles to render the effect at
 function _G.RenderStereoscopy(viewOrigin, viewAngles)
 end
 
 --- Renders the Super Depth of Field post-process effect  
---- @param viewOrigin GVector @Origin to render the effect at
---- @param viewAngles GAngle @Angles to render the effect at
+--- @param viewOrigin Vector @Origin to render the effect at
+--- @param viewAngles Angle @Angles to render the effect at
 --- @param viewFOV number @Field of View to render the effect at
 function _G.RenderSuperDoF(viewOrigin, viewAngles, viewFOV)
 end
@@ -1207,12 +1207,12 @@ function _G.STNDRD(number)
 end
 
 --- Removes the given entity unless it is a player or the world entity  
---- @param ent GEntity @Entity to safely remove.
+--- @param ent Entity @Entity to safely remove.
 function _G.SafeRemoveEntity(ent)
 end
 
 --- Removes entity after delay using Global.SafeRemoveEntity  
---- @param entity GEntity @Entity to be removed
+--- @param entity Entity @Entity to be removed
 --- @param delay number @Delay for entity removal in seconds
 function _G.SafeRemoveEntityDelayed(entity, delay)
 end
@@ -1265,7 +1265,7 @@ end
 --- Defines an angle to be automatically networked to clients  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
 --- @param index any @Index to identify the global angle with
---- @param angle GAngle @Angle to be networked
+--- @param angle Angle @Angle to be networked
 function _G.SetGlobalAngle(index, angle)
 end
 
@@ -1279,7 +1279,7 @@ end
 --- Defines an entity to be automatically networked to clients  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
 --- @param index any @Index to identify the global entity with
---- @param ent GEntity @Entity to be networked
+--- @param ent Entity @Entity to be networked
 function _G.SetGlobalEntity(index, ent)
 end
 
@@ -1308,12 +1308,12 @@ end
 --- Defines a vector to be automatically networked to clients  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
 --- @param index any @Index to identify the global vector with
---- @param vec GVector @Vector to be networked
+--- @param vec Vector @Vector to be networked
 function _G.SetGlobalVector(index, vec)
 end
 
 --- Called by the engine to set which constraint system [https://developer.valvesoftware.com/wiki/Phys_constraintsystem] the next created constraints should use  
---- @param constraintSystem GEntity @Constraint system to use
+--- @param constraintSystem Entity @Constraint system to use
 function _G.SetPhysConstraintSystem(constraintSystem)
 end
 
@@ -1363,7 +1363,7 @@ function _G.SoundDuration(soundName)
 end
 
 --- Suppress any networking from the server to the specified player. This is automatically called by the engine before/after a player fires their weapon, reloads, or causes any other similar shared-predicted event to occur.  
---- @param suppressPlayer GPlayer @The player to suppress any networking to.
+--- @param suppressPlayer Player @The player to suppress any networking to.
 function _G.SuppressHostEvents(suppressPlayer)
 end
 
@@ -1445,13 +1445,13 @@ end
 --- @param y number @Y position of the created element
 --- @param w number @Width of the created element
 --- @param h number @Height of the created element
---- @return GPanel @DShape element
+--- @return Panel @DShape element
 function _G.VGUIRect(x, y, w, h)
 end
 
 --- 🛑 **DEPRECATED**: You should use Global.IsValid instead  
 --- Returns if a panel is safe to use.  
---- @param panel GPanel @The panel to validate.
+--- @param panel Panel @The panel to validate.
 function _G.ValidPanel(panel)
 end
 
@@ -1459,24 +1459,24 @@ end
 --- @param x number @The x component of the vector
 --- @param y number @The y component of the vector.
 --- @param z number @The z component of the vector.
---- @return GVector @The created vector object.
+--- @return Vector @The created vector object.
 function _G.Vector(x, y, z)
 end
 
 --- Returns a random vector whose components are each between min(inclusive), max(exclusive).  
 --- @param min number @Min bound inclusive.
 --- @param max number @Max bound exclusive.
---- @return GVector @The random direction vector.
+--- @return Vector @The random direction vector.
 function _G.VectorRand(min, max)
 end
 
 --- Translates the specified position and angle into the specified coordinate system.  
---- @param position GVector @The position that should be translated from the current to the new system.
---- @param angle GAngle @The angles that should be translated from the current to the new system.
---- @param newSystemOrigin GVector @The origin of the system to translate to.
---- @param newSystemAngles GAngle @The angles of the system to translate to.
---- @return GVector @Local position
---- @return GAngle @Local angles
+--- @param position Vector @The position that should be translated from the current to the new system.
+--- @param angle Angle @The angles that should be translated from the current to the new system.
+--- @param newSystemOrigin Vector @The origin of the system to translate to.
+--- @param newSystemAngles Angle @The angles of the system to translate to.
+--- @return Vector @Local position
+--- @return Angle @Local angles
 function _G.WorldToLocal(position, angle, newSystemOrigin, newSystemAngles)
 end
 

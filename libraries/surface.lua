@@ -221,7 +221,7 @@ end
 --- ```lua  
 --- material:SetInt( "$flags", bit.bor( material:GetInt( "$flags" ), 32768 ) )  
 --- ```  
---- @param material GIMaterial @The material to be used.
+--- @param material IMaterial @The material to be used.
 function surface.SetMaterial(material)
 end
 

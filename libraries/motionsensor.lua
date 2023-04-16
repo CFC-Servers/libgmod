@@ -2,21 +2,21 @@
 --- ⚠ **WARNING**: Kinect feature works only on 32-bit version of the game.  
 _G.motionsensor = {}
 --- @param translator table 
---- @param player GPlayer 
---- @param rotation GAngle 
---- @return GVector @Pos
---- @return GAngle @ang
+--- @param player Player 
+--- @param rotation Angle 
+--- @return Vector @Pos
+--- @return Angle @ang
 --- @return sensor @sensor
 function motionsensor.BuildSkeleton(translator, player, rotation)
 end
 
---- @param ent GEntity @Entity to choose builder for
+--- @param ent Entity @Entity to choose builder for
 --- @return string @Chosen builder
 function motionsensor.ChooseBuilderFromEntity(ent)
 end
 
 --- Returns the depth map material.  
---- @return GIMaterial @The material
+--- @return IMaterial @The material
 function motionsensor.GetColourMaterial()
 end
 
@@ -35,8 +35,8 @@ end
 
 --- @param translator table 
 --- @param sensor table 
---- @param pos GVector 
---- @param ang GAngle 
+--- @param pos Vector 
+--- @param ang Angle 
 --- @param special_vectors table 
 --- @param boneid number 
 --- @param v table 
@@ -46,15 +46,15 @@ end
 
 --- @param translator table 
 --- @param sensor table 
---- @param pos GVector 
---- @param rotation GAngle 
---- @return GAngle @Ang
+--- @param pos Vector 
+--- @param rotation Angle 
+--- @return Angle @Ang
 function motionsensor.ProcessAnglesTable(translator, sensor, pos, rotation)
 end
 
 --- @param translator table 
 --- @param sensor table 
---- @return GVector @Pos
+--- @return Vector @Pos
 function motionsensor.ProcessPositionTable(translator, sensor)
 end
 

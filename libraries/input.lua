@@ -72,7 +72,7 @@ function input.LookupKeyBinding(key)
 end
 
 --- Switches to the provided weapon on the next CUserCmd generation/CreateMove call. Direct binding to [CInput::MakeWeaponSelection](https://github.com/LestaD/SourceEngine2007/blob/43a5c90a5ada1e69ca044595383be67f40b33c61/se2007/game/client/in_main.cpp#L929-L932).  
---- @param weapon GWeapon @The weapon entity to switch to.
+--- @param weapon Weapon @The weapon entity to switch to.
 function input.SelectWeapon(weapon)
 end
 
