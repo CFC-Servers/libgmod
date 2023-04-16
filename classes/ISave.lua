@@ -37,8 +37,8 @@ end
 function ISave:WriteInt(int)
 end
 
---- Writes a string to the save object.  
---- @param str string @The string to write
+--- Writes a **null terminated** string to the save object.  
+--- @param str string @The string to write.
 function ISave:WriteString(str)
 end
 

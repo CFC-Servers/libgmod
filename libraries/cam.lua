@@ -33,13 +33,15 @@ end
 function cam.EndOrthoView()
 end
 
---- Returns the currently active model matrix.  
---- ⁉ **VALIDATE**: Does this actually mean the matrix on top of the stack? Probably  
+--- Returns a copy of the model matrix that is at the top of the stack.  
+--- ℹ **NOTE**: Editing the matrix **will not** edit the current view. To do so, you will have to **push** it.  
+--- ℹ **NOTE**: This function essentially returns the copy of the last pushed model matrix.  
 --- @return VMatrix @The currently active matrix.
 function cam.GetModelMatrix()
 end
 
 --- Tells the renderer to ignore the depth buffer and draw any upcoming operation "ontop" of everything that was drawn yet.  
+--- This is identical to calling `render.DepthRange( 0, 0.01 )` for `true` and  `render.DepthRange( 0, 1 )` for `false`. See render.DepthRange.  
 --- @param ignoreZ boolean @Determines whenever to ignore the depth buffer or not.
 function cam.IgnoreZ(ignoreZ)
 end
@@ -96,7 +98,7 @@ end
 --- m:SetScale(Vector(scale, -scale, 1))  
 --- ```  
 --- 🟥 **NOTE**: Provides a 2D rendering context  
---- <rendercontext hook="false" type="3D"></rendercontext>  
+--- <rendercontext hook="true" type="3D"></rendercontext>  
 --- ⚠ **WARNING**: This should be closed by cam.End3D2D otherwise the game crashes  
 --- @param pos Vector @Origin of the 3D2D context, ie
 --- @param angles Angle @Angles of the 3D2D context

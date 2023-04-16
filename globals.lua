@@ -1,6 +1,6 @@
 --- Adds simple Get/Set accessor functions on the specified table.  
 --- Can also force the value to be set to a number, bool or string.  
---- @param tab table @The table to add the accessor functions too.
+--- @param tab table @The table to add the accessor functions to.
 --- @param key any @The key of the table to be get/set.
 --- @param name string @The name of the functions (will be prefixed with Get and Set).
 --- @param force? number @The type the setter should force to (uses Enums/FORCE).
@@ -8,16 +8,26 @@ function _G.AccessorFunc(tab, key, name, force)
 end
 
 --- Marks a Lua file to be sent to clients when they join the server. Doesn't do anything on the client - this means you can use it in a shared file without problems.  
---- ⚠ **WARNING**: If the file trying to be added is empty, an error will occur, and the file will not be sent to the client.  
+--- ⚠ **WARNING**: If the file trying to be added is empty, an error will occur, and the file will not be sent to the client  
+--- The string cannot have whitespace.  
 --- ℹ **NOTE**: This function is not needed for scripts located in **lua/autorun/** and **lua/autorun/client/**: they are automatically sent to clients.  
---- ℹ **NOTE**: You can add up to 8192 files.  
---- @param file? string @The name/path to the Lua file that should be sent, relative to the garrysmod/lua folder
+--- You can add up to **8192** files. Each file can be up to **64KB** compressed (LZMA)  
+--- @param file? string @The name/path to the Lua file that should be sent, **relative to the garrysmod/lua folder**
 function _G.AddCSLuaFile(file)
 end
 
 --- Adds the specified vector to the PVS which is currently building. This allows all objects in visleafs visible from that vector to be drawn.  
 --- @param position Vector @The origin to add.
 function _G.AddOriginToPVS(position)
+end
+
+--- This function creates a Custom Category in the Spawnlist. Use Global.GenerateSpawnlistFromPath if you want to create a category with the contents of a folder.  
+--- ⚠ **WARNING**: Using this function before SANDBOX:PopulateContent has been called will result in an error  
+--- @param pnlContent panel @The SMContentPanel of the Node
+--- @param node panel @The Node
+--- @param parentid number @The ParentID to use
+--- @param customProps table @The Table with the Contents of the new Category
+function _G.AddPropsOfParent(pnlContent, node, parentid, customProps)
 end
 
 --- This function creates a World Tip, similar to the one shown when aiming at a Thruster where it shows you its force.  
@@ -38,14 +48,14 @@ end
 function _G.Add_NPC_Class(name)
 end
 
---- Loads the specified image from the /cache folder, used in combination steamworks.Download.  
---- Most addons will provide a 512x512 png image.  
+--- Loads the specified image from the `/cache` folder, used in combination steamworks.Download. Most addons will provide a 512x512 png image.  
 --- @param name string @The name of the file.
---- @return IMaterial @The material, returns nil if the cached file is not an image.
+--- @return IMaterial @The material, returns `nil` if the cached file is not an image.
 function _G.AddonMaterial(name)
 end
 
 --- Creates an Angle object.  
+--- ⚠ **WARNING**: This function is very expensive when used in often running hooks or in operations requiring very frequent calls (like loops for example). It is better to store the angle in a variable or to use the [default angle](https://wiki.facepunch.com/gmod/Global_Variables#misc) available.  
 --- @param pitch? number @The pitch value of the angle
 --- @param yaw? number @The yaw value of the angle.
 --- @param roll? number @The roll value of the angle.
@@ -61,7 +71,10 @@ function _G.AngleRand(min, max)
 end
 
 --- Sends the specified Lua code to all connected clients and executes it.  
---- ℹ **NOTE**: If you need to use this function more than once consider using net library. Send net message and make the entire code you want to execute in net.Receive on client.  
+--- ℹ **NOTE**:   
+--- If you need to use this function more than once, consider using net library.  
+--- Send net message and make the entire code you want to execute in net.Receive on client.  
+--- If executed **clientside** it won't do anything.  
 --- @param code string @The code to be executed
 function _G.BroadcastLua(code)
 end
@@ -77,12 +90,12 @@ function _G.ChangeTooltip(panel)
 end
 
 --- Creates a non physical entity that only exists on the client. See also ents.CreateClientProp.  
---- 🦟 **BUG**: [Parented clientside models will become detached if the parent entity leaves the PVS.](https://github.com/Facepunch/garrysmod-issues/issues/861)  
---- 🦟 **BUG**: [Clientside entities are not garbage-collected, thus you must store a reference to the object and call CSEnt:Remove manually.](https://github.com/Facepunch/garrysmod-issues/issues/1387)  
+--- 🦟 **BUG**: [Parented clientside models will become detached if the parent entity leaves the PVS. **A workaround is available on its github page.**](https://github.com/Facepunch/garrysmod-issues/issues/861)  
+--- 🦟 **BUG**: [Clientside entities are not garbage-collected, thus you must store a reference to the object and call CSEnt:Remove manually. **To workaround this bug, you need to hold a reference (in a variable) to the entity and remove it when necessary.**](https://github.com/Facepunch/garrysmod-issues/issues/1387)  
 --- 🦟 **BUG**: [Clientside models will occasionally delete themselves during high server lag.](https://github.com/Facepunch/garrysmod-issues/issues/3184)  
 --- @param model string @The file path to the model
 --- @param renderGroup? number @The render group of the entity for the clientside leaf system, see Enums/RENDERGROUP.
---- @return CSEnt @Created client-side model
+--- @return CSEnt @Created client-side model (`C_BaseFlex`).
 function _G.ClientsideModel(model, renderGroup)
 end
 
@@ -109,10 +122,11 @@ function _G.CloseDermaMenus()
 end
 
 --- Creates a Color.  
---- @param r number @An integer from 0-255 describing the red value of the color.
---- @param g number @An integer from 0-255 describing the green value of the color.
---- @param b number @An integer from 0-255 describing the blue value of the color.
---- @param a? number @An integer from 0-255 describing the alpha (transparency) of the color.
+--- ⚠ **WARNING**: This function is very expensive when used in rendering hooks or in operations requiring very frequent calls (like loops for example). It is better to store the color in a variable or to use the [default colors](https://wiki.facepunch.com/gmod/Global_Variables#misc) available.  
+--- @param r number @An integer from `0-255` describing the red value of the color.
+--- @param g number @An integer from `0-255` describing the green value of the color.
+--- @param b number @An integer from `0-255` describing the blue value of the color.
+--- @param a? number @An integer from `0-255` describing the alpha (transparency) of the color.
 --- @return table @The created Color.
 function _G.Color(r, g, b, a)
 end
@@ -132,17 +146,17 @@ end
 
 --- Converts a Color into HSL color space.  
 --- @param color table @The Color.
---- @return number @The hue in degrees [0, 360).
---- @return number @The saturation in the range [0, 1].
---- @return number @The lightness in the range [0, 1].
+--- @return number @The hue in degrees `[0, 360]`.
+--- @return number @The saturation in the range `[0, 1]`.
+--- @return number @The lightness in the range `[0, 1]`.
 function _G.ColorToHSL(color)
 end
 
 --- Converts a Color into HSV color space.  
 --- @param color table @The Color.
---- @return number @The hue in degrees [0, 360).
---- @return number @The saturation in the range [0, 1].
---- @return number @The value in the range [0, 1].
+--- @return number @The hue in degrees `[0, 360]`.
+--- @return number @The saturation in the range `[0, 1]`.
+--- @return number @The value in the range `[0, 1]`.
 function _G.ColorToHSV(color)
 end
 
@@ -172,7 +186,7 @@ end
 --- Although this function is shared, it should only be used clientside.  
 --- @param name string @Name of the ConVar to be created and able to be accessed
 --- @param default string @Default value of the ConVar.
---- @param shouldsave? boolean @Should the ConVar be saved across sessions
+--- @param shouldsave? boolean @Should the ConVar be saved across sessions in the cfg/client.vdf file.
 --- @param userinfo? boolean @Should the ConVar and its containing data be sent to the server when it has changed
 --- @param helptext string @Help text to display in the console.
 --- @param min? number @If set, the convar cannot be changed to a number lower than this value.
@@ -182,7 +196,7 @@ function _G.CreateClientConVar(name, default, shouldsave, userinfo, helptext, mi
 end
 
 --- Creates a console variable (ConVar), in general these are for things like gamemode/server settings.  
---- 🦟 **BUG**: [FCVAR_ARCHIVE causes default value replication issues on clientside FCVAR_REPLICATED convars and should be omitted clientside as a workaround](https://github.com/Facepunch/garrysmod-issues/issues/3323)  
+--- ⚠ **WARNING**: Do not use the FCVAR_NEVER_AS_STRING and FCVAR_REPLICATED flags together, as this can cause the console variable to have strange values on the client.  
 --- @param name string @Name of the ConVar
 --- @param value string @Default value of the convar
 --- @param flags? number @Flags of the convar, see Enums/FCVAR, either as bitflag or as table.
@@ -195,8 +209,8 @@ end
 
 --- Creates a new material with the specified name and shader.  
 --- ℹ **NOTE**: Materials created with this function can be used in Entity:SetMaterial and Entity:SetSubMaterial by prepending a "!" to their material name argument.  
+--- ℹ **NOTE**: This does not work with [patch materials](https://developer.valvesoftware.com/wiki/Patch).  
 --- 🦟 **BUG**: [.pngs must be loaded with Global.Material before being used with this function.](https://github.com/Facepunch/garrysmod-issues/issues/1531)  
---- 🦟 **BUG**: [This does not work with [patch materials](https://developer.valvesoftware.com/wiki/Patch).](https://github.com/Facepunch/garrysmod-issues/issues/2511)  
 --- 🦟 **BUG**: [This will not create a new material if another material object with the same name already exists.](https://github.com/Facepunch/garrysmod-issues/issues/3103)  
 --- @param name string @The material name
 --- @param shaderName string @The shader name
@@ -258,10 +272,12 @@ end
 
 --- This is not a function. This is a preprocessor keyword that translates to:  
 --- ```  
---- local BaseClass = baseclass.Get("my_weapon")  
+--- local BaseClass = baseclass.Get( "my_weapon" )  
 --- ```  
---- If you type `DEFINE_BASECLASS("my_weapon")` in your script.  
+--- If you type `DEFINE_BASECLASS( "my_weapon" )` in your script.  
 --- See baseclass.Get for more information.  
+--- ⚠ **WARNING**: The preprocessor is not smart enough to know when substitution doesn't make sense, such as: table keys and strings.  
+--- Running `print("DEFINE_BASECLASS")` will result in `local BaseClass = baseclass.Get`  
 --- @param value string @Baseclass name
 function _G.DEFINE_BASECLASS(value)
 end
@@ -273,6 +289,15 @@ end
 --- Cancels any existing DOF post-process effects.  
 --- Begins the DOF post-process effect.  
 function _G.DOF_Start()
+end
+
+--- Calls all NetworkVarNotify functions of the given entity with the given new value, but doesn't change the real value.  
+--- internally uses Entity:CallDTVarProxies  
+--- @param entity Entity @The Entity to run the NetworkVarNotify functions from.
+--- @param Type string @The NetworkVar Type
+--- @param index number @The NetworkVar index.
+--- @param new_value any @The new value.
+function _G.DTVar_ReceiveProxyGL(entity, Type, index, new_value)
 end
 
 --- Returns an CTakeDamageInfo object.  
@@ -293,9 +318,10 @@ function _G.DeriveGamemode(base)
 end
 
 --- Creates a DMenu and closes any current menus.  
---- @param parent Panel @The panel to parent the created menu to.
---- @return Panel @The created DMenu
-function _G.DermaMenu(parent)
+--- @param keepOpen? boolean @If we should keep other DMenus open (`true`) or not (`false`).
+--- @param parent? Panel @The panel to parent the created menu to.
+--- @return Panel @The created DMenu.
+function _G.DermaMenu(keepOpen, parent)
 end
 
 --- Creates a new derma animation.  
@@ -351,7 +377,7 @@ end
 --- @param btn2func? function @The function to run if the user clicks the second button.
 --- @param btn3text? string @The text to display on the third button
 --- @param btn3func? function @The function to run if the user clicks the third button.
---- @param btn4text? string @The text to display on the third button
+--- @param btn4text? string @The text to display on the fourth button
 --- @param btn4func? function @The function to run if the user clicks the fourth button.
 --- @return Panel @The Panel object of the created window.
 function _G.Derma_Query(text, title, btn1text, btn1func, btn2text, btn2func, btn3text, btn3func, btn4text, btn4func)
@@ -389,6 +415,13 @@ end
 function _G.DrawBloom(Darken, Multiply, SizeX, SizeY, Passes, ColorMultiply, Red, Green, Blue)
 end
 
+--- Draws the Bokeh Depth Of Field effect .  
+--- @param intensity number @Intensity of the effect.
+--- @param distance number @**Not worldspace distance**
+--- @param focus number @Focus
+function _G.DrawBokehDOF(intensity, distance, focus)
+end
+
 --- Draws the Color Modify shader, which can be used to adjust colors on screen.  
 --- @param modifyParameters table @Color modification parameters
 function _G.DrawColorModify(modifyParameters)
@@ -418,12 +451,12 @@ end
 function _G.DrawSobel(Threshold)
 end
 
---- Renders the post-processing effect of beams of light originating from the map's sun. Utilises the "pp/sunbeams" material  
---- @param darken number @$darken property for sunbeams material
---- @param multiplier number @$multiply property for sunbeams material
---- @param sunSize number @$sunsize property for sunbeams material
---- @param sunX number @$sunx property for sunbeams material
---- @param sunY number @$suny property for sunbeams material
+--- Renders the post-processing effect of beams of light originating from the map's sun. Utilises the `pp/sunbeams` material.  
+--- @param darken number @`$darken` property for sunbeams material.
+--- @param multiplier number @`$multiply` property for sunbeams material.
+--- @param sunSize number @`$sunsize` property for sunbeams material.
+--- @param sunX number @`$sunx` property for sunbeams material.
+--- @param sunY number @`$suny` property for sunbeams material.
 function _G.DrawSunbeams(darken, multiplier, sunSize, sunX, sunY)
 end
 
@@ -460,8 +493,25 @@ end
 function _G.EffectData()
 end
 
---- A compact 'if then else'. This is *almost* equivalent to (`condition` and `truevar` or `falsevar`) in Lua.  
---- The difference is that if `truevar` evaluates to false, the plain Lua method stated would return `falsevar` regardless of `condition` whilst this function would take `condition` into account.  
+--- An [eagerly evaluated](https://en.wikipedia.org/wiki/Eager_evaluation) [ternary operator](https://en.wikipedia.org/wiki/%3F:), or, in layman's terms, a compact "if then else" statement.  
+--- In most cases, you should just use Lua's ["pseudo" ternary operator](https://en.wikipedia.org/wiki/%3F:#Lua), like this:  
+--- ```  
+--- local myCondition = true  
+--- local consequent = "myCondition is true"  
+--- local alternative = "myCondition is false"  
+--- print(myCondition and consequent or alternative)  
+--- ```  
+--- In the above example, due to [short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation), `consequent` would be "skipped" and ignored (not evaluated) by Lua due to `myCondition` being `true`, and only `alternative` would be evaluated. However, when using `Either`, both `consequent` and `alternative` would be evaluated. A practical example of this can be found at the bottom of the page.  
+--- # Falsey values  
+--- If `consequent` is "falsey" (Lua considers both `false` and `nil` as false), this will not work. For example:  
+--- ```  
+--- local X = true  
+--- local Y = false  
+--- local Z = "myCondition is false"  
+--- print(X and Y or Z)  
+--- ```  
+--- This will actually print the value of `Z`.  
+--- In the above case, and other very rare cases, you may find `Either` useful.  
 --- @param condition any @The condition to check if true or false.
 --- @param truevar any @If the condition isn't nil/false, returns this value.
 --- @param falsevar any @If the condition is nil/false, returns this value.
@@ -482,17 +532,17 @@ function _G.EmitSentence(soundName, position, entity, channel, volume, soundLeve
 end
 
 --- Emits the specified sound at the specified position.  
---- 🦟 **BUG**: Sounds must be precached serverside manually before they can be played. util.PrecacheSound does not work for this purpose, Entity.EmitSound does the trick  
---- 🦟 **BUG**: This does not work with soundscripts. TODO: Is this a bug or intended?  
+--- 🦟 **BUG**: Sounds must be precached serverside manually before they can be played. util.PrecacheSound does not work for this purpose, Entity:EmitSound does the trick  
 --- @param soundName string @The sound to play
---- @param position Vector @The position to play at
+--- @param position Vector @The position where the sound is meant to play, used only for a network  filter (`CPASAttenuationFilter`) to decide which players will hear t
 --- @param entity number @The entity to emit the sound from
 --- @param channel? number @The sound channel, see Enums/CHAN.
 --- @param volume? number @The volume of the sound, from 0 to 1
 --- @param soundLevel? number @The sound level of the sound, see Enums/SNDLVL
 --- @param soundFlags? number @The flags of the sound, see Enums/SND
 --- @param pitch? number @The pitch of the sound, 0-255
-function _G.EmitSound(soundName, position, entity, channel, volume, soundLevel, soundFlags, pitch)
+--- @param dsp? number @The DSP preset for this sound
+function _G.EmitSound(soundName, position, entity, channel, volume, soundLevel, soundFlags, pitch, dsp)
 end
 
 --- Removes the currently active tool tip from the screen.  
@@ -501,15 +551,14 @@ function _G.EndTooltip(panel)
 end
 
 --- Returns the entity with the matching Entity:EntIndex.  
---- Indices 1 through game.MaxPlayers() are always reserved for players.  
---- ℹ **NOTE**: In examples on this wiki, **Entity( 1 )** is used when a player entity is needed (see ). In singleplayer and listen servers, **Entity( 1 )** will always be the first player. In dedicated servers, however, **Entity( 1 )** won't always be a valid player.  
+--- Indices `1` through game.MaxPlayers() are always reserved for players.  
+--- ℹ **NOTE**: In examples on this wiki, `Entity( 1 )` is used when a player entity is needed (see ). In singleplayer and listen servers, `Entity( 1 )` will always be the first player. In dedicated servers, however, `Entity( 1 )` won't always be a valid player if there is no one currently on the server.  
 --- @param entityIndex number @The entity index.
 --- @return Entity @The entity if it exists, or NULL if it doesn't.
 function _G.Entity(entityIndex)
 end
 
 --- Throws an error. This is currently an alias of Global.ErrorNoHalt despite it once throwing a halting error like error without the stack trace appended.  
---- 🦟 **BUG**: [Using this function in the menu state exits the menu.](https://github.com/Facepunch/garrysmod-issues/issues/1810)  
 --- 🦟 **BUG**: [This function throws a non-halting error instead of a halting error.](https://github.com/Facepunch/garrysmod-issues/issues/2113)  
 --- @vararg any @Converts all arguments to strings and prints them with no spacing or line breaks.
 function _G.Error(...)
@@ -518,9 +567,14 @@ end
 --- Throws a Lua error but does not break out of the current call stack.  
 --- This function will not print a stack trace like a normal error would.  
 --- Essentially similar if not equivalent to Global.Msg.  
---- 🦟 **BUG**: [Using this function in the menu state exits the menu.](https://github.com/Facepunch/garrysmod-issues/issues/1810)  
 --- @vararg any @Converts all arguments to strings and prints them with no spacing.
 function _G.ErrorNoHalt(...)
+end
+
+--- Throws a Lua error but does not break out of the current call stack.  
+--- This function will print a stack trace like a normal error would.  
+--- @vararg any @Converts all arguments to strings and prints them with no spacing.
+function _G.ErrorNoHaltWithStack(...)
 end
 
 --- Returns the angles of the current render context as calculated by GM:CalcView.  
@@ -576,8 +630,24 @@ end
 function _G.FrameTime()
 end
 
+--- This function adds all models from a specified folder to a custom Spawnlist category. Internally uses Global.AddPropsOfParent  
+--- ⚠ **WARNING**: Using this function before SANDBOX:PopulateContent has been called will result in an error  
+--- @param folder string @the folder to search for models
+--- @param path string @The path to look for the files and directories in
+--- @param name string @The Spawnmenu Category name
+--- @param icon? string @The Spawnmenu Category Icon to use
+--- @param appid number @The AppID which is needed for the Content
+function _G.GenerateSpawnlistFromPath(folder, path, name, icon, appid)
+end
+
 --- Gets the ConVar with the specified name.  
 --- ℹ **NOTE**: This function uses Global.GetConVar_Internal internally, but caches the result in Lua for quicker lookups.  
+--- ⚠ **WARNING**: Due to this function using Global.GetConVar_Internal internally it tends to be relatively slow. Please attempt to 'cache' the return of what you used to make it instead of using this function.  
+--- Example:  
+--- ```  
+--- local exampleConvar = CreateClientConVar("exampleConvar", "hi")  
+--- print(exampleConvar:GetString())  
+--- ```  
 --- @param name string @Name of the ConVar to get
 --- @return ConVar @The ConVar object, or nil if no such ConVar was found.
 function _G.GetConVar(name)
@@ -595,6 +665,63 @@ end
 --- @param name string @Name of the ConVar to get.
 --- @return string @The ConVar's value.
 function _G.GetConVarString(name)
+end
+
+--- Returns an angle that is shared between the server and all clients.  
+--- @param index string @The unique index to identify the global value with.
+--- @param default? Angle @The value to return if the global value is not set.
+--- @return Angle @The global value, or default if the global is not set.
+function _G.GetGlobal2Angle(index, default)
+end
+
+--- Returns a boolean that is shared between the server and all clients.  
+--- @param index string @The unique index to identify the global value with.
+--- @param default? boolean @The value to return if the global value is not set.
+--- @return boolean @The global value, or the default if the global value is not set.
+function _G.GetGlobal2Bool(index, default)
+end
+
+--- Returns an entity that is shared between the server and all clients.  
+--- @param index string @The unique index to identify the global value with.
+--- @param default? Entity @The value to return if the global value is not set.
+--- @return Entity @The global value, or the default if the global value is not set.
+function _G.GetGlobal2Entity(index, default)
+end
+
+--- Returns a float that is shared between the server and all clients.  
+--- @param index string @The unique index to identify the global value with.
+--- @param default? number @The value to return if the global value is not set.
+--- @return number @The global value, or the default if the global value is not set.
+function _G.GetGlobal2Float(index, default)
+end
+
+--- Returns an integer that is shared between the server and all clients.  
+--- ⚠ **WARNING**: The integer has a 32 bit limit. Use Global.GetGlobalInt for a higher limit  
+--- @param index string @The unique index to identify the global value with.
+--- @param default? number @The value to return if the global value is not set.
+--- @return number @The global value, or the default if the global value is not set.
+function _G.GetGlobal2Int(index, default)
+end
+
+--- Returns a string that is shared between the server and all clients.  
+--- @param index string @The unique index to identify the global value with.
+--- @param default string @The value to return if the global value is not set.
+--- @return string @The global value, or the default if the global value is not set.
+function _G.GetGlobal2String(index, default)
+end
+
+--- Returns a value that is shared between the server and all clients.  
+--- @param index string @The unique index to identify the global value with.
+--- @param default? any @The value to return if the global value is not set.
+--- @return any @The global value, or the default if the global value is not set.
+function _G.GetGlobal2Var(index, default)
+end
+
+--- Returns a vector that is shared between the server and all clients.  
+--- @param Index string @The unique index to identify the global value with.
+--- @param Default Vector @The value to return if the global value is not set.
+--- @return Vector @The global value, or the default if the global value is not set.
+function _G.GetGlobal2Vector(Index, Default)
 end
 
 --- Returns an angle that is shared between the server and all clients.  
@@ -640,6 +767,13 @@ end
 function _G.GetGlobalString(index, default)
 end
 
+--- Returns a value that is shared between the server and all clients.  
+--- @param index string @The unique index to identify the global value with.
+--- @param default? any @The value to return if the global value is not set.
+--- @return any @The global value, or the default if the global value is not set.
+function _G.GetGlobalVar(index, default)
+end
+
 --- Returns a vector that is shared between the server and all clients.  
 --- @param Index string @The unique index to identify the global value with.
 --- @param Default Vector @The value to return if the global value is not set.
@@ -647,7 +781,7 @@ end
 function _G.GetGlobalVector(Index, Default)
 end
 
---- Returns the panel that is used as a wrapper for the HUD.  
+--- Returns the panel that is used as a wrapper for the HUD. If you want your panel to be hidden when the main menu is opened, parent it to this. Child panels will also have their controls disabled.  
 --- See also vgui.GetWorldPanel  
 --- @return Panel @The HUD panel
 function _G.GetHUDPanel()
@@ -666,12 +800,23 @@ end
 --- Creates or gets the rendertarget with the given name.  
 --- See Global.GetRenderTargetEx for an advanced version of this function with more options.  
 --- 🦟 **BUG**: [This crashes when used on a cubemap texture.](https://github.com/Facepunch/garrysmod-issues/issues/2885)  
+--- ℹ **NOTE**:   
+--- Calling this function is equivalent to  
+--- ```lua  
+--- GetRenderTargetEx(name,  
+--- width, height,  
+--- RT_SIZE_NO_CHANGE,  
+--- MATERIAL_RT_DEPTH_SEPARATE,  
+--- bit.bor(2, 256),  
+--- 0,  
+--- IMAGE_FORMAT_BGRA8888  
+--- )  
+--- ```  
 --- @param name string @The internal name of the render target.
 --- @param width number @The width of the render target, must be power of 2
 --- @param height number @The height of the render target, must be power of 2
---- @param additive? boolean @Sets whenever the rt should be additive.
 --- @return ITexture @The render target
-function _G.GetRenderTarget(name, width, height, additive)
+function _G.GetRenderTarget(name, width, height)
 end
 
 --- Gets (or creates if it does not exist) the rendertarget with the given name, this function allows to adjust the creation of a rendertarget more than Global.GetRenderTarget.  
@@ -683,9 +828,15 @@ end
 --- @param depthMode number @Bitflag that determines the depth buffer usage of the render target Enums/MATERIAL_RT_DEPTH.
 --- @param textureFlags number @Bitflag that configurates the texture, see Enums/TEXTUREFLAGS
 --- @param rtFlags number @Flags that controll the HDR behaviour of the render target, see Enums/CREATERENDERTARGETFLAGS.
---- @param imageFormat number @Image format, see Enums/IMAGE_FORMAT.
+--- @param imageFormat number @Image format, see Enums/IMAGE_FORMAT
 --- @return ITexture @The new render target.
 function _G.GetRenderTargetEx(name, width, height, sizeMode, depthMode, textureFlags, rtFlags, imageFormat)
+end
+
+--- Returns if the client is timing out, and time since last ping from the server. Similar to the server side Player:IsTimingOut.  
+--- @return boolean @Is timing out?
+--- @return number @Get time since last pinged received.
+function _G.GetTimeoutInfo()
 end
 
 --- Returns the entity the client is using to see from (such as the player itself, the camera, or another entity).  
@@ -713,9 +864,10 @@ end
 
 --- Launches an asynchronous http request with the given parameters.  
 --- 🦟 **BUG**: [This cannot send or receive multiple headers with the same name.](https://github.com/Facepunch/garrysmod-issues/issues/2232)  
---- ℹ **NOTE**: HTTP-requests on private networks don't work. To enable HTTP-requests on private networks use Command Line Parameters `-allowlocalhttp`  
+--- ℹ **NOTE**: HTTP-requests to destinations on private networks (such as `192.168.0.1`) won't work.  
+--- To enable HTTP-requests to destinations on private networks use Command Line Parameters `-allowlocalhttp`.  
 --- @param parameters table @The request parameters
---- @return boolean @true if we made a request, nil if we failed.
+--- @return boolean @`true` if we made a request, `nil` if we failed.
 function _G.HTTP(parameters)
 end
 
@@ -862,11 +1014,11 @@ end
 
 --- Performs a linear interpolation from the start number to the end number.  
 --- This function provides a very efficient and easy way to smooth out movements.  
---- ℹ **NOTE**: This function is not meant to be used with constant value in the first argument, if you're dealing with animation! Use a value that changes over time. See example for **proper** usage of Lerp for animations  
+--- ℹ **NOTE**: This function is not meant to be used with constant value in the first argument, if you're dealing with animation! Use a value that changes over time. See example for **proper** usage of Lerp for animations.  
 --- @param t number @The fraction for finding the result
 --- @param from number @The starting number
 --- @param to number @The ending number
---- @return number @The result of the linear interpolation, `(1 - t) * from + t * to`.
+--- @return number @The result of the linear interpolation, `from + (to - from) * t`.
 function _G.Lerp(t, from, to)
 end
 
@@ -919,14 +1071,15 @@ end
 
 --- Either returns the material with the given name, or loads the material interpreting the first argument as the path.  
 --- ℹ **NOTE**: When using .png or .jpg textures, try to make their sizes Power Of 2 (1, 2, 4, 8, 16, 32, 64, etc). While images are no longer scaled to Power of 2 sizes since February 2019, it is a good practice for things like icons, etc.  
+--- ⚠ **WARNING**: This function is very expensive when used in rendering hooks or in operations requiring very frequent calls. It is better to store the Material in a variable (like in the examples).  
 --- @param materialName string @The material name or path
 --- @param pngParameters? string @A string containing space separated keywords which will be used to add material parameters
---- @return IMaterial @Generated material
---- @return number @How long it took for the function to run
+--- @return IMaterial @Generated material.
+--- @return number @How long it took for the function to run.
 function _G.Material(materialName, pngParameters)
 end
 
---- Returns a VMatrix object.  
+--- Returns a VMatrix object, a 4x4 matrix.  
 --- @param data? table @Initial data to initialize the matrix with
 --- @return VMatrix @New matrix.
 function _G.Matrix(data)
@@ -938,9 +1091,9 @@ end
 function _G.Mesh(mat)
 end
 
---- Runs util.PrecacheModel and returns the string  
---- @param model string @The model to precache
---- @return string @The same string entered as an argument
+--- Runs util.PrecacheModel and returns the string.  
+--- @param model string @The model to precache.
+--- @return string @The same string entered as an argument.
 function _G.Model(model)
 end
 
@@ -1102,19 +1255,20 @@ end
 function _G.RealFrameTime()
 end
 
---- Returns the uptime of the game/server in seconds (to at least 4 decimal places)  
+--- Returns the uptime of the game/server in seconds (to at least **4** decimal places). This value updates itself once every time the realm thinks. For servers, this is the server tickrate. For clients, its their current FPS.  
 --- ℹ **NOTE**: This is **not** synchronised or affected by the game.  
---- ℹ **NOTE**: This will be affected by precision loss if the uptime is more than 30+(?) days, and effectively cease to be functional after 50+(?) days.  
---- Changing the map will **not** fix it like it does with CurTime. A server restart is necessary.  
---- You should use this function (or SysTime) for timing real-world events such as user interaction, but not for timing game events such as animations.  
+--- This will be affected by precision loss if the uptime is more than 30+(?) days, and effectively cease to be functional after 50+(?) days.  
+--- Changing the map will **not** fix it like it does with Global.CurTime. A server restart is necessary.  
+--- You should use this function (or Global.SysTime) for timing real-world events such as user interaction, but not for timing game events such as animations.  
 --- See also: Global.CurTime, Global.SysTime  
 --- @return number @Uptime of the game/server.
 function _G.RealTime()
 end
 
 --- Creates a new CRecipientFilter.  
+--- @param unreliable? boolean @If set to true, makes the filter unreliable
 --- @return CRecipientFilter @The new created recipient filter.
-function _G.RecipientFilter()
+function _G.RecipientFilter(unreliable)
 end
 
 --- Registers a Derma element to be closed the next time Global.CloseDermaMenus is called  
@@ -1234,6 +1388,7 @@ end
 
 --- Returns a number based on the Size argument and your screen's width. The screen's width is always equal to size 640. This function is primarily used for scaling font sizes.  
 --- @param Size number @The number you want to scale.
+--- @return number @The scaled number based on your screen's width
 function _G.ScreenScale(Size)
 end
 
@@ -1246,13 +1401,14 @@ end
 function _G.SendUserMessage(name, recipients, ...)
 end
 
---- Returns approximate duration of a sentence by name. See Global.EmitSentence  
---- @param name string @The sentence name
---- @return number @The approximate duration
+--- Returns approximate duration of a sentence by name. See Global.EmitSentence.  
+--- @param name string @The sentence name.
+--- @return number @The approximate duration.
 function _G.SentenceDuration(name)
 end
 
---- Prints "ServerLog: PARAM" without a newline, to the server log and console.  
+--- Prints `ServerLog: PARAM` without a newline, to the server log and console.  
+--- As of June 2022, if `sv_logecho` is set to `0` (defaults to `1`) the message will not print to console and will only be written to the server's log file.  
 --- @param parameter string @The value to be printed to console.
 function _G.ServerLog(parameter)
 end
@@ -1266,10 +1422,80 @@ end
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
 --- @param index any @Index to identify the global angle with
 --- @param angle Angle @Angle to be networked
+function _G.SetGlobal2Angle(index, angle)
+end
+
+--- Defined a boolean to be automatically networked to clients  
+--- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
+--- @param index any @Index to identify the global boolean with
+--- @param bool boolean @Boolean to be networked
+function _G.SetGlobal2Bool(index, bool)
+end
+
+--- Defines an entity to be automatically networked to clients  
+--- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
+--- @param index any @Index to identify the global entity with
+--- @param ent Entity @Entity to be networked
+function _G.SetGlobal2Entity(index, ent)
+end
+
+--- Defines a floating point number to be automatically networked to clients  
+--- ⚠ **WARNING**: This function has a floating point precision error. Use Global.SetGlobalFloat instead  
+--- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
+--- @param index any @Index to identify the global float with
+--- @param float number @Float to be networked
+function _G.SetGlobal2Float(index, float)
+end
+
+--- Sets an integer that is shared between the server and all clients.  
+--- ⚠ **WARNING**: The integer has a 32 bit limit. Use Global.SetGlobalInt instead  
+--- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
+--- @param index string @The unique index to identify the global value with.
+--- @param value number @The value to set the global value to
+function _G.SetGlobal2Int(index, value)
+end
+
+--- Defines a string with a maximum of 511 characters to be automatically networked to clients  
+--- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
+--- @param index any @Index to identify the global string with
+--- @param string string @String to be networked
+function _G.SetGlobal2String(index, string)
+end
+
+--- Defines a variable to be automatically networked to clients  
+--- | Allowed Types   |  
+--- | --------------- |  
+--- | Angle           |  
+--- | Boolean         |  
+--- | Entity          |  
+--- | Float           |  
+--- | Int             |  
+--- | String          |  
+--- | Vector          |  
+--- ⚠ **WARNING**: Trying to network a type that is not listed above will result in a nil value!  
+--- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
+--- @param index any @Index to identify the global vector with
+--- @param value any @Value to be networked
+function _G.SetGlobal2Var(index, value)
+end
+
+--- Defines a vector to be automatically networked to clients  
+--- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
+--- @param index any @Index to identify the global vector with
+--- @param vec Vector @Vector to be networked
+function _G.SetGlobal2Vector(index, vec)
+end
+
+--- Defines an angle to be automatically networked to clients  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Global.SetGlobal2Angle. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
+--- @param index any @Index to identify the global angle with
+--- @param angle Angle @Angle to be networked
 function _G.SetGlobalAngle(index, angle)
 end
 
 --- Defined a boolean to be automatically networked to clients  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Global.SetGlobal2Bool. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
 --- @param index any @Index to identify the global boolean with
 --- @param bool boolean @Boolean to be networked
@@ -1277,6 +1503,7 @@ function _G.SetGlobalBool(index, bool)
 end
 
 --- Defines an entity to be automatically networked to clients  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Global.SetGlobal2Entity. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
 --- @param index any @Index to identify the global entity with
 --- @param ent Entity @Entity to be networked
@@ -1284,6 +1511,7 @@ function _G.SetGlobalEntity(index, ent)
 end
 
 --- Defines a floating point number to be automatically networked to clients  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Global.SetGlobal2Float. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
 --- @param index any @Index to identify the global float with
 --- @param float number @Float to be networked
@@ -1291,6 +1519,7 @@ function _G.SetGlobalFloat(index, float)
 end
 
 --- Sets an integer that is shared between the server and all clients.  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Global.SetGlobal2Int. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
 --- 🦟 **BUG**: [This function will not round decimal values as it actually networks a float internally.](https://github.com/Facepunch/garrysmod-issues/issues/3374)  
 --- @param index string @The unique index to identify the global value with.
@@ -1299,20 +1528,41 @@ function _G.SetGlobalInt(index, value)
 end
 
 --- Defines a string with a maximum of 199 characters to be automatically networked to clients  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Global.SetGlobal2String. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ℹ **NOTE**: If you want to have a higher characters limit use Global.SetGlobal2String  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
 --- @param index any @Index to identify the global string with
 --- @param string string @String to be networked
 function _G.SetGlobalString(index, string)
 end
 
+--- Defines a variable to be automatically networked to clients  
+--- | Allowed Types   |  
+--- | --------------- |  
+--- | Angle           |  
+--- | Boolean         |  
+--- | Entity          |  
+--- | Float           |  
+--- | Int             |  
+--- | String          |  
+--- | Vector          |  
+--- ⚠ **WARNING**: Trying to network a type that is not listed above will result in an error!  
+--- There's a 4095 slots Network limit. If you need more, consider using the net library or Global.SetGlobal2Var. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
+--- @param index any @Index to identify the global vector with
+--- @param value any @Value to be networked
+function _G.SetGlobalVar(index, value)
+end
+
 --- Defines a vector to be automatically networked to clients  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Global.SetGlobal2Vector. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on!  
 --- @param index any @Index to identify the global vector with
 --- @param vec Vector @Vector to be networked
 function _G.SetGlobalVector(index, vec)
 end
 
---- Called by the engine to set which constraint system [https://developer.valvesoftware.com/wiki/Phys_constraintsystem] the next created constraints should use  
+--- Called by the engine to set which [constraint system](https://developer.valvesoftware.com/wiki/Phys_constraintsystem) the next created constraints should use.  
 --- @param constraintSystem Entity @Constraint system to use
 function _G.SetPhysConstraintSystem(constraintSystem)
 end
@@ -1349,14 +1599,14 @@ function _G.SortedPairsByValue(table, descending)
 end
 
 --- Runs util.PrecacheSound and returns the string.  
---- 🦟 **BUG**: util.PrecacheSound does nothing and therefore so does this function  
---- @param soundPath string @The soundpath to precache
---- @return string @The string passed as the first argument
+--- 🦟 **BUG**: util.PrecacheSound does nothing and therefore so does this function.  
+--- @param soundPath string @The soundpath to precache.
+--- @return string @The string passed as the first argument.
 function _G.Sound(soundPath)
 end
 
---- Returns the duration of the sound specified in seconds.  
---- 🦟 **BUG**: [This only works properly for .wav files.](https://github.com/Facepunch/garrysmod-issues/issues/936)  
+--- Returns the duration of the specified sound in seconds.  
+--- 🦟 **BUG**: [This function does not return the correct duration on MacOS and Linux, or if the file is a non-.wav file on Windows.](https://github.com/Facepunch/garrysmod-issues/issues/936)  
 --- @param soundName string @The sound file path.
 --- @return number @Sound duration in seconds.
 function _G.SoundDuration(soundName)
@@ -1367,7 +1617,7 @@ end
 function _G.SuppressHostEvents(suppressPlayer)
 end
 
---- Returns a highly accurate time in seconds since the start up, ideal for benchmarking.  
+--- Returns a highly accurate time in seconds since the start up, ideal for benchmarking. Unlike Global.RealTime, this value will be updated any time the function is called, allowing for sub-think precision.  
 --- @return number @Uptime of the server.
 function _G.SysTime()
 end
@@ -1384,7 +1634,7 @@ end
 --- Returns a cosine value that fluctuates based on the current time  
 --- @param frequency number @The frequency of fluctuation
 --- @param min number @Minimum value
---- @param max number @Maxmimum value
+--- @param max number @Maximum value
 --- @param offset number @Offset variable that doesn't affect the rate of change, but causes the returned value to be offset by time
 --- @return number @Cosine value
 function _G.TimedCos(frequency, min, max, offset)
@@ -1456,6 +1706,7 @@ function _G.ValidPanel(panel)
 end
 
 --- Creates a Vector object.  
+--- ⚠ **WARNING**: This function is very expensive when used in often running hooks or in operations requiring very frequent calls (like loops for example). It is better to store the vector in a variable or to use the [default vectors](https://wiki.facepunch.com/gmod/Global_Variables#misc) available.  
 --- @param x? number @The x component of the vector
 --- @param y? number @The y component of the vector.
 --- @param z? number @The z component of the vector.
@@ -1492,7 +1743,7 @@ end
 
 --- Executes the specified action on the garbage collector.  
 --- @param action? string @The action to run
---- @param arg number @The argument of the specified action, only applicable for "step", "setpause" and "setstepmul".
+--- @param arg number @The argument of the specified action, only applicable for `step`, `setpause` and `setstepmul`.
 --- @return any @If the action is count this is the number of kilobytes of memory used by Lua
 function _G.collectgarbage(action, arg)
 end
@@ -1517,6 +1768,7 @@ end
 
 --- Returns the metatable of an object. This function obeys the metatable's __metatable field, and will return that field if the metatable has it set.  
 --- Use debug.getmetatable if you want the true metatable of the object.  
+--- If you want to modify the metatable, check out Global.FindMetaTable  
 --- @param object any @The value to return the metatable of.
 --- @return any @The metatable of the value
 function _G.getmetatable(object)
@@ -1524,10 +1776,9 @@ end
 
 --- Executes a Lua script.  
 --- ℹ **NOTE**: Addon files (.gma files) do not support relative parent folders (`..` notation).  
---- ⚠ **WARNING**: The file you are attempting to include MUST NOT be empty or the include will fail. Files over a certain size may fail as well.  
---- ⚠ **WARNING**: If the file you are including is clientside or shared, it **must** be Global.AddCSLuaFile'd or this function will error saying the file doesn't exist.  
---- ℹ **NOTE**: This function will try to load local client file if `sv_allowcslua` is **1**  
---- 🦟 **BUG**: [Global.pcalling this function will break autorefresh.](https://github.com/Facepunch/garrysmod-issues/issues/1976)  
+--- This function will try to load local client file if `sv_allowcslua` is **1**.  
+--- ⚠ **WARNING**: The file you are attempting to include **MUST NOT** be empty or the include will fail. Files over a certain size may fail as well.  
+--- If the file you are including is clientside or shared, it **must** be Global.AddCSLuaFile'd or this function will error saying the file doesn't exist.  
 --- @param fileName string @The name of the script to be executed
 --- @return any @Anything that the executed Lua script returns.
 function _G.include(fileName)
@@ -1539,8 +1790,8 @@ end
 --- For pairs sorted by key in alphabetical order, see Global.SortedPairs.  
 --- @param tab table @The table to iterate over.
 --- @return function @The iterator function.
---- @return table @The table being iterated over
---- @return number @The origin index **=0**
+--- @return table @The table being iterated over.
+--- @return number @The origin index **=0**.
 function _G.ipairs(tab)
 end
 
@@ -1587,6 +1838,7 @@ function _G.isstring(variable)
 end
 
 --- Returns if the passed object is a table.  
+--- ℹ **NOTE**: Will return TRUE for variables of type Color  
 --- @param variable any @The variable to perform the type check for.
 --- @return boolean @True if the variable is a table.
 function _G.istable(variable)
@@ -1606,7 +1858,7 @@ function _G.module(name, ...)
 end
 
 --- Returns a new userdata object.  
---- @param addMetatable? boolean @If true, the userdata will get its own metatable automatically.
+--- @param addMetatable? boolean @If true, the userdata will get its own metatable automatically
 --- @return userdata @The newly created userdata.
 function _G.newproxy(addMetatable)
 end
@@ -1621,17 +1873,16 @@ function _G.next(tab, prevKey)
 end
 
 --- Returns an iterator function(Global.next) for a for loop that will return the values of the specified table in an arbitrary order.  
---- For alphabetical **key** order use Global.SortedPairs.  
---- For alphabetical **value** order use Global.SortedPairsByValue.  
---- @param tab table @The table to iterate over
---- @return function @The iterator (Global.next)
---- @return table @The table being iterated over
---- @return any @**nil** (for the constructor)
+--- * For alphabetical **key** order use Global.SortedPairs.  
+--- * For alphabetical **value** order use Global.SortedPairsByValue.  
+--- @param tab table @The table to iterate over.
+--- @return function @The iterator (Global.next).
+--- @return table @The table being iterated over.
+--- @return any @**nil** (for the constructor).
 function _G.pairs(tab)
 end
 
 --- Calls a function and catches an error that can be thrown while the execution of the call.  
---- 🦟 **BUG**: [Using this function with Global.include will break autorefresh.](https://github.com/Facepunch/garrysmod-issues/issues/1976)  
 --- 🦟 **BUG**: [This cannot stop errors from hooks called from the engine.](https://github.com/Facepunch/garrysmod-issues/issues/2036)  
 --- 🦟 **BUG**: [This does not stop Global.Error and Global.ErrorNoHalt from sending error messages to the server (if called clientside) or calling the GM:OnLuaError hook. The success boolean returned will always return true and thus you will not get the error message returned. Global.error does not exhibit these behaviours.](https://github.com/Facepunch/garrysmod-issues/issues/2498)  
 --- 🦟 **BUG**: [This does not stop errors incurred by Global.include.](https://github.com/Facepunch/garrysmod-issues/issues/3112)  
@@ -1674,6 +1925,9 @@ end
 --- First tries to load a binary module with the given name, if unsuccessful, it tries to load a Lua module with the given name.  
 --- 🦟 **BUG**: [Running this function with Global.pcall or Global.xpcall will still print an error that counts towards sv_kickerrornum.](https://github.com/Facepunch/garrysmod-issues/issues/1041" request="813)  
 --- ℹ **NOTE**: This function will try to load local client file if `sv_allowcslua` is **1**  
+--- ℹ **NOTE**:   
+--- Modules can't be installed as part of an addon and have to be put directly into **garrysmod/lua/bin/** to be detected.  
+--- This is a safety measure, because modules can be malicious and harm the system.  
 --- @param name string @The name of the module to be loaded.
 function _G.require(name)
 end
@@ -1685,10 +1939,11 @@ end
 function _G.select(parameter, ...)
 end
 
---- Sets the enviroment for a function or a stack level, if a function is passed, the return value will be the function, otherwise nil.  
---- @param location function @The function to set the enviroment for or a number representing stack level.
---- @param enviroment table @Table to be used as enviroment.
-function _G.setfenv(location, enviroment)
+--- Sets the environment for a function or a stack level. Can be used to sandbox code.  
+--- @param location function @The function to set the environment for, or a number representing stack level.
+--- @param environment table @Table to be used as the the environment.
+--- @return function @The function passed, otherwise nil.
+function _G.setfenv(location, environment)
 end
 
 --- Sets, changes or removes a table's metatable. Returns Tab (the first argument).  
@@ -1707,7 +1962,7 @@ end
 --- Attempts to convert the value to a number.  
 --- Returns nil on failure.  
 --- @param value any @The value to convert
---- @param base? number @The  used in the string
+--- @param base? number @The base used in the string
 --- @return number @The numeric representation of the value with the given base, or nil if the conversion failed.
 function _G.tonumber(value, base)
 end
@@ -1720,6 +1975,7 @@ function _G.tostring(value)
 end
 
 --- Returns a string representing the name of the type of the passed object.  
+--- ⚠ **WARNING**: This will return `table` if the input is Global.Color, consider using Global.IsColor in that case.  
 --- @param var any @The object to get the type of.
 --- @return string @The name of the object's type.
 function _G.type(var)
@@ -1735,7 +1991,6 @@ end
 
 --- Attempts to call the first function. If the execution succeeds, this returns `true` followed by the returns of the function. If execution fails, this returns `false` and the second function is called with the error message.  
 --- Unlike in Global.pcall, the stack is not unwound and can therefore be used for stack analyses with the debug.  
---- 🦟 **BUG**: [Using this function with Global.include will break autorefresh.](https://github.com/Facepunch/garrysmod-issues/issues/1976)  
 --- 🦟 **BUG**: [This cannot stop errors from hooks called from the engine.](https://github.com/Facepunch/garrysmod-issues/issues/2036)  
 --- 🦟 **BUG**: [This does not stop Global.Error and Global.ErrorNoHalt from sending error messages to the server (if called clientside) or calling the GM:OnLuaError hook. The success boolean returned will always return true and thus you will not get the error message returned. Global.error does not exhibit these behaviours.](https://github.com/Facepunch/garrysmod-issues/issues/2498)  
 --- 🦟 **BUG**: [This does not stop errors incurred by Global.include.](https://github.com/Facepunch/garrysmod-issues/issues/3112)  

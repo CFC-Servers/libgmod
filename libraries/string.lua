@@ -21,10 +21,11 @@
 --- ⚠ **WARNING**: Making changes to the string *metatable* is not a good idea unless you know what you are doing. Use the string *library* instead.  
 --- This category lists functions available in the string *library*.  
 _G.string = {}
---- Inserts commas for every third digit.  
---- @param InputNumber number @The input number to commafy
---- @return string @Prettystring
-function string.Comma(InputNumber)
+--- Inserts commas for every third digit of a given number.  
+--- @param value number @The input number to commafy
+--- @param separator? string @An optional string that will be used instead of the default comma.
+--- @return string @The commafied string
+function string.Comma(value, separator)
 end
 
 --- Returns whether or not the second passed string matches the end of the first.  
@@ -35,7 +36,8 @@ function string.EndsWith(str, end_)
 end
 
 --- Splits a string up wherever it finds the given separator.  
---- This is the reverse of string.Implode.  
+--- This is an alias of string.Split  
+--- and the reverse operation of string.Implode.  
 --- @param separator string @The string will be separated wherever this sequence is found.
 --- @param str string @The string to split up.
 --- @param use_patterns boolean @Set this to true if your separator is a pattern.
@@ -89,6 +91,13 @@ end
 --- @param pieces table @The table of pieces to concatenate
 --- @return string @Imploded pieces
 function string.Implode(separator, pieces)
+end
+
+--- Interpolates a given string with the given table. This is useful for formatting localized strings.  
+--- @param str string @The string that should be interpolated.
+--- @param lookuptable table @The table to search in.
+--- @return string @The modified string.
+function string.Interpolate(str, lookuptable)
 end
 
 --- Escapes special characters for JavaScript in a string, making the string safe for inclusion in to JavaScript strings.  
@@ -146,17 +155,26 @@ function string.SetChar(InputString, Index, ReplacementChar)
 end
 
 --- Splits the string into a table of strings, separated by the second argument.  
+--- This is an alias of string.Explode.  
 --- @param Inputstring string @String to split
 --- @param Separator string @Character(s) to split with.
 --- @return table @Split table
 function string.Split(Inputstring, Separator)
 end
 
---- Returns whether or not the first string starts with the second.  
+--- 🛑 **DEPRECATED**: Use string.StartsWith.  
+--- Returns whether or not the first string starts with the second. This is a alias of string.StartsWith.  
 --- @param inputStr string @String to check.
 --- @param start string @String to check with.
 --- @return boolean @Whether the first string starts with the second.
 function string.StartWith(inputStr, start)
+end
+
+--- Returns whether or not the first string starts with the second.  
+--- @param inputStr string @String to check.
+--- @param start string @String to check with.
+--- @return boolean @Whether the first string starts with the second.
+function string.StartsWith(inputStr, start)
 end
 
 --- Removes the extension of a path.  
@@ -192,7 +210,7 @@ end
 
 --- Removes leading and trailing matches of a string.  
 --- @param Inputstring string @The string to trim.
---- @param Char string @String to match.
+--- @param Char? string @String to match - can be multiple characters
 --- @return string @Modified string
 function string.Trim(Inputstring, Char)
 end
@@ -212,6 +230,7 @@ function string.TrimRight(str, char)
 end
 
 --- Returns the given string's characters in their numeric ASCII representation.  
+--- ⚠ **WARNING**: This function will throw an error if the slice length is greater than 8000 characters.  
 --- @param string string @The string to get the chars from.
 --- @param startPos? number @The first character of the string to get the byte of.
 --- @param endPos? number @The last character of the string to get the byte of.
@@ -233,7 +252,8 @@ end
 function string.dump(func, stripDebugInfo)
 end
 
---- Attempts to find the specified substring in a string, uses Patterns by default.  
+--- Attempts to find the specified substring in a string.  
+--- ⚠ **WARNING**: This function uses Lua Patterns by default.  
 --- @param haystack string @The string to search in.
 --- @param needle string @The string to find, can contain patterns if enabled.
 --- @param startPos? number @The position to start the search from, can be negative start position will be relative to the end position.
@@ -269,7 +289,7 @@ end
 --- This functions main purpose is to replace certain character sequences in a string using Patterns.  
 --- @param string string @String which should be modified.
 --- @param pattern string @The pattern that defines what should be matched and eventually be replaced.
---- @param replacement string @In case of a string the matches sequence will be replaced with it
+--- @param replacement string @In case of a string the matched sequence will be replaced with it
 --- @param maxReplaces? number @Maximum number of replacements to be made.
 --- @return string @replaceResult
 --- @return number @replaceCount
@@ -283,8 +303,9 @@ function string.len(str)
 end
 
 --- Changes any upper-case letters in a string to lower-case letters.  
+--- ℹ **NOTE**: This function doesn't work on special non-English UTF-8 characters.  
 --- @param str string @The string to convert.
---- @return string @The original string, with all uppercase letters replaced with their lowercase variants.
+--- @return string @A string representing the value of a string converted to lower-case.
 function string.lower(str)
 end
 
@@ -298,7 +319,7 @@ end
 
 --- Repeats a string by the provided number, with an optional separator.  
 --- @param str string @The string to convert.
---- @param repetitions number @Timer to repeat, this values gets rounded internally.
+--- @param repetitions number @Times to repeat, this value gets rounded internally.
 --- @param separator string @String that will separate the repeated piece
 --- @return string @Repeated string.
 function string.rep(str, repetitions, separator)
@@ -319,6 +340,7 @@ function string.sub(string, StartPos, EndPos)
 end
 
 --- Changes any lower-case letters in a string to upper-case letters.  
+--- ℹ **NOTE**: This function doesn't work on special non-English UTF-8 characters.  
 --- @param str string @The string to convert.
 --- @return string @A string representing the value of a string converted to upper-case.
 function string.upper(str)

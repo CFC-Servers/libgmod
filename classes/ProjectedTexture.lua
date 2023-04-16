@@ -66,6 +66,29 @@ end
 function ProjectedTexture:GetQuadraticAttenuation()
 end
 
+--- Returns the shadow depth bias of the projected texture.  
+--- Set by ProjectedTexture:SetShadowDepthBias.  
+--- @return number @The current shadow depth bias.
+function ProjectedTexture:GetShadowDepthBias()
+end
+
+--- Returns the shadow "filter size" of the projected texture. `0` is fully pixelated, higher values will blur the shadow more.  
+--- Set by ProjectedTexture:SetShadowFilter.  
+--- @return number @The current shadow filter size.
+function ProjectedTexture:GetShadowFilter()
+end
+
+--- Returns the shadow depth slope scale bias of the projected texture.  
+--- Set by ProjectedTexture:SetShadowSlopeScaleDepthBias.  
+--- @return number @The current shadow depth slope scale bias.
+function ProjectedTexture:GetShadowSlopeScaleDepthBias()
+end
+
+--- Returns the target entity of this projected texture.  
+--- @return Entity @The current target entity.
+function ProjectedTexture:GetTargetEntity()
+end
+
 --- Returns the texture of the ProjectedTexture, which was previously set by ProjectedTexture:SetTexture  
 --- @return ITexture @The texture of the ProjectedTexture.
 function ProjectedTexture:GetTexture()
@@ -121,9 +144,9 @@ function ProjectedTexture:SetConstantAttenuation(constAtten)
 end
 
 --- Enable or disable shadows cast from the projected texture.  
---- ℹ **NOTE**: as with all types of projected textures (including the player's flashlight and env_projectedtexture), there can only be 8 projected textures with shadows enabled in total.   
---- This limit can be increased with the launch parameter: -numshadowtextures limit  
----  where limit is the new limit. Naturally, many projected lights with shadows enabled will drastically decrease framerate.  
+--- ℹ **NOTE**: As with all types of projected textures (including the player's flashlight and env_projectedtexture), there can only be 8 projected textures with shadows enabled in total.  
+--- This limit can be increased with the launch parameter `-numshadowtextures LIMIT` where `LIMIT` is the new limit.  
+--- Naturally, many projected lights with shadows enabled will drastically decrease framerate.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param newState boolean 
 function ProjectedTexture:SetEnableShadows(newState)
@@ -165,6 +188,7 @@ end
 
 --- Changes the current projected texture between orthographic and perspective projection.  
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
+--- Shadows dont work. (For non static props and for most map brushes)  
 --- @param orthographic boolean @When false, all other arguments are ignored and the texture is reset to perspective projection.
 --- @param left number @The amount of units left from the projected texture's origin to project.
 --- @param top number @The amount of units upwards from the projected texture's origin to project.
@@ -184,6 +208,32 @@ end
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param quadAtten number 
 function ProjectedTexture:SetQuadraticAttenuation(quadAtten)
+end
+
+--- Sets the shadow depth bias of the projected texture.  
+--- The initial value is `0.0001`. Normal projected textures obey the value of the `mat_depthbias_shadowmap` ConVar.  
+--- ⁉ **VALIDATE**: You must call ProjectedTexture:Update after using this function for it to take effect.  
+--- @param bias number @The shadow depth bias to set.
+function ProjectedTexture:SetShadowDepthBias(bias)
+end
+
+--- Sets the shadow "filter size" of the projected texture. `0` is fully pixelated, higher values will blur the shadow more. The initial value is the value of `r_projectedtexture_filter` ConVar.  
+--- ⁉ **VALIDATE**: You must call ProjectedTexture:Update after using this function for it to take effect.  
+--- @param filter number @The shadow filter size to set.
+function ProjectedTexture:SetShadowFilter(filter)
+end
+
+--- Sets the shadow depth slope scale bias of the projected texture.  
+--- The initial value is `2`. Normal projected textures obey the value of the `mat_slopescaledepthbias_shadowmap` ConVar.  
+--- ⁉ **VALIDATE**: You must call ProjectedTexture:Update after using this function for it to take effect.  
+--- @param bias number @The shadow depth slope scale bias to set.
+function ProjectedTexture:SetShadowSlopeScaleDepthBias(bias)
+end
+
+--- Sets the target entity for this projected texture, meaning it will only be lighting the given entity and the world.  
+--- ⁉ **VALIDATE**: You must call ProjectedTexture:Update after using this function for it to take effect.  
+--- @param target? Entity @The target entity, or `NULL` to reset.
+function ProjectedTexture:SetTargetEntity(target)
 end
 
 --- Sets the texture to be projected.  

@@ -1,7 +1,13 @@
 --- @class VMatrix
---- List of all possible functions to manipulate matrices.  
+--- A 4x4 matrix.  
+--- This page lists all possible functions to manipulate matrices.  
 --- This object can be created by Global.Matrix.  
 local VMatrix = {}
+--- Adds given matrix to this matrix.  
+--- @param input VMatrix @The input matrix to add.
+function VMatrix:Add(input)
+end
+
 --- Returns the absolute rotation of the matrix.  
 --- @return Angle @Absolute rotation of the matrix
 function VMatrix:GetAngles()
@@ -50,6 +56,11 @@ end
 function VMatrix:GetTranslation()
 end
 
+--- Returns the transpose (each row becomes a column) of this matrix.  
+--- @return VMatrix @The transposed matrix.
+function VMatrix:GetTransposed()
+end
+
 --- Gets the up direction of the matrix.  
 --- ie. The third column of the matrix, excluding the w coordinate.  
 --- @return Vector @The up direction of the matrix.
@@ -88,6 +99,11 @@ end
 --- Checks whenever all fields of the matrix are 0, aka if this is a [null matrix](https://en.wikipedia.org/wiki/Zero_matrix).  
 --- @return boolean @If the matrix is a null matrix.
 function VMatrix:IsZero()
+end
+
+--- Multiplies this matrix by given matrix.  
+--- @param input VMatrix @The input matrix to multiply by.
+function VMatrix:Mul(input)
 end
 
 --- Rotates the matrix by the given angle.  
@@ -170,6 +186,11 @@ end
 --- ie. The third column of the matrix, excluding the w coordinate.  
 --- @param forward Vector @The up direction of the matrix.
 function VMatrix:SetUp(forward)
+end
+
+--- Subtracts given matrix from this matrix.  
+--- @param input VMatrix @The input matrix to subtract.
+function VMatrix:Sub(input)
 end
 
 --- Converts the matrix to a 4x4 table. See Global.Matrix function.  

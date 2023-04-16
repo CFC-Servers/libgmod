@@ -103,10 +103,10 @@ end
 function team.SetUp(teamIndex, teamName, teamColor, isJoinable)
 end
 
---- Returns the sum of deaths of all players of the team.  
---- @param teamIndex number @The team index.
---- @return number @deathCount
-function team.TotalDeaths(teamIndex)
+--- Returns the total number of deaths of all players in the team.  
+--- @param index number @The team index.
+--- @return number @Total deaths in team.
+function team.TotalDeaths(index)
 end
 
 --- Get's the total frags in a team.  

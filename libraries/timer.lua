@@ -2,14 +2,14 @@
 _G.timer = {}
 --- Adjusts the timer if the timer with the given identifier exists.  
 --- @param identifier any @Identifier of the timer to adjust.
---- @param delay number @The delay interval in seconds.
+--- @param delay number @The delay interval in seconds
 --- @param repetitions number @Repetitions
---- @param func function @The new function.
---- @return boolean @true if succeeded
+--- @param func function @The new function
+--- @return boolean @`true` if succeeded.
 function timer.Adjust(identifier, delay, repetitions, func)
 end
 
---- 🛑 **DEPRECATED**:   
+--- 🛑 **DEPRECATED**: If you want to check if whether or not a timer exists, use timer.Exists.  
 ---  This function does nothing.  
 function timer.Check()
 end
@@ -17,7 +17,7 @@ end
 --- Creates a new timer that will repeat its function given amount of times.  
 --- This function also requires the timer to be named, which allows you to control it after it was created via the timer.  
 --- For a simple one-time timer with no identifiers, see timer.Simple.  
---- ⚠ **WARNING**: Timers use Global.CurTime internally. Due to this, they won't advance while the client is timing out from the server or on an empty dedicated server due to hibernation. (unless sv_hibernate_think is set to 1)  
+--- ⚠ **WARNING**: Timers use Global.CurTime internally. Due to this, they won't advance while the client is timing out from the server or on an empty dedicated server due to hibernation. (unless `sv_hibernate_think` is set to `1`).  
 --- @param identifier string @Identifier of the timer to create
 --- @param delay number @The delay interval in seconds
 --- @param repetitions number @The number of times to repeat the timer
@@ -57,7 +57,7 @@ end
 
 --- Creates a simple timer that runs the given function after a specified delay.  
 --- For a more advanced version that you can control after creation, see timer.Create.  
---- ⚠ **WARNING**: Timers use Global.CurTime internally. Due to this, they won't advance while the client is timing out from the server or on an empty dedicated server due to hibernation. (unless sv_hibernate_think is set to 1)  
+--- ⚠ **WARNING**: Timers use Global.CurTime internally. Due to this, they won't advance while the client is timing out from the server or on an empty dedicated server due to hibernation. (unless `sv_hibernate_think` is set to `1`).  
 --- @param delay number @How long until the function should be ran (in seconds)
 --- @param func function @The function to run after the specified delay.
 function timer.Simple(delay, func)

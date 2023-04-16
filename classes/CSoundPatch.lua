@@ -4,7 +4,7 @@
 local CSoundPatch = {}
 --- Adjust the pitch, alias the speed at which the sound is being played.  
 --- This invokes the GM:EntityEmitSound.  
---- @param pitch number @The pitch can range from 0-255.
+--- @param pitch number @The pitch can range from 0-255
 --- @param deltaTime? number @The time to fade from previous to the new pitch.
 function CSoundPatch:ChangePitch(pitch, deltaTime)
 end
@@ -57,7 +57,6 @@ function CSoundPatch:PlayEx(volume, pitch)
 end
 
 --- Sets the DSP (Digital Signal Processor) effect for the sound. Similar to Player:SetDSP but for individual sounds.  
---- 🦟 **BUG**: [This will only apply if the sound is not playing.](https://github.com/Facepunch/garrysmod-issues/issues/4086)  
 --- @param dsp number @The DSP effect to set
 function CSoundPatch:SetDSP(dsp)
 end

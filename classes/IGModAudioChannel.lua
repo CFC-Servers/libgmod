@@ -89,7 +89,7 @@ function IGModAudioChannel:GetState()
 end
 
 --- Retrieves HTTP headers from a bass stream channel created by sound.PlayURL, if available.  
---- @return table @Returns a table of HTTP headers
+--- @return table @Returns a table of HTTP headers.<br>Returns nil if no information is available.
 function IGModAudioChannel:GetTagsHTTP()
 end
 
@@ -114,7 +114,7 @@ end
 function IGModAudioChannel:GetTagsVendor()
 end
 
---- Returns the current time of the sound channel  
+--- Returns the current time of the sound channel in seconds  
 --- @return number @The current time of the stream
 function IGModAudioChannel:GetTime()
 end
@@ -195,7 +195,8 @@ end
 --- Sets the sound channel to specified time ( Rewind to that position of the song ). Does not work on online radio streams.  
 --- Streamed sounds must have "noblock" parameter for this to work and IGModAudioChannel:IsBlockStreamed must return false.  
 --- @param secs number @The time to set the stream to, in seconds.
-function IGModAudioChannel:SetTime(secs)
+--- @param dont_decode? boolean @Set to true to skip decoding to set time, and instead just seek to it which is faster
+function IGModAudioChannel:SetTime(secs, dont_decode)
 end
 
 --- Sets the volume of a sound channel  

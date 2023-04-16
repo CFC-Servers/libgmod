@@ -4,17 +4,17 @@ _G.vgui = {}
 --- Creates a panel by the specified classname.  
 --- ℹ **NOTE**: Custom VGUI elements are not loaded instantly. Use GM:OnGamemodeLoaded to create them on startup.  
 --- @param classname string @Classname of the panel to create
---- @param parent? Panel @Parent of the created panel.
---- @param name? string @Name of the created panel.
---- @return Panel @panel
+--- @param parent? Panel @Panel to parent to.
+--- @param name? string @Custom name of the created panel for scripting/debugging purposes
+--- @return Panel @The created panel, or `nil` if creation failed for whatever reason.
 function vgui.Create(classname, parent, name)
 end
 
---- Creates a panel from table.  
---- @param metatable table @Your PANEL table
---- @param parent? Panel @Which panel to parent the newly created panel to
---- @param name? string @Name of your panel
---- @return Panel @Created panel
+--- Creates a panel from table. Typically used with vgui.RegisterFile and vgui.RegisterTable.  
+--- @param metatable table @Your PANEL table.
+--- @param parent? Panel @Which panel to parent the newly created panel to.
+--- @param name? string @Custom name of the created panel for scripting/debugging purposes
+--- @return Panel @The created panel, or `nil` if creation failed for whatever reason.
 function vgui.CreateFromTable(metatable, parent, name)
 end
 
@@ -47,7 +47,7 @@ end
 function vgui.GetKeyboardFocus()
 end
 
---- Returns the global world panel which is the parent to all others.  
+--- Returns the global world panel which is the parent to all others, except for the HUD panel.  
 --- See also Global.GetHUDPanel.  
 --- @return Panel @The world panel
 function vgui.GetWorldPanel()
@@ -58,23 +58,34 @@ end
 function vgui.IsHoveringWorld()
 end
 
---- Registers a panel for later creation.  
---- @param classname string @Classname of the panel to create.
---- @param panelTable table @The table containg the panel information.
---- @param baseName? string @Name of the base of the panel.
+--- Registers a panel for later creation via vgui.Create.  
+--- @param classname string @Classname of the panel to register
+--- @param panelTable table @The table containing the panel information.
+--- @param baseName? string @Classname of a panel to inherit functionality from
 --- @return table @The given panel table from second argument
 function vgui.Register(classname, panelTable, baseName)
 end
 
---- Registers a new VGUI panel from a file.  
+--- Registers a new VGUI panel from a file, to be used with vgui.CreateFromTable.  
+--- File file must use the `PANEL` global that is provided just before the file is Global.included, for example:  
+--- ```  
+--- PANEL.Base = "Panel"  
+--- function PANEL:Init()  
+--- -- Your code...  
+--- end  
+--- function PANEL:Think()  
+--- -- Your code...  
+--- end  
+--- ```  
 --- @param file string @The file to register
---- @return table @A table containing info about the panel
+--- @return table @A table containing info about the panel.
 function vgui.RegisterFile(file)
 end
 
---- Registers a table to use as a panel. All this function does is assigns Base key to your table and returns the table.  
---- @param panel table @The PANEL table
---- @param base? string @A base for the panel
+--- Registers a table to use as a panel, to be used with vgui.CreateFromTable.  
+--- All this function does is assigns Base key to your table and returns the table.  
+--- @param panel table @The PANEL table.
+--- @param base? string @A base for the panel.
 --- @return table @The PANEL table
 function vgui.RegisterTable(panel, base)
 end

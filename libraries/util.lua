@@ -1,15 +1,15 @@
 --- This is the list of utility functions.  
 _G.util = {}
---- Returns if the user is currently picking an entity.  
---- @return boolean @Is world picking
-function util.worldpicker.Active()
-end
-
 --- Adds the specified string to a string table, which will cache it and network it to all clients automatically.  
 --- Whenever you want to create a net message with net.Start, you must add the name of that message as a networked string via this function.  
 --- If the passed string already exists, nothing will happen and the ID of the existing item will be returned.  
 --- ℹ **NOTE**: Each unique network name needs to be pooled once - do not put this function call into any other functions if you're using a constant string. Preferable place for this function is in a serverside lua file, or in a shared file with the net.Receive function.  
---- ℹ **NOTE**: The string table used for this function does not interfere with the engine string tables and has 2048 slots.  
+--- The string table used for this function does not interfere with the engine string tables and has 4095 slots.  
+--- This limit is shared among all entities, SetNW* and SetGlobal* functions. If you exceed the limit, you cannot create new variables, and you will get the following warning:  
+--- ```lua  
+--- Warning:  Table networkstring is full, can't add [key]  
+--- ```  
+--- <warning>Existing variables will still get updated without the warning. You can check the limit by counting up until util.NetworkIDToString returns nil</warning>  
 --- @param str string @Adds the specified string to the string table.
 --- @return number @The id of the string that was added to the string table.<br>
 function util.AddNetworkString(str)
@@ -34,9 +34,11 @@ function util.Base64Decode(str)
 end
 
 --- Encodes the specified string to base64.  
+--- ℹ **NOTE**: Unless disabled with the `inline` argument, the Base64 returned is compliant to the RFC 2045 standard. **This means it will have a line break after every 76th character.**  
 --- @param str string @String to encode.
+--- @param inline? boolean @`true` to disable RFC 2045 compliance (newline every 76th character)
 --- @return string @Base 64 encoded string.
-function util.Base64Encode(str)
+function util.Base64Encode(str, inline)
 end
 
 --- Applies explosion damage to all entities in the specified radius.  
@@ -56,9 +58,11 @@ function util.BlastDamageInfo(dmg, damageOrigin, damageRadius)
 end
 
 --- Generates the [CRC Checksum](https://en.wikipedia.org/wiki/Cyclic_redundancy_check) of the specified string.  
---- @param stringToHash string @The string to calculate the checksum of.
+--- ⚠ **WARNING**:   
+--- This is NOT a hashing function. It is a checksum, typically used for error detection/data corruption detection. It is possible for this function to generate "collisions", where two different strings will produce the same CRC. If you need a hashing function, use util.SHA256.  
+--- @param stringToChecksum string @The string to calculate the checksum of.
 --- @return string @The unsigned 32 bit checksum.
-function util.CRC(stringToHash)
+function util.CRC(stringToChecksum)
 end
 
 --- Compresses the given string using the [LZMA](https://en.wikipedia.org/wiki/LZMA) algorithm.  
@@ -117,14 +121,26 @@ function util.DistanceToLine(lineStart, lineEnd, pointPos)
 end
 
 --- Creates an effect with the specified data.  
---- You can find a list of built-in engine effects here. You can create your own. Example effects can be found [here](https://github.com/garrynewman/garrysmod/tree/master/garrysmod/gamemodes/sandbox/entities/effects) and [here](https://github.com/garrynewman/garrysmod/tree/master/garrysmod/gamemodes/base/entities/effects).  
---- ℹ **NOTE**: When dispatching an effect from the server, some values may be clamped for networking optimizations. Visit the Set accessors on CEffectData to see which ones are affected.  
---- ℹ **NOTE**: You will need to couple this function with Global.IsFirstTimePredicted if you want to use it in predicted hook.  
---- @param effectName string @The name of the effect to create.
+--- For Orange Box `.pcf` particles, see Global.ParticleEffect, Global.ParticleEffectAttach and  Global.CreateParticleSystem.  
+--- ℹ **NOTE**:   
+--- When dispatching an effect from the server, some values may be clamped for networking optimizations. Visit the Set accessors on CEffectData to see which ones are affected.  
+--- You will need to couple this function with Global.IsFirstTimePredicted if you want to use it in predicted hook.  
+--- @param effectName string @The name of the effect to create
 --- @param effectData CEffectData @The effect data describing the effect.
 --- @param allowOverride? boolean @Whether Lua-defined effects should override engine-defined effects with the same name for this/single function call.
 --- @param ignorePredictionOrRecipientFilter? any @Can either be a boolean to ignore the prediction filter or a CRecipientFilter
 function util.Effect(effectName, effectData, allowOverride, ignorePredictionOrRecipientFilter)
+end
+
+--- Filters given text using Steam's filtering system. The function will obey local client's Steam settings for chat filtering:  
+--- ℹ **NOTE**: In some cases, especially in a chatbox, messages from some players may return an empty string if the context argument used for filtering is `TEXT_FILTER_CHAT` and [if the local player has blocked the sender of the message on Steam](https://github.com/Facepunch/garrysmod-issues/issues/5161#issuecomment-1035153941).  
+--- <upload src="70c/8d9e680b626348b.png" size="50426" name="image.png">  
+--- </upload>  
+--- @param str string @String to filter.
+--- @param context? number @Filtering context
+--- @param player? Player @Used to determine if the text should be filtered according to local user's Steam chat filtering settings.
+--- @return string @The filtered text based on given settings.
+function util.FilterText(str, context, player)
 end
 
 --- Returns a table containing the info about the model.  
@@ -152,6 +168,7 @@ end
 --- @param lod? number 
 --- @param bodygroupMask? number 
 --- @return table @A table of tables with the following format:
+--- @return table @A table of tables containing the model bind pose (where the keys are the bone ID) with the following contents:
 function util.GetModelMeshes(model, lod, bodygroupMask)
 end
 
@@ -169,7 +186,7 @@ end
 function util.GetPixelVisibleHandle()
 end
 
---- Utility function to quickly generate a trace table that starts at the players view position, and ends 16384 units along a specified direction.  
+--- Utility function to quickly generate a trace table that starts at the players view position, and ends `32768` units along a specified direction.  
 --- @param ply Player @The player the trace should be based on
 --- @param dir? Vector @The direction of the trace
 --- @return table @The trace data
@@ -203,7 +220,9 @@ end
 
 --- Returns a table of all SteamIDs that have a usergroup.  
 --- ℹ **NOTE**: This returns the original usergroups table, changes done to this table are not retroactive and will only affect newly connected users  
---- @return table @The table of users
+--- ℹ **NOTE**: This returns only groups that are registered in the **settings/users.txt** file of your server.  
+--- In order to get the usergroup of a connected player, please use Player:GetUserGroup instead.  
+--- @return table @A table of users where the key is the SteamID of the user and the value is a table with 2 fields:
 function util.GetUserGroups()
 end
 
@@ -229,6 +248,12 @@ end
 function util.IntersectRayWithPlane(rayOrigin, rayDirection, planePosition, planeNormal)
 end
 
+--- Returns whether a binary module is installed and is resolvable by Global.require.  
+--- @param name string @Name of the binary module, exactly the same as you would enter it as the argument to Global.require.
+--- @return boolean @Whether the binary module is installed and Global.require can resolve it.
+function util.IsBinaryModuleInstalled(name)
+end
+
 --- Checks if a certain position is within the world bounds.  
 --- @param position Vector @Position to check.
 --- @return boolean @Whether the vector is in world.
@@ -241,8 +266,21 @@ end
 function util.IsModelLoaded(modelName)
 end
 
---- Check whether the skybox is visibile from the point specified.  
---- ℹ **NOTE**: This will always return true in fullbright maps  
+--- Performs OBB on OBB intersection test.  
+--- @param box1Origin Vector @The center of the first box.
+--- @param box1Angles Angle @The angles of the first box.
+--- @param box1Mins Vector @The min position of the first box.
+--- @param box1Maxs Vector @The max position of the first box.
+--- @param box2Origin Vector @The center of the second box.
+--- @param box2Angles Angle @The angles of the second box.
+--- @param box2Mins Vector @The min position of the second box.
+--- @param box2Maxs Vector @The max position of the second box.
+--- @return boolean @Whether there is an intersection.
+function util.IsOBBIntersectingOBB(box1Origin, box1Angles, box1Mins, box1Maxs, box2Origin, box2Angles, box2Mins, box2Maxs)
+end
+
+--- Check whether the skybox is visible from the point specified.  
+--- ℹ **NOTE**: This will always return true in fullbright maps.  
 --- @param position Vector @The position to check the skybox visibility from.
 --- @return boolean @Whether the skybox is visible from the position.
 function util.IsSkyboxVisibleFromPoint(position)
@@ -263,9 +301,10 @@ end
 --- * * _anm  
 --- * * .bsp  
 --- * * cs_fix  
---- * On server: If the model isn't precached, if the model file doesn't exist on the disk  
+--- * If the model isn't precached on the server, AND if the model file doesn't exist on disk  
 --- * If precache failed  
 --- * Model is the error model  
+--- Running this function will also precache the model.  
 --- @param modelName string @Name/Path of the model to check.
 --- @return boolean @Whether the model is valid or not
 function util.IsValidModel(modelName)
@@ -291,7 +330,8 @@ function util.IsValidRagdoll(ragdollName)
 end
 
 --- Converts a JSON string to a Lua table.  
---- ⚠ **WARNING**: This function converts keys to numbers whenever possible. It also has a limit of 15000 keys total.  
+--- ⚠ **WARNING**: Keys are converted to numbers wherever possible. This means using Player:SteamID64 as keys won't work.  
+--- There is a limit of 15,000 keys total.  
 --- 🦟 **BUG**: [This will attempt cast the string keys "inf", "nan", "true", and "false" to their respective Lua values. This completely ignores nulls in arrays.](https://github.com/Facepunch/garrysmod-issues/issues/3561)  
 --- 🦟 **BUG**: [Colors will not have the color metatable.](https://github.com/Facepunch/garrysmod-issues/issues/2407)  
 --- @param json string @The JSON string to convert.
@@ -299,10 +339,10 @@ end
 function util.JSONToTable(json)
 end
 
---- Converts a KeyValue string to a Lua table.  
---- ℹ **NOTE**: Table keys will not repeat, see util.KeyValuesToTablePreserveOrder.  
+--- Converts a Valve KeyValue string (typically from util.TableToKeyValues) to a Lua table.  
+--- ℹ **NOTE**: Due to how tables work in Lua, keys will not repeat within a table. See util.KeyValuesToTablePreserveOrder for alternative.  
 --- @param keyValues string @The KeyValue string to convert.
---- @param usesEscapeSequences? boolean @If set to true, will replace \t, \n, \" and \\ in the input text with their escaped variants
+--- @param usesEscapeSequences? boolean @If set to true, will replace `\t`, `\n`, `\"` and `\\` in the input text with their escaped variants
 --- @param preserveKeyCase? boolean @Whether we should preserve key case (may fail) or not (always lowercase)
 --- @return table @The converted table
 function util.KeyValuesToTable(keyValues, usesEscapeSequences, preserveKeyCase)
@@ -310,7 +350,7 @@ end
 
 --- Similar to util.KeyValuesToTable but it also preserves order of keys.  
 --- @param keyvals string @The key value string
---- @param usesEscapeSequences? boolean @If set to true, will replace \t, \n, \" and \\ in the input text with their escaped variants
+--- @param usesEscapeSequences? boolean @If set to true, will replace `\t`, `\n`, `\"` and `\\` in the input text with their escaped variants
 --- @param preserveKeyCase? boolean @Whether we should preserve key case (may fail) or not (always lowercase)
 --- @return table @The output table
 function util.KeyValuesToTablePreserveOrder(keyvals, usesEscapeSequences, preserveKeyCase)
@@ -322,6 +362,13 @@ end
 --- @param bonenum number @The bonenumber of the ent lpos is local to
 --- @return Vector @wpos
 function util.LocalToWorld(ent, lpos, bonenum)
+end
+
+--- Generates the [MD5 hash](https://en.wikipedia.org/wiki/MD5) of the specified string.  
+--- ⚠ **WARNING**: MD5 is considered cryptographically broken and is known to be vulnerable to a variety of attacks including duplicate return values. If security or duplicate returns is a concern, use util.SHA256.  
+--- @param stringToHash string @The string to calculate the MD5 hash of.
+--- @return string @The MD5 hash of the string in hexadecimal form.
+function util.MD5(stringToHash)
 end
 
 --- Returns the networked string associated with the given ID from the string table.  
@@ -336,9 +383,9 @@ end
 function util.NetworkStringToID(networkString)
 end
 
---- Formats a float by stripping off extra 0's and .'s  
---- @param float number @The float to format
---- @return string @Formatted float
+--- Formats a float by stripping off extra `0's` and `.'s`.  
+--- @param float number @The float to format.
+--- @return string @Formatted float.
 function util.NiceFloat(float)
 end
 
@@ -364,11 +411,12 @@ end
 --- @param position Vector @The center of the visibility test.
 --- @param radius number @The radius of the sphere to check for visibility.
 --- @param PixVis pixelvis_handle_t @The PixVis handle created with util.GetPixelVisibleHandle
---- @return number @Visibility, ranges from 0-1
+--- @return number @Visibility, ranges from `0-1`
 function util.PixelVisible(position, radius, PixVis)
 end
 
 --- Returns the contents of the position specified.  
+--- ℹ **NOTE**: This function will sample only the world environments. It can be used to check if Entity:GetPos is underwater for example unlike Entity:WaterLevel which works for players only.  
 --- @param position Vector @Position to get the contents sample from.
 --- @return number @Contents bitflag, see Enums/CONTENTS
 function util.PointContents(position)
@@ -382,48 +430,56 @@ function util.PrecacheModel(modelName)
 end
 
 --- Precaches a sound for later use. Sound is cached after being loaded once.  
---- ℹ **NOTE**: Soundcache is limited to 16384 unique sounds.  
---- 🦟 **BUG**: Positively broken on purpose because it fills stringtables  
---- 🦟 **BUG**: Ultimately does nothing on client, and only works with sound scripts, not direct paths  
+--- ℹ **NOTE**: Soundcache is limited to 16384 unique sounds on the server.  
+--- 🦟 **BUG**: Broken on purpose because hitting the limit above causes the server to shutdown  
+--- 🦟 **BUG**: Ultimately does nothing on client, and only works with sound scripts, not direct paths.  
 --- @param soundName string @The sound to precache.
 function util.PrecacheSound(soundName)
 end
 
---- Performs a trace with the given origin, direction and filter.  
+--- Performs a trace with the given origin, direction, and filter.  
 --- @param origin Vector @The origin of the trace.
---- @param endpos Vector @The end point of the trace, relative to the start
+--- @param dir Vector @The direction of the trace times the distance of the trace
 --- @param filter? Entity @Entity which should be ignored by the trace
 --- @return table @Trace result
-function util.QuickTrace(origin, endpos, filter)
+function util.QuickTrace(origin, dir, filter)
 end
 
---- Returns the absolute system path the file relative to /garrysmod/.  
---- @param file string @The file to get the absolute path of.
---- @return string @absolutePath
-function util.RelativePathToFull(file)
-end
-
---- Removes PData of offline player using his SteamID.  
+--- Removes PData of offline player using their SteamID.  
 --- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
 --- @param steamID string @SteamID of the player
 --- @param name string @Variable name to remove
 function util.RemovePData(steamID, name)
 end
 
---- Makes the screen shake  
+--- Generates the [SHA-1 hash](https://en.wikipedia.org/wiki/SHA-1) of the specified string.  
+--- ⚠ **WARNING**: SHA-1 is considered cryptographically broken and is known to be vulnerable to a variety of attacks. If security is a concern, use util.SHA256.  
+--- @param stringToHash string @The string to calculate the SHA-1 hash of.
+--- @return string @The SHA-1 hash of the string in hexadecimal form.
+function util.SHA1(stringToHash)
+end
+
+--- Generates the [SHA-256 hash](https://en.wikipedia.org/wiki/SHA-2) of the specified string.  
+--- @param stringToHash string @The string to calculate the SHA-256 hash of.
+--- @return string @The SHA-256 hash of the string in hexadecimal form.
+function util.SHA256(stringToHash)
+end
+
+--- Makes the screen shake.  
+--- ℹ **NOTE**: The screen shake effect is rendered by modifying the view origin on the client. If you override the view origin in GM:CalcView you may not be able to see the shake effect.  
 --- @param pos Vector @The origin of the effect
---- @param amplitude number @The strength of the effect
---- @param frequency number @The frequency of the effect in hz
---- @param duration number @The duration of the effect in seconds
---- @param radius number @The range from the origin within which views will be affected, in Hammer Units
+--- @param amplitude number @The strength of the effect.
+--- @param frequency number @The frequency of the effect in hertz.
+--- @param duration number @The duration of the effect in seconds.
+--- @param radius number @The range from the origin within which views will be affected, in Hammer units
 function util.ScreenShake(pos, amplitude, frequency, duration, radius)
 end
 
---- Sets PData for offline player using his SteamID   
+--- Sets PData for offline player using his SteamID.  
 --- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
---- @param steamID string @SteamID of the player
---- @param name string @Variable name to store the value in
---- @param value any @The value to store
+--- @param steamID string @SteamID of the player.
+--- @param name string @Variable name to store the value in.
+--- @param value any @The value to store.
 function util.SetPData(steamID, name, value)
 end
 
@@ -451,14 +507,9 @@ end
 function util.SpriteTrail(ent, attachmentID, color, additive, startWidth, endWidth, lifetime, textureRes, texture)
 end
 
---- Returns a new Stack object  
---- @return Stack @A brand new stack object
+--- Returns a new Stack object.  
+--- @return Stack @A brand new stack object.
 function util.Stack()
-end
-
---- Starts picking an entity in the world. This will suppress the next mouse click, and instead use it as a direction in the trace sent to the callback.  
---- @param callback function @Function to call after an entity choice has been made
-function util.worldpicker.Start(callback)
 end
 
 --- Given a 64bit SteamID will return a STEAM_0: style Steam ID  
@@ -469,7 +520,7 @@ end
 
 --- Given a STEAM_0 style Steam ID will return a 64bit Steam ID  
 --- @param id string @The STEAM_0 style id
---- @return string @64bit Steam ID
+--- @return string @64bit Steam ID or 0 (as a string) on fail
 function util.SteamIDTo64(id)
 end
 
@@ -482,6 +533,8 @@ function util.StringToType(str, typename)
 end
 
 --- Converts a table to a JSON string.  
+--- ⚠ **WARNING**: Trying to serialize or deserialize SteamID64s in JSON will NOT work correctly. They will be interpreted as numbers which cannot be precisely stored by JavaScript, Lua and JSON, leading to loss of data. You may want to use util.SteamIDFrom64 to work around this.  
+--- Alternatively, just append a character to the SteamID64 to force util.JSONToTable to treat it as a string.  
 --- ⚠ **WARNING**: All integers will be converted to decimals (5 -> 5.0).  
 --- ⚠ **WARNING**: All keys are strings in the JSON format, so all keys will be converted to strings!  
 --- 🦟 **BUG**: [This will produce invalid JSON if the provided table contains nan or inf values.](https://github.com/Facepunch/garrysmod-issues/issues/3561)  
@@ -491,10 +544,13 @@ end
 function util.TableToJSON(table, prettyPrint)
 end
 
---- Converts the given table into a key value string.  
+--- Converts the given table into a Valve key value string.  
+--- Use util.KeyValuesToTable to perform the opposite transformation.  
+--- You should consider using util.TableToJSON instead.  
 --- @param table table @The table to convert.
---- @return string @KeyValueString
-function util.TableToKeyValues(table)
+--- @param rootKey? string @The root key name for the output KV table.
+--- @return string @The output.
+function util.TableToKeyValues(table, rootKey)
 end
 
 --- Creates a timer object.  
@@ -534,6 +590,7 @@ end
 
 --- Performs a trace with the given trace data.  
 --- ℹ **NOTE**: Clientside entities will not be hit by traces.  
+--- When server side trace starts inside a solid, it will hit the most inner solid the beam start position is located in. Traces are triggered by change of boundary.  
 --- @param TraceData table @The trace data to use
 --- @return table @Trace result
 function util.TraceLine(TraceData)
@@ -550,5 +607,15 @@ end
 --- @param input any @A string or a number to convert.
 --- @return boolean @False if the input is equal to the string or boolean "false", if the input is equal to the string or number "0", or if the input is nil
 function util.tobool(input)
+end
+
+--- Returns if the user is currently picking an entity.  
+--- @return boolean @Is world picking
+function util.worldpicker.Active()
+end
+
+--- Starts picking an entity in the world. This will suppress the next mouse click, and instead use it as a direction in the trace sent to the callback.  
+--- @param callback function @Function to call after an entity choice has been made
+function util.worldpicker.Start(callback)
 end
 

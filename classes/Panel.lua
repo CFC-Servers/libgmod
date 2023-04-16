@@ -1,4 +1,33 @@
 --- @class Panel
+--- This is the base panel for every other VGUI panel.  
+--- It contains all of the basic methods, some of which may only work on certain VGUI elements. As their functionality is provided at the game's C/C++ level rather than by its Lua script extension, they are unfortunately unavailable for most practical purposes, however, they can still be obtained in a way similar to that provided by the baseclass library:  
+--- ```  
+--- -- Create a new panel type NewPanel that inherits all of its functionality from DLabel,  
+--- -- but has a different SetText method than DLabel does - all without the hassle of that  
+--- -- old DLabel's default text getting in the way. Fun stuff.  
+--- local PANEL = {}  
+--- function PANEL:Init()  
+--- self:SetText_Base( "" )  
+--- self:SetText( "Time for something different!" )  
+--- end  
+--- function PANEL:Paint( aWide, aTall )  
+--- local TextX, TextY = 0, 0  
+--- local TextColor = Color( 255, 0, 0, 255 )  
+--- surface.SetFont( self:GetFont() or "default" )  
+--- surface.SetTextColor( TextColor )  
+--- surface.SetTextPos( TextX, TextY )  
+--- surface.DrawText( self:GetText() )  
+--- end  
+--- -- And here we go:  
+--- PANEL.SetText_Base = FindMetaTable( "Panel" ).SetText  
+--- function PANEL:SetText( aText )  
+--- self.Text = tostring( aText )  
+--- end  
+--- function PANEL:GetText()  
+--- return self.Text or ""  
+--- end  
+--- vgui.Register( "NewPanel", PANEL, "DLabel" )  
+--- ```  
 local Panel = {}
 --- Adds the specified object to the panel.  
 --- @param object Panel @The panel to be added (parented)
@@ -105,14 +134,14 @@ end
 --- A think hook for Panels using ConVars as a value. Call it in the Think hook. Sets the panel's value should the convar change.  
 --- This function is best for: checkboxes, sliders, number wangs  
 --- For a string alternative, see Panel:ConVarStringThink.  
---- `Important`: Make sure your Panel has a SetValue function, else you may get errors.  
+--- ℹ **NOTE**: Make sure your Panel has a SetValue function, else you may get errors.  
 function Panel:ConVarNumberThink()
 end
 
 --- A think hook for panels using ConVars as a value. Call it in the Think hook. Sets the panel's value should the convar change.  
 --- This function is best for: text inputs, read-only inputs, dropdown selects  
 --- For a number alternative, see Panel:ConVarNumberThink.  
---- `Important`: Make sure your Panel has a SetValue function, else you may get errors.  
+--- ℹ **NOTE**: Make sure your Panel has a SetValue function, else you may get errors.  
 function Panel:ConVarStringThink()
 end
 
@@ -136,7 +165,7 @@ end
 function Panel:CopyPos(base)
 end
 
---- Performs the "CONTROL + C" key combination effect ( Copy selection to clipboard ) on selected text.  
+--- Performs the `CONTROL` + `C` key combination effect ( Copy selection to clipboard ) on selected text in a TextEntry or RichText based element.  
 function Panel:CopySelected()
 end
 
@@ -154,7 +183,7 @@ end
 function Panel:CursorPos()
 end
 
---- Performs the "CONTROL + X" ( delete text and copy it to clipboard buffer ) action on selected text.  
+--- Performs the `CONTROL` + `X` (delete text and copy it to clipboard buffer) action on selected text in a TextEntry or RichText based element.  
 function Panel:CutSelected()
 end
 
@@ -164,7 +193,7 @@ function Panel:DeleteCookie(cookieName)
 end
 
 --- Resets the panel object's Panel:SetPos method and removes its animation table (`Panel.LerpAnim`). This effectively undoes the changes made by Panel:LerpPositions.  
---- In order to use Lerp animation again, you must call Panel:Stop before setting its `SetPosReal` property to 'nil'. See the example below.  
+--- In order to use Lerp animation again, you must call Panel:Stop before setting its `SetPosReal` property to `nil`. See the example below.  
 function Panel:DisableLerp()
 end
 
@@ -181,13 +210,17 @@ end
 function Panel:DistanceFrom(posX, posY)
 end
 
---- Makes the panel "lock" the screen until it is removed. It will silently fail if used while cursor is not visible. Call Panel:MakePopup before calling this function.  
---- 🦟 **BUG**: [You can still click in the world even if locked.](https://github.com/Facepunch/garrysmod-issues/issues/3457)  
+--- Makes the panel "lock" the screen until it is removed. All input will be directed to the given panel.  
+--- It will silently fail if used while cursor is not visible.  
+--- Call Panel:MakePopup before calling this function.  
+--- This must be called on a panel derived from EditablePanel.  
 function Panel:DoModal()
 end
 
---- Sets the dock type of the panel.  
---- ℹ **NOTE**: After using this function, if you want to get the correct panel's bounds (position, size), use Panel:InvalidateParent (use **true** as argument if you need to update immediately)  
+--- Sets the dock type for the panel, making the panel "dock" in a certain direction, modifying it's position and size.  
+--- You can set the inner spacing of a panel's docking using Panel:DockPadding, which will affect docked child panels, and you can set the outer spacing of a panel's docking using Panel:DockMargin, which affects how docked siblings are positioned/sized.  
+--- You may need to use Panel:SetZPos to ensure child panels (DTextEntry) stay in a specific order.  
+--- ℹ **NOTE**: After using this function, if you want to get the correct panel's bounds (position, size), use Panel:InvalidateParent (use `true` as argument if you need to update immediately)  
 --- @param dockType number @Dock type using Enums/DOCK.
 function Panel:Dock(dockType)
 end
@@ -234,6 +267,7 @@ function Panel:DrawSelections()
 end
 
 --- Used to draw the text in a DTextEntry within a derma skin. This should be called within the SKIN:PaintTextEntry skin hook.  
+--- ℹ **NOTE**: Will silently fail if any of arguments are not Color.  
 --- @param textCol table @The colour of the main text.
 --- @param highlightCol table @The colour of the selection highlight (when selecting text).
 --- @param cursorCol table @The colour of the text cursor (or caret).
@@ -295,7 +329,7 @@ end
 function Panel:GetCaretPos()
 end
 
---- Gets a child by its index.  
+--- Gets a child by its index. For use with Panel:ChildCount.  
 --- @param childIndex number @The index of the child to get
 function Panel:GetChild(childIndex)
 end
@@ -308,7 +342,7 @@ function Panel:GetChildPosition(pnl)
 end
 
 --- Returns a table with all the child panels of the panel.  
---- @return table @children
+--- @return table @All direct children of this panel.
 function Panel:GetChildren()
 end
 
@@ -408,8 +442,8 @@ end
 function Panel:GetMaximumCharCount()
 end
 
---- Returns the internal name of the panel.  
---- @return string @name
+--- Returns the internal name of the panel. Can be set via Panel:SetName.  
+--- @return string @The previously set internal name of the panel.
 function Panel:GetName()
 end
 
@@ -427,6 +461,7 @@ end
 --- Returns the position of the panel relative to its Panel:GetParent.  
 --- If you require the panel's position **and** size, consider using Panel:GetBounds instead.  
 --- If you need the position in screen space, see Panel:LocalToScreen.  
+--- See also Panel:GetX and Panel:GetY.  
 --- @return number @X coordinate, relative to this panels parents top left corner.
 --- @return number @Y coordinate, relative to this panels parents top left corner.
 function Panel:GetPos()
@@ -467,6 +502,7 @@ function Panel:GetTable()
 end
 
 --- Returns the height of the panel.  
+--- See Panel:GetWide for the width of the panel. See also Panel:GetSize for a function that returns both.  
 --- @return number @height
 function Panel:GetTall()
 end
@@ -484,10 +520,19 @@ function Panel:GetTextInset()
 end
 
 --- Gets the size of the text within a Label derived panel.  
---- 🦟 **BUG**: [This can return 0 incorrectly.](https://github.com/Facepunch/garrysmod-issues/issues/2576)  
 --- @return number @The width of the text in the DLabel.
 --- @return number @The height of the text in the DLabel.
 function Panel:GetTextSize()
+end
+
+--- Returns the tooltip text that was set with PANEL:SetTooltip.  
+--- @return string @The tooltip text, if it was set.
+function Panel:GetTooltip()
+end
+
+--- Returns the tooltip panel that was set with PANEL:SetTooltipPanel.  
+--- @return Panel @The tooltip panel, if it was set.
+function Panel:GetTooltipPanel()
 end
 
 --- Gets valid receiver slot of currently dragged panel.  
@@ -504,8 +549,21 @@ function Panel:GetValue()
 end
 
 --- Returns the width of the panel.  
+--- See Panel:GetTall for the height of the panel. See also Panel:GetSize for a function that returns both.  
 --- @return number @width
 function Panel:GetWide()
+end
+
+--- Returns the X position of the panel relative to its Panel:GetParent.  
+--- Uses Panel:GetPos internally.  
+--- @return number @X coordinate.
+function Panel:GetX()
+end
+
+--- Returns the Y position of the panel relative to its Panel:GetParent.  
+--- Uses Panel:GetPos internally.  
+--- @return number @Y coordinate.
+function Panel:GetY()
 end
 
 --- Returns the Z position of the panel.  
@@ -572,10 +630,10 @@ function Panel:InsertClickableTextStart(signalValue)
 end
 
 --- Inserts a color change in a RichText element, which affects the color of all text added with Panel:AppendText until another color change is applied.  
---- @param r number @The red value (0 - 255).
---- @param g number @The green value (0 - 255).
---- @param b number @The blue value (0 - 255).
---- @param a number @The alpha value (0 - 255).
+--- @param r number @The red value `(0 - 255)`.
+--- @param g number @The green value `(0 - 255)`.
+--- @param b number @The blue value `(0 - 255)`.
+--- @param a number @The alpha value `(0 - 255)`.
 function Panel:InsertColorChange(r, g, b, a)
 end
 
@@ -598,7 +656,9 @@ end
 function Panel:InvalidateLayout(layoutNow)
 end
 
---- Invalidates the layout of the parent of this panel object. This will cause it to re-layout, calling PANEL:PerformLayout.  
+--- Calls Panel:InvalidateLayout on the panel's parent. This function will silently fail if the panel has no parent.  
+--- This will cause the parent panel to re-layout, calling PANEL:PerformLayout.  
+--- Internally sets `LayingOutParent` to `true` on this panel, and will silently fail if it is already set.  
 --- @param layoutNow? boolean @If `true`, the re-layout will occur immediately, otherwise it will be performed in the next frame.
 function Panel:InvalidateParent(layoutNow)
 end
@@ -638,6 +698,9 @@ function Panel:IsKeyboardInputEnabled()
 end
 
 --- Determines whether or not a HTML or DHTML element is currently loading a page.  
+--- ℹ **NOTE**: Before calling Panel:SetHTML or DHTML:OpenURL, the result seems to be `false` with the Awesomium web renderer and `true` for the Chromium web renderer. This difference can be used to determine the available HTML5 capabilities.  
+--- ℹ **NOTE**: On Awesomium, the result remains `true` until the root document is loaded and when in-page content is loading (when adding pictures, frames, etc.). During this state, the HTML texture is not refreshed and the panel is not painted (it becomes invisible).  
+--- On Chromium, the value is only `true` when the root document is not ready. The rendering is not suspended when in-page elements are loading.  
 --- @return boolean @Whether or not the (D)HTML object is loading.
 function Panel:IsLoading()
 end
@@ -645,6 +708,11 @@ end
 --- Returns if the panel is going to be deleted in the next frame.  
 --- @return boolean @markedForDeletion
 function Panel:IsMarkedForDeletion()
+end
+
+--- Returns whether the panel was made modal or not. See Panel:DoModal.  
+--- @return boolean @True if the panel is modal.
+function Panel:IsModal()
 end
 
 --- Returns true if the panel can receive mouse input.  
@@ -656,6 +724,11 @@ end
 --- @param childPanel Panel 
 --- @return boolean @True if the panel contains childPanel.
 function Panel:IsOurChild(childPanel)
+end
+
+--- Returns if the panel was made popup or not. See Panel:MakePopup  
+--- @return boolean @`true` if the panel was made popup.
+function Panel:IsPopup()
 end
 
 --- Determines if the panel object is selectable (like icons in the Spawn Menu, holding `Shift`). This is set with Panel:SetSelectable.  
@@ -678,8 +751,8 @@ end
 function Panel:IsValid()
 end
 
---- Returns if the panel is visible.  
---- @return boolean @isVisible
+--- Returns if the panel is visible. This will **NOT** take into account visibility of the parent.  
+--- @return boolean @`true` if the panel ls visible, `false` otherwise.
 function Panel:IsVisible()
 end
 
@@ -692,7 +765,7 @@ end
 function Panel:KillFocus()
 end
 
---- Redefines the panel object's Panel:SetPos method to operate using frame-by-frame linear interpolation (Lerp). When the panel's position is changed, it will move to the target position at the speed defined. You can undo this with Panel:DisableLerp.  
+--- Redefines the panel object's Panel:SetPos method to operate using frame-by-frame linear interpolation (Global.Lerp). When the panel's position is changed, it will move to the target position at the speed defined. You can undo this with Panel:DisableLerp.  
 --- Unlike the other panel animation functions, such as Panel:MoveTo, this animation method will not operate whilst the game is paused. This is because it relies on Global.FrameTime.  
 --- @param speed number @The speed at which to move the panel
 --- @param easeOut boolean @This causes the panel object to 'jump' at the target, slowing as it approaches
@@ -709,6 +782,12 @@ end
 --- Loads controls for the panel from a JSON string.  
 --- @param str string @JSON string containing information about controls to create.
 function Panel:LoadGWENString(str)
+end
+
+--- Sets a new image to be loaded by a TGAImage.  
+--- @param imageName string @The file path.
+--- @param strPath string @The PATH to search in
+function Panel:LoadTGAImage(imageName, strPath)
 end
 
 --- Returns the cursor position local to the position of the panel (usually the upper-left corner).  
@@ -729,8 +808,9 @@ function Panel:LocalToScreen(posX, posY)
 end
 
 --- Focuses the panel and enables it to receive input.  
---- This automatically calls Panel:SetMouseInputEnabled and Panel:SetKeyboardInputEnabled and sets them to true.  
+--- This automatically calls Panel:SetMouseInputEnabled and Panel:SetKeyboardInputEnabled and sets them to `true`.  
 --- ℹ **NOTE**: Panels derived from Panel will not work properly with this function. Due to this, any children will not be intractable with keyboard. Derive from EditablePanel instead.  
+--- For non gui related mouse focus, you can use gui.EnableScreenClicker.  
 function Panel:MakePopup()
 end
 
@@ -823,7 +903,7 @@ function Panel:NewAnimation(length, delay, ease, callback)
 end
 
 --- Sets whether this panel's drawings should be clipped within the parent panel's bounds.  
---- See also Global.DisableClipping and surface.DisableClipping.  
+--- See also Global.DisableClipping.  
 --- @param clip boolean @Whether to clip or not.
 function Panel:NoClipping(clip)
 end
@@ -833,7 +913,15 @@ end
 function Panel:NumSelectedChildren()
 end
 
+--- Instructs a HTML control to download and parse a HTML script using the passed URL.  
+--- This function can also be used on [HTML](https://wiki.facepunch.com/gmod/HTML).  
+--- @param URL string @URL to open
+function Panel:OpenURL(URL)
+end
+
 --- Paints a ghost copy of the panel at the given position.  
+--- ⚠ **WARNING**:   
+--- Breaks Z pos of panel PANEL:SetZPos  
 --- @param posX number @The x coordinate to draw the panel from.
 --- @param posY number @The y coordinate to draw the panel from.
 function Panel:PaintAt(posX, posY)
@@ -843,12 +931,17 @@ end
 function Panel:PaintManual()
 end
 
+--- Set to true by the dragndrop system when the panel is being drawn for the drag'n'drop.  
+--- @return boolean @Set to true if drawing for the transparent dragging render.
+function Panel:PaintingDragging()
+end
+
 --- Parents the panel to the HUD.  
 --- Makes it invisible on the escape-menu and disables controls.  
 function Panel:ParentToHUD()
 end
 
---- ⚠ **WARNING**: Due to privacy concerns, this function has been disabled  
+--- 🛑 **DEPRECATED**: Due to privacy concerns, this function has been disabled  
 --- Only works for TextEntries.  
 --- Pastes the contents of the clipboard into the TextEntry.  
 --- ℹ **NOTE**: Tab characters will be dropped from the pasted text  
@@ -922,6 +1015,8 @@ end
 --- ℹ **NOTE**: This function does **NOT** evaluate expression (i.e. allow you to pass variables from JavaScript (JS) to Lua context).  
 --- Because a return value is nil/no value (a.k.a. void).  
 --- If you wish to pass/return values from JS to Lua, you may want to use DHTML:AddFunction function to accomplish that job.  
+--- ℹ **NOTE**: The Awesomium web renderer automatically delays the code execution if the document is not ready, but the Chromium web renderer does not!  
+--- This means that with Chromium, you cannot JavaScript run code immediatly after calling Panel:SetHTML or DHTML:OpenURL. You should wait for the events PANEL:OnDocumentReady or PANEL:OnFinishLoadingDocument to be triggered before proceeding, otherwise you may manipulate an empty / incomplete document.  
 --- @param js string @Specify JavaScript code to be executed.
 function Panel:RunJavascript(js)
 end
@@ -949,6 +1044,7 @@ end
 function Panel:SelectAllOnFocus()
 end
 
+--- 🛑 **DEPRECATED**: Duplicate of Panel:SelectAll.  
 --- Selects all the text in a panel object. Will not select non-text items; for this, use Panel:SelectAll.  
 function Panel:SelectAllText()
 end
@@ -1041,7 +1137,7 @@ end
 function Panel:SetCookieName(name)
 end
 
---- Sets the appearance of the cursor.  
+--- Sets the appearance of the cursor. You can find a list of all available cursors with image previews [here](https://wiki.facepunch.com/gmod/Cursors).  
 --- @param cursor string @The cursor to be set
 function Panel:SetCursor(cursor)
 end
@@ -1052,22 +1148,11 @@ end
 function Panel:SetDragParent(parent)
 end
 
---- Sets the visibility of the language selection box in a TextEntry when typing in non-English mode.  
---- See Panel:SetDrawLanguageIDAtLeft for a function that changes the position of the language selection box.  
---- @param visible boolean @true to make it visible, false to hide it.
-function Panel:SetDrawLanguageID(visible)
-end
-
---- Sets where to draw the language selection box.  
---- See Panel:SetDrawLanguageID for a function that hides or shows the language selection box.  
---- @param left boolean @true = left, false = right
-function Panel:SetDrawLanguageIDAtLeft(left)
-end
-
 --- Makes the panel render in front of all others, including the spawn menu and main menu.  
 --- Priority is given based on the last call, so of two panels that call this method, the second will draw in front of the first.  
 --- ℹ **NOTE**: This only makes the panel **draw** above other panels. If there's another panel that would have otherwise covered it, users will not be able to interact with it.  
---- ⚠ **WARNING**: This does not work when using PANEL:SetPaintedManually or PANEL:PaintAt!  
+--- Completely disregards PANEL:ParentToHUD.  
+--- ⚠ **WARNING**: This does not work when using PANEL:SetPaintedManually or PANEL:PaintAt.  
 --- @param drawOnTop? boolean @Whether or not to draw the panel in front of all others.
 function Panel:SetDrawOnTop(drawOnTop)
 end
@@ -1104,12 +1189,12 @@ end
 function Panel:SetFGColor(r_or_color, g, b, a)
 end
 
---- Sets the panel that owns this FocusNavGroup to be the root in the focus traversal hierarchy.  
+--- Sets the panel that owns this FocusNavGroup to be the root in the focus traversal hierarchy. This function will only work on EditablePanel class panels and its derivatives.  
 --- @param state boolean 
 function Panel:SetFocusTopLevel(state)
 end
 
---- Sets the font used to render this panel's text.  
+--- Sets the font used to render this panel's text. This works for Label, TextEntry and RichText, but it's a better idea to use their local `SetFont` (DTextEntry:SetFont, DLabel:SetFont) methods when available.  
 --- To retrieve the font used by a panel, call Panel:GetFont.  
 --- @param fontName string @The name of the font
 function Panel:SetFontInternal(fontName)
@@ -1161,11 +1246,12 @@ function Panel:SetModel(ModelPath, skin, bodygroups)
 end
 
 --- Enables or disables the mouse input for the panel.  
+--- ℹ **NOTE**: Panels parented to the context menu will not be clickable unless Panel:SetKeyboardInputEnabled is enabled or Panel:MakePopup has been called. If you want the panel to have mouse input but you do not want to prevent players from moving, set Panel:SetKeyboardInputEnabled to false immediately after calling Panel:MakePopup.  
 --- @param mouseInput boolean @Whenever to enable or disable mouse input.
 function Panel:SetMouseInputEnabled(mouseInput)
 end
 
---- Sets the internal name of the panel.  
+--- Sets the internal name of the panel. Can be retrieved with Panel:GetName.  
 --- @param name string @The new name of the panel.
 function Panel:SetName(name)
 end
@@ -1191,6 +1277,7 @@ function Panel:SetPaintedManually(paintedManually)
 end
 
 --- Sets the parent of the panel.  
+--- ℹ **NOTE**: Panels parented to the context menu will not be clickable unless Panel:SetMouseInputEnabled and Panel:SetKeyboardInputEnabled are both true or Panel:MakePopup has been called. If you want the panel to have mouse input but you do not want to prevent players from moving, set Panel:SetKeyboardInputEnabled to false immediately after calling Panel:MakePopup.  
 --- @param parent Panel @The new parent of the panel.
 function Panel:SetParent(parent)
 end
@@ -1208,6 +1295,7 @@ end
 
 --- Sets the position of the panel's top left corner.  
 --- This will trigger PANEL:PerformLayout. You should avoid calling this function in PANEL:PerformLayout to avoid infinite loops.  
+--- See also Panel:SetX and Panel:SetY.  
 --- ℹ **NOTE**: If you wish to position and re-size panels without much guesswork and have them look good on different screen resolutions, you may find Panel:Dock useful  
 --- @param posX number @The x coordinate of the position.
 --- @param posY number @The y coordinate of the position.
@@ -1215,7 +1303,7 @@ function Panel:SetPos(posX, posY)
 end
 
 --- Sets whenever the panel should be rendered in the next screenshot.  
---- @param renderInScreenshot boolean @Whenever to render or not.
+--- @param renderInScreenshot boolean @Whether to render in the screenshot or not.
 function Panel:SetRenderInScreenshots(renderInScreenshot)
 end
 
@@ -1230,8 +1318,8 @@ function Panel:SetSelected(selected)
 end
 
 --- Enables the panel object for selection (much like the spawn menu).  
---- @param selCanvas any @Any value other than `nil` or `false` will enable the panel object for selection
-function Panel:SetSelectionCanvas(selCanvas)
+--- @param set boolean @Whether to enable selection.
+function Panel:SetSelectionCanvas(set)
 end
 
 --- Sets the size of the panel.  
@@ -1248,8 +1336,8 @@ end
 function Panel:SetSkin(skinName)
 end
 
---- Sets the .png image to be displayed on a  SpawnIcon or the panel it is based on ModelImage.  
---- Only .png images can be used with this function.  
+--- Sets the `.png` image to be displayed on a  SpawnIcon or the panel it is based on - ModelImage.  
+--- Only `.png` images can be used with this function.  
 --- @param icon string @A path to the .png material, for example one of the Silkicons shipped with the game.
 function Panel:SetSpawnIcon(icon)
 end
@@ -1288,6 +1376,12 @@ end
 function Panel:SetTextInset(insetX, insetY)
 end
 
+--- Sets text selection colors of a RichText element.  
+--- @param textColor table @The Global.Color to set for selected text.
+--- @param backgroundColor table @The Global.Color to set for selected text background.
+function Panel:SetTextSelectionColors(textColor, backgroundColor)
+end
+
 --- Sets the height of a RichText element to accommodate the text inside.  
 --- ℹ **NOTE**: This function internally relies on Panel:GetNumLines, so it should be called at least a couple frames after modifying the text using Panel:AppendText  
 function Panel:SetToFullHeight()
@@ -1300,8 +1394,9 @@ end
 
 --- Sets the panel to be displayed as contents of a DTooltip when a player hovers over the panel object with their cursor. See Panel:SetTooltipPanelOverride if you are looking to override DTooltip itself.  
 --- ℹ **NOTE**: Panel:SetTooltip will override this functionality.  
---- ⚠ **WARNING**: Calling this from PANEL:OnCursorEntered is too late! The tooltip will not be displayed or be updated.  
---- ⚠ **WARNING**: Given panel or the previously set one will NOT be automatically removed.  
+--- ⚠ **WARNING**:   
+--- Calling this from PANEL:OnCursorEntered is too late! The tooltip will not be displayed or be updated.  
+--- Given panel or the previously set one will **NOT** be automatically removed.  
 --- @param tooltipPanel? Panel @The panel to use as the tooltip.
 function Panel:SetTooltipPanel(tooltipPanel)
 end
@@ -1353,8 +1448,20 @@ end
 
 --- Sets whether text wrapping should be enabled or disabled on Label and DLabel panels.  
 --- Use DLabel:SetAutoStretchVertical to automatically correct vertical size; Panel:SizeToContents will not set the correct height.  
---- @param wrap boolean @True to enable text wrapping, false otherwise.
+--- @param wrap boolean @`True` to enable text wrapping, `false` otherwise.
 function Panel:SetWrap(wrap)
+end
+
+--- Sets the X position of the panel.  
+--- Uses Panel:SetPos internally.  
+--- @param x number @The X coordinate of the position.
+function Panel:SetX(x)
+end
+
+--- Sets the Y position of the panel.  
+--- Uses Panel:SetPos internally.  
+--- @param y number @The Y coordinate of the position.
+function Panel:SetY(y)
 end
 
 --- Sets the panels z position which determines the rendering order.  

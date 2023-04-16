@@ -1,20 +1,24 @@
 --- @class Player : Entity
 --- This is a list of all methods only available for players. It is also possible to call Entity functions on the Player.  
 local Player = {}
---- Returns the player's AccountID aka SteamID3.  
---- For bots this will return values starting with 0 for the first bot, 1 for the second bot and so on.  
---- In singleplayer, this will return no value.  
---- @return number @Player's SteamID3 aka AccountID.
+--- Returns the player's AccountID aka SteamID3. (`[U:1:AccountID]`)  
+--- See Player:SteamID for the text representation of the full SteamID.  
+--- See Player:SteamID64 for a 64bit representation of the full SteamID.  
+--- Unlike other variations of SteamID, SteamID3 does not include the "Account Type" and "Account Instance" part of the SteamID.  
+--- ℹ **NOTE**: In a `-multirun` environment, this will return `no value` for all "copies" of a player because they are not authenticated with Steam.  
+--- For bots this will return values starting with `0` for the first bot, `1` for the second bot and so on. It will return `no value` clientside for bots.  
+--- @return number @The AccountID of Player's SteamID.
 function Player:AccountID()
 end
 
---- Adds an entity to the players clean up list.  
+--- Adds an entity to the player's clean up list.  
 --- @param type string @Cleanup type
 --- @param ent Entity @Entity to add
 function Player:AddCleanup(type, ent)
 end
 
---- Adds an entity to the total count of entities of same class.  
+--- ℹ **NOTE**: See [GetCount](/gmod/Player:GetCount) for list of types  
+--- Adds an entity to the total count of entities of same type.  
 --- @param str string @Entity type
 --- @param ent Entity @Entity
 function Player:AddCount(str, ent)
@@ -30,7 +34,7 @@ end
 function Player:AddFrags(count)
 end
 
---- Adds a entity to the players list of frozen objects.  
+--- Adds a entity to the player's list of frozen objects.  
 --- @param ent Entity @Entity
 --- @param physobj PhysObj @Physics object belonging to ent
 function Player:AddFrozenPhysicsObject(ent, physobj)
@@ -58,12 +62,12 @@ end
 function Player:Alive()
 end
 
---- Sets if the player can toggle his flashlight. Function exists on both the server and client but has no effect when ran on the client.  
+--- Sets if the player can toggle their flashlight. Function exists on both the server and client but has no effect when ran on the client.  
 --- @param canFlashlight boolean @True allows flashlight toggling
 function Player:AllowFlashlight(canFlashlight)
 end
 
---- Lets the player spray his decal without delay  
+--- Lets the player spray their decal without delay  
 --- @param allow boolean @Allow or disallow
 function Player:AllowImmediateDecalPainting(allow)
 end
@@ -129,6 +133,7 @@ end
 --- Runs the concommand on the player. This does not work on bots.  
 --- If you wish to directly modify the movement input of bots, use GM:StartCommand instead.  
 --- ℹ **NOTE**: Some commands/convars are blocked from being ran/changed using this function, usually to prevent harm/annoyance to clients. For a list of blocked commands, see Blocked ConCommands.  
+--- 🦟 **BUG**: On clientside running a ConCommand on an other player will not throw any warnings or errors but will run the ConCommand on LocalPlayer() instead.  
 --- @param command string @command to run
 function Player:ConCommand(command)
 end
@@ -148,8 +153,8 @@ end
 function Player:CrosshairEnable()
 end
 
---- Returns whether the player is crouching or not. (FL_DUCKING flag)  
---- @return boolean @Whether the player is crouching
+--- Returns whether the player is crouching or not (FL_DUCKING flag).  
+--- @return boolean @Whether the player is crouching.
 function Player:Crouching()
 end
 
@@ -164,6 +169,11 @@ end
 
 --- Detonates all tripmines belonging to the player.  
 function Player:DetonateTripmines()
+end
+
+--- Disables world clicking for given player. See Panel:SetWorldClicker and Player:IsWorldClickingDisabled.  
+--- @param disable boolean @Whether the world clicking should be disabled.
+function Player:DisableWorldClicking(disable)
 end
 
 --- Sends a third person animation event to the player.  
@@ -239,7 +249,7 @@ end
 function Player:ExitVehicle()
 end
 
---- Enables/Disables the player's flashlight  
+--- Enables/Disables the player's flashlight.Player:CanUseFlashlight must be true in order for the player's flashlight to be changed.  
 --- @param isOn boolean @Turns the flashlight on/off
 function Player:Flashlight(isOn)
 end
@@ -249,8 +259,9 @@ end
 function Player:FlashlightIsOn()
 end
 
---- Returns the amount of kills a player has.  
---- @return number @kills
+--- Returns the amount of frags a player has.  
+--- ℹ **NOTE**: The value will change depending on the player's kill or suicide: +1 for a kill, -1 for a suicide.   
+--- @return number @frags
 function Player:Frags()
 end
 
@@ -263,8 +274,13 @@ end
 
 --- Returns the player's active weapon.  
 --- If used on a Global.LocalPlayer() and the player is spectating another player with `OBS_MODE_IN_EYE`, the weapon returned will be of the spectated player.  
---- @return Weapon @The weapon the player is currently has equipped.
+--- @return Weapon @The weapon the player currently has equipped.
 function Player:GetActiveWeapon()
+end
+
+--- Returns the player's current activity.  
+--- @return number @The player's current activity
+function Player:GetActivity()
 end
 
 --- Returns the direction that the player is aiming.  
@@ -277,8 +293,8 @@ end
 function Player:GetAllowFullRotation()
 end
 
---- Returns whether the player is allowed to use his weapons in a vehicle or not.  
---- @return boolean @Whether the player is allowed to use his weapons in a vehicle or not.
+--- Returns whether the player is allowed to use their weapons in a vehicle or not.  
+--- @return boolean @Whether the player is allowed to use their weapons in a vehicle or not.
 function Player:GetAllowWeaponsInVehicle()
 end
 
@@ -313,9 +329,25 @@ end
 function Player:GetClassID()
 end
 
---- Gets total count of entities of same class.  
---- @param type string @Entity type to get count of.
+--- Gets total count of entities of same type.  
+--- Default types:  
+--- ```  
+--- balloons  
+--- buttons  
+--- cameras  
+--- dynamite  
+--- emitters  
+--- hoverballs  
+--- lamps  
+--- lights  
+--- props  
+--- ragdolls  
+--- thrusters  
+--- wheels  
+--- ```  
+--- @param type string @Type to get entity count of.
 --- @param minus? number @If specified, it will reduce the counter by this value
+--- @return number @The returned count.
 function Player:GetCount(type, minus)
 end
 
@@ -338,8 +370,8 @@ end
 function Player:GetCurrentViewOffset()
 end
 
---- Gets the entity the player is currently driving.  
---- @return Entity @DriveEntity
+--- Gets the entity the player is currently driving via the drive library.  
+--- @return Entity @The currently driven entity, or NULL entity
 function Player:GetDrivingEntity()
 end
 
@@ -359,15 +391,17 @@ function Player:GetEntityInUse()
 end
 
 --- Returns a table with information of what the player is looking at.  
---- The results of this function are cached every frame.  
---- See also Player:GetEyeTraceNoCursor  
---- @return table @Trace information, see Structures/TraceResult
+--- The results of this function are **cached** clientside every frame.  
+--- Uses util.GetPlayerTrace internally and is therefore bound by its limits.  
+--- See also Player:GetEyeTraceNoCursor.  
+--- @return table @Trace information, see Structures/TraceResult.
 function Player:GetEyeTrace()
 end
 
---- Returns the trace according to the players view direction, ignoring their mouse ( Holding C and moving the mouse in Sandbox ).  
---- The results of this function are cached every frame.  
---- See also Player:GetEyeTrace  
+--- Returns the trace according to the players view direction, ignoring their mouse (holding `C` and moving the mouse in Sandbox).  
+--- The results of this function are **cached** clientside every frame.  
+--- Uses util.GetPlayerTrace internally and is therefore bound by its limits.  
+--- See also Player:GetEyeTrace.  
 --- @return table @Trace result
 function Player:GetEyeTraceNoCursor()
 end
@@ -387,27 +421,28 @@ end
 function Player:GetHands()
 end
 
---- Returns the widget the player is hovering with his mouse.  
+--- Returns the widget the player is hovering with their mouse.  
 --- @return Entity @The hovered widget.
 function Player:GetHoveredWidget()
 end
 
 --- Gets the bottom base and the top base size of the player's hull.  
---- @return Vector @Player's hull bottom base size
---- @return Vector @Player's hull top base size
+--- @return Vector @Player's hull bottom base size.
+--- @return Vector @Player's hull top base size.
 function Player:GetHull()
 end
 
 --- Gets the bottom base and the top base size of the player's crouch hull.  
---- @return Vector @Player's crouch hull bottom base size
---- @return Vector @Player's crouch hull top base size
+--- @return Vector @Player's crouch hull bottom base size.
+--- @return Vector @Player's crouch hull top base size.
 function Player:GetHullDuck()
 end
 
 --- Retrieves the value of a client-side ConVar. The ConVar must have a FCVAR_USERINFO flag for this to work.  
 --- ⚠ **WARNING**: The returned value is truncated to 31 bytes.  
---- @param cVarName string @The name of the client-side ConVar
---- @return string @The value of the ConVar
+--- ⚠ **WARNING**: On client this function will return value of the local player, regardless of which player the function was called on!  
+--- @param cVarName string @The name of the client-side ConVar.
+--- @return string @The value of the ConVar.
 function Player:GetInfo(cVarName)
 end
 
@@ -430,8 +465,13 @@ function Player:GetLadderClimbSpeed()
 end
 
 --- Returns the timescale multiplier of the player movement.  
---- @return number @The timescale multiplier, defaults to 1.
+--- @return number @The timescale multiplier, defaults to `1`.
 function Player:GetLaggedMovementValue()
+end
+
+--- Returns the maximum amount of armor the player should have. Default value is 100.  
+--- @return number @The new max armor value
+function Player:GetMaxArmor()
 end
 
 --- Returns the player's maximum movement speed.  
@@ -442,7 +482,7 @@ end
 
 --- Returns the player's name, this is an alias of Player:Nick.  
 --- ℹ **NOTE**: This function overrides Entity:GetName (in the Lua metatable, not in c++), keep it in mind when dealing with ents.FindByName or any engine function which requires the mapping name.  
---- @return string @The player's name
+--- @return string @The player's name.
 function Player:GetName()
 end
 
@@ -490,7 +530,7 @@ function Player:GetPreferredCarryAngles(carryEnt)
 end
 
 --- Returns the widget entity the player is using.  
---- Having a pressed widget stops the player from firing his weapon to allow input to be passed onto the widget.  
+--- Having a pressed widget stops the player from firing their weapon to allow input to be passed onto the widget.  
 --- @return Entity @The pressed widget.
 function Player:GetPressedWidget()
 end
@@ -501,7 +541,7 @@ function Player:GetPreviousWeapon()
 end
 
 --- 🛑 **DEPRECATED**: You should use Player:GetViewPunchAngles instead.  
---- Returns players screen punch effect angle.  
+--- Returns players screen punch effect angle. See Player:ViewPunch and Player:SetViewPunchAngles  
 --- @return Angle @The punch angle
 function Player:GetPunchAngle()
 end
@@ -528,7 +568,7 @@ end
 function Player:GetShootPos()
 end
 
---- Returns the player's slow walking speed, which is activated via `+walk` keybind.  
+--- Returns the player's slow walking speed, which is activated via `+WALK` keybind.  
 --- See Player:GetWalkSpeed for normal walking speed, Player:GetRunSpeed for sprinting speed and Player:GetLadderClimbSpeed for ladder climb speed.  
 --- @return number @The new slow walking speed.
 function Player:GetSlowWalkSpeed()
@@ -546,6 +586,7 @@ function Player:GetSuitPower()
 end
 
 --- Returns the number of seconds that the player has been timing out for. You can check if a player is timing out with Player:IsTimingOut.  
+--- ℹ **NOTE**: This function is relatively useless because it is tied to the value of the `sv_timeout` ConVar, which is irrelevant to the description above. [This is not considered as a bug](https://discord.com/channels/565105920414318602/567617926991970306/748970396224585738).  
 --- @return number @Timeout seconds.
 function Player:GetTimeoutSeconds()
 end
@@ -561,7 +602,14 @@ end
 function Player:GetUnDuckSpeed()
 end
 
---- Returns the player's user group.  
+--- Returns the entity the player would use if they would press their `+use` keybind.  
+--- <note issue="5027">Because entity physics objects usually do not exist on the client, the client's use entity will resolve to whatever the crosshair is placed on within a little less than 72 units of the player's eye position. This differs from the entity returned by the server, which has fully physical use checking. See util.TraceHull.  
+--- Issue tracker: [5027](https://github.com/Facepunch/garrysmod-issues/issues/5027)</note>  
+--- @return Entity @The entity that would be used or NULL.
+function Player:GetUseEntity()
+end
+
+--- Returns the player's user group. By default, player user groups are loaded from `garrysmod/settings/users.txt`.  
 --- @return string @The user group of the player
 function Player:GetUserGroup()
 end
@@ -572,6 +620,7 @@ function Player:GetVehicle()
 end
 
 --- Returns the entity the player is using to see from (such as the player itself, the camera, or another entity).  
+--- ℹ **NOTE**: This function will return a [NULL Entity] until Player:SetViewEntity has been used  
 --- @return Entity @The entity the player is using to see from
 function Player:GetViewEntity()
 end
@@ -600,6 +649,16 @@ end
 --- Returns players screen punch effect angle.  
 --- @return Angle @The punch angle
 function Player:GetViewPunchAngles()
+end
+
+--- Returns client's view punch velocity. See Player:ViewPunch and Player:SetViewPunchVelocity  
+--- @return Angle @The current view punch angle velocity.
+function Player:GetViewPunchVelocity()
+end
+
+--- Returns the current voice volume scale for given player on client.  
+--- @return number @The voice volume scale, where 0 is 0% and 1 is 100%.
+function Player:GetVoiceVolumeScale()
 end
 
 --- Returns the player's normal walking speed. Not sprinting, not slow walking. (+walk)  
@@ -634,7 +693,7 @@ end
 
 --- Gives ammo to a player  
 --- @param amount number @Amount of ammo
---- @param type string @Type of ammo
+--- @param type any @Type of ammo
 --- @param hidePopup? boolean @Hide display popup when giving the ammo
 --- @return number @Ammo given.
 function Player:GiveAmmo(amount, type, hidePopup)
@@ -661,6 +720,7 @@ function Player:HasWeapon(className)
 end
 
 --- Returns the player's IP address and connection port in ip:port form  
+--- ℹ **NOTE**: Returns `Error!` for bots.  
 --- @return string @The player's IP address and connection port
 function Player:IPAddress()
 end
@@ -670,8 +730,9 @@ end
 function Player:InVehicle()
 end
 
---- Returns whether the player is an admin or not  
---- @return boolean @True if the player is an admin
+--- Returns whether the player is an admin or not. It will also return `true` if the player is Player:IsSuperAdmin by default.  
+--- Internally this is determined by Player:IsUserGroup.  
+--- @return boolean @True if the player is an admin or a super admin.
 function Player:IsAdmin()
 end
 
@@ -690,12 +751,13 @@ end
 function Player:IsDrivingEntity()
 end
 
---- Returns whether the players movement is currently frozen, contolled by Player:Freeze.  
+--- Returns whether the players movement is currently frozen, controlled by Player:Freeze.  
 --- @return boolean @Whether the players movement is currently frozen or not.
 function Player:IsFrozen()
 end
 
 --- Returns whether the player identity was confirmed by the steam network.  
+--- See also GM:PlayerAuthed.  
 --- @return boolean @Whether the player has been fully authenticated or not
 function Player:IsFullyAuthenticated()
 end
@@ -715,12 +777,13 @@ end
 function Player:IsPlayingTaunt()
 end
 
---- Returns whenever the player is heard by the local player.  
---- @return boolean @isSpeaking
+--- Returns whenever the player is heard by the local player clientside, or if the player is speaking serverside.  
+--- @return boolean @Is the player speaking or not.
 function Player:IsSpeaking()
 end
 
---- Returns whether the player is currently sprinting or not.  
+--- Returns whether the player is currently sprinting or not, specifically if they are holding their sprint key and are allowed to sprint.  
+--- This will not check if the player is currently sprinting into a wall. (i.e. holding their sprint key but not moving)  
 --- @return boolean @Is the player sprinting or not
 function Player:IsSprinting()
 end
@@ -731,12 +794,14 @@ end
 function Player:IsSuitEquipped()
 end
 
---- Returns whether the player is a superadmin.  
---- @return boolean @True if the player is a superadmin.
+--- Returns whether the player is a super admin.  
+--- Internally this is determined by Player:IsUserGroup. See also Player:IsAdmin.  
+--- @return boolean @True if the player is a super admin.
 function Player:IsSuperAdmin()
 end
 
 --- Returns true if the player is timing out (i.e. is losing connection), false otherwise.  
+--- A player is considered timing out when more than 4 seconds has elapsed since a network packet was received from given player.  
 --- @return boolean @isTimingOut
 function Player:IsTimingOut()
 end
@@ -747,7 +812,7 @@ end
 function Player:IsTyping()
 end
 
---- Returns true/false if the player is in specified group or not.  
+--- Returns true/false if the player is in specified group or not. See Player:GetUserGroup for a way to get player's usergroup.  
 --- @param groupname string @Group to check the player for.
 --- @return boolean @isInUserGroup
 function Player:IsUserGroup(groupname)
@@ -764,25 +829,31 @@ end
 function Player:IsWorldClicking()
 end
 
+--- Returns whether the world clicking is disabled for given player or not. See Player:DisableWorldClicking.  
+--- 🦟 **BUG**: This value is meant to be networked to the client, but is not currently.  
+--- @return boolean @Whether the world clicking is disabled or not.
+function Player:IsWorldClickingDisabled()
+end
+
 --- Gets whether a key is down. This is not networked to other players, meaning only the local client can see the keys they are pressing.  
 --- @param key number @The key, see Enums/IN
---- @return boolean @isDown
+--- @return boolean @isDown ?
 function Player:KeyDown(key)
 end
 
 --- Gets whether a key was down one tick ago.  
 --- @param key number @The key, see Enums/IN
---- @return boolean @Is key down
+--- @return boolean @Is key down ?
 function Player:KeyDownLast(key)
 end
 
---- Gets whether a key was just pressed this tick  
+--- Gets whether a key was just pressed this tick.  
 --- @param key number @Corresponds to an Enums/IN
 --- @return boolean @Was pressed or not
 function Player:KeyPressed(key)
 end
 
---- Gets whether a key was just released this tick  
+--- Gets whether a key was just released this tick.  
 --- @param key number @The key, see Enums/IN
 --- @return boolean @Was released or not
 function Player:KeyReleased(key)
@@ -820,9 +891,15 @@ function Player:LastHitGroup()
 end
 
 --- Shows "limit hit" notification in sandbox.  
---- ℹ **NOTE**: This function is only available in Sandbox and its derivatives  
---- @param type string @Type of hit limit
+--- ℹ **NOTE**: This function is only available in Sandbox and its derivatives.  
+--- @param type string @Type of hit limit.
 function Player:LimitHit(type)
+end
+
+--- Returns the direction a player is looking as a entity/local-oriented angle.  
+--- Unlike Entity:EyeAngles, this function does not include angles of the Player's Entity:GetParent.  
+--- @return Angle @local eye angles
+function Player:LocalEyeAngles()
 end
 
 --- Stops a player from using any inputs, such as moving, turning, or attacking. Key binds are still called. Similar to Player:Freeze but the player takes no damage.  
@@ -838,13 +915,20 @@ function Player:MotionSensorPos(bone)
 end
 
 --- Returns the players name. Identical to Player:Nick and Player:GetName.  
---- @return string @Player's Steam name
+--- @return string @Player's Steam name.
 function Player:Name()
 end
 
 --- Returns the player's nickname.  
 --- @return string @Player's Steam name
 function Player:Nick()
+end
+
+--- Returns the 64-bit SteamID aka CommunityID of the Steam Account that owns the Garry's Mod license this player is using. This is useful for detecting players using Steam Family Sharing.  
+--- If player is not using Steam Family Sharing, this will return the player's actual SteamID64().  
+--- ℹ **NOTE**: This data will only be available after the player has fully authenticated with Steam. See Player:IsFullyAuthenticated.  
+--- @return string @The 64bit SteamID
+function Player:OwnerSteamID64()
 end
 
 --- Returns the packet loss of the client. It is not networked so it only returns 0 when run clientside.  
@@ -864,6 +948,14 @@ end
 function Player:PickupObject(entity)
 end
 
+--- Forces the player to pickup an existing weapon entity. The player will not pick up the weapon if they already own a weapon of given type, or if the player could not normally have this weapon in their inventory.  
+--- This function **will** bypass GM:PlayerCanPickupWeapon.  
+--- @param wep Weapon @The weapon to try to pick up.
+--- @param ammoOnly? boolean @If set to true, the player will only attempt to pick up the ammo from the weapon
+--- @return boolean @Whether the player succeeded in picking up the weapon or not.
+function Player:PickupWeapon(wep, ammoOnly)
+end
+
 --- Returns the player's ping to server.  
 --- @return number @The player's ping.
 function Player:Ping()
@@ -876,9 +968,9 @@ end
 
 --- Displays a message either in their chat, console, or center of the screen. See also Global.PrintMessage.  
 --- ℹ **NOTE**: When called serverside, this uses the archaic user message system (the umsg) and hence is limited to ≈250 characters.  
---- ℹ **NOTE**: `HUD_PRINTCENTER` will not work when this is called clientside.  
---- @param type number @Which type of message should be sent to the player (Enums/HUD)
---- @param message string @Message to be sent to the player
+--- `HUD_PRINTCENTER` will not work when this is called clientside.  
+--- @param type number @Which type of message should be sent to the player (Enums/HUD).
+--- @param message string @Message to be sent to the player.
 function Player:PrintMessage(type, message)
 end
 
@@ -935,7 +1027,7 @@ function Player:SelectWeapon(className)
 end
 
 --- Sends a hint to a player.  
---- ℹ **NOTE**: This function is only available in Sandbox and its derivatives. Since this adds `#Hint_` to the beginning of each message, you should only use it with default hint messages, or those cached with language.Add. For hints with custom text, look at notification.AddLegacy  
+--- ℹ **NOTE**: This function is only available in Sandbox and its derivatives. Since this adds `#Hint_` to the beginning of each message, you should only use it with default hint messages, or those cached with language.Add. For hints with custom text, look at notification.AddLegacy.  
 --- @param name string @Name/class/index of the hint
 --- @param delay number @Delay in seconds before showing the hint
 function Player:SendHint(name, delay)
@@ -949,10 +1041,15 @@ function Player:SendLua(script)
 end
 
 --- Sets the player's active weapon. You should use CUserCmd:SelectWeapon or Player:SelectWeapon, instead in most cases.  
---- ℹ **NOTE**: This function will not trigger the weapon switch event or associated equip animations. You can achieve this using Player:SelectWeapon with Entity:GetClass.  
---- ℹ **NOTE**: This will not call GM:PlayerSwitchWeapon.  
+--- This function will not trigger the weapon switch events or associated equip animations. It will bypass  
+--- GM:PlayerSwitchWeapon and the currently active weapon's WEAPON:Holster return value.  
 --- @param weapon Weapon @The weapon to equip.
 function Player:SetActiveWeapon(weapon)
+end
+
+--- Sets the player's activity.  
+--- @param act number @The new activity to set
+function Player:SetActivity(act)
 end
 
 --- Set if the players' model is allowed to rotate around the pitch and roll axis.  
@@ -960,10 +1057,9 @@ end
 function Player:SetAllowFullRotation(Allowed)
 end
 
---- Allows player to use his weapons in a vehicle. You need to call this before entering a vehicle.  
+--- Allows player to use their weapons in a vehicle. You need to call this before entering a vehicle.  
 --- 🦟 **BUG**: [Shooting in a vehicle fires two bullets.](https://github.com/Facepunch/garrysmod-issues/issues/1277)  
---- 🦟 **BUG**: [Weapon viewpunch does not decay while in a vehicle, leading to incorrect aim angles.](https://github.com/Facepunch/garrysmod-issues/issues/3261)  
---- @param allow boolean @Show we allow player to use his weapons in a vehicle or not.
+--- @param allow boolean @Show we allow player to use their weapons in a vehicle or not.
 function Player:SetAllowWeaponsInVehicle(allow)
 end
 
@@ -1028,7 +1124,7 @@ end
 function Player:SetDuckSpeed(duckSpeed)
 end
 
---- Sets the angle of the player's view (may rotate body too if angular difference is large)  
+--- Sets the local angle of the player's view (may rotate body too if angular difference is large)  
 --- @param angle Angle @Angle to set the view to
 function Player:SetEyeAngles(angle)
 end
@@ -1036,7 +1132,7 @@ end
 --- Set a player's FOV (Field Of View) over a certain amount of time.  
 --- @param fov number @the angle of perception (FOV)
 --- @param time? number @the time it takes to transition to the FOV expressed in a floating point.
---- @param requester? Entity @The requester or "owner" of the zoom event.
+--- @param requester? Entity @The requester or "owner" of the zoom event
 function Player:SetFOV(fov, time, requester)
 end
 
@@ -1058,19 +1154,20 @@ function Player:SetHoveredWidget(widget)
 end
 
 --- Sets the mins and maxs of the AABB of the players collision.  
---- 🦟 **BUG**: [Setting both the mins and maxs to Global.Vector(0,0,0) will crash the game.](https://github.com/Facepunch/garrysmod-issues/issues/3365)  
+--- See Player:SetHullDuck for the hull while crouching/ducking.  
 --- @param hullMins Vector @The min coordinates of the hull.
 --- @param hullMaxs Vector @The max coordinates of the hull.
 function Player:SetHull(hullMins, hullMaxs)
 end
 
 --- Sets the mins and maxs of the AABB of the players collision when ducked.  
+--- See Player:SetHull for setting the hull while standing.  
 --- @param hullMins Vector @The min coordinates of the hull.
 --- @param hullMaxs Vector @The max coordinates of the hull.
 function Player:SetHullDuck(hullMins, hullMaxs)
 end
 
---- Sets the jump power, eg. the velocity the player will applied to when he jumps.  
+--- Sets the jump power, eg. the velocity that will be applied to the player when they jump.  
 --- @param jumpPower number @The new jump velocity.
 function Player:SetJumpPower(jumpPower)
 end
@@ -1083,15 +1180,20 @@ end
 
 --- Slows down the player movement simulation by the timescale, this is used internally in the HL2 weapon stripping sequence.  
 --- It achieves such behavior by multiplying the Global.FrameTime by the specified timescale at the start of the movement simulation and then restoring it afterwards.  
---- ℹ **NOTE**: This is reset to 1 on spawn  
---- ℹ **NOTE**: There is no weapon counterpart to this, you'll have to hardcode the multiplier in the weapon or call Weapon:SetNextPrimaryFire / Weapon:SetNextSecondaryFire manually from a  
+--- ℹ **NOTE**: This is reset to 1 on spawn.  
+--- There is no weapon counterpart to this, you'll have to hardcode the multiplier in the weapon or call Weapon:SetNextPrimaryFire / Weapon:SetNextSecondaryFire manually from a.  
 --- @param timescale number @The timescale multiplier.
 function Player:SetLaggedMovementValue(timescale)
 end
 
 --- Sets the hitgroup where the player was last hit.  
---- @param hitgroup number @The hitgroup to set as the "last hit", see Enums/HITGROUP
+--- @param hitgroup number @The hitgroup to set as the "last hit", see Enums/HITGROUP.
 function Player:SetLastHitGroup(hitgroup)
+end
+
+--- Sets the maximum amount of armor the player should have. This affects default built-in armor pickups, but not Player:SetArmor.  
+--- @param maxarmor number @The new max armor value.
+function Player:SetMaxArmor(maxarmor)
 end
 
 --- Sets the maximum speed which the player can move at.  
@@ -1106,7 +1208,8 @@ function Player:SetMuted(mute)
 end
 
 --- Sets whenever the player should not collide with their teammates.  
---- 🦟 **BUG**: [This only works with Player:Team IDs 1-4. This also has major collision issues.](https://github.com/Facepunch/garrysmod-issues/issues/2757)  
+--- ℹ **NOTE**: This will only work for teams with ID 1 to 4 due to internal Engine limitations.  
+--- ℹ **NOTE**: This causes traces with COLLISION_GROUP_PLAYER to pass through players.  
 --- @param shouldNotCollide boolean @True to disable, false to enable collision.
 function Player:SetNoCollideWithTeammates(shouldNotCollide)
 end
@@ -1138,7 +1241,7 @@ function Player:SetPlayerColor(Color)
 end
 
 --- Sets the widget that is currently in use by the player's mouse.  
---- Having a pressed widget stops the player from firing his weapon to allow input to be passed onto the widget.  
+--- Having a pressed widget stops the player from firing their weapon to allow input to be passed onto the widget.  
 --- @param pressedWidget? Entity @The widget the player is currently using.
 function Player:SetPressedWidget(pressedWidget)
 end
@@ -1150,11 +1253,12 @@ end
 
 --- Sets the player's sprint speed.  
 --- See also Player:GetRunSpeed, Player:SetWalkSpeed and Player:SetMaxSpeed.  
---- @param runSpeed number @The new sprint speed when sv_friction is below 10
+--- ℹ **NOTE**: player_default class run speed is: `600`  
+--- @param runSpeed number @The new sprint speed when `sv_friction` is below `10`
 function Player:SetRunSpeed(runSpeed)
 end
 
---- Sets the player's slow walking speed, which is activated via `+walk` keybind.  
+--- Sets the player's slow walking speed, which is activated via `+WALK` keybind.  
 --- See Player:SetWalkSpeed for normal walking speed, Player:SetRunSpeed for sprinting speed and Player:SetLadderClimbSpeed for ladder climb speed.  
 --- @param speed number @The new slow walking speed.
 function Player:SetSlowWalkSpeed(speed)
@@ -1210,16 +1314,27 @@ end
 function Player:SetViewOffsetDucked(viewOffset)
 end
 
---- Sets client's view punch. See Player:ViewPunch  
+--- Sets client's view punch angle, but not the velocity. See Player:ViewPunch  
 --- @param punchAngle Angle @The angle to set.
 function Player:SetViewPunchAngles(punchAngle)
 end
 
+--- Sets client's view punch velocity. See Player:ViewPunch and Player:SetViewPunchAngles  
+--- @param punchVel Angle @The angle velocity to set.
+function Player:SetViewPunchVelocity(punchVel)
+end
+
+--- Sets the voice volume scale for given player on client. This value will persist from server to server, but will be reset when the game is shut down.  
+--- ℹ **NOTE**: This doesn't work on bots, their scale will always be `1`.  
+--- @param  number @The voice volume scale, where `0` is 0% and `1` is 100%.
+function Player:SetVoiceVolumeScale()
+end
+
 --- Sets the player's normal walking speed. Not sprinting, not slow walking `+walk`.  
---- There currently is no way to modify the slow walking `+walk` speed.  
---- See also Player:GetWalkSpeed, Player:SetCrouchedWalkSpeed, Player:SetMaxSpeed and Player:SetRunSpeed.  
---- 🦟 **BUG**: [Using a speed of 0 can lead to prediction errors.](https://github.com/Facepunch/garrysmod-issues/issues/2030)  
---- @param walkSpeed number @The new walk speed when sv_friction is below 10
+--- See also Player:SetSlowWalkSpeed, Player:GetWalkSpeed, Player:SetCrouchedWalkSpeed, Player:SetMaxSpeed and Player:SetRunSpeed.  
+--- 🦟 **BUG**: [Using a speed of `0` can lead to prediction errors.](https://github.com/Facepunch/garrysmod-issues/issues/2030)  
+--- ℹ **NOTE**: `player_default` class walk speed is: `400`.  
+--- @param walkSpeed number @The new walk speed when `sv_friction` is below `10`
 function Player:SetWalkSpeed(walkSpeed)
 end
 
@@ -1233,8 +1348,8 @@ end
 function Player:SetupHands(ent)
 end
 
---- Polls the engine to request if the player should be drawn at the time the function is called.  
---- @return boolean @shouldDraw
+--- Returns whether the player's player model will be drawn at the time the function is called.  
+--- @return boolean @`true` if the player's playermodel is visible
 function Player:ShouldDrawLocalPlayer()
 end
 
@@ -1255,17 +1370,18 @@ end
 
 --- Signals the entity that it was picked up by the gravity gun. This call is only required if you want to simulate the situation of picking up objects.  
 --- @param ent Entity @The entity picked up
-function Player:SimulateGravGunPickup(ent)
+--- @param lightning? boolean @Whether or not to show lightning effects around the entity
+function Player:SimulateGravGunPickup(ent, lightning)
 end
 
 --- Starts spectate mode for given player. This will also affect the players movetype in some cases.  
+--- 🦟 **BUG**: [Using this function while spectating the player's own ragdoll will cause it to teleport it to the center of the map. You will spectate the ragdoll even after it's been teleported. This only happens on the client of the player spectating the ragdoll and is purely client-side.](https://github.com/Facepunch/garrysmod-issues/issues/4608)  
 --- @param mode number @Spectate mode, see Enums/OBS_MODE.
 function Player:Spectate(mode)
 end
 
---- Makes the player spectate the entity  
---- To get the applied spectated entity, use Player:GetObserverTarget().  
---- 🦟 **BUG**: [The player's position will not update while spectating, causing area portals and other map optimisations to not work properly. You can fix this by setting the player's position to the spectated entity's each tick.](https://github.com/Facepunch/garrysmod-issues/issues/3267)  
+--- Makes the player spectate the entity.  
+--- To get the applied spectated entity, use Player:GetObserverTarget.  
 --- @param entity Entity @Entity to spectate.
 function Player:SpectateEntity(entity)
 end
@@ -1296,21 +1412,21 @@ end
 function Player:StartWalking()
 end
 
---- Returns the player's SteamID. In singleplayer, this will be STEAM_ID_PENDING serverside.  
---- For Bots this will return "BOT" on the server and on the client it returns "NULL".  
---- Use Player:AccountID for a shorter version of the SteamID.  
+--- Returns the player's SteamID.  
+--- See Player:AccountID for a shorter version of the SteamID and Player:SteamID64 for the Community/Profile formatted SteamID.  
+--- ℹ **NOTE**: In a `-multirun` environment, this will return `STEAM_0:0:0` (serverside) or `NULL` (clientside) for all "copies" of a player because they are not authenticated with Steam.  
+--- For Bots this will return `BOT` on the server and on the client it returns `NULL`.  
 --- @return string @SteamID
 function Player:SteamID()
 end
 
 --- Returns the player's 64-bit SteamID aka CommunityID.  
---- ⚠ **WARNING**: In singleplayer, this will return no value serverside.  
---- ℹ **NOTE**: In a multirun environment, this will return no value serverside for all "copies" of a player.  
---- ℹ **NOTE**: For bots, this will return 90071996842377216 (equivalent to STEAM_0:0:0) for the first bot to join.  
---- For each additional bot, the number increases by 1. So the next bot will be 90071996842377217 (STEAM_0:1:0) then 90071996842377218 (STEAM_0:0:1) and so on.  
---- ℹ **NOTE**: On the client it returns no value for bots.  
---- Use Player:AccountID for a shorter version of the SteamID.  
---- @return string @Player's 64bit SteamID aka CommunityID.
+--- See Player:AccountID for a shorter version of the SteamID and Player:SteamID for the normal version of the SteamID.  
+--- ℹ **NOTE**: In a `-multirun` environment, this will return `nil` for all "copies" of a player because they are not authenticated with Steam.  
+--- For bots, this will return `90071996842377216` (equivalent to `STEAM_0:0:0`) for the first bot to join.  
+--- For each additional bot, the number increases by 1. So the next bot will be `90071996842377217` (`STEAM_0:1:0`) then `90071996842377218` (`STEAM_0:0:1`) and so on.  
+--- It returns `no value` for bots clientside.  
+--- @return string @Player's 64-bit SteamID aka CommunityID.
 function Player:SteamID64()
 end
 
@@ -1335,6 +1451,7 @@ function Player:StripAmmo()
 end
 
 --- Removes the specified weapon class from a certain player  
+--- ℹ **NOTE**: this function will call the Entity:OnRemove but if you try use Entity:GetOwner it will return nil  
 --- @param weapon string @The weapon class to remove
 function Player:StripWeapon(weapon)
 end
@@ -1373,7 +1490,7 @@ end
 --- @param mins Vector @The minimum coordinates of the hull.
 --- @param maxs Vector @The maximum coordinates of the hull.
 --- @param damage number @The damage to be applied.
---- @param damageFlags Vector @Bitflag specifying the damage type, see Enums/DMG.
+--- @param damageFlags number @Bitflag specifying the damage type, see Enums/DMG.
 --- @param damageForce number @The force to be applied to the hit object.
 --- @param damageAllNPCs boolean @Whether to apply damage to all hit NPCs or not.
 --- @return Entity @The hit entity
@@ -1399,6 +1516,7 @@ end
 function Player:UnfreezePhysicsObjects()
 end
 
+--- 🛑 **DEPRECATED**: Use Player:SteamID64, Player:SteamID or Player:AccountID to uniquely identify players instead.  
 --- ⚠ **WARNING**: **This function has collisions,** where more than one player has the same UniqueID. It is **highly** recommended to use Player:AccountID, Player:SteamID or Player:SteamID64 instead, which are guaranteed to be unique to each player.  
 --- Returns a 32 bit integer that remains constant for a player across joins/leaves and across different servers. This can be used when a string is inappropriate - e.g. in a database primary key.  
 --- ℹ **NOTE**: In Singleplayer, this function will always return 1.  
@@ -1406,7 +1524,9 @@ end
 function Player:UniqueID()
 end
 
---- Returns a table that will stay allocated for the specific player between connects until the server shuts down. Note, that this table is not synchronized between client and server.  
+--- 🛑 **DEPRECATED**: This is based on Player:UniqueID which is deprecated and vulnerable to collisions.  
+--- Returns a table that will stay allocated for the specific player between connects until the server shuts down.  
+--- ℹ **NOTE**: This table is not synchronized between client and server.  
 --- @param key any @Unique table key.
 --- @return table @The table that contains any info you have put in it.
 function Player:UniqueIDTable(key)
@@ -1418,12 +1538,12 @@ end
 function Player:UserID()
 end
 
---- Simulates a push on the client's screen.  
+--- Simulates a push on the client's screen. This **adds** view punch velocity, and does not touch the current view punch angle, for which you can use Player:SetViewPunchAngles.  
 --- @param PunchAngle Angle @The angle in which to push the player's screen.
 function Player:ViewPunch(PunchAngle)
 end
 
---- Resets the player's view punch ( Player:ViewPunch ) effect back to normal.  
+--- Resets the player's view punch (and the view punch velocity, read more at Player:ViewPunch) effect back to normal.  
 --- @param tolerance? number @Reset all ViewPunch below this threshold.
 function Player:ViewPunchReset(tolerance)
 end

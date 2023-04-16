@@ -6,7 +6,7 @@ _G.jit = {}
 --- * as a trace is being recorded ("record");  
 --- * or when a trace exits through a side exit ("texit").  
 --- Set a callback with jit.attach(callback, "event") and clear the same callback with jit.attach(callback)  
---- ⚠ **WARNING**: This function isn't officially documented on LuJIT wiki, use it at your own risk.  
+--- ⚠ **WARNING**: This function isn't officially documented on LuaJIT wiki, use it at your own risk.  
 --- @param callback function @The callback function
 --- @param event string @The event to hook into.
 function jit.attach(callback, event)
@@ -31,6 +31,7 @@ end
 --- jit.opt.start("-dce")  
 --- jit.opt.start("hotloop=10", "hotexit=2")  
 --- ```  
+--- A list of LuaJIT -O command line options can be found here(a table of various optimization levels are displayed towards the bottom of the page along with exactly which optimization options are enabled for each level): http://luajit.org/running.html  
 --- @vararg any 
 function jit.opt.start(...)
 end
@@ -72,7 +73,7 @@ function jit.util.funcinfo(func, pos)
 end
 
 --- Gets a constant at a certain index in a function.  
---- ⚠ **WARNING**: This function isn't officially documented on LuJIT wiki, use it at your own risk.  
+--- ⚠ **WARNING**: This function isn't officially documented on LuaJIT wiki, use it at your own risk.  
 --- ℹ **NOTE**: Numbers constants goes from 0 (included) to n-1, n being the value of nconsts in jit.util.funcinfo in other words, the consts goes from (nconsts-1) to -n  
 --- ℹ **NOTE**: This function only works for Lua defined functions.  
 --- @param func function @Function to get constant from
@@ -82,15 +83,15 @@ function jit.util.funck(func, index)
 end
 
 --- Does the exact same thing as debug.getupvalue except it only returns the name, not the name and the object. The upvalue indexes also start at 0 rather than 1, so doing jit.util.funcuvname(func, 0) will get you the same name as debug.getupvalue(func, 1)  
---- ⚠ **WARNING**: This function isn't officially documented on LuJIT wiki, use it at your own risk.  
+--- ⚠ **WARNING**: This function isn't officially documented on LuaJIT wiki, use it at your own risk.  
 --- @param func function @Function to get the upvalue indexed from
 --- @param index number @The upvalue index, starting from 0
 --- @return string @The function returns nil if there is no upvalue with the given index, otherwise the name of the upvalue is returned
 function jit.util.funcuvname(func, index)
 end
 
---- Gets the address of a function from a list of 20 functions, for the list see Ircalladdr Functions  
---- ⚠ **WARNING**: This function isn't officially documented on LuJIT wiki, use it at your own risk.  
+--- Gets the address of a function from a list of functions, for the list see Ircalladdr Functions  
+--- ⚠ **WARNING**: This function isn't officially documented on LuaJIT wiki, use it at your own risk.  
 --- @param index number @The index of the function address to get from the ircalladdr func array (starting from 0)
 --- @return number @The address of the function
 function jit.util.ircalladdr(index)

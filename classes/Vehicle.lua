@@ -1,5 +1,5 @@
 --- @class Vehicle : Entity
---- This is a list of all methods only available for vehicles. It is also possible to call [Entity](http://wiki.garrysmod.com/index.php?title=Category:Entity) functions on vehicles.  
+--- This is a list of all methods only available for vehicles. It is also possible to call [Entity](https://wiki.facepunch.com/gmod/Entity) functions on vehicles.  
 local Vehicle = {}
 --- Returns the remaining boosting time left.  
 --- @return number @The remaining boosting time left
@@ -30,8 +30,8 @@ end
 function Vehicle:GetCameraDistance()
 end
 
---- Gets the driver of the vehicle, returns NULL if no driver is present.  
---- @return Entity @The driver of the vehicle
+--- Gets the driver of the vehicle, returns `NULL` if no driver is present.  
+--- @return Entity @The driver of the vehicle.
 function Vehicle:GetDriver()
 end
 
@@ -226,13 +226,6 @@ end
 function Vehicle:SetSteering(front, rear)
 end
 
---- Sets the steering of the vehicle.  
---- ⁉ **VALIDATE**: The correct range, 0 to 1 or -1 to 1  
---- @param front number @Angle of the front wheels (-1 to 1)
---- @param rear number @Angle of the rear wheels (-1 to 1)
-function Vehicle:SetSteering(front, rear)
-end
-
 --- Sets the maximum steering degrees of the vehicle  
 --- @param steeringDegrees number @The new maximum steering degree
 function Vehicle:SetSteeringDegrees(steeringDegrees)
@@ -255,8 +248,6 @@ end
 
 --- Sets the vehicle parameters for given vehicle.  
 --- ℹ **NOTE**: Not all variables from the Structures/VehicleParams can be set.  
---- 🦟 **BUG**: [Because this method uses miles per hour but Vehicle:GetVehicleParams returns Hammer units per second, this method incorrectly modifies the vehicle engine's "boostMaxSpeed", "maxRevSpeed" and "maxSpeed" even when not explicitly set in a call to this method.](https://github.com/Facepunch/garrysmod-issues/issues/2625)  
---- **Workaround**: In order to retain the original values for these fields, call Vehicle:GetVehicleParams yourself, convert the mentioned fields from Hammer units per second to miles per hour (1 MPH ≈ 17.6 HU/s in this case) and add them to the table passed into the call to this setter. Avoid doing this repeatedly to avoid floating point inaccuracies over time (store the ready-calculated value for next time if possible).  
 --- @param params table @The new new vehicle parameters
 function Vehicle:SetVehicleParams(params)
 end

@@ -1,6 +1,5 @@
 --- The debugoverlay library is mainly useful for 3D debugging, it can be used to draw shapes on the screen for debug purposes.  
 --- ℹ **NOTE**: These functions will not do anything unless the **developer** console variable is set to non 0.  
---- ℹ **NOTE**: These function appear to not work in singleplayer  
 _G.debugoverlay = {}
 --- Displays an axis indicator at the specified position.  
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0  
@@ -37,7 +36,7 @@ end
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param position Vector @Position origin
 --- @param size number @Size of the cross
---- @param lifetime? number @Number of seconds the cross to appear
+--- @param lifetime? number @Number of seconds the cross will appear for
 --- @param color? table @The color of the cross
 --- @param ignoreZ? boolean @If true, will draw on top of everything; ignoring the Z buffer
 function debugoverlay.Cross(position, size, lifetime, color, ignoreZ)

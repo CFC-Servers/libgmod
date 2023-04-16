@@ -22,8 +22,9 @@ function render.BrushMaterialOverride(mat)
 end
 
 --- Captures a part of the current render target and returns the data as a binary string in the given format.  
---- Since the pixel buffer clears itself every frame, this will return a black screen outside of . To capture the user's final view, use GM:PostRender. This will not capture the Steam overlay or third-party injections (such as the Discord overlay, Overwolf, and advanced cheats) on the user's screen.  
---- 🦟 **BUG**: [This sets the alpha channel incorrectly in PNG mode, causing the foreground to be rendered almost completely transparent.](https://github.com/Facepunch/garrysmod-issues/issues/2571)  
+--- Since the pixel buffer clears itself every frame, this will return a black screen outside of render hooks. To capture the user's final view, use GM:PostRender. This will not capture the Steam overlay or third-party injections (such as the Discord overlay, Overwolf, and advanced cheats) on the user's screen.  
+--- 🦟 **BUG**: [In PNG mode, this function can produce unexpected result where foreground is rendered as transparent.](https://github.com/Facepunch/garrysmod-issues/issues/2571)  
+--- This is caused by render.SetWriteDepthToDestAlpha set to `true` when doing most of render operations, including rendering in `_rt_fullframefb`. If you want to capture render target's content as PNG image only for output quality, set Structures/RenderCaptureData's `alpha` to `false` when capturing render targets with render.SetWriteDepthToDestAlpha set to `true`.  
 --- @param captureData table @Parameters of the capture
 --- @return string @binaryData
 function render.Capture(captureData)
@@ -45,10 +46,10 @@ function render.Clear(r, g, b, a, clearDepth, clearStencil)
 end
 
 --- Clears the current rendertarget for obeying the current stencil buffer conditions.  
---- @param r number @Value of the red channel to clear the current rt with.
---- @param g number @Value of the green channel to clear the current rt with.
---- @param b number @Value of the blue channel to clear the current rt with.
---- @param a number @Value of the alpha channel to clear the current rt with.
+--- @param r number @Value of the **red** channel to clear the current rt with.
+--- @param g number @Value of the **green** channel to clear the current rt with.
+--- @param b number @Value of the **blue** channel to clear the current rt with.
+--- @param a number @Value of the **alpha** channel to clear the current rt with.
 --- @param depth boolean @Clear the depth buffer.
 function render.ClearBuffersObeyStencil(r, g, b, a, depth)
 end
@@ -169,7 +170,8 @@ end
 --- Draws the current material set by render.SetMaterial to the whole screen. The color cannot be customized.  
 --- See also render.DrawScreenQuadEx.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
-function render.DrawScreenQuad()
+--- @param applyPoster? boolean @If set to true, when rendering a poster the quad will be properly drawn in parts in the poster
+function render.DrawScreenQuad(applyPoster)
 end
 
 --- Draws the the current material set by render.SetMaterial to the area specified. Color cannot be customized.  
@@ -285,7 +287,7 @@ function render.GetAmbientLightColor()
 end
 
 --- Returns the current alpha blending.  
---- @return number @blend
+--- @return number @Current alpha blending in range 0 to 1.
 function render.GetBlend()
 end
 
@@ -299,6 +301,8 @@ end
 
 --- Returns the current color modulation values as normals.  
 --- @return number @r
+--- @return number @g
+--- @return number @b
 function render.GetColorModulation()
 end
 
@@ -329,6 +333,11 @@ end
 --- Returns the _rt_FullFrameDepth texture. Alias of _rt_PowerOfTwoFB  
 --- @return ITexture 
 function render.GetFullScreenDepthTexture()
+end
+
+--- Returns whether HDR is currently enabled or not. This takes into account hardware support, current map and current client settings.  
+--- @return boolean @`true` if the player currently has HDR enabled.
+function render.GetHDREnabled()
 end
 
 --- Gets the light exposure on the specified position.  
@@ -369,8 +378,8 @@ end
 function render.GetRenderTarget()
 end
 
---- Returns the _rt_ResolvedFullFrameDepth texture for SSAO depth.  
---- @return ITexture 
+--- Returns the `_rt_ResolvedFullFrameDepth` texture for SSAO depth. It will only be updated if GM:NeedsDepthPass returns true.  
+--- @return ITexture @The depth texture.
 function render.GetResolvedFullFrameDepth()
 end
 
@@ -410,6 +419,12 @@ end
 --- Returns a vector representing linear tone mapping scale.  
 --- @return Vector @The vector representing linear tone mapping scale.
 function render.GetToneMappingScaleLinear()
+end
+
+--- Returns the current view setup.  
+--- @param noPlayer? boolean @If `true`, returns the `view->GetViewSetup`, if `false` - returns `view->GetPlayerViewSetup`
+--- @return table @Current current view setup
+function render.GetViewSetup(noPlayer)
 end
 
 --- Sets the render material override for all next calls of Entity:DrawModel. Also overrides render.MaterialOverrideByIndex.  
@@ -519,13 +534,14 @@ function render.PopRenderTarget()
 end
 
 --- Pushes a new clipping plane of the clip plane stack and sets it as active.  
---- ℹ **NOTE**: A max of 2 clip planes are supported on Linux/POSIX, and 6 on Windows.  
+--- 🦟 **BUG**: [A max of 2 clip planes are supported on Linux/POSIX, and 6 on Windows.](https://github.com/Facepunch/garrysmod-issues/issues/2687)  
 --- @param normal Vector @The normal of the clipping plane.
 --- @param distance number @The distance of the plane from the world origin
 function render.PushCustomClipPlane(normal, distance)
 end
 
 --- Pushes a texture filter onto the magnification texture filter stack.  
+--- See also render.PushFilterMin and render.PopFilterMag.  
 --- @param texFilterType number @The texture filter type, see Enums/TEXFILTER
 function render.PushFilterMag(texFilterType)
 end
@@ -557,15 +573,17 @@ end
 --- Reads the color of the specified pixel from the RenderTarget sent by render.CapturePixels  
 --- @param x number @The x coordinate.
 --- @param y number @The y coordinate.
---- @return number @r
---- @return number @g
---- @return number @b
+--- @return number @The red channel value.
+--- @return number @The green channel value.
+--- @return number @The blue channel value.
+--- @return number @The alpha channel value or no value if the render target has no alpha channel.
 function render.ReadPixel(x, y)
 end
 
 --- This applies the changes made to map lighting using engine.LightStyle.  
 --- @param DoStaticProps? boolean @When true, this will also apply lighting changes to static props
-function render.RedownloadAllLightmaps(DoStaticProps)
+--- @param UpdateStaticLighting? boolean @Forces all props to update their static lighting
+function render.RedownloadAllLightmaps(DoStaticProps, UpdateStaticLighting)
 end
 
 --- Renders the HUD on the screen.  
@@ -604,8 +622,8 @@ function render.SetAmbientLight(r, g, b)
 end
 
 --- Sets the alpha blending for every upcoming render operation.  
---- 🦟 **BUG**: [This does not affect non-model render.Draw* functions.](https://github.com/Facepunch/garrysmod-issues/issues/3166)  
---- @param blending number @Blending value from 0-1.
+--- 🦟 **BUG**: [This does not affect non-model `render.Draw*` functions.](https://github.com/Facepunch/garrysmod-issues/issues/3166)  
+--- @param blending number @Blending value from `0-1`.
 function render.SetBlend(blending)
 end
 
@@ -624,7 +642,7 @@ end
 function render.SetColorMaterial()
 end
 
---- Sets the current drawing material to "color_ignorez".  
+--- Sets the current drawing material to `color_ignorez`.  
 --- The material is defined as:  
 --- ```  
 --- "UnlitGeneric"  
@@ -660,6 +678,7 @@ end
 
 --- Sets lighting mode when rendering something.  
 --- ℹ **NOTE**: **Do not forget to restore the default value** to avoid unexpected behavior, like the world and the HUD/UI being affected  
+--- 🦟 **BUG**: [Reloading the map does not reset the value of this function.](https://github.com/Facepunch/garrysmod-issues/issues/5368)  
 --- @param Mode number @Lighting render mode
 function render.SetLightingMode(Mode)
 end
@@ -685,8 +704,6 @@ end
 
 --- Sets the material to be used in any upcoming render operation using the render.  
 --- Not to be confused with surface.SetMaterial.  
---- 🧱 **NOTE**: Requires a 3D rendering context  
---- <rendercontext hook="false" type="2D"></rendercontext>  
 --- @param mat IMaterial @The material to be used.
 function render.SetMaterial(mat)
 end
@@ -757,12 +774,12 @@ end
 
 --- Sets the operation to be performed on the stencil buffer values if the compare function was not successful.  
 --- Note that this takes place **before** depth testing.  
---- @param failOperation number @Fail operation function, see Enums/STENCILOPERATION
+--- @param failOperation number @Fail operation function, see Enums/STENCILOPERATION.
 function render.SetStencilFailOperation(failOperation)
 end
 
 --- Sets the operation to be performed on the stencil buffer values if the compare function was successful.  
---- @param passOperation number @Pass operation function, see Enums/STENCILOPERATION
+--- @param passOperation number @Pass operation function, see Enums/STENCILOPERATION.
 function render.SetStencilPassOperation(passOperation)
 end
 
@@ -816,8 +833,8 @@ end
 function render.StartBeam(segmentCount)
 end
 
---- Returns whether the game supports HDR, i.e. if the DirectX level is higher than or equal to 8.  
---- @return boolean @supportsHDR
+--- Returns whether the player's hardware supports HDR. (High Dynamic Range) HDR can still be disabled by the `mat_hdr_level` console variable or just not be supported by the map.  
+--- @return boolean @`true` if the player's hardware supports HDR.
 function render.SupportsHDR()
 end
 
@@ -862,5 +879,10 @@ end
 
 --- Copies the entire screen to the screen effect texture, which can be acquired via render.GetScreenEffectTexture. This function is mainly intended to be used in GM:RenderScreenspaceEffects  
 function render.UpdateScreenEffectTexture()
+end
+
+--- This function overrides all map materials for one frame.  
+--- @param mat? IMaterial 
+function render.WorldMaterialOverride(mat)
 end
 

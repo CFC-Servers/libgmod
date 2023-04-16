@@ -9,7 +9,7 @@ local NextBot = {}
 function NextBot:BecomeRagdoll(info)
 end
 
---- Should only be called in BodyUpdate. This sets the move_x and move_y pose parameters of the bot to fit how they're currently moving, sets the animation speed to suit the ground speed, and calls FrameAdvance.  
+--- Should only be called in NEXTBOT:BodyUpdate. This sets the `move_x` and `move_y` pose parameters of the bot to fit how they're currently moving, sets the animation speed (Entity:GetPlaybackRate) to suit the ground speed, and calls Entity:FrameAdvance.  
 --- 🦟 **BUG**: [This function might cause crashes with some activities.](https://github.com/Facepunch/garrysmod-issues/issues/3420)  
 function NextBot:BodyMoveXY()
 end
@@ -30,6 +30,16 @@ end
 --- Returns the currently running activity  
 --- @return number @The current activity
 function NextBot:GetActivity()
+end
+
+--- Returns the Field of View of the Nextbot NPC, used for its vision functionality, such as NextBot:IsAbleToSee.  
+--- @return number @The current FOV of the nextbot
+function NextBot:GetFOV()
+end
+
+--- Returns the maximum range the nextbot can see other nextbots/players at. See NextBot:IsAbleToSee.  
+--- @return number @The current vision range
+function NextBot:GetMaxVisionRange()
 end
 
 --- Returns squared distance to an entity or a position.  
@@ -56,6 +66,14 @@ end
 function NextBot:HandleStuck()
 end
 
+--- Returns if the Nextbot NPC can see the give entity or not.  
+--- ⚠ **WARNING**: Using this function creates the nextbot vision interface which will cause a significant performance hit!  
+--- @param ent Entity @The entity to test if we can see
+--- @param useFOV? number @Whether to use the Field of View of the Nextbot
+--- @return boolean @If the nextbot can see or not
+function NextBot:IsAbleToSee(ent, useFOV)
+end
+
 --- To be called in the behaviour coroutine only! Will yield until the bot has reached the goal or is stuck  
 --- @param pos Vector @The position we want to get to
 --- @param options table @A table containing a bunch of tweakable options
@@ -67,6 +85,16 @@ end
 --- @param name string @The sequence name
 --- @param speed? number @Playback Rate of that sequence
 function NextBot:PlaySequenceAndWait(name, speed)
+end
+
+--- Sets the Field of View for the Nextbot NPC, used for its vision functionality, such as NextBot:IsAbleToSee.  
+--- @param fov number @The new FOV
+function NextBot:SetFOV(fov)
+end
+
+--- Sets the maximum range the nextbot can see other nextbots/players at. See NextBot:IsAbleToSee.  
+--- @param range number @The new vision range to set.
+function NextBot:SetMaxVisionRange(range)
 end
 
 --- Sets the solid mask for given NextBot.  

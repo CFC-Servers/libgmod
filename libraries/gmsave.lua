@@ -2,8 +2,9 @@
 _G.gmsave = {}
 --- Loads a saved map.  
 --- @param mapData string @The JSON encoded string containing all the map data.
---- @param ply Player @The player to load positions for
-function gmsave.LoadMap(mapData, ply)
+--- @param ply? Player @The player to load positions for.
+--- @param callback? function @A function to be called after all the entities have been placed.
+function gmsave.LoadMap(mapData, ply, callback)
 end
 
 --- Sets player position and angles from supplied table  

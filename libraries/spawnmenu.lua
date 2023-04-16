@@ -2,7 +2,8 @@
 _G.spawnmenu = {}
 --- Activates a tool, opens context menu and brings up the tool gun.  
 --- @param tool string @Tool class/file name
-function spawnmenu.ActivateTool(tool)
+--- @param menu_only boolean @Should we activate this tool in the menu only or also the toolgun? `true` = menu only,`false` = toolgun aswell
+function spawnmenu.ActivateTool(tool, menu_only)
 end
 
 --- Activates tools context menu in specified tool tab.  
@@ -92,8 +93,8 @@ end
 function spawnmenu.GetContentType(contentType)
 end
 
---- Gets the CreationMenus table, which was filled with creation menu tabs from spawnmenu.AddCreationTab.  
---- @return table @The CreationMenus table
+--- Returns the list of Creation tabs. Creation tabs are added via spawnmenu.AddCreationTab.  
+--- @return table @The list of Creation tabs
 function spawnmenu.GetCreationTabs()
 end
 
@@ -128,13 +129,12 @@ end
 function spawnmenu.PopulateFromTextFiles(callback)
 end
 
---- Sets currently active control panel to be returned by spawnmenu.ActiveControlPanel.  
---- @param pnl Panel @The panel to set.
-function spawnmenu.SetActiveControlPanel(pnl)
+--- Switches the creation tab (left side of the spawnmenu) on the spawnmenu to the given tab.  
+--- @param id number @The tab ID to open
+function spawnmenu.SwitchCreationTab(id)
 end
 
---- 🛑 **DEPRECATED**:   
---- Supposed to open specified tool tab in spawnmenu, in reality does nothing.  
+--- Opens specified tool tab in spawnmenu.  
 --- @param id number @The tab ID to open
 function spawnmenu.SwitchToolTab(id)
 end

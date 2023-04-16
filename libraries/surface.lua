@@ -1,11 +1,11 @@
 --- The surface library allows you to draw text and shapes on the screen. Primarily used for making HUDs & custom GUI panels.  
 _G.surface = {}
 --- Creates a new font.  
---- To prevent the font from displaying incorrectly when using the "outline" setting, set "antialias" to false. This will ensure the text properly fills out the entire outline.  
+--- To prevent the font from displaying incorrectly when using the `outline` setting, set `antialias` to false. This will ensure the text properly fills out the entire outline.  
 --- Be sure to check the List of Default Fonts first! Those fonts can be used without using this function.  
 --- See Also: Finding the Font Name.  
 --- ⚠ **WARNING**: Due to the static nature of fonts, do **NOT** create the font more than once. You should only be creating them once, it is recommended to create them at the top of your script. Do not use this function within GM:HUDPaint or any other hook!  
---- ⚠ **WARNING**: Define fonts that you will actually use, as fonts are very taxing on performance and will cause crashes! Do not create fonts for every size.  
+--- Define fonts that you will actually use, as fonts are very taxing on performance and will cause crashes! Do not create fonts for every size.  
 --- @param fontName string @The new font name.
 --- @param fontData table @The font properties
 function surface.CreateFont(fontName, fontData)
@@ -19,7 +19,7 @@ end
 function surface.DisableClipping(disable)
 end
 
---- Draws a hollow circle, made of dots. For a filled circle, see examples for surface.DrawPoly.  
+--- Draws a hollow circle, made of lines. For a filled circle, see examples for surface.DrawPoly.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param originX number @The center x integer coordinate.
 --- @param originY number @The center y integer coordinate.
@@ -33,23 +33,24 @@ end
 
 --- Draws a line from one point to another.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @param startX number @The start x integer coordinate.
---- @param startY number @The start y integer coordinate.
---- @param endX number @The end x integer coordinate.
---- @param endY number @The end y integer coordinate.
+--- @param startX number @The start x float coordinate.
+--- @param startY number @The start y float coordinate.
+--- @param endX number @The end x float coordinate.
+--- @param endY number @The end y float coordinate.
 function surface.DrawLine(startX, startY, endX, endY)
 end
 
---- Draws a hollow box with a border width of 1 px.  
+--- Draws a hollow box with a given border width.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param x number @The start x integer coordinate.
 --- @param y number @The start y integer coordinate.
 --- @param w number @The integer width.
 --- @param h number @The integer height.
-function surface.DrawOutlinedRect(x, y, w, h)
+--- @param thickness number @The thickness of the outlined box border.
+function surface.DrawOutlinedRect(x, y, w, h, thickness)
 end
 
---- Draws a textured polygon (secretly a triangle fan) with a maximum of 256 vertices.  
+--- Draws a textured polygon (secretly a triangle fan) with a maximum of 4096 vertices.  
 --- Only works properly with convex polygons. You may try to render concave polygons, but there is no guarantee that things wont get messed up.  
 --- Unlike most surface library functions, non-integer coordinates are not rounded.  
 --- ⚠ **WARNING**: You must reset the drawing color and texture before calling the function to ensure consistent results. See examples below.  
@@ -72,7 +73,8 @@ end
 --- ℹ **NOTE**: This function sets new text position at the end of the previous drawn text length - this can be used to change text properties (such as font or color) without recalculating and resetting text position. See example #2 for example use of this behavior.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param text string @The text to be rendered.
-function surface.DrawText(text)
+--- @param forceAdditive? boolean @`true` to force text to render additive, `false` to force not additive, `nil` to use font's value.
+function surface.DrawText(text, forceAdditive)
 end
 
 --- Draw a textured rectangle with the given position and dimensions on the screen, using the current active texture set with surface.SetMaterial. It is also affected by surface.SetDrawColor.  
@@ -129,7 +131,7 @@ end
 function surface.DrawTexturedRectUV(x, y, width, height, startU, startV, endU, endV)
 end
 
---- Returns the current alpha multiplier affecting drawing operations.  
+--- Returns the current alpha multiplier affecting drawing operations. This is set by surface.SetAlphaMultiplier or by the game engine in certain other cases.  
 --- @return number @The multiplier ranging from 0 to 1.
 function surface.GetAlphaMultiplier()
 end
@@ -154,16 +156,23 @@ end
 
 --- Returns the width and height (in pixels) of the given text, but only if the font has been set with surface.SetFont.  
 --- @param text string @The string to check the size of.
---- @return number @Width of the provided text
---- @return number @Height of the provided text
+--- @return number @Width of the provided text.
+--- @return number @Height of the provided text.
 function surface.GetTextSize(text)
 end
 
---- Returns the texture id of the material with the given name/path.  
---- ℹ **NOTE**: This function will not work with .png or .jpg images. For that, see Global.Material  
+--- Returns the texture id of the material with the given name/path, for use with surface.SetTexture.  
+--- Opposite version of this function is surface.GetTextureNameByID.  
+--- ℹ **NOTE**: This function will not work with .png or .jpg images. For that, see Global.Material. You will probably want to use it regardless.  
 --- @param name_or_path string @Name or path of the texture.
 --- @return number @The texture ID
 function surface.GetTextureID(name_or_path)
+end
+
+--- Returns name/path of texture by ID. Opposite version of this function is surface.GetTextureID.  
+--- @param id number @ID of texture.
+--- @return string @Returns name/path of texture.
+function surface.GetTextureNameByID(id)
 end
 
 --- Returns the size of the texture with the associated texture ID.  
@@ -175,7 +184,7 @@ function surface.GetTextureSize(textureID)
 end
 
 --- Play a sound file directly on the client (such as UI sounds, etc).  
---- @param soundfile string @The path to the sound file, which must be relative to the sound/ folder.
+--- @param soundfile string @The path to the sound file
 function surface.PlaySound(soundfile)
 end
 
@@ -197,9 +206,10 @@ end
 function surface.SetAlphaMultiplier(multiplier)
 end
 
---- Set the color of any future shapes to be drawn, can be set by either using R, G, B, A as separate values or by a Color.  
---- Using a color structure is not recommended to be created procedurally.  
+--- Set the color of any future shapes to be drawn, can be set by either using R, G, B, A as separate values or by a Color. Using a color structure is not recommended to be created procedurally.  
 --- ℹ **NOTE**: Providing a Color structure is slower than providing four numbers. You may use Color:Unpack for this.  
+--- ℹ **NOTE**: The alpha value may not work properly if you're using a material without `$vertexalpha`.  
+--- ℹ **NOTE**: Due to post processing and gamma correction the color you set with this function may appear differently when rendered. This problem does not occur on materials drawn with surface.DrawTexturedRect.  
 --- @param r number @The red value of color, or a Color.
 --- @param g number @The green value of color
 --- @param b number @The blue value of color
@@ -215,7 +225,7 @@ end
 
 --- Sets the material to be used in all upcoming draw operations using the surface library.  
 --- Not to be confused with render.SetMaterial.  
---- See also surface.SetTexture.  
+--- If you need to unset the texture, use the draw.NoTexture convenience function.  
 --- ⚠ **WARNING**: Global.Material function calls are expensive to be done inside this function or inside rendering context, you should be caching the results of Global.Material calls  
 --- ℹ **NOTE**: When using render.PushRenderTarget or render.SetRenderTarget, `material` should have the `$ignorez` flag set to make it visible. If the material is not used in 3D rendering, it is probably safe to add it with this code:  
 --- ```lua  
@@ -242,7 +252,8 @@ function surface.SetTextPos(x, y)
 end
 
 --- Sets the texture to be used in all upcoming draw operations using the surface library.  
---- See also surface.SetMaterial for an IMaterial alternative.  
+--- See surface.SetMaterial for an IMaterial alternative.  
+--- ⚠ **WARNING**: It's probably best to use the alternative mentioned above.  
 --- @param textureID number @The ID of the texture to draw with returned by surface.GetTextureID.
 function surface.SetTexture(textureID)
 end

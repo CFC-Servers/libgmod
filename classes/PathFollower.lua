@@ -1,5 +1,5 @@
 --- @class PathFollower
---- Path object for a NextBot NPC. Returned by Global.Path.  
+--- Path object for a NextBot NPC and bots created by player.CreateNextbot. Returned by Global.Path.  
 local PathFollower = {}
 --- If you created your path with type "Chase" this functions should be used in place of PathFollower:Update to cause the bot to chase the specified entity.  
 --- @param bot NextBot @The bot to update along the path

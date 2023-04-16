@@ -33,7 +33,7 @@ function steamworks.GetList(type, tags, offset, numRetrieve, days, userID, resul
 end
 
 --- 🛑 **DEPRECATED**: You should use the callback of steamworks.RequestPlayerInfo instead.  
---- Retrieves players name by his 64bit SteamID.  
+--- Retrieves players name by their 64bit SteamID.  
 --- You must call steamworks.RequestPlayerInfo a decent amount of time before calling this function.  
 --- @param steamID64 string @The 64bit Steam ID ( aka Community ID ) of the player
 --- @return string @The name of that player

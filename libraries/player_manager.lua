@@ -3,9 +3,10 @@ _G.player_manager = {}
 --- Assigns view model hands to player model.  
 --- @param name string @Player model name
 --- @param model string @Hands model
---- @param skin number @Skin to apply to the hands
---- @param bodygroups string @Bodygroups to apply to the hands
-function player_manager.AddValidHands(name, model, skin, bodygroups)
+--- @param skin? number @Skin to apply to the hands
+--- @param bodygroups? string @Bodygroups to apply to the hands
+--- @param matchBodySkin? boolean @If set to `true`, the skin of the hands will be set to the skin of the playermodel
+function player_manager.AddValidHands(name, model, skin, bodygroups, matchBodySkin)
 end
 
 --- Associates a simplified name with a path to a valid player model.  
@@ -28,6 +29,11 @@ end
 --- @param ply Player @Player to get class
 --- @return string @The players class
 function player_manager.GetPlayerClass(ply)
+end
+
+--- Retrieves a copy of all registered player classes.  
+--- @return table @A copy of all registered player classes.
+function player_manager.GetPlayerClasses()
 end
 
 --- Applies basic class variables when the player spawns.  

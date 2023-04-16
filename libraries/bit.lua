@@ -8,7 +8,7 @@ _G.bit = {}
 function bit.arshift(value, shiftCount)
 end
 
---- Performs the bitwise "and" for all values specified.  
+--- Performs the bitwise `and` for all values specified.  
 --- @param value number @The value to be manipulated.
 --- @param otherValues? number @Values bit to perform bitwise "and" with
 --- @return number @Result of bitwise "and" operation.
@@ -42,6 +42,7 @@ function bit.bxor(value, otherValues)
 end
 
 --- Returns the left shifted value.  
+--- ℹ **NOTE**: The returned value will be clamped to a signed 32-bit integer, even on 64-bit builds.  
 --- @param value number @The value to be manipulated.
 --- @param shiftCount number @Amounts of bits to shift left by.
 --- @return number @shiftedValue
@@ -63,6 +64,7 @@ function bit.ror(value, shiftCount)
 end
 
 --- Returns the right shifted value.  
+--- ℹ **NOTE**: The returned value will be clamped to a signed 32-bit integer, even on 64-bit builds.  
 --- @param value number @The value to be manipulated.
 --- @param shiftCount number @Amounts of bits to shift right by.
 --- @return number @shiftedValue

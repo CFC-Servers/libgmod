@@ -66,12 +66,14 @@ end
 function ConVar:SetBool(value)
 end
 
---- Sets a ConVar's value to to the input number. This can only be ran on ConVars created from within Lua.  
+--- Sets a ConVar's value to the input number.  
+--- ℹ **NOTE**: This can only be ran on ConVars created from within Lua.  
 --- @param value number @Value to set the ConVar to.
 function ConVar:SetFloat(value)
 end
 
---- Sets a ConVar's value to the input number after converting it to an integer. This can only be ran on ConVars created from within Lua.  
+--- Sets a ConVar's value to the input number after converting it to an integer.  
+--- ℹ **NOTE**: This can only be ran on ConVars created from within Lua.  
 --- @param value number @Value to set the ConVar to.
 function ConVar:SetInt(value)
 end

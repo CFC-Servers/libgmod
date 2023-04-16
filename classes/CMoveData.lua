@@ -22,9 +22,39 @@ end
 function CMoveData:GetButtons()
 end
 
---- Returns the radius that constrains the players movement.  
+--- Returns the center of the player movement constraint. See CMoveData:SetConstraintCenter.  
+--- @return Vector @The constraint origin.
+function CMoveData:GetConstraintCenter()
+end
+
+--- Returns the radius that constrains the players movement. See CMoveData:SetConstraintRadius.  
 --- @return number @The constraint radius
 function CMoveData:GetConstraintRadius()
+end
+
+--- Returns the player movement constraint speed scale. See CMoveData:SetConstraintSpeedScale.  
+--- @return number @The constraint speed scale
+function CMoveData:GetConstraintSpeedScale()
+end
+
+--- Returns the width (distance from the edge of the radius, inward) where the actual movement constraint functions.  
+--- @return number @The constraint width
+function CMoveData:GetConstraintWidth()
+end
+
+--- Returns an internal player movement variable `m_outWishVel`.  
+--- @return Vector 
+function CMoveData:GetFinalIdealVelocity()
+end
+
+--- Returns an internal player movement variable `m_outJumpVel`.  
+--- @return Vector 
+function CMoveData:GetFinalJumpVelocity()
+end
+
+--- Returns an internal player movement variable `m_outStepHeight`.  
+--- @return number 
+function CMoveData:GetFinalStepHeight()
 end
 
 --- Returns the players forward speed.  
@@ -124,10 +154,43 @@ end
 function CMoveData:SetButtons(buttons)
 end
 
+--- Sets the center of the player movement constraint. See CMoveData:SetConstraintRadius.  
+--- @param pos Vector @The constraint origin.
+function CMoveData:SetConstraintCenter(pos)
+end
+
 --- Sets the radius that constrains the players movement.  
---- It is unknown what this function does as changing its values doesn't affect player movement.  
+--- Works with conjunction of:  
+--- * CMoveData:SetConstraintWidth  
+--- * CMoveData:SetConstraintSpeedScale  
+--- * CMoveData:SetConstraintCenter  
 --- @param radius number @The new constraint radius
 function CMoveData:SetConstraintRadius(radius)
+end
+
+--- Sets the player movement constraint speed scale. This will be applied to the player within the constraint radius when approaching its edge.  
+--- @param  number @The constraint speed scale
+function CMoveData:SetConstraintSpeedScale()
+end
+
+--- Sets  the width (distance from the edge of the radius, inward) where the actual movement constraint functions.  
+--- @param  number @The constraint width
+function CMoveData:SetConstraintWidth()
+end
+
+--- Sets an internal player movement variable `m_outWishVel`.  
+--- @param idealVel Vector 
+function CMoveData:SetFinalIdealVelocity(idealVel)
+end
+
+--- Sets an internal player movement variable `m_outJumpVel`.  
+--- @param jumpVel Vector 
+function CMoveData:SetFinalJumpVelocity(jumpVel)
+end
+
+--- Sets an internal player movement variable `m_outStepHeight`.  
+--- @param stepHeight number 
+function CMoveData:SetFinalStepHeight(stepHeight)
 end
 
 --- Sets players forward speed.  

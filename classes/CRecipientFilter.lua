@@ -5,13 +5,13 @@ local CRecipientFilter = {}
 function CRecipientFilter:AddAllPlayers()
 end
 
---- Adds all players that are in the same PAS as this position.  
---- @param pos Vector @PAS position that players may be able to hear.
+--- Adds all players that are in the same [PAS (Potentially Audible Set)](https://developer.valvesoftware.com/wiki/PAS "PAS - Valve Developer Community") as this position.  
+--- @param pos Vector @A position that players may be able to hear, usually the position of an entity the sound is playing played from.
 function CRecipientFilter:AddPAS(pos)
 end
 
---- Adds all players that are in the same PVS as this position.  
---- @param Position Vector @PVS position.
+--- Adds all players that are in the same [PVS(Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community") as this position.  
+--- @param Position Vector @PVS position that players may be able to see.
 function CRecipientFilter:AddPVS(Position)
 end
 

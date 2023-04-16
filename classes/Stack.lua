@@ -5,7 +5,14 @@
 local Stack = {}
 --- Pop an item from the stack  
 --- @param amount? number @Amount of items you want to pop.
+--- @return number @New length of the stack.
 function Stack:Pop(amount)
+end
+
+--- Pop an item from the stack  
+--- @param amount? number @Amount of items you want to pop.
+--- @return table @The Popped Items.
+function Stack:PopMulti(amount)
 end
 
 --- Push an item onto the stack  
