@@ -155,9 +155,6 @@ function getArgName(arg: FuncArg): string {
     for (let [find, replace] of KEYWORD_REPLACEMENTS) {
         name = name.replace(find, replace);
     }
-    if (arg.default != undefined) {
-        name = name + "?";
-    }
     return name;
 }
 
@@ -197,6 +194,9 @@ function getArgDoc(arg: FuncArg): string {
         return `--- @vararg ${type} ${desc}`;
     }
     let name = getArgName(arg);
+    if (arg.default != undefined) {
+        name = name + "?";
+    }
     return `--- @param ${name} ${type} ${desc}`;
 }
 
