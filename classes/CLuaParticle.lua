@@ -172,8 +172,8 @@ end
 function CLuaParticle:SetLifeTime(lifeTime)
 end
 
---- Sets whether the particle should be lighted.  
---- @param useLighting boolean @Whether the particle should be lighted.
+--- Sets whether the particle should be affected by lighting.  
+--- @param useLighting boolean @Whether the particle should be affected by lighting.
 function CLuaParticle:SetLighting(useLighting)
 end
 

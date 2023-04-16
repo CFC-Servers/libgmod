@@ -12,7 +12,7 @@ end
 
 --- Returns a list of addons the player have subscribed to on the workshop.  
 --- This list will also include "Floating" .gma addons that are mounted by the game, but not the folder addons.  
---- @return table @A table with 6 keys (downloaded, models, title, file, mounted, wsid)
+--- @return table @A table of tables containing 8 keys (downloaded, models, title, file, mounted, wsid, size, updated).
 function engine.GetAddons()
 end
 
@@ -51,7 +51,7 @@ end
 
 --- 🛑 **DEPRECATED**: Used internally for in-game menus, may be merged in the future into engine.GetAddons.  
 --- Returns the UGC (demos, saves and dupes) the player have subscribed to on the workshop.  
---- @return table @Returns a table with 6 keys (title, type, tags, wsid, timeadded)
+--- @return table @Returns a table with 5 keys (title, type, tags, wsid, timeadded)
 function engine.GetUserContent()
 end
 
@@ -66,7 +66,7 @@ end
 function engine.IsRecordingDemo()
 end
 
---- This is a direct binding to the function “engine->LightStyle”. This function allows you to change the default light style of the map - so you can make lighting lighter or darker. You’ll need to call render.RedownloadAllLightmaps clientside to refresh the lightmaps to this new color.  
+--- This is a direct binding to the function `engine->LightStyle`. This function allows you to change the default light style of the map - so you can make lighting lighter or darker. You’ll need to call render.RedownloadAllLightmaps clientside to refresh the lightmaps to this new color.  
 --- 🦟 **BUG**: [Calling this function with arguments 0 and "a" will cause dynamic lights such as those produced by the Light tool to stop working.](https://github.com/Facepunch/garrysmod-issues/issues/3626)  
 --- @param lightstyle number @The lightstyle to edit
 --- @param pattern string @The pattern to change the lightstyle to
@@ -80,8 +80,8 @@ function engine.OpenDupe(dupeName)
 end
 
 --- Returns an estimate of the server's performance. Equivalent to calling Global.FrameTime from the server, according to source code.  
---- @return number @Frame time
---- @return number @Server Framerate Std Deviation
+--- @return number @Frame time.
+--- @return number @Server Framerate Std Deviation.
 function engine.ServerFrameTime()
 end
 

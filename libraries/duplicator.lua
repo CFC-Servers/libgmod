@@ -176,8 +176,10 @@ end
 function duplicator.StoreEntityModifier(entity, name, data)
 end
 
---- "Work out the AABB size"  
+--- Works out the AABB size of the duplication  
 --- @param Ents table @A table of entity duplication datums.
+--- @return vector @AABB mins vector
+--- @return vector @AABB maxs vector
 function duplicator.WorkoutSize(Ents)
 end
 

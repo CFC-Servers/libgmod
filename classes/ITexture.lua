@@ -28,6 +28,11 @@ end
 function ITexture:GetName()
 end
 
+--- Returns the number of animation frames in this texture.  
+--- @return number @The number of animation frames in this texture.
+function ITexture:GetNumAnimationFrames()
+end
+
 --- Returns the modified height of the texture, this value may be affected by mipmapping and other factors.  
 --- @return number @height
 function ITexture:Height()

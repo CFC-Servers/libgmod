@@ -20,11 +20,13 @@ function Weapon:CallOnClient(functionName, arguments)
 end
 
 --- Returns how much primary ammo is in the magazine.  
+--- ℹ **NOTE**: This is not shared between clients and will instead return the maximum primary clip size.  
 --- @return number @The amount of primary ammo in the magazine.
 function Weapon:Clip1()
 end
 
---- Returns how much secondary ammo is in magazine.  
+--- Returns how much secondary ammo is in the magazine.  
+--- ℹ **NOTE**: This is not shared between clients and will instead return the maximum secondary clip size.  
 --- @return number @The amount of secondary ammo in the magazine.
 function Weapon:Clip2()
 end
@@ -85,8 +87,9 @@ end
 function Weapon:GetSecondaryAmmoType()
 end
 
---- Returns the slot of the weapon (slot numbers start from 0)  
---- @return number @The slot of the weapon
+--- Returns the slot of the weapon.  
+--- ℹ **NOTE**: The slot numbers start from 0.  
+--- @return number @The slot of the weapon.
 function Weapon:GetSlot()
 end
 
@@ -122,7 +125,7 @@ function Weapon:IsCarriedByLocalPlayer()
 end
 
 --- Checks if the weapon is a SWEP or a built-in weapon.  
---- @return boolean @Returns true if weapon is scripted ( SWEP ), false if not ( A built-in HL2 weapon )
+--- @return boolean @Returns true if weapon is scripted ( SWEP ), false if not ( A built-in HL2/HL:S weapon )
 function Weapon:IsScripted()
 end
 
@@ -139,6 +142,12 @@ end
 --- Forces weapon to play activity/animation.  
 --- @param act number @Activity to play
 function Weapon:SendWeaponAnim(act)
+end
+
+--- Sets the activity the weapon is playing.  
+--- See also Weapon:GetActivity.  
+--- @param act number @The new activity to set, see Enums/ACT.
+function Weapon:SetActivity(act)
 end
 
 --- Lets you change the number of bullets in the given weapons primary clip.  
@@ -164,6 +173,7 @@ function Weapon:SetLastShootTime(time)
 end
 
 --- Sets when the weapon can fire again. Time should be based on Global.CurTime.  
+--- ℹ **NOTE**: The standard HL2 "weapon_pistol" bypasses this function due to an [internal implementation](https://github.com/ValveSoftware/source-sdk-2013/blob/master/mp/src/game/server/hl2/weapon_pistol.cpp#L313-L317).  
 --- 🦟 **BUG**: [This will fire extra bullets if the time is set to less than Global.CurTime.](https://github.com/Facepunch/garrysmod-issues/issues/3786)  
 --- @param time number @Time when player should be able to use primary fire again
 function Weapon:SetNextPrimaryFire(time)

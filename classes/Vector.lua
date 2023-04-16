@@ -5,7 +5,7 @@
 --- @field y number @The Y component of the vector.
 --- @field z number @The Z component of the vector.
 local Vector = {}
---- Adds the values of the argument vector to the orignal vector. This functions the same as vector1 + vector2 without creating a new vector object, skipping object construction and garbage collection.  
+--- Adds the values of the argument vector to the original vector. This function is the same as vector1 + vector2 without creating a new vector object, skipping object construction and garbage collection.  
 --- @param vector Vector @The vector to add.
 function Vector:Add(vector)
 end
@@ -15,7 +15,7 @@ end
 function Vector:Angle()
 end
 
---- Returns the angle of the vector, but instead of assuming that up is Global.Vector( 0, 0, 1 ) (Like Vector:Angle does) you can specify which direction is 'up' for the angle.  
+--- Returns the angle of this vector (normalized), but instead of assuming that up is Global.Vector( 0, 0, 1 ) (Like Vector:Angle does) you can specify which direction is 'up' for the angle.  
 --- @param up Vector @The up direction vector
 --- @return Angle @The angle
 function Vector:AngleEx(up)
@@ -31,13 +31,15 @@ function Vector:Cross(otherVector)
 end
 
 --- Returns the squared distance of 2 vectors, this is faster than Vector:Distance as calculating the square root is an expensive process.  
+--- ℹ **NOTE**: Squared distances should not be summed. If you need to sum distances, use Vector:Distance.  
+--- When performing a distance check, ensure the distance being checked against is squared. See example code below.  
 --- @param otherVec Vector @The vector to calculate the distance to.
---- @return number @Squared distance to the vector
+--- @return number @Squared distance to the vector.
 function Vector:DistToSqr(otherVec)
 end
 
 --- Returns the euclidean distance between the vector and the other vector.  
---- ⚠ **WARNING**: This is a relatively expensive process since it uses the square root. It is recommended that you use Vector:DistToSqr whenever possible.  
+--- ℹ **NOTE**: This function is more expensive than Vector:DistToSqr. However, please see the notes for Vector:DistToSqr before using it as squared distances are not the same as euclidean distances.  
 --- @param otherVector Vector @The vector to get the distance to.
 --- @return number @Distance between the vectors.
 function Vector:Distance(otherVector)
@@ -66,6 +68,12 @@ end
 function Vector:DotProduct(Vector)
 end
 
+--- Returns the negative version of this vector, i.e. a vector with every component to the negative value of itself.  
+--- See also Vector:Negate.  
+--- @return Vector @The negative of this vector.
+function Vector:GetNegated()
+end
+
 --- 🛑 **DEPRECATED**: Use Vector:GetNormalized instead.  
 --- Returns a normalized version of the vector. This is a alias of Vector:GetNormalized.  
 --- @return Vector @Normalized version of the vector.
@@ -90,12 +98,16 @@ end
 function Vector:IsZero()
 end
 
---- Returns the Euclidean length of the vector: √x² + y² + z²  
+--- Returns the [Euclidean length](https://en.wikipedia.org/wiki/Euclidean_vector#Length) of the vector: √(x² + y² + z²).  
+--- ⚠ **WARNING**:   
+--- This is a relatively expensive process since it uses the square root. It is recommended that you use Vector:LengthSqr whenever possible.  
 --- @return number @Length of the vector.
 function Vector:Length()
 end
 
 --- Returns the length of the vector in two dimensions, without the Z axis.  
+--- ⚠ **WARNING**:   
+--- This is a relatively expensive process since it uses the square root. It is recommended that you use Vector:Length2DSqr whenever possible.  
 --- @return number @Length of the vector in two dimensions, √(x² + y²)
 function Vector:Length2D()
 end
@@ -112,13 +124,23 @@ end
 function Vector:LengthSqr()
 end
 
---- Scales the vector by the given number, that means x, y and z are multiplied by that value.  
+--- Scales the vector by the given number (that means x, y and z are multiplied by that value) or Vector.  
 --- @param multiplier number @The value to scale the vector with.
 function Vector:Mul(multiplier)
 end
 
+--- Negates this vector, i.e. sets every component to the negative value of itself. Same as `Vector( -vec.x, -vec.y, -vec.z )`  
+function Vector:Negate()
+end
+
 --- Normalizes the given vector. This changes the vector you call it on, if you want to return a normalized copy without affecting the original, use Vector:GetNormalized.  
 function Vector:Normalize()
+end
+
+--- Randomizes each element of this Vector object.  
+--- @param min? number @The minimum value for each component.
+--- @param max? number @The maximum value for each component.
+function Vector:Random(min, max)
 end
 
 --- Rotates a vector by the given angle.  
@@ -174,9 +196,11 @@ function Vector:Unpack()
 end
 
 --- Returns whenever the given vector is in a box created by the 2 other vectors.  
+--- <upload src="22674/8d9276d7e6dd0af.png" size="6279" name="image.png">  
+--- </upload>  
 --- @param boxStart Vector @The first vector.
 --- @param boxEnd Vector @The second vector.
---- @return boolean @Is the vector in the box or not
+--- @return boolean @Is the vector in the box or not.
 function Vector:WithinAABox(boxStart, boxEnd)
 end
 

@@ -21,7 +21,7 @@ end
 function derma.DefineControl(name, description, tab, base)
 end
 
---- Defines a new skin so that it is usable by Derma. The default skin can be found in "garrysmod/lua/skins/default.lua"  
+--- Defines a new skin so that it is usable by Derma. The default skin can be found in `garrysmod/lua/skins/default.lua`  
 --- @param name string @Name of the skin
 --- @param descriptions string @Description of the skin
 --- @param skin table @Table containing skin data

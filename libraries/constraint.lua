@@ -97,6 +97,8 @@ function constraint.CreateKeyframeRope(pos, width, material, Constraint, Ent1, L
 end
 
 --- Creates an invisible, non-moveable anchor point in the world to which things can be attached.  
+--- ℹ **NOTE**: The entity used internally by this function (`gmod_anchor`) only exists in Sandbox derived gamemodes, meaning this function will only work in these gamemodes.  
+--- To use this in other gamemodes, you may need to create your own [gmod_anchor](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/gamemodes/sandbox/entities/entities/gmod_anchor.lua) entity.  
 --- @param pos Vector @The position to spawn the anchor at
 --- @return Entity @anchor
 --- @return PhysObj @physicsObject,
@@ -118,15 +120,16 @@ end
 --- @param material string @The material of the rope.
 --- @param width number @Width of rope.
 --- @param stretchonly boolean 
+--- @param color table @The color of the rope
 --- @return Entity @Constraint
 --- @return Entity @rope
-function constraint.Elastic(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, constant, damping, rdamping, material, width, stretchonly)
+function constraint.Elastic(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, constant, damping, rdamping, material, width, stretchonly, color)
 end
 
 --- Returns the constraint of a specified type between two entities, if it exists  
 --- @param ent1 Entity @The first entity to check
 --- @param ent2 Entity @The second entity to check
---- @param type string @The constraint type to look for (eg
+--- @param type string @The type of constraint, case sensitive
 --- @param bone1 number @The bone number for the first entity (0 for monoboned entities)
 --- @param bone2 number @The bone number for the second entity
 --- @return Entity @constraint
@@ -135,21 +138,21 @@ end
 
 --- Returns the first constraint of a specific type directly connected to the entity found  
 --- @param ent Entity @The entity to check
---- @param type string @The type of constraint (eg
+--- @param type string @The type of constraint, case sensitive
 --- @return table @The constraint table, set with constraint.AddConstraintTable
 function constraint.FindConstraint(ent, type)
 end
 
 --- Returns the other entity involved in the first constraint of a specific type directly connected to the entity  
 --- @param ent Entity @The entity to check
---- @param type string @The type of constraint (eg
+--- @param type string @The type of constraint, case sensitive
 --- @return Entity @The other entity.
 function constraint.FindConstraintEntity(ent, type)
 end
 
 --- Returns a table of all constraints of a specific type directly connected to the entity  
 --- @param ent Entity @The entity to check
---- @param type string @The type of constraint (eg
+--- @param type string @The type of constraint, case sensitive
 --- @return table @All the constraints of this entity.
 function constraint.FindConstraints(ent, type)
 end
@@ -193,11 +196,12 @@ end
 --- @param fixed number @Whether the hydraulic is fixed.
 --- @param speed number 
 --- @param material string @The material of the rope.
+--- @param color table @The color of the rope
 --- @return Entity @Constraint
 --- @return Entity @rope
 --- @return Entity @controller
 --- @return Entity @slider
-function constraint.Hydraulic(pl, Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, Length1, Length2, width, key, fixed, speed, material)
+function constraint.Hydraulic(pl, Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, Length1, Length2, width, key, fixed, speed, material, color)
 end
 
 --- Creates a keep upright constraint.  
@@ -250,11 +254,12 @@ end
 --- @param amplitude number 
 --- @param starton boolean 
 --- @param material string @Material of the rope.
+--- @param color table @The color of the rope
 --- @return Entity @Constraint
 --- @return Entity @rope
 --- @return Entity @controller
 --- @return Entity @slider
-function constraint.Muscle(pl, Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, Length1, Length2, width, key, fixed, period, amplitude, starton, material)
+function constraint.Muscle(pl, Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, Length1, Length2, width, key, fixed, period, amplitude, starton, material, color)
 end
 
 --- Creates an no-collide "constraint". Disables collision between two entities.  
@@ -280,8 +285,9 @@ end
 --- @param rigid boolean @Whether the constraint is rigid.
 --- @param width number @Width of the rope.
 --- @param material string @Material of the rope.
+--- @param color table @The color of the rope
 --- @return Entity @Constraint
-function constraint.Pulley(Ent1, Ent4, Bone1, Bone4, LPos1, LPos4, WPos2, WPos3, forcelimit, rigid, width, material)
+function constraint.Pulley(Ent1, Ent4, Bone1, Bone4, LPos1, LPos4, WPos2, WPos3, forcelimit, rigid, width, material, color)
 end
 
 --- Attempts to remove all constraints associated with an entity  
@@ -312,9 +318,10 @@ end
 --- @param width number @Width of the rope.
 --- @param material string @Material of the rope.
 --- @param rigid boolean @Whether the constraint is rigid.
+--- @param color table @The color of the rope
 --- @return Entity @Constraint
 --- @return Entity @rope
-function constraint.Rope(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, length, addlength, forcelimit, width, material, rigid)
+function constraint.Rope(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, length, addlength, forcelimit, width, material, rigid, color)
 end
 
 --- Creates a slider constraint.  
@@ -326,9 +333,10 @@ end
 --- @param LPos2 Vector 
 --- @param width number @The width of the rope.
 --- @param material string @The material of the rope.
+--- @param color table @The color of the rope
 --- @return Entity @Constraint
 --- @return Entity @rope
-function constraint.Slider(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, width, material)
+function constraint.Slider(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, width, material, color)
 end
 
 --- Creates a weld constraint  
@@ -358,9 +366,10 @@ end
 --- @param bwd_speed number @Backwards speed.
 --- @param material string @The material of the rope.
 --- @param toggle boolean @Whether the winch should be on toggle.
+--- @param color table @The color of the rope
 --- @return Entity @Constraint
 --- @return Entity @rope
 --- @return Entity @controller
-function constraint.Winch(pl, Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, width, fwd_bind, bwd_bind, fwd_speed, bwd_speed, material, toggle)
+function constraint.Winch(pl, Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, width, fwd_bind, bwd_bind, fwd_speed, bwd_speed, material, toggle, color)
 end
 

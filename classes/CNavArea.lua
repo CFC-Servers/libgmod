@@ -98,7 +98,7 @@ function CNavArea:GetAdjacentCountAtSide(navDir)
 end
 
 --- Returns the attribute mask for the given CNavArea.  
---- @return boolean @Attribute mask for this CNavArea, see Enums/NAV_MESH for the specific flags
+--- @return number @Attribute mask for this CNavArea, see Enums/NAV_MESH for the specific flags
 function CNavArea:GetAttributes()
 end
 
@@ -246,6 +246,12 @@ end
 function CNavArea:IsClosed()
 end
 
+--- Returns whether this CNavArea can completely (i.e. all corners of this area can see all corners of the given area) see the given CNavArea.  
+--- @param area CNavArea @The CNavArea to test.
+--- @return boolean @Whether the given area is visible from this area
+function CNavArea:IsCompletelyVisible(area)
+end
+
 --- Returns whether this CNavArea has an outgoing ( one or two way ) connection **to** given CNavArea.  
 --- See CNavArea:IsConnectedAtSide for a function that only checks for outgoing connections in one direction.  
 --- @param navArea CNavArea @The CNavArea to test against.
@@ -297,6 +303,19 @@ end
 --- @param navArea CNavArea @The CNavArea to test against.
 --- @return boolean @True if the given CNavArea overlaps this CNavArea at any point.
 function CNavArea:IsOverlappingArea(navArea)
+end
+
+--- Returns whether this CNavArea can see given position.  
+--- @param pos Vector @The position to test.
+--- @param ignoreEnt? Entity @If set, the given entity will be ignored when doing LOS tests
+--- @return boolean @Whether the given position is visible from this area
+function CNavArea:IsPartiallyVisible(pos, ignoreEnt)
+end
+
+--- Returns whether this CNavArea can potentially see the given CNavArea.  
+--- @param area CNavArea @The CNavArea to test.
+--- @return boolean @Whether the given area is visible from this area
+function CNavArea:IsPotentiallyVisible(area)
 end
 
 --- Returns if we're shaped like a square.  
@@ -363,7 +382,8 @@ end
 
 --- Sets the new parent of this CNavArea.  
 --- @param parent CNavArea @The new parent to set
-function CNavArea:SetParent(parent)
+--- @param how number @How we get from parent to us using Enums/NavTraverseType
+function CNavArea:SetParent(parent, how)
 end
 
 --- Sets the Place of the nav area.  

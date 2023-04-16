@@ -1,10 +1,9 @@
 --- The game library provides functions to access various features in the game's engine, most of it's functions are related to controlling the map.  
 _G.game = {}
 --- Adds a new ammo type to the game.  
---- You can find a list of default ammo types here.  
---- ⚠ **WARNING**: This function must be called shared or you will have unexpected problems.  
---- ℹ **NOTE**: This function must be called in GM:Initialize.  
---- ℹ **NOTE**: There is a limit of 128 ammo types, including the default ones.  
+--- You can find a list of default ammo types [here](https://wiki.facepunch.com/gmod/Default_Ammo_Types).  
+--- ⚠ **WARNING**: This function **must** be called on both the client and server in GM:Initialize or you will have unexpected problems.  
+--- ℹ **NOTE**: There is a limit of 256 ammo types, including the default ones.  
 --- @param ammoData table @The attributes of the ammo
 function game.AddAmmoType(ammoData)
 end
@@ -22,15 +21,15 @@ end
 function game.AddParticles(particleFileName)
 end
 
---- If called serverside it will remove ALL entities which were not created by the map(not players or weapons held by players).  
+--- If called serverside it will remove **ALL** entities which were not created by the map (not players or weapons held by players).  
 --- On the client it will remove decals, sounds, gibs, dead NPCs, and entities created via ents.CreateClientProp.  
 --- This function calls GM:PreCleanupMap before cleaning up the map and GM:PostCleanupMap after cleaning up the map.  
 --- 🦟 **BUG**: [Calling this in a ENTITY:StartTouch or ENTITY:Touch hook will crash the game.](https://github.com/Facepunch/garrysmod-issues/issues/1142)  
 --- 🦟 **BUG**: [Calling this destroys all BASS streams.](https://github.com/Facepunch/garrysmod-issues/issues/2874)  
---- 🦟 **BUG**: [This can crash when removing _firesmoke entities.](https://github.com/Facepunch/garrysmod-issues/issues/3637)  
---- @param dontSendToClients? boolean @If set to true, don't run this functions on all clients.
---- @param ExtraFilters? table @Entity classes not to reset during cleanup.
-function game.CleanUpMap(dontSendToClients, ExtraFilters)
+--- 🦟 **BUG**: [This can crash when removing _firesmoke entities. **You can use the example below to workaround this issue.**](https://github.com/Facepunch/garrysmod-issues/issues/3637)  
+--- @param dontSendToClients? boolean @If set to `true`, don't run this functions on all clients.
+--- @param extraFilters? table @Entity classes not to reset during cleanup.
+function game.CleanUpMap(dontSendToClients, extraFilters)
 end
 
 --- Runs a console command.  
@@ -66,8 +65,7 @@ end
 function game.GetAmmoID(name)
 end
 
---- Returns the real maximum amount of ammo of given ammo ID.  
---- ℹ **NOTE**: Currently all ammo types have overridden maximum value of reserve ammo set to 9999.  
+--- Returns the real maximum amount of ammo of given ammo ID, regardless of the setting of `gmod_maxammo` convar.  
 --- @param id number @Ammo type ID
 --- @return number @The maximum amount of reserve ammo a player can hold of this ammo type.
 function game.GetAmmoMax(id)
@@ -112,7 +110,7 @@ function game.GetGlobalState(name)
 end
 
 --- Returns the public IP address and port of the current server. This will return the IP/port that you are connecting through when ran clientside.  
---- ℹ **NOTE**: Returns "0.0.0.0:0" in singleplayer.  
+--- ℹ **NOTE**: Returns "loopback" in singleplayer.  
 --- 🦟 **BUG**: [Returns "0.0.0.0:`port`" on the server when called too early, including in GM:Initialize and GM:InitPostEntity. This bug seems to only happen the first time a server is launched, and will return the correct value after switching maps.](https://github.com/Facepunch/garrysmod-issues/issues/3001)  
 --- @return string @The IP address and port in the format "x.x.x.x:x"
 function game.GetIPAddress()
@@ -120,6 +118,7 @@ end
 
 --- Returns the name of the current map, without a file extension.  
 --- On the menu state, returns "menu".  
+--- ⚠ **WARNING**: In Multiplayer this does not return the current map in the CLIENT realm before GM:Initialize.  
 --- @return string @The name of the current map, without a file extension.
 function game.GetMap()
 end
@@ -129,8 +128,8 @@ end
 function game.GetMapNext()
 end
 
---- Returns the VBSP version of the current map.  
---- @return number @VBSP version of the currently loaded map, will be either 19, 20 or 21 for L4D1+ maps
+--- Returns the revision (Not to be confused with [VBSP Version](https://developer.valvesoftware.com/wiki/Source_BSP_File_Format#Versions)) of the current map.  
+--- @return number @Revision of the currently loaded map.
 function game.GetMapVersion()
 end
 
@@ -141,7 +140,11 @@ end
 function game.GetSkillLevel()
 end
 
---- Returns the time scale of the game  
+--- Returns the time scale set with game.SetTimeScale.  
+--- If you want to get the value of `host_timescale` use  
+--- ```lua  
+--- local timescale = GetConVar( "host_timescale" ):GetFloat()  
+--- ```  
 --- @return number @The time scale
 function game.GetTimeScale()
 end
@@ -151,7 +154,7 @@ end
 function game.GetWorld()
 end
 
---- Returns true if the server is a dedicated server, false if it is a  or a singleplayer game.  
+--- Returns true if the server is a dedicated server, false if it is a listen server or a singleplayer game.  
 --- 🦟 **BUG**: [This always returns false on the client.](https://github.com/Facepunch/garrysmod-issues/issues/1495)  
 --- @return boolean @Is the server dedicated or not.
 function game.IsDedicated()
@@ -178,8 +181,10 @@ end
 function game.MaxPlayers()
 end
 
---- Mounts a GMA addon from the disk. Any error models currently loaded that the mounted addon provides will be reloaded.  
+--- Mounts a GMA addon from the disk.  
 --- Can be used with steamworks.DownloadUGC  
+--- ℹ **NOTE**: Any error models currently loaded that the mounted addon provides will be reloaded.  
+--- Any error materials currently loaded that the mounted addon provides will NOT be reloaded. That means that this cannot be used to fix missing map materials, as the map materials are loaded before you are able to call this.  
 --- @param path string @Location of the GMA file to mount, retrieved from steamworks.DownloadUGC
 --- @return boolean @success
 --- @return table @If successful, a table of files that have been mounted
@@ -214,12 +219,14 @@ end
 --- Sets the time scale of the game.  
 --- This function is supposed to remove the need of using the host_timescale convar, which is cheat protected.  
 --- To slow down or speed up the movement of a specific player, use Player:SetLaggedMovementValue instead.  
---- ℹ **NOTE**: Like host_timescale, this method does not affect sounds, if you wish to change that, look into GM:EntityEmitSound.  
+--- ℹ **NOTE**:   
+--- Like host_timescale, this method does not affect sounds, if you wish to change that, look into GM:EntityEmitSound.  
+--- The true timescale will be `host_timescale` multiplied by game.GetTimeScale  
 --- @param timeScale number @The new timescale, minimum value is 0.001 and maximum is 5.
 function game.SetTimeScale(timeScale)
 end
 
---- Returns whenever the current session is a single player game.  
+--- Returns whether the current session is a single player game.  
 --- @return boolean @isSinglePlayer
 function game.SinglePlayer()
 end

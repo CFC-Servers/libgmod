@@ -67,8 +67,8 @@ end
 function gui.IsConsoleVisible()
 end
 
---- Returns whenever the game menu overlay ( main menu ) is open or not.  
---- @return boolean @Whenever the game menu overlay ( main menu ) is open or not
+--- Returns whether the game menu overlay ( main menu ) is open or not.  
+--- @return boolean @Whether the game menu overlay ( main menu ) is open or not
 function gui.IsGameUIVisible()
 end
 
@@ -89,10 +89,10 @@ end
 function gui.MouseY()
 end
 
---- Opens specified URL in the steam overlay browser. The URL has to start with either http:// or https://  
+--- Opens specified URL in the steam overlay browser.  
 --- ℹ **NOTE**: When called clientside, user will be asked for confirmation before the website will open.  
---- 🦟 **BUG**: [You can't click the confirmation if a model panel has focus.](https://github.com/Facepunch/garrysmod-issues/issues/3383)  
---- @param url string @URL to open
+--- 🦟 **BUG**: [Will silently fail if the URL is more than 512 characters long.](https://github.com/Facepunch/garrysmod-issues/issues/4663)  
+--- @param url string @URL to open, it has to start with either `http://` or `https://`.
 function gui.OpenURL(url)
 end
 

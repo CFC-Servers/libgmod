@@ -12,7 +12,7 @@ _G.draw = {}
 function draw.DrawText(text, font, x, y, color, xAlign)
 end
 
---- Returns the height of the specified font in pixels.  
+--- Returns the height of the specified font in pixels. This is equivalent to the height of the character `W`. See surface.GetTextSize.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param font string @Name of the font to get the height of.
 --- @return number @The font height
@@ -52,6 +52,7 @@ function draw.RoundedBoxEx(cornerRadius, x, y, width, height, color, roundTopLef
 end
 
 --- Draws text on the screen.  
+--- ℹ **NOTE**: This function does not handle newlines properly. See draw.DrawText for a function that does.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param text string @The text to be drawn.
 --- @param font? string @The font
@@ -112,8 +113,10 @@ end
 --- @param font string @Font to draw in
 --- @param boxcolor table @The box color
 --- @param textcolor table @The text color
+--- @param xalign? number @The alignment of the X coordinate using Enums/TEXT_ALIGN.
+--- @param yalign? number @The alignment of the Y coordinate using Enums/TEXT_ALIGN.
 --- @return number @The width of the word box.
 --- @return number @The height of the word box.
-function draw.WordBox(bordersize, x, y, text, font, boxcolor, textcolor)
+function draw.WordBox(bordersize, x, y, text, font, boxcolor, textcolor, xalign, yalign)
 end
 

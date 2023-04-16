@@ -75,8 +75,8 @@ end
 function navmesh.GetNavAreaByID(id)
 end
 
---- Returns the highest ID of all nav areas on the map. While this can be used to get all nav areas, this number may not actually be the actual number of nav areas on the map.  
---- @return number @The highest ID of all nav areas on the map.
+--- Returns the total count of nav areas on the map. If you want to get all nav areas, use navmesh.GetAllNavAreas instead as nav areas IDs are not always sequential.  
+--- @return number @The total count of nav areas on the map.
 function navmesh.GetNavAreaCount()
 end
 

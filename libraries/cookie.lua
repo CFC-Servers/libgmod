@@ -1,4 +1,4 @@
---- Used to store permanent variables/settings on clients that will persist between servers. They are stored in the cl.db SQLite database located in the root Garry's Mod folder.  
+--- Used to store permanent variables/settings on clients that will persist between servers. They are stored in the `cl.db`, `sv.db`, or `mn.db` SQLite databases depending on the realm, located in the root Garry's Mod folder.  
 _G.cookie = {}
 --- Deletes a cookie on the client.  
 --- @param name string @The name of the cookie that you want to delete.

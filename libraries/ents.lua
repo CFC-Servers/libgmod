@@ -1,17 +1,18 @@
 --- The ents library provides functions for creating and finding entities in the game.  
 _G.ents = {}
---- Creates an entity. This function will fail and return NULL if the networked-edict limit is hit (around 8176), or the provided entity class doesn't exist.  
+--- Creates an entity. This function will fail and return `NULL` if the networked-edict limit is hit (around **8176**), or the provided entity class doesn't exist.  
 --- ⚠ **WARNING**: Do not use before GM:InitPostEntity has been called, otherwise the server will crash!  
 --- If you need to perform entity creation when the game starts, create a hook for GM:InitPostEntity and do it there.  
---- @param class string @The classname of the entity to create
---- @return Entity @The created entity, or NULL if failed
+--- @param class string @The classname of the entity to create.
+--- @return Entity @The created entity, or `NULL` if failed.
 function ents.Create(class)
 end
 
 --- Creates a clientside only prop. See also Global.ClientsideModel.  
 --- For physics to work you **must** use the _model_ argument, a simple `SetModel` call will not be enough.  
---- @param model? string @The model for the entity to be created.
---- @return Entity @Created entity
+--- 🦟 **BUG**: [Parented clientside prop will become detached if the parent entity leaves the PVS. **A workaround is available on its github page.**](https://github.com/Facepunch/garrysmod-issues/issues/861)  
+--- @param model? string @The model for the entity to be created
+--- @return Entity @Created entity (`C_PhysPropClientside`).
 function ents.CreateClientProp(model)
 end
 
@@ -45,14 +46,12 @@ function ents.FindByClassAndParent(class, parent)
 end
 
 --- Gets all entities with the given model, supports wildcards. This works internally by iterating over ents.GetAll.  
---- 🦟 **BUG**: [This currently only supports trailing asterisks (*) for wildcards.](https://github.com/Facepunch/garrysmod-issues/issues/2872)  
 --- @param model string @The model of the entities to find.
 --- @return table @A table of all found entities.
 function ents.FindByModel(model)
 end
 
 --- Gets all entities with the given hammer targetname. This works internally by iterating over ents.GetAll.  
---- ℹ **NOTE**: A player's Name is his nickname, see Player:GetName  
 --- Doesn't do anything on client.  
 --- @param name string @The targetname to look for
 --- @return table @A table of all found entities
@@ -89,6 +88,7 @@ end
 
 --- Gets all entities within the specified sphere.  
 --- ℹ **NOTE**: Clientside entities will not be returned by this function.  
+--- This function internally calls ents.FindInBox with some [radius checks](https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/sp/src/public/collisionutils.cpp#L256-L301).  
 --- @param origin Vector @Center of the sphere.
 --- @param radius number @Radius of the sphere.
 --- @return table @A table of all found Entitys
@@ -116,7 +116,7 @@ function ents.GetByIndex(entIdx)
 end
 
 --- Gives you the amount of currently existing entities.  
---- Similar to #ents.GetAll but with much better performance.  
+--- ℹ **NOTE**: Similar to **#**ents.GetAll() but with better performance since the entity table doesn't have to be generated. If ents.GetAll is already being called for iteration, than using the **#** operator on the table will be faster than calling this function since it is JITted.  
 --- @param IncludeKillMe? boolean @Include entities with the FL_KILLME flag
 --- @return number @Number of entities
 function ents.GetCount(IncludeKillMe)

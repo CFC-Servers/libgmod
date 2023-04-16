@@ -12,7 +12,7 @@ end
 
 --- Gets all the current players in the server (not including connecting clients).  
 --- ℹ **NOTE**: This function returns bots as well as human players. See player.GetBots and  player.GetHumans.  
---- ℹ **NOTE**: This function returns sequential table, this means it should be looped with Global.ipairs instead of Global.pairs for efficiency reasons!  
+--- ℹ **NOTE**: This function returns a sequential table, meaning it should be looped with Global.ipairs instead of Global.pairs for efficiency reasons.  
 --- @return table @All Players currently in the server.
 function player.GetAll()
 end
@@ -23,7 +23,8 @@ function player.GetBots()
 end
 
 --- Gets the player with the specified AccountID.  
---- @param accountID string @The Player:AccountID to find the player by.
+--- ⚠ **WARNING**: Internally this function iterates over all players in the server, meaning it can be quite expensive in a performance-critical context.  
+--- @param accountID number @The Player:AccountID to find the player by.
 --- @return Player @Player if one is found, false otherwise.
 function player.GetByAccountID(accountID)
 end
@@ -38,25 +39,30 @@ function player.GetByID(connectionID)
 end
 
 --- Gets the player with the specified SteamID.  
+--- ⚠ **WARNING**: Internally this function iterates over all players in the server, meaning it can be quite expensive in a performance-critical context.  
 --- @param steamID string @The Player:SteamID to find the player by.
 --- @return Player @Player if one is found, false otherwise.
 function player.GetBySteamID(steamID)
 end
 
 --- Gets the player with the specified SteamID64.  
---- @param steamID64 string @The Player:SteamID64 to find the player by
+--- ⚠ **WARNING**: Internally this function iterates over all players in the server, meaning it can be quite expensive in a performance-critical context.  
+--- @param steamID64 string @The Player:SteamID64 to find the player by.
 --- @return Player @Player if one is found, false otherwise.
 function player.GetBySteamID64(steamID64)
 end
 
+--- 🛑 **DEPRECATED**: Use player.GetBySteamID64, player.GetBySteamID or player.GetByAccountID to get a player by a unique identifier instead.  
 --- Gets the player with the specified uniqueID (not recommended way to identify players).  
 --- ⚠ **WARNING**: It is highly recommended to use player.GetByAccountID, player.GetBySteamID or player.GetBySteamID64 instead as this function can have collisions ( be same for different people ) while SteamID is guaranteed to unique to each player.  
+--- ⚠ **WARNING**: Internally this function iterates over all players in the server, meaning it can be quite expensive in a performance-critical context.  
 --- @param uniqueID string @The Player:UniqueID to find the player by.
 --- @return Player @Player if one is found, false otherwise.
 function player.GetByUniqueID(uniqueID)
 end
 
---- Gives you the player count. Similar to **#**player.GetAll but with much better performance.  
+--- Gives you the player count.  
+--- ℹ **NOTE**: Similar to **#**player.GetAll() but with better performance since the player table doesn't have to be generated. If player.GetAll is already being called for iteration, then using the **#** operator on the table will be faster than calling this function since it is JITted.  
 --- @return number @Number of players
 function player.GetCount()
 end

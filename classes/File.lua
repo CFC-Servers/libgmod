@@ -1,5 +1,6 @@
 --- @class File
 --- This is the file object. It used used primarily to read or write binary data from files.  
+--- The default endianness is little-endian. To use big-endian you will need to provide your own functions to read and write shorts and longs.  
 --- The object is returned by file.Open.  
 local File = {}
 --- Dumps the file changes to disk and closes the file handle which makes the handle useless.  
@@ -16,7 +17,7 @@ function File:Flush()
 end
 
 --- Reads the specified amount of chars and returns them as a binary string.  
---- @param length number @Reads the specified amount of chars.
+--- @param length? number @Reads the specified amount of chars
 --- @return string 
 function File:Read(length)
 end
@@ -31,45 +32,45 @@ end
 function File:ReadByte()
 end
 
---- Reads 8 bytes from the file converts them to a double and returns them.  
---- @return number @value
+--- Reads an 8-byte little-endian IEEE-754 floating point double from the file.  
+--- @return number @The double-precision floating point value read from the file.
 function File:ReadDouble()
 end
 
---- Reads 4 bytes from the file converts them to a float and returns them.  
+--- Reads an IEEE 754 little-endian 4-byte float from the file.  
 --- @return number @The read value
 function File:ReadFloat()
 end
 
 --- Returns the contents of the file from the current position up until the end of the current line.  
 --- ℹ **NOTE**: This function will look specifically for `Line Feed` characters `\n` and will **completely ignore `Carriage Return` characters** `\r`.  
---- ℹ **NOTE**: This function will not return more than 8192 characters.  
+--- ℹ **NOTE**: This function will not return more than 8192 characters. The return value will include the `\n` character.  
 --- @return string @The string of data from the read line.
 function File:ReadLine()
 end
 
---- Reads a signed 32-bit integer from the file.  
+--- Reads a signed little-endian 32-bit integer from the file.  
 --- @return number @A signed 32-bit integer
 function File:ReadLong()
 end
 
---- Reads a signed 16-bit integer from the file.  
+--- Reads a signed little-endian 16-bit integer from the file.  
 --- @return number @int16
 function File:ReadShort()
 end
 
---- Reads a unsigned 32-bit integer from the file.  
+--- Reads an unsigned little-endian 32-bit integer from the file.  
 --- @return number @An unsigned 32-bit integer
 function File:ReadULong()
 end
 
---- Reads a unsigned 16-bit integer from the file.  
+--- Reads an unsigned little-endian 16-bit integer from the file.  
 --- @return number @The 16-bit integer
 function File:ReadUShort()
 end
 
 --- Sets the file pointer to the specified position.  
---- @param pos number @Pointer position.
+--- @param pos number @Pointer position, in bytes.
 function File:Seek(pos)
 end
 
@@ -104,32 +105,32 @@ end
 function File:WriteByte(uint8)
 end
 
---- Writes a 8byte floating point double to the file.  
+--- Writes an 8-byte little-endian IEEE-754 floating point double to the file.  
 --- @param double number @The double to be written to the file.
 function File:WriteDouble(double)
 end
 
---- Writes a 4byte float to the file.  
+--- Writes an IEEE 754 little-endian 4-byte float to the file.  
 --- @param float number @The float to be written to the file.
 function File:WriteFloat(float)
 end
 
---- Writes a 32-bit signed integer to the file.  
+--- Writes a signed little-endian 32-bit integer to the file.  
 --- @param int32 number @The 32-bit signed integer to be written to the file.
 function File:WriteLong(int32)
 end
 
---- Writes a 16-bit signed integer to the file.  
+--- Writes a signed little-endian 16-bit integer to the file.  
 --- @param int16 number @The 16-bit signed integer to be written to the file.
 function File:WriteShort(int16)
 end
 
---- Writes an unsigned 32-bit integer to the file.  
+--- Writes an unsigned little-endian 32-bit integer to the file.  
 --- @param uint32 number @The unsigned 32-bit integer to be written to the file.
 function File:WriteULong(uint32)
 end
 
---- Writes an unsigned 16-bit integer to the file.  
+--- Writes an unsigned little-endian 16-bit integer to the file.  
 --- @param uint16 number @The unsigned 16-bit integer to the file.
 function File:WriteUShort(uint16)
 end

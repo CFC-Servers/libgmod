@@ -65,6 +65,15 @@ end
 function IMaterial:GetVector(materialVector)
 end
 
+--- Returns the specified material vector as a 4 component vector.  
+--- @param name string @The name of the material vector to retrieve.
+--- @return number @The x component of the vector.
+--- @return number @The y component of the vector.
+--- @return number @The z component of the vector.
+--- @return number @The w component of the vector.
+function IMaterial:GetVector4D(name)
+end
+
 --- Returns the specified material linear color vector, or nil if the value is not set.  
 --- See https://en.wikipedia.org/wiki/Gamma_correction  
 --- See also IMaterial:GetVector  
@@ -134,6 +143,15 @@ end
 --- @param MaterialVector string @The name of the material vector.
 --- @param vec Vector @The new vector.
 function IMaterial:SetVector(MaterialVector, vec)
+end
+
+--- Sets the specified material vector to the specified 4 component vector, does nothing on a type mismatch.  
+--- @param name string @The name of the material vector.
+--- @param x number @The x component of the new vector.
+--- @param y number @The y component of the new vector.
+--- @param z number @The z component of the new vector.
+--- @param w number @The w component of the new vector.
+function IMaterial:SetVector4D(name, x, y, z, w)
 end
 
 --- Returns the width of the member texture set for $basetexture.  

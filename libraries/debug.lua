@@ -17,7 +17,7 @@ end
 function debug.getfenv(object)
 end
 
---- Returns the current hook settings of the passed thread. The thread argument can be omitted. This is unrelated to . More information on hooks can be found at http://www.lua.org/pil/23.2.html  
+--- Returns the current hook settings of the passed thread. The thread argument can be omitted. This is completely different to gamemode hooks. More information on hooks can be found at http://www.lua.org/pil/23.2.html  
 --- @param thread? thread @Which thread to retrieve its hook from
 --- @return function @Hook function
 --- @return string @Hook mask
@@ -32,8 +32,8 @@ end
 function debug.getinfo(funcOrStackLevel, fields)
 end
 
---- Gets the name and value of a local variable indexed from the level  
---- ⚠ **WARNING**: When a function has a tailcall return, you cannot access the locals of this function  
+--- Gets the name and value of a local variable indexed from the level.  
+--- ⚠ **WARNING**: When a function has a tailcall return, you cannot access the locals of this function.  
 --- @param thread? thread @The thread
 --- @param level number @The level above the thread
 --- @param index number @The variable's index you want to get
@@ -70,7 +70,7 @@ end
 function debug.setfenv(object, env)
 end
 
---- Sets the given function as a Lua hook. This is completely different to gamemode hooks. The thread argument can be completely omitted and calling this function with no arguments will remove the current hook. This is used by default for infinite loop detection. More information on hooks can be found at http://www.lua.org/pil/23.2.html  
+--- Sets the given function as a Lua hook. This is completely different to gamemode hooks. The thread argument can be completely omitted and calling this function with no arguments will remove the current hook. This is used by default for infinite loop detection. More information on hooks can be found at http://www.lua.org/pil/23.2.html and https://www.gammon.com.au/scripts/doc.php?lua=debug.sethook  
 --- Hooks are not always ran when code that has been compiled by LuaJIT's JIT compiler is being executed. This means that relying on them for infinite loop protection is unwise.  
 --- @param thread thread @Thread to set the hook on
 --- @param hook function @Function for the hook to call

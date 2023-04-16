@@ -14,7 +14,7 @@ end
 function properties.CanBeTargeted(ent, ply)
 end
 
---- Returns an entity player is hovering over with his cursor.  
+--- Returns an entity player is hovering over with their cursor.  
 --- @param pos Vector @Eye position of local player, Entity:EyePos
 --- @param aimVec Vector @Aim vector of local player, Player:GetAimVector
 --- @return Entity @The hovered entity

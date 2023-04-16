@@ -1,6 +1,13 @@
 --- The utf8 library provides basic support for UTF-8 encoding. This library does not provide any support for Unicode other than the handling of the encoding. Any operation that needs the meaning of a character, such as character classification, is outside its scope.  
 --- Unless stated otherwise, all functions that expect a byte position as a parameter assume that the given position is either the start of a byte sequence or one plus the length of the subject string. As in the string library, negative indices count from the end of the string.  
 _G.utf8 = {}
+--- A UTF-8 compatible version of string.GetChar.  
+--- @param str string @The string that you will be searching with the supplied index.
+--- @param index number @The index's value of the string to be returned.
+--- @return string @str
+function utf8.GetChar(str, index)
+end
+
 --- Receives zero or more integers, converts each one to its corresponding UTF-8 byte sequence and returns a string with the concatenation of all these sequences.  
 --- @vararg any @Unicode code points to be converted in to a UTF-8 string.
 --- @return string @UTF-8 string generated from given arguments.
@@ -43,5 +50,14 @@ end
 --- @param startPos? number @The offset for n.
 --- @return number @Starting byte-index of the given position.
 function utf8.offset(string, n, startPos)
+end
+
+--- A UTF-8 compatible version of string.sub.  
+--- ⚠ **WARNING**: Avoid using this function on large strings every tick/frame, as it may cause lags.  
+--- @param string string @The string you'll take a sub-string out of.
+--- @param StartPos number @The position of the first character that will be included in the sub-string.
+--- @param EndPos? number @The position of the last character to be included in the sub-string
+--- @return string @The substring.
+function utf8.sub(string, StartPos, EndPos)
 end
 

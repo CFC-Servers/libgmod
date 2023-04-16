@@ -12,7 +12,7 @@ end
 function CLuaEmitter:Draw()
 end
 
---- Removes the emitter and all its particles.  
+--- Removes the emitter, making it no longer usable from Lua. If particles remain, the emitter will be removed when all particles die.  
 function CLuaEmitter:Finish()
 end
 

@@ -1,5 +1,6 @@
 --- @class bf_read
 --- This is the object passed to usermessage.Hook when a message is received. It contains each value stored in the message in sequential order. You should read values from it in the order you wrote them.  
+--- 🛑 **DEPRECATED**: You should be using net instead  
 local bf_read = {}
 --- Reads an returns an angle object from the bitstream.  
 --- @return Angle @The read angle

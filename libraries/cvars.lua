@@ -6,7 +6,7 @@ _G.cvars = {}
 --- 🦟 **BUG**: [This does not callback convars on the client with FCVAR_REPLICATED.](https://github.com/Facepunch/garrysmod-issues/issues/3740)  
 --- @param name string @The name of the convar to add the change callback to.
 --- @param callback function @The function to be called when the convar changes
---- @param identifier? string @If set, you will be able to remove the callback using cvars.RemoveChangeCallback.
+--- @param identifier? string @If set, you will be able to remove the callback using cvars.RemoveChangeCallback
 function cvars.AddChangeCallback(name, callback, identifier)
 end
 

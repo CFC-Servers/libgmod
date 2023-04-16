@@ -6,7 +6,7 @@ _G.motionsensor = {}
 --- @param rotation Angle 
 --- @return Vector @Pos
 --- @return Angle @ang
---- @return sensor @sensor
+--- @return table @sensor
 function motionsensor.BuildSkeleton(translator, player, rotation)
 end
 
@@ -59,6 +59,7 @@ function motionsensor.ProcessPositionTable(translator, sensor)
 end
 
 --- This starts access to the kinect sensor. Note that this usually freezes the game for a couple of seconds.  
+--- @return boolean @`true` if the access has been started
 function motionsensor.Start()
 end
 

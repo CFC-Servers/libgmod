@@ -1,9 +1,9 @@
 --- @class PhysObj
---- This is the object returned by Entity:GetPhysicsObject and Entity:GetPhysicsObjectNum.  
+--- This is the object returned by Entity:GetPhysicsObject, Entity:GetPhysicsObjectNum and Vehicle:GetWheel.  
 --- It represents a physics object.  
 local PhysObj = {}
---- Adds the specified velocity to the current.  
---- @param angularVelocity Vector @Additional velocity.
+--- Adds the specified [angular velocity](https://en.wikipedia.org/wiki/Angular_velocity) velocity to the current PhysObj.  
+--- @param angularVelocity Vector @The additional velocity in `degrees/s`
 function PhysObj:AddAngleVelocity(angularVelocity)
 end
 
@@ -13,7 +13,7 @@ function PhysObj:AddGameFlag(flags)
 end
 
 --- Adds the specified velocity to the current.  
---- @param velocity Vector @Additional velocity.
+--- @param velocity Vector @Additional velocity in `source_unit/s`
 function PhysObj:AddVelocity(velocity)
 end
 
@@ -24,37 +24,39 @@ end
 function PhysObj:AlignAngles(from, to)
 end
 
---- Applies the specified force to the physics object. (in Newtons)  
+--- Applies the specified impulse in the mass center of the physics object.  
 --- ℹ **NOTE**: This will not work on players, use Entity:SetVelocity instead.  
---- @param force Vector @The force to be applied.
-function PhysObj:ApplyForceCenter(force)
+--- @param impulse Vector @The [impulse](https://en.wikipedia.org/wiki/Impulse_(physics)) to be applied in `kg*source_unit/s`
+function PhysObj:ApplyForceCenter(impulse)
 end
 
---- Applies the specified force on the physics object at the specified position  
---- @param force Vector @The force to be applied.
---- @param position Vector @The position in world coordinates where the force is applied to the physics object.
-function PhysObj:ApplyForceOffset(force, position)
+--- Applies the specified impulse on the physics object at the specified position.  
+--- @param impulse Vector @The impulse to be applied in `kg*source_unit/s`
+--- @param position Vector @The position in world coordinates (`source units`) where the force is applied to the physics object.
+function PhysObj:ApplyForceOffset(impulse, position)
 end
 
---- Applies specified torque to the physics object.  
---- @param torque Vector @The torque to be applied in kg * degrees / s.
-function PhysObj:ApplyTorqueCenter(torque)
+--- Applies the specified angular impulse to the physics object. See PhysObj:CalculateForceOffset  
+--- @param angularImpulse Vector @The angular impulse to be applied in `kg * m^2 * degrees / s`
+function PhysObj:ApplyTorqueCenter(angularImpulse)
 end
 
---- Calculates the force and torque on the center of mass for an offset force impulse. The outputs can be directly passed to PhysObj:ApplyForceCenter and PhysObj:ApplyTorqueCenter, respectively.  
---- @param force Vector @The initial force
---- @param pos Vector @The location of the force in world coordinates
---- @return Vector @The calculated force on the physics object's center of mass
---- @return Vector @The calculated torque on the physics object's center of mass
-function PhysObj:CalculateForceOffset(force, pos)
+--- Calculates the linear and angular impulse on the object's center of mass for an offset impulse.  
+--- The outputs can be used with PhysObj:ApplyForceCenter and PhysObj:ApplyTorqueCenter, respectively. **Be careful to convert the angular impulse to world frame (PhysObj:LocalToWorldVector) if you are going to use it with ApplyTorqueCenter.**  
+--- @param impulse Vector @The impulse acting on the object in `kg*source_unit/s`
+--- @param position Vector @The location of the impulse in world coordinates (`source units`)
+--- @return Vector @The calculated linear impulse on the physics object's center of mass in `kg*source_unit/s`
+--- @return Vector @The calculated angular impulse on the physics object's center of mass in `kg*m^2*degrees/s`
+function PhysObj:CalculateForceOffset(impulse, position)
 end
 
---- Calculates the linear and angular velocities on the center of mass for an offset force impulse. The outputs can be directly passed to PhysObj:AddVelocity and PhysObj:AddAngleVelocity, respectively.  
---- @param force Vector @The initial force
---- @param pos Vector @The location of the force in world coordinates
---- @return Vector @The calculated linear velocity from the force on the physics object's center of mass
---- @return Vector @The calculated angular velocity from the force on the physics object's center of mass
-function PhysObj:CalculateVelocityOffset(force, pos)
+--- Calculates the linear and angular velocities on the center of mass for an offset impulse. The outputs can be directly passed to PhysObj:AddVelocity and PhysObj:AddAngleVelocity, respectively.  
+--- ⚠ **WARNING**: This will return zero length vectors if the physics object's motion is disabled. See PhysObj:IsMotionEnabled.  
+--- @param impulse Vector @The impulse acting on the object in `kg*source_unit/s`
+--- @param position Vector @The location of the impulse in world coordinates (`source units`)
+--- @return Vector @The calculated linear velocity from the impulse on the physics object's center of mass in `source_unit/s`
+--- @return Vector @The calculated angular velocity from the impulse on the physics object's center of mass in `degrees/s`
+function PhysObj:CalculateVelocityOffset(impulse, position)
 end
 
 --- Removes one of more specified flags.  
@@ -96,12 +98,12 @@ end
 function PhysObj:GetAABB()
 end
 
---- Gets the angular velocity of the object in degrees per second.  
+--- Gets the angular velocity of the object in degrees per second as a local vector. You can use dot product to read the magnitude from a specific axis.  
 --- @return Vector @The angular velocity
 function PhysObj:GetAngleVelocity()
 end
 
---- Returns the angles of the physics object.  
+--- Returns the angles of the physics object in degrees.  
 --- @return Angle @The angles of the physics object.
 function PhysObj:GetAngles()
 end
@@ -117,13 +119,13 @@ end
 function PhysObj:GetDamping()
 end
 
---- Returns the kinetic energy of the physobject.  
+--- Returns the sum of the linear and rotational kinetic energies of the physics object.  
 --- @return number @The kinetic energy
 function PhysObj:GetEnergy()
 end
 
 --- Returns the parent entity of the physics object.  
---- @return Entity @parent
+--- @return Entity @The entity this physics object belongs to
 function PhysObj:GetEntity()
 end
 
@@ -132,18 +134,18 @@ end
 function PhysObj:GetFrictionSnapshot()
 end
 
---- Returns the directional inertia of the physics object.  
---- @return Vector @directionalInertia
+--- Returns the principal moments of inertia `(Ixx, Iyy, Izz)` of the physics object, in the local frame, with respect to the center of mass.  
+--- @return Vector @The moment of inertia in `kg * m^2`
 function PhysObj:GetInertia()
 end
 
---- Returns 1 divided by the inertia.  
---- @return number @The inverted inertia
+--- Returns 1 divided by the angular inertia. See PhysObj:GetInertia  
+--- @return Vector @The inverted angular inertia
 function PhysObj:GetInvInertia()
 end
 
---- Returns 1 divided by the physics object's mass.  
---- @return number @The inverted mass.
+--- Returns 1 divided by the physics object's mass (in kilograms).  
+--- @return number @The inverted mass
 function PhysObj:GetInvMass()
 end
 
@@ -167,7 +169,7 @@ end
 function PhysObj:GetMesh()
 end
 
---- Returns all convex physics meshes of the object. See Entity.PhysicsInitMultiConvex for more information.  
+--- Returns all convex physics meshes of the object. See Entity:PhysicsInitMultiConvex for more information.  
 --- @return table @Table of Structures/MeshVertexs where each Structures/MeshVertex is an independent convex mesh and each three vertices represent a triangle
 function PhysObj:GetMeshConvexes()
 end
@@ -178,7 +180,7 @@ function PhysObj:GetName()
 end
 
 --- Returns the position of the physics object.  
---- @return Vector @The position
+--- @return Vector @The position in world coordinates
 function PhysObj:GetPos()
 end
 
@@ -207,8 +209,9 @@ end
 function PhysObj:GetSpeedDamping()
 end
 
---- Returns the stress of the entity.  
---- @return number @exertedStress
+--- Returns the internal and external stress of the entity.  
+--- @return number @The external stress (`𝜎𝑒`)
+--- @return number @The internal stress (`𝜎𝑖`)
 function PhysObj:GetStress()
 end
 
@@ -222,9 +225,9 @@ end
 function PhysObj:GetVelocity()
 end
 
---- Returns the world velocity of a point in world coordinates about the object.  
---- @param point Vector 
---- @return Vector 
+--- Returns the world velocity of a point in world coordinates about the object. This is useful for objects rotating around their own axis/origin.  
+--- @param point Vector @A point to test in world space coordinates
+--- @return Vector @Velocity at the given point
 function PhysObj:GetVelocityAtPoint(point)
 end
 
@@ -256,12 +259,12 @@ function PhysObj:IsDragEnabled()
 end
 
 --- Returns whenever the entity is affected by gravity.  
---- @return boolean @gravitated
+--- @return boolean @`true` if the gravity is enabled, `false` otherwise
 function PhysObj:IsGravityEnabled()
 end
 
 --- Returns if the physics object can move itself (by velocity, acceleration)  
---- @return boolean @motionEnabled
+--- @return boolean @`true` if the motion is enabled, `false` otherwise.
 function PhysObj:IsMotionEnabled()
 end
 
@@ -315,8 +318,18 @@ end
 function PhysObj:SetAngleDragCoefficient(coefficient)
 end
 
---- Sets the angles of the physobject.  
---- @param angles Angle @The new angles of the physobject.
+--- Sets the specified [angular velocity](https://en.wikipedia.org/wiki/Angular_velocity) on the PhysObj  
+--- @param angularVelocity Vector @The new velocity in `degrees/s`
+function PhysObj:SetAngleVelocity(angularVelocity)
+end
+
+--- Sets the specified instantaneous [angular velocity](https://en.wikipedia.org/wiki/Angular_velocity) on the PhysObj  
+--- @param angularVelocity Vector @The new velocity to set velocity.
+function PhysObj:SetAngleVelocityInstantaneous(angularVelocity)
+end
+
+--- Sets the angles of the physobject in degrees.  
+--- @param angles Angle @The new angles of the physobject
 function PhysObj:SetAngles(angles)
 end
 
@@ -341,13 +354,14 @@ end
 function PhysObj:SetDragCoefficient(drag)
 end
 
---- Sets the directional inertia.  
---- @param directionalInertia Vector @The directional inertia of the object.<br>
-function PhysObj:SetInertia(directionalInertia)
+--- Sets the angular inertia. See PhysObj:GetInertia.  
+--- ℹ **NOTE**: This does not affect linear inertia.  
+--- @param angularInertia Vector @The angular inertia of the object.<br>
+function PhysObj:SetInertia(angularInertia)
 end
 
 --- Sets the mass of the physics object.  
---- @param mass number @The mass in kilograms.
+--- @param mass number @The mass in kilograms, in range `[0, 50000]`
 function PhysObj:SetMass(mass)
 end
 
@@ -358,13 +372,13 @@ function PhysObj:SetMaterial(materialName)
 end
 
 --- Sets the position of the physobject.  
---- @param position Vector @The new position of the physobject.
+--- @param position Vector @The new position of the physobject in world coordinates
 --- @param teleport? boolean 
 function PhysObj:SetPos(position, teleport)
 end
 
 --- Sets the velocity of the physics object for the next iteration.  
---- @param velocity Vector @The new velocity of the physics object.
+--- @param velocity Vector @The new velocity of the physics object in `source_unit/s`
 function PhysObj:SetVelocity(velocity)
 end
 
