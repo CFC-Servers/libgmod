@@ -4,11 +4,11 @@ _G.halo = {}
 --- ⚠ **WARNING**: Using this function outside of the GM:PreDrawHalos hook can cause instability or crashes.  
 --- @param entities table @A table of entities to add the halo effect to
 --- @param color table @The desired color of the halo
---- @param blurX number @The strength of the halo's blur on the x axis.
---- @param blurY number @The strength of the halo's blur on the y axis.
---- @param passes number @The number of times the halo should be drawn per frame
---- @param additive boolean @Sets the render mode of the halo to additive.
---- @param ignoreZ boolean @Renders the halo through anything when set to true.
+--- @param blurX? number @The strength of the halo's blur on the x axis.
+--- @param blurY? number @The strength of the halo's blur on the y axis.
+--- @param passes? number @The number of times the halo should be drawn per frame
+--- @param additive? boolean @Sets the render mode of the halo to additive.
+--- @param ignoreZ? boolean @Renders the halo through anything when set to true.
 function halo.Add(entities, color, blurX, blurY, passes, additive, ignoreZ)
 end
 

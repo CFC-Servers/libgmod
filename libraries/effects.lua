@@ -17,8 +17,8 @@ end
 --- @param endPos Vector @The end position of the effects
 --- @param count number @How many bubbles to spawn
 --- @param height number @How high the bubbles can fly up before disappearing
---- @param speed number @How quickly the bubbles move
---- @param delay number @Delay in seconds after the function call and before the effect actually spawns
+--- @param speed? number @How quickly the bubbles move
+--- @param delay? number @Delay in seconds after the function call and before the effect actually spawns
 function effects.BubbleTrail(startPos, endPos, count, height, speed, delay)
 end
 
@@ -27,8 +27,8 @@ end
 --- @param maxs Vector @The highest extents of the box
 --- @param count number @How many bubbles to spawn
 --- @param height number @How high the bubbles can fly up before disappearing
---- @param speed number @How quickly the bubbles move
---- @param delay number @Delay in seconds after the function call and before the effect actually spawns
+--- @param speed? number @How quickly the bubbles move
+--- @param delay? number @Delay in seconds after the function call and before the effect actually spawns
 function effects.Bubbles(mins, maxs, count, height, speed, delay)
 end
 

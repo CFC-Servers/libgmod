@@ -4,7 +4,7 @@
 --- The Stack works like a stack of papers: the first page you put down (push) will be the last one you remove (pop). That also means that the last page you put down, will be the first to be removed.  
 local Stack = {}
 --- Pop an item from the stack  
---- @param amount number @Amount of items you want to pop.
+--- @param amount? number @Amount of items you want to pop.
 function Stack:Pop(amount)
 end
 

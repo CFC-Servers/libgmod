@@ -12,29 +12,29 @@ function Panel:AddText()
 end
 
 --- Aligns the panel on the bottom of its parent with the specified offset.  
---- @param offset number @The align offset.
+--- @param offset? number @The align offset.
 function Panel:AlignBottom(offset)
 end
 
 --- Aligns the panel on the left of its parent with the specified offset.  
---- @param offset number @The align offset.
+--- @param offset? number @The align offset.
 function Panel:AlignLeft(offset)
 end
 
 --- Aligns the panel on the right of its parent with the specified offset.  
---- @param offset number @The align offset.
+--- @param offset? number @The align offset.
 function Panel:AlignRight(offset)
 end
 
 --- Aligns the panel on the top of its parent with the specified offset.  
---- @param offset number @The align offset.
+--- @param offset? number @The align offset.
 function Panel:AlignTop(offset)
 end
 
 --- Uses animation to transition the current alpha value of a panel to a new alpha, over a set period of time and after a specified delay.  
 --- @param alpha number @The alpha value (0-255) to approach.
 --- @param duration number @The time in seconds it should take to reach the alpha.
---- @param delay number @The delay before the animation starts.
+--- @param delay? number @The delay before the animation starts.
 --- @param callback function @The function to be called once the animation finishes
 function Panel:AlphaTo(alpha, duration, delay, callback)
 end
@@ -60,12 +60,12 @@ function Panel:Center()
 end
 
 --- Centers the panel horizontally with specified fraction.  
---- @param fraction number @The center fraction.
+--- @param fraction? number @The center fraction.
 function Panel:CenterHorizontal(fraction)
 end
 
 --- Centers the panel vertically with specified fraction.  
---- @param fraction number @The center fraction.
+--- @param fraction? number @The center fraction.
 function Panel:CenterVertical(fraction)
 end
 
@@ -587,24 +587,24 @@ function Panel:InsertFade(sustain, length)
 end
 
 --- Invalidates the layout of this panel object and all its children. This will cause these objects to re-layout immediately, calling PANEL:PerformLayout. If you want to perform the layout in the next frame, you will have loop manually through all children, and call Panel:InvalidateLayout on each.  
---- @param recursive boolean @If `true`, the method will recursively invalidate the layout of all children
+--- @param recursive? boolean @If `true`, the method will recursively invalidate the layout of all children
 function Panel:InvalidateChildren(recursive)
 end
 
 --- Causes the panel to re-layout in the next frame. During the layout process  PANEL:PerformLayout will be called on the target panel.  
 --- You should avoid calling this function every frame.  
 --- 🦟 **BUG**: [Using this on a panel after clicking on a docked element will cause docked elements to reorient themselves incorrectly. This can be fixed by assigning a unique Panel:SetZPos to each docked element.](https://github.com/Facepunch/garrysmod-issues/issues/2574)  
---- @param layoutNow boolean @If true the panel will re-layout instantly and not wait for the next frame.
+--- @param layoutNow? boolean @If true the panel will re-layout instantly and not wait for the next frame.
 function Panel:InvalidateLayout(layoutNow)
 end
 
 --- Invalidates the layout of the parent of this panel object. This will cause it to re-layout, calling PANEL:PerformLayout.  
---- @param layoutNow boolean @If `true`, the re-layout will occur immediately, otherwise it will be performed in the next frame.
+--- @param layoutNow? boolean @If `true`, the re-layout will occur immediately, otherwise it will be performed in the next frame.
 function Panel:InvalidateParent(layoutNow)
 end
 
 --- Determines whether the mouse cursor is hovered over one of this panel object's children. This is a reverse process using vgui.GetHoveredPanel, and looks upward to find the parent.  
---- @param immediate boolean @Set to true to check only the immediate children of given panel ( first level )
+--- @param immediate? boolean @Set to true to check only the immediate children of given panel ( first level )
 --- @return boolean @Whether or not one of this panel object's children is being hovered over.
 function Panel:IsChildHovered(immediate)
 end
@@ -702,7 +702,7 @@ end
 --- Loads a .gwen file (created by GWEN Designer) and calls Panel:LoadGWENString with the contents of the loaded file.  
 --- Used to load panel controls from a file.  
 --- @param filename string @The file to open
---- @param path string @The path used to look up the file
+--- @param path? string @The path used to look up the file
 function Panel:LoadGWENFile(filename, path)
 end
 
@@ -741,13 +741,13 @@ end
 
 --- Places the panel above the passed panel with the specified offset.  
 --- @param panel Panel @Panel to position relatively to.
---- @param offset number @The align offset.
+--- @param offset? number @The align offset.
 function Panel:MoveAbove(panel, offset)
 end
 
 --- Places the panel below the passed panel with the specified offset.  
 --- @param panel Panel @Panel to position relatively to.
---- @param offset number @The align offset.
+--- @param offset? number @The align offset.
 function Panel:MoveBelow(panel, offset)
 end
 
@@ -755,21 +755,21 @@ end
 --- @param moveX number @The number of pixels to move by in the horizontal (x) direction.
 --- @param moveY number @The number of pixels to move by in the vertical (y) direction.
 --- @param time number @The time (in seconds) in which to perform the animation.
---- @param delay number @The delay (in seconds) before the animation begins.
---- @param ease number @The easing of the start and/or end speed of the animation
---- @param callback function @The function to be called once the animation is complete
+--- @param delay? number @The delay (in seconds) before the animation begins.
+--- @param ease? number @The easing of the start and/or end speed of the animation
+--- @param callback? function @The function to be called once the animation is complete
 function Panel:MoveBy(moveX, moveY, time, delay, ease, callback)
 end
 
 --- Places the panel left to the passed panel with the specified offset.  
 --- @param panel Panel @Panel to position relatively to.
---- @param offset number @The align offset.
+--- @param offset? number @The align offset.
 function Panel:MoveLeftOf(panel, offset)
 end
 
 --- Places the panel right to the passed panel with the specified offset.  
 --- @param panel Panel @Panel to position relatively to.
---- @param offset number @The align offset.
+--- @param offset? number @The align offset.
 function Panel:MoveRightOf(panel, offset)
 end
 
@@ -778,8 +778,8 @@ end
 --- @param posX number @The target x coordinate of the panel.
 --- @param posY number @The target y coordinate of the panel.
 --- @param time number @The time to perform the animation within.
---- @param delay number @The delay before the animation starts.
---- @param ease number @The easing of the start and/or end speed of the animation
+--- @param delay? number @The delay before the animation starts.
+--- @param ease? number @The easing of the start and/or end speed of the animation
 --- @param callback function @The function to be called once the animation finishes
 function Panel:MoveTo(posX, posY, time, delay, ease, callback)
 end
@@ -815,9 +815,9 @@ end
 --- * Panel:MoveBy  
 --- * Panel:LerpPositions  
 --- @param length number @The length of the animation in seconds.
---- @param delay number @The delay before the animation starts.
---- @param ease number @The power/index to use for easing
---- @param callback function @The function to be called when the animation ends
+--- @param delay? number @The delay before the animation starts.
+--- @param ease? number @The power/index to use for easing
+--- @param callback? function @The function to be called when the animation ends
 --- @return table @Partially filled Structures/AnimationData with members:
 function Panel:NewAnimation(length, delay, ease, callback)
 end
@@ -896,7 +896,7 @@ function Panel:Receiver(name, func, menu)
 end
 
 --- Refreshes the HTML panel's current page.  
---- @param ignoreCache boolean @If true, the refresh will ignore cached content similar to "ctrl+f5" in most browsers.
+--- @param ignoreCache? boolean @If true, the refresh will ignore cached content similar to "ctrl+f5" in most browsers.
 function Panel:Refresh(ignoreCache)
 end
 
@@ -1068,7 +1068,7 @@ end
 --- Priority is given based on the last call, so of two panels that call this method, the second will draw in front of the first.  
 --- ℹ **NOTE**: This only makes the panel **draw** above other panels. If there's another panel that would have otherwise covered it, users will not be able to interact with it.  
 --- ⚠ **WARNING**: This does not work when using PANEL:SetPaintedManually or PANEL:PaintAt!  
---- @param drawOnTop boolean @Whether or not to draw the panel in front of all others.
+--- @param drawOnTop? boolean @Whether or not to draw the panel in front of all others.
 function Panel:SetDrawOnTop(drawOnTop)
 end
 
@@ -1147,15 +1147,15 @@ end
 --- Sets the minimum dimensions of the panel or object.  
 --- You can restrict either or both values.  
 --- Calling the function without arguments will remove the minimum size.  
---- @param minW number @The minimum width of the object.
---- @param minH number @The minimum height of the object.
+--- @param minW? number @The minimum width of the object.
+--- @param minH? number @The minimum height of the object.
 function Panel:SetMinimumSize(minW, minH)
 end
 
 --- Sets the model to be displayed by SpawnIcon.  
 --- ℹ **NOTE**: This must be called after setting size if you wish to use a different size spawnicon  
 --- @param ModelPath string @The path of the model to set
---- @param skin number @The skin to set
+--- @param skin? number @The skin to set
 --- @param bodygroups string @The body groups to set
 function Panel:SetModel(ModelPath, skin, bodygroups)
 end
@@ -1225,7 +1225,7 @@ function Panel:SetSelectable(selectable)
 end
 
 --- Sets the selected state of a selectable panel object. This functionality is set with Panel:SetSelectable and checked with Panel:IsSelectable.  
---- @param selected boolean @Whether the object should be selected or deselected
+--- @param selected? boolean @Whether the object should be selected or deselected
 function Panel:SetSelected(selected)
 end
 
@@ -1302,7 +1302,7 @@ end
 --- ℹ **NOTE**: Panel:SetTooltip will override this functionality.  
 --- ⚠ **WARNING**: Calling this from PANEL:OnCursorEntered is too late! The tooltip will not be displayed or be updated.  
 --- ⚠ **WARNING**: Given panel or the previously set one will NOT be automatically removed.  
---- @param tooltipPanel Panel @The panel to use as the tooltip.
+--- @param tooltipPanel? Panel @The panel to use as the tooltip.
 function Panel:SetTooltipPanel(tooltipPanel)
 end
 
@@ -1324,7 +1324,7 @@ end
 
 --- Sets the visibility of the vertical scrollbar.  
 --- Works for RichText and TextEntry.  
---- @param display boolean @True to display the vertical text scroll bar, false to hide it.
+--- @param display? boolean @True to display the vertical text scroll bar, false to hide it.
 function Panel:SetVerticalScrollbarEnabled(display)
 end
 
@@ -1369,11 +1369,11 @@ function Panel:Show()
 end
 
 --- Uses animation to resize the panel to the specified size.  
---- @param sizeW number @The target width of the panel
---- @param sizeH number @The target height of the panel
+--- @param sizeW? number @The target width of the panel
+--- @param sizeH? number @The target height of the panel
 --- @param time number @The time to perform the animation within.
---- @param delay number @The delay before the animation starts.
---- @param ease number @Easing of the start and/or end speed of the animation
+--- @param delay? number @The delay before the animation starts.
+--- @param ease? number @Easing of the start and/or end speed of the animation
 --- @param callback function @The function to be called once the animation finishes
 function Panel:SizeTo(sizeW, sizeH, time, delay, ease, callback)
 end
@@ -1381,8 +1381,8 @@ end
 --- Resizes the panel to fit the bounds of its children.  
 --- ℹ **NOTE**: Your panel must have its layout updated (Panel:InvalidateLayout) for this function to work properly.  
 --- ℹ **NOTE**: The sizeW and sizeH parameters are false by default. Therefore, calling this function with no arguments will result in a no-op.  
---- @param sizeW boolean @Resize with width of the panel.
---- @param sizeH boolean @Resize the height of the panel.
+--- @param sizeW? boolean @Resize with width of the panel.
+--- @param sizeH? boolean @Resize the height of the panel.
 function Panel:SizeToChildren(sizeW, sizeH)
 end
 
@@ -1395,14 +1395,14 @@ end
 --- Resizes the panel object's width to accommodate all child objects/contents.  
 --- Only works on Label derived panels such as DLabel by default, and on any panel that manually implemented Panel:GetContentSize method.  
 --- ℹ **NOTE**: You must call this function **AFTER** setting text/font or adjusting child panels.  
---- @param addVal number @The number of extra pixels to add to the width
+--- @param addVal? number @The number of extra pixels to add to the width
 function Panel:SizeToContentsX(addVal)
 end
 
 --- Resizes the panel object's height to accommodate all child objects/contents.  
 --- Only works on Label derived panels such as DLabel by default, and on any panel that manually implemented Panel:GetContentSize method.  
 --- ℹ **NOTE**: You must call this function **AFTER** setting text/font or adjusting child panels.  
---- @param addVal number @The number of extra pixels to add to the height.
+--- @param addVal? number @The number of extra pixels to add to the height.
 function Panel:SizeToContentsY(addVal)
 end
 
@@ -1426,13 +1426,13 @@ end
 
 --- Resizes the panel object's height so that its bottom is aligned with the top of the passed panel. An offset greater than zero will reduce the panel's height to leave a gap between it and the passed panel.  
 --- @param tgtPanel Panel @The panel to align the bottom of this one with.
---- @param offset number @The gap to leave between this and the passed panel
+--- @param offset? number @The gap to leave between this and the passed panel
 function Panel:StretchBottomTo(tgtPanel, offset)
 end
 
 --- Resizes the panel object's width so that its right edge is aligned with the left of the passed panel. An offset greater than zero will reduce the panel's width to leave a gap between it and the passed panel.  
 --- @param tgtPanel Panel @The panel to align the right edge of this one with.
---- @param offset number @The gap to leave between this and the passed panel
+--- @param offset? number @The gap to leave between this and the passed panel
 function Panel:StretchRightTo(tgtPanel, offset)
 end
 

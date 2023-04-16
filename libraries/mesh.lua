@@ -5,7 +5,7 @@ function mesh.AdvanceVertex()
 end
 
 --- Starts a new dynamic mesh. If an IMesh is passed, it will use that mesh instead.  
---- @param mesh IMesh @Mesh to build
+--- @param mesh? IMesh @Mesh to build
 --- @param primitiveType number @Primitive type, see Enums/MATERIAL.
 --- @param primiteCount number @The amount of primitives.
 function mesh.Begin(mesh, primitiveType, primiteCount)

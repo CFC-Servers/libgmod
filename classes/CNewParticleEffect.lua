@@ -6,8 +6,8 @@ local CNewParticleEffect = {}
 --- @param cpID number @The control point ID, 0 to 63.
 --- @param ent Entity @The entity to attach the control point to.
 --- @param partAttachment number @See Enums/PATTACH.
---- @param entAttachment number @The attachment ID on the entity to attach the particle system to
---- @param offset Vector @The offset from the Entity:GetPos of the entity we are attaching this CP to.
+--- @param entAttachment? number @The attachment ID on the entity to attach the particle system to
+--- @param offset? Vector @The offset from the Entity:GetPos of the entity we are attaching this CP to.
 function CNewParticleEffect:AddControlPoint(cpID, ent, partAttachment, entAttachment, offset)
 end
 
@@ -115,14 +115,14 @@ function CNewParticleEffect:SetSortOrigin(origin)
 end
 
 --- Starts the particle emission.  
---- @param infiniteOnly boolean 
+--- @param infiniteOnly? boolean 
 function CNewParticleEffect:StartEmission(infiniteOnly)
 end
 
 --- Stops the particle emission.  
---- @param infiniteOnly boolean 
---- @param removeAllParticles boolean 
---- @param wakeOnStop boolean 
+--- @param infiniteOnly? boolean 
+--- @param removeAllParticles? boolean 
+--- @param wakeOnStop? boolean 
 function CNewParticleEffect:StopEmission(infiniteOnly, removeAllParticles, wakeOnStop)
 end
 

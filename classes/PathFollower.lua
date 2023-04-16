@@ -10,7 +10,7 @@ end
 --- Compute shortest path from bot to 'goal' via A* algorithm.  
 --- @param from NextBot @The nextbot we're generating for
 --- @param to Vector @To point
---- @param generator function @A funtion that allows you to alter the path generation
+--- @param generator? function @A funtion that allows you to alter the path generation
 --- @return boolean @* If returns true, path was found to the goal position
 function PathFollower:Compute(from, to, generator)
 end
@@ -118,8 +118,8 @@ end
 
 --- Moves the cursor of the path to the closest position compared to given vector.  
 --- @param pos Vector 
---- @param type number @Seek type
---- @param alongLimit number 
+--- @param type? number @Seek type
+--- @param alongLimit? number 
 function PathFollower:MoveCursorToClosestPosition(pos, type, alongLimit)
 end
 

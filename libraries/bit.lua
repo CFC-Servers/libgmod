@@ -10,7 +10,7 @@ end
 
 --- Performs the bitwise "and" for all values specified.  
 --- @param value number @The value to be manipulated.
---- @param otherValues number @Values bit to perform bitwise "and" with
+--- @param otherValues? number @Values bit to perform bitwise "and" with
 --- @return number @Result of bitwise "and" operation.
 function bit.band(value, otherValues)
 end
@@ -36,7 +36,7 @@ end
 
 --- Returns the bitwise xor of all values specified.  
 --- @param value number @The value to be manipulated.
---- @param otherValues number @Values bit xor with
+--- @param otherValues? number @Values bit xor with
 --- @return number @bitwiseXOr
 function bit.bxor(value, otherValues)
 end
@@ -77,7 +77,7 @@ end
 
 --- Returns the hexadecimal representation of the number with the specified digits.  
 --- @param value number @The value to be normalized.
---- @param digits number @The number of digits
+--- @param digits? number @The number of digits
 --- @return string @hexString
 function bit.tohex(value, digits)
 end

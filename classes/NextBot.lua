@@ -65,7 +65,7 @@ end
 
 --- To be called in the behaviour coroutine only! Plays an animation sequence and waits for it to end before returning.  
 --- @param name string @The sequence name
---- @param speed number @Playback Rate of that sequence
+--- @param speed? number @Playback Rate of that sequence
 function NextBot:PlaySequenceAndWait(name, speed)
 end
 

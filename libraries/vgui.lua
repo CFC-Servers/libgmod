@@ -4,16 +4,16 @@ _G.vgui = {}
 --- Creates a panel by the specified classname.  
 --- ℹ **NOTE**: Custom VGUI elements are not loaded instantly. Use GM:OnGamemodeLoaded to create them on startup.  
 --- @param classname string @Classname of the panel to create
---- @param parent Panel @Parent of the created panel.
---- @param name string @Name of the created panel.
+--- @param parent? Panel @Parent of the created panel.
+--- @param name? string @Name of the created panel.
 --- @return Panel @panel
 function vgui.Create(classname, parent, name)
 end
 
 --- Creates a panel from table.  
 --- @param metatable table @Your PANEL table
---- @param parent Panel @Which panel to parent the newly created panel to
---- @param name string @Name of your panel
+--- @param parent? Panel @Which panel to parent the newly created panel to
+--- @param name? string @Name of your panel
 --- @return Panel @Created panel
 function vgui.CreateFromTable(metatable, parent, name)
 end
@@ -61,7 +61,7 @@ end
 --- Registers a panel for later creation.  
 --- @param classname string @Classname of the panel to create.
 --- @param panelTable table @The table containg the panel information.
---- @param baseName string @Name of the base of the panel.
+--- @param baseName? string @Name of the base of the panel.
 --- @return table @The given panel table from second argument
 function vgui.Register(classname, panelTable, baseName)
 end
@@ -74,7 +74,7 @@ end
 
 --- Registers a table to use as a panel. All this function does is assigns Base key to your table and returns the table.  
 --- @param panel table @The PANEL table
---- @param base string @A base for the panel
+--- @param base? string @A base for the panel
 --- @return table @The PANEL table
 function vgui.RegisterTable(panel, base)
 end

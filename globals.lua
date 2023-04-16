@@ -3,7 +3,7 @@
 --- @param tab table @The table to add the accessor functions too.
 --- @param key any @The key of the table to be get/set.
 --- @param name string @The name of the functions (will be prefixed with Get and Set).
---- @param force number @The type the setter should force to (uses Enums/FORCE).
+--- @param force? number @The type the setter should force to (uses Enums/FORCE).
 function _G.AccessorFunc(tab, key, name, force)
 end
 
@@ -11,7 +11,7 @@ end
 --- ⚠ **WARNING**: If the file trying to be added is empty, an error will occur, and the file will not be sent to the client.  
 --- ℹ **NOTE**: This function is not needed for scripts located in **lua/autorun/** and **lua/autorun/client/**: they are automatically sent to clients.  
 --- ℹ **NOTE**: You can add up to 8192 files.  
---- @param file string @The name/path to the Lua file that should be sent, relative to the garrysmod/lua folder
+--- @param file? string @The name/path to the Lua file that should be sent, relative to the garrysmod/lua folder
 function _G.AddCSLuaFile(file)
 end
 
@@ -25,11 +25,11 @@ end
 --- Contrary to what the function's name implies, it is impossible to create more than one World Tip at the same time. A new World Tip will overwrite the old one, so only use this function when you know nothing else will also be using it.  
 --- See SANDBOX:PaintWorldTips for more information.  
 --- ℹ **NOTE**: This function is only available in Sandbox and its derivatives  
---- @param entindex number @**This argument is no longer used**; it has no effect on anything
+--- @param entindex? number @**This argument is no longer used**; it has no effect on anything
 --- @param text string @The text for the world tip to display.
---- @param dieTime number @**This argument is no longer used**; when you add a World Tip it will always last only 0.05 seconds
---- @param pos Vector @Where in the world you want the World Tip to be drawn
---- @param ent Entity @Which entity you want to associate with the World Tip
+--- @param dieTime? number @**This argument is no longer used**; when you add a World Tip it will always last only 0.05 seconds
+--- @param pos? Vector @Where in the world you want the World Tip to be drawn
+--- @param ent? Entity @Which entity you want to associate with the World Tip
 function _G.AddWorldTip(entindex, text, dieTime, pos, ent)
 end
 
@@ -46,16 +46,16 @@ function _G.AddonMaterial(name)
 end
 
 --- Creates an Angle object.  
---- @param pitch number @The pitch value of the angle
---- @param yaw number @The yaw value of the angle.
---- @param roll number @The roll value of the angle.
+--- @param pitch? number @The pitch value of the angle
+--- @param yaw? number @The yaw value of the angle.
+--- @param roll? number @The roll value of the angle.
 --- @return Angle @Created angle
 function _G.Angle(pitch, yaw, roll)
 end
 
 --- Returns an angle with a randomized pitch, yaw, and roll between min(inclusive), max(exclusive).  
---- @param min number @Min bound inclusive.
---- @param max number @Max bound exclusive.
+--- @param min? number @Min bound inclusive.
+--- @param max? number @Max bound exclusive.
 --- @return Angle @The randomly generated angle.
 function _G.AngleRand(min, max)
 end
@@ -81,7 +81,7 @@ end
 --- 🦟 **BUG**: [Clientside entities are not garbage-collected, thus you must store a reference to the object and call CSEnt:Remove manually.](https://github.com/Facepunch/garrysmod-issues/issues/1387)  
 --- 🦟 **BUG**: [Clientside models will occasionally delete themselves during high server lag.](https://github.com/Facepunch/garrysmod-issues/issues/3184)  
 --- @param model string @The file path to the model
---- @param renderGroup number @The render group of the entity for the clientside leaf system, see Enums/RENDERGROUP.
+--- @param renderGroup? number @The render group of the entity for the clientside leaf system, see Enums/RENDERGROUP.
 --- @return CSEnt @Created client-side model
 function _G.ClientsideModel(model, renderGroup)
 end
@@ -92,7 +92,7 @@ end
 --- The physics won't initialize at all if the model hasn't been precached serverside first.  
 --- 🦟 **BUG**: [Clientside entities are not garbage-collected, thus you must store a reference to the object and call CSEnt:Remove manually.](https://github.com/Facepunch/garrysmod-issues/issues/1387)  
 --- @param model string @The file path to the model
---- @param renderGroup number @The Enums/RENDERGROUP to assign.
+--- @param renderGroup? number @The Enums/RENDERGROUP to assign.
 --- @return CSEnt @The newly created client-side ragdoll
 function _G.ClientsideRagdoll(model, renderGroup)
 end
@@ -112,7 +112,7 @@ end
 --- @param r number @An integer from 0-255 describing the red value of the color.
 --- @param g number @An integer from 0-255 describing the green value of the color.
 --- @param b number @An integer from 0-255 describing the blue value of the color.
---- @param a number @An integer from 0-255 describing the alpha (transparency) of the color.
+--- @param a? number @An integer from 0-255 describing the alpha (transparency) of the color.
 --- @return table @The created Color.
 function _G.Color(r, g, b, a)
 end
@@ -125,7 +125,7 @@ function _G.ColorAlpha(color, alpha)
 end
 
 --- Creates a Color with randomized red, green, and blue components. If the alpha argument is true, alpha will also be randomized.  
---- @param a boolean @Should alpha be randomized.
+--- @param a? boolean @Should alpha be randomized.
 --- @return table @The created Color.
 function _G.ColorRand(a)
 end
@@ -156,7 +156,7 @@ end
 --- Please note that this function will not automatically execute the given code after compiling it.  
 --- @param code string @The code to compile.
 --- @param identifier string @An identifier in case an error is thrown
---- @param HandleError boolean @If false this function will return an error string instead of throwing an error.
+--- @param HandleError? boolean @If false this function will return an error string instead of throwing an error.
 --- @return function @A function that, when called, will execute the given code
 function _G.CompileString(code, identifier, HandleError)
 end
@@ -172,11 +172,11 @@ end
 --- Although this function is shared, it should only be used clientside.  
 --- @param name string @Name of the ConVar to be created and able to be accessed
 --- @param default string @Default value of the ConVar.
---- @param shouldsave boolean @Should the ConVar be saved across sessions
---- @param userinfo boolean @Should the ConVar and its containing data be sent to the server when it has changed
+--- @param shouldsave? boolean @Should the ConVar be saved across sessions
+--- @param userinfo? boolean @Should the ConVar and its containing data be sent to the server when it has changed
 --- @param helptext string @Help text to display in the console.
---- @param min number @If set, the convar cannot be changed to a number lower than this value.
---- @param max number @If set, the convar cannot be changed to a number higher than this value.
+--- @param min? number @If set, the convar cannot be changed to a number lower than this value.
+--- @param max? number @If set, the convar cannot be changed to a number higher than this value.
 --- @return ConVar @Created convar.
 function _G.CreateClientConVar(name, default, shouldsave, userinfo, helptext, min, max)
 end
@@ -185,10 +185,10 @@ end
 --- 🦟 **BUG**: [FCVAR_ARCHIVE causes default value replication issues on clientside FCVAR_REPLICATED convars and should be omitted clientside as a workaround](https://github.com/Facepunch/garrysmod-issues/issues/3323)  
 --- @param name string @Name of the ConVar
 --- @param value string @Default value of the convar
---- @param flags number @Flags of the convar, see Enums/FCVAR, either as bitflag or as table.
+--- @param flags? number @Flags of the convar, see Enums/FCVAR, either as bitflag or as table.
 --- @param helptext string @The help text to show in the console.
---- @param min number @If set, the ConVar cannot be changed to a number lower than this value.
---- @param max number @If set, the ConVar cannot be changed to a number higher than this value.
+--- @param min? number @If set, the ConVar cannot be changed to a number lower than this value.
+--- @param max? number @If set, the ConVar cannot be changed to a number higher than this value.
 --- @return ConVar @The convar created.
 function _G.CreateConVar(name, value, flags, helptext, min, max)
 end
@@ -210,8 +210,8 @@ end
 --- @param ent Entity @The entity to attach the control point to.
 --- @param effect string @The name of the effect to create
 --- @param partAttachment number @See Enums/PATTACH.
---- @param entAttachment number @The attachment ID on the entity to attach the particle system to
---- @param offset Vector @The offset from the Entity:GetPos of the entity we are attaching this CP to.
+--- @param entAttachment? number @The attachment ID on the entity to attach the particle system to
+--- @param offset? Vector @The offset from the Entity:GetPos of the entity we are attaching this CP to.
 --- @return CNewParticleEffect @The created particle system.
 function _G.CreateParticleSystem(ent, effect, partAttachment, entAttachment, offset)
 end
@@ -234,7 +234,7 @@ end
 --- ℹ **NOTE**: You can only create one CSoundPatch per audio file, per entity at the same time.  
 --- @param targetEnt Entity @The target entity.
 --- @param soundName string @The sound to play.
---- @param filter CRecipientFilter @A CRecipientFilter of the players that will have this sound networked to them
+--- @param filter? CRecipientFilter @A CRecipientFilter of the players that will have this sound networked to them
 --- @return CSoundPatch @The sound object
 function _G.CreateSound(targetEnt, soundName, filter)
 end
@@ -343,16 +343,16 @@ function _G.Derma_Message(Text, Title, Button)
 end
 
 --- Shows a message box in the middle of the screen, with up to 4 buttons they can press.  
---- @param text string @The message to display.
---- @param title string @The title to give the message box.
+--- @param text? string @The message to display.
+--- @param title? string @The title to give the message box.
 --- @param btn1text string @The text to display on the first button.
---- @param btn1func function @The function to run if the user clicks the first button.
---- @param btn2text string @The text to display on the second button.
---- @param btn2func function @The function to run if the user clicks the second button.
---- @param btn3text string @The text to display on the third button
---- @param btn3func function @The function to run if the user clicks the third button.
---- @param btn4text string @The text to display on the third button
---- @param btn4func function @The function to run if the user clicks the fourth button.
+--- @param btn1func? function @The function to run if the user clicks the first button.
+--- @param btn2text? string @The text to display on the second button.
+--- @param btn2func? function @The function to run if the user clicks the second button.
+--- @param btn3text? string @The text to display on the third button
+--- @param btn3func? function @The function to run if the user clicks the third button.
+--- @param btn4text? string @The text to display on the third button
+--- @param btn4func? function @The function to run if the user clicks the fourth button.
 --- @return Panel @The Panel object of the created window.
 function _G.Derma_Query(text, title, btn1text, btn1func, btn2text, btn2func, btn3text, btn3func, btn4text, btn4func)
 end
@@ -362,9 +362,9 @@ end
 --- @param subtitle string @The text above the input box
 --- @param default string @The default text for the input box.
 --- @param confirm function @The function to be called once the user has confirmed their input.
---- @param cancel function @The function to be called once the user has cancelled their input
---- @param confirmText string @Allows you to override text of the "OK" button
---- @param cancelText string @Allows you to override text of the "Cancel" button
+--- @param cancel? function @The function to be called once the user has cancelled their input
+--- @param confirmText? string @Allows you to override text of the "OK" button
+--- @param cancelText? string @Allows you to override text of the "Cancel" button
 --- @return Panel @The created DFrame
 function _G.Derma_StringRequest(title, subtitle, default, confirm, cancel, confirmText, cancelText)
 end
@@ -449,7 +449,7 @@ end
 --- ⚠ **WARNING**: It is not safe to hold a reference to this object after creation since its data can be replaced by another dlight at any time.  
 --- 🦟 **BUG**: [The minlight parameter affects the world and entities differently.](https://github.com/Facepunch/garrysmod-issues/issues/3798)  
 --- @param index number @An unsigned Integer
---- @param elight boolean @Allocates an elight instead of a dlight
+--- @param elight? boolean @Allocates an elight instead of a dlight
 --- @return table @A DynamicLight structured table
 function _G.DynamicLight(index, elight)
 end
@@ -473,11 +473,11 @@ end
 --- @param soundName string @The sound to play
 --- @param position Vector @The position to play at
 --- @param entity number @The entity to emit the sound from
---- @param channel number @The sound channel, see Enums/CHAN.
---- @param volume number @The volume of the sound, from 0 to 1
---- @param soundLevel number @The sound level of the sound, see Enums/SNDLVL
---- @param soundFlags number @The flags of the sound, see Enums/SND
---- @param pitch number @The pitch of the sound, 0-255
+--- @param channel? number @The sound channel, see Enums/CHAN.
+--- @param volume? number @The volume of the sound, from 0 to 1
+--- @param soundLevel? number @The sound level of the sound, see Enums/SNDLVL
+--- @param soundFlags? number @The flags of the sound, see Enums/SND
+--- @param pitch? number @The pitch of the sound, 0-255
 function _G.EmitSentence(soundName, position, entity, channel, volume, soundLevel, soundFlags, pitch)
 end
 
@@ -487,11 +487,11 @@ end
 --- @param soundName string @The sound to play
 --- @param position Vector @The position to play at
 --- @param entity number @The entity to emit the sound from
---- @param channel number @The sound channel, see Enums/CHAN.
---- @param volume number @The volume of the sound, from 0 to 1
---- @param soundLevel number @The sound level of the sound, see Enums/SNDLVL
---- @param soundFlags number @The flags of the sound, see Enums/SND
---- @param pitch number @The pitch of the sound, 0-255
+--- @param channel? number @The sound channel, see Enums/CHAN.
+--- @param volume? number @The volume of the sound, from 0 to 1
+--- @param soundLevel? number @The sound level of the sound, see Enums/SNDLVL
+--- @param soundFlags? number @The flags of the sound, see Enums/SND
+--- @param pitch? number @The pitch of the sound, 0-255
 function _G.EmitSound(soundName, position, entity, channel, volume, soundLevel, soundFlags, pitch)
 end
 
@@ -599,28 +599,28 @@ end
 
 --- Returns an angle that is shared between the server and all clients.  
 --- @param index string @The unique index to identify the global value with.
---- @param default Angle @The value to return if the global value is not set.
+--- @param default? Angle @The value to return if the global value is not set.
 --- @return Angle @The global value, or default if the global is not set.
 function _G.GetGlobalAngle(index, default)
 end
 
 --- Returns a boolean that is shared between the server and all clients.  
 --- @param index string @The unique index to identify the global value with.
---- @param default boolean @The value to return if the global value is not set.
+--- @param default? boolean @The value to return if the global value is not set.
 --- @return boolean @The global value, or the default if the global value is not set.
 function _G.GetGlobalBool(index, default)
 end
 
 --- Returns an entity that is shared between the server and all clients.  
 --- @param index string @The unique index to identify the global value with.
---- @param default Entity @The value to return if the global value is not set.
+--- @param default? Entity @The value to return if the global value is not set.
 --- @return Entity @The global value, or the default if the global value is not set.
 function _G.GetGlobalEntity(index, default)
 end
 
 --- Returns a float that is shared between the server and all clients.  
 --- @param index string @The unique index to identify the global value with.
---- @param default number @The value to return if the global value is not set.
+--- @param default? number @The value to return if the global value is not set.
 --- @return number @The global value, or the default if the global value is not set.
 function _G.GetGlobalFloat(index, default)
 end
@@ -628,7 +628,7 @@ end
 --- Returns an integer that is shared between the server and all clients.  
 --- 🦟 **BUG**: [This function will not round decimal values as it actually networks a float internally.](https://github.com/Facepunch/garrysmod-issues/issues/3374)  
 --- @param index string @The unique index to identify the global value with.
---- @param default number @The value to return if the global value is not set.
+--- @param default? number @The value to return if the global value is not set.
 --- @return number @The global value, or the default if the global value is not set.
 function _G.GetGlobalInt(index, default)
 end
@@ -669,7 +669,7 @@ end
 --- @param name string @The internal name of the render target.
 --- @param width number @The width of the render target, must be power of 2
 --- @param height number @The height of the render target, must be power of 2
---- @param additive boolean @Sets whenever the rt should be additive.
+--- @param additive? boolean @Sets whenever the rt should be additive.
 --- @return ITexture @The render target
 function _G.GetRenderTarget(name, width, height, additive)
 end
@@ -855,7 +855,7 @@ end
 
 --- Convenience function that creates a DLabel, sets the text, and returns it  
 --- @param text string @The string to set the label's text to
---- @param parent Panel @Optional
+--- @param parent? Panel @Optional
 --- @return Panel @The created DLabel
 function _G.Label(text, parent)
 end
@@ -920,20 +920,20 @@ end
 --- Either returns the material with the given name, or loads the material interpreting the first argument as the path.  
 --- ℹ **NOTE**: When using .png or .jpg textures, try to make their sizes Power Of 2 (1, 2, 4, 8, 16, 32, 64, etc). While images are no longer scaled to Power of 2 sizes since February 2019, it is a good practice for things like icons, etc.  
 --- @param materialName string @The material name or path
---- @param pngParameters string @A string containing space separated keywords which will be used to add material parameters
+--- @param pngParameters? string @A string containing space separated keywords which will be used to add material parameters
 --- @return IMaterial @Generated material
 --- @return number @How long it took for the function to run
 function _G.Material(materialName, pngParameters)
 end
 
 --- Returns a VMatrix object.  
---- @param data table @Initial data to initialize the matrix with
+--- @param data? table @Initial data to initialize the matrix with
 --- @return VMatrix @New matrix.
 function _G.Matrix(data)
 end
 
 --- Returns a new mesh object.  
---- @param mat IMaterial @The material the mesh is intended to be rendered with
+--- @param mat? IMaterial @The material the mesh is intended to be rendered with
 --- @return IMesh @The created object.
 function _G.Mesh(mat)
 end
@@ -1000,7 +1000,7 @@ end
 --- @param particleName string @The name of the particle effect.
 --- @param position Vector @The start position of the effect.
 --- @param angles Angle @The orientation of the effect.
---- @param parent Entity @If set, the particle will be parented to the entity.
+--- @param parent? Entity @If set, the particle will be parented to the entity.
 function _G.ParticleEffect(particleName, position, angles, parent)
 end
 
@@ -1073,8 +1073,8 @@ end
 
 --- Recursively prints the contents of a table to the console.  
 --- @param tableToPrint table @The table to be printed
---- @param indent number @Number of tabs to start indenting at
---- @param done table @Internal argument, you shouldn't normally change this
+--- @param indent? number @Number of tabs to start indenting at
+--- @param done? table @Internal argument, you shouldn't normally change this
 function _G.PrintTable(tableToPrint, indent, done)
 end
 
@@ -1176,8 +1176,8 @@ end
 --- Evaluates and executes the given code, will throw an error on failure.  
 --- ℹ **NOTE**: Local variables are not passed to the given code.  
 --- @param code string @The code to execute.
---- @param identifier string @The name that should appear in any error messages caused by this code.
---- @param handleError boolean @If false, this function will return a string containing any error messages instead of throwing an error.
+--- @param identifier? string @The name that should appear in any error messages caused by this code.
+--- @param handleError? boolean @If false, this function will return a string containing any error messages instead of throwing an error.
 --- @return string @If handleError is false, the error message (if any).
 function _G.RunString(code, identifier, handleError)
 end
@@ -1189,7 +1189,7 @@ end
 
 --- Returns the input value in an escaped form so that it can safely be used inside of queries. The returned value is surrounded by quotes unless noQuotes is true. Alias of sql.SQLStr  
 --- @param input string @String to be escaped
---- @param noQuotes boolean @Whether the returned value should be surrounded in quotes or not
+--- @param noQuotes? boolean @Whether the returned value should be surrounded in quotes or not
 --- @return string @Escaped input
 function _G.SQLStr(input, noQuotes)
 end
@@ -1321,7 +1321,7 @@ end
 --- For sorting by specific **value member**, use Global.SortedPairsByMemberValue.  
 --- For sorting by **value**, use Global.SortedPairsByValue.  
 --- @param table table @The table to sort
---- @param desc boolean @Reverse the sorting order
+--- @param desc? boolean @Reverse the sorting order
 --- @return function @Iterator function
 --- @return table @The table being iterated over
 function _G.SortedPairs(table, desc)
@@ -1332,7 +1332,7 @@ end
 --- To sort by **keys**, use Global.SortedPairs.  
 --- @param table table @Table to create iterator for.
 --- @param memberKey any @Key of the value member to sort by.
---- @param descending boolean @Whether the iterator should iterate in descending order or not.
+--- @param descending? boolean @Whether the iterator should iterate in descending order or not.
 --- @return function @Iterator function
 --- @return table @The table the iterator was created for.
 function _G.SortedPairsByMemberValue(table, memberKey, descending)
@@ -1342,7 +1342,7 @@ end
 --- To sort by specific **value member**, use Global.SortedPairsByMemberValue.  
 --- To sort by **keys**, use Global.SortedPairs.  
 --- @param table table @Table to create iterator for
---- @param descending boolean @Whether the iterator should iterate in descending order or not
+--- @param descending? boolean @Whether the iterator should iterate in descending order or not
 --- @return function @Iterator function
 --- @return table @The table which will be iterated over
 function _G.SortedPairsByValue(table, descending)
@@ -1456,16 +1456,16 @@ function _G.ValidPanel(panel)
 end
 
 --- Creates a Vector object.  
---- @param x number @The x component of the vector
---- @param y number @The y component of the vector.
---- @param z number @The z component of the vector.
+--- @param x? number @The x component of the vector
+--- @param y? number @The y component of the vector.
+--- @param z? number @The z component of the vector.
 --- @return Vector @The created vector object.
 function _G.Vector(x, y, z)
 end
 
 --- Returns a random vector whose components are each between min(inclusive), max(exclusive).  
---- @param min number @Min bound inclusive.
---- @param max number @Max bound exclusive.
+--- @param min? number @Min bound inclusive.
+--- @param max? number @Max bound exclusive.
 --- @return Vector @The random direction vector.
 function _G.VectorRand(min, max)
 end
@@ -1482,7 +1482,7 @@ end
 
 --- If the result of the first argument is false or nil, an error is thrown with the second argument as the message.  
 --- @param expression any @The expression to assert.
---- @param errorMessage string @The error message to throw when assertion fails
+--- @param errorMessage? string @The error message to throw when assertion fails
 --- @vararg any @Any arguments past the error message will be returned by a successful assert.
 --- @return any @If successful, returns the first argument.
 --- @return any @If successful, returns the error message
@@ -1491,7 +1491,7 @@ function _G.assert(expression, errorMessage, ...)
 end
 
 --- Executes the specified action on the garbage collector.  
---- @param action string @The action to run
+--- @param action? string @The action to run
 --- @param arg number @The argument of the specified action, only applicable for "step", "setpause" and "setstepmul".
 --- @return any @If the action is count this is the number of kilobytes of memory used by Lua
 function _G.collectgarbage(action, arg)
@@ -1499,7 +1499,7 @@ end
 
 --- Throws a Lua error and breaks out of the current call stack.  
 --- @param message string @The error message to throw
---- @param errorLevel number @The level to throw the error at.
+--- @param errorLevel? number @The level to throw the error at.
 function _G.error(message, errorLevel)
 end
 
@@ -1510,7 +1510,7 @@ function _G.gcinfo()
 end
 
 --- Returns the environment table of either the stack level or the function specified.  
---- @param location function @The object to get the enviroment from
+--- @param location? function @The object to get the enviroment from
 --- @return table @The environment.
 function _G.getfenv(location)
 end
@@ -1606,7 +1606,7 @@ function _G.module(name, ...)
 end
 
 --- Returns a new userdata object.  
---- @param addMetatable boolean @If true, the userdata will get its own metatable automatically.
+--- @param addMetatable? boolean @If true, the userdata will get its own metatable automatically.
 --- @return userdata @The newly created userdata.
 function _G.newproxy(addMetatable)
 end
@@ -1614,7 +1614,7 @@ end
 --- Returns the next key and value pair in a table.  
 --- ℹ **NOTE**: Table keys in Lua have no specific order, and will be returned in whatever order they exist in memory. This may not always be in ascending order or alphabetical order. If you need to iterate over an array in order, use Global.ipairs.  
 --- @param tab table @The table
---- @param prevKey any @The previous key in the table.
+--- @param prevKey? any @The previous key in the table.
 --- @return any @The next key for the table
 --- @return any @The value associated with that key
 function _G.next(tab, prevKey)
@@ -1707,7 +1707,7 @@ end
 --- Attempts to convert the value to a number.  
 --- Returns nil on failure.  
 --- @param value any @The value to convert
---- @param base number @The  used in the string
+--- @param base? number @The  used in the string
 --- @return number @The numeric representation of the value with the given base, or nil if the conversion failed.
 function _G.tonumber(value, base)
 end
@@ -1727,8 +1727,8 @@ end
 
 --- This function takes a numeric indexed table and return all the members as a vararg. If specified, it will start at the given index and end at end index.  
 --- @param tbl table @The table to generate the vararg from.
---- @param startIndex number @Which index to start from
---- @param endIndex number @Which index to end at
+--- @param startIndex? number @Which index to start from
+--- @param endIndex? number @Which index to end at
 --- @return any @Output values
 function _G.unpack(tbl, startIndex, endIndex)
 end

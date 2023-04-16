@@ -77,7 +77,7 @@ end
 --- @param name string @The name of the decal to paint.
 --- @param start Vector @The start of the trace.
 --- @param end_ Vector @The end of the trace.
---- @param filter Entity @If set, the decal will not be able to be placed on given entity
+--- @param filter? Entity @If set, the decal will not be able to be placed on given entity
 function util.Decal(name, start, end_, filter)
 end
 
@@ -101,7 +101,7 @@ end
 
 --- Decompresses the given string using [LZMA](https://en.wikipedia.org/wiki/LZMA) algorithm. Used to decompress strings previously compressed with util.Compress.  
 --- @param compressedString string @The compressed string to decompress.
---- @param maxSize number @The maximal size in bytes it will decompress.
+--- @param maxSize? number @The maximal size in bytes it will decompress.
 --- @return string @The original, decompressed string or an empty string on failure or invalid input.
 function util.Decompress(compressedString, maxSize)
 end
@@ -122,8 +122,8 @@ end
 --- ℹ **NOTE**: You will need to couple this function with Global.IsFirstTimePredicted if you want to use it in predicted hook.  
 --- @param effectName string @The name of the effect to create.
 --- @param effectData CEffectData @The effect data describing the effect.
---- @param allowOverride boolean @Whether Lua-defined effects should override engine-defined effects with the same name for this/single function call.
---- @param ignorePredictionOrRecipientFilter any @Can either be a boolean to ignore the prediction filter or a CRecipientFilter
+--- @param allowOverride? boolean @Whether Lua-defined effects should override engine-defined effects with the same name for this/single function call.
+--- @param ignorePredictionOrRecipientFilter? any @Can either be a boolean to ignore the prediction filter or a CRecipientFilter
 function util.Effect(effectName, effectData, allowOverride, ignorePredictionOrRecipientFilter)
 end
 
@@ -149,8 +149,8 @@ end
 --- ℹ **NOTE**: This does not work on brush models (`*number` models)  
 --- See also ENTITY:GetRenderMesh.  
 --- @param model string @The full path to a model to get the visual meshes of.
---- @param lod number 
---- @param bodygroupMask number 
+--- @param lod? number 
+--- @param bodygroupMask? number 
 --- @return table @A table of tables with the following format:
 function util.GetModelMeshes(model, lod, bodygroupMask)
 end
@@ -171,7 +171,7 @@ end
 
 --- Utility function to quickly generate a trace table that starts at the players view position, and ends 16384 units along a specified direction.  
 --- @param ply Player @The player the trace should be based on
---- @param dir Vector @The direction of the trace
+--- @param dir? Vector @The direction of the trace
 --- @return table @The trace data
 function util.GetPlayerTrace(ply, dir)
 end
@@ -302,16 +302,16 @@ end
 --- Converts a KeyValue string to a Lua table.  
 --- ℹ **NOTE**: Table keys will not repeat, see util.KeyValuesToTablePreserveOrder.  
 --- @param keyValues string @The KeyValue string to convert.
---- @param usesEscapeSequences boolean @If set to true, will replace \t, \n, \" and \\ in the input text with their escaped variants
---- @param preserveKeyCase boolean @Whether we should preserve key case (may fail) or not (always lowercase)
+--- @param usesEscapeSequences? boolean @If set to true, will replace \t, \n, \" and \\ in the input text with their escaped variants
+--- @param preserveKeyCase? boolean @Whether we should preserve key case (may fail) or not (always lowercase)
 --- @return table @The converted table
 function util.KeyValuesToTable(keyValues, usesEscapeSequences, preserveKeyCase)
 end
 
 --- Similar to util.KeyValuesToTable but it also preserves order of keys.  
 --- @param keyvals string @The key value string
---- @param usesEscapeSequences boolean @If set to true, will replace \t, \n, \" and \\ in the input text with their escaped variants
---- @param preserveKeyCase boolean @Whether we should preserve key case (may fail) or not (always lowercase)
+--- @param usesEscapeSequences? boolean @If set to true, will replace \t, \n, \" and \\ in the input text with their escaped variants
+--- @param preserveKeyCase? boolean @Whether we should preserve key case (may fail) or not (always lowercase)
 --- @return table @The output table
 function util.KeyValuesToTablePreserveOrder(keyvals, usesEscapeSequences, preserveKeyCase)
 end
@@ -392,7 +392,7 @@ end
 --- Performs a trace with the given origin, direction and filter.  
 --- @param origin Vector @The origin of the trace.
 --- @param endpos Vector @The end point of the trace, relative to the start
---- @param filter Entity @Entity which should be ignored by the trace
+--- @param filter? Entity @Entity which should be ignored by the trace
 --- @return table @Trace result
 function util.QuickTrace(origin, endpos, filter)
 end
@@ -432,7 +432,7 @@ end
 --- @param uniqueName string @The seed for the random value
 --- @param min number @The minimum value of the random range
 --- @param max number @The maximum value of the random range
---- @param additionalSeed number @The additional seed
+--- @param additionalSeed? number @The additional seed
 --- @return number @The random float value
 function util.SharedRandom(uniqueName, min, max, additionalSeed)
 end
@@ -486,7 +486,7 @@ end
 --- ⚠ **WARNING**: All keys are strings in the JSON format, so all keys will be converted to strings!  
 --- 🦟 **BUG**: [This will produce invalid JSON if the provided table contains nan or inf values.](https://github.com/Facepunch/garrysmod-issues/issues/3561)  
 --- @param table table @Table to convert.
---- @param prettyPrint boolean @Format and indent the JSON.
+--- @param prettyPrint? boolean @Format and indent the JSON.
 --- @return string @A JSON formatted string containing the serialized data
 function util.TableToJSON(table, prettyPrint)
 end
@@ -498,7 +498,7 @@ function util.TableToKeyValues(table)
 end
 
 --- Creates a timer object.  
---- @param startdelay number @How long you want the timer to be.
+--- @param startdelay? number @How long you want the timer to be.
 --- @return table @A timer object
 function util.Timer(startdelay)
 end

@@ -10,7 +10,7 @@ end
 
 --- Creates a clientside only prop. See also Global.ClientsideModel.  
 --- For physics to work you **must** use the _model_ argument, a simple `SetModel` call will not be enough.  
---- @param model string @The model for the entity to be created.
+--- @param model? string @The model for the entity to be created.
 --- @return Entity @Created entity
 function ents.CreateClientProp(model)
 end
@@ -24,8 +24,8 @@ end
 --- Returns a table of all entities along the ray. The ray does not stop on collisions, meaning it will go through walls/entities.  
 --- @param start Vector @The start position of the ray
 --- @param end_ Vector @The end position of the ray
---- @param mins Vector @The mins corner of the ray
---- @param maxs Vector @The maxs corner of the ray
+--- @param mins? Vector @The mins corner of the ray
+--- @param maxs? Vector @The maxs corner of the ray
 --- @return table @Table of the found entities.
 function ents.FindAlongRay(start, end_, mins, maxs)
 end
@@ -117,7 +117,7 @@ end
 
 --- Gives you the amount of currently existing entities.  
 --- Similar to #ents.GetAll but with much better performance.  
---- @param IncludeKillMe boolean @Include entities with the FL_KILLME flag
+--- @param IncludeKillMe? boolean @Include entities with the FL_KILLME flag
 --- @return number @Number of entities
 function ents.GetCount(IncludeKillMe)
 end

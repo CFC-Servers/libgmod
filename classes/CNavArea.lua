@@ -4,7 +4,7 @@ local CNavArea = {}
 --- Adds a hiding spot onto this nav area.  
 --- There's a limit of 255 hiding spots per area.  
 --- @param pos Vector @The position on the nav area
---- @param flags number @Flags describing what kind of hiding spot this is
+--- @param flags? number @Flags describing what kind of hiding spot this is
 function CNavArea:AddHidingSpot(pos, flags)
 end
 
@@ -139,7 +139,7 @@ end
 
 --- Returns a table of good hiding spots in this area.  
 --- See also CNavArea:GetExposedSpots.  
---- @param type number @The type of spots to include
+--- @param type? number @The type of spots to include
 --- @return table @A table of Vectors
 function CNavArea:GetHidingSpots(type)
 end
@@ -233,8 +233,8 @@ function CNavArea:HasAttributes(attribs)
 end
 
 --- Returns whether the nav area is blocked or not, i.e. whether it can be walked through or not.  
---- @param teamID number @The team ID to test, -2 = any team
---- @param ignoreNavBlockers boolean @Whether to ignore [func_nav_blocker](https://developer.valvesoftware.com/wiki/Func_nav_blocker) entities.
+--- @param teamID? number @The team ID to test, -2 = any team
+--- @param ignoreNavBlockers? boolean @Whether to ignore [func_nav_blocker](https://developer.valvesoftware.com/wiki/Func_nav_blocker) entities.
 --- @return boolean @Whether the area is blocked or not
 function CNavArea:IsBlocked(teamID, ignoreNavBlockers)
 end
@@ -288,7 +288,7 @@ end
 
 --- Returns if this position overlaps the Nav Area within the given tolerance.  
 --- @param pos Vector @The overlapping position to test.
---- @param tolerance number @The tolerance of the overlapping, set to 0 for no tolerance.
+--- @param tolerance? number @The tolerance of the overlapping, set to 0 for no tolerance.
 --- @return boolean @Whether the given position overlaps the Nav Area or not.
 function CNavArea:IsOverlapping(pos, tolerance)
 end

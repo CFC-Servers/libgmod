@@ -4,9 +4,9 @@ _G.http = {}
 --- ℹ **NOTE**: HTTP-requests on private networks don't work.  
 ---  To enable HTTP-requests on private networks use Command Line Parameters `-allowlocalhttp`  
 --- @param url string @The URL of the website to fetch.
---- @param onSuccess function @Function to be called on success
---- @param onFailure function @Function to be called on failure
---- @param headers table @KeyValue table for headers
+--- @param onSuccess? function @Function to be called on success
+--- @param onFailure? function @Function to be called on failure
+--- @param headers? table @KeyValue table for headers
 function http.Fetch(url, onSuccess, onFailure, headers)
 end
 
@@ -16,9 +16,9 @@ end
 --- ℹ **NOTE**: HTTP-requests on private networks don't work. To enable HTTP-requests on private networks use Command Line Parameters `-allowlocalhttp`  
 --- @param url string @The url to of the website to fetch.
 --- @param parameters table @The post parameters to be send to the server
---- @param onSuccess function @The function called on success: function( string responseText, number contentLength, table responseHeaders, number statusCode )
---- @param onFailure function @The function called on failure: function( string errorMessage )
---- @param headers table @KeyValue table for headers
+--- @param onSuccess? function @The function called on success: function( string responseText, number contentLength, table responseHeaders, number statusCode )
+--- @param onFailure? function @The function called on failure: function( string errorMessage )
+--- @param headers? table @KeyValue table for headers
 function http.Post(url, parameters, onSuccess, onFailure, headers)
 end
 

@@ -51,7 +51,7 @@ end
 --- Pushes the specified matrix onto the render matrix stack. Unlike opengl, this will replace the current model matrix.  
 --- ℹ **NOTE**: This does not work with cam.Start3D2D if `multiply` is false.  
 --- @param matrix VMatrix @The matrix to push.
---- @param multiply boolean @If set, multiplies given matrix with currently active matrix (cam.GetModelMatrix) before pushing.
+--- @param multiply? boolean @If set, multiplies given matrix with currently active matrix (cam.GetModelMatrix) before pushing.
 function cam.PushModelMatrix(matrix, multiply)
 end
 
@@ -75,15 +75,15 @@ end
 --- zNear also requires a value higher than 0.  
 --- 🦟 **BUG**: [Negative x/y values won't work.](https://github.com/Facepunch/garrysmod-issues/issues/1995)  
 --- 🦟 **BUG**: [This will not update current view properties.](https://github.com/Facepunch/garrysmod-issues/issues/2682)  
---- @param pos Vector @Render cam position.
---- @param angles Angle @Render cam angles.
---- @param fov number @Field of view.
---- @param x number @X coordinate of where to start the new view port.
---- @param y number @Y coordinate of where to start the new view port.
---- @param w number @Width of the new viewport.
---- @param h number @Height of the new viewport.
---- @param zNear number @Distance to near clipping plane.
---- @param zFar number @Distance to far clipping plane.
+--- @param pos? Vector @Render cam position.
+--- @param angles? Angle @Render cam angles.
+--- @param fov? number @Field of view.
+--- @param x? number @X coordinate of where to start the new view port.
+--- @param y? number @Y coordinate of where to start the new view port.
+--- @param w? number @Width of the new viewport.
+--- @param h? number @Height of the new viewport.
+--- @param zNear? number @Distance to near clipping plane.
+--- @param zFar? number @Distance to far clipping plane.
 function cam.Start3D(pos, angles, fov, x, y, w, h, zNear, zFar)
 end
 

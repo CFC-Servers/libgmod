@@ -12,7 +12,7 @@ end
 
 --- Changes all keys to sequential integers. This creates a new table object and does not affect the original.  
 --- @param table table @The original table to modify.
---- @param saveKeys boolean @Save the keys within each member table
+--- @param saveKeys? boolean @Save the keys within each member table
 --- @return table @Table with integer keys.
 function table.ClearKeys(table, saveKeys)
 end
@@ -71,7 +71,7 @@ function table.FindPrev(tbl, value)
 end
 
 --- Inserts a value in to the given table even if the table is non-existent  
---- @param tab table @Table to insert value in to
+--- @param tab? table @Table to insert value in to
 --- @param value any @Value to insert
 --- @return table @The supplied or created table
 function table.ForceInsert(tab, value)
@@ -213,7 +213,7 @@ end
 --- Returns a list of keys sorted based on values of those keys.  
 --- For normal sorting see table.sort.  
 --- @param tab table @Table to sort
---- @param descending boolean @Should the order be descending?
+--- @param descending? boolean @Should the order be descending?
 --- @return table @A table of keys sorted by values from supplied table.
 function table.SortByKey(tab, descending)
 end
@@ -221,7 +221,7 @@ end
 --- Sorts a table by a named member  
 --- @param tab table @Table to sort
 --- @param memberKey any @The key used to identify the member
---- @param ascending boolean @Whether or not the order should be ascending
+--- @param ascending? boolean @Whether or not the order should be ascending
 function table.SortByMember(tab, memberKey, ascending)
 end
 
@@ -242,8 +242,8 @@ end
 --- Concatenates the contents of a table to a string.  
 --- @param tbl table @The table to concatenate.
 --- @param concatenator string @A seperator to insert between strings
---- @param startPos number @The key to start at
---- @param endPos number @The key to end at
+--- @param startPos? number @The key to start at
+--- @param endPos? number @The key to end at
 --- @return string @Concatenated values
 function table.concat(tbl, concatenator, startPos, endPos)
 end
@@ -288,7 +288,7 @@ end
 --- Removes a value from a table and shifts any other values down to fill the gap.  
 --- ℹ **NOTE**: Does nothing if index is less than 1 or greater than `#tbl`  
 --- @param tbl table @The table to remove the value from.
---- @param index number @The index of the value to remove.
+--- @param index? number @The index of the value to remove.
 --- @return any @The value that was removed.
 function table.remove(tbl, index)
 end

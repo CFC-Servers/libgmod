@@ -34,7 +34,7 @@ end
 --- Returns a list of files and directories inside a single folder.  
 --- @param name string @The wildcard to search for
 --- @param path string @The path to look for the files and directories in
---- @param sorting string @The sorting to be used, optional
+--- @param sorting? string @The sorting to be used, optional
 --- @return table @A table of found files, or nil if the path is invalid
 --- @return table @A table of found directories, or nil if the path is invalid
 function file.Find(name, path, sorting)
@@ -58,7 +58,7 @@ end
 --- Returns the content of a file.  
 --- Beware of casing -- some filesystems are case-sensitive. SRCDS on Linux seems to force file/directory creation to lowercase, but will not modify read operations.  
 --- @param fileName string @The name of the file.
---- @param path string @The path used to look up the file
+--- @param path? string @The path used to look up the file
 --- @return string @The data from the file as a string, or nil if the file isn't found
 function file.Read(fileName, path)
 end

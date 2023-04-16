@@ -159,7 +159,7 @@ function Weapon:SetHoldType(name)
 end
 
 --- Sets the time since this weapon last fired in seconds. Used in conjunction with Weapon:LastShootTime  
---- @param time number @The time in seconds when the last time the weapon was fired.
+--- @param time? number @The time in seconds when the last time the weapon was fired.
 function Weapon:SetLastShootTime(time)
 end
 

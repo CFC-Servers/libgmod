@@ -36,7 +36,7 @@ end
 --- See Entity:AddGestureSequence and Entity:AddLayeredSequence for functions that takes sequences instead of Enums/ACT.  
 --- ℹ **NOTE**: This function only works on BaseAnimatingOverlay entites!  
 --- @param activity number @The activity to play as the gesture
---- @param autokill boolean 
+--- @param autokill? boolean 
 --- @return number @Layer ID of the started gesture, used to manipulate the played gesture by other functions.
 function Entity:AddGesture(activity, autokill)
 end
@@ -46,7 +46,7 @@ end
 --- See also Entity:AddLayeredSequence.  
 --- ℹ **NOTE**: This function only works on BaseAnimatingOverlay entites!  
 --- @param sequence number @The sequence ID to play as the gesture
---- @param autokill boolean 
+--- @param autokill? boolean 
 --- @return number @Layer ID of the started gesture, used to manipulate the played gesture by other functions.
 function Entity:AddGestureSequence(sequence, autokill)
 end
@@ -98,7 +98,7 @@ end
 --- Returns a centered vector of this entity, NPCs use this internally to aim at their targets.  
 --- ℹ **NOTE**: This only works on players and NPCs.  
 --- @param origin Vector @The vector of where the the attack comes from.
---- @param noisy boolean @Decides if it should return the centered vector with a random offset to it.
+--- @param noisy? boolean @Decides if it should return the centered vector with a random offset to it.
 --- @return Vector @The centered vector.
 function Entity:BodyTarget(origin, noisy)
 end
@@ -143,7 +143,7 @@ end
 --- ℹ **NOTE**: The particle effect must be precached with Global.PrecacheParticleSystem and the file its from must be added via game.AddParticles before it can be used!  
 --- @param particle string @The particle name to create
 --- @param attachment number @Attachment ID to attach the particle to
---- @param options table @A table of tables ( IDs 1 to 64 ) having the following structure:
+--- @param options? table @A table of tables ( IDs 1 to 64 ) having the following structure:
 --- @return CNewParticleEffect @The created particle system.
 function Entity:CreateParticleEffect(particle, attachment, options)
 end
@@ -177,7 +177,7 @@ end
 --- ⚠ **WARNING**: Calling this function on the victim entity in ENTITY:OnTakeDamage can cause infinite loops.  
 --- @param damageInfo CTakeDamageInfo @The damage to apply.
 --- @param traceRes table @Trace result to use to deal damage
---- @param dir Vector @Direction of the attack.
+--- @param dir? Vector @Direction of the attack.
 function Entity:DispatchTraceAttack(damageInfo, traceRes, dir)
 end
 
@@ -213,10 +213,10 @@ end
 --- ⚠ **WARNING**: Do not use this for looping sounds with a filepath: see Entity:StopSound for more details.  
 --- 🦟 **BUG**: [This does not respond to Global.SuppressHostEvents.](https://github.com/Facepunch/garrysmod-issues/issues/2651)  
 --- @param soundName string @The name of the sound to be played
---- @param soundLevel number @A modifier for the distance this sound will reach, acceptable range is 0 to 511
---- @param pitchPercent number @The pitch applied to the sound
---- @param volume number @The volume, from 0 to 1.
---- @param channel number @The sound channel, see Enums/CHAN
+--- @param soundLevel? number @A modifier for the distance this sound will reach, acceptable range is 0 to 511
+--- @param pitchPercent? number @The pitch applied to the sound
+--- @param volume? number @The volume, from 0 to 1.
+--- @param channel? number @The sound channel, see Enums/CHAN
 function Entity:EmitSound(soundName, soundLevel, pitchPercent, volume, channel)
 end
 
@@ -285,7 +285,7 @@ end
 --- See also Entity:Input and GM:AcceptInput.  
 --- @param input string @The name of the input to fire
 --- @param param string @The value to give to the input, can also be a number or a boolean.
---- @param delay number @Delay in seconds before firing
+--- @param delay? number @Delay in seconds before firing
 function Entity:Fire(input, param, delay)
 end
 
@@ -293,7 +293,7 @@ end
 --- When used in a  hook such as WEAPON:Think or WEAPON:PrimaryAttack, it will use Player:LagCompensation internally.  
 --- ℹ **NOTE**: Lag compensation will not work if this function is called in a timer, regardless if the timer was made in a  hook.  
 --- @param bulletInfo table @The bullet data to be used
---- @param suppressHostEvents boolean @Has the effect of encasing the FireBullets call in Global.SuppressHostEvents, only works in multiplayer.
+--- @param suppressHostEvents? boolean @Has the effect of encasing the FireBullets call in Global.SuppressHostEvents, only works in multiplayer.
 function Entity:FireBullets(bulletInfo, suppressHostEvents)
 end
 
@@ -301,7 +301,7 @@ end
 --- Internally this function calls Entity:SetParent( parent, boneid ) and Entity:AddEffects( EF_FOLLOWBONE ).  
 --- ℹ **NOTE**: If the entity vibrates, you probably need to run Entity:SetPredictable( false ) clientside.  
 --- ⚠ **WARNING**: This function will not work if the target bone's parent bone is invalid or if the bone is not used by VERTEX LOD0  
---- @param parent Entity @The entity to follow the bone of
+--- @param parent? Entity @The entity to follow the bone of
 --- @param boneid number @The bone to follow
 function Entity:FollowBone(parent, boneid)
 end
@@ -859,28 +859,28 @@ end
 
 --- Retrieves a networked angle value at specified index on the entity that is set by Entity:SetNWAngle.  
 --- @param key string @The key that is associated with the value
---- @param fallback any @The value to return if we failed to retrieve the value
+--- @param fallback? any @The value to return if we failed to retrieve the value
 --- @return any @The value associated with the key
 function Entity:GetNWAngle(key, fallback)
 end
 
 --- Retrieves a networked boolean value at specified index on the entity that is set by Entity:SetNWBool.  
 --- @param key string @The key that is associated with the value
---- @param fallback any @The value to return if we failed to retrieve the value
+--- @param fallback? any @The value to return if we failed to retrieve the value
 --- @return any @The value associated with the key
 function Entity:GetNWBool(key, fallback)
 end
 
 --- Retrieves a networked entity value at specified index on the entity that is set by Entity:SetNWEntity.  
 --- @param key string @The key that is associated with the value
---- @param fallback any @The value to return if we failed to retrieve the value
+--- @param fallback? any @The value to return if we failed to retrieve the value
 --- @return any @The value associated with the key
 function Entity:GetNWEntity(key, fallback)
 end
 
 --- Retrieves a networked float value at specified index on the entity that is set by Entity:SetNWFloat.  
 --- @param key string @The key that is associated with the value
---- @param fallback any @The value to return if we failed to retrieve the value
+--- @param fallback? any @The value to return if we failed to retrieve the value
 --- @return any @The value associated with the key
 function Entity:GetNWFloat(key, fallback)
 end
@@ -888,7 +888,7 @@ end
 --- Retrieves a networked integer (whole number) value that was previously set by Entity:SetNWInt.  
 --- 🦟 **BUG**: [This function will not round decimal values as it actually networks a float internally.](https://github.com/Facepunch/garrysmod-issues/issues/3374)  
 --- @param key string @The key that is associated with the value
---- @param fallback any @The value to return if we failed to retrieve the value (If it isn't set).
+--- @param fallback? any @The value to return if we failed to retrieve the value (If it isn't set).
 --- @return any @The value associated with the key
 function Entity:GetNWInt(key, fallback)
 end
@@ -913,7 +913,7 @@ end
 
 --- Retrieves a networked vector value at specified index on the entity that is set by Entity:SetNWVector.  
 --- @param key string @The key that is associated with the value
---- @param fallback any @The value to return if we failed to retrieve the value
+--- @param fallback? any @The value to return if we failed to retrieve the value
 --- @return any @The value associated with the key
 function Entity:GetNWVector(key, fallback)
 end
@@ -936,7 +936,7 @@ end
 --- 🛑 **DEPRECATED**: You should use Entity:GetNWAngle instead.  
 --- Retrieves a networked angle value at specified index on the entity that is set by Entity:SetNetworkedAngle.  
 --- @param key string @The key that is associated with the value
---- @param fallback Angle @The value to return if we failed to retrieve the value
+--- @param fallback? Angle @The value to return if we failed to retrieve the value
 --- @return Angle @The retrieved value
 function Entity:GetNetworkedAngle(key, fallback)
 end
@@ -944,7 +944,7 @@ end
 --- 🛑 **DEPRECATED**: You should use Entity:GetNWBool instead.  
 --- Retrieves a networked boolean value at specified index on the entity that is set by Entity:SetNetworkedBool.  
 --- @param key string @The key that is associated with the value
---- @param fallback boolean @The value to return if we failed to retrieve the value
+--- @param fallback? boolean @The value to return if we failed to retrieve the value
 --- @return boolean @The retrieved value
 function Entity:GetNetworkedBool(key, fallback)
 end
@@ -952,7 +952,7 @@ end
 --- 🛑 **DEPRECATED**: You should use Entity:GetNWEntity instead.  
 --- Retrieves a networked float value at specified index on the entity that is set by Entity:SetNetworkedEntity.  
 --- @param key string @The key that is associated with the value
---- @param fallback Entity @The value to return if we failed to retrieve the value
+--- @param fallback? Entity @The value to return if we failed to retrieve the value
 --- @return Entity @The retrieved value
 function Entity:GetNetworkedEntity(key, fallback)
 end
@@ -961,7 +961,7 @@ end
 --- Retrieves a networked float value at specified index on the entity that is set by Entity:SetNetworkedFloat.  
 --- Seems to be the same as Entity:GetNetworkedInt.  
 --- @param key string @The key that is associated with the value
---- @param fallback number @The value to return if we failed to retrieve the value
+--- @param fallback? number @The value to return if we failed to retrieve the value
 --- @return number @The retrieved value
 function Entity:GetNetworkedFloat(key, fallback)
 end
@@ -969,7 +969,7 @@ end
 --- 🛑 **DEPRECATED**: You should use Entity:GetNWInt instead.  
 --- Retrieves a networked integer value at specified index on the entity that is set by Entity:SetNetworkedInt.  
 --- @param key string @The key that is associated with the value
---- @param fallback number @The value to return if we failed to retrieve the value
+--- @param fallback? number @The value to return if we failed to retrieve the value
 --- @return number @The retrieved value
 function Entity:GetNetworkedInt(key, fallback)
 end
@@ -999,7 +999,7 @@ end
 --- 🛑 **DEPRECATED**: You should use Entity:GetNWVector instead.  
 --- Retrieves a networked vector value at specified index on the entity that is set by Entity:SetNetworkedVector.  
 --- @param key string @The key that is associated with the value
---- @param fallback Vector @The value to return if we failed to retrieve the value
+--- @param fallback? Vector @The value to return if we failed to retrieve the value
 --- @return Vector @The retrieved value
 function Entity:GetNetworkedVector(key, fallback)
 end
@@ -1255,8 +1255,8 @@ end
 
 --- Returns the delta movement and angles of a sequence of the entity's model.  
 --- @param sequenceId number @The sequence index
---- @param startCycle number @The sequence start cycle
---- @param endCyclnde number @The sequence end cycle
+--- @param startCycle? number @The sequence start cycle
+--- @param endCyclnde? number @The sequence end cycle
 --- @return boolean @Whether the operation was successful
 --- @return Vector @The delta vector of the animation, how much the model's origin point moved.
 --- @return Angle @The delta angle of the animation.
@@ -1348,7 +1348,7 @@ end
 
 --- Retrieves a value from entity's Entity:GetTable. Set by Entity:SetVar.  
 --- @param key any @Key of the value to retrieve
---- @param default any @A default value to fallback to if we couldn't retrieve the value from entity
+--- @param default? any @A default value to fallback to if we couldn't retrieve the value from entity
 --- @return any @Retrieved value
 function Entity:GetVar(key, default)
 end
@@ -1381,7 +1381,7 @@ end
 --- Note, that this function will not remove or hide the entity it is called on.  
 --- For more expensive version of this function see Entity:GibBreakServer.  
 --- @param force Vector @The force to apply to the created gibs.
---- @param clr table @If set, this will be color of the broken gibs instead of the entity's color.
+--- @param clr? table @If set, this will be color of the broken gibs instead of the entity's color.
 function Entity:GibBreakClient(force, clr)
 end
 
@@ -1429,7 +1429,7 @@ end
 --- Sets the entity on fire.  
 --- See also Entity:Extinguish.  
 --- @param length number @How long to keep the entity ignited
---- @param radius number @The radius of the ignition, will ignite everything around the entity that is in this radius.
+--- @param radius? number @The radius of the ignition, will ignite everything around the entity that is in this radius.
 function Entity:Ignite(length, radius)
 end
 
@@ -1446,7 +1446,7 @@ end
 --- @param input string @The name of the input to fire
 --- @param activator Entity @The entity that caused this input (EG the player who pushed a button)
 --- @param caller Entity @The entity that is triggering this input (EG the button that was pushed)
---- @param param any @The value to give to the input
+--- @param param? any @The value to give to the input
 function Entity:Input(input, activator, caller, param)
 end
 
@@ -1712,7 +1712,7 @@ end
 --- @param type string @Supported choices:
 --- @param slot number @Each network var has to have a unique slot
 --- @param name string @The name will affect how you access it
---- @param extended table @A table of extended information
+--- @param extended? table @A table of extended information
 function Entity:NetworkVar(type, slot, name, extended)
 end
 
@@ -1847,8 +1847,8 @@ end
 --- Initializes the entity's physics object as a physics shadow. Removes the previous physics object if successful. This is used internally for the Player's and NPC's physics object, and certain HL2 entities such as the crane.  
 --- A physics shadow can be used to have static entities that never move by setting both arguments to false.  
 --- 🦟 **BUG**: Clientside physics objects are broken and do not move properly in some cases. Physics objects should only created on the server or you will experience incorrect physgun beam position, prediction issues, and other unexpected behavior.  
---- @param allowPhysicsMovement boolean @Whether to allow the physics shadow to move under stress.
---- @param allowPhysicsRotation boolean @Whether to allow the physics shadow to rotate under stress.
+--- @param allowPhysicsMovement? boolean @Whether to allow the physics shadow to move under stress.
+--- @param allowPhysicsRotation? boolean @Whether to allow the physics shadow to rotate under stress.
 --- @return boolean @Return true on success, nil otherwise.
 function Entity:PhysicsInitShadow(allowPhysicsMovement, allowPhysicsRotation)
 end
@@ -1874,7 +1874,7 @@ end
 
 --- Makes the entity play a .vcd scene.  
 --- @param scene string @Filepath to scene
---- @param delay number @Delay in seconds until the scene starts playing.
+--- @param delay? number @Delay in seconds until the scene starts playing.
 --- @return number @Estimated length of the scene
 --- @return Entity @The scene entity, removing which will stop the scene from continuing to play.
 function Entity:PlayScene(scene, delay)
@@ -1957,7 +1957,7 @@ end
 
 --- Breaks internal Ragdoll constrains, so you can for example separate an arm from the body of a ragdoll and preserve all physics.  
 --- The visual mesh will still stretch as if it was properly connected unless the ragdoll model is specifically designed to avoid that.  
---- @param num number @Which constraint to break, values below 0 mean break them all
+--- @param num? number @Which constraint to break, values below 0 mean break them all
 function Entity:RemoveInternalConstraint(num)
 end
 
@@ -1988,8 +1988,8 @@ end
 --- Restarts the entity's animation gesture. If the given gesture is already playing, it will reset it and play it from the beginning.  
 --- ℹ **NOTE**: This function only works on BaseAnimatingOverlay entites.  
 --- @param activity number @The activity number to send to the entity
---- @param addIfMissing boolean @Add/start the gesture to if it has not been yet started.
---- @param autokill boolean 
+--- @param addIfMissing? boolean @Add/start the gesture to if it has not been yet started.
+--- @param autokill? boolean 
 function Entity:RestartGesture(activity, addIfMissing, autokill)
 end
 
@@ -2019,7 +2019,7 @@ end
 
 --- Returns length of currently played sequence.  
 --- 🦟 **BUG**: [This will return incorrect results for weapons and viewmodels clientside in thirdperson.](https://github.com/Facepunch/garrysmod-issues/issues/2783)  
---- @param seqid number @A sequence ID to return the length specific sequence of instead of the entity's main/currently playing sequence.
+--- @param seqid? number @A sequence ID to return the length specific sequence of instead of the entity's main/currently playing sequence.
 --- @return number @The length of the sequence
 function Entity:SequenceDuration(seqid)
 end
@@ -2116,7 +2116,7 @@ end
 --- Sets the color of an entity.  
 --- Some entities may need a custom [render mode](Enums/RENDERMODE) set for transparency to work. See example 2.  
 --- Entities also must have a proper [render group](Enums/RENDERGROUP) set for transparency to work.  
---- @param color table @The color to set
+--- @param color? table @The color to set
 function Entity:SetColor(color)
 end
 
@@ -2194,7 +2194,7 @@ function Entity:SetHitboxSet(id)
 end
 
 --- Enables or disable the inverse kinematic usage of this entity.  
---- @param useIK boolean @The state of the IK.
+--- @param useIK? boolean @The state of the IK.
 function Entity:SetIK(useIK)
 end
 
@@ -2209,7 +2209,7 @@ end
 
 --- Sets the Level Of Detail model to use with this entity. This may not work for all models if the model doesn't include any LOD sub models.  
 --- This function works exactly like the clientside r_lod convar and takes priority over it.  
---- @param lod number @The Level Of Detail model ID to use
+--- @param lod? number @The Level Of Detail model ID to use
 function Entity:SetLOD(lod)
 end
 
@@ -2344,7 +2344,7 @@ end
 --- 🦟 **BUG**: [The hull does not scale properly with this function.](https://github.com/Facepunch/garrysmod-issues/issues/2193)  
 --- 🦟 **BUG**: [This does not scale procedural bones and disables IK.](https://github.com/Facepunch/garrysmod-issues/issues/3502)  
 --- @param scale number @A float to scale the model by
---- @param deltaTime number @Transition time of the scale change, set to 0 to modify the scale right away.
+--- @param deltaTime? number @Transition time of the scale change, set to 0 to modify the scale right away.
 function Entity:SetModelScale(scale, deltaTime)
 end
 
@@ -2450,7 +2450,7 @@ end
 --- The value then can be accessed with Entity:GetNetworkedAngle both from client and server.  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on.  
 --- @param key string @The key to associate the value with
---- @param value Angle @The value to set
+--- @param value? Angle @The value to set
 function Entity:SetNetworkedAngle(key, value)
 end
 
@@ -2459,7 +2459,7 @@ end
 --- The value then can be accessed with Entity:GetNetworkedBool both from client and server.  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on.  
 --- @param key string @The key to associate the value with
---- @param value boolean @The value to set
+--- @param value? boolean @The value to set
 function Entity:SetNetworkedBool(key, value)
 end
 
@@ -2468,7 +2468,7 @@ end
 --- The value then can be accessed with Entity:GetNetworkedEntity both from client and server.  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on.  
 --- @param key string @The key to associate the value with
---- @param value Entity @The value to set
+--- @param value? Entity @The value to set
 function Entity:SetNetworkedEntity(key, value)
 end
 
@@ -2478,7 +2478,7 @@ end
 --- Seems to be the same as Entity:GetNetworkedInt.  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on.  
 --- @param key string @The key to associate the value with
---- @param value number @The value to set
+--- @param value? number @The value to set
 function Entity:SetNetworkedFloat(key, value)
 end
 
@@ -2487,7 +2487,7 @@ end
 --- The value then can be accessed with Entity:GetNetworkedInt both from client and server.  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on.  
 --- @param key string @The key to associate the value with
---- @param value number @The value to set
+--- @param value? number @The value to set
 function Entity:SetNetworkedInt(key, value)
 end
 
@@ -2519,7 +2519,7 @@ end
 --- The value then can be accessed with Entity:GetNetworkedVector both from client and server.  
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on.  
 --- @param key string @The key to associate the value with
---- @param value Vector @The value to set
+--- @param value? Vector @The value to set
 function Entity:SetNetworkedVector(key, value)
 end
 
@@ -2541,15 +2541,15 @@ end
 
 --- Sets the owner of this entity, disabling all physics interaction with it.  
 --- ℹ **NOTE**: This function is generally used to disable physics interactions on projectiles being fired by their owner, but can also be used for normal ownership in case physics interactions are not involved at all. The Gravity gun will be able to pick up the entity even if the owner can't collide with it, the Physics gun however will not.  
---- @param owner Entity @The entity to be set as owner.
+--- @param owner? Entity @The entity to be set as owner.
 function Entity:SetOwner(owner)
 end
 
 --- Sets the parent of this entity, making it move with its parent.  
 --- ℹ **NOTE**: This does not work on the world.  
 --- ⚠ **WARNING**: This can cause undefined physics behaviour when used on entities that don't support parenting. See the [Valve developer wiki](https://developer.valvesoftware.com/wiki/Entity_Hierarchy_(parenting)) for more information.  
---- @param parent Entity @The entity to parent to
---- @param attachmentId number @The attachment id to use when parenting, defaults to -1 or whatever the parent had set previously
+--- @param parent? Entity @The entity to parent to
+--- @param attachmentId? number @The attachment id to use when parenting, defaults to -1 or whatever the parent had set previously
 function Entity:SetParent(parent, attachmentId)
 end
 
@@ -2576,7 +2576,7 @@ end
 --- Sets the player who gets credit if this entity kills something with physics damage within the time limit.  
 --- ℹ **NOTE**: This can only be called on props, "anim" type SENTs and vehicles.  
 --- @param ent Player @Player who gets the kills
---- @param timeLimit number @Time in seconds until the entity forgets its physics attacker and prevents it from getting the kill credit.
+--- @param timeLimit? number @Time in seconds until the entity forgets its physics attacker and prevents it from getting the kill credit.
 function Entity:SetPhysicsAttacker(ent, timeLimit)
 end
 
@@ -2647,14 +2647,14 @@ end
 --- Sets the render bounds for the entity. For world space coordinates see Entity:SetRenderBoundsWS.  
 --- @param mins Vector @The minimum corner of the bounds, relative to origin of the entity.
 --- @param maxs Vector @The maximum corner of the bounds, relative to origin of the entity.
---- @param add Vector @If defined, adds this vector to maxs and subtracts this vector from mins.
+--- @param add? Vector @If defined, adds this vector to maxs and subtracts this vector from mins.
 function Entity:SetRenderBounds(mins, maxs, add)
 end
 
 --- Sets the render bounds for the entity in world space coordinates. For relative coordinates see Entity:SetRenderBounds.  
 --- @param mins Vector @The minimum corner of the bounds, relative to origin of the world/map.
 --- @param maxs Vector @The maximum corner of the bounds, relative to origin of the world/map.
---- @param add Vector @If defined, adds this vector to maxs and subtracts this vector from mins.
+--- @param add? Vector @If defined, adds this vector to maxs and subtracts this vector from mins.
 function Entity:SetRenderBoundsWS(mins, maxs, add)
 end
 
@@ -2703,7 +2703,7 @@ function Entity:SetSequence(sequenceId)
 end
 
 --- Sets whether or not the entity should make a physics contact sound when it's been picked up by a player.  
---- @param playsound boolean @True to play the pickup sound, false otherwise.
+--- @param playsound? boolean @True to play the pickup sound, false otherwise.
 function Entity:SetShouldPlayPickupSound(playsound)
 end
 
@@ -2740,8 +2740,8 @@ end
 --- Overrides a single material on the model of this entity.  
 --- To set a Lua material created with Global.CreateMaterial, just prepend a "!" to the material name.  
 --- 🦟 **BUG**: [The server's value takes priority on the client.](https://github.com/Facepunch/garrysmod-issues/issues/3362)  
---- @param index number @Index of the material to override, acceptable values are from 0 to 31
---- @param material string @The material to override the default one with
+--- @param index? number @Index of the material to override, acceptable values are from 0 to 31
+--- @param material? string @The material to override the default one with
 function Entity:SetSubMaterial(index, material)
 end
 
@@ -2763,7 +2763,7 @@ function Entity:SetTrigger(maketrigger)
 end
 
 --- Sets whether an entity can be unfrozen, meaning that it cannot be unfrozen using the physgun.  
---- @param freezable boolean @True to make the entity unfreezable, false otherwise.
+--- @param freezable? boolean @True to make the entity unfreezable, false otherwise.
 function Entity:SetUnFreezable(freezable)
 end
 
@@ -2791,7 +2791,7 @@ end
 --- ℹ **NOTE**: View models are not drawn without a weapons associated to them.  
 --- ⚠ **WARNING**: This will silently fail if the entity is not a viewmodel.  
 --- @param viewModel string @The model string to give to this viewmodel
---- @param weapon Weapon @The weapon entity to associate this viewmodel to.
+--- @param weapon? Weapon @The weapon entity to associate this viewmodel to.
 function Entity:SetWeaponModel(viewModel, weapon)
 end
 
@@ -2933,7 +2933,7 @@ end
 --- ℹ **NOTE**: The trigger boxes can be made visible as a light blue box by using the **ent_bbox** console command while looking at the entity. Alternatively a classname or entity index can be used as the first argument.  
 --- This requires **developer** to be set to **1**.  
 --- @param enable boolean @Enable or disable the bounds.
---- @param boundSize number @The distance/size of the trigger bounds.
+--- @param boundSize? number @The distance/size of the trigger bounds.
 function Entity:UseTriggerBounds(enable, boundSize)
 end
 

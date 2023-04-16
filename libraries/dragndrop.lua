@@ -5,7 +5,7 @@ function dragndrop.Clear()
 end
 
 --- Returns a table of currently dragged panels.  
---- @param name string @If set, the function will return only the panels with this Panel:Droppable name.
+--- @param name? string @If set, the function will return only the panels with this Panel:Droppable name.
 --- @return table @A table of all panels that are being currently dragged, if any.
 function dragndrop.GetDroppable(name)
 end

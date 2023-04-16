@@ -26,9 +26,9 @@ end
 --- Inserts a new tab into the CreationMenus table, which will be used by the creation menu to generate its tabs (Spawnlists, Weapons, Entities, etc.)  
 --- @param name string @What text will appear on the tab (I.E Spawnlists).
 --- @param func function @The function called to generate the content of the tab.
---- @param material string @Path to the material that will be used as an icon on the tab.
---- @param order number @The order in which this tab should be shown relative to the other tabs on the creation menu.
---- @param tooltip string @The tooltip to be shown for this tab.
+--- @param material? string @Path to the material that will be used as an icon on the tab.
+--- @param order? number @The order in which this tab should be shown relative to the other tabs on the creation menu.
+--- @param tooltip? string @The tooltip to be shown for this tab.
 function spawnmenu.AddCreationTab(name, func, material, order, tooltip)
 end
 
@@ -39,8 +39,8 @@ end
 --- @param name string @The name of the category displayed to the player, e.g
 --- @param contents table @A table of entries for the spawn menu
 --- @param icon string @The icon to use in the tree.
---- @param id number @The unique ID number for the spawnlist category
---- @param parentID number @The unique ID of the parent category
+--- @param id? number @The unique ID number for the spawnlist category
+--- @param parentID? number @The unique ID of the parent category
 --- @param needsApp string @The needed game for this prop category, if one is needed
 function spawnmenu.AddPropCategory(classname, name, contents, icon, id, parentID, needsApp)
 end
@@ -61,15 +61,15 @@ end
 --- @param cmd string @Command to execute when the item is selected
 --- @param config string @Config name, used in older versions to load tool settings UI from a file
 --- @param cpanel function @A function to build the context panel
---- @param table table @Allows to override the table that will be added to the tool list
+--- @param table? table @Allows to override the table that will be added to the tool list
 function spawnmenu.AddToolMenuOption(tab, category, class, name, cmd, config, cpanel, table)
 end
 
 --- Adds a new tool tab to the right side of the spawnmenu via the SANDBOX:AddToolMenuTabs hook.  
 --- This function is a inferior duplicate of spawnmenu.GetToolMenu, just without its return value.  
 --- @param name string @The internal name of the tab
---- @param label string @The 'nice' name of the tab (Tip: language.Add)
---- @param icon string @The filepath to the icon of the tab
+--- @param label? string @The 'nice' name of the tab (Tip: language.Add)
+--- @param icon? string @The filepath to the icon of the tab
 function spawnmenu.AddToolTab(name, label, icon)
 end
 
@@ -112,8 +112,8 @@ end
 
 --- Adds a new tool tab (or returns an existing one by name) to the right side of the spawnmenu via the SANDBOX:AddToolMenuTabs hook.  
 --- @param name string @The internal name of the tab
---- @param label string @The 'nice' name of the tab
---- @param icon string @The filepath to the icon of the tab
+--- @param label? string @The 'nice' name of the tab
+--- @param icon? string @The filepath to the icon of the tab
 --- @return table @A table of tables representing categories and items in the left part of the tab
 function spawnmenu.GetToolMenu(name, label, icon)
 end

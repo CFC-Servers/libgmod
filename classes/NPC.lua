@@ -76,9 +76,9 @@ function NPC:Disposition(ent)
 end
 
 --- Forces the NPC to drop the specified weapon.  
---- @param weapon Weapon @Weapon to be dropped
---- @param target Vector @If set, launches the weapon at given position
---- @param velocity Vector @If set and previous argument is unset, launches the weapon with given velocity
+--- @param weapon? Weapon @Weapon to be dropped
+--- @param target? Vector @If set, launches the weapon at given position
+--- @param velocity? Vector @If set and previous argument is unset, launches the weapon with given velocity
 function NPC:DropWeapon(weapon, target, velocity)
 end
 
@@ -338,7 +338,7 @@ end
 
 --- Sets the target for an NPC.  
 --- @param enemy Entity @The enemy that the NPC should target
---- @param newenemy boolean @Calls NPC:SetCondition(COND_NEW_ENEMY) if the new enemy is valid and not equal to the last enemy.
+--- @param newenemy? boolean @Calls NPC:SetCondition(COND_NEW_ENEMY) if the new enemy is valid and not equal to the last enemy.
 function NPC:SetEnemy(enemy, newenemy)
 end
 

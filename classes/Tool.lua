@@ -31,7 +31,7 @@ end
 
 --- Attempts to grab a clientside tool ConVar.  
 --- @param name string @Name of the convar to retrieve
---- @param default number @The default value to return in case the lookup fails.
+--- @param default? number @The default value to return in case the lookup fails.
 --- @return number @The value of the requested ConVar.
 function Tool:GetClientNumber(name, default)
 end

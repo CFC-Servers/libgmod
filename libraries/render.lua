@@ -17,7 +17,7 @@ function render.BlurRenderTarget(rendertarget, blurx, blury, passes)
 end
 
 --- This function overrides the brush material for next render operations. It can be used with Entity:DrawModel.  
---- @param mat IMaterial 
+--- @param mat? IMaterial 
 function render.BrushMaterialOverride(mat)
 end
 
@@ -39,8 +39,8 @@ end
 --- @param g number @Green component to clear to.
 --- @param b number @Blue component to clear to.
 --- @param a number @Alpha component to clear to.
---- @param clearDepth boolean @Clear the depth.
---- @param clearStencil boolean @Clear the stencil.
+--- @param clearDepth? boolean @Clear the depth.
+--- @param clearStencil? boolean @Clear the stencil.
 function render.Clear(r, g, b, a, clearDepth, clearStencil)
 end
 
@@ -122,7 +122,7 @@ end
 --- @param width number @The width of the beam.
 --- @param textureStart number @The start coordinate of the texture used.
 --- @param textureEnd number @The end coordinate of the texture used.
---- @param color table @The color to be used
+--- @param color? table @The color to be used
 function render.DrawBeam(startPos, endPos, width, textureStart, textureEnd, color)
 end
 
@@ -132,7 +132,7 @@ end
 --- @param angles Angle @Orientation of the box.
 --- @param mins Vector @Start position of the box, relative to origin.
 --- @param maxs Vector @End position of the box, relative to origin.
---- @param color table @The color of the box
+--- @param color? table @The color of the box
 function render.DrawBox(position, angles, mins, maxs, color)
 end
 
@@ -140,8 +140,8 @@ end
 --- 🧱 **NOTE**: Requires a 3D rendering context  
 --- @param startPos Vector @Line start position in world coordinates.
 --- @param endPos Vector @Line end position in world coordinates.
---- @param color table @The color to be used
---- @param writeZ boolean @Whether or not to consider the Z buffer
+--- @param color? table @The color to be used
+--- @param writeZ? boolean @Whether or not to consider the Z buffer
 function render.DrawLine(startPos, endPos, color, writeZ)
 end
 
@@ -151,7 +151,7 @@ end
 --- @param vert2 Vector @The second vertex.
 --- @param vert3 Vector @The third vertex.
 --- @param vert4 Vector @The fourth vertex.
---- @param color table @The color of the quad
+--- @param color? table @The color of the quad
 function render.DrawQuad(vert1, vert2, vert3, vert4, color)
 end
 
@@ -162,7 +162,7 @@ end
 --- @param width number @The width of the quad.
 --- @param height number @The height of the quad.
 --- @param color table @The color of the quad
---- @param rotation number @The rotation of the quad counter-clockwise in degrees around the normal axis
+--- @param rotation? number @The rotation of the quad counter-clockwise in degrees around the normal axis
 function render.DrawQuadEasy(position, normal, width, height, color, rotation)
 end
 
@@ -189,7 +189,7 @@ end
 --- @param radius number @Radius of the sphere
 --- @param longitudeSteps number @The number of longitude steps
 --- @param latitudeSteps number @The number of latitude steps
---- @param color table @The color of the sphere
+--- @param color? table @The color of the sphere
 function render.DrawSphere(position, radius, longitudeSteps, latitudeSteps, color)
 end
 
@@ -198,7 +198,7 @@ end
 --- @param position Vector @Position of the sprite.
 --- @param width number @Width of the sprite.
 --- @param height number @Height of the sprite.
---- @param color table @Color of the sprite
+--- @param color? table @Color of the sprite
 function render.DrawSprite(position, width, height, color)
 end
 
@@ -224,8 +224,8 @@ end
 --- @param angle Angle @Angles of the box.
 --- @param mins Vector @The lowest corner of the box.
 --- @param maxs Vector @The highest corner of the box.
---- @param color table @The color of the box
---- @param writeZ boolean @Sets whenever to write to the zBuffer.
+--- @param color? table @The color of the box
+--- @param writeZ? boolean @Sets whenever to write to the zBuffer.
 function render.DrawWireframeBox(position, angle, mins, maxs, color, writeZ)
 end
 
@@ -235,8 +235,8 @@ end
 --- @param radius number @The size of the sphere.
 --- @param longitudeSteps number @The amount of longitude steps
 --- @param latitudeSteps number @The amount of latitude steps
---- @param color table @The color of the wireframe
---- @param writeZ boolean @Whether or not to consider the Z buffer
+--- @param color? table @The color of the wireframe
+--- @param writeZ? boolean @Whether or not to consider the Z buffer
 function render.DrawWireframeSphere(position, radius, longitudeSteps, latitudeSteps, color, writeZ)
 end
 
@@ -376,7 +376,7 @@ end
 
 --- Obtain an ITexture of the screen. You must call render.UpdateScreenEffectTexture in order to update this texture with the currently rendered scene.  
 --- This texture is mainly used within GM:RenderScreenspaceEffects  
---- @param textureIndex number @Max index is 3, but engine only creates the first two for you.
+--- @param textureIndex? number @Max index is 3, but engine only creates the first two for you.
 --- @return ITexture 
 function render.GetScreenEffectTexture(textureIndex)
 end
@@ -438,7 +438,7 @@ end
 --- ℹ **NOTE**: This function is only meant to be used in a single render pass kind of scenario, if you need to render a model continuously, use a cached Global.ClientsideModel and provide it as a second argument.  
 --- 🦟 **BUG**: [Using this with a map model (game.GetWorld():GetModel()) crashes the game.](https://github.com/Facepunch/garrysmod-issues/issues/3307)  
 --- @param settings table @Requires:
---- @param ent CSEnt @If provided, this entity will be reused instead of creating a new one with Global.ClientsideModel
+--- @param ent? CSEnt @If provided, this entity will be reused instead of creating a new one with Global.ClientsideModel
 function render.Model(settings, ent)
 end
 
@@ -462,9 +462,9 @@ end
 --- @param srcBlend number @The source color blend function Enums/BLEND
 --- @param destBlend number @The destination color blend function Enums/BLEND.
 --- @param blendFunc number @The blend mode used for drawing the color layer Enums/BLENDFUNC.
---- @param srcBlendAlpha number @The source alpha blend function Enums/BLEND
---- @param destBlendAlpha number @The destination alpha blend function Enums/BLEND.
---- @param blendFuncAlpha number @The blend mode used for drawing the alpha layer Enums/BLENDFUNC.
+--- @param srcBlendAlpha? number @The source alpha blend function Enums/BLEND
+--- @param destBlendAlpha? number @The destination alpha blend function Enums/BLEND.
+--- @param blendFuncAlpha? number @The blend mode used for drawing the alpha layer Enums/BLENDFUNC.
 function render.OverrideBlend(enabled, srcBlend, destBlend, blendFunc, srcBlendAlpha, destBlendAlpha, blendFuncAlpha)
 end
 
@@ -475,8 +475,8 @@ end
 --- @param enabled boolean @true to enable, false to disable
 --- @param srcBlend number @The source color blend function Enums/BLEND
 --- @param destBlend number 
---- @param srcBlendAlpha number @The source alpha blend function Enums/BLEND
---- @param destBlendAlpha number 
+--- @param srcBlendAlpha? number @The source alpha blend function Enums/BLEND
+--- @param destBlendAlpha? number 
 function render.OverrideBlendFunc(enabled, srcBlend, destBlend, srcBlendAlpha, destBlendAlpha)
 end
 
@@ -537,7 +537,7 @@ end
 
 --- Enables the flashlight projection for the upcoming rendering.  
 --- 🦟 **BUG**: [This will leave models lit under specific conditions.](https://github.com/Facepunch/garrysmod-issues/issues/3029)  
---- @param enable boolean @Whether the flashlight mode should be enabled or disabled.
+--- @param enable? boolean @Whether the flashlight mode should be enabled or disabled.
 function render.PushFlashlightMode(enable)
 end
 
@@ -547,10 +547,10 @@ end
 --- ℹ **NOTE**: If you want to render to the render target in 2d mode and it is not the same size as the screen, use cam.Start2D and cam.End2D.  
 --- ℹ **NOTE**: If the render target is bigger than the screen, rendering done with the surface library will be clipped to the screen bounds unless you call Global.DisableClipping  
 --- @param texture ITexture @The new render target to be used.
---- @param x number @X origin of the viewport.
---- @param y number @Y origin of the viewport.
---- @param w number @Width of the viewport.
---- @param h number @Height of the viewport
+--- @param x? number @X origin of the viewport.
+--- @param y? number @Y origin of the viewport.
+--- @param w? number @Width of the viewport.
+--- @param h? number @Height of the viewport
 function render.PushRenderTarget(texture, x, y, w, h)
 end
 
@@ -564,7 +564,7 @@ function render.ReadPixel(x, y)
 end
 
 --- This applies the changes made to map lighting using engine.LightStyle.  
---- @param DoStaticProps boolean @When true, this will also apply lighting changes to static props
+--- @param DoStaticProps? boolean @When true, this will also apply lighting changes to static props
 function render.RedownloadAllLightmaps(DoStaticProps)
 end
 
@@ -578,7 +578,7 @@ end
 
 --- Renders the scene with the specified viewData to the current active render target.  
 --- 🦟 **BUG**: [Static props and LODs are rendered improperly due to incorrectly perceived distance.](https://github.com/Facepunch/garrysmod-issues/issues/1330)  
---- @param view table @The view data to be used in the rendering
+--- @param view? table @The view data to be used in the rendering
 function render.RenderView(view)
 end
 
@@ -679,7 +679,7 @@ end
 
 --- Sets up the local lighting for any upcoming render operation. Up to 4 local lights can be defined, with one of three different types (point, directional, spot).  
 --- Disables all local lights if called with no arguments.  
---- @param lights table @A table containing up to 4 tables for each light source that should be set up
+--- @param lights? table @A table containing up to 4 tables for each light source that should be set up
 function render.SetLocalModelLights(lights)
 end
 

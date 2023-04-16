@@ -60,7 +60,7 @@ end
 
 --- Gets the match uppercase key for the specified binding.  
 --- @param binding string @The binding name
---- @param exact boolean @True if the binding should match exactly
+--- @param exact? boolean @True if the binding should match exactly
 --- @return string @The first key found with that binding or no value if no key with given binding was found
 function input.LookupBinding(binding, exact)
 end

@@ -45,7 +45,7 @@ end
 
 --- Returns the time as a formatted string or as a table if no format is given.  
 --- @param float number @The time in seconds to format.
---- @param format string @An optional formatting to use
+--- @param format? string @An optional formatting to use
 --- @return string @Returns the time as a formatted string only if a format was specified
 function string.FormattedTime(float, format)
 end
@@ -213,8 +213,8 @@ end
 
 --- Returns the given string's characters in their numeric ASCII representation.  
 --- @param string string @The string to get the chars from.
---- @param startPos number @The first character of the string to get the byte of.
---- @param endPos number @The last character of the string to get the byte of.
+--- @param startPos? number @The first character of the string to get the byte of.
+--- @param endPos? number @The last character of the string to get the byte of.
 --- @return any @Numerical bytes
 function string.byte(string, startPos, endPos)
 end
@@ -228,7 +228,7 @@ end
 --- Returns the binary bytecode of the given function.  
 --- ℹ **NOTE**: This does not work with functions created in C/C++. An error will be thrown if it is  
 --- @param func function @The function to get the bytecode of
---- @param stripDebugInfo boolean @True to strip the debug data, false to keep it
+--- @param stripDebugInfo? boolean @True to strip the debug data, false to keep it
 --- @return string @Bytecode
 function string.dump(func, stripDebugInfo)
 end
@@ -236,8 +236,8 @@ end
 --- Attempts to find the specified substring in a string, uses Patterns by default.  
 --- @param haystack string @The string to search in.
 --- @param needle string @The string to find, can contain patterns if enabled.
---- @param startPos number @The position to start the search from, can be negative start position will be relative to the end position.
---- @param noPatterns boolean @Disable patterns.
+--- @param startPos? number @The position to start the search from, can be negative start position will be relative to the end position.
+--- @param noPatterns? boolean @Disable patterns.
 --- @return number @Starting position of the found text, or nil if the text wasn't found
 --- @return number @Ending position of found text, or nil if the text wasn't found
 --- @return string @Matched text for each group if patterns are enabled and used, or nil if the text wasn't found
@@ -270,7 +270,7 @@ end
 --- @param string string @String which should be modified.
 --- @param pattern string @The pattern that defines what should be matched and eventually be replaced.
 --- @param replacement string @In case of a string the matches sequence will be replaced with it
---- @param maxReplaces number @Maximum number of replacements to be made.
+--- @param maxReplaces? number @Maximum number of replacements to be made.
 --- @return string @replaceResult
 --- @return number @replaceCount
 function string.gsub(string, pattern, replacement, maxReplaces)
@@ -291,7 +291,7 @@ end
 --- Finds a Pattern in a string.  
 --- @param string string @String which should be searched in for matches.
 --- @param pattern string @The pattern that defines what should be matched.
---- @param startPosition number @The start index to start the matching from, can be negative to start the match from a position relative to the end.
+--- @param startPosition? number @The start index to start the matching from, can be negative to start the match from a position relative to the end.
 --- @return any @Matched text(s)
 function string.match(string, pattern, startPosition)
 end
@@ -313,7 +313,7 @@ end
 --- Returns a sub-string, starting from the character at position `StartPos` of the string (inclusive), and optionally ending at the character at position `EndPos` of the string (also inclusive). If EndPos is not given, the rest of the string is returned.  
 --- @param string string @The string you'll take a sub-string out of.
 --- @param StartPos number @The position of the first character that will be included in the sub-string.
---- @param EndPos number @The position of the last character to be included in the sub-string
+--- @param EndPos? number @The position of the last character to be included in the sub-string
 --- @return string @The substring.
 function string.sub(string, StartPos, EndPos)
 end
