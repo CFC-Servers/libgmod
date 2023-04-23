@@ -135,6 +135,9 @@ function formatWarnings(text: string): string {
 }
 
 function getArgName(arg: FuncArg): string {
+    if(arg.type == "vararg") {
+        return "...";
+    }
     let name = arg.name;
     for (let [find, replace] of KEYWORD_REPLACEMENTS) {
         name = name.replace(find, replace);
@@ -167,9 +170,6 @@ function getArgDoc(arg: FuncArg): string {
         desc = "@" + trimArg(unpaginate(arg.description));
     }
     let type = getTypeName(arg.type);
-    if (arg.type == "vararg" || arg.name == "...") {
-        return `--- @vararg ${type} ${desc}`;
-    }
     let name = getArgName(arg);
     if (arg.default != undefined) {
         name = name + "?";
