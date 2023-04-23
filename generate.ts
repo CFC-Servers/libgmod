@@ -300,7 +300,7 @@ function handleClass(cls: FuncContainer): string {
     }
     let def = `--- @class ${name}${inherits}\n`;
     let lua = `local ${name} = {}\n`;
-    return def + desc + lua;
+    return desc + def + lua;
 }
 
 function handleLib(lib: FuncContainer): string {
