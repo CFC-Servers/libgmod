@@ -1,0 +1,37 @@
+name: Scrape
+on:
+    schedule:
+        - cron: '0 0 1-31/2 * *'
+
+jobs:
+    scrape-wiki:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                node-version: '14'
+            - run: |
+                npm install
+            - run: |
+                npx gmod-wiki-scraper
+            - run: |
+                npm run start
+            - name: Check for changes
+              run: |
+                if git diff-index --quiet HEAD --; then
+                  echo "No changes detected"
+                  exit 1
+                fi
+
+            - name: Create pull request
+              uses: peter-evans/create-pull-request@v3
+              with:
+                commit-message: 'Automated: regenerated code based on scraped wiki data'
+                title: 'Automated PR: Regenerated code'
+                body: '-----'
+                branch: 'automated/scraped'
+                branch-suffix: timestamp
+
+
+
