@@ -7,6 +7,7 @@ _G.jit = {}
 --- * or when a trace exits through a side exit ("texit").  
 --- Set a callback with jit.attach(callback, "event") and clear the same callback with jit.attach(callback)  
 --- ⚠ **WARNING**: This function isn't officially documented on LuaJIT wiki, use it at your own risk.  
+--- ⚠ **WARNING**: Using these constantly (especially bytecode) can be very performance heavy due to the constant stream of data being compiled at a time.  
 --- @param callback function @The callback function
 --- @param event string @The event to hook into.
 function jit.attach(callback, event)

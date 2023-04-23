@@ -69,6 +69,7 @@ end
 
 --- Returns a table of all human ( non bot/AI ) players.  
 --- Unlike player.GetAll, this does not include bots.  
+--- ℹ **NOTE**: This function returns a sequential table, meaning it should be looped with Global.ipairs instead of Global.pairs for efficiency reasons.  
 --- @return table @A table of all human ( non bot/AI ) players.
 function player.GetHumans()
 end
