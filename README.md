@@ -1,14 +1,8 @@
-# (WIP) LibGMOD - EmmyLua bindings for Garry's Mod
+# (WIP) LibGMOD - [LuaLS](https://github.com/LuaLS/lua-language-server/wiki/Annotations) bindings for Garry's Mod
 
-This is a vain attempt to get sane IDE completion working with Visual Studio
-Code.
-
-This still doesn't have any type information or object classes in it, but at
-at least stops the Lua language sever complaining about undefined globals.
+This is an attempt to get IDE completion working with https://github.com/LuaLS/lua-language-server for any editor that supports language servers
 
 ## Usage
 
-The best I've found so far is to add it as a submodule in whatever codebase
-you're working on. This isn't great, but gets the job done.
-
-If you know better, send me an issue
+If you have lua-language-server installed, you can clone this repo and add it to to the `Lua.workspace.library` list
+You can find an example of doing that in neovim here https://cfc.gg/configs/lua_ls/glua.lua
