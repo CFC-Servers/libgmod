@@ -74,6 +74,7 @@ interface Func {
 // Libs, classes etc
 interface FuncContainer {
     name: string;
+    parent?: string;
     description?: string;
     functions: Func[];
 }
@@ -307,6 +308,8 @@ function handleClass(cls: FuncContainer): string {
     let inherits = "";
     if (ENTITY_CHILDREN.includes(cls.name)) {
         inherits = " : " + getTypeName("Entity");
+    } else if (cls.parent){
+        inherits = " : " + getTypeName(cls.parent);
     }
     let def = `--- @class ${name}${inherits}\n`;
     let lua = `local ${name} = {}\n`;
@@ -392,6 +395,55 @@ async function doLibs(): Promise<void> {
     }
 }
 
+async function getPanels(): Promise<FuncContainer[]> {
+    let data: FuncContainer[] = JSON.parse(
+        await fs.readFile("output/panels.json", "utf-8")
+    );
+    return data;
+}
+
+async function doPanels(data: FuncContainer[]): Promise<void> {
+    data = _.sortBy(data, "name");
+    await mkdirp("panels");
+    for (let cls of data) {
+        let classdata: string;
+        try {
+            classdata = handleClass(cls);
+        } catch (e) {
+            console.error(
+                "Problem while getting class definition for %s: %s",
+                cls.name,
+                e
+            );
+            throw e;
+        }
+
+        let filename = path.join("panels", `${cls.name}.lua`);
+        await fs.writeFile(filename, classdata);
+
+        let funcs = cls.functions;
+        funcs = _.sortBy(funcs, "name");
+        for (let func of funcs) {
+            let funcdata: string | undefined;
+            try {
+                funcdata = handleFunc(func, ":");
+            } catch (e) {
+                console.error(
+                    "Problem while getting func definition for %s:%s(): %s",
+                    cls.name,
+                    func.name,
+                    e
+                );
+                throw e;
+            }
+            if (funcdata) {
+                await fs.appendFile(filename, funcdata + "\n", "utf-8");
+            }
+        }
+        console.log("Done %s!", cls.name);
+    }
+}
+
 async function getClasses(): Promise<FuncContainer[]> {
     let data: FuncContainer[] = JSON.parse(
         await fs.readFile("output/classes.json", "utf-8")
@@ -443,12 +495,11 @@ async function doClasses(data: FuncContainer[]): Promise<void> {
 
 async function main() {
     try {
-        let classes = await getClasses();
-
         await Promise.all([
             doGlobals(),
             doLibs(),
-            doClasses(classes),
+            doClasses(await getClasses()),
+            doPanels(await getPanels()),
             //
         ]);
     } catch (e) {
