@@ -5,4 +5,6 @@ This is an attempt to get IDE completion working with https://github.com/LuaLS/l
 ## Usage
 
 If you have lua-language-server installed, you can clone this repo and add it to to the `Lua.workspace.library` list
+
+
 You can find an example of doing that in neovim here https://cfc.gg/configs/lua_ls/glua.lua
