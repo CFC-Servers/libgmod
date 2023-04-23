@@ -5158,7 +5158,7 @@
   },
   {
     "name": "ConVar",
-    "description": "An object returned by <page>Global.CreateConVar</page>, <page>Global.CreateClientConVar</page> (which uses <page>Global.CreateConVar</page> internally), and <page>Global.GetConVar</page>. It represents a console variable. See <page text=\"this\">ConVars</page> page for more information.",
+    "description": "An object returned by <page>Global.CreateConVar</page>, <page>Global.CreateClientConVar</page> (which uses <page>Global.CreateConVar</page> internally), and <page>Global.GetConVar</page>.\n\nIt represents a console variable. See <page text=\"this\">ConVars</page> page for more information.",
     "functions": [
       {
         "name": "GetBool",
@@ -12677,12 +12677,12 @@
           "client",
           "server"
         ],
-        "description": "Creates a network variable on the entity and adds Set/Get functions for it. This function should only be called in <page>ENTITY:SetupDataTables</page>.\n\nSee <page>Entity:NetworkVarNotify</page> for a function to hook NetworkVar changes.\n\n<warning>Make sure to not call the SetDT* and your custom set methods on the client realm unless you know exactly what you are doing.</warning>\n<warning>Entity NetworkVars may briefly be incorrect due to how PVS networking and entity indexes work.</warning>",
+        "description": "Creates a network variable on the entity and adds Set/Get functions for it. This function should only be called in <page>ENTITY:SetupDataTables</page>.\n\nSee <page>Entity:NetworkVarNotify</page> for a function to hook NetworkVar changes.\n\n<note>\nEntity NetworkVars are influenced by the return value of <page>ENTITY:UpdateTransmitState</page>.\nSo if you use the **PVS**(**default**), then the NetworkVars can be different for each client.\n</note>\n\n<warning>Make sure to not call the SetDT* and your custom set methods on the client realm unless you know exactly what you are doing.</warning>",
         "arguments": [
           {
             "name": "type",
             "type": "string",
-            "description": "Supported choices:\n\n* `String`\n* `Bool`\n* `Float`\n* `Int` (32-bit signed integer)\n* `Vector`\n* `Angle`\n* `Entity`"
+            "description": "Supported choices:\n\n* `String` (up to 511 characters)\n* `Bool`\n* `Float`\n* `Int` (32-bit signed integer)\n* `Vector`\n* `Angle`\n* `Entity`"
           },
           {
             "name": "slot",
@@ -14184,7 +14184,7 @@
           "client",
           "server"
         ],
-        "description": "Sets the health of the entity.\n\n<note>You may want to take <page>Entity:GetMaxHealth</page> into account when calculating what to set health to, in case a gamemode has a different max health than 100.</note>\n\n<bug issue=\"3572\">In some cases, setting health only on server side can cause hitches in movement, for example if something modifying the player speed based on health. To solve this issue, it is better to set it shared in a predicted hook.</bug>",
+        "description": "Sets the health of the entity.\n\n<note>You may want to take <page>Entity:GetMaxHealth</page> into account when calculating what to set health to, in case a gamemode has a different max health than 100.</note>\n\n<bug issue=\"3572\">In some cases, setting health only on server side can cause hitches in movement, for example if something is modifying the player speed based on health. To solve this issue, it is better to set it shared in a predicted hook.</bug>",
         "arguments": [
           {
             "name": "newHealth",
@@ -19514,7 +19514,7 @@
   },
   {
     "name": "NPC",
-    "description": "This is a list of all methods only available for NPCs. It is also possible to call [Entity](http://wiki.garrysmod.com/index.php?title=Category:Entity) functions on NPCs.",
+    "description": "This is a list of all methods only available for NPCs. It is also possible to call [Entity](https://wiki.facepunch.com/gmod/Entity) functions on NPCs.",
     "functions": [
       {
         "name": "AddEntityRelationship",
@@ -23324,6 +23324,21 @@
         ]
       },
       {
+        "name": "GetTooltipDelay",
+        "parent": "Panel",
+        "realms": [
+          "client"
+        ],
+        "description": "Returns the tooltip delay (time between hovering over the panel, and the tooltip showing up) that was set with <page>Panel:SetTooltipDelay</page>, or nothing if it was not set.\n\nIf the delay is not explicitly set by this function, it will fallback to the value of the `tooltip_delay` <page>ConVar</page>, which is `0.5` by default.",
+        "returnValues": [
+          {
+            "type": "number",
+            "name": "tooltip",
+            "description": "The tooltip delay in seconds, if it was set."
+          }
+        ]
+      },
+      {
         "name": "GetTooltipPanel",
         "parent": "Panel",
         "realms": [
@@ -25887,6 +25902,21 @@
             "name": "str",
             "type": "string",
             "description": "The text to be displayed in the tooltip. Set false to disable it."
+          }
+        ]
+      },
+      {
+        "name": "SetTooltipDelay",
+        "parent": "Panel",
+        "realms": [
+          "client"
+        ],
+        "description": "Sets the tooltip delay. (time between hovering over the panel, and the tooltip showing up)\n\nCan be retrieved with <page>Panel:GetTooltipDelay</page>.",
+        "arguments": [
+          {
+            "name": "tooltip",
+            "type": "number",
+            "description": "The tooltip delay to set."
           }
         ]
       },

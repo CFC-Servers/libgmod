@@ -3839,7 +3839,7 @@
           "client",
           "server"
         ],
-        "description": "Sets the given function as a Lua hook. This is completely different to gamemode hooks. The thread argument can be completely omitted and calling this function with no arguments will remove the current hook. This is used by default for infinite loop detection. More information on hooks can be found at http://www.lua.org/pil/23.2.html and https://www.gammon.com.au/scripts/doc.php?lua=debug.sethook\n\nHooks are not always ran when code that has been compiled by LuaJIT's JIT compiler is being executed. This means that relying on them for infinite loop protection is unwise.",
+        "description": "Sets the given function as a Lua hook. This is completely different to gamemode hooks. The thread argument can be completely omitted and calling this function with no arguments will remove the current hook. This is used by default for infinite loop detection. More information on hooks can be found at http://www.lua.org/pil/23.2.html and https://www.gammon.com.au/scripts/doc.php?lua=debug.sethook\n\nHooks are not always ran when code that has been compiled by LuaJIT's JIT compiler is being executed, this is due to Intermediate Representation internally storing constantly running bytecode for performance reasons.",
         "arguments": [
           {
             "name": "thread",
@@ -3849,12 +3849,12 @@
           {
             "name": "hook",
             "type": "function",
-            "description": "Function for the hook to call"
+            "description": "Function for the hook to call. First argument in this function will be the mask event that called the hook as a full string (not as 'c' but instead as 'call')."
           },
           {
             "name": "mask",
             "type": "string",
-            "description": "The hook's mask"
+            "description": "The hook's mask. Can be one or more of the following events:\n* c - Triggers the hook on each function call made from Lua.\n* r - Triggers the hook on each function return made from Lua.\n* l - Triggers the hook on each line compiled of code.\n* t - Triggers the hook on each function call made from Lua or C/C++.\n* u - Triggers the hook on each function return made from Lua or C/C++.\n* k - Triggers the hook on each function call or return made from Lua or C/C++."
           },
           {
             "name": "count",
@@ -10007,7 +10007,7 @@
           "client",
           "server"
         ],
-        "description": "You can attach callbacks to a number of compiler events with jit.attach. The callback can be called:\n\n* when a function has been compiled to bytecode (\"bc\");\n* when trace recording starts or stops (\"trace\");\n* as a trace is being recorded (\"record\");\n* or when a trace exits through a side exit (\"texit\").\n\nSet a callback with jit.attach(callback, \"event\") and clear the same callback with jit.attach(callback)\n\n<warning>This function isn't officially documented on LuaJIT wiki, use it at your own risk.</warning>",
+        "description": "You can attach callbacks to a number of compiler events with jit.attach. The callback can be called:\n\n* when a function has been compiled to bytecode (\"bc\");\n* when trace recording starts or stops (\"trace\");\n* as a trace is being recorded (\"record\");\n* or when a trace exits through a side exit (\"texit\").\n\nSet a callback with jit.attach(callback, \"event\") and clear the same callback with jit.attach(callback)\n\n<warning>This function isn't officially documented on LuaJIT wiki, use it at your own risk.</warning>\n<warning>Using these constantly (especially bytecode) can be very performance heavy due to the constant stream of data being compiled at a time.</warning>",
         "arguments": [
           {
             "name": "callback",
@@ -15620,7 +15620,7 @@
           "client",
           "server"
         ],
-        "description": "Returns a table of all human ( non bot/AI ) players.\n\nUnlike <page>player.GetAll</page>, this does not include bots.",
+        "description": "Returns a table of all human ( non bot/AI ) players.\n\nUnlike <page>player.GetAll</page>, this does not include bots.\n<note>This function returns a sequential table, meaning it should be looped with <page>Global.ipairs</page> instead of <page>Global.pairs</page> for efficiency reasons.</note>",
         "returnValues": [
           {
             "type": "table",
@@ -23627,7 +23627,7 @@
           "client",
           "server"
         ],
-        "description": "Returns whether or not the given table is empty.\n\nThis works on both sequential and non-sequential tables, and is a lot faster to use than `table.Count(tbl) == 0`.\nFor checking if a table is not empty, try using `next(tbl) ~= nil`.",
+        "description": "Returns whether or not the given table is empty.\n\nThis works on both sequential and non-sequential tables, and is a lot faster to use than `table.Count(tbl) == 0`.\nIf you want to check if a table is not empty, use `next(tbl) ~= nil`, as it is slightly faster.",
         "arguments": [
           {
             "name": "tab",
@@ -27846,6 +27846,28 @@
         ]
       },
       {
+        "name": "Exists",
+        "parent": "vgui",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "Returns true if Lua-defined panel exists by name. Uses <page>vgui.GetControlTable</page> internally.",
+        "arguments": [
+          {
+            "name": "Panelname",
+            "type": "string",
+            "description": "The name of the panel to get test."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "Whether a panel with given name was registered yet or not."
+          }
+        ]
+      },
+      {
         "name": "FocusedHasParent",
         "parent": "vgui",
         "realms": [
@@ -27874,18 +27896,18 @@
           "client",
           "menu"
         ],
-        "description": "Gets the method table of this panel. Does not return parent methods!",
+        "description": "Returns the table of a Lua-defined panel by name. Does not return parent members of the table!",
         "arguments": [
           {
             "name": "Panelname",
             "type": "string",
-            "description": "The name of the panel"
+            "description": "The name of the panel to get the table of."
           }
         ],
         "returnValues": [
           {
             "type": "table",
-            "description": "methods"
+            "description": "The `PANEL` table of the a Lua-defined panel with given name."
           }
         ]
       },

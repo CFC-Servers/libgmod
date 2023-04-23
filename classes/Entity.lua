@@ -1995,8 +1995,10 @@ end
 
 --- Creates a network variable on the entity and adds Set/Get functions for it. This function should only be called in ENTITY:SetupDataTables.  
 --- See Entity:NetworkVarNotify for a function to hook NetworkVar changes.  
+--- ℹ **NOTE**:   
+--- Entity NetworkVars are influenced by the return value of ENTITY:UpdateTransmitState.  
+--- So if you use the **PVS**(**default**), then the NetworkVars can be different for each client.  
 --- ⚠ **WARNING**: Make sure to not call the SetDT* and your custom set methods on the client realm unless you know exactly what you are doing.  
---- ⚠ **WARNING**: Entity NetworkVars may briefly be incorrect due to how PVS networking and entity indexes work.  
 --- @param type string @Supported choices:
 --- @param slot number @Each network variable has to have a unique slot
 --- @param name string @The name will affect how you access it
@@ -2511,7 +2513,7 @@ end
 
 --- Sets the health of the entity.  
 --- ℹ **NOTE**: You may want to take Entity:GetMaxHealth into account when calculating what to set health to, in case a gamemode has a different max health than 100.  
---- 🦟 **BUG**: [In some cases, setting health only on server side can cause hitches in movement, for example if something modifying the player speed based on health. To solve this issue, it is better to set it shared in a predicted hook.](https://github.com/Facepunch/garrysmod-issues/issues/3572)  
+--- 🦟 **BUG**: [In some cases, setting health only on server side can cause hitches in movement, for example if something is modifying the player speed based on health. To solve this issue, it is better to set it shared in a predicted hook.](https://github.com/Facepunch/garrysmod-issues/issues/3572)  
 --- @param newHealth number @New health value.
 function Entity:SetHealth(newHealth)
 end
