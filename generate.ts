@@ -5,18 +5,6 @@ import { extractTables, hasWikiTable, WikiTable } from "./wiki-table";
 const fs = libfs.promises;
 import mkdirp = require("mkdirp");
 
-const LUA_TYPES = [
-    "any",
-    "boolean",
-    "function",
-    "nil",
-    "number",
-    "string",
-    "table",
-    "thread",
-    "userdata",
-    "vararg",
-];
 
 const KEYWORD_REPLACEMENTS = new Map<string | RegExp, string>([
     [/^function$/, "func"],
@@ -25,29 +13,25 @@ const KEYWORD_REPLACEMENTS = new Map<string | RegExp, string>([
     [/[^\w.]/g, "_"],
 ]);
 
-// urgh
-const ENTITY_CHILDREN = [
-    //
-    "CSEnt",
-    "NPC",
-    "Player",
-    "Vehicle",
-    "Weapon",
-];
+// This will be used to set the parent that any class or panel inherits from
+const PARENT_OVERRIDES: { [key: string]: string }= {
+    "CSEnt": "Entity",
+    "NPC": "Entity",
+    "Player": "Entity",
+    "Vehicle": "Entity",
+    "Weapon": "Entity",
+};
 
-let GMOD_TYPES: { [key: string]: string } = {};
+let TYPE_NAME_OVERRIDES: { [key: string]: string } = {
+    "vararg": "any ...",
+    "Global": "_G",
+
+};
 
 function getTypeName(ret: string): string {
-    if (ret == "vararg") {
-        // TODO: I don't think emmylua lets you mark returns as arbitrary varargs
-        return "any";
-    } else if (ret == "Global") {
-        // I can't think of a better way of handling this rn
-        return "_G";
-    }
     // Get rid of any creative type names
     ret = ret.replace(/[^\w.]/g, "_");
-    return GMOD_TYPES[ret] ?? ret;
+    return TYPE_NAME_OVERRIDES[ret] ?? ret;
 }
 
 interface FuncArg {
@@ -69,6 +53,7 @@ interface Func {
     description?: string;
     arguments?: FuncArg[];
     returnValues?: FuncRet;
+    deprecated?: Boolean
 }
 
 // Libs, classes etc
@@ -78,8 +63,6 @@ interface FuncContainer {
     description?: string;
     functions: Func[];
 }
-
-// Time to parse XML with regular expressions
 const INTERNAL_REGEX = /<internal>/;
 const WARNINGS_REGEX = /<(note|warning|deprecated|bug|validate)>((?:.|\n)*?)<\/\1>/g;
 const USELESS_REGEX = /<br>|<pagelist.+?\/pagelist>|<img.+?>/g;
@@ -152,6 +135,9 @@ function formatWarnings(text: string): string {
 }
 
 function getArgName(arg: FuncArg): string {
+    if(arg.type == "vararg") {
+        return "...";
+    }
     let name = arg.name;
     for (let [find, replace] of KEYWORD_REPLACEMENTS) {
         name = name.replace(find, replace);
@@ -178,22 +164,12 @@ function getFuncDef(func: Func, sepr?: string) {
     return `function ${prefix}${func.name}(${args})\nend\n`;
 }
 
-function* matchAll(str: string, regex: RegExp) {
-    let match: RegExpExecArray | null;
-    while ((match = regex.exec(str)) != null) {
-        yield match;
-    }
-}
-
 function getArgDoc(arg: FuncArg): string {
     let desc = "";
     if (arg.description) {
         desc = "@" + trimArg(unpaginate(arg.description));
     }
     let type = getTypeName(arg.type);
-    if (arg.type == "vararg" || arg.name == "...") {
-        return `--- @vararg ${type} ${desc}`;
-    }
     let name = getArgName(arg);
     if (arg.default != undefined) {
         name = name + "?";
@@ -226,6 +202,13 @@ function formatDesc(desc: string): string {
 }
 
 function handleFunc(func: Func, sepr?: string): undefined | string {
+    let match;
+    while ((match = WARNINGS_REGEX.exec(func.description || "")) !== null) {
+        if (match[1] == "deprecated") {
+            func.deprecated = true;
+            break;
+        }
+    }
     if (func.description?.match(INTERNAL_REGEX)) {
         // Hide internal functions
         return;
@@ -246,6 +229,10 @@ function handleFunc(func: Func, sepr?: string): undefined | string {
                 .filter((l) => l)
                 .join("\n") + "\n";
     }
+    if(func.deprecated) {
+        args += "--- @deprecated\n";
+    }
+
     let ret = "";
     if (func.returnValues && func.returnValues.length > 0) {
         ret = getRetDoc(func.returnValues) + "\n";
@@ -306,14 +293,14 @@ function handleClass(cls: FuncContainer): string {
     }
     let name = cls.name;
     let inherits = "";
-    if (ENTITY_CHILDREN.includes(cls.name)) {
-        inherits = " : " + getTypeName("Entity");
+    if (PARENT_OVERRIDES[cls.name]) {
+        inherits = " : " + getTypeName(PARENT_OVERRIDES[cls.name]);
     } else if (cls.parent){
         inherits = " : " + getTypeName(cls.parent);
     }
     let def = `--- @class ${name}${inherits}\n`;
     let lua = `local ${name} = {}\n`;
-    return def + desc + lua;
+    return desc + def + lua;
 }
 
 function handleLib(lib: FuncContainer): string {
