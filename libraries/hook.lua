@@ -11,8 +11,8 @@ end
 --- In almost all cases, you should use hook.Run instead - it calls hook.Call internally but supplies the gamemode table by itself, making your code neater.  
 --- @param eventName string @The event to call hooks for.
 --- @param gamemodeTable table @If the gamemode is specified, the gamemode hook within will be called, otherwise not.
---- @vararg any @The arguments to be passed to the hooks.
---- @return any @Return data from called hooks
+--- @param ... any ... @The arguments to be passed to the hooks.
+--- @return any ... @Return data from called hooks
 function hook.Call(eventName, gamemodeTable, ...)
 end
 
@@ -32,7 +32,7 @@ end
 --- See also: gamemode.Call - same as this, but does not call hooks if the gamemode hasn't defined the function.  
 --- </eventname>  
 --- @param eventName string @The event to call hooks for.
---- @vararg any @The arguments to be passed to the hooks.
+--- @param ... any ... @The arguments to be passed to the hooks.
 --- @return any @Returned data from called hooks.
 function hook.Run(eventName, ...)
 end

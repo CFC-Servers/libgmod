@@ -9010,6 +9010,14 @@
             "description": "Return false to dissallow opening the spawnmenu"
           }
         ]
+      },
+      {
+        "name": "SpawnMenuOpened",
+        "parent": "SANDBOX",
+        "realms": [
+          "client"
+        ],
+        "description": "Called when the spawnmenu is opened.\n\nThis is an alias of <page>GM:OnSpawnMenuOpen</page> but will **not** be called if <page>SANDBOX:SpawnMenuOpen</page> prevents the spawnmenu from opening.\n\nThis hook **will** be called even if the spawnmenu doesn't actually exist, i.e. <page>SANDBOX:SpawnMenuEnabled</page> blocked its creation."
       }
     ]
   },

@@ -36,6 +36,7 @@ end
 --- Retrieves players name by their 64bit SteamID.  
 --- You must call steamworks.RequestPlayerInfo a decent amount of time before calling this function.  
 --- @param steamID64 string @The 64bit Steam ID ( aka Community ID ) of the player
+--- @deprecated
 --- @return string @The name of that player
 function steamworks.GetPlayerName(steamID64)
 end
@@ -71,6 +72,7 @@ end
 --- Retrieves vote info of supplied addon.  
 --- @param workshopItemID string @The ID of workshop item.
 --- @param resultCallback function @The function to process retrieved data
+--- @deprecated
 function steamworks.VoteInfo(workshopItemID, resultCallback)
 end
 

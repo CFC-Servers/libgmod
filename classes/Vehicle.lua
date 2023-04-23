@@ -1,5 +1,5 @@
---- @class Vehicle : Entity
 --- This is a list of all methods only available for vehicles. It is also possible to call [Entity](https://wiki.facepunch.com/gmod/Entity) functions on vehicles.  
+--- @class Vehicle : Entity
 local Vehicle = {}
 --- Returns the remaining boosting time left.  
 --- @return number @The remaining boosting time left

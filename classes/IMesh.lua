@@ -1,6 +1,6 @@
---- @class IMesh
 --- Renderable mesh object, can be used to create models on the fly. The only way to create your own IMesh object is to call Mesh.  
 --- 🦟 **BUG**: [IMeshes only respond to one projected texture.](https://github.com/Facepunch/garrysmod-issues/issues/2301)  
+--- @class IMesh
 local IMesh = {}
 --- Builds the mesh from a table mesh vertexes.  
 --- See Global.Mesh and util.GetModelMeshes for examples.  

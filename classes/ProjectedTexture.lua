@@ -1,5 +1,5 @@
---- @class ProjectedTexture
 --- A client side projected texture, created by Global.ProjectedTexture.  
+--- @class ProjectedTexture
 local ProjectedTexture = {}
 --- Returns the angle of the ProjectedTexture, which were previously set by ProjectedTexture:SetAngles  
 --- @return Angle @The angles of the ProjectedTexture.

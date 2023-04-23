@@ -1,5 +1,5 @@
---- @class CLuaLocomotion
 --- This class is essentially what controls a NextBot NPC. You can access it in a NextBot NPC by using **self.loco** variable.  
+--- @class CLuaLocomotion
 local CLuaLocomotion = {}
 --- Sets the location we want to get to.  
 --- Each call of Approach moves the NextBot 1 unit towards the specified goal. The size of this unit is determined by SetDesiredSpeed; the default is `0` (each call of Approach moves the NextBot 0).  

@@ -7,7 +7,7 @@ end
 
 --- Adds a function to call when the current undo block is undone. Note that if an undo has a function, the player will always be notified when this undo is performed, even if the entity it is meant to undo no longer exists.  
 --- @param func function @The function to call
---- @vararg any @Arguments to pass to the function (after the undo info table)
+--- @param ... any ... @Arguments to pass to the function (after the undo info table)
 function undo.AddFunction(func, ...)
 end
 

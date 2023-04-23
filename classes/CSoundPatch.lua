@@ -1,6 +1,6 @@
---- @class CSoundPatch
 --- CSoundPatch class.  
 --- Created with Global.CreateSound  
+--- @class CSoundPatch
 local CSoundPatch = {}
 --- Adjust the pitch, alias the speed at which the sound is being played.  
 --- This invokes the GM:EntityEmitSound.  

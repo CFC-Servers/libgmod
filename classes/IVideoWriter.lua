@@ -1,5 +1,5 @@
---- @class IVideoWriter
 --- This is returned from video.Record.  
+--- @class IVideoWriter
 local IVideoWriter = {}
 --- Adds the current framebuffer to the video stream.  
 --- @param frameTime number @Usually set to what Global.FrameTime is, or simply 1/fps.

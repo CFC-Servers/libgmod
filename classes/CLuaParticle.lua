@@ -1,5 +1,5 @@
---- @class CLuaParticle
 --- List of all possible functions available for Lua particles. This is the object returned by the CLuaEmitter:Add function.  
+--- @class CLuaParticle
 local CLuaParticle = {}
 --- Returns the air resistance of the particle.  
 --- @return number @The air resistance of the particle

@@ -1,5 +1,5 @@
---- @class Task
 --- A single AI task. Returned by ai_task.New.  
+--- @class Task
 local Task = {}
 --- Initialises the AI task as an engine task.  
 --- @param taskname string @The name of the task.

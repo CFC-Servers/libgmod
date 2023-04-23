@@ -25,7 +25,7 @@ function draw.NoTexture()
 end
 
 --- Draws a rounded rectangle.  
---- ℹ **NOTE**: If you intend to draw a non-rounded rectangle, then it's more efficient to use surface.DrawRect.  
+--- ℹ **NOTE**: If you do not define a cornerRadius, surface.DrawRect will be used instead for performance.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param cornerRadius number @Radius of the rounded corners, works best with a multiple of 2.
 --- @param x number @The x coordinate of the top left of the rectangle.

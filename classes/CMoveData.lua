@@ -1,6 +1,6 @@
---- @class CMoveData
 --- A class used to store the inputs from CUserCmd and other information related to the current movement simulation, such as velocity, position and so on.  
 --- This can only be accessed during GM:SetupMove , GM:Move , GM:PlayerTick and GM:FinishMove.  
+--- @class CMoveData
 local CMoveData = {}
 --- Adds keys to the move data, as if player pressed them.  
 --- @param keys number @Keys to add, see Enums/IN

@@ -1,7 +1,7 @@
---- @class VMatrix
 --- A 4x4 matrix.  
 --- This page lists all possible functions to manipulate matrices.  
 --- This object can be created by Global.Matrix.  
+--- @class VMatrix
 local VMatrix = {}
 --- Adds given matrix to this matrix.  
 --- @param input VMatrix @The input matrix to add.

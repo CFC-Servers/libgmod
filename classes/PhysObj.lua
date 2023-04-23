@@ -1,6 +1,6 @@
---- @class PhysObj
 --- This is the object returned by Entity:GetPhysicsObject, Entity:GetPhysicsObjectNum and Vehicle:GetWheel.  
 --- It represents a physics object.  
+--- @class PhysObj
 local PhysObj = {}
 --- Adds the specified [angular velocity](https://en.wikipedia.org/wiki/Angular_velocity) velocity to the current PhysObj.  
 --- @param angularVelocity Vector @The additional velocity in `degrees/s`

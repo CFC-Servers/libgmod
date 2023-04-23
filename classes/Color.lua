@@ -1,4 +1,3 @@
---- @class Color
 --- List of all possible functions to manipulate colors.  
 --- Colors are implemented in Lua thus Global.type(color) == "table" and Global.TypeID(color) == TYPE_TABLE.  
 --- For type checking use Global.IsColor.  
@@ -7,6 +6,7 @@
 --- @field g number @The green component of the color.
 --- @field b number @The blue component of the color.
 --- @field a number @The alpha component of the color.
+--- @class Color
 local Color = {}
 --- Sets the red, green, blue, and alpha of the color.  
 --- @param r number @The red component

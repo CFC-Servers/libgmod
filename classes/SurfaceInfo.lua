@@ -1,7 +1,7 @@
---- @class SurfaceInfo
 --- A brush surface object returned by Entity:GetBrushSurfaces.  
 --- Brush surfaces are a part of what makes up the map geometry aside from displacements. Any primitive brush model, including most breakable windows, can be represented by this object.  
 --- ℹ **NOTE**: This object internally uses the SurfaceHandle_t class, which is an alias for msurface2_t*.  
+--- @class SurfaceInfo
 local SurfaceInfo = {}
 --- Returns the brush surface's material.  
 --- @return IMaterial @Material of one portion of a brush model.

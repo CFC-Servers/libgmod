@@ -1,7 +1,7 @@
---- @class NextBot
 --- NextBots are a new system to create NPCs in the Source Engine, utilizing the more powerful navmesh system for navigation over the old node based system.  
 --- This page lists all possible functions usable with NextBots.  
 --- See NextBot NPC Creation for more information on how to create NextBot NPCs.  
+--- @class NextBot
 local NextBot = {}
 --- Become a ragdoll and remove the entity.  
 --- @param info CTakeDamageInfo @Damage info passed from an onkilled event

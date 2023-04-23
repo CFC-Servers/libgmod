@@ -58,6 +58,7 @@ end
 --- Returns the value positioned after the supplied value in a table. If it isn't found then the first element in the table is returned  
 --- @param tbl table @Table to search
 --- @param value any @Value to return element after
+--- @deprecated
 --- @return any @Found element
 function table.FindNext(tbl, value)
 end
@@ -66,6 +67,7 @@ end
 --- Returns the value positioned before the supplied value in a table. If it isn't found then the last element in the table is returned  
 --- @param tbl table @Table to search
 --- @param value any @Value to return element before
+--- @deprecated
 --- @return any @Found element
 function table.FindPrev(tbl, value)
 end
@@ -81,6 +83,7 @@ end
 --- Non-numerically indexed tables are not ordered and do not have a first key.  
 --- Returns the first key found in the given table  
 --- @param tab table @Table to retrieve key from
+--- @deprecated
 --- @return any @Key
 function table.GetFirstKey(tab)
 end
@@ -89,6 +92,7 @@ end
 --- Non-numerically indexed tables are not ordered and do not have a first key.  
 --- Returns the first value found in the given table  
 --- @param tab table @Table to retrieve value from
+--- @deprecated
 --- @return any @Value
 function table.GetFirstValue(tab)
 end
@@ -102,6 +106,7 @@ end
 --- 🛑 **DEPRECATED**: Instead, use the result of the length (#) operator, ensuring it is not zero. Non-numerically indexed tables are not ordered and do not have a last key.  
 --- Returns the last key found in the given table  
 --- @param tab table @Table to retrieve key from
+--- @deprecated
 --- @return any @Key
 function table.GetLastKey(tab)
 end
@@ -109,6 +114,7 @@ end
 --- 🛑 **DEPRECATED**: Instead, index the table with the result of the length (#) operator, ensuring it is not zero. Non-numerically indexed tables are not ordered and do not have a last key.  
 --- Returns the last value found in the given table  
 --- @param tab table @Table to retrieve value from
+--- @deprecated
 --- @return any @Value
 function table.GetLastValue(tab)
 end
@@ -270,6 +276,7 @@ end
 --- This is inherited from the original Lua implementation and is deprecated in Lua as of 5.1; see [here](http://lua-users.org/wiki/TableLibraryTutorial). You should use Global.pairs instead. The GLua interpretation of this is table.ForEach.  
 --- @param tbl table @The table to iterate over.
 --- @param callback function @The function to run for each key and value.
+--- @deprecated
 function table.foreach(tbl, callback)
 end
 
@@ -278,12 +285,14 @@ end
 --- This is inherited from the original Lua implementation and is deprecated in Lua as of 5.1; see [here](http://lua-users.org/wiki/TableLibraryTutorial). You should use Global.ipairs() instead.  
 --- @param table table @The table to iterate over.
 --- @param func function @The function to run for each index.
+--- @deprecated
 function table.foreachi(table, func)
 end
 
 --- 🛑 **DEPRECATED**: This function was deprecated in Lua 5.1 and is removed in 5.2. Use the length (#) operator instead.  
 ---  Returns the length of the table.  
 --- @param tbl table @The table to check.
+--- @deprecated
 --- @return number @Sequential length.
 function table.getn(tbl)
 end

@@ -39,6 +39,7 @@ end
 --- 🛑 **DEPRECATED**: Inferior version of util.AddNetworkString  
 --- The string specified will be networked to the client and receive a identifying number, which will be sent instead of the string to optimize networking.  
 --- @param string string @The string to be pooled.
+--- @deprecated
 function umsg.PoolString(string)
 end
 
@@ -52,6 +53,7 @@ end
 --- ⚠ **WARNING**: Usermessages have a limit of only 256 bytes!  
 --- @param name string @The name of the message to be sent.
 --- @param filter Player @If passed a player object, it will only be sent to the player, if passed a CRecipientFilter of players, it will be sent to all specified pla
+--- @deprecated
 function umsg.Start(name, filter)
 end
 

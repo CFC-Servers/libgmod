@@ -1,6 +1,6 @@
---- @class ISave
 --- The object used in the saverestore, mainly in saverestore.AddSaveHook.  
 --- It allows you to write blocks directly into the save game files used by Half-Life 2 save system when such save is being saved.  
+--- @class ISave
 local ISave = {}
 --- Ends current data block started with ISave:StartBlock and returns to the parent block.  
 --- To avoid all sorts of errors, you **must** end all blocks you start.  

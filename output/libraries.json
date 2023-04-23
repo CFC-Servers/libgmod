@@ -5020,7 +5020,7 @@
           "client",
           "menu"
         ],
-        "description": "Draws a rounded rectangle.\n<note>If you intend to draw a non-rounded rectangle, then it's more efficient to use <page>surface.DrawRect</page>.</note>\n\n<rendercontext hook=\"false\" type=\"2D\"></rendercontext>",
+        "description": "Draws a rounded rectangle.\n<note>If you do not define a cornerRadius, <page>surface.DrawRect</page> will be used instead for performance.</note>\n\n<rendercontext hook=\"false\" type=\"2D\"></rendercontext>",
         "arguments": [
           {
             "name": "cornerRadius",

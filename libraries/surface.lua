@@ -16,6 +16,7 @@ end
 --- Enables or disables the clipping used by the VGUI that limits the drawing operations to a panels bounds.  
 --- Identical to Global.DisableClipping. See also Panel:NoClipping.  
 --- @param disable boolean @True to disable, false to enable the clipping
+--- @deprecated
 function surface.DisableClipping(disable)
 end
 
@@ -190,12 +191,14 @@ end
 
 --- 🛑 **DEPRECATED**: You should use Global.ScrH instead.  
 --- Returns the height of the current client's screen.  
+--- @deprecated
 --- @return number @screenHeight
 function surface.ScreenHeight()
 end
 
 --- 🛑 **DEPRECATED**: You should use Global.ScrW instead.  
 --- Returns the width of the current client's screen.  
+--- @deprecated
 --- @return number @screenWidth
 function surface.ScreenWidth()
 end

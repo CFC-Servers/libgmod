@@ -1,5 +1,5 @@
---- @class CNewParticleEffect
 --- This object represents a .pcf ( Orange Box ) particle system. Created by Entity:CreateParticleEffect and Global.CreateParticleSystem.  
+--- @class CNewParticleEffect
 local CNewParticleEffect = {}
 --- Adds a control point to the particle system.  
 --- ℹ **NOTE**: This function will not work if the CNewParticleEffect:GetOwner entity is not valid  
