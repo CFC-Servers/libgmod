@@ -5301,6 +5301,7 @@
       {
         "name": "descending",
         "type": "boolean",
+        "default": "nil",
         "description": "Whether the iterator should iterate descending or not"
       }
     ],

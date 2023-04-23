@@ -1245,7 +1245,7 @@ end
 
 --- Returns an iterator function that can be used to loop through a table in random order  
 --- @param table table @Table to create iterator for
---- @param descending boolean @Whether the iterator should iterate descending or not
+--- @param descending? boolean @Whether the iterator should iterate descending or not
 --- @return function @Iterator function
 function _G.RandomPairs(table, descending)
 end
