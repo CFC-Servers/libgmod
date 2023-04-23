@@ -2524,27 +2524,27 @@
           "client",
           "server"
         ],
-        "description": "Called when an NWVar is changed.\n\n<note>Currently this hook only works for the NW2Var system (accessed by adding a 2 in between NW and Var for most NWVar functions), which will replace the original one at some point in the future</note>\n<note>This hook is fired before the client value is actually changed. Calling the GetNW function for the specified variable name within this hook will return the old value, not the current/updated one.</note>",
+        "description": "Called when an NW2Var is changed.\n\n<note>This hook is fired before the client value is actually changed. Calling the GetNW2 function for the specified variable name within this hook will return the old value, not the current/updated one.</note>",
         "arguments": [
           {
             "name": "ent",
             "type": "Entity",
-            "description": "The owner entity of changed NWVar"
+            "description": "The owner entity of changed NW2Var"
           },
           {
             "name": "name",
             "type": "string",
-            "description": "The name if changed NWVar"
+            "description": "The name if changed NW2Var"
           },
           {
             "name": "oldval",
             "type": "any",
-            "description": "The old value of the NWVar"
+            "description": "The old value of the NW2Var"
           },
           {
             "name": "newval",
             "type": "any",
-            "description": "The new value of the NWVar"
+            "description": "The new value of the NW2Var"
           }
         ]
       },
@@ -5169,7 +5169,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called to determine a spawn point for a player to spawn at.",
+        "description": "Called to determine a spawn point for a player to spawn at.\n<note>The spawn point entity will also impact the player's eye angle. For example, if the entity is upside down, the player's view will be as well.</note>",
         "arguments": [
           {
             "name": "ply",
@@ -5185,7 +5185,7 @@
         "returnValues": [
           {
             "type": "Entity",
-            "description": "The spawnpoint entity to spawn the player at"
+            "description": "The spawn point entity to spawn the player at"
           }
         ]
       },
@@ -5833,7 +5833,7 @@
         "realms": [
           "client"
         ],
-        "description": "Called after the player was drawn.\n\n<rendercontext hook=\"true\" type=\"3D\"></rendercontext>",
+        "description": "Called after a player in your [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS \"PVS - Valve Developer Community\") was drawn.\n<rendercontext hook=\"true\" type=\"3D\"></rendercontext>",
         "arguments": [
           {
             "name": "ply",

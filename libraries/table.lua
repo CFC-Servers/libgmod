@@ -140,7 +140,7 @@ end
 
 --- Returns whether or not the given table is empty.  
 --- This works on both sequential and non-sequential tables, and is a lot faster to use than `table.Count(tbl) == 0`.  
---- For checking if a table is not empty, try using `next(tbl) ~= nil`.  
+--- If you want to check if a table is not empty, use `next(tbl) ~= nil`, as it is slightly faster.  
 --- @param tab table @Table to check.
 --- @return boolean @Is empty?
 function table.IsEmpty(tab)

@@ -23,15 +23,21 @@ end
 function vgui.CursorVisible()
 end
 
+--- Returns true if Lua-defined panel exists by name. Uses vgui.GetControlTable internally.  
+--- @param Panelname string @The name of the panel to get test.
+--- @return boolean @Whether a panel with given name was registered yet or not.
+function vgui.Exists(Panelname)
+end
+
 --- Returns whether the currently focused panel is a child of the given one.  
 --- @param parent Panel @The parent panel to check the currently focused one against
 --- @return boolean @Whether or not the focused panel is a child of the passed one.
 function vgui.FocusedHasParent(parent)
 end
 
---- Gets the method table of this panel. Does not return parent methods!  
---- @param Panelname string @The name of the panel
---- @return table @methods
+--- Returns the table of a Lua-defined panel by name. Does not return parent members of the table!  
+--- @param Panelname string @The name of the panel to get the table of.
+--- @return table @The `PANEL` table of the a Lua-defined panel with given name.
 function vgui.GetControlTable(Panelname)
 end
 

@@ -530,6 +530,12 @@ end
 function Panel:GetTooltip()
 end
 
+--- Returns the tooltip delay (time between hovering over the panel, and the tooltip showing up) that was set with Panel:SetTooltipDelay, or nothing if it was not set.  
+--- If the delay is not explicitly set by this function, it will fallback to the value of the `tooltip_delay` ConVar, which is `0.5` by default.  
+--- @return number @The tooltip delay in seconds, if it was set.
+function Panel:GetTooltipDelay()
+end
+
 --- Returns the tooltip panel that was set with PANEL:SetTooltipPanel.  
 --- @return Panel @The tooltip panel, if it was set.
 function Panel:GetTooltipPanel()
@@ -1390,6 +1396,12 @@ end
 --- Sets the tooltip to be displayed when a player hovers over the panel object with their cursor.  
 --- @param str string @The text to be displayed in the tooltip
 function Panel:SetTooltip(str)
+end
+
+--- Sets the tooltip delay. (time between hovering over the panel, and the tooltip showing up)  
+--- Can be retrieved with Panel:GetTooltipDelay.  
+--- @param tooltip number @The tooltip delay to set.
+function Panel:SetTooltipDelay(tooltip)
 end
 
 --- Sets the panel to be displayed as contents of a DTooltip when a player hovers over the panel object with their cursor. See Panel:SetTooltipPanelOverride if you are looking to override DTooltip itself.  
