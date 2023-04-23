@@ -1,6 +1,6 @@
---- @class IMaterial
 --- A Material object. It represents a game material, similarly to how a .vmt file does.  
 --- It can be created with Global.Material or Global.CreateMaterial.  
+--- @class IMaterial
 local IMaterial = {}
 --- Returns the color of the specified pixel of the $basetexture, only works for materials created from PNG files.  
 --- Basically identical to ITexture:GetColor used on IMaterial:GetTexture( "$basetexture" ).  
@@ -119,6 +119,7 @@ end
 --- 🛑 **DEPRECATED**: This function does nothing  
 --- The functionality of this function was removed due to the amount of crashes it caused.  
 --- @param shaderName string @Name of the shader
+--- @deprecated
 function IMaterial:SetShader(shaderName)
 end
 

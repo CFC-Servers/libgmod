@@ -1,5 +1,5 @@
---- @class CNavLadder
 --- An object that represents a ladder for Nextbots.  
+--- @class CNavLadder
 local CNavLadder = {}
 --- Connects this ladder to a CNavArea with a one way connection. ( From this ladder to the target area ).  
 --- See CNavArea:ConnectTo for making the connection from area to ladder.  

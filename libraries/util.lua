@@ -576,6 +576,7 @@ end
 --- Traces from one entity to another.  
 --- @param ent1 Entity @The first entity to trace from
 --- @param ent2 Entity @The second entity to trace to
+--- @deprecated
 --- @return table @Trace result
 function util.TraceEntityHull(ent1, ent2)
 end
@@ -605,6 +606,7 @@ end
 --- 🛑 **DEPRECATED**: You should use Global.tobool instead.  
 --- Converts string or a number to a bool, if possible. Alias of Global.tobool.  
 --- @param input any @A string or a number to convert.
+--- @deprecated
 --- @return boolean @False if the input is equal to the string or boolean "false", if the input is equal to the string or number "0", or if the input is nil
 function util.tobool(input)
 end

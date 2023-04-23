@@ -1,5 +1,5 @@
---- @class ITexture
 --- An object representing game texture, like a .vtf file. Do not confuse with IMaterial. Returned by IMaterial:GetTexture  
+--- @class ITexture
 local ITexture = {}
 --- Invokes the generator of the texture. Reloads file based textures from disk and clears render target textures.  
 function ITexture:Download()

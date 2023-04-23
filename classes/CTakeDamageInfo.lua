@@ -1,4 +1,3 @@
---- @class CTakeDamageInfo
 --- A class used to store and modify all the data concerning a damage event.  
 --- An empty CTakeDamageInfo object can be created with Global.DamageInfo  
 --- List of hooks that this object is passed to:  
@@ -17,6 +16,7 @@
 --- * Entity:TakeDamageInfo  
 --- * Entity:TakePhysicsDamage  
 --- * Entity:DispatchTraceAttack  
+--- @class CTakeDamageInfo
 local CTakeDamageInfo = {}
 --- Increases the damage by damageIncrease.  
 --- @param damageIncrease number @The damage to add.

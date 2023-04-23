@@ -1,4 +1,3 @@
---- @class Panel
 --- This is the base panel for every other VGUI panel.  
 --- It contains all of the basic methods, some of which may only work on certain VGUI elements. As their functionality is provided at the game's C/C++ level rather than by its Lua script extension, they are unfortunately unavailable for most practical purposes, however, they can still be obtained in a way similar to that provided by the baseclass library:  
 --- ```  
@@ -28,6 +27,7 @@
 --- end  
 --- vgui.Register( "NewPanel", PANEL, "DLabel" )  
 --- ```  
+--- @class Panel
 local Panel = {}
 --- Adds the specified object to the panel.  
 --- @param object Panel @The panel to be added (parented)
@@ -37,6 +37,7 @@ end
 
 --- 🛑 **DEPRECATED**: Does nothing  
 --- This function does nothing.  
+--- @deprecated
 function Panel:AddText()
 end
 
@@ -64,7 +65,7 @@ end
 --- @param alpha number @The alpha value (0-255) to approach.
 --- @param duration number @The time in seconds it should take to reach the alpha.
 --- @param delay? number @The delay before the animation starts.
---- @param callback function @The function to be called once the animation finishes
+--- @param callback? function @The function to be called once the animation finishes
 function Panel:AlphaTo(alpha, duration, delay, callback)
 end
 
@@ -951,6 +952,7 @@ end
 --- Only works for TextEntries.  
 --- Pastes the contents of the clipboard into the TextEntry.  
 --- ℹ **NOTE**: Tab characters will be dropped from the pasted text  
+--- @deprecated
 function Panel:Paste()
 end
 
@@ -969,6 +971,7 @@ end
 --- @param messageName string @The name of the message.
 --- @param valueType string @The type of the variable to post.
 --- @param value string @The value to post.
+--- @deprecated
 function Panel:PostMessage(messageName, valueType, value)
 end
 
@@ -1052,6 +1055,7 @@ end
 
 --- 🛑 **DEPRECATED**: Duplicate of Panel:SelectAll.  
 --- Selects all the text in a panel object. Will not select non-text items; for this, use Panel:SelectAll.  
+--- @deprecated
 function Panel:SelectAllText()
 end
 
@@ -1067,6 +1071,7 @@ end
 --- 🛑 **DEPRECATED**: Does nothing at all.  
 --- Used in Button to call a function when the button is clicked and in Slider when the value changes.  
 --- @param func function @Function to call when the Button is clicked or the Slider value is changed
+--- @deprecated
 function Panel:SetActionFunction(func)
 end
 
@@ -1221,6 +1226,7 @@ end
 --- 🛑 **DEPRECATED**: Alias of Panel:SetKeyboardInputEnabled  
 --- Enables or disables the keyboard input for the panel.  
 --- @param keyboardInput boolean @Whether to enable or disable keyboard input.
+--- @deprecated
 function Panel:SetKeyBoardInputEnabled(keyboardInput)
 end
 
@@ -1274,6 +1280,7 @@ end
 
 --- 🛑 **DEPRECATED**: This function does nothing.  
 --- This function does nothing.  
+--- @deprecated
 function Panel:SetPaintFunction()
 end
 
@@ -1589,6 +1596,7 @@ end
 
 --- 🛑 **DEPRECATED**: Use Panel:IsValid instead.  
 --- Returns if a given panel is valid or not.  
+--- @deprecated
 --- @return boolean @Whether the panel is valid or not, true being it is, false being it isn't.
 function Panel:Valid()
 end

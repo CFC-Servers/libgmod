@@ -1,5 +1,5 @@
---- @class CNavArea
 --- An object returned by navmesh functions.  
+--- @class CNavArea
 local CNavArea = {}
 --- Adds a hiding spot onto this nav area.  
 --- There's a limit of 255 hiding spots per area.  

@@ -1,5 +1,5 @@
---- @class CRecipientFilter
 --- List of all possible functions to manipulate Recipient Filters. Can be created with Global.RecipientFilter.  
+--- @class CRecipientFilter
 local CRecipientFilter = {}
 --- Adds all players to the recipient filter.  
 function CRecipientFilter:AddAllPlayers()

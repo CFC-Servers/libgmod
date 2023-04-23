@@ -1,6 +1,6 @@
---- @class Tool
 --- A list of functions available inside a Sandbox Toolgun tool.  
 --- You can find the hooks  and members here.  
+--- @class Tool
 local Tool = {}
 --- Returns whether the tool is allowed to be used or not. This function ignores the SANDBOX:CanTool hook.  
 --- By default this will always return true clientside and uses `TOOL.AllowedCVar`which is a ConVar object pointing to  `toolmode_allow_*toolname*` convar on the server.  
@@ -122,7 +122,7 @@ function Tool:NumObjects()
 end
 
 --- Automatically forces the tool's control panel to be rebuilt.  
---- @vararg any @Any arguments given to this function will be added to TOOL.BuildCPanel's arguments.
+--- @param ... any ... @Any arguments given to this function will be added to TOOL.BuildCPanel's arguments.
 function Tool:RebuildControlPanel(...)
 end
 

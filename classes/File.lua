@@ -1,7 +1,7 @@
---- @class File
 --- This is the file object. It used used primarily to read or write binary data from files.  
 --- The default endianness is little-endian. To use big-endian you will need to provide your own functions to read and write shorts and longs.  
 --- The object is returned by file.Open.  
+--- @class File
 local File = {}
 --- Dumps the file changes to disk and closes the file handle which makes the handle useless.  
 function File:Close()

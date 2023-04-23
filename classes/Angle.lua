@@ -1,4 +1,3 @@
---- @class Angle
 --- List of all possible functions to manipulate angles.  
 --- Created by Global.Angle.  
 --- @field p number @The pitch component of the angle.
@@ -9,6 +8,7 @@
 --- @field r number @The roll  component of the angle.
 --- @field roll number @The roll  component of the angle.
 --- @field z number @The roll  component of the angle.
+--- @class Angle
 local Angle = {}
 --- Adds the values of the argument angle to the orignal angle.  
 --- This functions the same as angle1 + angle2 without creating a new angle object, skipping object construction and garbage collection.  

@@ -77,6 +77,7 @@ end
 --- @param y1 number @Y position of first point
 --- @param x2 number @X position of second point
 --- @param y2 number @Y position of second point
+--- @deprecated
 --- @return number @Distance between the two points.
 function math.Dist(x1, y1, x2, y2)
 end
@@ -469,13 +470,13 @@ function math.log10(x)
 end
 
 --- Returns the largest value of all arguments.  
---- @vararg any @Numbers to get the largest from
+--- @param ... any ... @Numbers to get the largest from
 --- @return number @The largest number
 function math.max(...)
 end
 
 --- Returns the smallest value of all arguments.  
---- @vararg any @Numbers to get the smallest from.
+--- @param ... any ... @Numbers to get the smallest from.
 --- @return number @The smallest number
 function math.min(...)
 end
@@ -484,6 +485,7 @@ end
 --- Returns the modulus of the specified values. Same as math.fmod.  
 --- @param base number @The base value
 --- @param modulator number @Modulator
+--- @deprecated
 --- @return number @The calculated modulus
 function math.mod(base, modulator)
 end

@@ -62,6 +62,7 @@ end
 ---  Returns char value from the specified index in the supplied string.  
 --- @param str string @The string that you will be searching with the supplied index.
 --- @param index number @The index's value of the string to be returned.
+--- @deprecated
 --- @return string @str
 function string.GetChar(str, index)
 end
@@ -89,6 +90,7 @@ end
 --- This is the reverse of string.Explode and is functionally identical to table.concat, but with less features.  
 --- @param separator string @The separator to insert between each piece.
 --- @param pieces table @The table of pieces to concatenate
+--- @deprecated
 --- @return string @Imploded pieces
 function string.Implode(separator, pieces)
 end
@@ -166,6 +168,7 @@ end
 --- Returns whether or not the first string starts with the second. This is a alias of string.StartsWith.  
 --- @param inputStr string @String to check.
 --- @param start string @String to check with.
+--- @deprecated
 --- @return boolean @Whether the first string starts with the second.
 function string.StartWith(inputStr, start)
 end
@@ -234,12 +237,12 @@ end
 --- @param string string @The string to get the chars from.
 --- @param startPos? number @The first character of the string to get the byte of.
 --- @param endPos? number @The last character of the string to get the byte of.
---- @return any @Numerical bytes
+--- @return any ... @Numerical bytes
 function string.byte(string, startPos, endPos)
 end
 
 --- Takes the given numerical bytes and converts them to a string.  
---- @vararg any @The bytes to create the string from.
+--- @param ... any ... @The bytes to create the string from.
 --- @return string @String built from given bytes
 function string.char(...)
 end
@@ -266,7 +269,7 @@ end
 
 --- Formats the specified values into the string given.  
 --- @param format string @The string to be formatted.<br>
---- @vararg any @Values to be formatted into the string.
+--- @param ... any ... @Values to be formatted into the string.
 --- @return string @The formatted string
 function string.format(format, ...)
 end
@@ -275,6 +278,7 @@ end
 --- Returns an iterator function that is called for every complete match of the pattern, all sub matches will be passed as to the loop.  
 --- @param data string @The string to search in
 --- @param pattern string @The pattern to search for
+--- @deprecated
 --- @return function @The iterator function that can be used in a for-in loop
 function string.gfind(data, pattern)
 end
@@ -313,7 +317,7 @@ end
 --- @param string string @String which should be searched in for matches.
 --- @param pattern string @The pattern that defines what should be matched.
 --- @param startPosition? number @The start index to start the matching from, can be negative to start the match from a position relative to the end.
---- @return any @Matched text(s)
+--- @return any ... @Matched text(s)
 function string.match(string, pattern, startPosition)
 end
 

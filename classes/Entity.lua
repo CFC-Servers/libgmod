@@ -1,6 +1,6 @@
---- @class Entity
 --- This is a list of all available methods for all entities, which includes Players, Weapons, NPCs and Vehicles.  
 --- For a list of possible members of Scripted Entities see ENT Structure  
+--- @class Entity
 local Entity = {}
 --- Activates the entity. This needs to be used on some entities (like constraints) after being spawned.  
 --- ℹ **NOTE**: For some entity types when this function is used after Entity:SetModelScale, the physics object will be recreated with the new scale. [Source-sdk-2013](https://github.com/ValveSoftware/source-sdk-2013/blob/55ed12f8d1eb6887d348be03aee5573d44177ffb/mp/src/game/server/baseanimating.cpp#L321-L327).  
@@ -136,7 +136,7 @@ end
 --- 🦟 **BUG**: [Using players with this function will provide a gimped entity to the callback.](https://github.com/Facepunch/garrysmod/pull/1275)  
 --- @param identifier string @Identifier of the function within CallOnRemove
 --- @param removeFunc function @Function to be called on remove
---- @vararg any @Optional arguments to pass to removeFunc
+--- @param ... any ... @Optional arguments to pass to removeFunc
 function Entity:CallOnRemove(identifier, removeFunc, ...)
 end
 
@@ -734,6 +734,7 @@ end
 
 --- 🛑 **DEPRECATED**: You should use Entity:GetHitboxSetCount instead.  
 --- Returns the number of hit box sets that an entity has. Functionally identical to Entity:GetHitboxSetCount  
+--- @deprecated
 --- @return number @number of hit box sets
 function Entity:GetHitBoxGroupCount()
 end
@@ -1110,6 +1111,7 @@ end
 --- 🛑 **DEPRECATED**: You should be using Entity:GetNW2Angle instead.  
 --- @param key string @The key that is associated with the value
 --- @param fallback? any @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return any @The value associated with the key
 function Entity:GetNetworked2Angle(key, fallback)
 end
@@ -1118,6 +1120,7 @@ end
 --- 🛑 **DEPRECATED**: You should be using Entity:GetNW2Bool instead.  
 --- @param key string @The key that is associated with the value
 --- @param fallback? any @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return any @The value associated with the key
 function Entity:GetNetworked2Bool(key, fallback)
 end
@@ -1126,6 +1129,7 @@ end
 --- 🛑 **DEPRECATED**: You should be using Entity:GetNW2Entity instead.  
 --- @param key string @The key that is associated with the value
 --- @param fallback? any @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return any @The value associated with the key
 function Entity:GetNetworked2Entity(key, fallback)
 end
@@ -1134,6 +1138,7 @@ end
 --- 🛑 **DEPRECATED**: You should be using Entity:GetNW2Float instead.  
 --- @param key string @The key that is associated with the value
 --- @param fallback? any @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return any @The value associated with the key
 function Entity:GetNetworked2Float(key, fallback)
 end
@@ -1143,6 +1148,7 @@ end
 --- ⚠ **WARNING**: The integer has a 32 bit limit. Use Entity:SetNWInt and Entity:GetNWInt instead  
 --- @param key string @The key that is associated with the value
 --- @param fallback? any @The value to return if we failed to retrieve the value (If it isn't set).
+--- @deprecated
 --- @return any @The value associated with the key
 function Entity:GetNetworked2Int(key, fallback)
 end
@@ -1151,6 +1157,7 @@ end
 --- 🛑 **DEPRECATED**: You should be using Entity:GetNW2String instead.  
 --- @param key string @The key that is associated with the value
 --- @param fallback any @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return any @The value associated with the key
 function Entity:GetNetworked2String(key, fallback)
 end
@@ -1159,6 +1166,7 @@ end
 --- 🛑 **DEPRECATED**: You should be using Entity:GetNW2Var instead.  
 --- @param key string @The key that is associated with the value
 --- @param fallback? any @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return any @The value associated with the key
 function Entity:GetNetworked2Var(key, fallback)
 end
@@ -1171,6 +1179,7 @@ end
 
 --- Returns all the networked2 variables in an entity.  
 --- 🛑 **DEPRECATED**: You should be using Entity:GetNW2VarTable instead.  
+--- @deprecated
 --- @return table @Key-Value table of all networked2 variables.
 function Entity:GetNetworked2VarTable()
 end
@@ -1179,6 +1188,7 @@ end
 --- 🛑 **DEPRECATED**: You should be using Entity:GetNW2Vector instead.  
 --- @param key string @The key that is associated with the value
 --- @param fallback? any @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return any @The value associated with the key
 function Entity:GetNetworked2Vector(key, fallback)
 end
@@ -1187,6 +1197,7 @@ end
 --- Retrieves a networked angle value at specified index on the entity that is set by Entity:SetNetworkedAngle.  
 --- @param key string @The key that is associated with the value
 --- @param fallback? Angle @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return Angle @The retrieved value
 function Entity:GetNetworkedAngle(key, fallback)
 end
@@ -1195,6 +1206,7 @@ end
 --- Retrieves a networked boolean value at specified index on the entity that is set by Entity:SetNetworkedBool.  
 --- @param key string @The key that is associated with the value
 --- @param fallback? boolean @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return boolean @The retrieved value
 function Entity:GetNetworkedBool(key, fallback)
 end
@@ -1203,6 +1215,7 @@ end
 --- Retrieves a networked float value at specified index on the entity that is set by Entity:SetNetworkedEntity.  
 --- @param key string @The key that is associated with the value
 --- @param fallback? Entity @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return Entity @The retrieved value
 function Entity:GetNetworkedEntity(key, fallback)
 end
@@ -1212,6 +1225,7 @@ end
 --- Seems to be the same as Entity:GetNetworkedInt.  
 --- @param key string @The key that is associated with the value
 --- @param fallback? number @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return number @The retrieved value
 function Entity:GetNetworkedFloat(key, fallback)
 end
@@ -1220,6 +1234,7 @@ end
 --- Retrieves a networked integer value at specified index on the entity that is set by Entity:SetNetworkedInt.  
 --- @param key string @The key that is associated with the value
 --- @param fallback? number @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return number @The retrieved value
 function Entity:GetNetworkedInt(key, fallback)
 end
@@ -1228,6 +1243,7 @@ end
 --- Retrieves a networked string value at specified index on the entity that is set by Entity:SetNetworkedString.  
 --- @param key string @The key that is associated with the value
 --- @param fallback string @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return string @The retrieved value
 function Entity:GetNetworkedString(key, fallback)
 end
@@ -1236,6 +1252,7 @@ end
 --- 🛑 **DEPRECATED**:   
 --- @param key string @The key that is associated with the value
 --- @param fallback? any @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return any @The value associated with the key
 function Entity:GetNetworkedVar(key, fallback)
 end
@@ -1249,6 +1266,7 @@ end
 
 --- 🛑 **DEPRECATED**: You should be using Entity:GetNWVarTable instead.  
 --- Returns all the networked variables in an entity.  
+--- @deprecated
 --- @return table @Key-Value table of all networked variables.
 function Entity:GetNetworkedVarTable()
 end
@@ -1257,6 +1275,7 @@ end
 --- Retrieves a networked vector value at specified index on the entity that is set by Entity:SetNetworkedVector.  
 --- @param key string @The key that is associated with the value
 --- @param fallback? Vector @The value to return if we failed to retrieve the value
+--- @deprecated
 --- @return Vector @The retrieved value
 function Entity:GetNetworkedVector(key, fallback)
 end
@@ -1644,6 +1663,7 @@ end
 --- 🛑 **DEPRECATED**:   
 --- Returns ID of workshop addon that the entity is from.  
 --- ⚠ **WARNING**: The function **currently** does nothing and always returns nil  
+--- @deprecated
 --- @return number @The workshop ID
 function Entity:GetWorkshopID()
 end
@@ -1720,6 +1740,7 @@ end
 --- Initializes this entity as being clientside only.  
 --- Only works on entities fully created clientside, and as such it has currently no use due this being automatically called by ents.CreateClientProp, ents.CreateClientside, Global.ClientsideModel and Global.ClientsideScene.  
 --- 🦟 **BUG**: [Calling this on a clientside entity will crash the game.](https://github.com/Facepunch/garrysmod-issues/issues/3368)  
+--- @deprecated
 function Entity:InitializeAsClientEntity()
 end
 
@@ -2370,6 +2391,7 @@ end
 --- Despite existing on client, it doesn't actually do anything on client.  
 --- @param ent Entity @The entity to attach/parent to
 --- @param attachment number @The attachment ID to parent to
+--- @deprecated
 function Entity:SetAttachment(ent, attachment)
 end
 
@@ -2910,6 +2932,7 @@ end
 --- the value will only be networked once and not every 10 seconds.  
 --- @param key string @The key to associate the value with
 --- @param value Angle @The value to set
+--- @deprecated
 function Entity:SetNetworked2Angle(key, value)
 end
 
@@ -2922,6 +2945,7 @@ end
 --- the value will only be networked once and not every 10 seconds.  
 --- @param key string @The key to associate the value with
 --- @param value boolean @The value to set
+--- @deprecated
 function Entity:SetNetworked2Bool(key, value)
 end
 
@@ -2934,6 +2958,7 @@ end
 --- the value will only be networked once and not every 10 seconds.  
 --- @param key string @The key to associate the value with
 --- @param value Entity @The value to set
+--- @deprecated
 function Entity:SetNetworked2Entity(key, value)
 end
 
@@ -2960,6 +2985,7 @@ end
 --- the value will only be networked once and not every 10 seconds.  
 --- @param key string @The key to associate the value with
 --- @param value number @The value to set
+--- @deprecated
 function Entity:SetNetworked2Int(key, value)
 end
 
@@ -2972,6 +2998,7 @@ end
 --- the value will only be networked once and not every 10 seconds.  
 --- @param key string @The key to associate the value with
 --- @param value string @The value to set, up to 511 characters.
+--- @deprecated
 function Entity:SetNetworked2String(key, value)
 end
 
@@ -2993,6 +3020,7 @@ end
 --- the value will only ne networked once and not every 10 seconds.  
 --- @param key string @The key to associate the value with
 --- @param value any @The value to set
+--- @deprecated
 function Entity:SetNetworked2Var(key, value)
 end
 
@@ -3013,6 +3041,7 @@ end
 --- the value will only be networked once and not every 10 seconds.  
 --- @param key string @The key to associate the value with
 --- @param value Vector @The value to set
+--- @deprecated
 function Entity:SetNetworked2Vector(key, value)
 end
 
@@ -3022,6 +3051,7 @@ end
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value? Angle @The value to set
+--- @deprecated
 function Entity:SetNetworkedAngle(key, value)
 end
 
@@ -3031,6 +3061,7 @@ end
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value? boolean @The value to set
+--- @deprecated
 function Entity:SetNetworkedBool(key, value)
 end
 
@@ -3040,6 +3071,7 @@ end
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value? Entity @The value to set
+--- @deprecated
 function Entity:SetNetworkedEntity(key, value)
 end
 
@@ -3050,6 +3082,7 @@ end
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value? number @The value to set
+--- @deprecated
 function Entity:SetNetworkedFloat(key, value)
 end
 
@@ -3059,6 +3092,7 @@ end
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value? number @The value to set
+--- @deprecated
 function Entity:SetNetworkedInt(key, value)
 end
 
@@ -3066,6 +3100,7 @@ end
 --- Sets a networked number at the specified index on the entity.  
 --- @param index any @The index that the value is stored in.
 --- @param number number @The value to network.
+--- @deprecated
 function Entity:SetNetworkedNumber(index, number)
 end
 
@@ -3075,6 +3110,7 @@ end
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value string @The value to set
+--- @deprecated
 function Entity:SetNetworkedString(key, value)
 end
 
@@ -3097,6 +3133,7 @@ end
 --- the value will only be networked once and not every 10 seconds.  
 --- @param key string @The key to associate the value with
 --- @param value any @The value to set
+--- @deprecated
 function Entity:SetNetworkedVar(key, value)
 end
 
@@ -3104,6 +3141,7 @@ end
 --- Sets callback function to be called when given NWVar changes.  
 --- @param name string @The name of the NWVar to add callback for.
 --- @param callback function @The function to be called when the NWVar changes.
+--- @deprecated
 function Entity:SetNetworkedVarProxy(name, callback)
 end
 
@@ -3113,6 +3151,7 @@ end
 --- ℹ **NOTE**: Running this function clientside will only set it clientside for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value? Vector @The value to set
+--- @deprecated
 function Entity:SetNetworkedVector(key, value)
 end
 

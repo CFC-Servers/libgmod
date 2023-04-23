@@ -33,7 +33,7 @@ end
 --- jit.opt.start("hotloop=10", "hotexit=2")  
 --- ```  
 --- A list of LuaJIT -O command line options can be found here(a table of various optimization levels are displayed towards the bottom of the page along with exactly which optimization options are enabled for each level): http://luajit.org/running.html  
---- @vararg any 
+--- @param ... any ... 
 function jit.opt.start(...)
 end
 

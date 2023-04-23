@@ -1,5 +1,5 @@
---- @class Schedule
 --- The object returned by ai_schedule.New.  
+--- @class Schedule
 local Schedule = {}
 --- Adds a task to the schedule. See also Schedule:AddTaskEx if you wish to customize task start and run function names.  
 --- See also ENTITY:StartSchedule, NPC:StartEngineTask, and NPC:RunEngineTask.  

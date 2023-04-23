@@ -1,6 +1,6 @@
---- @class IRestore
 --- The object used in the saverestore, mainly in saverestore.AddRestoreHook.  
 --- It allows you to read blocks directly from the save game files used by Half-Life 2 save system when such save is loaded.  
+--- @class IRestore
 local IRestore = {}
 --- Ends current data block started with IRestore:StartBlock and returns to the parent block.  
 --- To avoid all sorts of errors, you **must** end all blocks you start.  

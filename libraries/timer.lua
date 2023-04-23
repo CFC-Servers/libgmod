@@ -11,6 +11,7 @@ end
 
 --- 🛑 **DEPRECATED**: If you want to check if whether or not a timer exists, use timer.Exists.  
 ---  This function does nothing.  
+--- @deprecated
 function timer.Check()
 end
 
@@ -28,6 +29,7 @@ end
 --- 🛑 **DEPRECATED**: You should be using timer.Remove instead.  
 ---  Stops and destroys the given timer. Alias of timer.Remove.  
 --- @param identifier string @Identifier of the timer to destroy.
+--- @deprecated
 function timer.Destroy(identifier)
 end
 

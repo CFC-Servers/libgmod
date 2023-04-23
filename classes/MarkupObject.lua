@@ -1,5 +1,5 @@
---- @class MarkupObject
 --- Object containing parsed markup for later rendering. Created by markup.Parse.  
+--- @class MarkupObject
 local MarkupObject = {}
 --- Draws the computed markupobject to the screen. See markup.Parse.  
 --- @param xOffset number @The X coordinate on the screen.

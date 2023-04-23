@@ -74,6 +74,7 @@ end
 
 --- 🛑 **DEPRECATED**: Use input.GetCursorPos instead.  
 --- Returns the cursor's position on the screen, or 0, 0 if cursor is not visible.  
+--- @deprecated
 --- @return number @mouseX
 --- @return number @mouseY
 function gui.MousePos()
@@ -108,6 +109,7 @@ end
 --- Sets the cursor's position on the screen, relative to the topleft corner of the window  
 --- @param mouseX number @The X coordinate to move the cursor to.
 --- @param mouseY number @The Y coordinate to move the cursor to.
+--- @deprecated
 function gui.SetMousePos(mouseX, mouseY)
 end
 

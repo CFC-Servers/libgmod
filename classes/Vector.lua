@@ -1,9 +1,9 @@
---- @class Vector
 --- List of all possible functions to manipulate vectors.  
 --- Created by Global.Vector.  
 --- @field x number @The X component of the vector.
 --- @field y number @The Y component of the vector.
 --- @field z number @The Z component of the vector.
+--- @class Vector
 local Vector = {}
 --- Adds the values of the argument vector to the original vector. This function is the same as vector1 + vector2 without creating a new vector object, skipping object construction and garbage collection.  
 --- @param vector Vector @The vector to add.
@@ -64,6 +64,7 @@ end
 --- 🛑 **DEPRECATED**: This is an alias of Vector:Dot. Use that instead.  
 --- Returns the dot product of the two vectors.  
 --- @param Vector Vector @The other vector.
+--- @deprecated
 --- @return number @Dot Product
 function Vector:DotProduct(Vector)
 end
@@ -76,6 +77,7 @@ end
 
 --- 🛑 **DEPRECATED**: Use Vector:GetNormalized instead.  
 --- Returns a normalized version of the vector. This is a alias of Vector:GetNormalized.  
+--- @deprecated
 --- @return Vector @Normalized version of the vector.
 function Vector:GetNormal()
 end

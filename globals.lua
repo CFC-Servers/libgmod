@@ -560,20 +560,20 @@ end
 
 --- Throws an error. This is currently an alias of Global.ErrorNoHalt despite it once throwing a halting error like error without the stack trace appended.  
 --- 🦟 **BUG**: [This function throws a non-halting error instead of a halting error.](https://github.com/Facepunch/garrysmod-issues/issues/2113)  
---- @vararg any @Converts all arguments to strings and prints them with no spacing or line breaks.
+--- @param ... any ... @Converts all arguments to strings and prints them with no spacing or line breaks.
 function _G.Error(...)
 end
 
 --- Throws a Lua error but does not break out of the current call stack.  
 --- This function will not print a stack trace like a normal error would.  
 --- Essentially similar if not equivalent to Global.Msg.  
---- @vararg any @Converts all arguments to strings and prints them with no spacing.
+--- @param ... any ... @Converts all arguments to strings and prints them with no spacing.
 function _G.ErrorNoHalt(...)
 end
 
 --- Throws a Lua error but does not break out of the current call stack.  
 --- This function will print a stack trace like a normal error would.  
---- @vararg any @Converts all arguments to strings and prints them with no spacing.
+--- @param ... any ... @Converts all arguments to strings and prints them with no spacing.
 function _G.ErrorNoHaltWithStack(...)
 end
 
@@ -614,7 +614,7 @@ end
 
 --- Formats the specified values into the string given. Same as string.format.  
 --- @param format string @The string to be formatted
---- @vararg any @Values to be formatted into the string.
+--- @param ... any ... @Values to be formatted into the string.
 --- @return string @The formatted string
 function _G.Format(format, ...)
 end
@@ -656,6 +656,7 @@ end
 --- 🛑 **DEPRECATED**: Store the ConVar object retrieved with Global.GetConVar and call ConVar:GetInt or ConVar:GetFloat on it.  
 --- Gets the numeric value ConVar with the specified name.  
 --- @param name string @Name of the ConVar to get.
+--- @deprecated
 --- @return number @The ConVar's value.
 function _G.GetConVarNumber(name)
 end
@@ -663,6 +664,7 @@ end
 --- 🛑 **DEPRECATED**: Store the ConVar object retrieved with Global.GetConVar and call ConVar:GetString on it.  
 --- Gets the string value ConVar with the specified name.  
 --- @param name string @Name of the ConVar to get.
+--- @deprecated
 --- @return string @The ConVar's value.
 function _G.GetConVarString(name)
 end
@@ -875,6 +877,7 @@ end
 --- This function works exactly the same as Global.include both clientside and serverside.  
 --- The only difference is that on the serverside it also calls Global.AddCSLuaFile on the filename, so that it gets sent to the client.  
 --- @param filename string @The filename of the Lua file you want to include.
+--- @deprecated
 function _G.IncludeCS(filename)
 end
 
@@ -1102,23 +1105,23 @@ end
 --- Unlike Global.print, arguments are not separated by anything. They are simply concatenated.  
 --- Additionally, a newline isn't added automatically to the end, so subsequent Msg or print operations will continue the same line of text in the console. See Global.MsgN for a version that does add a newline.  
 --- The text is blue on the server, orange on the client, and green on the menu:   
---- @vararg any @List of values to print.
+--- @param ... any ... @List of values to print.
 function _G.Msg(...)
 end
 
 --- Works exactly like Global.Msg except that, if called on the server, will print to all players consoles plus the server console.  
---- @vararg any @List of values to print.
+--- @param ... any ... @List of values to print.
 function _G.MsgAll(...)
 end
 
 --- Just like Global.Msg, except it can also print colored text, just like chat.AddText.  
---- @vararg any @Values to print
+--- @param ... any ... @Values to print
 function _G.MsgC(...)
 end
 
 --- Same as Global.print, except it concatinates the arguments without inserting any whitespace in between them.  
 --- See also Global.Msg, which doesn't add a newline (`"\n"`) at the end.  
---- @vararg any @List of values to print
+--- @param ... any ... @List of values to print
 function _G.MsgN(...)
 end
 
@@ -1323,7 +1326,7 @@ end
 --- Executes the given console command with the parameters.  
 --- ℹ **NOTE**: Some commands/convars are blocked from being ran/changed using this function, usually to prevent harm/annoyance to clients. For a list of blocked commands, see Blocked ConCommands.  
 --- @param command string @The command to be executed.
---- @vararg any @The arguments
+--- @param ... any ... @The arguments
 function _G.RunConsoleCommand(command, ...)
 end
 
@@ -1338,6 +1341,7 @@ end
 
 --- Alias of Global.RunString.  
 --- 🛑 **DEPRECATED**: Use Global.RunString instead.  
+--- @deprecated
 function _G.RunStringEx()
 end
 
@@ -1351,6 +1355,7 @@ end
 --- 🛑 **DEPRECATED**: You should be using Global.ScreenScale instead.  
 --- Returns a number based on the Size argument and your screen's width. Alias of Global.ScreenScale.  
 --- @param Size number @The number you want to scale.
+--- @deprecated
 function _G.SScale(Size)
 end
 
@@ -1397,7 +1402,8 @@ end
 --- ℹ **NOTE**: Useless on client, only server can send info to client.  
 --- @param name string @The name of the usermessage
 --- @param recipients any @Can be a CRecipientFilter, table or Player object.
---- @vararg any @Data to send in the usermessage
+--- @param ... any ... @Data to send in the usermessage
+--- @deprecated
 function _G.SendUserMessage(name, recipients, ...)
 end
 
@@ -1677,6 +1683,7 @@ end
 --- * "gestures_"  
 --- * "shared_ragdoll_"  
 --- @param modelName string @The model name to be checked
+--- @deprecated
 --- @return boolean @Whether or not the model is useless
 function _G.UTIL_IsUselessModel(modelName)
 end
@@ -1702,6 +1709,7 @@ end
 --- 🛑 **DEPRECATED**: You should use Global.IsValid instead  
 --- Returns if a panel is safe to use.  
 --- @param panel Panel @The panel to validate.
+--- @deprecated
 function _G.ValidPanel(panel)
 end
 
@@ -1734,10 +1742,10 @@ end
 --- If the result of the first argument is false or nil, an error is thrown with the second argument as the message.  
 --- @param expression any @The expression to assert.
 --- @param errorMessage? string @The error message to throw when assertion fails
---- @vararg any @Any arguments past the error message will be returned by a successful assert.
+--- @param ...? any ... @Any arguments past the error message will be returned by a successful assert.
 --- @return any @If successful, returns the first argument.
 --- @return any @If successful, returns the error message
---- @return any @Returns any arguments past the error message.
+--- @return any ... @Returns any arguments past the error message.
 function _G.assert(expression, errorMessage, ...)
 end
 
@@ -1756,6 +1764,7 @@ end
 
 --- 🛑 **DEPRECATED**: This function was deprecated in Lua 5.1 and is removed in Lua 5.2. Use Global.collectgarbage( "count" ) instead.  
 ---  Returns the current floored dynamic memory usage of Lua in kilobytes.  
+--- @deprecated
 --- @return number @The current floored dynamic memory usage of Lua, in kilobytes.
 function _G.gcinfo()
 end
@@ -1780,7 +1789,7 @@ end
 --- ⚠ **WARNING**: The file you are attempting to include **MUST NOT** be empty or the include will fail. Files over a certain size may fail as well.  
 --- If the file you are including is clientside or shared, it **must** be Global.AddCSLuaFile'd or this function will error saying the file doesn't exist.  
 --- @param fileName string @The name of the script to be executed
---- @return any @Anything that the executed Lua script returns.
+--- @return any ... @Anything that the executed Lua script returns.
 function _G.include(fileName)
 end
 
@@ -1853,7 +1862,7 @@ end
 --- Creates a table with the specified module name and sets the function environment for said table.  
 --- Any passed loaders are called with the table as an argument. An example of this is package.seeall.  
 --- @param name string @The name of the module
---- @vararg any @Calls each function passed with the new table as an argument.
+--- @param ... any ... @Calls each function passed with the new table as an argument.
 function _G.module(name, ...)
 end
 
@@ -1887,9 +1896,9 @@ end
 --- 🦟 **BUG**: [This does not stop Global.Error and Global.ErrorNoHalt from sending error messages to the server (if called clientside) or calling the GM:OnLuaError hook. The success boolean returned will always return true and thus you will not get the error message returned. Global.error does not exhibit these behaviours.](https://github.com/Facepunch/garrysmod-issues/issues/2498)  
 --- 🦟 **BUG**: [This does not stop errors incurred by Global.include.](https://github.com/Facepunch/garrysmod-issues/issues/3112)  
 --- @param func function @Function to be executed and of which the errors should be caught of
---- @vararg any @Arguments to call the function with.
+--- @param ... any ... @Arguments to call the function with.
 --- @return boolean @If the function had no errors occur within it.
---- @return any @If an error occurred, this will be a string containing the error message
+--- @return any ... @If an error occurred, this will be a string containing the error message
 function _G.pcall(func, ...)
 end
 
@@ -1897,7 +1906,7 @@ end
 --- Automatically attempts to convert each argument to a string. (See Global.tostring)  
 --- Seperates lines with a line break (`"\n"`)  
 --- Separates arguments with a tab character (`"\t"`).  
---- @vararg any @List of values to print.
+--- @param ... any ... @List of values to print.
 function _G.print(...)
 end
 
@@ -1934,7 +1943,7 @@ end
 
 --- Used to select single values from a vararg or get the count of values in it.  
 --- @param parameter any @Can be a number or string
---- @vararg any @The vararg
+--- @param ... any ... @The vararg
 --- @return any @Returns a number or vararg, depending on the select method.
 function _G.select(parameter, ...)
 end
@@ -1985,7 +1994,7 @@ end
 --- @param tbl table @The table to generate the vararg from.
 --- @param startIndex? number @Which index to start from
 --- @param endIndex? number @Which index to end at
---- @return any @Output values
+--- @return any ... @Output values
 function _G.unpack(tbl, startIndex, endIndex)
 end
 
@@ -1996,9 +2005,9 @@ end
 --- 🦟 **BUG**: [This does not stop errors incurred by Global.include.](https://github.com/Facepunch/garrysmod-issues/issues/3112)  
 --- @param func function @The function to call initially.
 --- @param errorCallback function @The function to be called if execution of the first fails; the error message is passed as a string
---- @vararg any @Arguments to pass to the initial function.
+--- @param ... any ... @Arguments to pass to the initial function.
 --- @return boolean @Status of the execution; `true` for success, `false` for failure.
---- @return any @The returns of the first function if execution succeeded, otherwise the **first** return value of the error callback.
+--- @return any ... @The returns of the first function if execution succeeded, otherwise the **first** return value of the error callback.
 function _G.xpcall(func, errorCallback, ...)
 end
 

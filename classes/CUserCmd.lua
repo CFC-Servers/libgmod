@@ -1,6 +1,6 @@
---- @class CUserCmd
 --- A class used to store the player inputs, such as mouse movement, view angles, Enums/IN buttons pressed and analog movement, the data from this class is then transfered to a CMoveData during actual movement simulation.  
 --- Can be modified during GM:CreateMove, GM:StartCommand and used in read only with GM:SetupMove and Player:GetCurrentCommand.  
+--- @class CUserCmd
 local CUserCmd = {}
 --- Adds a single key to the active buttons bitflag. See also CUserCmd:SetButtons.  
 --- @param key number @Key to add, see Enums/IN.

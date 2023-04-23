@@ -492,6 +492,7 @@ end
 --- @param destBlend number 
 --- @param srcBlendAlpha? number @The source alpha blend function Enums/BLEND
 --- @param destBlendAlpha? number 
+--- @deprecated
 function render.OverrideBlendFunc(enabled, srcBlend, destBlend, srcBlendAlpha, destBlendAlpha)
 end
 

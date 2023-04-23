@@ -1,5 +1,5 @@
---- @class IGModAudioChannel
 --- A sound channel returned by a callback of sound.PlayURL and sound.PlayFile.  
+--- @class IGModAudioChannel
 local IGModAudioChannel = {}
 --- Enables or disables looping of audio channel, requires noblock flag.  
 --- @param enable boolean @Enable or disable looping of this audio channel.
