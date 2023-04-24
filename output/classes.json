@@ -227,7 +227,12 @@
             "type": "Angle",
             "description": "The snapped angle."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/angle.lua",
+          "lineStart": 5,
+          "lineEnd": 18
+        }
       },
       {
         "name": "Sub",
@@ -5047,7 +5052,12 @@
             "type": "number",
             "description": "The alpha component"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/util/color.lua",
+          "lineStart": 94,
+          "lineEnd": 101
+        }
       },
       {
         "name": "ToHSL",
@@ -5071,7 +5081,12 @@
             "type": "number",
             "description": "The lightness in the range [0, 1]."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/util/color.lua",
+          "lineStart": 58,
+          "lineEnd": 65
+        }
       },
       {
         "name": "ToHSV",
@@ -5095,7 +5110,12 @@
             "type": "number",
             "description": "The value in range [0, 1]."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/util/color.lua",
+          "lineStart": 67,
+          "lineEnd": 74
+        }
       },
       {
         "name": "ToTable",
@@ -5110,7 +5130,12 @@
             "type": "table",
             "description": "The table with elements 1 = r, 2 = g, 3 = b, 4 = a."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/util/color.lua",
+          "lineStart": 103,
+          "lineEnd": 107
+        }
       },
       {
         "name": "ToVector",
@@ -5125,7 +5150,12 @@
             "type": "Vector",
             "description": "The created <page>Vector</page>"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/util/color.lua",
+          "lineStart": 76,
+          "lineEnd": 83
+        }
       },
       {
         "name": "Unpack",
@@ -5152,7 +5182,12 @@
             "type": "number",
             "description": "Alpha"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/util/color.lua",
+          "lineStart": 85,
+          "lineEnd": 92
+        }
       }
     ]
   },
@@ -6996,7 +7031,12 @@
             "type": "boolean",
             "description": "Is the entity being looked at by the local player and within 256 units."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/entities/base_gmodentity.lua",
+          "lineStart": 10,
+          "lineEnd": 35
+        }
       },
       {
         "name": "Blocked",
@@ -7128,7 +7168,12 @@
             "type": "any",
             "description": "The new value."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 282,
+          "lineEnd": 289
+        }
       },
       {
         "name": "CallOnRemove",
@@ -7154,7 +7199,12 @@
             "type": "vararg",
             "description": "Optional arguments to pass to removeFunc. Do note that the first argument passed to the function will always be the entity being removed, and the arguments passed on here start after that."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 108,
+          "lineEnd": 120
+        }
       },
       {
         "name": "ClearAllOutputs",
@@ -8223,7 +8273,12 @@
             "type": "table",
             "description": "A table of bone ids"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 153,
+          "lineEnd": 167
+        }
       },
       {
         "name": "GetChildren",
@@ -8408,7 +8463,12 @@
             "type": "Player",
             "description": "The creator, NULL for no creator."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 69,
+          "lineEnd": 71
+        }
       },
       {
         "name": "GetCustomCollisionCheck",
@@ -9796,7 +9856,12 @@
             "type": "function",
             "description": "The callback of given NWVar, or nil if not found."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 534,
+          "lineEnd": 545
+        }
       },
       {
         "name": "GetNetworked2VarTable",
@@ -10056,7 +10121,12 @@
             "type": "function",
             "description": "The callback of given NWVar, if any."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 495,
+          "lineEnd": 506
+        }
       },
       {
         "name": "GetNetworkedVarTable",
@@ -10392,7 +10462,11 @@
             "type": "function",
             "description": "The callback of given NWVar, or nil if not found."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 548
+        }
       },
       {
         "name": "GetNW2VarTable",
@@ -10995,7 +11069,11 @@
             "type": "Angle",
             "description": "The entitys render angles"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/entity.lua",
+          "lineStart": 16
+        }
       },
       {
         "name": "GetRenderBounds",
@@ -11071,7 +11149,11 @@
             "type": "Vector",
             "description": "The entitys render origin"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/entity.lua",
+          "lineStart": 17
+        }
       },
       {
         "name": "GetRight",
@@ -11421,7 +11503,12 @@
             "type": "boolean",
             "description": "True if it plays the pickup sound, false otherwise."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 7,
+          "lineEnd": 9
+        }
       },
       {
         "name": "GetShouldServerRagdoll",
@@ -11626,7 +11713,12 @@
             "type": "boolean",
             "description": "True if the entity is unfreezable, false otherwise."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 511,
+          "lineEnd": 513
+        }
       },
       {
         "name": "GetUp",
@@ -11669,7 +11761,12 @@
             "type": "any",
             "description": "Retrieved value"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 45,
+          "lineEnd": 55
+        }
       },
       {
         "name": "GetVelocity",
@@ -11910,7 +12007,12 @@
           "client",
           "server"
         ],
-        "description": "<internal></internal> Sets up Data Tables from entity to use with <page>Entity:NetworkVar</page>."
+        "description": "<internal></internal> Sets up Data Tables from entity to use with <page>Entity:NetworkVar</page>.",
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 187,
+          "lineEnd": 485
+        }
       },
       {
         "name": "InvalidateBoneCache",
@@ -11933,7 +12035,12 @@
             "type": "boolean",
             "description": "Whether the entity is constrained or not."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 75,
+          "lineEnd": 97
+        }
       },
       {
         "name": "IsConstraint",
@@ -12345,7 +12452,11 @@
             "type": "boolean",
             "description": "Whether the entity is a widget or not."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/modules/widget.lua",
+          "lineStart": 158
+        }
       },
       {
         "name": "IsWorld",
@@ -12758,7 +12869,12 @@
             "type": "function",
             "description": "The function to call when the variable changes. It is passed 4 arguments:\n* <page>Entity</page> entity - Entity whos variable changed.\n* <page>string</page> name - Name of changed variable.\n* <page>any</page> old - Old/current variable value.\n* <page>any</page> new - New variable value that it was set to."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 315,
+          "lineEnd": 325
+        }
       },
       {
         "name": "NextThink",
@@ -13132,7 +13248,12 @@
           "client",
           "server"
         ],
-        "description": "Wakes up the entity's physics object"
+        "description": "Wakes up the entity's physics object",
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 156,
+          "lineEnd": 163
+        }
       },
       {
         "name": "PlayScene",
@@ -13280,7 +13401,12 @@
             "type": "string",
             "description": "Identifier of the function within CallOnRemove"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 122,
+          "lineEnd": 132
+        }
       },
       {
         "name": "RemoveEffects",
@@ -13859,7 +13985,12 @@
             "type": "Player",
             "description": "The creator"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 59,
+          "lineEnd": 67
+        }
       },
       {
         "name": "SetCustomCollisionCheck",
@@ -14885,7 +15016,12 @@
             "type": "function",
             "description": "The function to be called when the NW2Var changes. It has 4 arguments:\n* <page>Entity</page> ent - The entity\n* <page>string</page> name - Name of the NW2Var that has changed\n* <page>any</page> oldval - The old value\n* <page>any</page> newval - The new value"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 524,
+          "lineEnd": 532
+        }
       },
       {
         "name": "SetNetworked2Vector",
@@ -15100,7 +15236,12 @@
             "type": "function",
             "description": "The function to be called when the NWVar changes."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 485,
+          "lineEnd": 493
+        }
       },
       {
         "name": "SetNetworkedVector",
@@ -15353,7 +15494,11 @@
             "type": "function",
             "description": "The function to be called when the NW2Var changes. It has 4 arguments:\n* <page>Entity</page> ent - The entity\n* <page>string</page> name - Name of the NW2Var that has changed\n* <page>any</page> oldval - The old value\n* <page>any</page> newval - The new value"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 547
+        }
       },
       {
         "name": "SetNW2Vector",
@@ -15813,7 +15958,11 @@
             "type": "Angle",
             "description": "The new render angles to be set to."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/entity.lua",
+          "lineStart": 16
+        }
       },
       {
         "name": "SetRenderBounds",
@@ -15947,7 +16096,11 @@
             "type": "Vector",
             "description": "The new origin in world coordinates where the Entity's model will now be rendered from."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/entity.lua",
+          "lineStart": 17
+        }
       },
       {
         "name": "SetSaveValue",
@@ -16007,7 +16160,12 @@
             "default": "false",
             "description": "True to play the pickup sound, false otherwise."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 11,
+          "lineEnd": 13
+        }
       },
       {
         "name": "SetShouldServerRagdoll",
@@ -16210,7 +16368,12 @@
             "default": "false",
             "description": "True to make the entity unfreezable, false otherwise."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 515,
+          "lineEnd": 517
+        }
       },
       {
         "name": "SetupBones",
@@ -16269,7 +16432,12 @@
             "type": "any",
             "description": "Value to set the variable to"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 102,
+          "lineEnd": 106
+        }
       },
       {
         "name": "SetVelocity",
@@ -19246,7 +19414,11 @@
             "type": "Vector",
             "description": "If it finds a spot it will return a vector. If not it will return nil."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua",
+          "lineStart": 201
+        }
       },
       {
         "name": "FindSpots",
@@ -19267,7 +19439,11 @@
             "type": "table",
             "description": "An unsorted table of tables containing:\n\n\n\n\n<page>Vector</page> vector - The position of the hiding spot\n\n<page>number</page> distance - the distance to that position"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua",
+          "lineStart": 189
+        }
       },
       {
         "name": "GetActivity",
@@ -19374,7 +19550,11 @@
         "realms": [
           "server"
         ],
-        "description": "Called from Lua when the NPC is stuck. This should only be called from the behaviour coroutine - so if you want to override this function and do something special that yields - then go for it.\n\nYou should always call self.loco:ClearStuck() in this function to reset the stuck status - so it knows it's unstuck. See <page>CLuaLocomotion:ClearStuck</page>."
+        "description": "Called from Lua when the NPC is stuck. This should only be called from the behaviour coroutine - so if you want to override this function and do something special that yields - then go for it.\n\nYou should always call self.loco:ClearStuck() in this function to reset the stuck status - so it knows it's unstuck. See <page>CLuaLocomotion:ClearStuck</page>.",
+        "source": {
+          "file": "gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua",
+          "lineStart": 265
+        }
       },
       {
         "name": "IsAbleToSee",
@@ -19427,7 +19607,11 @@
             "type": "string",
             "description": "Either \"failed\", \"stuck\", \"timeout\" or \"ok\" - depending on how the NPC got on"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua",
+          "lineStart": 281
+        }
       },
       {
         "name": "PlaySequenceAndWait",
@@ -19448,7 +19632,12 @@
             "default": "1",
             "description": "Playback Rate of that sequence"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua",
+          "lineStart": 298,
+          "lineEnd": 317
+        }
       },
       {
         "name": "SetFOV",
@@ -21961,7 +22150,12 @@
             "default": "nil",
             "description": "The function to be called once the animation finishes. Arguments are:\n* <page>table</page> animData - The AnimationData that was used. See <page>Structures/AnimationData</page>\n* <page>Panel</page> pnl - The panel object whose alpha was changed."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel/animation.lua",
+          "lineStart": 263,
+          "lineEnd": 269
+        }
       },
       {
         "name": "AnimationThinkInternal",
@@ -22037,7 +22231,12 @@
             "default": "0.5",
             "description": "The center fraction."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel.lua",
+          "lineStart": 158,
+          "lineEnd": 160
+        }
       },
       {
         "name": "CenterVertical",
@@ -22053,7 +22252,12 @@
             "default": "0.5",
             "description": "The center fraction."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel.lua",
+          "lineStart": 151,
+          "lineEnd": 153
+        }
       },
       {
         "name": "ChildCount",
@@ -22093,7 +22297,11 @@
         "realms": [
           "client"
         ],
-        "description": "Marks all of the panel's children for deletion."
+        "description": "Marks all of the panel's children for deletion.",
+        "source": {
+          "file": "lua/includes/extensions/client/panel.lua",
+          "lineStart": 576
+        }
       },
       {
         "name": "ColorTo",
@@ -22301,7 +22509,12 @@
         "realms": [
           "client"
         ],
-        "description": "Resets the panel object's <page>Panel:SetPos</page> method and removes its animation table (`Panel.LerpAnim`). This effectively undoes the changes made by <page>Panel:LerpPositions</page>.\n\nIn order to use Lerp animation again, you must call <page>Panel:Stop</page> before setting its `SetPosReal` property to `nil`. See the example below."
+        "description": "Resets the panel object's <page>Panel:SetPos</page> method and removes its animation table (`Panel.LerpAnim`). This effectively undoes the changes made by <page>Panel:LerpPositions</page>.\n\nIn order to use Lerp animation again, you must call <page>Panel:Stop</page> before setting its `SetPosReal` property to `nil`. See the example below.",
+        "source": {
+          "file": "lua/includes/extensions/client/panel/animation.lua",
+          "lineStart": 343,
+          "lineEnd": 351
+        }
       },
       {
         "name": "Distance",
@@ -22460,7 +22673,12 @@
             "type": "number",
             "description": "If this time is greater than 0.1, <page>PANEL:DragHoverClick</page> is called, passing it as an argument."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel/dragdrop.lua",
+          "lineStart": 502,
+          "lineEnd": 525
+        }
       },
       {
         "name": "DragHoverEnd",
@@ -22612,7 +22830,11 @@
             "type": "table",
             "description": "Blank table stored on the panel itself under pnl.m_DragSlot[ name ]. Is reset every time this function is called and does not appear to be used or exposed anywhere else."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel/dragdrop.lua",
+          "lineStart": 308
+        }
       },
       {
         "name": "EndBoxSelection",
@@ -23322,7 +23544,12 @@
             "name": "tooltip",
             "description": "The tooltip text, if it was set."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel.lua",
+          "lineStart": 277,
+          "lineEnd": 282
+        }
       },
       {
         "name": "GetTooltipDelay",
@@ -23352,7 +23579,12 @@
             "name": "tooltip",
             "description": "The tooltip panel, if it was set."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel.lua",
+          "lineStart": 287,
+          "lineEnd": 289
+        }
       },
       {
         "name": "GetValidReceiverSlot",
@@ -23370,7 +23602,11 @@
             "type": "table",
             "description": "The slot table."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel/dragdrop.lua",
+          "lineStart": 331
+        }
       },
       {
         "name": "GetValue",
@@ -23412,7 +23648,12 @@
             "type": "number",
             "description": "X coordinate."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel.lua",
+          "lineStart": 62,
+          "lineEnd": 65
+        }
       },
       {
         "name": "GetY",
@@ -23426,7 +23667,12 @@
             "type": "number",
             "description": "Y coordinate."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel.lua",
+          "lineStart": 66,
+          "lineEnd": 69
+        }
       },
       {
         "name": "GetZPos",
@@ -23864,7 +24110,11 @@
             "type": "boolean",
             "description": "Whether this panel is draggable ( if user is able to drag it ) or not."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel/dragdrop.lua",
+          "lineStart": 357
+        }
       },
       {
         "name": "IsDragging",
@@ -23878,7 +24128,11 @@
             "type": "boolean",
             "description": "Whether this panel is currently being dragged or not."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel/dragdrop.lua",
+          "lineStart": 363
+        }
       },
       {
         "name": "IsEnabled",
@@ -24122,7 +24376,12 @@
             "type": "boolean",
             "description": "This causes the panel object to 'jump' at the target, slowing as it approaches. This affects the `speed` value significantly, see above."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel/animation.lua",
+          "lineStart": 338,
+          "lineEnd": 354
+        }
       },
       {
         "name": "LoadControlsFromFile",
@@ -24364,7 +24623,12 @@
             "default": "nil",
             "description": "The function to be called once the animation is complete. Arguments are:\n* <page>table</page> animData - The <page>AnimationData that was used.</page>\n* <page>Panel</page> pnl - The panel object that was moved."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel/animation.lua",
+          "lineStart": 286,
+          "lineEnd": 292
+        }
       },
       {
         "name": "MoveLeftOf",
@@ -24545,7 +24809,12 @@
             "type": "table",
             "description": "Partially filled <page>Structures/AnimationData</page> with members:\n* <page>number</page> EndTime - Equal to `length` and `delay` arguments added together, plus either the <page>Global.SysTime</page> if there is no other animation queued or the end time of the last animation in the queue.\n* <page>number</page> StartTime - Equal to the `delay` argument, plus either the <page>Global.SysTime</page> if there is no other animation queued or the end time of the last animation in the queue.\n* <page>number</page> Ease - Equal to the `ease` argument.\n* <page>function</page> OnEnd - Equal to the `callback` argument."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel/animation.lua",
+          "lineStart": 102,
+          "lineEnd": 136
+        }
       },
       {
         "name": "NewObject",
@@ -24706,7 +24975,12 @@
             "type": "number",
             "description": "The distance from the top of the parent panel to the bottom of the tallest object (the `y` position plus the height of the label or passed panel, depending on which is tallest)."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel.lua",
+          "lineStart": 262,
+          "lineEnd": 275
+        }
       },
       {
         "name": "PostMessage",
@@ -24795,7 +25069,11 @@
             "type": "table",
             "description": "A table of strings that will act as a menu if drag'n'drop was performed with a right click"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel/dragdrop.lua",
+          "lineStart": 321
+        }
       },
       {
         "name": "Refresh",
@@ -25205,7 +25483,12 @@
             "type": "Panel",
             "description": "The panel to set as drag parent."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel/dragdrop.lua",
+          "lineStart": 332,
+          "lineEnd": 339
+        }
       },
       {
         "name": "SetDrawOnTop",
@@ -26085,7 +26368,12 @@
             "type": "number",
             "description": "The X coordinate of the position."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel.lua",
+          "lineStart": 70,
+          "lineEnd": 72
+        }
       },
       {
         "name": "SetY",
@@ -26100,7 +26388,12 @@
             "type": "number",
             "description": "The Y coordinate of the position."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/client/panel.lua",
+          "lineStart": 73,
+          "lineEnd": 75
+        }
       },
       {
         "name": "SetZPos",
@@ -28413,7 +28706,11 @@
             "type": "boolean",
             "description": "True allows flashlight toggling"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/player.lua",
+          "lineStart": 210
+        }
       },
       {
         "name": "AllowImmediateDecalPainting",
@@ -28573,7 +28870,11 @@
             "type": "boolean",
             "description": "Whether the player can use flashlight."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/player.lua",
+          "lineStart": 211
+        }
       },
       {
         "name": "ChatPrint",
@@ -28611,7 +28912,12 @@
             "type": "boolean",
             "description": "Returns true if limit is not hit, false if it is hit"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/player_extension.lua",
+          "lineStart": 9,
+          "lineEnd": 32
+        }
       },
       {
         "name": "ConCommand",
@@ -28689,7 +28995,12 @@
         "realms": [
           "server"
         ],
-        "description": "Prints the players' name and position to the console."
+        "description": "Prints the players' name and position to the console.",
+        "source": {
+          "file": "lua/includes/extensions/player.lua",
+          "lineStart": 91,
+          "lineEnd": 101
+        }
       },
       {
         "name": "DetonateTripmines",
@@ -28968,7 +29279,12 @@
             "default": "false",
             "description": "Whether the player should be frozen."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/player.lua",
+          "lineStart": 237,
+          "lineEnd": 249
+        }
       },
       {
         "name": "GetActiveWeapon",
@@ -29289,7 +29605,12 @@
             "type": "table",
             "description": "Trace information, see <page>Structures/TraceResult</page>."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/base/gamemode/obj_player_extend.lua",
+          "lineStart": 172,
+          "lineEnd": 192
+        }
       },
       {
         "name": "GetEyeTraceNoCursor",
@@ -29304,7 +29625,12 @@
             "type": "table",
             "description": "Trace result. See <page>Structures/TraceResult</page>."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/base/gamemode/obj_player_extend.lua",
+          "lineStart": 194,
+          "lineEnd": 213
+        }
       },
       {
         "name": "GetFOV",
@@ -29615,7 +29941,12 @@
             "type": "string",
             "description": "The data in the SQL database or the default value given."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/player.lua",
+          "lineStart": 159,
+          "lineEnd": 171
+        }
       },
       {
         "name": "GetPlayerColor",
@@ -29900,7 +30231,12 @@
             "type": "string",
             "description": "The user group of the player. This will return \"user\" if player has no user group."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/player_auth.lua",
+          "lineStart": 40,
+          "lineEnd": 48
+        }
       },
       {
         "name": "GetVehicle",
@@ -30162,7 +30498,12 @@
         "realms": [
           "server"
         ],
-        "description": "Disables god mode on the player."
+        "description": "Disables god mode on the player.",
+        "source": {
+          "file": "lua/includes/extensions/player.lua",
+          "lineStart": 261,
+          "lineEnd": 269
+        }
       },
       {
         "name": "GodEnable",
@@ -30170,7 +30511,12 @@
         "realms": [
           "server"
         ],
-        "description": "Enables god mode on the player."
+        "description": "Enables god mode on the player.",
+        "source": {
+          "file": "lua/includes/extensions/player.lua",
+          "lineStart": 251,
+          "lineEnd": 259
+        }
       },
       {
         "name": "HasGodMode",
@@ -30185,7 +30531,12 @@
             "type": "boolean",
             "description": "Whether the player has god mode or not."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/player.lua",
+          "lineStart": 283,
+          "lineEnd": 291
+        }
       },
       {
         "name": "HasWeapon",
@@ -30252,7 +30603,12 @@
             "type": "boolean",
             "description": "True if the player is an admin or a super admin."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/player_auth.lua",
+          "lineStart": 5,
+          "lineEnd": 14
+        }
       },
       {
         "name": "IsBot",
@@ -30311,7 +30667,12 @@
             "type": "boolean",
             "description": "Whether the players movement is currently frozen or not."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/player.lua",
+          "lineStart": 273,
+          "lineEnd": 281
+        }
       },
       {
         "name": "IsFullyAuthenticated",
@@ -30428,7 +30789,12 @@
             "type": "boolean",
             "description": "True if the player is a super admin."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/player_auth.lua",
+          "lineStart": 22,
+          "lineEnd": 26
+        }
       },
       {
         "name": "IsTimingOut",
@@ -30479,7 +30845,12 @@
             "type": "boolean",
             "description": "isInUserGroup"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/player_auth.lua",
+          "lineStart": 28,
+          "lineEnd": 38
+        }
       },
       {
         "name": "IsVoiceAudible",
@@ -30961,7 +31332,12 @@
             "type": "boolean",
             "description": "true is succeeded, false otherwise"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/player.lua",
+          "lineStart": 184,
+          "lineEnd": 193
+        }
       },
       {
         "name": "RemoveSuit",
@@ -31664,7 +32040,12 @@
             "type": "boolean",
             "description": "Whether the operation was successful or not"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/player.lua",
+          "lineStart": 173,
+          "lineEnd": 182
+        }
       },
       {
         "name": "SetPlayerColor",
@@ -31839,7 +32220,12 @@
             "type": "Entity",
             "description": "If the player is spectating an entity, this should be the entity the player is spectating, so we can use its hands model instead."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/player.lua",
+          "lineStart": 214,
+          "lineEnd": 229
+        }
       },
       {
         "name": "SetUserGroup",
@@ -31854,7 +32240,12 @@
             "type": "string",
             "description": "The user group of the player."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/player_auth.lua",
+          "lineStart": 49,
+          "lineEnd": 55
+        }
       },
       {
         "name": "SetViewEntity",
@@ -32247,7 +32638,12 @@
         "realms": [
           "server"
         ],
-        "description": "Attempts to switch the player weapon to the one specified in the \"cl_defaultweapon\" convar, if the player does not own the specified weapon nothing will happen.\n\nIf you want to switch to a specific weapon, use: <page>Player:SetActiveWeapon</page>"
+        "description": "Attempts to switch the player weapon to the one specified in the \"cl_defaultweapon\" convar, if the player does not own the specified weapon nothing will happen.\n\nIf you want to switch to a specific weapon, use: <page>Player:SetActiveWeapon</page>",
+        "source": {
+          "file": "lua/includes/extensions/player.lua",
+          "lineStart": 195,
+          "lineEnd": 206
+        }
       },
       {
         "name": "Team",
@@ -33256,7 +33652,12 @@
             "name": "newlength",
             "description": "New length of the stack."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/util.lua",
+          "lineStart": 257,
+          "lineEnd": 277
+        }
       },
       {
         "name": "PopMulti",
@@ -33281,7 +33682,12 @@
             "name": "items",
             "description": "The Popped Items."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/util.lua",
+          "lineStart": 279,
+          "lineEnd": 305
+        }
       },
       {
         "name": "Push",
@@ -33298,7 +33704,12 @@
             "type": "any",
             "description": "The item you want to push"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/util.lua",
+          "lineStart": 251,
+          "lineEnd": 255
+        }
       },
       {
         "name": "Size",
@@ -33314,7 +33725,12 @@
             "type": "number",
             "description": "The size of the stack"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/util.lua",
+          "lineStart": 317,
+          "lineEnd": 319
+        }
       },
       {
         "name": "Top",
@@ -33330,7 +33746,12 @@
             "type": "any",
             "description": "The item at the top of the stack"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/util.lua",
+          "lineStart": 307,
+          "lineEnd": 315
+        }
       }
     ]
   },
@@ -33425,7 +33846,12 @@
         "realms": [
           "server"
         ],
-        "description": "<internal></internal> Initialises the AI task. Called by <page>ai_task.New</page>."
+        "description": "<internal></internal> Initialises the AI task. Called by <page>ai_task.New</page>.",
+        "source": {
+          "file": "lua/includes/modules/ai_task.lua",
+          "lineStart": 29,
+          "lineEnd": null
+        }
       },
       {
         "name": "InitEngine",
@@ -33444,7 +33870,12 @@
             "name": "taskdata",
             "type": "number"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/modules/ai_task.lua",
+          "lineStart": 36,
+          "lineEnd": null
+        }
       },
       {
         "name": "InitFunctionName",
@@ -33468,7 +33899,11 @@
             "name": "taskdata",
             "type": "number"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/modules/ai_task.lua",
+          "lineStart": 56
+        }
       },
       {
         "name": "IsEngineType",
@@ -33476,7 +33911,11 @@
         "realms": [
           "server"
         ],
-        "description": "Determines if the task is an engine task (`TYPE_ENGINE`, 1)."
+        "description": "Determines if the task is an engine task (`TYPE_ENGINE`, 1).",
+        "source": {
+          "file": "lua/includes/modules/ai_task.lua",
+          "lineStart": 67
+        }
       },
       {
         "name": "IsFNameType",
@@ -33484,7 +33923,11 @@
         "realms": [
           "server"
         ],
-        "description": "Determines if the task is an NPC method-based task (`TYPE_FNAME`, 2)."
+        "description": "Determines if the task is an NPC method-based task (`TYPE_FNAME`, 2).",
+        "source": {
+          "file": "lua/includes/modules/ai_task.lua",
+          "lineStart": 75
+        }
       },
       {
         "name": "Run",
@@ -33499,7 +33942,11 @@
             "type": "NPC",
             "description": "The NPC to run the task on."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/modules/ai_task.lua",
+          "lineStart": 112
+        }
       },
       {
         "name": "Run_FName",
@@ -33514,7 +33961,11 @@
             "type": "NPC",
             "description": "The NPC to run the task on."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/modules/ai_task.lua",
+          "lineStart": 125
+        }
       },
       {
         "name": "Start",
@@ -33529,7 +33980,11 @@
             "type": "NPC",
             "description": "The NPC to start the task on."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/modules/ai_task.lua",
+          "lineStart": 83
+        }
       },
       {
         "name": "Start_FName",
@@ -33544,7 +33999,11 @@
             "type": "NPC",
             "description": "The NPC to start the task on."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/modules/ai_task.lua",
+          "lineStart": 99
+        }
       }
     ]
   },
@@ -33565,7 +34024,11 @@
             "type": "boolean",
             "description": "Returns true if the tool is allowed."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/stool.lua",
+          "lineStart": 90
+        }
       },
       {
         "name": "BuildConVarList",
@@ -33581,7 +34044,11 @@
             "name": "convars",
             "description": "A list of all convars and their default values."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/stool.lua",
+          "lineStart": 67
+        }
       },
       {
         "name": "CheckObjects",
@@ -33590,7 +34057,11 @@
           "client",
           "server"
         ],
-        "description": "<internal>This is called automatically for most toolgun actions so you shouldn't need to use it.</internal>\n\nChecks all added objects to see if they're still valid, if not, clears the list of objects."
+        "description": "<internal>This is called automatically for most toolgun actions so you shouldn't need to use it.</internal>\n\nChecks all added objects to see if they're still valid, if not, clears the list of objects.",
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/stool.lua",
+          "lineStart": 117
+        }
       },
       {
         "name": "ClearObjects",
@@ -33599,7 +34070,11 @@
           "client",
           "server"
         ],
-        "description": "Clears all objects previously set with <page>Tool:SetObject</page>."
+        "description": "Clears all objects previously set with <page>Tool:SetObject</page>.",
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 34
+        }
       },
       {
         "name": "Create",
@@ -33615,7 +34090,11 @@
             "name": "tool",
             "description": "The created tool object."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/stool.lua",
+          "lineStart": 11
+        }
       },
       {
         "name": "CreateConVars",
@@ -33624,7 +34103,11 @@
           "client",
           "server"
         ],
-        "description": "<internal>This is called automatically for all tools.</internal>\n\nCreates clientside ConVars based on the ClientConVar table specified in the tool structure. Also creates the 'toolmode_allow_X' ConVar."
+        "description": "<internal>This is called automatically for all tools.</internal>\n\nCreates clientside ConVars based on the ClientConVar table specified in the tool structure. Also creates the 'toolmode_allow_X' ConVar.",
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/stool.lua",
+          "lineStart": 33
+        }
       },
       {
         "name": "GetBone",
@@ -33646,7 +34129,11 @@
             "type": "number",
             "description": "Associated physics bone with given id."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 81
+        }
       },
       {
         "name": "GetClientBool",
@@ -33674,7 +34161,11 @@
             "type": "number",
             "description": "The value of the requested <page>ConVar</page>. It will be true if the value if the convar is not 0, just like <page>ConVar:GetBool</page>"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/stool.lua",
+          "lineStart": 87
+        }
       },
       {
         "name": "GetClientInfo",
@@ -33696,7 +34187,11 @@
             "type": "string",
             "description": "The value of the requested <page>ConVar</page>."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/stool.lua",
+          "lineStart": 67
+        }
       },
       {
         "name": "GetClientNumber",
@@ -33724,7 +34219,11 @@
             "type": "number",
             "description": "The value of the requested <page>ConVar</page>."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/stool.lua",
+          "lineStart": 77
+        }
       },
       {
         "name": "GetEnt",
@@ -33746,7 +34245,11 @@
             "type": "Entity",
             "description": "Associated Entity with given id."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 48
+        }
       },
       {
         "name": "GetHelpText",
@@ -33762,7 +34265,11 @@
             "name": "key",
             "description": "The returned language key, for example `\"#tool.weld.1\"`"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 163
+        }
       },
       {
         "name": "GetLocalPos",
@@ -33784,7 +34291,11 @@
             "type": "Vector",
             "description": "Associated local vector with given id."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemode/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 76
+        }
       },
       {
         "name": "GetMode",
@@ -33799,7 +34310,11 @@
             "type": "string",
             "description": "The current tool mode."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/stool.lua",
+          "lineStart": 101
+        }
       },
       {
         "name": "GetNormal",
@@ -33821,7 +34336,11 @@
             "type": "Vector",
             "description": "Associated normal vector with given id."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemode/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 85
+        }
       },
       {
         "name": "GetOperation",
@@ -33836,7 +34355,11 @@
             "type": "number",
             "description": "The current operation the tool is at."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 28
+        }
       },
       {
         "name": "GetOwner",
@@ -33851,7 +34374,11 @@
             "type": "Entity",
             "description": "Player using the tool"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/stool.lua",
+          "lineStart": 103
+        }
       },
       {
         "name": "GetPhys",
@@ -33873,7 +34400,12 @@
             "type": "PhysObj",
             "description": "Associated PhysObj with given id. If it wasn't specified, returns current <page>PhysObj</page> of associated Entity."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 100,
+          "lineEnd": 108
+        }
       },
       {
         "name": "GetPos",
@@ -33895,7 +34427,11 @@
             "type": "Vector",
             "description": "Associated vector with given id. The vector is converted from <page>Tool:GetLocalPos</page>."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemode/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 61
+        }
       },
       {
         "name": "GetServerInfo",
@@ -33917,7 +34453,11 @@
             "type": "string",
             "description": "The value of the requested <page>ConVar</page>."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/stool.lua",
+          "lineStart": 59
+        }
       },
       {
         "name": "GetStage",
@@ -33932,7 +34472,11 @@
             "type": "number",
             "description": "The current stage of the current operation the tool is at."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 16
+        }
       },
       {
         "name": "MakeGhostEntity",
@@ -33958,7 +34502,11 @@
             "type": "Angle",
             "description": "Angle to initialize the ghost entity at, usually not needed since this is updated in <page>Tool:UpdateGhostEntity</page>."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/ghostentity.lua",
+          "lineStart": 6
+        }
       },
       {
         "name": "NumObjects",
@@ -33973,7 +34521,11 @@
             "type": "number",
             "description": "The amount of stored objects, or <page>Tool:GetStage</page> clientide."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 149
+        }
       },
       {
         "name": "RebuildControlPanel",
@@ -33988,7 +34540,11 @@
             "type": "vararg",
             "description": "Any arguments given to this function will be added to <page>TOOL.BuildCPanel</page>'s arguments."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/stool_cl.lua",
+          "lineStart": 12
+        }
       },
       {
         "name": "ReleaseGhostEntity",
@@ -33997,7 +34553,11 @@
           "client",
           "server"
         ],
-        "description": "Removes any ghost entity created for this tool."
+        "description": "Removes any ghost entity created for this tool.",
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/ghostentity.lua",
+          "lineStart": 68
+        }
       },
       {
         "name": "SetObject",
@@ -34038,7 +34598,11 @@
             "type": "Vector",
             "description": "The hit normal to store."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 112
+        }
       },
       {
         "name": "SetOperation",
@@ -34054,7 +34618,11 @@
             "type": "number",
             "description": "The new operation ID to set."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 20
+        }
       },
       {
         "name": "SetStage",
@@ -34070,7 +34638,12 @@
             "type": "number",
             "description": "The new stage to set."
           }
-        ]
+        ],
+        "source": {
+          "file": "/gamemodes/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 8,
+          "lineEnd": 14
+        }
       },
       {
         "name": "StartGhostEntity",
@@ -34086,7 +34659,11 @@
             "type": "Entity",
             "description": "The entity to copy ghost parameters off"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/ghostentity.lua",
+          "lineStart": 54
+        }
       },
       {
         "name": "UpdateData",
@@ -34095,7 +34672,11 @@
           "client",
           "server"
         ],
-        "description": "<internal>Called on deploy automatically</internal>\n\nSets the tool's stage to how many stored objects the tool has."
+        "description": "<internal>Called on deploy automatically</internal>\n\nSets the tool's stage to how many stored objects the tool has.",
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/object.lua",
+          "lineStart": 2
+        }
       },
       {
         "name": "UpdateGhostEntity",
@@ -34104,7 +34685,11 @@
           "client",
           "server"
         ],
-        "description": "Updates the position and orientation of the ghost entity based on where the toolgun owner is looking along with data from object with id 1 set by <page>Tool:SetObject</page>.\n\nThis should be called in the tool's <page>TOOL:Think</page> hook.\n\nThis command is only used for tools that move props, such as easy weld, axis and motor. If you want to update a ghost like the thruster tool does it for example, check its [source code](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/gamemodes/sandbox/entities/weapons/gmod_tool/stools/thruster.lua#L179)."
+        "description": "Updates the position and orientation of the ghost entity based on where the toolgun owner is looking along with data from object with id 1 set by <page>Tool:SetObject</page>.\n\nThis should be called in the tool's <page>TOOL:Think</page> hook.\n\nThis command is only used for tools that move props, such as easy weld, axis and motor. If you want to update a ghost like the thruster tool does it for example, check its [source code](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/gamemodes/sandbox/entities/weapons/gmod_tool/stools/thruster.lua#L179).",
+        "source": {
+          "file": "gamemodes/sandbox/entities/weapons/gmod_tool/ghostentity.lua",
+          "lineStart": 101
+        }
       }
     ]
   },
@@ -34798,7 +35383,12 @@
             "type": "number",
             "description": "Camera distance"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 604,
+          "lineEnd": 608
+        }
       },
       {
         "name": "GetDriver",
@@ -34973,7 +35563,12 @@
             "type": "boolean",
             "description": "Returns true if third person mode enabled, false otherwise"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 592,
+          "lineEnd": 596
+        }
       },
       {
         "name": "GetThrottle",
@@ -35002,7 +35597,12 @@
             "type": "string",
             "description": "The class name of the vehicle."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 580,
+          "lineEnd": 584
+        }
       },
       {
         "name": "GetVehicleParams",
@@ -35291,7 +35891,12 @@
             "type": "number",
             "description": "Camera distance to set to"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 598,
+          "lineEnd": 602
+        }
       },
       {
         "name": "SetHandbrake",
@@ -35422,7 +36027,12 @@
             "type": "boolean",
             "description": "Enable or disable the third person mode for this vehicle"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 586,
+          "lineEnd": 590
+        }
       },
       {
         "name": "SetThrottle",
@@ -35453,7 +36063,12 @@
             "type": "string",
             "description": "The vehicle class name to set"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/includes/extensions/entity.lua",
+          "lineStart": 574,
+          "lineEnd": 578
+        }
       },
       {
         "name": "SetVehicleEntryAnim",

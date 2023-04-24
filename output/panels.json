@@ -47,7 +47,12 @@
             "default": "PopulateContent",
             "description": "A Populate Hook like PopulateEntities"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contentsidebar.lua",
+          "lineStart": 20,
+          "lineEnd": 23
+        }
       }
     ]
   },
@@ -250,7 +255,12 @@
             "default": "PopulateContent",
             "description": "A Populate Hook like PopulateEntities"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contentsidebar.lua",
+          "lineStart": 20,
+          "lineEnd": 23
+        }
       },
       {
         "name": "EnableModify",
@@ -258,7 +268,12 @@
         "realms": [
           "client"
         ],
-        "description": "Internally calls <page>ContentSidebar:EnableSearch</page>, <page>ContentSidebar:CreateSaveNotification</page> and creates a ContentSidebarToolbox which is accessible under ContentSidebar.Toolbox. Call the Hook <page>SANDBOX:OpenToolbox</page> to open the created Toolbox"
+        "description": "Internally calls <page>ContentSidebar:EnableSearch</page>, <page>ContentSidebar:CreateSaveNotification</page> and creates a ContentSidebarToolbox which is accessible under ContentSidebar.Toolbox. Call the Hook <page>SANDBOX:OpenToolbox</page> to open the created Toolbox",
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contentsidebar.lua",
+          "lineStart": 25,
+          "lineEnd": 40
+        }
       },
       {
         "name": "EnableSearch",
@@ -278,7 +293,12 @@
             "default": "PopulateContent",
             "description": "A Populate Hook like PopulateEntities"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contentsidebar.lua",
+          "lineStart": 20,
+          "lineEnd": 23
+        }
       }
     ]
   },
@@ -305,7 +325,12 @@
             "type": "table",
             "description": "A two-membered table:\n* <page>string</page> convar - The console variable to use. Calls <page>ContextBase:SetConVar</page>.\n* <page>string</page> label - The text to display inside the control's label."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/contextbase.lua",
+          "lineStart": 20,
+          "lineEnd": 25
+        }
       },
       {
         "name": "ConVar",
@@ -369,7 +394,12 @@
             "type": "table",
             "description": "Each control takes their own table structure. You may search \"AddControl\" on GitHub for examples.\n\nHere is a full list of each type and the table members it requires:\n\n* header\n* description\n\n* textbox:\n* label (def: \"Untitled\")\n* command\n\n* label:\n* text\n\n* checkbox, toggle (same thing):\n* label (def: \"Untitled\")\n* command\n* help (boolean, if true assumes label is a language string (`#tool.toolname.stuff`) and adds `.help` at the end)\n\n* slider: (<page>DForm:NumSlider</page>)\n* type (optional string, if equals `float` then 2 digits after the decimal will be used, otherwise 0)\n* label (def: `Untitled`)\n* command\n* min (def: `0`)\n* max (def: `100`)\n* help (boolean, see above)\n\n* propselect:\n* (data goes directly to PropSelect's :ControlValues(data))\n\n* matselect:\n* (data goes directly to MatSelect's :ControlValues(data))\n\n* ropematerial:\n* convar (notice: NOT called command this time!)\n\n* button:\n* label / text (if label is missing will use text. Def: `No Label`)\n* command\n\n* numpad:\n* command\n* command2\n* label\n* label2\n\n* color:\n* label\n* red (convar)\n* green (convar)\n* blue (convar)\n* alpha (convar)\n\n* combobox:\n* menubutton (if doesn't equal \"1\", becomes a listbox)\n* folder\n* options (optional, ha)\n* cvars (optional)\n\n* listbox:\n* height (if set, becomes <page>DListView</page>, otherwise is <page>CtrlListBox</page>)\n* label (def: `unknown`)\n* options (optional)\n\n* materialgallery:\n* width (def: `32`)\n* height (def: `32`)\n* rows (def: `4`)\n* convar\n* options"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua",
+          "lineStart": 119,
+          "lineEnd": 397
+        }
       },
       {
         "name": "AddPanel",
@@ -384,7 +414,12 @@
             "type": "Panel",
             "description": "Panel to add as an item to the control panel."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua",
+          "lineStart": 41,
+          "lineEnd": 46
+        }
       },
       {
         "name": "ClearControls",
@@ -448,7 +483,12 @@
             "type": "table",
             "description": "A two-membered table:\n* <page>boolean</page> closed - Sets if the control panel should be unexpanded.\n* <page>string</page> label - The text to display inside the control's label."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua",
+          "lineStart": 107,
+          "lineEnd": 114
+        }
       },
       {
         "name": "FillViaFunction",
@@ -463,7 +503,12 @@
             "type": "function",
             "description": "A function that takes one argument:\n* <page>ControlPanel</page> panelToPopulate"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua",
+          "lineStart": 98,
+          "lineEnd": 102
+        }
       },
       {
         "name": "GetEmbeddedPanel",
@@ -477,7 +522,12 @@
             "type": "ControlPanel",
             "description": "The same control panel the function is being called on."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua",
+          "lineStart": 32,
+          "lineEnd": 36
+        }
       },
       {
         "name": "KeyBinder",
@@ -560,7 +610,12 @@
             "type": "MatSelect",
             "description": "The created MatSelect panel."
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua",
+          "lineStart": 51,
+          "lineEnd": 73
+        }
       },
       {
         "name": "ToolPresets",
@@ -1063,7 +1118,12 @@
             "type": "table",
             "description": "A table supposed to contain the color values listed above."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dbutton.lua",
+          "lineStart": 85,
+          "lineEnd": 93
+        }
       }
     ]
   },
@@ -1140,7 +1200,11 @@
             "type": "boolean",
             "description": "Whether the box is checked or not."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcheckbox.lua",
+          "lineStart": 4
+        }
       },
       {
         "name": "IsEditing",
@@ -1228,7 +1292,12 @@
             "type": "boolean",
             "description": "Whether the box is checked or not."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcheckbox.lua",
+          "lineStart": 110,
+          "lineEnd": 112
+        }
       },
       {
         "name": "GetIndent",
@@ -1257,7 +1326,12 @@
             "type": "boolean",
             "description": "Whether the checkbox is checked or unchecked."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcheckbox.lua",
+          "lineStart": 168,
+          "lineEnd": 172
+        }
       },
       {
         "name": "SetBright",
@@ -1287,7 +1361,12 @@
             "type": "boolean",
             "description": "Whether the box should be checked or not."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcheckbox.lua",
+          "lineStart": 106,
+          "lineEnd": 108
+        }
       },
       {
         "name": "SetConVar",
@@ -1362,7 +1441,12 @@
             "type": "table",
             "description": "The text color. Uses the <page>Color</page>."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcheckbox.lua",
+          "lineStart": 130,
+          "lineEnd": 134
+        }
       },
       {
         "name": "SetValue",
@@ -1377,7 +1461,12 @@
             "type": "boolean",
             "description": "Whether the box should be checked or not (1 or 0 can also be used)."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcheckbox.lua",
+          "lineStart": 102,
+          "lineEnd": 104
+        }
       },
       {
         "name": "Toggle",
@@ -2910,7 +2999,12 @@
             "type": "number",
             "description": "The index of the new option."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 142,
+          "lineEnd": 162
+        }
       },
       {
         "name": "AddSpacer",
@@ -2918,7 +3012,12 @@
         "realms": [
           "client"
         ],
-        "description": "Adds a spacer below the currently last item in the drop down. Recommended to use with <page>DComboBox:SetSortItems</page> set to `false`."
+        "description": "Adds a spacer below the currently last item in the drop down. Recommended to use with <page>DComboBox:SetSortItems</page> set to `false`.",
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 136,
+          "lineEnd": 140
+        }
       },
       {
         "name": "ChooseOption",
@@ -2938,7 +3037,12 @@
             "type": "number",
             "description": "The option index."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 86,
+          "lineEnd": 101
+        }
       },
       {
         "name": "ChooseOptionID",
@@ -2953,7 +3057,12 @@
             "type": "number",
             "description": "Selects the option with given index."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 103,
+          "lineEnd": 108
+        }
       },
       {
         "name": "Clear",
@@ -2961,7 +3070,12 @@
         "realms": [
           "client"
         ],
-        "description": "Clears the combo box's text value, choices, and data values."
+        "description": "Clears the combo box's text value, choices, and data values.",
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 27,
+          "lineEnd": 41
+        }
       },
       {
         "name": "CloseMenu",
@@ -2969,7 +3083,12 @@
         "realms": [
           "client"
         ],
-        "description": "Closes the combo box menu. Called when the combo box is clicked while open."
+        "description": "Closes the combo box menu. Called when the combo box is clicked while open.",
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 232,
+          "lineEnd": 238
+        }
       },
       {
         "name": "GetOptionData",
@@ -2990,7 +3109,12 @@
             "type": "any",
             "description": "The option's data value."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 49,
+          "lineEnd": 53
+        }
       },
       {
         "name": "GetOptionText",
@@ -3011,7 +3135,12 @@
             "type": "string",
             "description": "The option's text value."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 43,
+          "lineEnd": 47
+        }
       },
       {
         "name": "GetOptionTextByData",
@@ -3032,7 +3161,12 @@
             "type": "string",
             "description": "The option's text value.\n\nIf no matching data was found, the data itself will be returned. If multiple identical data entries exist, the first instance will be returned."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 55,
+          "lineEnd": 73
+        }
       },
       {
         "name": "GetSelected",
@@ -3050,7 +3184,12 @@
             "type": "any",
             "description": "The option's stored data."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 116,
+          "lineEnd": 122
+        }
       },
       {
         "name": "GetSelectedID",
@@ -3064,7 +3203,12 @@
             "type": "number",
             "description": "The ID of the currently selected option."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 110,
+          "lineEnd": 114
+        }
       },
       {
         "name": "GetSortItems",
@@ -3078,7 +3222,11 @@
             "type": "boolean",
             "description": "True if enabled, false otherwise."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 8
+        }
       },
       {
         "name": "IsMenuOpen",
@@ -3092,7 +3240,12 @@
             "type": "boolean",
             "description": "True if the menu is open, false otherwise."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 164,
+          "lineEnd": 168
+        }
       },
       {
         "name": "OnMenuOpened",
@@ -3132,7 +3285,12 @@
             "type": "any",
             "description": "The data assigned to the option."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 124,
+          "lineEnd": 128
+        }
       },
       {
         "name": "OpenMenu",
@@ -3140,7 +3298,12 @@
         "realms": [
           "client"
         ],
-        "description": "Opens the combo box drop down menu. Called when the combo box is clicked."
+        "description": "Opens the combo box drop down menu. Called when the combo box is clicked.",
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 170,
+          "lineEnd": 230
+        }
       },
       {
         "name": "SetSortItems",
@@ -3155,7 +3318,11 @@
             "type": "boolean",
             "description": "true to enable, false to disable"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 8
+        }
       },
       {
         "name": "SetValue",
@@ -3170,7 +3337,12 @@
             "type": "string",
             "description": "The text in the DComboBox."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dcombobox.lua",
+          "lineStart": 260,
+          "lineEnd": 264
+        }
       }
     ]
   },
@@ -4368,7 +4540,12 @@
         "realms": [
           "client"
         ],
-        "description": "Centers the frame relative to the whole screen and invalidates its layout. This overrides <page>Panel:Center</page>."
+        "description": "Centers the frame relative to the whole screen and invalidates its layout. This overrides <page>Panel:Center</page>.",
+        "source": {
+          "file": "lua/vgui/dframe.lua",
+          "lineStart": 104,
+          "lineEnd": 110
+        }
       },
       {
         "name": "Close",
@@ -4376,7 +4553,12 @@
         "realms": [
           "client"
         ],
-        "description": "Hides or removes the DFrame, and calls <page>DFrame:OnClose</page>.\n\nTo set whether the frame is hidden or removed, use <page>DFrame:SetDeleteOnClose</page>."
+        "description": "Hides or removes the DFrame, and calls <page>DFrame:OnClose</page>.\n\nTo set whether the frame is hidden or removed, use <page>DFrame:SetDeleteOnClose</page>.",
+        "source": {
+          "file": "lua/vgui/dframe.lua",
+          "lineStart": 89,
+          "lineEnd": 99
+        }
       },
       {
         "name": "GetBackgroundBlur",
@@ -4516,7 +4698,12 @@
             "type": "string",
             "description": "Title of the frame."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dframe.lua",
+          "lineStart": 77,
+          "lineEnd": 81
+        }
       },
       {
         "name": "IsActive",
@@ -4530,7 +4717,12 @@
             "type": "boolean",
             "description": "Whether or not the frame has focus."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dframe.lua",
+          "lineStart": 112,
+          "lineEnd": 119
+        }
       },
       {
         "name": "OnClose",
@@ -4538,7 +4730,12 @@
         "realms": [
           "client"
         ],
-        "description": "Called when the DFrame is closed with <page>DFrame:Close</page>. This applies when the `close` button in the DFrame's control box is clicked.\n\nThis function does nothing and is safe to override.\n\nThis is **not** called when the DFrame is removed with <page>Panel:Remove</page>, see <page>PANEL:OnRemove</page> for that."
+        "description": "Called when the DFrame is closed with <page>DFrame:Close</page>. This applies when the `close` button in the DFrame's control box is clicked.\n\nThis function does nothing and is safe to override.\n\nThis is **not** called when the DFrame is removed with <page>Panel:Remove</page>, see <page>PANEL:OnRemove</page> for that.",
+        "source": {
+          "file": "lua/vgui/dframe.lua",
+          "lineStart": 101,
+          "lineEnd": 102
+        }
       },
       {
         "name": "SetBackgroundBlur",
@@ -4598,7 +4795,12 @@
             "type": "string",
             "description": "Set to nil to remove the icon.\n\nOtherwise, set to file path to create the icon."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dframe.lua",
+          "lineStart": 121,
+          "lineEnd": 135
+        }
       },
       {
         "name": "SetIsMenu",
@@ -4703,7 +4905,12 @@
             "type": "string",
             "description": "New title of the frame."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dframe.lua",
+          "lineStart": 83,
+          "lineEnd": 87
+        }
       },
       {
         "name": "ShowCloseButton",
@@ -4718,7 +4925,12 @@
             "type": "boolean",
             "description": "`false` hides the control box; this is `true` by default."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dframe.lua",
+          "lineStart": 69,
+          "lineEnd": 75
+        }
       }
     ]
   },
@@ -5345,7 +5557,12 @@
             "type": "function",
             "description": "Function called when the JS function is called. Arguments passed to the JS function will be passed here."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dhtml.lua",
+          "lineStart": 123,
+          "lineEnd": 146
+        }
       },
       {
         "name": "Call",
@@ -6057,7 +6274,11 @@
             "default": "nil",
             "description": "The path of the backup image."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dimage.lua",
+          "lineStart": 91
+        }
       },
       {
         "name": "SetImageColor",
@@ -6792,7 +7013,12 @@
             "type": "table",
             "description": "A table supposed to contain the color values listed above."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dlabel.lua",
+          "lineStart": 289,
+          "lineEnd": 279
+        }
       },
       {
         "name": "UpdateFGColor",
@@ -8019,7 +8245,11 @@
             "type": "Panel",
             "description": "Returns the created <page>DMenuOption</page> panel."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dmenu.lua",
+          "lineStart": 36
+        }
       },
       {
         "name": "AddPanel",
@@ -8034,7 +8264,11 @@
             "type": "Panel",
             "description": "The panel that you want to add."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dmenu.lua",
+          "lineStart": 29
+        }
       },
       {
         "name": "AddSpacer",
@@ -10262,7 +10496,12 @@
             "type": "number",
             "description": "The new value of the DNumSlider."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dnumslider.lua",
+          "lineStart": 193,
+          "lineEnd": 197
+        }
       },
       {
         "name": "ResetToDefaultValue",
@@ -11462,7 +11701,12 @@
             "type": "Panel",
             "description": "The panel to add."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dscrollpanel.lua",
+          "lineStart": 33,
+          "lineEnd": 37
+        }
       },
       {
         "name": "Clear",
@@ -11470,7 +11714,12 @@
         "realms": [
           "client"
         ],
-        "description": "Clears the `DScrollPanel`'s canvas, removing all added items."
+        "description": "Clears the `DScrollPanel`'s canvas, removing all added items.",
+        "source": {
+          "file": "lua/vgui/dscrollpanel.lua",
+          "lineStart": 139,
+          "lineEnd": 143
+        }
       },
       {
         "name": "GetCanvas",
@@ -11484,7 +11733,12 @@
             "type": "Panel",
             "description": "The canvas"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dscrollpanel.lua",
+          "lineStart": 57,
+          "lineEnd": 61
+        }
       },
       {
         "name": "GetPadding",
@@ -11512,7 +11766,12 @@
             "type": "Panel",
             "description": "The <page>DVScrollBar</page>."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dscrollpanel.lua",
+          "lineStart": 51,
+          "lineEnd": 55
+        }
       },
       {
         "name": "InnerWidth",
@@ -11526,14 +11785,24 @@
             "type": "number",
             "description": "The width of the DScrollPanel's canvas"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dscrollpanel.lua",
+          "lineStart": 63,
+          "lineEnd": 67
+        }
       },
       {
         "name": "Rebuild",
         "parent": "DScrollPanel",
         "realms": [
           "client"
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dscrollpanel.lua",
+          "lineStart": 69,
+          "lineEnd": 80
+        }
       },
       {
         "name": "ScrollToChild",
@@ -11548,7 +11817,12 @@
             "type": "Panel",
             "description": "The panel to scroll to, must be a child of the DScrollPanel."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dscrollpanel.lua",
+          "lineStart": 94,
+          "lineEnd": 106
+        }
       },
       {
         "name": "SetCanvas",
@@ -12173,7 +12447,11 @@
             "type": "Panel",
             "description": "Panel added to the sheet using <page>DPropertySheet:AddSheet</page>."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dpropertysheet.lua",
+          "lineStart": 5
+        }
       },
       {
         "name": "IsActive",
@@ -12187,7 +12465,11 @@
             "type": "Boolean",
             "description": "Currently selected tab."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dpropertysheet.lua",
+          "lineStart": 34
+        }
       }
     ]
   },
@@ -12215,7 +12497,12 @@
             "type": "boolean",
             "description": "Return `true` to prevent the value from changing, `false` to allow it."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dtextentry.lua",
+          "lineStart": 313,
+          "lineEnd": 319
+        }
       },
       {
         "name": "CheckNumeric",
@@ -12523,7 +12810,12 @@
             "type": "table",
             "description": "Table containing results from <page>DTextEntry:GetAutoComplete</page>."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/dtextentry.lua",
+          "lineStart": 213,
+          "lineEnd": 232
+        }
       },
       {
         "name": "SetCursorColor",
@@ -15490,7 +15782,11 @@
             "type": "boolean",
             "description": "true for checked, false otherwise"
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/imagecheckbox.lua",
+          "lineStart": 18
+        }
       },
       {
         "name": "SetChecked",
@@ -15520,7 +15816,11 @@
             "type": "string",
             "description": "The file path of the material to set (relative to \"garrysmod/materials/\")."
           }
-        ]
+        ],
+        "source": {
+          "file": "lua/vgui/imagecheckbox.lua",
+          "lineStart": 4
+        }
       }
     ]
   },
@@ -15736,7 +16036,12 @@
             "type": "string",
             "description": "The Hook name"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/content.lua",
+          "lineStart": 52,
+          "lineEnd": 56
+        }
       },
       {
         "name": "EnableModify",
@@ -15744,7 +16049,12 @@
         "realms": [
           "client"
         ],
-        "description": "Allows the modification of the ContentSidebar"
+        "description": "Allows the modification of the ContentSidebar",
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/content.lua#L52",
+          "lineStart": 44,
+          "lineEnd": 46
+        }
       },
       {
         "name": "EnableSearch",
@@ -15764,7 +16074,12 @@
             "type": "string",
             "description": "The Hook name"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/content.lua#L52",
+          "lineStart": 48,
+          "lineEnd": 50
+        }
       },
       {
         "name": "SwitchPanel",
@@ -15779,7 +16094,12 @@
             "type": "panel",
             "description": "Panel to switch to"
           }
-        ]
+        ],
+        "source": {
+          "file": "gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/content.lua",
+          "lineStart": 58,
+          "lineEnd": 75
+        }
       }
     ]
   },

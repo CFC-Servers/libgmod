@@ -30,7 +30,12 @@
         "default": "nil",
         "description": "The type the setter should force to (uses <page>Enums/FORCE</page>)."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 177,
+      "lineEnd": 219
+    }
   },
   {
     "name": "Add_NPC_Class",
@@ -47,7 +52,12 @@
         "type": "string",
         "description": "The name of the new enum/global variable."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 370,
+      "lineEnd": 373
+    }
   },
   {
     "name": "AddBackgroundImage",
@@ -62,7 +72,11 @@
         "type": "string",
         "description": "Path to the image."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/background.lua",
+      "lineStart": 77
+    }
   },
   {
     "name": "AddConsoleCommand",
@@ -173,7 +187,12 @@
         "type": "table",
         "description": "The Table with the Contents of the new Category"
       }
-    ]
+    ],
+    "source": {
+      "file": "gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contenttypes/custom.lua",
+      "lineStart": 139,
+      "lineEnd": 172
+    }
   },
   {
     "name": "AddWorldTip",
@@ -278,7 +297,12 @@
         "type": "Angle",
         "description": "The randomly generated angle."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 100,
+      "lineEnd": 102
+    }
   },
   {
     "name": "assert",
@@ -389,7 +413,11 @@
         "type": "string",
         "description": "Apparently does nothing."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/background.lua",
+      "lineStart": 85
+    }
   },
   {
     "name": "ChangeTooltip",
@@ -405,7 +433,12 @@
         "type": "Panel",
         "description": "Panel that has been hovered over"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/tooltips.lua",
+      "lineStart": 38,
+      "lineEnd": 64
+    }
   },
   {
     "name": "ClearBackgroundImages",
@@ -413,7 +446,11 @@
     "realms": [
       "menu"
     ],
-    "description": "Empties the pool of main menu background images."
+    "description": "Empties the pool of main menu background images.",
+    "source": {
+      "file": "lua/menu/background.lua",
+      "lineStart": 71
+    }
   },
   {
     "name": "ClearLuaErrorGroup",
@@ -428,7 +465,12 @@
         "type": "string",
         "description": "group_id to remove. Will be \"[addon-name]-0\" or \"Other-\""
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/problems/problems.lua",
+      "lineStart": 64,
+      "lineEnd": 77
+    }
   },
   {
     "name": "ClearProblem",
@@ -443,7 +485,12 @@
         "type": "string",
         "description": "The Problem ID to remove"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/problems/problems.lua",
+      "lineStart": 79,
+      "lineEnd": 89
+    }
   },
   {
     "name": "ClientsideModel",
@@ -600,7 +647,12 @@
         "type": "table",
         "description": "The created <page>Color</page>."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/color.lua",
+      "lineStart": 10,
+      "lineEnd": 18
+    }
   },
   {
     "name": "ColorAlpha",
@@ -628,7 +680,12 @@
         "type": "table",
         "description": "The new <page>Color</page> with the modified alpha value"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/color.lua",
+      "lineStart": 20,
+      "lineEnd": 27
+    }
   },
   {
     "name": "ColorRand",
@@ -652,7 +709,12 @@
         "type": "table",
         "description": "The created <page>Color</page>."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 111,
+      "lineEnd": 117
+    }
   },
   {
     "name": "ColorToHSL",
@@ -871,7 +933,12 @@
         "type": "ConVar",
         "description": "Created convar."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 435,
+      "lineEnd": 449
+    }
   },
   {
     "name": "CreateContextMenu",
@@ -879,7 +946,12 @@
     "realms": [
       "client"
     ],
-    "description": "Creates a ContextMenu.\n<internal></internal>"
+    "description": "Creates a ContextMenu.\n<internal></internal>",
+    "source": {
+      "file": "gamemodes/sandbox/gamemode/spawnmenu/contextmenu.lua",
+      "lineStart": 136,
+      "lineEnd": 221
+    }
   },
   {
     "name": "CreateConVar",
@@ -977,7 +1049,12 @@
         "type": "string",
         "description": "A JSON string containing all necessary informations.\nJSON structue should be <page>Structures/Preset</page>"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 426,
+      "lineEnd": 433
+    }
   },
   {
     "name": "CreateParticleSystem",
@@ -1208,7 +1285,12 @@
         "type": "string",
         "description": "The name of the Preset to delete."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 434,
+      "lineEnd": 443
+    }
   },
   {
     "name": "DeriveGamemode",
@@ -1256,7 +1338,11 @@
         "type": "table",
         "description": "A lua metatable containing four methods:\n* Run() - Should be called each frame you want the animation to be ran.\n* Active() - Returns if the animation is currently active (has not finished and stop has not been called)\n* Stop() - Halts the animation at its current progress.\n* Start( Length, Data ) - Prepares the animation to be ran for Length seconds. Must be called once before calling Run(). The data parameter will be passed to the func function."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/derma/derma_animation.lua",
+      "lineStart": 67
+    }
   },
   {
     "name": "Derma_DrawBackgroundBlur",
@@ -1277,7 +1363,12 @@
         "type": "number",
         "description": "Time that the blur began being painted"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/derma/derma_utils.lua",
+      "lineStart": 7,
+      "lineEnd": 37
+    }
   },
   {
     "name": "Derma_Hook",
@@ -1308,7 +1399,12 @@
         "type": "string",
         "description": "Type of element to call Derma skin hook for"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/derma/init.lua",
+      "lineStart": 54,
+      "lineEnd": 60
+    }
   },
   {
     "name": "Derma_Install_Convar_Functions",
@@ -1324,7 +1420,12 @@
         "type": "Panel",
         "description": "The panel the functions should be added to."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/derma/init.lua",
+      "lineStart": 80,
+      "lineEnd": 121
+    }
   },
   {
     "name": "Derma_Message",
@@ -1517,7 +1618,12 @@
         "name": "menu",
         "description": "The created <page>DMenu</page>."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/derma/derma_menus.lua",
+      "lineStart": 10,
+      "lineEnd": 18
+    }
   },
   {
     "name": "DisableClipping",
@@ -1586,7 +1692,12 @@
         "type": "string",
         "description": "The category to stop searching in. **Working Values: internet, favorite, history, lan**"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 350,
+      "lineEnd": 354
+    }
   },
   {
     "name": "DrawBackground",
@@ -1594,7 +1705,12 @@
     "realms": [
       "menu"
     ],
-    "description": "<internal></internal> Draws the currently active main menu background image and handles transitioning between background images.\n\nThis is called by default in the menu panel's Paint hook."
+    "description": "<internal></internal> Draws the currently active main menu background image and handles transitioning between background images.\n\nThis is called by default in the menu panel's Paint hook.",
+    "source": {
+      "file": "lua/menu/background.lua",
+      "lineStart": 73,
+      "lineEnd": 93
+    }
   },
   {
     "name": "DrawBloom",
@@ -1649,7 +1765,12 @@
         "type": "number",
         "description": "How much blue to multiply with the glowing color. Should be between `0` and `1`."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/postprocess/bloom.lua",
+      "lineStart": 25,
+      "lineEnd": 59
+    }
   },
   {
     "name": "DrawBokehDOF",
@@ -1689,7 +1810,12 @@
         "type": "table",
         "description": "Color modification parameters. See <page>Shaders/g_colourmodify</page> and the example below. Note that if you leave out a field, it will retain its last value which may have changed if another caller uses this function."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/postprocess/color_modify.lua",
+      "lineStart": 19,
+      "lineEnd": 32
+    }
   },
   {
     "name": "DrawMaterialOverlay",
@@ -1709,7 +1835,12 @@
         "type": "number",
         "description": "This will adjust how much the material will refract your screen."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/postprocess/overlay.lua",
+      "lineStart": 11,
+      "lineEnd": 31
+    }
   },
   {
     "name": "DrawMotionBlur",
@@ -1734,7 +1865,12 @@
         "type": "number",
         "description": "Determines the amount of time between frames to capture."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/postprocess/motion_blur.lua",
+      "lineStart": 17,
+      "lineEnd": 61
+    }
   },
   {
     "name": "DrawSharpen",
@@ -1754,7 +1890,12 @@
         "type": "number",
         "description": "How large the contrast effect will be."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/postprocess/sharpen.lua",
+      "lineStart": 12,
+      "lineEnd": 22
+    }
   },
   {
     "name": "DrawSobel",
@@ -1769,7 +1910,12 @@
         "type": "number",
         "description": "Determines the threshold of edges. A value of `0` will make your screen completely black."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/postprocess/sobel.lua",
+      "lineStart": 8,
+      "lineEnd": 18
+    }
   },
   {
     "name": "DrawSunbeams",
@@ -1804,7 +1950,12 @@
         "type": "number",
         "description": "`$suny` property for sunbeams material."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/postprocess/sunbeams.lua",
+      "lineStart": 14,
+      "lineEnd": 29
+    }
   },
   {
     "name": "DrawTexturize",
@@ -1824,7 +1975,12 @@
         "type": "number",
         "description": "This will be the texture to use in the effect. Make sure you use <page>Global.Material</page> to get the texture number."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/postprocess/texturize.lua",
+      "lineStart": 8,
+      "lineEnd": 19
+    }
   },
   {
     "name": "DrawToyTown",
@@ -1844,7 +2000,12 @@
         "type": "number",
         "description": "The amount of screen which should be blurred on the top and bottom."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/postprocess/toytown.lua",
+      "lineStart": 12,
+      "lineEnd": 28
+    }
   },
   {
     "name": "DropEntityIfHeld",
@@ -1891,7 +2052,12 @@
         "type": "any",
         "description": "The new value."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/extensions/entity.lua",
+      "lineStart": 181,
+      "lineEnd": 185
+    }
   },
   {
     "name": "DynamicLight",
@@ -1993,7 +2159,12 @@
         "type": "any",
         "description": "The result."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 362,
+      "lineEnd": 365
+    }
   },
   {
     "name": "EmitSentence",
@@ -2127,7 +2298,12 @@
         "type": "Panel",
         "description": "This is the panel that has a tool tip."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/tooltips.lua",
+      "lineStart": 66,
+      "lineEnd": 80
+    }
   },
   {
     "name": "Entity",
@@ -2318,7 +2494,12 @@
         "type": "Panel",
         "description": "panel that the function was called with"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/tooltips.lua",
+      "lineStart": 20,
+      "lineEnd": 36
+    }
   },
   {
     "name": "FireAddonConflicts",
@@ -2326,7 +2507,12 @@
     "realms": [
       "menu"
     ],
-    "description": "Refreshes all Addon Conflicts and Fires a Problem. Internally uses <page>Global.FireProblem</page>"
+    "description": "Refreshes all Addon Conflicts and Fires a Problem. Internally uses <page>Global.FireProblem</page>",
+    "source": {
+      "file": "lua/menu/problems/problems.lua",
+      "lineStart": 303,
+      "lineEnd": 324
+    }
   },
   {
     "name": "FireProblem",
@@ -2341,7 +2527,12 @@
         "type": "table",
         "description": "The Problem table. See <page>Structures/Problem</page>"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/problems/problems.lua",
+      "lineStart": 91,
+      "lineEnd": 102
+    }
   },
   {
     "name": "FireProblemFromEngine",
@@ -2366,7 +2557,12 @@
         "type": "string",
         "description": "Additional Parameters."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/problems/problems.lua",
+      "lineStart": 179,
+      "lineEnd": 191
+    }
   },
   {
     "name": "Format",
@@ -2394,7 +2590,11 @@
         "type": "string",
         "description": "The formatted string"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 10
+    }
   },
   {
     "name": "FrameNumber",
@@ -2458,7 +2658,11 @@
         "type": "string",
         "description": "Server's current gamemode's folder name."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/loading.lua",
+      "lineStart": 243
+    }
   },
   {
     "name": "gcinfo",
@@ -2510,7 +2714,12 @@
         "type": "number",
         "description": "The AppID which is needed for the Content"
       }
-    ]
+    ],
+    "source": {
+      "file": "gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contenttypes/gameprops.lua",
+      "lineStart": 24,
+      "lineEnd": 41
+    }
   },
   {
     "name": "GetAddonStatus",
@@ -2568,7 +2777,12 @@
         "type": "ConVar",
         "description": "The <page>ConVar</page> object, or nil if no such <page>ConVar</page> was found."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 451,
+      "lineEnd": 469
+    }
   },
   {
     "name": "GetConVar_Internal",
@@ -2614,7 +2828,12 @@
         "type": "number",
         "description": "The ConVar's value."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 450,
+      "lineEnd": 454
+    }
   },
   {
     "name": "GetConVarString",
@@ -2637,7 +2856,12 @@
         "type": "string",
         "description": "The ConVar's value."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 456,
+      "lineEnd": 460
+    }
   },
   {
     "name": "GetDefaultLoadingHTML",
@@ -3197,7 +3421,11 @@
         "type": "Panel",
         "description": "The loading screen panel"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/loading.lua",
+      "lineStart": 224
+    }
   },
   {
     "name": "GetLoadStatus",
@@ -3225,7 +3453,12 @@
         "type": "table",
         "description": "Table of map names and categories."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/getmaps.lua",
+      "lineStart": 356,
+      "lineEnd": 358
+    }
   },
   {
     "name": "getmetatable",
@@ -3277,7 +3510,12 @@
         "type": "string",
         "description": "The ServerIP to retrieve the PlayerList from."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 185,
+      "lineEnd": 194
+    }
   },
   {
     "name": "GetPredictionPlayer",
@@ -3420,7 +3658,12 @@
         "type": "number",
         "description": "Some ID. can be a random number?"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 295,
+      "lineEnd": 361
+    }
   },
   {
     "name": "GetTimeoutInfo",
@@ -3467,7 +3710,12 @@
         "type": "string",
         "description": "The url to open."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/openurl.lua",
+      "lineStart": 34,
+      "lineEnd": 43
+    }
   },
   {
     "name": "HSLToColor",
@@ -3596,7 +3844,12 @@
         "type": "string",
         "description": "The filename of the Lua file you want to include."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 158,
+      "lineEnd": 164
+    }
   },
   {
     "name": "ipairs",
@@ -3696,7 +3949,12 @@
         "type": "boolean",
         "description": "Whether the given object is a color or not"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/color.lua",
+      "lineStart": 30,
+      "lineEnd": 37
+    }
   },
   {
     "name": "IsConCommandBlocked",
@@ -3742,7 +4000,12 @@
         "type": "boolean",
         "description": "Is an enemy"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 317,
+      "lineEnd": 319
+    }
   },
   {
     "name": "IsEntity",
@@ -3803,7 +4066,12 @@
         "type": "boolean",
         "description": "Is a friend"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 330,
+      "lineEnd": 332
+    }
   },
   {
     "name": "isfunction",
@@ -3854,7 +4122,12 @@
         "type": "boolean",
         "description": "True if loading panel is active."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/loading.lua",
+      "lineStart": 222,
+      "lineEnd": 230
+    }
   },
   {
     "name": "ismatrix",
@@ -3900,7 +4173,12 @@
         "type": "boolean",
         "description": "True if the game is mounted."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 342,
+      "lineEnd": 357
+    }
   },
   {
     "name": "isnumber",
@@ -3988,7 +4266,12 @@
         "name": "result",
         "description": "Returns the reason why the server is blacklisted or nil if the server is not blacklisted."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 241,
+      "lineEnd": 277
+    }
   },
   {
     "name": "isstring",
@@ -4057,7 +4340,12 @@
         "type": "boolean",
         "description": "All entities valid"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 35,
+      "lineEnd": 45
+    }
   },
   {
     "name": "IsUselessModel",
@@ -4080,7 +4368,12 @@
         "type": "boolean",
         "description": "Whether or not the model is useless"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 264,
+      "lineEnd": 278
+    }
   },
   {
     "name": "IsValid",
@@ -4103,7 +4396,12 @@
         "type": "boolean",
         "description": "True if the object is valid."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 224,
+      "lineEnd": 233
+    }
   },
   {
     "name": "isvector",
@@ -4157,7 +4455,12 @@
         "type": "Panel",
         "description": "Panel to add javascript function 'language.Update' to."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/javascript_util.lua",
+      "lineStart": 2,
+      "lineEnd": 9
+    }
   },
   {
     "name": "JS_Utility",
@@ -4173,7 +4476,12 @@
         "type": "Panel",
         "description": "Panel to add javascript function 'util.MotionSensorAvailable' to."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/javascript_util.lua",
+      "lineStart": 11,
+      "lineEnd": 17
+    }
   },
   {
     "name": "JS_Workshop",
@@ -4189,7 +4497,12 @@
         "type": "Panel",
         "description": "Panel to add javascript functions to."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/javascript_util.lua",
+      "lineStart": 19,
+      "lineEnd": 39
+    }
   },
   {
     "name": "Label",
@@ -4217,7 +4530,12 @@
         "type": "Panel",
         "description": "The created <page>DLabel</page>"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/vgui/dlabel.lua",
+      "lineStart": 291,
+      "lineEnd": 298
+    }
   },
   {
     "name": "LanguageChanged",
@@ -4232,7 +4550,12 @@
         "type": "string",
         "description": "The new language code."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 370,
+      "lineEnd": 377
+    }
   },
   {
     "name": "Lerp",
@@ -4265,7 +4588,12 @@
         "type": "number",
         "description": "The result of the linear interpolation, `from + (to - from) * t`."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 260,
+      "lineEnd": 267
+    }
   },
   {
     "name": "LerpAngle",
@@ -4362,7 +4690,11 @@
     "realms": [
       "menu"
     ],
-    "description": "<internal></internal>This function is used to get the last map and category to which the map belongs from the cookie saved with <page>Global.SaveLastMap</page>."
+    "description": "<internal></internal>This function is used to get the last map and category to which the map belongs from the cookie saved with <page>Global.SaveLastMap</page>.",
+    "source": {
+      "file": "lua/menu/getmaps.lua",
+      "lineStart": 347
+    }
   },
   {
     "name": "LoadNewsList",
@@ -4370,7 +4702,12 @@
     "realms": [
       "menu"
     ],
-    "description": "<internal></internal>\nUpdates the News List"
+    "description": "<internal></internal>\nUpdates the News List",
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 228,
+      "lineEnd": 235
+    }
   },
   {
     "name": "LoadPresets",
@@ -4493,7 +4830,12 @@
         "type": "number",
         "description": "How long it took for the function to run."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 17,
+      "lineEnd": 30
+    }
   },
   {
     "name": "Matrix",
@@ -4531,7 +4873,12 @@
         "type": "string",
         "description": "The ID of Steam Workshop item."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 405,
+      "lineEnd": 410
+    }
   },
   {
     "name": "Mesh",
@@ -4576,7 +4923,12 @@
         "type": "string",
         "description": "The same string entered as an argument."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 131,
+      "lineEnd": 137
+    }
   },
   {
     "name": "module",
@@ -4778,7 +5130,12 @@
         "type": "number",
         "description": "Amount of skins"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/model_database.lua",
+      "lineStart": 80,
+      "lineEnd": 93
+    }
   },
   {
     "name": "OnModelLoaded",
@@ -4823,7 +5180,12 @@
         "type": "number",
         "description": "Size of the model."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/model_database.lua",
+      "lineStart": 23,
+      "lineEnd": 78
+    }
   },
   {
     "name": "OpenFolder",
@@ -4846,7 +5208,12 @@
     "realms": [
       "menu"
     ],
-    "description": "Opens the Problems Panel."
+    "description": "Opens the Problems Panel.",
+    "source": {
+      "file": "lua/menu/problems/problems.lua",
+      "lineStart": 156,
+      "lineEnd": 176
+    }
   },
   {
     "name": "OrderVectors",
@@ -4922,7 +5289,12 @@
         "type": "string",
         "description": "The particle file."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 139,
+      "lineEnd": 144
+    }
   },
   {
     "name": "ParticleEffect",
@@ -5117,7 +5489,12 @@
         "type": "table",
         "description": "Table of information of the view which can be used for rendering"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/client.lua",
+      "lineStart": 176,
+      "lineEnd": 217
+    }
   },
   {
     "name": "PrecacheParticleSystem",
@@ -5204,7 +5581,7 @@
     "realms": [
       "server"
     ],
-    "description": "Displays a message in the chat, console, or center of screen of every player.\n\nThis uses the archaic user message system (<page>umsg</page>) and hence is limited to ≈250 characters.",
+    "description": "Displays a message in the chat, console, or center of screen of every player.\n\nThis uses the archaic user message system (<page>umsg</page>) and hence is limited to 255 characters.",
     "arguments": [
       {
         "name": "type",
@@ -5245,7 +5622,12 @@
         "default": "{}",
         "description": "Internal argument, you shouldn't normally change this. Used to check if a nested table has already been printed so it doesn't get caught in a loop."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 56,
+      "lineEnd": 93
+    }
   },
   {
     "name": "ProjectedTexture",
@@ -5310,7 +5692,12 @@
         "type": "function",
         "description": "Iterator function"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/extensions/table.lua",
+      "lineStart": 585,
+      "lineEnd": 605
+    }
   },
   {
     "name": "rawequal",
@@ -5407,7 +5794,12 @@
         "type": "number",
         "description": "Real frame time"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/client.lua",
+      "lineStart": 10,
+      "lineEnd": 19
+    }
   },
   {
     "name": "RealTime",
@@ -5452,7 +5844,11 @@
     "realms": [
       "menu"
     ],
-    "description": "<internal></internal>\nAdds a frame to the currently recording demo."
+    "description": "<internal></internal>\nAdds a frame to the currently recording demo.",
+    "source": {
+      "file": "lua/menu/demo_to_video.lua",
+      "lineStart": 312
+    }
   },
   {
     "name": "RefreshAddonConflicts",
@@ -5460,7 +5856,12 @@
     "realms": [
       "menu"
     ],
-    "description": "Refreshes all Addon Conflicts after 1 Second. Internally uses <page>Global.FireAddonConflicts</page>"
+    "description": "Refreshes all Addon Conflicts after 1 Second. Internally uses <page>Global.FireAddonConflicts</page>",
+    "source": {
+      "file": "lua/menu/problems/problems.lua",
+      "lineStart": 299,
+      "lineEnd": 301
+    }
   },
   {
     "name": "RegisterDermaMenuForClose",
@@ -5485,7 +5886,12 @@
       "client",
       "menu"
     ],
-    "description": "Saves position of your cursor on screen. You can restore it by using\n<page>Global.RestoreCursorPosition</page>."
+    "description": "Saves position of your cursor on screen. You can restore it by using\n<page>Global.RestoreCursorPosition</page>.",
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 412,
+      "lineEnd": 421
+    }
   },
   {
     "name": "RemoveTooltip",
@@ -5494,7 +5900,12 @@
       "client",
       "menu"
     ],
-    "description": "Does the removing of the tooltip panel. Called by <page>Global.EndTooltip</page>."
+    "description": "Does the removing of the tooltip panel. Called by <page>Global.EndTooltip</page>.",
+    "source": {
+      "file": "lua/includes/util/tooltips.lua",
+      "lineStart": 5,
+      "lineEnd": 18
+    }
   },
   {
     "name": "RenderAngles",
@@ -5623,7 +6034,12 @@
         "type": "string",
         "description": "The server ip to connect to"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/openurl.lua",
+      "lineStart": 266,
+      "lineEnd": 274
+    }
   },
   {
     "name": "RequestOpenURL",
@@ -5638,7 +6054,12 @@
         "type": "string",
         "description": "The Website URL to open."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/openurl.lua",
+      "lineStart": 261,
+      "lineEnd": 265
+    }
   },
   {
     "name": "RequestPermission",
@@ -5653,7 +6074,12 @@
         "type": "string",
         "description": "The permission to ask"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/openurl.lua",
+      "lineStart": 275,
+      "lineEnd": 279
+    }
   },
   {
     "name": "require",
@@ -5679,7 +6105,12 @@
       "client",
       "menu"
     ],
-    "description": "Restores position of your cursor on screen. You can save it by using <page>Global.RememberCursorPosition</page>."
+    "description": "Restores position of your cursor on screen. You can save it by using <page>Global.RememberCursorPosition</page>.",
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 423,
+      "lineEnd": 428
+    }
   },
   {
     "name": "RunConsoleCommand",
@@ -5778,7 +6209,12 @@
         "type": "Entity",
         "description": "Entity to safely remove."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 235,
+      "lineEnd": 244
+    }
   },
   {
     "name": "SafeRemoveEntityDelayed",
@@ -5800,7 +6236,12 @@
         "type": "number",
         "description": "Delay for entity removal in seconds"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 246,
+      "lineEnd": 255
+    }
   },
   {
     "name": "SaveAddonPresets",
@@ -5830,7 +6271,12 @@
         "type": "boolean",
         "description": "true if it should hide the News."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 237,
+      "lineEnd": 239
+    }
   },
   {
     "name": "SaveLastMap",
@@ -5850,7 +6296,11 @@
         "type": "string",
         "description": "The name of the category to which this map belongs."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/getmaps.lua",
+      "lineStart": 337
+    }
   },
   {
     "name": "SavePresets",
@@ -5886,7 +6336,12 @@
         "type": "number",
         "description": "The scaled number based on your screen's width"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/extensions/client/globals.lua",
+      "lineStart": 6,
+      "lineEnd": 8
+    }
   },
   {
     "name": "ScrH",
@@ -6464,7 +6919,12 @@
         "type": "table",
         "description": "The table being iterated over"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/extensions/table.lua",
+      "lineStart": 531,
+      "lineEnd": 547
+    }
   },
   {
     "name": "SortedPairsByMemberValue",
@@ -6502,7 +6962,12 @@
         "type": "table",
         "description": "The table the iterator was created for."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/extensions/table.lua",
+      "lineStart": 567,
+      "lineEnd": 583
+    }
   },
   {
     "name": "SortedPairsByValue",
@@ -6535,7 +7000,12 @@
         "type": "table",
         "description": "The table which will be iterated over"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/extensions/table.lua",
+      "lineStart": 549,
+      "lineEnd": 565
+    }
   },
   {
     "name": "Sound",
@@ -6558,7 +7028,12 @@
         "type": "string",
         "description": "The string passed as the first argument."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 123,
+      "lineEnd": 129
+    }
   },
   {
     "name": "SoundDuration",
@@ -6624,7 +7099,12 @@
         "type": "number",
         "description": "The number you want to scale."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/extensions/client/globals.lua",
+      "lineStart": 6,
+      "lineEnd": 10
+    }
   },
   {
     "name": "STNDRD",
@@ -6647,7 +7127,12 @@
         "type": "string",
         "description": "suffix"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 307,
+      "lineEnd": 314
+    }
   },
   {
     "name": "SuppressHostEvents",
@@ -6740,7 +7225,12 @@
         "type": "number",
         "description": "Cosine value"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 323,
+      "lineEnd": 328
+    }
   },
   {
     "name": "TimedSin",
@@ -6778,7 +7268,12 @@
         "type": "number",
         "description": "Sine value"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 316,
+      "lineEnd": 321
+    }
   },
   {
     "name": "tobool",
@@ -6801,7 +7296,12 @@
         "type": "boolean",
         "description": "**false** for the boolean false.\n**false** for \"false\".\n**false** for \"0\".\n**false** for numeric 0.\n**false** for nil.\n**true** otherwise."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 272,
+      "lineEnd": 275
+    }
   },
   {
     "name": "ToggleFavourite",
@@ -6816,7 +7316,12 @@
         "type": "string",
         "description": "Map to toggle favorite."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/getmaps.lua",
+      "lineStart": 359,
+      "lineEnd": 375
+    }
   },
   {
     "name": "tonumber",
@@ -6993,7 +7498,12 @@
     "realms": [
       "menu"
     ],
-    "description": "<internal></internal>\nThis function retrieves the values from <page>Global.GetAddonStatus</page> and passes them to JS(JavaScript)."
+    "description": "<internal></internal>\nThis function retrieves the values from <page>Global.GetAddonStatus</page> and passes them to JS(JavaScript).",
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 400,
+      "lineEnd": 403
+    }
   },
   {
     "name": "UpdateAddonMapList",
@@ -7001,7 +7511,12 @@
     "realms": [
       "menu"
     ],
-    "description": "<internal></internal>\nThis function is called by <page>Global.UpdateMapList</page> to pass the AddonMaps to JS to be used for the Search."
+    "description": "<internal></internal>\nThis function is called by <page>Global.UpdateMapList</page> to pass the AddonMaps to JS to be used for the Search.",
+    "source": {
+      "file": "lua/menu/getmaps.lua",
+      "lineStart": 229,
+      "lineEnd": 236
+    }
   },
   {
     "name": "UpdateGames",
@@ -7009,7 +7524,12 @@
     "realms": [
       "menu"
     ],
-    "description": "<internal></internal>\nUpdates the Gamelist."
+    "description": "<internal></internal>\nUpdates the Gamelist.",
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 392,
+      "lineEnd": 399
+    }
   },
   {
     "name": "UpdateLanguages",
@@ -7017,7 +7537,12 @@
     "realms": [
       "menu"
     ],
-    "description": "<internal></internal>\nThis function searches for all available languages and passes them to JS(JavaScript). JS then updates the Language list with the given languages."
+    "description": "<internal></internal>\nThis function searches for all available languages and passes them to JS(JavaScript). JS then updates the Language list with the given languages.",
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 359,
+      "lineEnd": 365
+    }
   },
   {
     "name": "UpdateLoadPanel",
@@ -7032,7 +7557,12 @@
         "type": "string",
         "description": "JavaScript to run on the loading panel."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/menu/loading.lua",
+      "lineStart": 217,
+      "lineEnd": 223
+    }
   },
   {
     "name": "UpdateMapList",
@@ -7040,7 +7570,12 @@
     "realms": [
       "menu"
     ],
-    "description": "<internal>Called from JS when starting a new game</internal>\nThis function updates the Map List"
+    "description": "<internal>Called from JS when starting a new game</internal>\nThis function updates the Map List",
+    "source": {
+      "file": "lua/menu/getmaps.lua",
+      "lineStart": 239,
+      "lineEnd": 251
+    }
   },
   {
     "name": "UpdateServerSettings",
@@ -7048,7 +7583,12 @@
     "realms": [
       "menu"
     ],
-    "description": "<internal>Called from JS when starting a new game</internal>\nUpdates the Server Settings when called."
+    "description": "<internal>Called from JS when starting a new game</internal>\nUpdates the Server Settings when called.",
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 150,
+      "lineEnd": 180
+    }
   },
   {
     "name": "UpdateSubscribedAddons",
@@ -7056,7 +7596,12 @@
     "realms": [
       "menu"
     ],
-    "description": "<internal></internal>\nUpdates the Addons list."
+    "description": "<internal></internal>\nUpdates the Addons list.",
+    "source": {
+      "file": "lua/menu/mainmenu.lua",
+      "lineStart": 401,
+      "lineEnd": 411
+    }
   },
   {
     "name": "UTIL_IsUselessModel",
@@ -7079,7 +7624,12 @@
         "type": "boolean",
         "description": "Whether or not the model is useless"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 256,
+      "lineEnd": 280
+    }
   },
   {
     "name": "ValidPanel",
@@ -7161,7 +7711,12 @@
         "type": "Vector",
         "description": "The random direction vector."
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util.lua",
+      "lineStart": 94,
+      "lineEnd": 98
+    }
   },
   {
     "name": "VGUIFrameTime",
@@ -7223,7 +7778,12 @@
         "type": "Panel",
         "description": "Panel to display layout details of"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/vgui_showlayout.lua",
+      "lineStart": 33,
+      "lineEnd": 41
+    }
   },
   {
     "name": "WorkshopFileBase",
@@ -7250,7 +7810,12 @@
         "type": "table",
         "description": "WorkshopFileBase element"
       }
-    ]
+    ],
+    "source": {
+      "file": "lua/includes/util/workshop_files.lua",
+      "lineStart": 7,
+      "lineEnd": 280
+    }
   },
   {
     "name": "WorldToLocal",
