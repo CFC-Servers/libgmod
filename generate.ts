@@ -28,6 +28,8 @@ let TYPE_NAME_OVERRIDES: { [key: string]: string } = {
 
 };
 
+const gmodDirectory = path.join(__dirname, "garrysmod", "garrysmod");
+
 function getTypeName(ret: string): string {
     // Get rid of any creative type names
     ret = ret.replace(/[^\w.]/g, "_");
@@ -46,6 +48,12 @@ type FuncRet = {
     description?: string;
 }[];
 
+interface FuncSource {
+    file: string;
+    lineStart: number;
+    lineEnd?: number;
+}
+
 interface Func {
     name: string;
     parent: string;
@@ -53,7 +61,8 @@ interface Func {
     description?: string;
     arguments?: FuncArg[];
     returnValues?: FuncRet;
-    deprecated?: Boolean
+    deprecated?: Boolean;
+    source?: FuncSource;
 }
 
 // Libs, classes etc
@@ -238,7 +247,22 @@ function handleFunc(func: Func, sepr?: string): undefined | string {
         ret = getRetDoc(func.returnValues) + "\n";
     }
     let def = getFuncDef(func, sepr);
-    return desc + args + ret + def;
+
+    let source = "";
+    const funcSource = func.source;
+    if (funcSource) {
+        const sourceFile = path.join(gmodDirectory, funcSource.file);
+        source = `--- @source ${sourceFile}:${funcSource.lineStart}`;
+        if (funcSource.lineEnd) {
+            source += `:${funcSource.lineEnd}`;
+        }
+
+        source += "\n";
+
+        console.log(source);
+    }
+
+    return desc + source + args + ret + def;
 }
 
 // This entire function relies on everything being like what it looked like when
@@ -317,7 +341,7 @@ async function doGlobals(): Promise<void> {
         await fs.readFile("output/global-functions.json", "utf-8")
     );
     data = _.sortBy(data, "name");
-    await fs.writeFile("globals.lua", "", "utf-8");
+    await fs.writeFile("definitions/globals.lua", "", "utf-8");
     for (let func of data) {
         let funcdata: string | undefined;
         try {
@@ -331,7 +355,7 @@ async function doGlobals(): Promise<void> {
             throw e;
         }
         if (funcdata) {
-            await fs.appendFile("globals.lua", funcdata + "\n", "utf-8");
+            await fs.appendFile("definitions/globals.lua", funcdata + "\n", "utf-8");
         }
     }
     console.log("Done globals!");
@@ -356,7 +380,7 @@ async function doLibs(): Promise<void> {
             throw e;
         }
 
-        let filename = path.join("libraries", `${lib.name}.lua`);
+        let filename = path.join("definitions", "libraries", `${lib.name}.lua`);
         await fs.writeFile(filename, libdata);
 
         let funcs = lib.functions;
@@ -405,7 +429,7 @@ async function doPanels(data: FuncContainer[]): Promise<void> {
             throw e;
         }
 
-        let filename = path.join("panels", `${cls.name}.lua`);
+        let filename = path.join("definitions", "panels", `${cls.name}.lua`);
         await fs.writeFile(filename, classdata);
 
         let funcs = cls.functions;
@@ -454,7 +478,7 @@ async function doClasses(data: FuncContainer[]): Promise<void> {
             throw e;
         }
 
-        let filename = path.join("classes", `${cls.name}.lua`);
+        let filename = path.join("definitions", "classes", `${cls.name}.lua`);
         await fs.writeFile(filename, classdata);
 
         let funcs = cls.functions;
