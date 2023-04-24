@@ -7,7 +7,7 @@ function ContextBase:ConVar()
 end
 
 --- Called by spawnmenu functions (when creating a context menu) to fill this control with data.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/contextbase.lua:20:25
+--- @source ../../garrysmod/garrysmod/lua/vgui/contextbase.lua:20:25
 --- @param contextData table @A two-membered table:
 function ContextBase:ControlValues(contextData)
 end

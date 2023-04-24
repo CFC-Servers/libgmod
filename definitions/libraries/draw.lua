@@ -3,7 +3,7 @@ _G.draw = {}
 --- Simple draw text at position, but this will expand newlines and tabs.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- See also MarkupObject for limited width and markup support.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/draw.lua:114:160
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/draw.lua:114:160
 --- @param text string @Text to be drawn.
 --- @param font? string @Name of font to draw the text in
 --- @param x? number @The X Coordinate.
@@ -15,7 +15,7 @@ end
 
 --- Returns the height of the specified font in pixels. This is equivalent to the height of the character `W`. See surface.GetTextSize.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/draw.lua:33:49
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/draw.lua:33:49
 --- @param font string @Name of the font to get the height of.
 --- @return number @The font height
 function draw.GetFontHeight(font)
@@ -23,14 +23,14 @@ end
 
 --- Sets drawing texture to a default white texture (vgui/white) via surface.SetMaterial. Useful for resetting the drawing texture.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/draw.lua:312
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/draw.lua:312
 function draw.NoTexture()
 end
 
 --- Draws a rounded rectangle.  
 --- ℹ **NOTE**: If you do not define a cornerRadius, surface.DrawRect will be used instead for performance.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/draw.lua:164:173
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/draw.lua:164:173
 --- @param cornerRadius number @Radius of the rounded corners, works best with a multiple of 2.
 --- @param x number @The x coordinate of the top left of the rectangle.
 --- @param y number @The y coordinate of the top left of the rectangle.
@@ -42,7 +42,7 @@ end
 
 --- Draws a rounded rectangle. This function also lets you specify which corners are drawn rounded.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/draw.lua:175:233
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/draw.lua:175:233
 --- @param cornerRadius number @Radius of the rounded corners, works best with a power of 2 number.
 --- @param x number @The x coordinate of the top left of the rectangle.
 --- @param y number @The y coordinate of the top left of the rectangle.
@@ -59,7 +59,7 @@ end
 --- Draws text on the screen.  
 --- ℹ **NOTE**: This function does not handle newlines properly. See draw.DrawText for a function that does.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/draw.lua:51:94
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/draw.lua:51:94
 --- @param text string @The text to be drawn.
 --- @param font? string @The font
 --- @param x? number @The X Coordinate.
@@ -74,7 +74,7 @@ end
 
 --- Creates a simple line of text that is outlined.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/draw.lua:96:114
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/draw.lua:96:114
 --- @param Text string @The text to draw.
 --- @param font? string @The font name to draw with
 --- @param x? number @The X Coordinate.
@@ -91,7 +91,7 @@ end
 
 --- Works like draw.SimpleText but uses a table structure instead.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/draw.lua:255:263
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/draw.lua:255:263
 --- @param textdata table @The text properties
 --- @return number @Width of drawn text
 --- @return number @Height of drawn text
@@ -100,7 +100,7 @@ end
 
 --- Works like draw.Text, but draws the text as a shadow.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/draw.lua:281:297
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/draw.lua:281:297
 --- @param textdata table @The text properties
 --- @param distance number @How far away the shadow appears.
 --- @param alpha? number @How visible the shadow is (0-255).
@@ -109,14 +109,14 @@ end
 
 --- Draws a texture with a table structure.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/draw.lua:288:300
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/draw.lua:288:300
 --- @param texturedata table @The texture properties
 function draw.TexturedQuad(texturedata)
 end
 
 --- Draws a rounded box with text in it.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/draw.lua:235:253
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/draw.lua:235:253
 --- @param bordersize number @Size of border, should be multiple of 2
 --- @param x number @The X Coordinate.
 --- @param y number @The Y Coordinate.

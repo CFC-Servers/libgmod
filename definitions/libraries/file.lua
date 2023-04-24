@@ -8,7 +8,7 @@
 --- For the full list of path values, type `path` in the console.  
 _G.file = {}
 --- Appends a file relative to the `data` folder.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/file.lua:31:39
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/file.lua:31:39
 --- @param name string @The file's name.
 --- @param content string @The content which should be appended to the file.
 function file.Append(name, content)
@@ -70,7 +70,7 @@ end
 
 --- Returns the content of a file.  
 --- ⚠ **WARNING**: Beware of casing -- some filesystems are case-sensitive. SRCDS on Linux seems to force file/directory creation to lowercase, but will not modify read operations.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/file.lua:4:19
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/file.lua:4:19
 --- @param fileName string @The name of the file.
 --- @param gamePath? string @The path to look for the files and directories in
 --- @return string @The data from the file as a string, or `nil` if the file isn't found.
@@ -99,7 +99,7 @@ function file.Time(path, gamePath)
 end
 
 --- Writes the given string to a file. Erases all previous data in the file. To add data without deleting previous data, use file.Append.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/file.lua:21:29
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/file.lua:21:29
 --- @param fileName string @The name of the file being written into
 --- @param content string @The content that will be written into the file.
 function file.Write(fileName, content)

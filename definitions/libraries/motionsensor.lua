@@ -1,7 +1,7 @@
 --- Functions related to Kinect for Windows usage in GMod.  
 --- ⚠ **WARNING**: Kinect feature works only on 32-bit version of the game.  
 _G.motionsensor = {}
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/motionsensor.lua:221
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/motionsensor.lua:221
 --- @param translator table 
 --- @param player Player 
 --- @param rotation Angle 
@@ -11,7 +11,7 @@ _G.motionsensor = {}
 function motionsensor.BuildSkeleton(translator, player, rotation)
 end
 
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/motionsensor.lua:46
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/motionsensor.lua:46
 --- @param ent Entity @Entity to choose builder for
 --- @return string @Chosen builder
 function motionsensor.ChooseBuilderFromEntity(ent)
@@ -35,7 +35,7 @@ end
 function motionsensor.IsAvailable()
 end
 
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/motionsensor.lua:60
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/motionsensor.lua:60
 --- @param translator table 
 --- @param sensor table 
 --- @param pos Vector 
@@ -47,7 +47,7 @@ end
 function motionsensor.ProcessAngle(translator, sensor, pos, ang, special_vectors, boneid, v)
 end
 
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/motionsensor.lua:126
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/motionsensor.lua:126
 --- @param translator table 
 --- @param sensor table 
 --- @param pos Vector 
@@ -56,7 +56,7 @@ end
 function motionsensor.ProcessAnglesTable(translator, sensor, pos, rotation)
 end
 
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/motionsensor.lua:195
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/motionsensor.lua:195
 --- @param translator table 
 --- @param sensor table 
 --- @return Vector @Pos

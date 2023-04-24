@@ -66,7 +66,7 @@ function DButton:SetMaterial(img)
 end
 
 --- A hook called from within DLabel's PANEL:ApplySchemeSettings to determine the color of the text on display.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dbutton.lua:85:93
+--- @source ../../garrysmod/garrysmod/lua/vgui/dbutton.lua:85:93
 --- @param skin table @A table supposed to contain the color values listed above.
 function DButton:UpdateColours(skin)
 end

@@ -73,7 +73,7 @@ function util.Compress(str)
 end
 
 --- Returns the current date formatted like '2012-10-31 18-00-00'  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/util.lua:98:106
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/util.lua:98:106
 --- @return string @date
 function util.DateStamp()
 end
@@ -175,7 +175,7 @@ end
 
 --- Gets PData of an offline player using their SteamID  
 --- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/util.lua:333:345
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/util.lua:333:345
 --- @param steamID string @SteamID of the player
 --- @param name string @Variable name to get the value of
 --- @param default string @The default value, in case there's nothing stored
@@ -189,7 +189,7 @@ function util.GetPixelVisibleHandle()
 end
 
 --- Utility function to quickly generate a trace table that starts at the players view position, and ends `32768` units along a specified direction.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/util.lua:32:49
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/util.lua:32:49
 --- @param ply Player @The player the trace should be based on
 --- @param dir? Vector @The direction of the trace
 --- @return table @The trace data
@@ -225,7 +225,7 @@ end
 --- ℹ **NOTE**: This returns the original usergroups table, changes done to this table are not retroactive and will only affect newly connected users  
 --- ℹ **NOTE**: This returns only groups that are registered in the **settings/users.txt** file of your server.  
 --- In order to get the usergroup of a connected player, please use Player:GetUserGroup instead.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player_auth.lua:99:103
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player_auth.lua:99:103
 --- @return table @A table of users where the key is the SteamID of the user and the value is a table with 2 fields:
 function util.GetUserGroups()
 end
@@ -253,7 +253,7 @@ function util.IntersectRayWithPlane(rayOrigin, rayDirection, planePosition, plan
 end
 
 --- Returns whether a binary module is installed and is resolvable by Global.require.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/util.lua:369:397
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/util.lua:369:397
 --- @param name string @Name of the binary module, exactly the same as you would enter it as the argument to Global.require.
 --- @return boolean @Whether the binary module is installed and Global.require can resolve it.
 function util.IsBinaryModuleInstalled(name)
@@ -316,7 +316,7 @@ function util.IsValidModel(modelName)
 end
 
 --- Checks if given numbered physics object of given entity is valid or not. Most useful for ragdolls.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/util.lua:9:30
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/util.lua:9:30
 --- @param ent Entity @The entity
 --- @param physobj number @Number of the physics object to test
 --- @return boolean @true is valid, false otherwise
@@ -363,7 +363,7 @@ function util.KeyValuesToTablePreserveOrder(keyvals, usesEscapeSequences, preser
 end
 
 --- Returns a vector in world coordinates based on an entity and local coordinates  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/util.lua:76:95
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/util.lua:76:95
 --- @param ent Entity @The entity lpos is local to
 --- @param lpos Vector @Coordinates local to the ent
 --- @param bonenum number @The bonenumber of the ent lpos is local to
@@ -391,7 +391,7 @@ function util.NetworkStringToID(networkString)
 end
 
 --- Formats a float by stripping off extra `0's` and `.'s`.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/util.lua:147:165
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/util.lua:147:165
 --- @param float number @The float to format.
 --- @return string @Formatted float.
 function util.NiceFloat(float)
@@ -446,7 +446,7 @@ function util.PrecacheSound(soundName)
 end
 
 --- Performs a trace with the given origin, direction, and filter.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/util.lua:52:66
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/util.lua:52:66
 --- @param origin Vector @The origin of the trace.
 --- @param dir Vector @The direction of the trace times the distance of the trace
 --- @param filter? Entity @Entity which should be ignored by the trace
@@ -456,7 +456,7 @@ end
 
 --- Removes PData of offline player using their SteamID.  
 --- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/util.lua:358:367
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/util.lua:358:367
 --- @param steamID string @SteamID of the player
 --- @param name string @Variable name to remove
 function util.RemovePData(steamID, name)
@@ -487,7 +487,7 @@ end
 
 --- Sets PData for offline player using his SteamID.  
 --- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/util.lua:347:356
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/util.lua:347:356
 --- @param steamID string @SteamID of the player.
 --- @param name string @Variable name to store the value in.
 --- @param value any @The value to store.
@@ -519,7 +519,7 @@ function util.SpriteTrail(ent, attachmentID, color, additive, startWidth, endWid
 end
 
 --- Returns a new Stack object.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/util.lua:324:326
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/util.lua:324:326
 --- @return Stack @A brand new stack object.
 function util.Stack()
 end
@@ -538,7 +538,7 @@ end
 
 --- Converts a string to the specified type.  
 --- This can be useful when dealing with ConVars.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/util.lua:108:125
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/util.lua:108:125
 --- @param str string @The string to convert
 --- @param typename string @The type to attempt to convert the string to
 --- @return any @The result of the conversion, or nil if a bad type is specified.
@@ -567,7 +567,7 @@ function util.TableToKeyValues(table, rootKey)
 end
 
 --- Creates a timer object.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/util.lua:217:226
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/util.lua:217:226
 --- @param startdelay? number @How long you want the timer to be.
 --- @return table @A timer object
 function util.Timer(startdelay)
@@ -612,7 +612,7 @@ function util.TraceLine(TraceData)
 end
 
 --- Converts a type to a (nice, but still parsable) string  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/util.lua:127:144
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/util.lua:127:144
 --- @param input any @What to convert
 --- @return string @Converted string
 function util.TypeToString(input)

@@ -9,7 +9,7 @@ function render.AddBeam(startPos, width, textureEnd, color)
 end
 
 --- Blurs the render target ( or a given texture )  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/render.lua:86
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/render.lua:86
 --- @param rendertarget ITexture @The texture to blur
 --- @param blurx number @Horizontal amount of blur
 --- @param blury number @Vertical amount of blur
@@ -62,7 +62,7 @@ end
 
 --- Clears a render target  
 --- It uses render.Clear then render.SetRenderTarget on the modified render target.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/render.lua:27:39
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/render.lua:27:39
 --- @param texture ITexture 
 --- @param color table @The color, see Color
 function render.ClearRenderTarget(texture, color)
@@ -208,14 +208,14 @@ end
 
 --- Draws a texture over the whole screen.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/render.lua:165
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/render.lua:165
 --- @param tex ITexture @The texture to draw
 function render.DrawTextureToScreen(tex)
 end
 
 --- Draws a textured rectangle.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/render.lua:158
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/render.lua:158
 --- @param tex ITexture @The texture to draw
 --- @param x number @The x coordinate of the rectangle to draw.
 --- @param y number @The y coordinate of the rectangle to draw.
@@ -456,7 +456,7 @@ end
 --- Creates a new Global.ClientsideModel, renders it at the specified pos/ang, and removes it. Can also be given an existing CSEnt to reuse instead.  
 --- ℹ **NOTE**: This function is only meant to be used in a single render pass kind of scenario, if you need to render a model continuously, use a cached Global.ClientsideModel and provide it as a second argument.  
 --- 🦟 **BUG**: [Using this with a map model (game.GetWorld():GetModel()) crashes the game.](https://github.com/Facepunch/garrysmod-issues/issues/3307)  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/render.lua:192:216
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/render.lua:192:216
 --- @param settings table @Requires:
 --- @param ent? CSEnt @If provided, this entity will be reused instead of creating a new one with Global.ClientsideModel
 function render.Model(settings, ent)
@@ -645,7 +645,7 @@ end
 --- "$vertexcolor" 	1  
 --- }  
 --- ```  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/render.lua:89:93
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/render.lua:89:93
 function render.SetColorMaterial()
 end
 
@@ -662,7 +662,7 @@ end
 --- "$ignorez"		1  
 --- }  
 --- ```  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/render.lua:79:81
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/render.lua:79:81
 function render.SetColorMaterialIgnoreZ()
 end
 

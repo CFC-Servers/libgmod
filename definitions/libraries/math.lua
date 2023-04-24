@@ -26,7 +26,7 @@
 --- </example>  
 _G.math = {}
 --- Calculates the difference between two angles.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:202:212
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:202:212
 --- @param a number @The first angle.
 --- @param b number @The second angle.
 --- @return number @The difference between the angles between -180 and 180
@@ -34,7 +34,7 @@ function math.AngleDifference(a, b)
 end
 
 --- Gradually approaches the target value by the specified amount.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:180:196
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:180:196
 --- @param current number @The value we're currently at.
 --- @param target number @The target value
 --- @param change number @The amount that the current value is allowed to change by to approach the target
@@ -44,7 +44,7 @@ end
 
 --- Increments an angle towards another by specified rate.  
 --- ℹ **NOTE**: This function is for numbers representing angles (0-360), NOT Angle objects!  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:214:220
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:214:220
 --- @param currentAngle number @The current angle to increase
 --- @param targetAngle number @The angle to increase towards
 --- @param rate number @The amount to approach the target angle by
@@ -53,7 +53,7 @@ function math.ApproachAngle(currentAngle, targetAngle, rate)
 end
 
 --- Basic code for  algorithm.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:144:160
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:144:160
 --- @param tDiff number @From 0 to 1, where alongside the spline the point will be.
 --- @param tPoints table @A table of Vectors
 --- @param tMax number @Just leave this at 1.
@@ -62,14 +62,14 @@ function math.BSplinePoint(tDiff, tPoints, tMax)
 end
 
 --- Converts a binary string into a number.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:29:31
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:29:31
 --- @param string string @Binary string to convert
 --- @return number @Base 10 number.
 function math.BinToInt(string)
 end
 
 --- Clamps a number between a minimum and maximum value.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:51:53
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:51:53
 --- @param input number @The number to clamp.
 --- @param min number @The minimum value, this function will **never** return a number less than this.
 --- @param max number @The maximum value, this function will **never** return a number greater than this.
@@ -79,7 +79,7 @@ end
 
 --- 🛑 **DEPRECATED**: You should use math.Distance instead  
 --- Returns the difference between two points in 2D space. Alias of math.Distance.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:18:22
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:18:22
 --- @param x1 number @X position of first point
 --- @param y1 number @Y position of first point
 --- @param x2 number @X position of second point
@@ -90,7 +90,7 @@ function math.Dist(x1, y1, x2, y2)
 end
 
 --- Returns the difference between two points in 2D space.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:18:22
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:18:22
 --- @param x1 number @X position of first point
 --- @param y1 number @Y position of first point
 --- @param x2 number @X position of second point
@@ -100,7 +100,7 @@ function math.Distance(x1, y1, x2, y2)
 end
 
 --- Returns the squared difference between two points in 2D space. This is computationally faster than math.Distance.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:8:12
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:8:12
 --- @param x1 number @X position of first point
 --- @param y1 number @Y position of first point
 --- @param x2 number @X position of second point
@@ -110,7 +110,7 @@ function math.DistanceSqr(x1, y1, x2, y2)
 end
 
 --- Calculates the progress of a value fraction, taking in to account given easing fractions  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:72:97
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:72:97
 --- @param progress number @Fraction of the progress to ease, from 0 to 1
 --- @param easeIn number @Fraction of how much easing to begin with
 --- @param easeOut number @Fraction of how much easing to end with
@@ -120,7 +120,7 @@ end
 
 --- Eases in by reversing the direction of the ease slightly before returning.  
 --- ℹ **NOTE**: This doesn't work properly when used with Global.Lerp as it clamps the fraction between 0 and 1. Using your own version of Global.Lerp that is unclamped would be necessary instead.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:128:130
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:128:130
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value
 function math.ease.InBack(fraction)
@@ -128,21 +128,21 @@ end
 
 --- Eases in like a bouncy ball.  
 --- ℹ **NOTE**: This doesn't work properly when used with Global.Lerp as it clamps the fraction between 0 and 1. Using your own version of Global.Lerp that is unclamped would be necessary instead.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:168:170
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:168:170
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value
 function math.ease.InBounce(fraction)
 end
 
 --- Eases in using a circular function.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:114:116
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:114:116
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.InCirc(fraction)
 end
 
 --- Eases in by cubing the fraction.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:61:63
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:61:63
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.InCubic(fraction)
@@ -150,14 +150,14 @@ end
 
 --- Eases in like a rubber band.  
 --- ℹ **NOTE**: This doesn't work properly when used with Global.Lerp as it clamps the fraction between 0 and 1. Using your own version of Global.Lerp that is unclamped would be necessary instead.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:142:148
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:142:148
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value
 function math.ease.InElastic(fraction)
 end
 
 --- Eases in using an exponential equation with a base of 2 and where the fraction is used in the exponent.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:97:99
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:97:99
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.InExpo(fraction)
@@ -165,7 +165,7 @@ end
 
 --- Eases in and out by reversing the direction of the ease slightly before returning on both ends.  
 --- ℹ **NOTE**: This doesn't work properly when used with Global.Lerp as it clamps the fraction between 0 and 1. Using your own version of Global.Lerp that is unclamped would be necessary instead.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:136:140
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:136:140
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value
 function math.ease.InOutBack(fraction)
@@ -173,21 +173,21 @@ end
 
 --- Eases in and out like a bouncy ball.  
 --- ℹ **NOTE**: This doesn't work properly when used with Global.Lerp as it clamps the fraction between 0 and 1. Using your own version of Global.Lerp that is unclamped would be necessary instead.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:187:191
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:187:191
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value
 function math.ease.InOutBounce(fraction)
 end
 
 --- Eases in and out using a circular function.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:122:126
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:122:126
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.InOutCirc(fraction)
 end
 
 --- Eases in and out by cubing the fraction.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:69:71
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:69:71
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.InOutCubic(fraction)
@@ -195,84 +195,84 @@ end
 
 --- Eases in and out like a rubber band.  
 --- ℹ **NOTE**: This doesn't work properly when used with Global.Lerp as it clamps the fraction between 0 and 1. Using your own version of Global.Lerp that is unclamped would be necessary instead.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:158:166
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:158:166
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value
 function math.ease.InOutElastic(fraction)
 end
 
 --- Eases in and out using an exponential equation with a base of 2 and where the fraction is used in the exponent.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:105:112
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:105:112
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.InOutExpo(fraction)
 end
 
 --- Eases in and out by squaring the fraction.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:57:59
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:57:59
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.InOutQuad(fraction)
 end
 
 --- Eases in and out by raising the fraction to the power of 4.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:81:83
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:81:83
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.InOutQuart(fraction)
 end
 
 --- Eases in and out by raising the fraction to the power of 5.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:93:95
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:93:95
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.InOutQuint(fraction)
 end
 
 --- Eases in and out using math.sin.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:45:47
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:45:47
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.InOutSine(fraction)
 end
 
 --- Eases in by squaring the fraction.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:49:51
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:49:51
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.InQuad(fraction)
 end
 
 --- Eases in by raising the fraction to the power of 4.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:73:75
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:73:75
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.InQuart(fraction)
 end
 
 --- Eases in by raising the fraction to the power of 5.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:85:87
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:85:87
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.InQuint(fraction)
 end
 
 --- Eases in using math.sin.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:37:39
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:37:39
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.InSine(fraction)
 end
 
 --- Converts an integer to a binary (base-2) string.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:42:45
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:42:45
 --- @param int number @Number to be converted.
 --- @return string @Binary number string
 function math.IntToBin(int)
 end
 
 --- Normalizes angle, so it returns value between -180 and 180.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:198:200
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:198:200
 --- @param angle number @The angle to normalize, in degrees.
 --- @return number @The normalized angle, in the range of -180 to 180 degrees.
 function math.NormalizeAngle(angle)
@@ -280,7 +280,7 @@ end
 
 --- Eases out by reversing the direction of the ease slightly before finishing.  
 --- ℹ **NOTE**: This doesn't work properly when used with Global.Lerp as it clamps the fraction between 0 and 1. Using your own version of Global.Lerp that is unclamped would be necessary instead.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:132:134
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:132:134
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value
 function math.ease.OutBack(fraction)
@@ -288,21 +288,21 @@ end
 
 --- Eases out like a bouncy ball.  
 --- ℹ **NOTE**: This doesn't work properly when used with Global.Lerp as it clamps the fraction between 0 and 1. Using your own version of Global.Lerp that is unclamped would be necessary instead.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:172:185
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:172:185
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value
 function math.ease.OutBounce(fraction)
 end
 
 --- Eases out using a circular function.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:118:120
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:118:120
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.OutCirc(fraction)
 end
 
 --- Eases out by cubing the fraction.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:65:67
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:65:67
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.OutCubic(fraction)
@@ -310,42 +310,42 @@ end
 
 --- Eases out like a rubber band.  
 --- ℹ **NOTE**: This doesn't work properly when used with Global.Lerp as it clamps the fraction between 0 and 1. Using your own version of Global.Lerp that is unclamped would be necessary instead.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:150:156
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:150:156
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value
 function math.ease.OutElastic(fraction)
 end
 
 --- Eases out using an exponential equation with a base of 2 and where the fraction is used in the exponent.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:101:103
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:101:103
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.OutExpo(fraction)
 end
 
 --- Eases out by squaring the fraction.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:53:55
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:53:55
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.OutQuad(fraction)
 end
 
 --- Eases out by raising the fraction to the power of 4.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:77:79
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:77:79
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.OutQuart(fraction)
 end
 
 --- Eases out by raising the fraction to the power of 5.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:89:91
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:89:91
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.OutQuint(fraction)
 end
 
 --- Eases out using math.sin.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:41:43
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math/ease.lua:41:43
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.OutSine(fraction)
@@ -353,7 +353,7 @@ end
 
 --- Returns a random float between min and max.  
 --- See also math.random  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:59:61
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:59:61
 --- @param min number @The minimum value.
 --- @param max number @The maximum value.
 --- @return number @Random float between min and max.
@@ -361,7 +361,7 @@ function math.Rand(min, max)
 end
 
 --- Remaps the value from one range to another  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:226:228
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:226:228
 --- @param value number @The value
 --- @param inMin number @The minimum of the initial range
 --- @param inMax number @The maximum of the initial range
@@ -372,7 +372,7 @@ function math.Remap(value, inMin, inMax, outMin, outMax)
 end
 
 --- Rounds the given value to the nearest whole number or to the given decimal places.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:163:168
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:163:168
 --- @param value number @The value to round.
 --- @param decimals? number @The decimal places to round to.
 --- @return number @The rounded value.
@@ -380,7 +380,7 @@ function math.Round(value, decimals)
 end
 
 --- Snaps a number to the closest multiplicative of given number. See also Angle:SnapTo.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:230:233
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:230:233
 --- @param input number @The number to snap.
 --- @param snapTo number @What to snap the input number to.
 --- @return number @The clamped value.
@@ -388,7 +388,7 @@ function math.SnapTo(input, snapTo)
 end
 
 --- Returns the fraction of where the current time is relative to the start and end times  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:222:224
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:222:224
 --- @param start number @Start time in seconds
 --- @param end_ number @End time in seconds
 --- @param current number @Current time in seconds
@@ -397,7 +397,7 @@ function math.TimeFraction(start, end_, current)
 end
 
 --- Rounds towards zero.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/math.lua:171:178
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/math.lua:171:178
 --- @param num number @The number to truncate
 --- @param digits? number @The amount of digits to keep after the point.
 --- @return number @The result.

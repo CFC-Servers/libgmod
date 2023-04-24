@@ -35,7 +35,7 @@ end
 --- Repeatedly yields the coroutine for the given duration before continuing.  
 --- Only works inside a coroutine. Only useful in nextbot coroutine think function.  
 --- This function uses Global.CurTime instead of Global.RealTime.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/coroutine.lua:15
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/coroutine.lua:15
 --- @param duration number @The number of seconds to wait
 function coroutine.wait(duration)
 end

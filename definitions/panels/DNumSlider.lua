@@ -42,7 +42,7 @@ function DNumSlider:IsEditing()
 end
 
 --- Called when the value of the slider is changed, through code or changing the slider.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dnumslider.lua:193:197
+--- @source ../../garrysmod/garrysmod/lua/vgui/dnumslider.lua:193:197
 --- @param value number @The new value of the DNumSlider.
 function DNumSlider:OnValueChanged(value)
 end

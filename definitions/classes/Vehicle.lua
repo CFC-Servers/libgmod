@@ -26,7 +26,7 @@ function Vehicle:GetAmmo()
 end
 
 --- Returns third person camera distance.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:604:608
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:604:608
 --- @return number @Camera distance
 function Vehicle:GetCameraDistance()
 end
@@ -85,7 +85,7 @@ function Vehicle:GetSteeringDegrees()
 end
 
 --- Returns if vehicle has thirdperson mode enabled or not.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:592:596
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:592:596
 --- @return boolean @Returns true if third person mode enabled, false otherwise
 function Vehicle:GetThirdPersonMode()
 end
@@ -96,7 +96,7 @@ function Vehicle:GetThrottle()
 end
 
 --- Returns the vehicle class name. This is only useful for Sandbox spawned vehicles or any vehicle that properly sets the vehicle class with Vehicle:SetVehicleClass.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:580:584
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:580:584
 --- @return string @The class name of the vehicle.
 function Vehicle:GetVehicleClass()
 end
@@ -191,7 +191,7 @@ function Vehicle:SetBoost(boost)
 end
 
 --- Sets the third person camera distance of the vehicle.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:598:602
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:598:602
 --- @param distance number @Camera distance to set to
 function Vehicle:SetCameraDistance(distance)
 end
@@ -236,7 +236,7 @@ function Vehicle:SetSteeringDegrees(steeringDegrees)
 end
 
 --- Sets the third person mode state.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:586:590
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:586:590
 --- @param enable boolean @Enable or disable the third person mode for this vehicle
 function Vehicle:SetThirdPersonMode(enable)
 end

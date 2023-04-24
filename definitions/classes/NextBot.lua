@@ -15,7 +15,7 @@ function NextBot:BodyMoveXY()
 end
 
 --- Like NextBot:FindSpots but only returns a vector.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua:201
+--- @source ../../garrysmod/garrysmod/gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua:201
 --- @param type string @Either "random", "near", "far"
 --- @param options table @This table should contain the search info
 --- @return Vector @If it finds a spot it will return a vector
@@ -23,7 +23,7 @@ function NextBot:FindSpot(type, options)
 end
 
 --- Returns a table of hiding spots.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua:189
+--- @source ../../garrysmod/garrysmod/gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua:189
 --- @param specs table @This table should contain the search info
 --- @return table @An unsorted table of tables containing:
 function NextBot:FindSpots(specs)
@@ -65,7 +65,7 @@ end
 
 --- Called from Lua when the NPC is stuck. This should only be called from the behaviour coroutine - so if you want to override this function and do something special that yields - then go for it.  
 --- You should always call self.loco:ClearStuck() in this function to reset the stuck status - so it knows it's unstuck. See CLuaLocomotion:ClearStuck.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua:265
+--- @source ../../garrysmod/garrysmod/gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua:265
 function NextBot:HandleStuck()
 end
 
@@ -78,7 +78,7 @@ function NextBot:IsAbleToSee(ent, useFOV)
 end
 
 --- To be called in the behaviour coroutine only! Will yield until the bot has reached the goal or is stuck  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua:281
+--- @source ../../garrysmod/garrysmod/gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua:281
 --- @param pos Vector @The position we want to get to
 --- @param options table @A table containing a bunch of tweakable options
 --- @return string @Either "failed", "stuck", "timeout" or "ok" - depending on how the NPC got on
@@ -86,7 +86,7 @@ function NextBot:MoveToPos(pos, options)
 end
 
 --- To be called in the behaviour coroutine only! Plays an animation sequence and waits for it to end before returning.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua:298:317
+--- @source ../../garrysmod/garrysmod/gamemodes/base/entities/entities/base_nextbot/sv_nextbot.lua:298:317
 --- @param name string @The sequence name
 --- @param speed? number @Playback Rate of that sequence
 function NextBot:PlaySequenceAndWait(name, speed)

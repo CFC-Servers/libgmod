@@ -3,7 +3,7 @@ _G.halo = {}
 --- Applies a halo glow effect to one or multiple entities.  
 --- ⚠ **WARNING**: Using this function outside of the GM:PreDrawHalos hook can cause instability or crashes.  
 --- ℹ **NOTE**: The ignoreZ parameter will cause the halos to draw over the player's viewmodel. You can work around this using render.DepthRange in the GM:PreDrawViewModel, GM:PostDrawViewModel, GM:PreDrawPlayerHands and GM:PostDrawPlayerHands hooks.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/halo.lua:13:33
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/halo.lua:13:33
 --- @param entities table @A table of entities to add the halo effect to.
 --- @param color table @The desired color of the halo
 --- @param blurX? number @The strength of the halo's blur on the x axis.
@@ -16,7 +16,7 @@ end
 
 --- Returns the entity the halo library is currently rendering the halo for.  
 --- The main purpose of this function is to be used in ENTITY:Draw in order not to draw certain parts of the entity when the halo is being rendered, so there's no halo around unwanted entity parts, such as lasers, 3D2D displays, etc.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/halo.lua:35:37
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/halo.lua:35:37
 --- @return Entity @If set, the currently rendered entity by the halo library.
 function halo.RenderedEntity()
 end

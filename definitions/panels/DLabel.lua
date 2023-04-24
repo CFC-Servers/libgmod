@@ -198,7 +198,7 @@ function DLabel:Toggle()
 end
 
 --- A hook called from within PANEL:ApplySchemeSettings to determine the color of the text on display.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dlabel.lua:289:279
+--- @source ../../garrysmod/garrysmod/lua/vgui/dlabel.lua:289:279
 --- @param skin table @A table supposed to contain the color values listed above.
 function DLabel:UpdateColours(skin)
 end

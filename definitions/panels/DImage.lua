@@ -33,7 +33,7 @@ end
 
 --- Sets the image to load into the frame. If the first image can't be loaded and `strBackup` is set, that image will be loaded instead.  
 --- This eventually calls DImage:SetMaterial.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dimage.lua:91
+--- @source ../../garrysmod/garrysmod/lua/vgui/dimage.lua:91
 --- @param strImage string @The path of the image to load
 --- @param strBackup? string @The path of the backup image.
 function DImage:SetImage(strImage, strBackup)

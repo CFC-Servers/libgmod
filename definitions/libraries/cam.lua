@@ -67,7 +67,7 @@ end
 --- This is almost always used with a render target from the render. To set its position use render.SetViewPort with a target already stored.  
 --- ℹ **NOTE**: This will put an identity matrix at the top of the model matrix stack. If you are trying to use cam.PushModelMatrix, call it after this function and not before.  
 --- 🟥 **NOTE**: Provides a 2D rendering context  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/render.lua:109:113
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/render.lua:109:113
 function cam.Start2D()
 end
 
@@ -78,7 +78,7 @@ end
 --- zNear also requires a value higher than 0.  
 --- 🦟 **BUG**: [Negative x/y values won't work.](https://github.com/Facepunch/garrysmod-issues/issues/1995)  
 --- 🦟 **BUG**: [This will not update current view properties.](https://github.com/Facepunch/garrysmod-issues/issues/2682)  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/render.lua:115:144
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/render.lua:115:144
 --- @param pos? Vector @Render cam position.
 --- @param angles? Angle @Render cam angles.
 --- @param fov? number @Field of view.

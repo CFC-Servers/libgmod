@@ -35,14 +35,14 @@ end
 
 --- Reads a boolean from the received net message.  
 --- ⚠ **WARNING**: You **must** read information in same order as you write it.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/net.lua:36:45
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/net.lua:36:45
 --- @return boolean @`true` or `false`, or `false` if the bool could not be read.
 function net.ReadBool()
 end
 
 --- Reads a Color from the current net message.  
 --- ⚠ **WARNING**: You **must** read information in same order as you write it.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/net.lua:83:93
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/net.lua:83:93
 --- @param hasAlpha? boolean @If the color has alpha written or not
 --- @return table @The Color read from the current net message, or `Color( 0, 0, 0, 0 )` if the color could not be read.
 function net.ReadColor(hasAlpha)
@@ -63,7 +63,7 @@ end
 
 --- Reads an entity from the received net message. You should always check if the specified entity exists as it may have been removed and therefore `NULL` if it is outside of the players [PVS](https://developer.valvesoftware.com/wiki/PVS) or was already removed.  
 --- ⚠ **WARNING**: You **must** read information in same order as you write it.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/net.lua:60:67
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/net.lua:60:67
 --- @return Entity @The entity, or `Entity(0)` if no entity could be read.
 function net.ReadEntity()
 end
@@ -104,7 +104,7 @@ end
 --- ⚠ **WARNING**: You **must** read information in same order as you write it.  
 --- See net.WriteTable for extra info.  
 --- You may get `net.ReadType: Couldn't read type X` during the execution of the function, the problem is that you are sending objects that **cannot** be serialized/sent over the network.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/net.lua:123:136
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/net.lua:123:136
 --- @return table @Table recieved via the net message, or a blank table if no table could be read.
 function net.ReadTable()
 end
@@ -127,7 +127,7 @@ end
 --- ⚠ **WARNING**: You **must** put this function **outside** of any other function or hook for it to work properly unless you know what you are doing!  
 --- You **must** read information in the same order as you write it.  
 --- Each net message has a length limit of **64KB**!  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/net.lua:8
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/net.lua:8
 --- @param messageName string @The message name to hook to.
 --- @param callback function @The function to be called if the specified message was received
 function net.Receive(messageName, callback)
@@ -181,13 +181,13 @@ function net.WriteBit(boolean)
 end
 
 --- Appends a boolean to the current net message. Alias of net.WriteBit.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/net.lua:37:46
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/net.lua:37:46
 --- @param boolean boolean @Boolean value to write.
 function net.WriteBool(boolean)
 end
 
 --- Appends a Color to the current net message.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/net.lua:69:81
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/net.lua:69:81
 --- @param Color table @The Color you want to append to the net message.
 --- @param writeAlpha? boolean @If we should write the alpha of the color or not.
 function net.WriteColor(Color, writeAlpha)
@@ -205,7 +205,7 @@ function net.WriteDouble(double)
 end
 
 --- Appends an entity to the current net message.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/net.lua:47:58
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/net.lua:47:58
 --- @param entity Entity @The entity to be sent.
 function net.WriteEntity(entity)
 end
@@ -240,7 +240,7 @@ end
 
 --- Appends a table to the current net message. Adds **16 extra bits** per key/value pair so you're better off writing each individual key/value as the exact type if possible.  
 --- ⚠ **WARNING**: All net messages have a **64kb** buffer. This function will not check or error when that buffer is overflown. You might want to consider using util.TableToJSON and util.Compress and send the resulting string in **60kb** chunks, doing the opposite on the receiving end.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/net.lua:109:121
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/net.lua:109:121
 --- @param table table @The table to be sent
 function net.WriteTable(table)
 end

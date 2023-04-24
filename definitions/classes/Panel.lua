@@ -62,7 +62,7 @@ function Panel:AlignTop(offset)
 end
 
 --- Uses animation to transition the current alpha value of a panel to a new alpha, over a set period of time and after a specified delay.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/animation.lua:263:269
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/animation.lua:263:269
 --- @param alpha number @The alpha value (0-255) to approach.
 --- @param duration number @The time in seconds it should take to reach the alpha.
 --- @param delay? number @The delay before the animation starts.
@@ -91,13 +91,13 @@ function Panel:Center()
 end
 
 --- Centers the panel horizontally with specified fraction.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:158:160
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:158:160
 --- @param fraction? number @The center fraction.
 function Panel:CenterHorizontal(fraction)
 end
 
 --- Centers the panel vertically with specified fraction.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:151:153
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:151:153
 --- @param fraction? number @The center fraction.
 function Panel:CenterVertical(fraction)
 end
@@ -114,7 +114,7 @@ function Panel:ChildrenSize()
 end
 
 --- Marks all of the panel's children for deletion.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:576
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:576
 function Panel:Clear()
 end
 
@@ -199,7 +199,7 @@ end
 
 --- Resets the panel object's Panel:SetPos method and removes its animation table (`Panel.LerpAnim`). This effectively undoes the changes made by Panel:LerpPositions.  
 --- In order to use Lerp animation again, you must call Panel:Stop before setting its `SetPosReal` property to `nil`. See the example below.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/animation.lua:343:351
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/animation.lua:343:351
 function Panel:DisableLerp()
 end
 
@@ -286,7 +286,7 @@ end
 
 --- Makes this panel droppable. This is used with Panel:Receiver to create drag and drop events.  
 --- Can be called multiple times with different names allowing to be dropped onto different receivers.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/dragdrop.lua:308
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/dragdrop.lua:308
 --- @param name string @Name of your droppable panel
 --- @return table @Blank table stored on the panel itself under pnl.m_DragSlot[ name ]
 function Panel:Droppable(name)
@@ -533,7 +533,7 @@ function Panel:GetTextSize()
 end
 
 --- Returns the tooltip text that was set with PANEL:SetTooltip.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:277:282
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:277:282
 --- @return string @The tooltip text, if it was set.
 function Panel:GetTooltip()
 end
@@ -545,13 +545,13 @@ function Panel:GetTooltipDelay()
 end
 
 --- Returns the tooltip panel that was set with PANEL:SetTooltipPanel.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:287:289
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:287:289
 --- @return Panel @The tooltip panel, if it was set.
 function Panel:GetTooltipPanel()
 end
 
 --- Gets valid receiver slot of currently dragged panel.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/dragdrop.lua:331
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/dragdrop.lua:331
 --- @return Panel @The panel this was called on if a valid receiver slot exists, otherwise false.
 --- @return table @The slot table.
 function Panel:GetValidReceiverSlot()
@@ -572,14 +572,14 @@ end
 
 --- Returns the X position of the panel relative to its Panel:GetParent.  
 --- Uses Panel:GetPos internally.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:62:65
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:62:65
 --- @return number @X coordinate.
 function Panel:GetX()
 end
 
 --- Returns the Y position of the panel relative to its Panel:GetParent.  
 --- Uses Panel:GetPos internally.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:66:69
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:66:69
 --- @return number @Y coordinate.
 function Panel:GetY()
 end
@@ -688,13 +688,13 @@ function Panel:IsChildHovered(immediate)
 end
 
 --- Returns whether this panel is draggable ( if user is able to drag it ) or not.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/dragdrop.lua:357
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/dragdrop.lua:357
 --- @return boolean @Whether this panel is draggable ( if user is able to drag it ) or not.
 function Panel:IsDraggable()
 end
 
 --- Returns whether this panel is currently being dragged or not.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/dragdrop.lua:363
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/dragdrop.lua:363
 --- @return boolean @Whether this panel is currently being dragged or not.
 function Panel:IsDragging()
 end
@@ -787,7 +787,7 @@ end
 
 --- Redefines the panel object's Panel:SetPos method to operate using frame-by-frame linear interpolation (Global.Lerp). When the panel's position is changed, it will move to the target position at the speed defined. You can undo this with Panel:DisableLerp.  
 --- Unlike the other panel animation functions, such as Panel:MoveTo, this animation method will not operate whilst the game is paused. This is because it relies on Global.FrameTime.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/animation.lua:338:354
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/animation.lua:338:354
 --- @param speed number @The speed at which to move the panel
 --- @param easeOut boolean @This causes the panel object to 'jump' at the target, slowing as it approaches
 function Panel:LerpPositions(speed, easeOut)
@@ -853,7 +853,7 @@ function Panel:MoveBelow(panel, offset)
 end
 
 --- Moves the panel by the specified coordinates using animation.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/animation.lua:286:292
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/animation.lua:286:292
 --- @param moveX number @The number of pixels to move by in the horizontal (x) direction.
 --- @param moveY number @The number of pixels to move by in the vertical (y) direction.
 --- @param time number @The time (in seconds) in which to perform the animation.
@@ -916,7 +916,7 @@ end
 --- * Panel:AlphaTo  
 --- * Panel:MoveBy  
 --- * Panel:LerpPositions  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/animation.lua:102:136
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/animation.lua:102:136
 --- @param length number @The length of the animation in seconds.
 --- @param delay? number @The delay before the animation starts.
 --- @param ease? number @The power/index to use for easing
@@ -973,7 +973,7 @@ function Panel:Paste()
 end
 
 --- Sets the width and position of a DLabel and places the passed panel object directly to the right of it. Returns the `y` value of the bottom of the tallest object. The panel on which this method is run is not relevant; only the passed objects are affected.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:262:275
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:262:275
 --- @param lblWidth number @The width to set the label to.
 --- @param x number @The horizontal (x) position at which to place the label.
 --- @param y number @The vertical (y) position at which to place the label.
@@ -1008,7 +1008,7 @@ function Panel:RebuildSpawnIconEx(data)
 end
 
 --- Allows the panel to receive drag and drop events. Can be called multiple times with different names to receive multiple different draggable panel events.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/dragdrop.lua:321
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/dragdrop.lua:321
 --- @param name string @Name of DnD panels to receive
 --- @param func function @This function is called whenever a panel with valid name is hovering above and dropped on this panel
 --- @param menu table @A table of strings that will act as a menu if drag'n'drop was performed with a right click
@@ -1173,7 +1173,7 @@ end
 
 --- Sets the drag parent.  
 --- Drag parent means that when we start to drag this panel, we'll really start dragging the defined parent.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/dragdrop.lua:332:339
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/dragdrop.lua:332:339
 --- @param parent Panel @The panel to set as drag parent.
 function Panel:SetDragParent(parent)
 end
@@ -1492,14 +1492,14 @@ end
 
 --- Sets the X position of the panel.  
 --- Uses Panel:SetPos internally.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:70:72
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:70:72
 --- @param x number @The X coordinate of the position.
 function Panel:SetX(x)
 end
 
 --- Sets the Y position of the panel.  
 --- Uses Panel:SetPos internally.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:73:75
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel.lua:73:75
 --- @param y number @The Y coordinate of the position.
 function Panel:SetY(y)
 end

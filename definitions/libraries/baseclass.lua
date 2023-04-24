@@ -6,7 +6,7 @@ _G.baseclass = {}
 --- ```  
 --- local BaseClass = baseclass.Get  
 --- ```  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/baseclass.lua:32:41
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/baseclass.lua:32:41
 --- @param name string @The child class.
 --- @return table @The base class's meta table.
 function baseclass.Get(name)
@@ -19,7 +19,7 @@ end
 --- * entities  
 --- * weapons  
 --- * gamemodes (with prefix "gamemode_")  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/baseclass.lua:43:58
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/baseclass.lua:43:58
 --- @param name string @The name of this base class
 --- @param tab table @The base class.
 function baseclass.Set(name, tab)

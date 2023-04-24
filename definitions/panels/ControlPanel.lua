@@ -3,7 +3,7 @@
 local ControlPanel = {}
 --- 🛑 **DEPRECATED**: It is recommended to use DForm's members instead.  
 --- Adds a control to the control panel.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua:119:397
+--- @source ../../garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua:119:397
 --- @param type string @The control type to add
 --- @param controlinfo table @Each control takes their own table structure
 --- @deprecated
@@ -11,7 +11,7 @@ function ControlPanel:AddControl(type, controlinfo)
 end
 
 --- Adds an item by calling DForm:AddItem.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua:41:46
+--- @source ../../garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua:41:46
 --- @param panel Panel @Panel to add as an item to the control panel.
 function ControlPanel:AddPanel(panel)
 end
@@ -33,19 +33,19 @@ function ControlPanel:ColorPicker(label, convarR, convarG, convarB, convarA)
 end
 
 --- Sets control values of the control panel.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua:107:114
+--- @source ../../garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua:107:114
 --- @param data table @A two-membered table:
 function ControlPanel:ControlValues(data)
 end
 
 --- Calls the given function with this panel as the only argument. Used by the spawnmenu to populate the control panel.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua:98:102
+--- @source ../../garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua:98:102
 --- @param func function @A function that takes one argument:
 function ControlPanel:FillViaFunction(func)
 end
 
 --- Returns this control panel.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua:32:36
+--- @source ../../garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua:32:36
 --- @return ControlPanel @The same control panel the function is being called on.
 function ControlPanel:GetEmbeddedPanel()
 end
@@ -60,7 +60,7 @@ function ControlPanel:KeyBinder(label1, convar1, label2, convar2)
 end
 
 --- Creates a MatSelect panel and adds it as an item.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua:51:73
+--- @source ../../garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/controlpanel.lua:51:73
 --- @param convar string @Calls MatSelect:SetConVar with this value.
 --- @param options? table @If specified, calls MatSelect:AddMaterial(key, value) for each table entry
 --- @param autostretch? boolean @If specified, calls MatSelect:SetAutoHeight with this value.

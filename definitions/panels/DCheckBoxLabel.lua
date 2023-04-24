@@ -2,7 +2,7 @@
 --- @class DCheckBoxLabel : DPanel
 local DCheckBoxLabel = {}
 --- Gets the checked state of the checkbox. This calls the checkbox's DCheckBox:GetChecked function.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dcheckbox.lua:110:112
+--- @source ../../garrysmod/garrysmod/lua/vgui/dcheckbox.lua:110:112
 --- @return boolean @Whether the box is checked or not.
 function DCheckBoxLabel:GetChecked()
 end
@@ -13,7 +13,7 @@ function DCheckBoxLabel:GetIndent()
 end
 
 --- Called when the "checked" state is changed.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dcheckbox.lua:168:172
+--- @source ../../garrysmod/garrysmod/lua/vgui/dcheckbox.lua:168:172
 --- @param bVal boolean @Whether the checkbox is checked or unchecked.
 function DCheckBoxLabel:OnChange(bVal)
 end
@@ -26,7 +26,7 @@ function DCheckBoxLabel:SetBright(bright)
 end
 
 --- Sets the checked state of the checkbox. Does not call DCheckBoxLabel:OnChange or Panel:ConVarChanged, unlike DCheckBoxLabel:SetValue.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dcheckbox.lua:106:108
+--- @source ../../garrysmod/garrysmod/lua/vgui/dcheckbox.lua:106:108
 --- @param checked boolean @Whether the box should be checked or not.
 function DCheckBoxLabel:SetChecked(checked)
 end
@@ -54,13 +54,13 @@ function DCheckBoxLabel:SetIndent(ident)
 end
 
 --- Sets the text color for the DCheckBoxLabel.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dcheckbox.lua:130:134
+--- @source ../../garrysmod/garrysmod/lua/vgui/dcheckbox.lua:130:134
 --- @param color table @The text color
 function DCheckBoxLabel:SetTextColor(color)
 end
 
 --- Sets the checked state of the checkbox, and calls DCheckBoxLabel:OnChange and the checkbox's Panel:ConVarChanged methods.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dcheckbox.lua:102:104
+--- @source ../../garrysmod/garrysmod/lua/vgui/dcheckbox.lua:102:104
 --- @param checked boolean @Whether the box should be checked or not (1 or 0 can also be used).
 function DCheckBoxLabel:SetValue(checked)
 end

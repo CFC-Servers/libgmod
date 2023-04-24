@@ -94,7 +94,7 @@ end
 
 --- Returns true if the entity is being looked at by the local player and is within 256 units of distance.  
 --- ℹ **NOTE**: This function is only available in entities that are based off of sandbox's base_gmodentity.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/sandbox/entities/entities/base_gmodentity.lua:10:35
+--- @source ../../garrysmod/garrysmod/gamemodes/sandbox/entities/entities/base_gmodentity.lua:10:35
 --- @return boolean @Is the entity being looked at by the local player and within 256 units.
 function Entity:BeingLookedAtByLocalPlayer()
 end
@@ -126,7 +126,7 @@ function Entity:BoundingRadius()
 end
 
 --- Calls all NetworkVarNotify functions with the given new value, but doesn't change the real value.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:282:289
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:282:289
 --- @param Type string @The NetworkVar Type
 --- @param index number @The NetworkVar index.
 --- @param new_value any @The new value.
@@ -136,7 +136,7 @@ end
 --- Causes a specified function to be run if the entity is removed by any means. This can later be undone by Entity:RemoveCallOnRemove if you need it to not run.  
 --- 🦟 **BUG**: [This hook is called during clientside full updates. See ENTITY:OnRemove#clientsidebehaviourremarks for more information.](https://github.com/Facepunch/garrysmod-issues/issues/4675)  
 --- 🦟 **BUG**: [Using players with this function will provide a gimped entity to the callback.](https://github.com/Facepunch/garrysmod/pull/1275)  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:108:120
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:108:120
 --- @param identifier string @Identifier of the function within CallOnRemove
 --- @param removeFunc function @Function to be called on remove
 --- @param ... any ... @Optional arguments to pass to removeFunc
@@ -544,7 +544,7 @@ function Entity:GetCallbacks(hook)
 end
 
 --- Returns ids of child bones of given bone.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:153:167
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:153:167
 --- @param boneid number @Bone id to lookup children of
 --- @return table @A table of bone ids
 function Entity:GetChildBones(boneid)
@@ -614,7 +614,7 @@ function Entity:GetCreationTime()
 end
 
 --- Gets the creator of the SENT.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:69:71
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:69:71
 --- @return Player @The creator, NULL for no creator.
 function Entity:GetCreator()
 end
@@ -1009,7 +1009,7 @@ end
 
 --- Returns callback function for given NWVar of this entity.  
 --- Alias of Entity:GetNetworked2VarProxy  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:548
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:548
 --- @param key any @The key of the NWVar to get callback of.
 --- @return function @The callback of given NWVar, or nil if not found.
 function Entity:GetNW2VarProxy(key)
@@ -1178,7 +1178,7 @@ function Entity:GetNetworked2Var(key, fallback)
 end
 
 --- Returns callback function for given NWVar of this entity.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:534:545
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:534:545
 --- @param key any @The key of the NWVar to get callback of.
 --- @return function @The callback of given NWVar, or nil if not found.
 function Entity:GetNetworked2VarProxy(key)
@@ -1266,7 +1266,7 @@ end
 
 --- <removed>This function was superseded by Entity:GetNetworked2VarProxy. This page still exists an archive in case anybody ever stumbles across old code and needs to know what it is</removed>  
 --- Returns callback function for given NWVar of this entity.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:495:506
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:495:506
 --- @param name string @The name of the NWVar to get callback of.
 --- @return function @The callback of given NWVar, if any.
 function Entity:GetNetworkedVarProxy(name)
@@ -1410,7 +1410,7 @@ function Entity:GetRagdollOwner()
 end
 
 --- Returns the entity's render angles, set by Entity:SetRenderAngles in a drawing hook.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/entity.lua:16
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/entity.lua:16
 --- @return Angle @The entitys render angles
 function Entity:GetRenderAngles()
 end
@@ -1438,7 +1438,7 @@ function Entity:GetRenderMode()
 end
 
 --- Returns the entity's render origin, set by Entity:SetRenderOrigin in a drawing hook.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/entity.lua:17
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/entity.lua:17
 --- @return Vector @The entitys render origin
 function Entity:GetRenderOrigin()
 end
@@ -1576,7 +1576,7 @@ end
 
 --- Checks if the entity plays a sound when picked up by a player.  
 --- 🦟 **BUG**: [This will return nil if Entity:SetShouldPlayPickupSound has not been called.](https://github.com/Facepunch/garrysmod/pull/1488)  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:7:9
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:7:9
 --- @return boolean @True if it plays the pickup sound, false otherwise.
 function Entity:GetShouldPlayPickupSound()
 end
@@ -1648,7 +1648,7 @@ end
 
 --- Returns if the entity is unfreezable, meaning it can't be frozen with the physgun. By default props are freezable, so this function will typically return false.  
 --- 🦟 **BUG**: [This will return nil if Entity:SetUnFreezable has not been called.](https://github.com/Facepunch/garrysmod/pull/1488)  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:511:513
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:511:513
 --- @return boolean @True if the entity is unfreezable, false otherwise.
 function Entity:GetUnFreezable()
 end
@@ -1659,7 +1659,7 @@ function Entity:GetUp()
 end
 
 --- Retrieves a value from entity's Entity:GetTable. Set by Entity:SetVar.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:45:55
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:45:55
 --- @param key any @Key of the value to retrieve
 --- @param default? any @A default value to fallback to if we couldn't retrieve the value from entity
 --- @return any @Retrieved value
@@ -1774,7 +1774,7 @@ end
 
 --- Returns true if the entity has constraints attached to it  
 --- 🦟 **BUG**: [This will only update clientside if the server calls it first. This only checks constraints added through the constraint so this will not react to map constraints.](https://github.com/Facepunch/garrysmod-issues/issues/3837)  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:75:97
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:75:97
 --- @return boolean @Whether the entity is constrained or not.
 function Entity:IsConstrained()
 end
@@ -1923,7 +1923,7 @@ end
 
 --- Returns whether the entity is a widget or not.  
 --- This is used by the "Edit Bones" context menu property.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/widget.lua:158
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/widget.lua:158
 --- @return boolean @Whether the entity is a widget or not.
 function Entity:IsWidget()
 end
@@ -2058,7 +2058,7 @@ end
 --- This function does not exist on entities in which Entity:InstallDataTable has not been called. By default, this means this function only exists on SENTs (both serverside and clientside) and on players with a Player Class (serverside and clientside Global.LocalPlayer only). It's therefore safest to only use this in ENTITY:SetupDataTables.  
 --- 🦟 **BUG**: [The callback will not be called clientside if the var is changed right after entity spawn.](https://github.com/Facepunch/garrysmod-requests/issues/324)  
 --- </name>  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:315:325
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:315:325
 --- @param name string @Name of variable to track changes of.
 --- @param callback function @The function to call when the variable changes
 function Entity:NetworkVarNotify(name, callback)
@@ -2118,7 +2118,7 @@ function Entity:PassesFilter(caller, ent)
 end
 
 --- Wakes up the entity's physics object  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:156:163
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:156:163
 function Entity:PhysWake()
 end
 
@@ -2273,7 +2273,7 @@ function Entity:RemoveAllGestures()
 end
 
 --- Removes a function previously added via Entity:CallOnRemove.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:122:132
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:122:132
 --- @param identifier string @Identifier of the function within CallOnRemove
 function Entity:RemoveCallOnRemove(identifier)
 end
@@ -2489,7 +2489,7 @@ function Entity:SetColor4Part(r, g, b, a)
 end
 
 --- Sets the creator of the Entity. This is set automatically in Sandbox gamemode when spawning SENTs, but is never used/read by default.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:59:67
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:59:67
 --- @param ply Player @The creator
 function Entity:SetCreator(ply)
 end
@@ -2837,7 +2837,7 @@ end
 --- Alias of Entity:SetNetworked2VarProxy  
 --- ℹ **NOTE**: Only one NW2VarProxy can be set per-var  
 --- Running this function will only set it for the realm it is called on.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:547
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:547
 --- @param key any @The key of the NW2Var to add callback for.
 --- @param callback function @The function to be called when the NW2Var changes
 function Entity:SetNW2VarProxy(key, callback)
@@ -3047,7 +3047,7 @@ end
 --- Sets a function to be called when the NW2Var changes. Internally uses GM:EntityNetworkedVarChanged to call the function.  
 --- ℹ **NOTE**: Only one NW2VarProxy can be set per-var  
 --- Running this function clientside will only set it for the client it is called on.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:524:532
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:524:532
 --- @param name string @The name of the NW2Var to add callback for.
 --- @param callback function @The function to be called when the NW2Var changes
 function Entity:SetNetworked2VarProxy(name, callback)
@@ -3160,7 +3160,7 @@ end
 
 --- 🛑 **DEPRECATED**: You should be using Entity:SetNWVarProxy instead.  
 --- Sets callback function to be called when given NWVar changes.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:485:493
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:485:493
 --- @param name string @The name of the NWVar to add callback for.
 --- @param callback function @The function to be called when the NWVar changes.
 --- @deprecated
@@ -3295,7 +3295,7 @@ function Entity:SetRagdollPos(boneid, pos)
 end
 
 --- Sets the render angles of the Entity.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/entity.lua:16
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/entity.lua:16
 --- @param newAngles Angle @The new render angles to be set to.
 function Entity:SetRenderAngles(newAngles)
 end
@@ -3336,7 +3336,7 @@ function Entity:SetRenderMode(renderMode)
 end
 
 --- Set the origin in which the Entity will be drawn from.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/entity.lua:17
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/entity.lua:17
 --- @param newOrigin Vector @The new origin in world coordinates where the Entity's model will now be rendered from.
 function Entity:SetRenderOrigin(newOrigin)
 end
@@ -3361,7 +3361,7 @@ function Entity:SetSequence(sequenceId)
 end
 
 --- Sets whether or not the entity should make a physics contact sound when it's been picked up by a player.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:11:13
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:11:13
 --- @param playsound? boolean @True to play the pickup sound, false otherwise.
 function Entity:SetShouldPlayPickupSound(playsound)
 end
@@ -3430,7 +3430,7 @@ function Entity:SetTrigger(maketrigger)
 end
 
 --- Sets whether an entity can be unfrozen, meaning that it cannot be unfrozen using the physgun.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:515:517
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:515:517
 --- @param freezable? boolean @True to make the entity unfreezable, false otherwise.
 function Entity:SetUnFreezable(freezable)
 end
@@ -3442,7 +3442,7 @@ end
 
 --- Allows to quickly set variable to entity's Entity:GetTable.  
 --- ℹ **NOTE**: This will not network the variable to client(s). You want Entity:SetNWString and similar functions for that  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/entity.lua:102:106
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:102:106
 --- @param key any @Key of the value to set
 --- @param value any @Value to set the variable to
 function Entity:SetVar(key, value)

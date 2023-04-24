@@ -9,7 +9,7 @@
 --- @class Color
 local Color = {}
 --- Sets the red, green, blue, and alpha of the color.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/util/color.lua:94:101
+--- @source ../../garrysmod/garrysmod/lua/includes/util/color.lua:94:101
 --- @param r number @The red component
 --- @param g number @The green component
 --- @param b number @The blue component
@@ -18,7 +18,7 @@ function Color:SetUnpacked(r, g, b, a)
 end
 
 --- Converts a Color into HSL color space. This calls Global.ColorToHSL internally.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/util/color.lua:58:65
+--- @source ../../garrysmod/garrysmod/lua/includes/util/color.lua:58:65
 --- @return number @The hue in degrees [0, 360).
 --- @return number @The saturation in the range [0, 1].
 --- @return number @The lightness in the range [0, 1].
@@ -26,7 +26,7 @@ function Color:ToHSL()
 end
 
 --- Converts a Color into HSV color space. This calls Global.ColorToHSV internally.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/util/color.lua:67:74
+--- @source ../../garrysmod/garrysmod/lua/includes/util/color.lua:67:74
 --- @return number @The hue in degrees [0, 360).
 --- @return number @The saturation in range [0, 1].
 --- @return number @The value in range [0, 1].
@@ -34,7 +34,7 @@ function Color:ToHSV()
 end
 
 --- Returns the color as a table with four elements.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/util/color.lua:103:107
+--- @source ../../garrysmod/garrysmod/lua/includes/util/color.lua:103:107
 --- @return table @The table with elements 1 = r, 2 = g, 3 = b, 4 = a.
 function Color:ToTable()
 end
@@ -45,13 +45,13 @@ end
 --- g / 255 -> y  
 --- b / 255 -> z  
 --- This is the opposite of Vector:ToColor  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/util/color.lua:76:83
+--- @source ../../garrysmod/garrysmod/lua/includes/util/color.lua:76:83
 --- @return Vector @The created Vector
 function Color:ToVector()
 end
 
 --- Returns the red, green, blue, and alpha of the color.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/util/color.lua:85:92
+--- @source ../../garrysmod/garrysmod/lua/includes/util/color.lua:85:92
 --- @return number @Red
 --- @return number @Green
 --- @return number @Blue

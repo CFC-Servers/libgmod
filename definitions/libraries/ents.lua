@@ -39,7 +39,7 @@ function ents.FindByClass(class)
 end
 
 --- Finds all entities that are of given class and are children of given entity. This works internally by iterating over ents.GetAll.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/ents.lua:2
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/ents.lua:2
 --- @param class string @The class of entities to search for
 --- @param parent Entity @Parent of entities that are being searched for
 --- @return table @A table of found entities or nil if none are found

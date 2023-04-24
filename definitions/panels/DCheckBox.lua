@@ -2,7 +2,7 @@
 --- @class DCheckBox : DButton
 local DCheckBox = {}
 --- Gets the checked state of the checkbox.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dcheckbox.lua:4
+--- @source ../../garrysmod/garrysmod/lua/vgui/dcheckbox.lua:4
 --- @return boolean @Whether the box is checked or not.
 function DCheckBox:GetChecked()
 end

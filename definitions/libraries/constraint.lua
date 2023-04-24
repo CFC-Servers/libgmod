@@ -1,7 +1,7 @@
 --- The constraint library allows you to control the constraint system built into the physics engine (rope, weld, ballsockets, etc).  
 _G.constraint = {}
 --- Stores information about constraints in an entity's table.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:344:364
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:344:364
 --- @param ent1 Entity @The entity to store the information on.
 --- @param constrt Entity @The constraint to store in the entity's table.
 --- @param ent2? Entity @Optional
@@ -11,7 +11,7 @@ function constraint.AddConstraintTable(ent1, constrt, ent2, ent3, ent4)
 end
 
 --- Stores info about the constraints on the entity's table. The only difference between this and constraint.AddConstraintTable is that the constraint does not get deleted when the entity is removed.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:366:385
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:366:385
 --- @param ent1 Entity @The entity to store the information on.
 --- @param constrt Entity @The constraint to store in the entity's table.
 --- @param ent2? Entity @Optional
@@ -22,7 +22,7 @@ end
 
 --- Creates an advanced ballsocket (ragdoll) constraint.  
 --- Uses a https://developer.valvesoftware.com/wiki/Phys_ragdollconstraint  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:828:900
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:828:900
 --- @param Ent1 Entity @First entity.
 --- @param Ent2 Entity @Second entity.
 --- @param Bone1 number @Bone of first entity (0 for non-ragdolls)
@@ -47,7 +47,7 @@ function constraint.AdvBallsocket(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, forcel
 end
 
 --- Creates an axis constraint.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:764:824
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:764:824
 --- @param Ent1 Entity @First entity.
 --- @param Ent2 Entity @Second entity.
 --- @param Bone1 number @Bone of first entity (0 for non-ragdolls)
@@ -65,7 +65,7 @@ function constraint.Axis(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, forcelimit, tor
 end
 
 --- Creates a ballsocket joint.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:1203:1250
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:1203:1250
 --- @param Ent1 Entity @First entity
 --- @param Ent2 Entity @Second entity
 --- @param Bone1 number @Bone of first entity (0 for non-ragdolls)
@@ -79,7 +79,7 @@ function constraint.Ballsocket(Ent1, Ent2, Bone1, Bone2, LocalPos, forcelimit, t
 end
 
 --- Basic checks to make sure that the specified entity and bone are valid. Returns false if we should not be constraining the entity.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:244:257
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:244:257
 --- @param ent Entity @The entity to check
 --- @param bone number @The bone of the entity to check (use 0 for mono boned ents)
 --- @return boolean @shouldConstrain
@@ -87,7 +87,7 @@ function constraint.CanConstrain(ent, bone)
 end
 
 --- Creates a rope without any constraint.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:290:342
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:290:342
 --- @param pos Vector @Starting position of the rope.
 --- @param width number @Width of the rope.
 --- @param material string @Material of the rope.
@@ -106,7 +106,7 @@ end
 --- Creates an invisible, non-moveable anchor point in the world to which things can be attached.  
 --- ℹ **NOTE**: The entity used internally by this function (`gmod_anchor`) only exists in Sandbox derived gamemodes, meaning this function will only work in these gamemodes.  
 --- To use this in other gamemodes, you may need to create your own [gmod_anchor](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/gamemodes/sandbox/entities/entities/gmod_anchor.lua) entity.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:661:672
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:661:672
 --- @param pos Vector @The position to spawn the anchor at
 --- @return Entity @anchor
 --- @return PhysObj @physicsObject,
@@ -116,7 +116,7 @@ function constraint.CreateStaticAnchorPoint(pos)
 end
 
 --- Creates an elastic constraint.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:538:609
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:538:609
 --- @param Ent1 Entity @First entity.
 --- @param Ent2 Entity @Second entity
 --- @param Bone1 number @Bone of first entity (0 for non-ragdolls)
@@ -136,7 +136,7 @@ function constraint.Elastic(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, constant, da
 end
 
 --- Returns the constraint of a specified type between two entities, if it exists  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:216:242
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:216:242
 --- @param ent1 Entity @The first entity to check
 --- @param ent2 Entity @The second entity to check
 --- @param type string @The type of constraint, case sensitive
@@ -147,7 +147,7 @@ function constraint.Find(ent1, ent2, type, bone1, bone2)
 end
 
 --- Returns the first constraint of a specific type directly connected to the entity found  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:1574:1593
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:1574:1593
 --- @param ent Entity @The entity to check
 --- @param type string @The type of constraint, case sensitive
 --- @return table @The constraint table, set with constraint.AddConstraintTable
@@ -155,7 +155,7 @@ function constraint.FindConstraint(ent, type)
 end
 
 --- Returns the other entity involved in the first constraint of a specific type directly connected to the entity  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:1614:1631
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:1614:1631
 --- @param ent Entity @The entity to check
 --- @param type string @The type of constraint, case sensitive
 --- @return Entity @The other entity.
@@ -163,7 +163,7 @@ function constraint.FindConstraintEntity(ent, type)
 end
 
 --- Returns a table of all constraints of a specific type directly connected to the entity  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:1574:1593
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:1574:1593
 --- @param ent Entity @The entity to check
 --- @param type string @The type of constraint, case sensitive
 --- @return table @All the constraints of this entity.
@@ -171,13 +171,13 @@ function constraint.FindConstraints(ent, type)
 end
 
 --- Make this entity forget any constraints it knows about. Note that this will not actually remove the constraints.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:1564:1571
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:1564:1571
 --- @param ent Entity @The entity that will forget its constraints.
 function constraint.ForgetConstraints(ent)
 end
 
 --- Returns a table of all entities recursively constrained to an entitiy.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:1633:1659
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:1633:1659
 --- @param ent Entity @The entity to check
 --- @param ResultTable? table @Table used to return result
 --- @return table @A table containing all of the constrained entities
@@ -185,21 +185,21 @@ function constraint.GetAllConstrainedEntities(ent, ResultTable)
 end
 
 --- Returns a table of all constraints directly connected to the entity  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:1520:1562
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:1520:1562
 --- @param ent Entity @The entity to check
 --- @return table @A list of all constraints connected to the entity.
 function constraint.GetTable(ent)
 end
 
 --- Returns true if the entity has constraints attached to it  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:1492:1517
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:1492:1517
 --- @param ent Entity @The entity to check
 --- @return boolean @Whether the entity has any constraints or not.
 function constraint.HasConstraints(ent)
 end
 
 --- Creates a Hydraulic constraint.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:1326:1407
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:1326:1407
 --- @param pl Player @The player that will be used to call numpad.OnDown.
 --- @param Ent1 Entity @First entity.
 --- @param Ent2 Entity @Second entity.
@@ -224,7 +224,7 @@ end
 
 --- Creates a keep upright constraint.  
 --- ℹ **NOTE**: This function only works on prop_physics or prop_ragdoll.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:613:657
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:613:657
 --- @param ent Entity @The entity to keep upright
 --- @param ang Angle @The angle defined as "upright"
 --- @param bone number @The bone of the entity to constrain (0 for boneless)
@@ -234,7 +234,7 @@ function constraint.Keepupright(ent, ang, bone, angularLimit)
 end
 
 --- Creates a motor constraint.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:1026:1122
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:1026:1122
 --- @param Ent1 Entity @First entity.
 --- @param Ent2 Entity @Second entity.
 --- @param Bone1 number @Bone of first entity (0 for non-ragdolls)
@@ -258,7 +258,7 @@ function constraint.Motor(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, friction, torq
 end
 
 --- Creates a muscle constraint.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:1411:1488
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:1411:1488
 --- @param pl Player @The player that will be used to call numpad.OnDown.
 --- @param Ent1 Entity @First entity.
 --- @param Ent2 Entity @Second entity.
@@ -285,7 +285,7 @@ end
 
 --- Creates an no-collide "constraint". Disables collision between two entities.  
 --- ℹ **NOTE**: Does not work with players.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:904:946
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:904:946
 --- @param Ent1 Entity @First entity.
 --- @param Ent2 Entity @Second entity.
 --- @param Bone1 number @Bone of first entity (0 for non-ragdolls).
@@ -295,7 +295,7 @@ function constraint.NoCollide(Ent1, Ent2, Bone1, Bone2)
 end
 
 --- Creates a pulley constraint.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:1126:1199
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:1126:1199
 --- @param Ent1 Entity 
 --- @param Ent4 Entity 
 --- @param Bone1 number 
@@ -314,7 +314,7 @@ function constraint.Pulley(Ent1, Ent4, Bone1, Bone4, LPos1, LPos4, WPos2, WPos3,
 end
 
 --- Attempts to remove all constraints associated with an entity  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:183:214
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:183:214
 --- @param ent Entity @The entity to remove constraints from
 --- @return boolean @Whether any constraints were removed
 --- @return number @Number of constraints removed
@@ -322,7 +322,7 @@ function constraint.RemoveAll(ent)
 end
 
 --- Attempts to remove all constraints of a specified type associated with an entity  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:140:180
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:140:180
 --- @param ent Entity @The entity to check
 --- @param type string @The constraint type to remove (eg
 --- @return boolean @Whether we removed any constraints or not
@@ -331,7 +331,7 @@ function constraint.RemoveConstraints(ent, type)
 end
 
 --- Creates a rope constraint - with rope!  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:460:535
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:460:535
 --- @param Ent1 Entity @First entity
 --- @param Ent2 Entity @Second entity
 --- @param Bone1 number @Bone of first entity (0 for non-ragdolls)
@@ -351,7 +351,7 @@ function constraint.Rope(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, length, addleng
 end
 
 --- Creates a slider constraint.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:675:761
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:675:761
 --- @param Ent1 Entity @First entity.
 --- @param Ent2 Entity @Second entity.
 --- @param Bone1 number @Bone of first entity (0 for non-ragdolls),
@@ -367,7 +367,7 @@ function constraint.Slider(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, width, materi
 end
 
 --- Creates a weld constraint  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:388:456
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:388:456
 --- @param ent1 Entity @The first entity
 --- @param ent2 Entity @The second entity
 --- @param bone1 number @The bonenumber of the first entity (0 for monoboned entities)
@@ -380,7 +380,7 @@ function constraint.Weld(ent1, ent2, bone1, bone2, forcelimit, nocollide, delete
 end
 
 --- Creates a Winch constraint.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/constraint.lua:1254:1322
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/constraint.lua:1254:1322
 --- @param pl Player @The player that will be used to call numpad.OnDown and numpad.OnUp.
 --- @param Ent1 Entity @First entity.
 --- @param Ent2 Entity @Second entity.

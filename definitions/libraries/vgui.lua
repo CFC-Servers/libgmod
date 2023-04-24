@@ -3,7 +3,7 @@
 _G.vgui = {}
 --- Creates a panel by the specified classname.  
 --- ℹ **NOTE**: Custom VGUI elements are not loaded instantly. Use GM:OnGamemodeLoaded to create them on startup.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/scriptedpanels.lua:23:52
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/scriptedpanels.lua:23:52
 --- @param classname string @Classname of the panel to create
 --- @param parent? Panel @Panel to parent to.
 --- @param name? string @Custom name of the created panel for scripting/debugging purposes
@@ -12,7 +12,7 @@ function vgui.Create(classname, parent, name)
 end
 
 --- Creates a panel from table. Typically used with vgui.RegisterFile and vgui.RegisterTable.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/scriptedpanels.lua:54:73
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/scriptedpanels.lua:54:73
 --- @param metatable table @Your PANEL table.
 --- @param parent? Panel @Which panel to parent the newly created panel to.
 --- @param name? string @Custom name of the created panel for scripting/debugging purposes
@@ -38,7 +38,7 @@ function vgui.FocusedHasParent(parent)
 end
 
 --- Returns the table of a Lua-defined panel by name. Does not return parent members of the table!  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/scriptedpanels.lua:15:17
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/scriptedpanels.lua:15:17
 --- @param Panelname string @The name of the panel to get the table of.
 --- @return table @The `PANEL` table of the a Lua-defined panel with given name.
 function vgui.GetControlTable(Panelname)
@@ -68,7 +68,7 @@ function vgui.IsHoveringWorld()
 end
 
 --- Registers a panel for later creation via vgui.Create.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/scriptedpanels.lua:75:99
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/scriptedpanels.lua:75:99
 --- @param classname string @Classname of the panel to register
 --- @param panelTable table @The table containing the panel information.
 --- @param baseName? string @Classname of a panel to inherit functionality from
@@ -87,7 +87,7 @@ end
 --- -- Your code...  
 --- end  
 --- ```  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/scriptedpanels.lua:109:126
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/scriptedpanels.lua:109:126
 --- @param file string @The file to register
 --- @return table @A table containing info about the panel.
 function vgui.RegisterFile(file)
@@ -95,7 +95,7 @@ end
 
 --- Registers a table to use as a panel, to be used with vgui.CreateFromTable.  
 --- All this function does is assigns Base key to your table and returns the table.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/client/panel/scriptedpanels.lua:101:111
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/panel/scriptedpanels.lua:101:111
 --- @param panel table @The PANEL table.
 --- @param base? string @A base for the panel.
 --- @return table @The PANEL table

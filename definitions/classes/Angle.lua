@@ -71,7 +71,7 @@ end
 
 --- Snaps the angle to nearest interval of degrees.  
 --- ℹ **NOTE**: This will modify the original angle too!  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/angle.lua:5:18
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/angle.lua:5:18
 --- @param axis string @The component/axis to snap
 --- @param target number @The target angle snap interval
 --- @return Angle @The snapped angle.

@@ -1,7 +1,7 @@
 --- The construct library is used to control the physical properties of entities.  
 _G.construct = {}
 --- Creates a magnet.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/construct.lua:95:149
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/construct.lua:95:149
 --- @param ply Player @Player that will have the numpad control over the magnet
 --- @param pos Vector @The position of the magnet
 --- @param ang Angle @The angles of the magnet
@@ -22,7 +22,7 @@ function construct.Magnet(ply, pos, ang, model, material, key, maxObjects, stren
 end
 
 --- Sets props physical properties.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/construct.lua:13:51
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/construct.lua:13:51
 --- @param ply Player @The player
 --- @param ent Entity @The entity to apply properties to
 --- @param physObjID number @You can use this or the argument below

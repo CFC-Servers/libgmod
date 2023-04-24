@@ -63,7 +63,7 @@ function Player:Alive()
 end
 
 --- Sets if the player can toggle their flashlight. Function exists on both the server and client but has no effect when ran on the client.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:210
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:210
 --- @param canFlashlight boolean @True allows flashlight toggling
 function Player:AllowFlashlight(canFlashlight)
 end
@@ -115,7 +115,7 @@ end
 
 --- Returns true if the player's flashlight hasn't been disabled by Player:AllowFlashlight.  
 --- ℹ **NOTE**: This is not synchronized between clients and server automatically!  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:211
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:211
 --- @return boolean @Whether the player can use flashlight.
 function Player:CanUseFlashlight()
 end
@@ -127,7 +127,7 @@ function Player:ChatPrint(message)
 end
 
 --- Checks if the limit is hit or not. If it is, it will throw a notification saying so.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/sandbox/gamemode/player_extension.lua:9:32
+--- @source ../../garrysmod/garrysmod/gamemodes/sandbox/gamemode/player_extension.lua:9:32
 --- @param limitType string @Limit type
 --- @return boolean @Returns true if limit is not hit, false if it is hit
 function Player:CheckLimit(limitType)
@@ -167,7 +167,7 @@ function Player:Deaths()
 end
 
 --- Prints the players' name and position to the console.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:91:101
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:91:101
 function Player:DebugInfo()
 end
 
@@ -272,7 +272,7 @@ end
 --- Freeze the player. Frozen players cannot move, look around, or attack. Key bindings are still called. Similar to Player:Lock but the player can still take damage.  
 --- Adds or removes the FL_FROZEN flag from the player.  
 --- 🦟 **BUG**: Frozen bots will still be able to look around.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:237:249
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:237:249
 --- @param frozen? boolean @Whether the player should be frozen.
 function Player:Freeze(frozen)
 end
@@ -399,7 +399,7 @@ end
 --- The results of this function are **cached** clientside every frame.  
 --- Uses util.GetPlayerTrace internally and is therefore bound by its limits.  
 --- See also Player:GetEyeTraceNoCursor.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/base/gamemode/obj_player_extend.lua:172:192
+--- @source ../../garrysmod/garrysmod/gamemodes/base/gamemode/obj_player_extend.lua:172:192
 --- @return table @Trace information, see Structures/TraceResult.
 function Player:GetEyeTrace()
 end
@@ -408,7 +408,7 @@ end
 --- The results of this function are **cached** clientside every frame.  
 --- Uses util.GetPlayerTrace internally and is therefore bound by its limits.  
 --- See also Player:GetEyeTrace.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/base/gamemode/obj_player_extend.lua:194:213
+--- @source ../../garrysmod/garrysmod/gamemodes/base/gamemode/obj_player_extend.lua:194:213
 --- @return table @Trace result
 function Player:GetEyeTraceNoCursor()
 end
@@ -513,7 +513,7 @@ end
 --- Internally uses the sql.  
 --- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
 --- ℹ **NOTE**: PData is not networked from servers to clients!  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:159:171
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:159:171
 --- @param key string @Name of the PData key
 --- @param default? any @Default value if PData key doesn't exist.
 --- @return string @The data in the SQL database or the default value given.
@@ -619,7 +619,7 @@ function Player:GetUseEntity()
 end
 
 --- Returns the player's user group. By default, player user groups are loaded from `garrysmod/settings/users.txt`.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player_auth.lua:40:48
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player_auth.lua:40:48
 --- @return string @The user group of the player
 function Player:GetUserGroup()
 end
@@ -710,18 +710,18 @@ function Player:GiveAmmo(amount, type, hidePopup)
 end
 
 --- Disables god mode on the player.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:261:269
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:261:269
 function Player:GodDisable()
 end
 
 --- Enables god mode on the player.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:251:259
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:251:259
 function Player:GodEnable()
 end
 
 --- Returns whether the player has god mode or not, contolled by Player:GodEnable and Player:GodDisable.  
 --- 🦟 **BUG**: [This is not synced between the client and server. This will cause the client to always return false even in godmode.](https://github.com/Facepunch/garrysmod-issues/issues/2038)  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:283:291
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:283:291
 --- @return boolean @Whether the player has god mode or not.
 function Player:HasGodMode()
 end
@@ -745,7 +745,7 @@ end
 
 --- Returns whether the player is an admin or not. It will also return `true` if the player is Player:IsSuperAdmin by default.  
 --- Internally this is determined by Player:IsUserGroup.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player_auth.lua:5:14
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player_auth.lua:5:14
 --- @return boolean @True if the player is an admin or a super admin.
 function Player:IsAdmin()
 end
@@ -766,7 +766,7 @@ function Player:IsDrivingEntity()
 end
 
 --- Returns whether the players movement is currently frozen, controlled by Player:Freeze.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:273:281
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:273:281
 --- @return boolean @Whether the players movement is currently frozen or not.
 function Player:IsFrozen()
 end
@@ -811,7 +811,7 @@ end
 
 --- Returns whether the player is a super admin.  
 --- Internally this is determined by Player:IsUserGroup. See also Player:IsAdmin.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player_auth.lua:22:26
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player_auth.lua:22:26
 --- @return boolean @True if the player is a super admin.
 function Player:IsSuperAdmin()
 end
@@ -829,7 +829,7 @@ function Player:IsTyping()
 end
 
 --- Returns true/false if the player is in specified group or not. See Player:GetUserGroup for a way to get player's usergroup.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player_auth.lua:28:38
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player_auth.lua:28:38
 --- @param groupname string @Group to check the player for.
 --- @return boolean @isInUserGroup
 function Player:IsUserGroup(groupname)
@@ -1008,7 +1008,7 @@ end
 --- Removes a **P**layer **Data** key-value pair from the SQL database. (sv.db when called on server,  cl.db when called on client)  
 --- Internally uses the sql.  
 --- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:184:193
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:184:193
 --- @param key string @Key to remove
 --- @return boolean @true is succeeded, false otherwise
 function Player:RemovePData(key)
@@ -1247,7 +1247,7 @@ end
 --- Internally uses the sql.  
 --- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
 --- ℹ **NOTE**: PData is not networked from servers to clients!  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:173:182
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:173:182
 --- @param key string @Name of the PData key
 --- @param value any @Value to write to the key (**must** be an SQL valid data type, such as a string or integer)
 --- @return boolean @Whether the operation was successful or not
@@ -1310,7 +1310,7 @@ function Player:SetUnDuckSpeed(UnDuckSpeed)
 end
 
 --- Sets the usergroup of the player.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player_auth.lua:49:55
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player_auth.lua:49:55
 --- @param groupName string @The user group of the player.
 function Player:SetUserGroup(groupName)
 end
@@ -1364,7 +1364,7 @@ function Player:SetWeaponColor(Color)
 end
 
 --- Sets up the players view model hands. Calls GM:PlayerSetHandsModel to set the model of the hands.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:214:229
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:214:229
 --- @param ent Entity @If the player is spectating an entity, this should be the entity the player is spectating, so we can use its hands model instead.
 function Player:SetupHands(ent)
 end
@@ -1493,7 +1493,7 @@ end
 
 --- Attempts to switch the player weapon to the one specified in the "cl_defaultweapon" convar, if the player does not own the specified weapon nothing will happen.  
 --- If you want to switch to a specific weapon, use: Player:SetActiveWeapon  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:195:206
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:195:206
 function Player:SwitchToDefaultWeapon()
 end
 

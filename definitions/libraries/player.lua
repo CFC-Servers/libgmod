@@ -24,7 +24,7 @@ end
 
 --- Gets the player with the specified AccountID.  
 --- ⚠ **WARNING**: Internally this function iterates over all players in the server, meaning it can be quite expensive in a performance-critical context.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:45:57
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:45:57
 --- @param accountID number @The Player:AccountID to find the player by.
 --- @return Player @Player if one is found, false otherwise.
 function player.GetByAccountID(accountID)
@@ -41,7 +41,7 @@ end
 
 --- Gets the player with the specified SteamID.  
 --- ⚠ **WARNING**: Internally this function iterates over all players in the server, meaning it can be quite expensive in a performance-critical context.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:67:77
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:67:77
 --- @param steamID string @The Player:SteamID to find the player by.
 --- @return Player @Player if one is found, false otherwise.
 function player.GetBySteamID(steamID)
@@ -49,7 +49,7 @@ end
 
 --- Gets the player with the specified SteamID64.  
 --- ⚠ **WARNING**: Internally this function iterates over all players in the server, meaning it can be quite expensive in a performance-critical context.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:79:89
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:79:89
 --- @param steamID64 string @The Player:SteamID64 to find the player by.
 --- @return Player @Player if one is found, false otherwise.
 function player.GetBySteamID64(steamID64)
@@ -59,7 +59,7 @@ end
 --- Gets the player with the specified uniqueID (not recommended way to identify players).  
 --- ⚠ **WARNING**: It is highly recommended to use player.GetByAccountID, player.GetBySteamID or player.GetBySteamID64 instead as this function can have collisions ( be same for different people ) while SteamID is guaranteed to unique to each player.  
 --- ⚠ **WARNING**: Internally this function iterates over all players in the server, meaning it can be quite expensive in a performance-critical context.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/player.lua:56:65
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/player.lua:56:65
 --- @param uniqueID string @The Player:UniqueID to find the player by.
 --- @deprecated
 --- @return Player @Player if one is found, false otherwise.

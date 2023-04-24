@@ -65,7 +65,7 @@ function team.Joinable(index)
 end
 
 --- Returns the amount of players in a team.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/team.lua:129:133
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/team.lua:129:133
 --- @param teamIndex number @The team index.
 --- @return number @playerCount
 function team.NumPlayers(teamIndex)

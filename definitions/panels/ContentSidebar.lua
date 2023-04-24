@@ -5,19 +5,19 @@
 --- @class ContentSidebar : DPanel
 local ContentSidebar = {}
 --- Creates a Save Notification which will be shown when SANDBOX:SpawnlistContentChanged has been called.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contentsidebar.lua:20:23
+--- @source ../../garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contentsidebar.lua:20:23
 --- @param style string 
 --- @param hookname? string @A Populate Hook like PopulateEntities
 function ContentSidebar:CreateSaveNotification(style, hookname)
 end
 
 --- Internally calls ContentSidebar:EnableSearch, ContentSidebar:CreateSaveNotification and creates a ContentSidebarToolbox which is accessible under ContentSidebar.Toolbox. Call the Hook SANDBOX:OpenToolbox to open the created Toolbox  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contentsidebar.lua:25:40
+--- @source ../../garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contentsidebar.lua:25:40
 function ContentSidebar:EnableModify()
 end
 
 --- Creates a search bar which will be displayed over the Nodes.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contentsidebar.lua:20:23
+--- @source ../../garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contentsidebar.lua:20:23
 --- @param style string 
 --- @param hookname? string @A Populate Hook like PopulateEntities
 function ContentSidebar:EnableSearch(style, hookname)

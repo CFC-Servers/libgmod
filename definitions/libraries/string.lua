@@ -22,7 +22,7 @@
 --- This category lists functions available in the string *library*.  
 _G.string = {}
 --- Inserts commas for every third digit of a given number.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:354
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:354
 --- @param value number @The input number to commafy
 --- @param separator? string @An optional string that will be used instead of the default comma.
 --- @return string @The commafied string
@@ -30,7 +30,7 @@ function string.Comma(value, separator)
 end
 
 --- Returns whether or not the second passed string matches the end of the first.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:320
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:320
 --- @param str string @The string whose end is to be checked.
 --- @param end_ string @The string to be matched with the end of the first.
 --- @return boolean @`true` if the first string ends with the second, or the second is empty, otherwise `false`.
@@ -40,7 +40,7 @@ end
 --- Splits a string up wherever it finds the given separator.  
 --- This is an alias of string.Split  
 --- and the reverse operation of string.Implode.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:84:101
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:84:101
 --- @param separator string @The string will be separated wherever this sequence is found.
 --- @param str string @The string to split up.
 --- @param use_patterns boolean @Set this to true if your separator is a pattern.
@@ -49,7 +49,7 @@ function string.Explode(separator, str, use_patterns)
 end
 
 --- Returns the time as a formatted string or as a table if no format is given.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:166
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:166
 --- @param float number @The time in seconds to format.
 --- @param format? string @An optional formatting to use
 --- @return string @Returns the time as a formatted string only if a format was specified
@@ -57,7 +57,7 @@ function string.FormattedTime(float, format)
 end
 
 --- Creates a string from a Color variable.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:326
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:326
 --- @param color table @The color to put in the string.
 --- @return string @Output
 function string.FromColor(color)
@@ -65,7 +65,7 @@ end
 
 --- 🛑 **DEPRECATED**: Use either string.sub(str, index, index) or str[index].  
 ---  Returns char value from the specified index in the supplied string.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:295
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:295
 --- @param str string @The string that you will be searching with the supplied index.
 --- @param index number @The index's value of the string to be returned.
 --- @deprecated
@@ -74,21 +74,21 @@ function string.GetChar(str, index)
 end
 
 --- Returns extension of the file.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:122
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:122
 --- @param file string @String eg
 --- @return string @fileExtension
 function string.GetExtensionFromFilename(file)
 end
 
 --- Returns file name and extension.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:144
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:144
 --- @param pathString string @The string eg
 --- @return string @The file name
 function string.GetFileFromFilename(pathString)
 end
 
 --- Returns the path only from a file's path.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:142
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:142
 --- @param Inputstring string @String to get path from.
 --- @return string @Path
 function string.GetPathFromFilename(Inputstring)
@@ -97,7 +97,7 @@ end
 --- 🛑 **DEPRECATED**: You really should just use table.concat.  
 --- Joins the values of a table together to form a string.  
 --- This is the reverse of string.Explode and is functionally identical to table.concat, but with less features.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:113
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:113
 --- @param separator string @The separator to insert between each piece.
 --- @param pieces table @The table of pieces to concatenate
 --- @deprecated
@@ -106,7 +106,7 @@ function string.Implode(separator, pieces)
 end
 
 --- Interpolates a given string with the given table. This is useful for formatting localized strings.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:370:378
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:370:378
 --- @param str string @The string that should be interpolated.
 --- @param lookuptable table @The table to search in.
 --- @return string @The modified string.
@@ -114,14 +114,14 @@ function string.Interpolate(str, lookuptable)
 end
 
 --- Escapes special characters for JavaScript in a string, making the string safe for inclusion in to JavaScript strings.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:34
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:34
 --- @param str string @The string that should be escaped.
 --- @return string @The escaped string.
 function string.JavascriptSafe(str)
 end
 
 --- Returns everything left of supplied place of that string.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:218
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:218
 --- @param str string @The string to extract from.
 --- @param num number @Amount of chars relative to the beginning (starting from 1).
 --- @return string @Returns a string containing a specified number of characters from the left side of a string.
@@ -129,28 +129,28 @@ function string.Left(str, num)
 end
 
 --- Converts a digital filesize to human-readable text.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:270
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:270
 --- @param bytes number @The filesize in bytes.
 --- @return string @The human-readable filesize, in Bytes/KB/MB/GB (whichever is appropriate).
 function string.NiceSize(bytes)
 end
 
 --- Formats the supplied number (in seconds) to the highest possible time unit.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:185:217
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:185:217
 --- @param num number @The number to format, in seconds.
 --- @return string @A nicely formatted time string.
 function string.NiceTime(num)
 end
 
 --- Escapes all special characters within a string, making the string safe for inclusion in a Lua pattern.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:66
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:66
 --- @param str string @The string to be sanitized
 --- @return string @The string that has been sanitized for inclusion in Lua patterns
 function string.PatternSafe(str)
 end
 
 --- Replaces all occurrences of the supplied second string.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:248:252
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:248:252
 --- @param str string @The string we are seeking to replace an occurrence(s).
 --- @param find string @What we are seeking to replace.
 --- @param replace string @What to replace find with.
@@ -159,7 +159,7 @@ function string.Replace(str, find, replace)
 end
 
 --- Returns the last n-th characters of the string.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:220
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:220
 --- @param str string @The string to extract from.
 --- @param num number @Amount of chars relative to the end (starting from 1).
 --- @return string @Returns a string containing a specified number of characters from the right side of a string.
@@ -167,7 +167,7 @@ function string.Right(str, num)
 end
 
 --- Sets the character at the specific index of the string.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:274
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:274
 --- @param InputString string @The input string
 --- @param Index number @The character index, 1 is the first from left.
 --- @param ReplacementChar string @String to replace with.
@@ -185,7 +185,7 @@ end
 
 --- 🛑 **DEPRECATED**: Use string.StartsWith.  
 --- Returns whether or not the first string starts with the second. This is a alias of string.StartsWith.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:326
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:326
 --- @param inputStr string @String to check.
 --- @param start string @String to check with.
 --- @deprecated
@@ -194,7 +194,7 @@ function string.StartWith(inputStr, start)
 end
 
 --- Returns whether or not the first string starts with the second.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:321:325
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:321:325
 --- @param inputStr string @String to check.
 --- @param start string @String to check with.
 --- @return boolean @Whether the first string starts with the second.
@@ -202,28 +202,28 @@ function string.StartsWith(inputStr, start)
 end
 
 --- Removes the extension of a path.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:129
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:129
 --- @param Inputstring string @The path to change.
 --- @return string @Modifiedstring
 function string.StripExtension(Inputstring)
 end
 
 --- Fetches a Color type from a string.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:317
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:317
 --- @param Inputstring string @The string to convert from.
 --- @return table @The output Color
 function string.ToColor(Inputstring)
 end
 
 --- Returns given time in "MM:SS" format.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:185
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:185
 --- @param time number @Time in seconds
 --- @return string @Formatted time
 function string.ToMinutesSeconds(time)
 end
 
 --- Returns given time in "MM:SS:MS" format.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:200
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:200
 --- @param time number @Time in seconds
 --- @return string @Formatted time
 function string.ToMinutesSecondsMilliseconds(time)
@@ -231,14 +231,14 @@ end
 
 --- Splits the string into characters and creates a sequential table of characters.  
 --- ⚠ **WARNING**: As a result of the  encoding, non-ASCII characters will be split into more than one character in the output table. Each character value in the output table will always be 1 byte.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:7
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:7
 --- @param str string @The string you'll turn into a table.
 --- @return table @A sequential table where each value is a character from the given string
 function string.ToTable(str)
 end
 
 --- Removes leading and trailing matches of a string.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:245
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:245
 --- @param Inputstring string @The string to trim.
 --- @param Char? string @String to match - can be multiple characters
 --- @return string @Modified string
@@ -246,7 +246,7 @@ function string.Trim(Inputstring, Char)
 end
 
 --- Removes leading spaces/characters from a string.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:253:256
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:253:256
 --- @param str string @String to trim
 --- @param char string @Custom character to remove
 --- @return string @Trimmed string
@@ -254,7 +254,7 @@ function string.TrimLeft(str, char)
 end
 
 --- Removes trailing spaces/passed character from a string.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/extensions/string.lua:255
+--- @source ../../garrysmod/garrysmod/lua/includes/extensions/string.lua:255
 --- @param str string @String to remove from
 --- @param char string @Custom character to remove, default is a space
 --- @return string @Trimmed string

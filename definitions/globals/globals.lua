@@ -1,6 +1,6 @@
 --- Adds simple Get/Set accessor functions on the specified table.  
 --- Can also force the value to be set to a number, bool or string.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:177:219
+--- @source ../garrysmod/lua/includes/util.lua:177:219
 --- @param tab table @The table to add the accessor functions to.
 --- @param key any @The key of the table to be get/set.
 --- @param name string @The name of the functions (will be prefixed with Get and Set).
@@ -24,7 +24,7 @@ end
 
 --- This function creates a Custom Category in the Spawnlist. Use Global.GenerateSpawnlistFromPath if you want to create a category with the contents of a folder.  
 --- ⚠ **WARNING**: Using this function before SANDBOX:PopulateContent has been called will result in an error  
---- @source ../../garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contenttypes/custom.lua:139:172
+--- @source ../garrysmod/gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contenttypes/custom.lua:139:172
 --- @param pnlContent panel @The SMContentPanel of the Node
 --- @param node panel @The Node
 --- @param parentid number @The ParentID to use
@@ -46,7 +46,7 @@ function _G.AddWorldTip(entindex, text, dieTime, pos, ent)
 end
 
 --- Defines a global entity class variable with an automatic value in order to prevent collisions with other Enums/CLASS. You should prefix your variable with CLASS_ for consistency.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:370:373
+--- @source ../garrysmod/lua/includes/util.lua:370:373
 --- @param name string @The name of the new enum/global variable.
 function _G.Add_NPC_Class(name)
 end
@@ -67,7 +67,7 @@ function _G.Angle(pitch, yaw, roll)
 end
 
 --- Returns an angle with a randomized pitch, yaw, and roll between min(inclusive), max(exclusive).  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:100:102
+--- @source ../garrysmod/lua/includes/util.lua:100:102
 --- @param min? number @Min bound inclusive.
 --- @param max? number @Max bound exclusive.
 --- @return Angle @The randomly generated angle.
@@ -89,7 +89,7 @@ function _G.BuildNetworkedVarsTable()
 end
 
 --- Automatically called by the engine when a panel is hovered over with the mouse  
---- @source ../../garrysmod/garrysmod/lua/includes/util/tooltips.lua:38:64
+--- @source ../garrysmod/lua/includes/util/tooltips.lua:38:64
 --- @param panel Panel @Panel that has been hovered over
 function _G.ChangeTooltip(panel)
 end
@@ -128,7 +128,7 @@ end
 
 --- Creates a Color.  
 --- ⚠ **WARNING**: This function is very expensive when used in rendering hooks or in operations requiring very frequent calls (like loops for example). It is better to store the color in a variable or to use the [default colors](https://wiki.facepunch.com/gmod/Global_Variables#misc) available.  
---- @source ../../garrysmod/garrysmod/lua/includes/util/color.lua:10:18
+--- @source ../garrysmod/lua/includes/util/color.lua:10:18
 --- @param r number @An integer from `0-255` describing the red value of the color.
 --- @param g number @An integer from `0-255` describing the green value of the color.
 --- @param b number @An integer from `0-255` describing the blue value of the color.
@@ -138,7 +138,7 @@ function _G.Color(r, g, b, a)
 end
 
 --- Returns a new Color with the RGB components of the given Color and the alpha value specified.  
---- @source ../../garrysmod/garrysmod/lua/includes/util/color.lua:20:27
+--- @source ../garrysmod/lua/includes/util/color.lua:20:27
 --- @param color table @The Color from which to take RGB values
 --- @param alpha number @The new alpha value, a number between 0 and 255
 --- @return table @The new Color with the modified alpha value
@@ -146,7 +146,7 @@ function _G.ColorAlpha(color, alpha)
 end
 
 --- Creates a Color with randomized red, green, and blue components. If the alpha argument is true, alpha will also be randomized.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:111:117
+--- @source ../garrysmod/lua/includes/util.lua:111:117
 --- @param a? boolean @Should alpha be randomized.
 --- @return table @The created Color.
 function _G.ColorRand(a)
@@ -192,7 +192,7 @@ end
 --- Makes a clientside-only console variable  
 --- ℹ **NOTE**: This function is a wrapper of Global.CreateConVar, with the difference being that FCVAR_ARCHIVE and FCVAR_USERINFO are added automatically when **shouldsave** and **userinfo** are true, respectively.  
 --- Although this function is shared, it should only be used clientside.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:435:449
+--- @source ../garrysmod/lua/includes/util.lua:435:449
 --- @param name string @Name of the ConVar to be created and able to be accessed
 --- @param default string @Default value of the ConVar.
 --- @param shouldsave? boolean @Should the ConVar be saved across sessions in the cfg/client.vdf file.
@@ -302,7 +302,7 @@ end
 
 --- Calls all NetworkVarNotify functions of the given entity with the given new value, but doesn't change the real value.  
 --- internally uses Entity:CallDTVarProxies  
---- @source ../../garrysmod/garrysmod/lua/includes/extensions/entity.lua:181:185
+--- @source ../garrysmod/lua/includes/extensions/entity.lua:181:185
 --- @param entity Entity @The Entity to run the NetworkVarNotify functions from.
 --- @param Type string @The NetworkVar Type
 --- @param index number @The NetworkVar index.
@@ -328,7 +328,7 @@ function _G.DeriveGamemode(base)
 end
 
 --- Creates a DMenu and closes any current menus.  
---- @source ../../garrysmod/garrysmod/lua/derma/derma_menus.lua:10:18
+--- @source ../garrysmod/lua/derma/derma_menus.lua:10:18
 --- @param keepOpen? boolean @If we should keep other DMenus open (`true`) or not (`false`).
 --- @param parent? Panel @The panel to parent the created menu to.
 --- @return Panel @The created DMenu.
@@ -336,7 +336,7 @@ function _G.DermaMenu(keepOpen, parent)
 end
 
 --- Creates a new derma animation.  
---- @source ../../garrysmod/garrysmod/lua/derma/derma_animation.lua:67
+--- @source ../garrysmod/lua/derma/derma_animation.lua:67
 --- @param name string @Name of the animation to create
 --- @param panel Panel @Panel to run the animation on
 --- @param func function @Function to call to process the animation
@@ -345,14 +345,14 @@ function _G.Derma_Anim(name, panel, func)
 end
 
 --- Draws background blur around the given panel.  
---- @source ../../garrysmod/garrysmod/lua/derma/derma_utils.lua:7:37
+--- @source ../garrysmod/lua/derma/derma_utils.lua:7:37
 --- @param panel Panel @Panel to draw the background blur around
 --- @param startTime number @Time that the blur began being painted
 function _G.Derma_DrawBackgroundBlur(panel, startTime)
 end
 
 --- Creates panel method that calls the supplied Derma skin hook via derma.SkinHook  
---- @source ../../garrysmod/garrysmod/lua/derma/init.lua:54:60
+--- @source ../garrysmod/lua/derma/init.lua:54:60
 --- @param panel Panel @Panel to add the hook to
 --- @param functionName string @Name of panel function to create
 --- @param hookName string @Name of Derma skin hook to call within the function
@@ -370,7 +370,7 @@ end
 --- Panel:ConVarStringThink or  
 --- Panel:ConVarNumberThink  
 --- in its PANEL:Think hook and should call Panel:ConVarChanged when the panel's value has changed.  
---- @source ../../garrysmod/garrysmod/lua/derma/init.lua:80:121
+--- @source ../garrysmod/lua/derma/init.lua:80:121
 --- @param target Panel @The panel the functions should be added to.
 function _G.Derma_Install_Convar_Functions(target)
 end
@@ -418,7 +418,7 @@ function _G.DisableClipping(disable)
 end
 
 --- Draws the bloom shader, which creates a glowing effect from bright objects.  
---- @source ../../garrysmod/garrysmod/lua/postprocess/bloom.lua:25:59
+--- @source ../garrysmod/lua/postprocess/bloom.lua:25:59
 --- @param Darken number @Determines how much to darken the effect
 --- @param Multiply number @Will affect how bright the glowing spots are
 --- @param SizeX number @The size of the bloom effect along the horizontal axis.
@@ -439,20 +439,20 @@ function _G.DrawBokehDOF(intensity, distance, focus)
 end
 
 --- Draws the Color Modify shader, which can be used to adjust colors on screen.  
---- @source ../../garrysmod/garrysmod/lua/postprocess/color_modify.lua:19:32
+--- @source ../garrysmod/lua/postprocess/color_modify.lua:19:32
 --- @param modifyParameters table @Color modification parameters
 function _G.DrawColorModify(modifyParameters)
 end
 
 --- Draws a material overlay on the screen.  
---- @source ../../garrysmod/garrysmod/lua/postprocess/overlay.lua:11:31
+--- @source ../garrysmod/lua/postprocess/overlay.lua:11:31
 --- @param Material string @This will be the material that is drawn onto the screen.
 --- @param RefractAmount number @This will adjust how much the material will refract your screen.
 function _G.DrawMaterialOverlay(Material, RefractAmount)
 end
 
 --- Creates a motion blur effect by drawing your screen multiple times.  
---- @source ../../garrysmod/garrysmod/lua/postprocess/motion_blur.lua:17:61
+--- @source ../garrysmod/lua/postprocess/motion_blur.lua:17:61
 --- @param AddAlpha number @How much alpha to change per frame.
 --- @param DrawAlpha number @How much alpha the frames will have
 --- @param Delay number @Determines the amount of time between frames to capture.
@@ -460,20 +460,20 @@ function _G.DrawMotionBlur(AddAlpha, DrawAlpha, Delay)
 end
 
 --- Draws the sharpen shader, which creates more contrast.  
---- @source ../../garrysmod/garrysmod/lua/postprocess/sharpen.lua:12:22
+--- @source ../garrysmod/lua/postprocess/sharpen.lua:12:22
 --- @param Contrast number @How much contrast to create.
 --- @param Distance number @How large the contrast effect will be.
 function _G.DrawSharpen(Contrast, Distance)
 end
 
 --- Draws the sobel shader, which detects edges and draws a black border.  
---- @source ../../garrysmod/garrysmod/lua/postprocess/sobel.lua:8:18
+--- @source ../garrysmod/lua/postprocess/sobel.lua:8:18
 --- @param Threshold number @Determines the threshold of edges
 function _G.DrawSobel(Threshold)
 end
 
 --- Renders the post-processing effect of beams of light originating from the map's sun. Utilises the `pp/sunbeams` material.  
---- @source ../../garrysmod/garrysmod/lua/postprocess/sunbeams.lua:14:29
+--- @source ../garrysmod/lua/postprocess/sunbeams.lua:14:29
 --- @param darken number @`$darken` property for sunbeams material.
 --- @param multiplier number @`$multiply` property for sunbeams material.
 --- @param sunSize number @`$sunsize` property for sunbeams material.
@@ -483,14 +483,14 @@ function _G.DrawSunbeams(darken, multiplier, sunSize, sunX, sunY)
 end
 
 --- Draws the texturize shader, which replaces each pixel on your screen with a different part of the texture depending on its brightness. See g_texturize for information on making the texture.  
---- @source ../../garrysmod/garrysmod/lua/postprocess/texturize.lua:8:19
+--- @source ../garrysmod/lua/postprocess/texturize.lua:8:19
 --- @param Scale number @Scale of the texture
 --- @param BaseTexture number @This will be the texture to use in the effect
 function _G.DrawTexturize(Scale, BaseTexture)
 end
 
 --- Draws the toy town shader, which blurs the top and bottom of your screen. This can make very large objects look like toys, hence the name.  
---- @source ../../garrysmod/garrysmod/lua/postprocess/toytown.lua:12:28
+--- @source ../garrysmod/lua/postprocess/toytown.lua:12:28
 --- @param Passes number @An integer determining how many times to draw the effect
 --- @param Height number @The amount of screen which should be blurred on the top and bottom.
 function _G.DrawToyTown(Passes, Height)
@@ -536,7 +536,7 @@ end
 --- ```  
 --- This will actually print the value of `Z`.  
 --- In the above case, and other very rare cases, you may find `Either` useful.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:362:365
+--- @source ../garrysmod/lua/includes/util.lua:362:365
 --- @param condition any @The condition to check if true or false.
 --- @param truevar any @If the condition isn't nil/false, returns this value.
 --- @param falsevar any @If the condition is nil/false, returns this value.
@@ -571,7 +571,7 @@ function _G.EmitSound(soundName, position, entity, channel, volume, soundLevel, 
 end
 
 --- Removes the currently active tool tip from the screen.  
---- @source ../../garrysmod/garrysmod/lua/includes/util/tooltips.lua:66:80
+--- @source ../garrysmod/lua/includes/util/tooltips.lua:66:80
 --- @param panel Panel @This is the panel that has a tool tip.
 function _G.EndTooltip(panel)
 end
@@ -631,7 +631,7 @@ function _G.FindMetaTable(metaName)
 end
 
 --- Returns the tool-tip text and tool-tip-panel (if any) of the given panel as well as itself  
---- @source ../../garrysmod/garrysmod/lua/includes/util/tooltips.lua:20:36
+--- @source ../garrysmod/lua/includes/util/tooltips.lua:20:36
 --- @param panel Panel @Panel to find tool-tip of
 --- @return string @tool-tip text
 --- @return Panel @tool-tip panel
@@ -640,7 +640,7 @@ function _G.FindTooltip(panel)
 end
 
 --- Formats the specified values into the string given. Same as string.format.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:10
+--- @source ../garrysmod/lua/includes/util.lua:10
 --- @param format string @The string to be formatted
 --- @param ... any ... @Values to be formatted into the string.
 --- @return string @The formatted string
@@ -660,7 +660,7 @@ end
 
 --- This function adds all models from a specified folder to a custom Spawnlist category. Internally uses Global.AddPropsOfParent  
 --- ⚠ **WARNING**: Using this function before SANDBOX:PopulateContent has been called will result in an error  
---- @source ../../garrysmod/garrysmod/gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contenttypes/gameprops.lua:24:41
+--- @source ../garrysmod/gamemodes/sandbox/gamemode/spawnmenu/creationmenu/content/contenttypes/gameprops.lua:24:41
 --- @param folder string @the folder to search for models
 --- @param path string @The path to look for the files and directories in
 --- @param name string @The Spawnmenu Category name
@@ -677,7 +677,7 @@ end
 --- local exampleConvar = CreateClientConVar("exampleConvar", "hi")  
 --- print(exampleConvar:GetString())  
 --- ```  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:451:469
+--- @source ../garrysmod/lua/includes/util.lua:451:469
 --- @param name string @Name of the ConVar to get
 --- @return ConVar @The ConVar object, or nil if no such ConVar was found.
 function _G.GetConVar(name)
@@ -685,7 +685,7 @@ end
 
 --- 🛑 **DEPRECATED**: Store the ConVar object retrieved with Global.GetConVar and call ConVar:GetInt or ConVar:GetFloat on it.  
 --- Gets the numeric value ConVar with the specified name.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:450:454
+--- @source ../garrysmod/lua/includes/util.lua:450:454
 --- @param name string @Name of the ConVar to get.
 --- @deprecated
 --- @return number @The ConVar's value.
@@ -694,7 +694,7 @@ end
 
 --- 🛑 **DEPRECATED**: Store the ConVar object retrieved with Global.GetConVar and call ConVar:GetString on it.  
 --- Gets the string value ConVar with the specified name.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:456:460
+--- @source ../garrysmod/lua/includes/util.lua:456:460
 --- @param name string @Name of the ConVar to get.
 --- @deprecated
 --- @return string @The ConVar's value.
@@ -908,7 +908,7 @@ end
 --- 🛑 **DEPRECATED**: To send the target file to the client simply call AddCSLuaFile() in the target file itself.  
 --- This function works exactly the same as Global.include both clientside and serverside.  
 --- The only difference is that on the serverside it also calls Global.AddCSLuaFile on the filename, so that it gets sent to the client.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:158:164
+--- @source ../garrysmod/lua/includes/util.lua:158:164
 --- @param filename string @The filename of the Lua file you want to include.
 --- @deprecated
 function _G.IncludeCS(filename)
@@ -916,7 +916,7 @@ end
 
 --- Returns whether the given object does or doesn't have a `metatable` of a color.  
 --- 🦟 **BUG**: [Engine functions (i.e. those not written in plain Lua) that return color objects do not currently set the color metatable and this function will return false if you use it on them.](https://github.com/Facepunch/garrysmod-issues/issues/2407)  
---- @source ../../garrysmod/garrysmod/lua/includes/util/color.lua:30:37
+--- @source ../garrysmod/lua/includes/util/color.lua:30:37
 --- @param Object any @The object to be tested
 --- @return boolean @Whether the given object is a color or not
 function _G.IsColor(Object)
@@ -946,7 +946,7 @@ end
 --- * "npc_zombie"  
 --- * "npc_zombie_torso"  
 --- * "npc_zombine"  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:317:319
+--- @source ../garrysmod/lua/includes/util.lua:317:319
 --- @param className string @Class name of the entity to check
 --- @return boolean @Is an enemy
 function _G.IsEnemyEntityName(className)
@@ -981,21 +981,21 @@ end
 --- * "npc_mossman"  
 --- * "npc_odessa"  
 --- * "npc_vortigaunt"  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:330:332
+--- @source ../garrysmod/lua/includes/util.lua:330:332
 --- @param className string @Class name of the entity to check
 --- @return boolean @Is a friend
 function _G.IsFriendEntityName(className)
 end
 
 --- Checks whether or not a game is currently mounted. Uses data given by engine.GetGames.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:342:357
+--- @source ../garrysmod/lua/includes/util.lua:342:357
 --- @param game string @The game string/app ID to check.
 --- @return boolean @True if the game is mounted.
 function _G.IsMounted(game)
 end
 
 --- Returns whether or not every element within a table is a valid entity  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:35:45
+--- @source ../garrysmod/lua/includes/util.lua:35:45
 --- @param table table @Table containing entities to check
 --- @return boolean @All entities valid
 function _G.IsTableOfEntitiesValid(table)
@@ -1018,7 +1018,7 @@ end
 --- * "anim_"  
 --- * "gestures_"  
 --- * "shared_ragdoll_"  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:264:278
+--- @source ../garrysmod/lua/includes/util.lua:264:278
 --- @param modelName string @The model name to be checked
 --- @return boolean @Whether or not the model is useless
 function _G.IsUselessModel(modelName)
@@ -1027,32 +1027,32 @@ end
 --- Returns whether an object is valid or not. (Such as Entitys, Panels, custom table objects and more).  
 --- Checks that an object is not nil, has an IsValid method and if this method returns true.  
 --- ℹ **NOTE**: Due to vehicles being technically valid the moment they're spawned, also use Vehicle:IsValidVehicle to make sure they're fully initialized  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:224:233
+--- @source ../garrysmod/lua/includes/util.lua:224:233
 --- @param toBeValidated any @The table or object to be validated.
 --- @return boolean @True if the object is valid.
 function _G.IsValid(toBeValidated)
 end
 
 --- Adds javascript function 'language.Update' to an HTML panel as a method to call Lua's language.GetPhrase function.  
---- @source ../../garrysmod/garrysmod/lua/includes/util/javascript_util.lua:2:9
+--- @source ../garrysmod/lua/includes/util/javascript_util.lua:2:9
 --- @param htmlPanel Panel @Panel to add javascript function 'language.Update' to.
 function _G.JS_Language(htmlPanel)
 end
 
 --- Adds javascript function 'util.MotionSensorAvailable' to an HTML panel as a method to call Lua's motionsensor.IsAvailable function.  
---- @source ../../garrysmod/garrysmod/lua/includes/util/javascript_util.lua:11:17
+--- @source ../garrysmod/lua/includes/util/javascript_util.lua:11:17
 --- @param htmlPanel Panel @Panel to add javascript function 'util.MotionSensorAvailable' to.
 function _G.JS_Utility(htmlPanel)
 end
 
 --- Adds workshop related javascript functions to an HTML panel, used by the "Dupes" and "Saves" tabs in the spawnmenu.  
---- @source ../../garrysmod/garrysmod/lua/includes/util/javascript_util.lua:19:39
+--- @source ../garrysmod/lua/includes/util/javascript_util.lua:19:39
 --- @param htmlPanel Panel @Panel to add javascript functions to.
 function _G.JS_Workshop(htmlPanel)
 end
 
 --- Convenience function that creates a DLabel, sets the text, and returns it  
---- @source ../../garrysmod/garrysmod/lua/vgui/dlabel.lua:291:298
+--- @source ../garrysmod/lua/vgui/dlabel.lua:291:298
 --- @param text string @The string to set the label's text to
 --- @param parent? Panel @Optional
 --- @return Panel @The created DLabel
@@ -1062,7 +1062,7 @@ end
 --- Performs a linear interpolation from the start number to the end number.  
 --- This function provides a very efficient and easy way to smooth out movements.  
 --- ℹ **NOTE**: This function is not meant to be used with constant value in the first argument, if you're dealing with animation! Use a value that changes over time. See example for **proper** usage of Lerp for animations.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:260:267
+--- @source ../garrysmod/lua/includes/util.lua:260:267
 --- @param t number @The fraction for finding the result
 --- @param from number @The starting number
 --- @param to number @The ending number
@@ -1120,7 +1120,7 @@ end
 --- Either returns the material with the given name, or loads the material interpreting the first argument as the path.  
 --- ℹ **NOTE**: When using .png or .jpg textures, try to make their sizes Power Of 2 (1, 2, 4, 8, 16, 32, 64, etc). While images are no longer scaled to Power of 2 sizes since February 2019, it is a good practice for things like icons, etc.  
 --- ⚠ **WARNING**: This function is very expensive when used in rendering hooks or in operations requiring very frequent calls. It is better to store the Material in a variable (like in the examples).  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:17:30
+--- @source ../garrysmod/lua/includes/util.lua:17:30
 --- @param materialName string @The material name or path
 --- @param pngParameters? string @A string containing space separated keywords which will be used to add material parameters
 --- @return IMaterial @Generated material.
@@ -1141,7 +1141,7 @@ function _G.Mesh(mat)
 end
 
 --- Runs util.PrecacheModel and returns the string.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:131:137
+--- @source ../garrysmod/lua/includes/util.lua:131:137
 --- @param model string @The model to precache.
 --- @return string @The same string entered as an argument.
 function _G.Model(model)
@@ -1180,7 +1180,7 @@ end
 
 --- Returns the amount of skins the specified model has.  
 --- See also Entity:SkinCount if you have an entity.  
---- @source ../../garrysmod/garrysmod/lua/includes/util/model_database.lua:80:93
+--- @source ../garrysmod/lua/includes/util/model_database.lua:80:93
 --- @param modelName string @Model to return amount of skins of
 --- @return number @Amount of skins
 function _G.NumModelSkins(modelName)
@@ -1194,7 +1194,7 @@ function _G.OrderVectors(vector1, vector2)
 end
 
 --- Calls game.AddParticles and returns given string.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:139:144
+--- @source ../garrysmod/lua/includes/util.lua:139:144
 --- @param file string @The particle file.
 --- @return string @The particle file.
 function _G.Particle(file)
@@ -1242,7 +1242,7 @@ end
 
 --- Moves the given model to the given position and calculates appropriate camera parameters for rendering the model to an icon.  
 --- The output table interacts nicely with Panel:RebuildSpawnIconEx with a few key renames.  
---- @source ../../garrysmod/garrysmod/lua/includes/util/client.lua:176:217
+--- @source ../garrysmod/lua/includes/util/client.lua:176:217
 --- @param model Entity @Model that is being rendered to the spawn icon
 --- @param position Vector @Position that the model is being rendered at
 --- @param noAngles boolean @If true the function won't reset the angles to 0 for the model.
@@ -1278,7 +1278,7 @@ function _G.PrintMessage(type, message)
 end
 
 --- Recursively prints the contents of a table to the console.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:56:93
+--- @source ../garrysmod/lua/includes/util.lua:56:93
 --- @param tableToPrint table @The table to be printed
 --- @param indent? number @Number of tabs to start indenting at
 --- @param done? table @Internal argument, you shouldn't normally change this
@@ -1298,7 +1298,7 @@ function _G.ProtectedCall(func)
 end
 
 --- Returns an iterator function that can be used to loop through a table in random order  
---- @source ../../garrysmod/garrysmod/lua/includes/extensions/table.lua:585:605
+--- @source ../garrysmod/lua/includes/extensions/table.lua:585:605
 --- @param table table @Table to create iterator for
 --- @param descending? boolean @Whether the iterator should iterate descending or not
 --- @return function @Iterator function
@@ -1306,7 +1306,7 @@ function _G.RandomPairs(table, descending)
 end
 
 --- Returns the real frame-time which is unaffected by host_timescale. To be used for GUI effects (for example)  
---- @source ../../garrysmod/garrysmod/lua/includes/util/client.lua:10:19
+--- @source ../garrysmod/lua/includes/util/client.lua:10:19
 --- @return number @Real frame time
 function _G.RealFrameTime()
 end
@@ -1334,12 +1334,12 @@ end
 
 --- Saves position of your cursor on screen. You can restore it by using  
 --- Global.RestoreCursorPosition.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:412:421
+--- @source ../garrysmod/lua/includes/util.lua:412:421
 function _G.RememberCursorPosition()
 end
 
 --- Does the removing of the tooltip panel. Called by Global.EndTooltip.  
---- @source ../../garrysmod/garrysmod/lua/includes/util/tooltips.lua:5:18
+--- @source ../garrysmod/lua/includes/util/tooltips.lua:5:18
 function _G.RemoveTooltip()
 end
 
@@ -1375,7 +1375,7 @@ function _G.RenderSuperDoF(viewOrigin, viewAngles, viewFOV)
 end
 
 --- Restores position of your cursor on screen. You can save it by using Global.RememberCursorPosition.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:423:428
+--- @source ../garrysmod/lua/includes/util.lua:423:428
 function _G.RestoreCursorPosition()
 end
 
@@ -1410,27 +1410,27 @@ end
 
 --- 🛑 **DEPRECATED**: You should be using Global.ScreenScale instead.  
 --- Returns a number based on the Size argument and your screen's width. Alias of Global.ScreenScale.  
---- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/globals.lua:6:10
+--- @source ../garrysmod/lua/includes/extensions/client/globals.lua:6:10
 --- @param Size number @The number you want to scale.
 --- @deprecated
 function _G.SScale(Size)
 end
 
 --- Returns the ordinal suffix of a given number.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:307:314
+--- @source ../garrysmod/lua/includes/util.lua:307:314
 --- @param number number @The number to find the ordinal suffix of.
 --- @return string @suffix
 function _G.STNDRD(number)
 end
 
 --- Removes the given entity unless it is a player or the world entity  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:235:244
+--- @source ../garrysmod/lua/includes/util.lua:235:244
 --- @param ent Entity @Entity to safely remove.
 function _G.SafeRemoveEntity(ent)
 end
 
 --- Removes entity after delay using Global.SafeRemoveEntity  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:246:255
+--- @source ../garrysmod/lua/includes/util.lua:246:255
 --- @param entity Entity @Entity to be removed
 --- @param delay number @Delay for entity removal in seconds
 function _G.SafeRemoveEntityDelayed(entity, delay)
@@ -1452,7 +1452,7 @@ function _G.ScrW()
 end
 
 --- Returns a number based on the Size argument and your screen's width. The screen's width is always equal to size 640. This function is primarily used for scaling font sizes.  
---- @source ../../garrysmod/garrysmod/lua/includes/extensions/client/globals.lua:6:8
+--- @source ../garrysmod/lua/includes/extensions/client/globals.lua:6:8
 --- @param Size number @The number you want to scale.
 --- @return number @The scaled number based on your screen's width
 function _G.ScreenScale(Size)
@@ -1637,7 +1637,7 @@ end
 --- This function can be used in a for loop instead of Global.pairs. It sorts all **keys** alphabetically.  
 --- For sorting by specific **value member**, use Global.SortedPairsByMemberValue.  
 --- For sorting by **value**, use Global.SortedPairsByValue.  
---- @source ../../garrysmod/garrysmod/lua/includes/extensions/table.lua:531:547
+--- @source ../garrysmod/lua/includes/extensions/table.lua:531:547
 --- @param table table @The table to sort
 --- @param desc? boolean @Reverse the sorting order
 --- @return function @Iterator function
@@ -1648,7 +1648,7 @@ end
 --- Returns an iterator function that can be used to loop through a table in order of member values, when the values of the table are also tables and contain that member.  
 --- To sort by **value**, use Global.SortedPairsByValue.  
 --- To sort by **keys**, use Global.SortedPairs.  
---- @source ../../garrysmod/garrysmod/lua/includes/extensions/table.lua:567:583
+--- @source ../garrysmod/lua/includes/extensions/table.lua:567:583
 --- @param table table @Table to create iterator for.
 --- @param memberKey any @Key of the value member to sort by.
 --- @param descending? boolean @Whether the iterator should iterate in descending order or not.
@@ -1660,7 +1660,7 @@ end
 --- Returns an iterator function that can be used to loop through a table in order of its **values**.  
 --- To sort by specific **value member**, use Global.SortedPairsByMemberValue.  
 --- To sort by **keys**, use Global.SortedPairs.  
---- @source ../../garrysmod/garrysmod/lua/includes/extensions/table.lua:549:565
+--- @source ../garrysmod/lua/includes/extensions/table.lua:549:565
 --- @param table table @Table to create iterator for
 --- @param descending? boolean @Whether the iterator should iterate in descending order or not
 --- @return function @Iterator function
@@ -1670,7 +1670,7 @@ end
 
 --- Runs util.PrecacheSound and returns the string.  
 --- 🦟 **BUG**: util.PrecacheSound does nothing and therefore so does this function.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:123:129
+--- @source ../garrysmod/lua/includes/util.lua:123:129
 --- @param soundPath string @The soundpath to precache.
 --- @return string @The string passed as the first argument.
 function _G.Sound(soundPath)
@@ -1703,7 +1703,7 @@ function _G.TextEntryLoseFocus()
 end
 
 --- Returns a cosine value that fluctuates based on the current time  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:323:328
+--- @source ../garrysmod/lua/includes/util.lua:323:328
 --- @param frequency number @The frequency of fluctuation
 --- @param min number @Minimum value
 --- @param max number @Maximum value
@@ -1714,7 +1714,7 @@ end
 
 --- Returns a sine value that fluctuates based on Global.CurTime. The value returned will be between the start value plus/minus the range value.  
 --- 🦟 **BUG**: The range arguments don't work as intended. The existing (bugged) behavior is documented below.  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:316:321
+--- @source ../garrysmod/lua/includes/util.lua:316:321
 --- @param frequency number @The frequency of fluctuation, in
 --- @param origin number @The center value of the sine wave.
 --- @param max number @This argument's distance from origin defines the size of the full range of the sine wave
@@ -1749,7 +1749,7 @@ end
 --- * "anim_"  
 --- * "gestures_"  
 --- * "shared_ragdoll_"  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:256:280
+--- @source ../garrysmod/lua/includes/util.lua:256:280
 --- @param modelName string @The model name to be checked
 --- @deprecated
 --- @return boolean @Whether or not the model is useless
@@ -1791,7 +1791,7 @@ function _G.Vector(x, y, z)
 end
 
 --- Returns a random vector whose components are each between min(inclusive), max(exclusive).  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:94:98
+--- @source ../garrysmod/lua/includes/util.lua:94:98
 --- @param min? number @Min bound inclusive.
 --- @param max? number @Max bound exclusive.
 --- @return Vector @The random direction vector.
@@ -2032,7 +2032,7 @@ function _G.setmetatable(Tab, Metatable)
 end
 
 --- Attempts to return an appropriate boolean for the given value  
---- @source ../../garrysmod/garrysmod/lua/includes/util.lua:272:275
+--- @source ../garrysmod/lua/includes/util.lua:272:275
 --- @param val any @The object to be converted to a boolean
 --- @return boolean @**false** for the boolean false
 function _G.tobool(val)

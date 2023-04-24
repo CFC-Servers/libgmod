@@ -28,7 +28,7 @@ let TYPE_NAME_OVERRIDES: { [key: string]: string } = {
 
 };
 
-const gmodDirectory = path.join(__dirname, "garrysmod", "garrysmod");
+const gmodDirectory = "../../garrysmod/garrysmod";
 
 function getTypeName(ret: string): string {
     // Get rid of any creative type names

@@ -2,13 +2,13 @@
 --- @class DFrame : EditablePanel
 local DFrame = {}
 --- Centers the frame relative to the whole screen and invalidates its layout. This overrides Panel:Center.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dframe.lua:104:110
+--- @source ../../garrysmod/garrysmod/lua/vgui/dframe.lua:104:110
 function DFrame:Center()
 end
 
 --- Hides or removes the DFrame, and calls DFrame:OnClose.  
 --- To set whether the frame is hidden or removed, use DFrame:SetDeleteOnClose.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dframe.lua:89:99
+--- @source ../../garrysmod/garrysmod/lua/vgui/dframe.lua:89:99
 function DFrame:Close()
 end
 
@@ -61,13 +61,13 @@ function DFrame:GetSizable()
 end
 
 --- Returns the title of the frame.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dframe.lua:77:81
+--- @source ../../garrysmod/garrysmod/lua/vgui/dframe.lua:77:81
 --- @return string @Title of the frame.
 function DFrame:GetTitle()
 end
 
 --- Determines if the frame or one of its children has the screen focus.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dframe.lua:112:119
+--- @source ../../garrysmod/garrysmod/lua/vgui/dframe.lua:112:119
 --- @return boolean @Whether or not the frame has focus.
 function DFrame:IsActive()
 end
@@ -75,7 +75,7 @@ end
 --- Called when the DFrame is closed with DFrame:Close. This applies when the `close` button in the DFrame's control box is clicked.  
 --- This function does nothing and is safe to override.  
 --- This is **not** called when the DFrame is removed with Panel:Remove, see PANEL:OnRemove for that.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dframe.lua:101:102
+--- @source ../../garrysmod/garrysmod/lua/vgui/dframe.lua:101:102
 function DFrame:OnClose()
 end
 
@@ -95,7 +95,7 @@ function DFrame:SetDraggable(draggable)
 end
 
 --- Adds or removes an icon on the left of the DFrame's title.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dframe.lua:121:135
+--- @source ../../garrysmod/garrysmod/lua/vgui/dframe.lua:121:135
 --- @param path string @Set to nil to remove the icon
 function DFrame:SetIcon(path)
 end
@@ -136,13 +136,13 @@ function DFrame:SetSizable(sizeable)
 end
 
 --- Sets the title of the frame.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dframe.lua:83:87
+--- @source ../../garrysmod/garrysmod/lua/vgui/dframe.lua:83:87
 --- @param title string @New title of the frame.
 function DFrame:SetTitle(title)
 end
 
 --- Determines whether the DFrame's control box (close, minimise and maximise buttons) is displayed.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dframe.lua:69:75
+--- @source ../../garrysmod/garrysmod/lua/vgui/dframe.lua:69:75
 --- @param show boolean @`false` hides the control box; this is `true` by default.
 function DFrame:ShowCloseButton(show)
 end

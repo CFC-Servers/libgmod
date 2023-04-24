@@ -3,7 +3,7 @@
 local DHTML = {}
 --- Defines a Javascript function that when called will call a Lua callback.  
 --- ℹ **NOTE**: Must be called after the HTML document has fully loaded.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dhtml.lua:123:146
+--- @source ../../garrysmod/garrysmod/lua/vgui/dhtml.lua:123:146
 --- @param library string @Library name of the JS function you are defining.
 --- @param name string @Name of the JS function you are defining.
 --- @param callback function @Function called when the JS function is called

@@ -1,34 +1,34 @@
 --- The duplicator library allows you to specify what should be saved when someone attempts to duplicate your custom entity with the duplicator tool. It can also be used by 3rd party duplicator tools to make use of the built in system.  
 _G.duplicator = {}
 --- Allow this entity to be duplicated  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:297:304
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:297:304
 --- @param classname string @An entity's classname
 function duplicator.Allow(classname)
 end
 
 --- Calls every function registered with duplicator.RegisterBoneModifier on each bone the ent has.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:814:844
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:814:844
 --- @param ply Player @The player whose entity this is
 --- @param ent Entity @The entity in question
 function duplicator.ApplyBoneModifiers(ply, ent)
 end
 
 --- Calls every function registered with duplicator.RegisterEntityModifier on the entity.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:794:811
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:794:811
 --- @param ply Player @The player whose entity this is
 --- @param ent Entity @The entity in question
 function duplicator.ApplyEntityModifiers(ply, ent)
 end
 
 --- Clears/removes the chosen entity modifier from the entity.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:461:471
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:461:471
 --- @param ent Entity @The entity the modification is stored on
 --- @param key any @The key of the stored entity modifier
 function duplicator.ClearEntityModifier(ent, key)
 end
 
 --- Copies the entity, and all of its constraints and entities, then returns them in a table.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:581:611
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:581:611
 --- @param ent Entity @The entity to duplicate
 --- @param tableToAdd? table @A preexisting table to add entities and constraints in from
 --- @return table @A table containing duplication info which includes the following members:
@@ -36,14 +36,14 @@ function duplicator.Copy(ent, tableToAdd)
 end
 
 --- Returns a table with some entity data that can be used to create a new entity with duplicator.CreateEntityFromTable  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:492:501
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:492:501
 --- @param ent Entity @The entity table to save
 --- @return table @See Structures/EntityCopyData
 function duplicator.CopyEntTable(ent)
 end
 
 --- Copies the passed table of entities to save for later.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:584:596
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:584:596
 --- @param ents table @A table of entities to save/copy.
 --- @return table @A table containing duplication info which includes the following members:
 function duplicator.CopyEnts(ents)
@@ -53,7 +53,7 @@ end
 --- This creates an entity using the data in EntTable.  
 --- If an entity factory has been registered for the entity's Class, it will be called.  
 --- Otherwise, duplicator.GenericDuplicatorFunction will be called instead.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:598:649
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:598:649
 --- @param ply Player @The player who wants to create something
 --- @param entTable table @The duplication data to build the entity with
 --- @return Entity @The newly created entity
@@ -62,14 +62,14 @@ end
 
 --- "Restores the bone's data."  
 --- Loops through Bones and calls Entity:ManipulateBoneScale, Entity:ManipulateBoneAngles and Entity:ManipulateBonePosition on ent with the table keys and the subtable values s, a and p respectively.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:388:404
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:388:404
 --- @param ent Entity @The entity to be bone manipulated
 --- @param bones table @Table with a Structures/BoneManipulationData for every bone (that has manipulations applied) using the bone ID as the table index.
 function duplicator.DoBoneManipulator(ent, bones)
 end
 
 --- Restores the flex data using Entity:SetFlexWeight and Entity:SetFlexScale  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:370:386
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:370:386
 --- @param ent Entity @The entity to restore the flexes on
 --- @param flex table @The flexes to restore
 --- @param scale? number @The flex scale to apply
@@ -79,7 +79,7 @@ end
 --- "Applies generic every-day entity stuff for ent from table data."  
 --- Depending on the values of Model, Angle, Pos, Skin, Flex, Bonemanip, ModelScale, ColGroup, Name, and BodyG (table of multiple values) in the data table, this calls Entity:SetModel, Entity:SetAngles, Entity:SetPos, Entity:SetSkin, duplicator.DoFlex, duplicator.DoBoneManipulator, Entity:SetModelScale, Entity:SetCollisionGroup, Entity:SetName, Entity:SetBodygroup on ent.  
 --- If ent has a RestoreNetworkVars function, it is called with data.DT.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:944:948
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:944:948
 --- @param ent Entity @The entity to be applied upon
 --- @param data table @The data to be applied onto the entity
 function duplicator.DoGeneric(ent, data)
@@ -87,7 +87,7 @@ end
 
 --- "Applies bone data, generically."  
 --- If data contains a PhysicsObjects table, it moves, re-angles and if relevent freezes all specified bones, first converting from local coordinates to world coordinates.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:936:942
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:936:942
 --- @param ent Entity @The entity to be applied upon
 --- @param ply? Player @The player who owns the entity
 --- @param data table @The data to be applied onto the entity
@@ -95,7 +95,7 @@ function duplicator.DoGenericPhysics(ent, ply, data)
 end
 
 --- Returns the entity class factory registered with duplicator.RegisterEntityClass.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:352:360
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:352:360
 --- @param name string @The name of the entity class factory
 --- @return table @Is compromised of the following members:
 function duplicator.FindEntityClass(name)
@@ -103,7 +103,7 @@ end
 
 --- "Generic function for duplicating stuff"  
 --- This is called when duplicator.CreateEntityFromTable can't find an entity factory to build with. It calls duplicator.DoGeneric and duplicator.DoGenericPhysics to apply standard duplicator stored things such as the model and position.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:406:442
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:406:442
 --- @param ply Player @The player who wants to create something
 --- @param data table @The duplication data to build the entity with
 --- @return Entity @The newly created entity
@@ -111,7 +111,7 @@ function duplicator.GenericDuplicatorFunction(ply, data)
 end
 
 --- Returns whether the entity can be duplicated or not  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:306:313
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:306:313
 --- @param classname string @An entity's classname
 --- @return boolean @Returns true if the entity can be duplicated (nil otherwise)
 function duplicator.IsAllowed(classname)
@@ -120,7 +120,7 @@ end
 --- "Given entity list and constraint list, create all entities and return their tables"  
 --- Calls duplicator.CreateEntityFromTable on each sub-table of EntityList. If an entity is actually created, it calls ENTITY:OnDuplicated with the entity's duplicator data, then duplicator.ApplyEntityModifiers, duplicator.ApplyBoneModifiers and finally  ENTITY:PostEntityPaste is called.  
 --- The constraints are then created with duplicator.CreateConstraintFromTable.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:697:791
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:697:791
 --- @param Player Player @The player who wants to create something
 --- @param EntityList table @A table of duplicator data to create the entities from
 --- @param ConstraintList table @A table of duplicator data to create the constraints from
@@ -131,14 +131,14 @@ end
 
 --- Registers a function to be called on each of an entity's bones when duplicator.ApplyBoneModifiers is called.  
 --- ℹ **NOTE**: This function is available to call on the client, but registered functions aren't used anywhere!  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:365
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:365
 --- @param key any @The type of the key doesn't appear to matter, but it is preferable to use a string.
 --- @param boneModifier function @Function called on each bone that an ent has
 function duplicator.RegisterBoneModifier(key, boneModifier)
 end
 
 --- Register a function used for creating a duplicated constraint.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:324:334
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:324:334
 --- @param name string @The unique name of new constraint
 --- @param callback function @Function to be called when this constraint is created
 --- @param ... any @Arguments passed to the callback function
@@ -147,7 +147,7 @@ end
 
 --- This allows you to specify a specific function to be run when your SENT is pasted with the duplicator, instead of relying on the generic automatic functions.  
 --- ℹ **NOTE**: Automatically calls duplicator.Allow for the entity class.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:338:350
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:338:350
 --- @param name string @The ClassName of the entity you wish to register a factory for
 --- @param func function @The factory function you want to have called
 --- @param ... any ... @Strings of the names of arguments you want passed to function the from the Structures/EntityCopyData
@@ -157,7 +157,7 @@ end
 --- This allows you to register tweaks to entities. For instance, if you were making an "unbreakable" addon, you would use this to enable saving the "unbreakable" state of entities between duplications.  
 --- This function registers a piece of generic code that is run on all entities with this modifier. In order to have it actually run, use duplicator.StoreEntityModifier.  
 --- This function does nothing when run clientside.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:366
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:366
 --- @param name string @An identifier for your modification
 --- @param func function @The function to be called for your modification
 function duplicator.RegisterEntityModifier(name, func)
@@ -166,26 +166,26 @@ end
 --- Help to remove certain map created entities before creating the saved entities  
 --- This is obviously so we don't get duplicate props everywhere.  
 --- It should be called before calling Paste.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:916:931
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:916:931
 function duplicator.RemoveMapCreatedEntities()
 end
 
 --- "When a copy is copied it will be translated according to these.  
 --- If you set them - make sure to set them back to 0 0 0!"  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:322
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:322
 --- @param v Angle @The angle to offset all pastes from
 function duplicator.SetLocalAng(v)
 end
 
 --- "When a copy is copied it will be translated according to these.  
 --- If you set them - make sure to set them back to 0 0 0!"  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:321
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:321
 --- @param v Vector @The position to offset all pastes from
 function duplicator.SetLocalPos(v)
 end
 
 --- Stores bone mod data for a registered bone modification function  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:473:490
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:473:490
 --- @param ent Entity @The entity to add bone mod data to
 --- @param boneID number @The bone ID
 --- @param key any @The key for the bone modification
@@ -194,7 +194,7 @@ function duplicator.StoreBoneModifier(ent, boneID, key, data)
 end
 
 --- Stores an entity modifier into an entity for saving  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:444:459
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:444:459
 --- @param entity Entity @The entity to store modifier in
 --- @param name string @Unique modifier name as defined in duplicator.RegisterEntityModifier
 --- @param data table @Modifier data
@@ -202,7 +202,7 @@ function duplicator.StoreEntityModifier(entity, name, data)
 end
 
 --- Works out the AABB size of the duplication  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/includes/modules/duplicator.lua:503:546
+--- @source ../../garrysmod/garrysmod/lua/includes/modules/duplicator.lua:503:546
 --- @param Ents table @A table of entity duplication datums.
 --- @return vector @AABB mins vector
 --- @return vector @AABB maxs vector

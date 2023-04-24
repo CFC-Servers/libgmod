@@ -12,7 +12,7 @@ function DMenu:AddCVar(strText, convar, on, off, funcFunction)
 end
 
 --- Add an option to the DMenu  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dmenu.lua:36
+--- @source ../../garrysmod/garrysmod/lua/vgui/dmenu.lua:36
 --- @param name string @Name of the option.
 --- @param func? function @Function to execute when this option is clicked.
 --- @return Panel @Returns the created DMenuOption panel.
@@ -21,7 +21,7 @@ end
 
 --- Adds a panel to the DMenu as if it were an option.  
 --- This invokes DScrollPanel:AddItem and will not create a new panel if a class name is passed, unlike Panel:Add.  
---- @source /home/brandon/Code/dev/libgmod/garrysmod/garrysmod/lua/vgui/dmenu.lua:29
+--- @source ../../garrysmod/garrysmod/lua/vgui/dmenu.lua:29
 --- @param pnl Panel @The panel that you want to add.
 function DMenu:AddPanel(pnl)
 end
