@@ -1,5 +1,5 @@
---- @class GPlayerClass
---- @field Player GPlayer
+--- @class PlayerClass
+--- @field Player Player
 local PLAYER = {}
 
 PLAYER.DisplayName = "Default Class"

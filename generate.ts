@@ -341,7 +341,8 @@ async function doGlobals(): Promise<void> {
         await fs.readFile("output/global-functions.json", "utf-8")
     );
     data = _.sortBy(data, "name");
-    await fs.writeFile("definitions/globals.lua", "", "utf-8");
+    await mkdirp("definitions/globals");
+    await fs.writeFile("definitions/globals/globals.lua", "", "utf-8");
     for (let func of data) {
         let funcdata: string | undefined;
         try {
@@ -355,7 +356,7 @@ async function doGlobals(): Promise<void> {
             throw e;
         }
         if (funcdata) {
-            await fs.appendFile("definitions/globals.lua", funcdata + "\n", "utf-8");
+            await fs.appendFile("definitions/globals/globals.lua", funcdata + "\n", "utf-8");
         }
     }
     console.log("Done globals!");
@@ -366,7 +367,7 @@ async function doLibs(): Promise<void> {
         await fs.readFile("output/libraries.json", "utf-8")
     );
     data = _.sortBy(data, "name");
-    await mkdirp("libraries");
+    await mkdirp("definitions/libraries");
     for (let lib of data) {
         let libdata: string;
         try {
@@ -415,7 +416,7 @@ async function getPanels(): Promise<FuncContainer[]> {
 
 async function doPanels(data: FuncContainer[]): Promise<void> {
     data = _.sortBy(data, "name");
-    await mkdirp("panels");
+    await mkdirp("definitions/panels");
     for (let cls of data) {
         let classdata: string;
         try {
@@ -464,7 +465,7 @@ async function getClasses(): Promise<FuncContainer[]> {
 
 async function doClasses(data: FuncContainer[]): Promise<void> {
     data = _.sortBy(data, "name");
-    await mkdirp("classes");
+    await mkdirp("definitions/classes");
     for (let cls of data) {
         let classdata: string;
         try {
