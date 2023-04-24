@@ -1,0 +1,3 @@
+[submodule "garrysmod"]
+	path = garrysmod
+	url = git@github.com:Facepunch/garrysmod.git
