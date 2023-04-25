@@ -5204,7 +5204,7 @@
     "realms": [
       "server"
     ],
-    "description": "Displays a message in the chat, console, or center of screen of every player.\n\nThis uses the archaic user message system (<page>umsg</page>) and hence is limited to ≈250 characters.",
+    "description": "Displays a message in the chat, console, or center of screen of every player.\n\nThis uses the archaic user message system (<page>umsg</page>) and hence is limited to 255 characters.",
     "arguments": [
       {
         "name": "type",

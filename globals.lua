@@ -1221,7 +1221,7 @@ function _G.PrecacheSentenceGroup(group)
 end
 
 --- Displays a message in the chat, console, or center of screen of every player.  
---- This uses the archaic user message system (umsg) and hence is limited to ≈250 characters.  
+--- This uses the archaic user message system (umsg) and hence is limited to 255 characters.  
 --- @param type number @Which type of message should be sent to the players (see Enums/HUD)
 --- @param message string @Message to be sent to the players
 function _G.PrintMessage(type, message)
