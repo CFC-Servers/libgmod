@@ -11,7 +11,7 @@ BUTTON_CODE_COUNT = 172
 KEY_FIRST = 0
 ---
 KEY_NONE = 0
---- Normal number 0 key
+--- Normal number
 KEY_0 = 1
 --- Normal number 1 key
 KEY_1 = 2
