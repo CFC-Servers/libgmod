@@ -8,3 +8,4 @@ If you have lua-language-server installed, you can clone this repo and add it to
 
 
 You can find an example of doing that in neovim here https://cfc.gg/configs/lua_ls/glua.lua
+
