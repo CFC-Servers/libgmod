@@ -32,5 +32,6 @@ jobs:
                 commit-message: 'Automated: regenerated code based on scraped wiki data'
                 title: 'Automated PR: Regenerated code'
                 body: '-----'
+                author: 'github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>'
                 branch: 'automated/scraped'
                 branch-suffix: timestamp
