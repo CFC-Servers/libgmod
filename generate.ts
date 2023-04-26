@@ -222,8 +222,11 @@ function handleFunc(func: Func, sepr?: string): undefined | string {
         return;
     }
     let desc = "";
+    if (func.realms) {
+       desc += `--- \uebb4 ${func.realms.join("|")}\n`;
+    }
     if (func.description) {
-        desc = formatDesc(func.description) + "\n";
+        desc += formatDesc(func.description) + "\n";
     }
     let args = "";
     if (func.arguments) {
@@ -503,3 +506,5 @@ async function main() {
 }
 
 main();
+
+
