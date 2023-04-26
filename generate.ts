@@ -28,6 +28,11 @@ let TYPE_NAME_OVERRIDES: { [key: string]: string } = {
 
 };
 
+let OVERLOADS: { [key: string]: string } = {
+    "surface.SetDrawColor": "fun(color: table)",
+    "_G.setfenv": "fun(stackLevel: number, environment: table)"
+};
+
 function getTypeName(ret: string): string {
     // Get rid of any creative type names
     ret = ret.replace(/[^\w.]/g, "_");
@@ -232,7 +237,10 @@ function handleFunc(func: Func, sepr?: string): undefined | string {
     if(func.deprecated) {
         args += "--- @deprecated\n";
     }
-
+    const singature = `${getTypeName(func.parent)}${sepr || "."}${func.name}`;
+    if(OVERLOADS[singature]) {
+        args += `--- @overload ${OVERLOADS[singature]}\n`;
+    }
     let ret = "";
     if (func.returnValues && func.returnValues.length > 0) {
         ret = getRetDoc(func.returnValues) + "\n";
