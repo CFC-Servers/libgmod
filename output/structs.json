@@ -3542,7 +3542,7 @@
       {
         "name": "boostMaxSpeed",
         "type": "number",
-        "description": "Maximum speed while boosting\n\n<warning>The <page>Vehicle:SetVehicleParams</page> function takes this in **miles per hour**, but <page>Vehicle:GetVehicleParams</page> returns this in **hammer units per second**!\n\n1 MPH is roughly 17.6 HU/s.</warning>"
+        "description": "Maximum speed while boosting\n\n<warning>The <page>Vehicle:SetVehicleParams</page> function takes this in **miles per hour**, but <page>Vehicle:GetVehicleParams</page> returns this in **hammer units per second**!\n\nIn this case HU = inches, so 1 MPH is 17.6 HU/s.</warning>"
       },
       {
         "name": "gearCount",
@@ -3572,12 +3572,12 @@
       {
         "name": "maxRevSpeed",
         "type": "number",
-        "description": "Maximum reverse speed of the vehicle\n\n<warning>The <page>Vehicle:SetVehicleParams</page> function takes this in **miles per hour**, but <page>Vehicle:GetVehicleParams</page> returns this in **hammer units per second**!\n\n1 MPH is roughly 17.6 HU/s.</warning>"
+        "description": "Maximum reverse speed of the vehicle\n\n<warning>The <page>Vehicle:SetVehicleParams</page> function takes this in **miles per hour**, but <page>Vehicle:GetVehicleParams</page> returns this in **hammer units per second**!\n\nIn this case HU = inches, so 1 MPH is 17.6 HU/s.</warning>"
       },
       {
         "name": "maxSpeed",
         "type": "number",
-        "description": "Maximum forward going speed of the vehicle without boosting\n\n<warning>The <page>Vehicle:SetVehicleParams</page> function takes this in **miles per hour**, but <page>Vehicle:GetVehicleParams</page> returns this in **hammer units per second**!\n\n1 MPH is roughly 17.6 HU/s.</warning>"
+        "description": "Maximum forward going speed of the vehicle without boosting\n\n<warning>The <page>Vehicle:SetVehicleParams</page> function takes this in **miles per hour**, but <page>Vehicle:GetVehicleParams</page> returns this in **hammer units per second**!\n\nIn this case HU = inches, so 1 MPH is 17.6 HU/s.</warning>"
       },
       {
         "name": "shiftDownRPM",
