@@ -1,7 +1,7 @@
 --- The string *type* is a sequence of characters.  
 --- The string *library* is a standard Lua library which provides functions for the manipulation of strings.[[1]](https://www.lua.org/pil/20.html)  
 --- In Garry's Mod there are several extra useful functions and features added to this library.  
---- Most notably all strings will access this library through the string metatable index function.[[2]](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/lua/includes/extensions/string.lua#L288-L299)  
+--- Most notably all strings will access this library through the string metatable index function.[[2]](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/lua/includes/extensions/string.lua#L311-L322)  
 --- This means all strings are treated like table objects and the string library as its Meta Table  
 --- ```lua  
 --- local x = "Kittens"  

@@ -217,6 +217,7 @@ end
 --- @param g number @The green value of color
 --- @param b number @The blue value of color
 --- @param a? number @The alpha value of color
+--- @overload fun(color: table)
 function surface.SetDrawColor(r, g, b, a)
 end
 

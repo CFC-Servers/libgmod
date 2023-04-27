@@ -866,7 +866,10 @@ end
 
 --- Launches an asynchronous http request with the given parameters.  
 --- 🦟 **BUG**: [This cannot send or receive multiple headers with the same name.](https://github.com/Facepunch/garrysmod-issues/issues/2232)  
---- ℹ **NOTE**: HTTP-requests to destinations on private networks (such as `192.168.0.1`) won't work.  
+--- 🦟 **BUG**: [This function fails with an `invalid url` error if the substring `"10."` appears anywhere in the URL, when `-allowlocalhttp` is not active. Where possible, this can be worked around by encoding the `.` character as `%2E`.](https://github.com/Facepunch/garrysmod-issues/issues/4133)  
+--- ℹ **NOTE**: HTTP-requests that respond with a large body may return an `unsuccessful` error. Try using the [Range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range) header to download the file in chunks.  
+--- ℹ **NOTE**:   
+--- HTTP-requests to destinations on private networks (such as `192.168.0.1`) won't work.  
 --- To enable HTTP-requests to destinations on private networks use Command Line Parameters `-allowlocalhttp`.  
 --- @param parameters table @The request parameters
 --- @return boolean @`true` if we made a request, `nil` if we failed.
@@ -1951,6 +1954,7 @@ end
 --- Sets the environment for a function or a stack level. Can be used to sandbox code.  
 --- @param location function @The function to set the environment for, or a number representing stack level.
 --- @param environment table @Table to be used as the the environment.
+--- @overload fun(stackLevel: number, environment: table)
 --- @return function @The function passed, otherwise nil.
 function _G.setfenv(location, environment)
 end
