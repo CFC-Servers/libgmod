@@ -20,6 +20,7 @@ const PARENT_OVERRIDES: { [key: string]: string }= {
     "Player": "Entity",
     "Vehicle": "Entity",
     "Weapon": "Entity",
+    "EditablePanel": "Panel",
 };
 
 let TYPE_NAME_OVERRIDES: { [key: string]: string } = {
