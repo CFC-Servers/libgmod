@@ -4,43 +4,52 @@
 --- ℹ **NOTE**: Panel:DockPadding will not have an effect on children of this panel. Use the function on DScrollPanel:GetCanvas instead.  
 --- @class DScrollPanel : DPanel
 local DScrollPanel = {}
+---  client
 --- Parents the passed panel to the DScrollPanel's canvas.  
 --- @param pnl Panel @The panel to add.
 function DScrollPanel:AddItem(pnl)
 end
 
+---  client
 --- Clears the `DScrollPanel`'s canvas, removing all added items.  
 function DScrollPanel:Clear()
 end
 
+---  client
 --- Returns the canvas ( The panel all child panels are parented to ) of the DScrollPanel.  
 --- @return Panel @The canvas
 function DScrollPanel:GetCanvas()
 end
 
+---  client
 --- Gets the DScrollPanels padding  
 --- @return number @DScrollPanels padding
 function DScrollPanel:GetPadding()
 end
 
+---  client
 --- Returns the vertical scroll bar of the panel.  
 --- @return Panel @The DVScrollBar.
 function DScrollPanel:GetVBar()
 end
 
+---  client
 --- Return the width of the DScrollPanel's canvas.  
 --- @return number @The width of the DScrollPanel's canvas
 function DScrollPanel:InnerWidth()
 end
 
+---  client
 function DScrollPanel:Rebuild()
 end
 
+---  client
 --- Scrolls to the given child  
 --- @param panel Panel @The panel to scroll to, must be a child of the DScrollPanel.
 function DScrollPanel:ScrollToChild(panel)
 end
 
+---  client
 --- Sets the DScrollPanel's padding. This function appears to be unused.  
 --- @param padding number @The padding of the DScrollPanel.
 function DScrollPanel:SetPadding(padding)

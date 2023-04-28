@@ -1,5 +1,6 @@
 --- The constraint library allows you to control the constraint system built into the physics engine (rope, weld, ballsockets, etc).  
 _G.constraint = {}
+---  server
 --- Stores information about constraints in an entity's table.  
 --- @param ent1 Entity @The entity to store the information on.
 --- @param constrt Entity @The constraint to store in the entity's table.
@@ -9,6 +10,7 @@ _G.constraint = {}
 function constraint.AddConstraintTable(ent1, constrt, ent2, ent3, ent4)
 end
 
+---  server
 --- Stores info about the constraints on the entity's table. The only difference between this and constraint.AddConstraintTable is that the constraint does not get deleted when the entity is removed.  
 --- @param ent1 Entity @The entity to store the information on.
 --- @param constrt Entity @The constraint to store in the entity's table.
@@ -18,6 +20,7 @@ end
 function constraint.AddConstraintTableNoDelete(ent1, constrt, ent2, ent3, ent4)
 end
 
+---  server
 --- Creates an advanced ballsocket (ragdoll) constraint.  
 --- Uses a https://developer.valvesoftware.com/wiki/Phys_ragdollconstraint  
 --- @param Ent1 Entity @First entity.
@@ -43,6 +46,7 @@ end
 function constraint.AdvBallsocket(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, forcelimit, torquelimit, xmin, ymin, zmin, xmax, ymax, zmax, xfric, yfric, zfric, onlyrotation, nocollide)
 end
 
+---  server
 --- Creates an axis constraint.  
 --- @param Ent1 Entity @First entity.
 --- @param Ent2 Entity @Second entity.
@@ -60,6 +64,7 @@ end
 function constraint.Axis(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, forcelimit, torquelimit, friction, nocollide, LocalAxis, DontAddTable)
 end
 
+---  server
 --- Creates a ballsocket joint.  
 --- @param Ent1 Entity @First entity
 --- @param Ent2 Entity @Second entity
@@ -73,6 +78,7 @@ end
 function constraint.Ballsocket(Ent1, Ent2, Bone1, Bone2, LocalPos, forcelimit, torquelimit, nocollide)
 end
 
+---  server
 --- Basic checks to make sure that the specified entity and bone are valid. Returns false if we should not be constraining the entity.  
 --- @param ent Entity @The entity to check
 --- @param bone number @The bone of the entity to check (use 0 for mono boned ents)
@@ -80,6 +86,7 @@ end
 function constraint.CanConstrain(ent, bone)
 end
 
+---  server
 --- Creates a rope without any constraint.  
 --- @param pos Vector @Starting position of the rope.
 --- @param width number @Width of the rope.
@@ -96,6 +103,7 @@ end
 function constraint.CreateKeyframeRope(pos, width, material, Constraint, Ent1, LPos1, Bone1, Ent2, LPos2, Bone2, kv)
 end
 
+---  server
 --- Creates an invisible, non-moveable anchor point in the world to which things can be attached.  
 --- ℹ **NOTE**: The entity used internally by this function (`gmod_anchor`) only exists in Sandbox derived gamemodes, meaning this function will only work in these gamemodes.  
 --- To use this in other gamemodes, you may need to create your own [gmod_anchor](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/gamemodes/sandbox/entities/entities/gmod_anchor.lua) entity.  
@@ -107,6 +115,7 @@ end
 function constraint.CreateStaticAnchorPoint(pos)
 end
 
+---  server
 --- Creates an elastic constraint.  
 --- @param Ent1 Entity @First entity.
 --- @param Ent2 Entity @Second entity
@@ -126,6 +135,7 @@ end
 function constraint.Elastic(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, constant, damping, rdamping, material, width, stretchonly, color)
 end
 
+---  server
 --- Returns the constraint of a specified type between two entities, if it exists  
 --- @param ent1 Entity @The first entity to check
 --- @param ent2 Entity @The second entity to check
@@ -136,6 +146,7 @@ end
 function constraint.Find(ent1, ent2, type, bone1, bone2)
 end
 
+---  server
 --- Returns the first constraint of a specific type directly connected to the entity found  
 --- @param ent Entity @The entity to check
 --- @param type string @The type of constraint, case sensitive
@@ -143,6 +154,7 @@ end
 function constraint.FindConstraint(ent, type)
 end
 
+---  server
 --- Returns the other entity involved in the first constraint of a specific type directly connected to the entity  
 --- @param ent Entity @The entity to check
 --- @param type string @The type of constraint, case sensitive
@@ -150,6 +162,7 @@ end
 function constraint.FindConstraintEntity(ent, type)
 end
 
+---  server
 --- Returns a table of all constraints of a specific type directly connected to the entity  
 --- @param ent Entity @The entity to check
 --- @param type string @The type of constraint, case sensitive
@@ -157,11 +170,13 @@ end
 function constraint.FindConstraints(ent, type)
 end
 
+---  server
 --- Make this entity forget any constraints it knows about. Note that this will not actually remove the constraints.  
 --- @param ent Entity @The entity that will forget its constraints.
 function constraint.ForgetConstraints(ent)
 end
 
+---  server
 --- Returns a table of all entities recursively constrained to an entitiy.  
 --- @param ent Entity @The entity to check
 --- @param ResultTable? table @Table used to return result
@@ -169,18 +184,21 @@ end
 function constraint.GetAllConstrainedEntities(ent, ResultTable)
 end
 
+---  server
 --- Returns a table of all constraints directly connected to the entity  
 --- @param ent Entity @The entity to check
 --- @return table @A list of all constraints connected to the entity.
 function constraint.GetTable(ent)
 end
 
+---  server
 --- Returns true if the entity has constraints attached to it  
 --- @param ent Entity @The entity to check
 --- @return boolean @Whether the entity has any constraints or not.
 function constraint.HasConstraints(ent)
 end
 
+---  server
 --- Creates a Hydraulic constraint.  
 --- @param pl Player @The player that will be used to call numpad.OnDown.
 --- @param Ent1 Entity @First entity.
@@ -204,6 +222,7 @@ end
 function constraint.Hydraulic(pl, Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, Length1, Length2, width, key, fixed, speed, material, color)
 end
 
+---  server
 --- Creates a keep upright constraint.  
 --- ℹ **NOTE**: This function only works on prop_physics or prop_ragdoll.  
 --- @param ent Entity @The entity to keep upright
@@ -214,6 +233,7 @@ end
 function constraint.Keepupright(ent, ang, bone, angularLimit)
 end
 
+---  server
 --- Creates a motor constraint.  
 --- @param Ent1 Entity @First entity.
 --- @param Ent2 Entity @Second entity.
@@ -237,6 +257,7 @@ end
 function constraint.Motor(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, friction, torque, forcetime, nocollide, toggle, pl, forcelimit, numpadkey_fwd, numpadkey_bwd, direction, LocalAxis)
 end
 
+---  server
 --- Creates a muscle constraint.  
 --- @param pl Player @The player that will be used to call numpad.OnDown.
 --- @param Ent1 Entity @First entity.
@@ -262,6 +283,7 @@ end
 function constraint.Muscle(pl, Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, Length1, Length2, width, key, fixed, period, amplitude, starton, material, color)
 end
 
+---  server
 --- Creates an no-collide "constraint". Disables collision between two entities.  
 --- ℹ **NOTE**: Does not work with players.  
 --- @param Ent1 Entity @First entity.
@@ -272,6 +294,7 @@ end
 function constraint.NoCollide(Ent1, Ent2, Bone1, Bone2)
 end
 
+---  server
 --- Creates a pulley constraint.  
 --- @param Ent1 Entity 
 --- @param Ent4 Entity 
@@ -290,6 +313,7 @@ end
 function constraint.Pulley(Ent1, Ent4, Bone1, Bone4, LPos1, LPos4, WPos2, WPos3, forcelimit, rigid, width, material, color)
 end
 
+---  server
 --- Attempts to remove all constraints associated with an entity  
 --- @param ent Entity @The entity to remove constraints from
 --- @return boolean @Whether any constraints were removed
@@ -297,6 +321,7 @@ end
 function constraint.RemoveAll(ent)
 end
 
+---  server
 --- Attempts to remove all constraints of a specified type associated with an entity  
 --- @param ent Entity @The entity to check
 --- @param type string @The constraint type to remove (eg
@@ -305,6 +330,7 @@ end
 function constraint.RemoveConstraints(ent, type)
 end
 
+---  server
 --- Creates a rope constraint - with rope!  
 --- @param Ent1 Entity @First entity
 --- @param Ent2 Entity @Second entity
@@ -324,6 +350,7 @@ end
 function constraint.Rope(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, length, addlength, forcelimit, width, material, rigid, color)
 end
 
+---  server
 --- Creates a slider constraint.  
 --- @param Ent1 Entity @First entity.
 --- @param Ent2 Entity @Second entity.
@@ -339,6 +366,7 @@ end
 function constraint.Slider(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, width, material, color)
 end
 
+---  server
 --- Creates a weld constraint  
 --- @param ent1 Entity @The first entity
 --- @param ent2 Entity @The second entity
@@ -351,6 +379,7 @@ end
 function constraint.Weld(ent1, ent2, bone1, bone2, forcelimit, nocollide, deleteent1onbreak)
 end
 
+---  server
 --- Creates a Winch constraint.  
 --- @param pl Player @The player that will be used to call numpad.OnDown and numpad.OnUp.
 --- @param Ent1 Entity @First entity.

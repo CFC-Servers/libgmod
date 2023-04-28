@@ -1,5 +1,6 @@
 --- Used to display notifications on the screen (mid-right).  
 _G.notification = {}
+---  client|menu
 --- Adds a standard notification to your screen.  
 --- @param text string @The text to display.
 --- @param type number @Determines the notification method (e.g
@@ -7,6 +8,7 @@ _G.notification = {}
 function notification.AddLegacy(text, type, length)
 end
 
+---  client|menu
 --- Adds a notification with an animated progress bar.  
 --- @param id any @Can be any type
 --- @param strText string @The text to show
@@ -14,6 +16,7 @@ end
 function notification.AddProgress(id, strText, frac)
 end
 
+---  client|menu
 --- Removes the notification after 0.8 seconds.  
 --- @param uid any @The unique ID of the notification
 function notification.Kill(uid)

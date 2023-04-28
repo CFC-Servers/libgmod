@@ -1,5 +1,6 @@
 --- The game library provides functions to access various features in the game's engine, most of it's functions are related to controlling the map.  
 _G.game = {}
+---  client|server
 --- Adds a new ammo type to the game.  
 --- You can find a list of default ammo types [here](https://wiki.facepunch.com/gmod/Default_Ammo_Types).  
 --- ⚠ **WARNING**: This function **must** be called on both the client and server in GM:Initialize or you will have unexpected problems.  
@@ -8,6 +9,7 @@ _G.game = {}
 function game.AddAmmoType(ammoData)
 end
 
+---  client|server
 --- Registers a new decal.  
 --- ⚠ **WARNING**: There's a rather low limit of around 256 for decal materials that may be registered and they are not cleared on map load.  
 --- @param decalName string @The name of the decal.
@@ -15,12 +17,14 @@ end
 function game.AddDecal(decalName, materialName)
 end
 
+---  client|server
 --- Loads a particle file.  
 --- ℹ **NOTE**: You will still need to call this function clientside regardless if you create the particle effects serverside.  
 --- @param particleFileName string @The path of the file to add
 function game.AddParticles(particleFileName)
 end
 
+---  client|server
 --- If called serverside it will remove **ALL** entities which were not created by the map (not players or weapons held by players).  
 --- On the client it will remove decals, sounds, gibs, dead NPCs, and entities created via ents.CreateClientProp.  
 --- This function calls GM:PreCleanupMap before cleaning up the map and GM:PostCleanupMap after cleaning up the map.  
@@ -32,6 +36,7 @@ end
 function game.CleanUpMap(dontSendToClients, extraFilters)
 end
 
+---  server
 --- Runs a console command.  
 --- Make sure to add a newline ("\n") at the end of the command.  
 --- ⚠ **WARNING**: If you use data that were received from a client, you should avoid using this function because newline and semicolon (at least) allow the client to run arbitrary commands!  
@@ -40,24 +45,28 @@ end
 function game.ConsoleCommand(stringCommand)
 end
 
+---  client|server
 --- Returns the damage type of given ammo type.  
 --- @param id number @Ammo ID to retrieve the damage type of
 --- @return number @See Enums/DMG
 function game.GetAmmoDamageType(id)
 end
 
+---  client|server
 --- Returns the Structures/AmmoData for given ID.  
 --- @param id number @ID of the ammo type to look up the data for
 --- @return table @The Structures/AmmoData containing all ammo data
 function game.GetAmmoData(id)
 end
 
+---  client|server
 --- Returns the ammo bullet force that is applied when an entity is hit by a bullet of given ammo type.  
 --- @param id number @Ammo ID to retrieve the force of
 --- @return number 
 function game.GetAmmoForce(id)
 end
 
+---  client|server
 --- Returns the ammo type ID for given ammo type name.  
 --- See game.GetAmmoName for reverse.  
 --- @param name string @Name of the ammo type to look up ID of
@@ -65,18 +74,21 @@ end
 function game.GetAmmoID(name)
 end
 
+---  client|server
 --- Returns the real maximum amount of ammo of given ammo ID, regardless of the setting of `gmod_maxammo` convar.  
 --- @param id number @Ammo type ID
 --- @return number @The maximum amount of reserve ammo a player can hold of this ammo type.
 function game.GetAmmoMax(id)
 end
 
+---  client|server
 --- Returns the damage given ammo type should do to NPCs.  
 --- @param id number @Ammo ID to retrieve the damage info of
 --- @return number 
 function game.GetAmmoNPCDamage(id)
 end
 
+---  client|server
 --- Returns the ammo name for given ammo type ID.  
 --- See game.GetAmmoID for reverse.  
 --- @param id number @Ammo ID to retrieve the name of
@@ -84,17 +96,20 @@ end
 function game.GetAmmoName(id)
 end
 
+---  client|server
 --- Returns the damage given ammo type should do to players.  
 --- @param id number @Ammo ID to retrieve the damage info of
 --- @return number 
 function game.GetAmmoPlayerDamage(id)
 end
 
+---  client|server
 --- Returns a list of all ammo types currently registered.  
 --- @return table @A table containing all ammo types
 function game.GetAmmoTypes()
 end
 
+---  server
 --- Returns the counter of a Global State.  
 --- See Global States for more information.  
 --- @param name string @The name of the Global State to set
@@ -102,6 +117,7 @@ end
 function game.GetGlobalCounter(name)
 end
 
+---  server
 --- Returns whether a Global State is off, active or dead ( inactive )  
 --- See Global States for more information.  
 --- @param name string @The name of the Global State to retrieve the state of
@@ -109,6 +125,7 @@ end
 function game.GetGlobalState(name)
 end
 
+---  client|server
 --- Returns the public IP address and port of the current server. This will return the IP/port that you are connecting through when ran clientside.  
 --- ℹ **NOTE**: Returns "loopback" in singleplayer.  
 --- 🦟 **BUG**: [Returns "0.0.0.0:`port`" on the server when called too early, including in GM:Initialize and GM:InitPostEntity. This bug seems to only happen the first time a server is launched, and will return the correct value after switching maps.](https://github.com/Facepunch/garrysmod-issues/issues/3001)  
@@ -116,6 +133,7 @@ end
 function game.GetIPAddress()
 end
 
+---  menu|client|server
 --- Returns the name of the current map, without a file extension.  
 --- On the menu state, returns "menu".  
 --- ⚠ **WARNING**: In Multiplayer this does not return the current map in the CLIENT realm before GM:Initialize.  
@@ -123,16 +141,19 @@ end
 function game.GetMap()
 end
 
+---  server
 --- Returns the next map that would be loaded according to the file that is set by the mapcyclefile convar.  
 --- @return string @nextMap
 function game.GetMapNext()
 end
 
+---  server
 --- Returns the revision (Not to be confused with [VBSP Version](https://developer.valvesoftware.com/wiki/Source_BSP_File_Format#Versions)) of the current map.  
 --- @return number @Revision of the currently loaded map.
 function game.GetMapVersion()
 end
 
+---  client|server
 --- Returns the difficulty level of the game.  
 --- **TIP:** You can use this function in your scripted NPCs or Nextbots to make them harder, however, it is a good idea to lock powerful attacks behind the highest difficulty instead of just increasing the health.  
 --- ℹ **NOTE**: Internally this is tied to the gamerules entity, so you'll have to wait to wait until GM:InitPostEntity is called to return the skill level  
@@ -140,6 +161,7 @@ end
 function game.GetSkillLevel()
 end
 
+---  client|server
 --- Returns the time scale set with game.SetTimeScale.  
 --- If you want to get the value of `host_timescale` use  
 --- ```lua  
@@ -149,38 +171,45 @@ end
 function game.GetTimeScale()
 end
 
+---  client|server
 --- Returns the worldspawn entity.  
 --- @return Entity @The world
 function game.GetWorld()
 end
 
+---  client|server
 --- Returns true if the server is a dedicated server, false if it is a listen server or a singleplayer game.  
 --- 🦟 **BUG**: [This always returns false on the client.](https://github.com/Facepunch/garrysmod-issues/issues/1495)  
 --- @return boolean @Is the server dedicated or not.
 function game.IsDedicated()
 end
 
+---  server
 --- Kicks a player from the server. This can be ran before the player has spawned.  
 --- @param id string @UserID or SteamID of the player to kick.
 --- @param reason? string @Reason to display to the player
 function game.KickID(id, reason)
 end
 
+---  server
 --- Loads the next map according to the nextlevel convar, or from the current mapcycle file set by the respective convar.  
 function game.LoadNextMap()
 end
 
+---  server
 --- Returns the map load type of the current map.  
 --- After changing the map with the console command `changelevel`, "newgame" is returned. With `changelevel2` (single player only), "transition" is returned.  
 --- @return string @The load type
 function game.MapLoadType()
 end
 
+---  client|server
 --- Returns the maximum amount of players (including bots) that the server can have.  
 --- @return number @The maximum amount of players
 function game.MaxPlayers()
 end
 
+---  client|server
 --- Mounts a GMA addon from the disk.  
 --- Can be used with steamworks.DownloadUGC  
 --- ℹ **NOTE**: Any error models currently loaded that the mounted addon provides will be reloaded.  
@@ -191,10 +220,12 @@ end
 function game.MountGMA(path)
 end
 
+---  client|server
 --- Removes all the clientside ragdolls.  
 function game.RemoveRagdolls()
 end
 
+---  server
 --- Sets the counter of a Global State.  
 --- See Global States for more information.  
 --- @param name string @The name of the Global State to set
@@ -202,6 +233,7 @@ end
 function game.SetGlobalCounter(name, count)
 end
 
+---  server
 --- Sets whether a Global State is off, active or dead ( inactive )  
 --- See Global States for more information.  
 --- @param name string @The name of the Global State to set
@@ -209,6 +241,7 @@ end
 function game.SetGlobalState(name, state)
 end
 
+---  server
 --- Sets the difficulty level of the game, can be retrieved with game.GetSkillLevel.  
 --- This will automatically change whenever the "skill" convar is modified serverside.  
 --- 🦟 **BUG**: [This function will not work if the skill convar doesn't match the targeted value. To work around this, you must use RunConsoleCommand("skill", num) alongside this function.](https://github.com/Facepunch/garrysmod-issues/issues/3491)  
@@ -216,6 +249,7 @@ end
 function game.SetSkillLevel(level)
 end
 
+---  server
 --- Sets the time scale of the game.  
 --- This function is supposed to remove the need of using the host_timescale convar, which is cheat protected.  
 --- To slow down or speed up the movement of a specific player, use Player:SetLaggedMovementValue instead.  
@@ -226,11 +260,13 @@ end
 function game.SetTimeScale(timeScale)
 end
 
+---  client|server
 --- Returns whether the current session is a single player game.  
 --- @return boolean @isSinglePlayer
 function game.SinglePlayer()
 end
 
+---  client|server
 --- Returns position the player should start from, this is not the same thing as spawn points, it is used to properly transit the player between maps.  
 --- @return Vector @startSpot
 function game.StartSpot()

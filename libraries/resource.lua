@@ -1,5 +1,6 @@
 --- The resource library is used to control what files are sent to clients who join a server, this includes models, materials, sounds, text files but not Lua files.  
 _G.resource = {}
+---  server
 --- Adds the specified and all related files to the files the client should download.  
 --- For convenience, this function will automatically add any other files that are related to the selected one, and throw an error if it can't find them. For example, a `.vmt` file will automatically add the `.vtf` with the same name, and a `.mdl` file will automatically add all `.vvd`, `.ani`, `.dx80.vtx`, `.dx90.vtx`, `.sw.vtx`, `.phy` and `.jpg` files with the same name, with a separate error for each missing file.  
 --- If you do not want it to do this, use resource.AddSingleFile.  
@@ -10,6 +11,7 @@ _G.resource = {}
 function resource.AddFile(path)
 end
 
+---  server
 --- Adds the specified file to the files the client should download.  
 --- If you wish to add textures or models, consider using resource.AddFile to add all the files required for a texture/model.  
 --- ⚠ **WARNING**: There's a 8192 downloadable file limit.   
@@ -19,6 +21,7 @@ end
 function resource.AddSingleFile(path)
 end
 
+---  server
 --- Adds a workshop addon for the client to download before entering the server.  
 --- Having the raw files from a workshop item does not count as having already downloaded it.  
 --- So players who previously downloaded a map through Fast Download will have to re-download it if you use the workshop.  

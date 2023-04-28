@@ -1,5 +1,6 @@
 --- The ents library provides functions for creating and finding entities in the game.  
 _G.ents = {}
+---  server
 --- Creates an entity. This function will fail and return `NULL` if the networked-edict limit is hit (around **8176**), or the provided entity class doesn't exist.  
 --- ⚠ **WARNING**: Do not use before GM:InitPostEntity has been called, otherwise the server will crash!  
 --- If you need to perform entity creation when the game starts, create a hook for GM:InitPostEntity and do it there.  
@@ -8,6 +9,7 @@ _G.ents = {}
 function ents.Create(class)
 end
 
+---  client
 --- Creates a clientside only prop. See also Global.ClientsideModel.  
 --- For physics to work you **must** use the _model_ argument, a simple `SetModel` call will not be enough.  
 --- 🦟 **BUG**: [Parented clientside prop will become detached if the parent entity leaves the PVS. **A workaround is available on its github page.**](https://github.com/Facepunch/garrysmod-issues/issues/861)  
@@ -16,12 +18,14 @@ end
 function ents.CreateClientProp(model)
 end
 
+---  client
 --- Creates a clientside only scripted entity. The scripted entity must be of "anim" type.  
 --- @param class string @The class name of the entity to create.
 --- @return Entity @Created entity.
 function ents.CreateClientside(class)
 end
 
+---  client|server
 --- Returns a table of all entities along the ray. The ray does not stop on collisions, meaning it will go through walls/entities.  
 --- @param start Vector @The start position of the ray
 --- @param end_ Vector @The end position of the ray
@@ -31,6 +35,7 @@ end
 function ents.FindAlongRay(start, end_, mins, maxs)
 end
 
+---  client|server
 --- Gets all entities with the given class, supports wildcards. This works internally by iterating over ents.GetAll. Even if internally ents.GetAll is used, It is faster to use ents.FindByClass than ents.GetAll with a single class comparison.  
 --- ℹ **NOTE**: Asterisks (*) are the only wildcard supported.  
 --- @param class string @The class of the entities to find.
@@ -38,6 +43,7 @@ end
 function ents.FindByClass(class)
 end
 
+---  client|server
 --- Finds all entities that are of given class and are children of given entity. This works internally by iterating over ents.GetAll.  
 --- @param class string @The class of entities to search for
 --- @param parent Entity @Parent of entities that are being searched for
@@ -45,12 +51,14 @@ end
 function ents.FindByClassAndParent(class, parent)
 end
 
+---  client|server
 --- Gets all entities with the given model, supports wildcards. This works internally by iterating over ents.GetAll.  
 --- @param model string @The model of the entities to find.
 --- @return table @A table of all found entities.
 function ents.FindByModel(model)
 end
 
+---  client|server
 --- Gets all entities with the given hammer targetname. This works internally by iterating over ents.GetAll.  
 --- Doesn't do anything on client.  
 --- @param name string @The targetname to look for
@@ -58,6 +66,7 @@ end
 function ents.FindByName(name)
 end
 
+---  client|server
 --- Returns all entities within the specified box.  
 --- ℹ **NOTE**: Clientside entities will not be returned by this function.  
 --- ⚠ **WARNING**: There is a limit of 512 entities for the output!  
@@ -67,6 +76,7 @@ end
 function ents.FindInBox(boxMins, boxMaxs)
 end
 
+---  client|server
 --- Finds and returns all entities within the specified cone. Only entities whose Entity:WorldSpaceCenter is within the cone are considered to be in it.  
 --- The "cone" is actually a conical "slice" of an axis-aligned box (see: ents.FindInBox). The image to the right shows approximately how this function would look in 2D. Due to this, the entity may be farther than the specified range!  
 --- ℹ **NOTE**: Clientside entities will not be returned by this function.  
@@ -79,6 +89,7 @@ end
 function ents.FindInCone(origin, normal, range, angle_cos)
 end
 
+---  server
 --- Finds all entities that lie within a [PVS](https://developer.valvesoftware.com/wiki/PVS).  
 --- ℹ **NOTE**: The function won't take in to account Global.AddOriginToPVS and the like.  
 --- @param viewPoint any @Entity or Vector to find entities within the PVS of
@@ -86,6 +97,7 @@ end
 function ents.FindInPVS(viewPoint)
 end
 
+---  client|server
 --- Gets all entities within the specified sphere.  
 --- ℹ **NOTE**: Clientside entities will not be returned by this function.  
 --- This function internally calls ents.FindInBox with some [radius checks](https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/sp/src/public/collisionutils.cpp#L256-L301).  
@@ -95,6 +107,7 @@ end
 function ents.FindInSphere(origin, radius)
 end
 
+---  server
 --- Fires a use event.  
 --- @param target string @Name of the target entity.
 --- @param activator Entity @Activator of the event.
@@ -104,17 +117,20 @@ end
 function ents.FireTargets(target, activator, caller, usetype, value)
 end
 
+---  client|server
 --- Returns a table of all existing entities. The table is sequential  
 --- @return table @Table of all existing Entitys.
 function ents.GetAll()
 end
 
+---  client|server
 --- Returns an entity by its index. Same as Global.Entity.  
 --- @param entIdx number @The index of the entity.
 --- @return Entity @The entity if it exists.
 function ents.GetByIndex(entIdx)
 end
 
+---  client|server
 --- Gives you the amount of currently existing entities.  
 --- ℹ **NOTE**: Similar to **#**ents.GetAll() but with better performance since the entity table doesn't have to be generated. If ents.GetAll is already being called for iteration, than using the **#** operator on the table will be faster than calling this function since it is JITted.  
 --- @param IncludeKillMe? boolean @Include entities with the FL_KILLME flag
@@ -122,11 +138,13 @@ end
 function ents.GetCount(IncludeKillMe)
 end
 
+---  server
 --- Returns the amount of networked entities, which is limited to 8192. ents.Create will fail somewhere between 8064 and 8176 - this can vary based on the amount of existing temp ents.  
 --- @return number @Number of networked entities
 function ents.GetEdictCount()
 end
 
+---  server
 --- Returns entity that has given Entity:MapCreationID.  
 --- @param id number @Entity's creation id
 --- @return Entity @Found entity

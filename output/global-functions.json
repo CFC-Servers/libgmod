@@ -5401,7 +5401,7 @@
     "realms": [
       "client"
     ],
-    "description": "Returns the real frame-time which is unaffected by host_timescale. To be used for GUI effects (for example)",
+    "description": "Returns the real frame-time which is unaffected by host_timescale. To be used for GUI effects (for example)\n<note>The returned number is clamped between `0` and `0.1`.</note>",
     "returnValues": [
       {
         "type": "number",

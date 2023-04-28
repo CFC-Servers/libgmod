@@ -1,5 +1,6 @@
 --- The halo library is used to draw glowing outlines around entities, an example of this can be seen by picking up props with the physgun in Garry's Mod 13.  
 _G.halo = {}
+---  client
 --- Applies a halo glow effect to one or multiple entities.  
 --- ⚠ **WARNING**: Using this function outside of the GM:PreDrawHalos hook can cause instability or crashes.  
 --- ℹ **NOTE**: The ignoreZ parameter will cause the halos to draw over the player's viewmodel. You can work around this using render.DepthRange in the GM:PreDrawViewModel, GM:PostDrawViewModel, GM:PreDrawPlayerHands and GM:PostDrawPlayerHands hooks.  
@@ -13,6 +14,7 @@ _G.halo = {}
 function halo.Add(entities, color, blurX, blurY, passes, additive, ignoreZ)
 end
 
+---  client
 --- Returns the entity the halo library is currently rendering the halo for.  
 --- The main purpose of this function is to be used in ENTITY:Draw in order not to draw certain parts of the entity when the halo is being rendered, so there's no halo around unwanted entity parts, such as lasers, 3D2D displays, etc.  
 --- @return Entity @If set, the currently rendered entity by the halo library.

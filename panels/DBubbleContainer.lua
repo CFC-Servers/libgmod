@@ -1,6 +1,7 @@
 --- A transparent gray speech bubble panel made up of a rounded box and point coming from the bottom.  
 --- @class DBubbleContainer : DPanel
 local DBubbleContainer = {}
+---  client
 --- Sets the speech bubble position and size along with the dialog point position.  
 --- @param x number @The x position of the dialog point
 --- @param y number @The y position of the bubble container

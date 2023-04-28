@@ -1,22 +1,26 @@
 --- The spawnmenu library is a set of functions that allow you to control the spawn (Q) menu.  
 _G.spawnmenu = {}
+---  client
 --- Activates a tool, opens context menu and brings up the tool gun.  
 --- @param tool string @Tool class/file name
 --- @param menu_only boolean @Should we activate this tool in the menu only or also the toolgun? `true` = menu only,`false` = toolgun aswell
 function spawnmenu.ActivateTool(tool, menu_only)
 end
 
+---  client
 --- Activates tools context menu in specified tool tab.  
 --- @param tab number @The tabID of the tab to open the context menu in
 --- @param cp Panel @The control panel to open
 function spawnmenu.ActivateToolPanel(tab, cp)
 end
 
+---  client
 --- Returns currently opened control panel of a tool, post process effect or some other menu in spawnmenu.  
 --- @return Panel @The currently opened control panel, if any.
 function spawnmenu.ActiveControlPanel()
 end
 
+---  client
 --- Registers a new content type that is saveable into spawnlists.  
 --- Created/called by spawnmenu.CreateContentIcon.  
 --- @param name string @An unique name of the content type.
@@ -24,6 +28,7 @@ end
 function spawnmenu.AddContentType(name, constructor)
 end
 
+---  client
 --- Inserts a new tab into the CreationMenus table, which will be used by the creation menu to generate its tabs (Spawnlists, Weapons, Entities, etc.)  
 --- @param name string @What text will appear on the tab (I.E Spawnlists).
 --- @param func function @The function called to generate the content of the tab.
@@ -33,6 +38,7 @@ end
 function spawnmenu.AddCreationTab(name, func, material, order, tooltip)
 end
 
+---  client
 --- Used to add addon spawnlists to the spawnmenu tree. This function should be called within SANDBOX:PopulatePropMenu.  
 --- Addon spawnlists will not save to disk if edited.  
 --- ⚠ **WARNING**: You should never try to modify player customized spawnlists!  
@@ -46,6 +52,7 @@ end
 function spawnmenu.AddPropCategory(classname, name, contents, icon, id, parentID, needsApp)
 end
 
+---  client
 --- Used to create a new category in the list inside of a spawnmenu ToolTab.  
 --- You must call this function from SANDBOX:AddToolMenuCategories for it to work properly.  
 --- @param tab string @The ToolTab name, as created with spawnmenu.AddToolTab
@@ -54,6 +61,7 @@ end
 function spawnmenu.AddToolCategory(tab, RealName, PrintName)
 end
 
+---  client
 --- Adds an option to the right side of the spawnmenu  
 --- @param tab string @The spawnmenu tab to add into (for example "Utilities")
 --- @param category string @The category to add into (for example "Admin")
@@ -66,6 +74,7 @@ end
 function spawnmenu.AddToolMenuOption(tab, category, class, name, cmd, config, cpanel, table)
 end
 
+---  client
 --- Adds a new tool tab to the right side of the spawnmenu via the SANDBOX:AddToolMenuTabs hook.  
 --- This function is a inferior duplicate of spawnmenu.GetToolMenu, just without its return value.  
 --- @param name string @The internal name of the tab
@@ -74,11 +83,13 @@ end
 function spawnmenu.AddToolTab(name, label, icon)
 end
 
+---  client
 --- Clears all the tools from the different tool categories and the categories itself, if ran at the correct place.  
 --- Seems to only work when ran at initialization.  
 function spawnmenu.ClearToolMenus()
 end
 
+---  client
 --- Creates a new content icon.  
 --- @param type string @The type of the content icon.
 --- @param parent Panel @The parent to add the content icon to.
@@ -87,23 +98,27 @@ end
 function spawnmenu.CreateContentIcon(type, parent, data)
 end
 
+---  client
 --- Returns the function to create an vgui element for a specified content type  
 --- @param contentType string 
 --- @return function @The panel creation function
 function spawnmenu.GetContentType(contentType)
 end
 
+---  client
 --- Returns the list of Creation tabs. Creation tabs are added via spawnmenu.AddCreationTab.  
 --- @return table @The list of Creation tabs
 function spawnmenu.GetCreationTabs()
 end
 
+---  client
 --- Similar to spawnmenu.GetPropTable, but only returns spawnlists created by addons via spawnmenu.AddPropCategory.  
 --- These spawnlists are shown in a separate menu in-game.  
 --- @return table @See spawnmenu.GetPropTable for table format.
 function spawnmenu.GetCustomPropTable()
 end
 
+---  client
 --- Returns a table of all prop categories and their props in the spawnmenu.  
 --- Note that if the spawnmenu has not been populated, this will return an empty table.  
 --- This will not return spawnlists created by addons, see  spawnmenu.GetCustomPropTable for that.  
@@ -111,6 +126,7 @@ end
 function spawnmenu.GetPropTable()
 end
 
+---  client
 --- Adds a new tool tab (or returns an existing one by name) to the right side of the spawnmenu via the SANDBOX:AddToolMenuTabs hook.  
 --- @param name string @The internal name of the tab
 --- @param label? string @The 'nice' name of the tab
@@ -119,21 +135,25 @@ end
 function spawnmenu.GetToolMenu(name, label, icon)
 end
 
+---  client
 --- Gets a table of tools on the client.  
 --- @return table @A table with groups of tools, along with information on each tool.
 function spawnmenu.GetTools()
 end
 
+---  client
 --- Loads spawnlists from text files.  
 --- @param callback function @The function to call
 function spawnmenu.PopulateFromTextFiles(callback)
 end
 
+---  client
 --- Switches the creation tab (left side of the spawnmenu) on the spawnmenu to the given tab.  
 --- @param id number @The tab ID to open
 function spawnmenu.SwitchCreationTab(id)
 end
 
+---  client
 --- Opens specified tool tab in spawnmenu.  
 --- @param id number @The tab ID to open
 function spawnmenu.SwitchToolTab(id)
