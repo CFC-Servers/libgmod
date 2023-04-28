@@ -1,11 +1,13 @@
 --- The search library  
 _G.search = {}
+---  client
 --- Adds a search result provider. For examples, see gamemodes/sandbox/gamemode/cl_search_models.lua  
 --- @param provider function @Provider function
 --- @param id? string @If provided, ensures that only one provider exists with the given ID at a time.
 function search.AddProvider(provider, id)
 end
 
+---  client
 --- Retrieves search results.  
 --- @param query string @Search query
 --- @param types? string @If set, only searches given provider type(s), instead of everything

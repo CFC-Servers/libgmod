@@ -8,6 +8,7 @@
 --- @field a number @The alpha component of the color.
 --- @class Color
 local Color = {}
+---  client|server
 --- Sets the red, green, blue, and alpha of the color.  
 --- @param r number @The red component
 --- @param g number @The green component
@@ -16,6 +17,7 @@ local Color = {}
 function Color:SetUnpacked(r, g, b, a)
 end
 
+---  menu|client|server
 --- Converts a Color into HSL color space. This calls Global.ColorToHSL internally.  
 --- @return number @The hue in degrees [0, 360).
 --- @return number @The saturation in the range [0, 1].
@@ -23,6 +25,7 @@ end
 function Color:ToHSL()
 end
 
+---  menu|client|server
 --- Converts a Color into HSV color space. This calls Global.ColorToHSV internally.  
 --- @return number @The hue in degrees [0, 360).
 --- @return number @The saturation in range [0, 1].
@@ -30,11 +33,13 @@ end
 function Color:ToHSV()
 end
 
+---  client|server
 --- Returns the color as a table with four elements.  
 --- @return table @The table with elements 1 = r, 2 = g, 3 = b, 4 = a.
 function Color:ToTable()
 end
 
+---  client|server
 --- Translates the Color into a Vector, losing the alpha channel.  
 --- This will also range the values from 0 - 255 to 0 - 1  
 --- r / 255 -> x  
@@ -45,6 +50,7 @@ end
 function Color:ToVector()
 end
 
+---  client|server
 --- Returns the red, green, blue, and alpha of the color.  
 --- @return number @Red
 --- @return number @Green

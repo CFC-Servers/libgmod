@@ -2,16 +2,19 @@
 --- Created by Global.CreatePhysCollideBox or Global.CreatePhysCollidesFromModel.  
 --- @class PhysCollide
 local PhysCollide = {}
+---  client|server
 --- Destroys the PhysCollide object.  
 function PhysCollide:Destroy()
 end
 
+---  client|server
 --- Checks whether this PhysCollide object is valid or not.  
 --- You should just use Global.IsValid instead.  
 --- @return boolean @Is valid or not.
 function PhysCollide:IsValid()
 end
 
+---  client|server
 --- Performs a trace against this PhysCollide with the given parameters. This can be used for both line traces and box traces.  
 --- @param origin Vector @The origin for the PhysCollide during the trace
 --- @param angles Angle @The angles for the PhysCollide during the trace

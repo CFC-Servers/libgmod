@@ -2,6 +2,7 @@
 --- The table `library` is a standard Lua library which provides functions to manipulate tables. In Garry's Mod there are several extra useful functions added to this library.  
 --- This category lists the functions available in the table `library`.  
 _G.table = {}
+---  menu|client|server
 --- Adds the contents from one table into another. The target table will be modified.  
 --- See also table.insert, table.Inherit and table.Merge.  
 --- @param target table @The table to insert the new values into.
@@ -10,6 +11,7 @@ _G.table = {}
 function table.Add(target, source)
 end
 
+---  menu|client|server
 --- Changes all keys to sequential integers. This creates a new table object and does not affect the original.  
 --- @param table table @The original table to modify.
 --- @param saveKeys? boolean @Save the keys within each member table
@@ -17,12 +19,14 @@ end
 function table.ClearKeys(table, saveKeys)
 end
 
+---  menu|client|server
 --- Collapses a table with keyvalue structure  
 --- @param input table @Input table
 --- @return table @Output table
 function table.CollapseKeyValue(input)
 end
 
+---  menu|client|server
 --- Creates a deep copy and returns that copy.  
 --- ⚠ **WARNING**: This function does NOT copy userdata, such as Vectors and Angles!  
 --- @param originalTable table @The table to be copied.
@@ -30,12 +34,14 @@ end
 function table.Copy(originalTable)
 end
 
+---  menu|client|server
 --- Empties the target table, and merges all values from the source table into it.  
 --- @param source table @The table to copy from.
 --- @param target table @The table to write to.
 function table.CopyFromTo(source, target)
 end
 
+---  menu|client|server
 --- Counts the amount of keys in a table. This should only be used when a table is not numerically and sequentially indexed. For those tables, consider the length (**#**) operator.  
 --- If you only want to test if the table is empty or not, use table.IsEmpty instead as it is a lot faster.  
 --- @param tbl table @The table to count the keys of.
@@ -43,17 +49,20 @@ end
 function table.Count(tbl)
 end
 
+---  menu|client|server
 --- Converts a table that has been sanitised with table.Sanitise back to its original form  
 --- @param tbl table @Table to be de-sanitised
 --- @return table @De-sanitised table
 function table.DeSanitise(tbl)
 end
 
+---  menu|client|server
 --- Removes all values from a table.  
 --- @param tbl table @The table to empty.
 function table.Empty(tbl)
 end
 
+---  menu|client|server
 --- 🛑 **DEPRECATED**: Instead, iterate the table using ipairs or increment from the previous index using Global.next. Non-numerically indexed tables are not ordered.  
 --- Returns the value positioned after the supplied value in a table. If it isn't found then the first element in the table is returned  
 --- @param tbl table @Table to search
@@ -63,6 +72,7 @@ end
 function table.FindNext(tbl, value)
 end
 
+---  menu|client|server
 --- 🛑 **DEPRECATED**: Instead, iterate your table with ipairs, storing the previous value and checking for the target. Non-numerically indexed tables are not ordered.  
 --- Returns the value positioned before the supplied value in a table. If it isn't found then the last element in the table is returned  
 --- @param tbl table @Table to search
@@ -72,6 +82,7 @@ end
 function table.FindPrev(tbl, value)
 end
 
+---  menu|client|server
 --- Inserts a value in to the given table even if the table is non-existent  
 --- @param tab? table @Table to insert value in to
 --- @param value any @Value to insert
@@ -79,6 +90,7 @@ end
 function table.ForceInsert(tab, value)
 end
 
+---  menu|client|server
 --- 🛑 **DEPRECATED**: Instead, expect the first key to be 1.  
 --- Non-numerically indexed tables are not ordered and do not have a first key.  
 --- Returns the first key found in the given table  
@@ -88,6 +100,7 @@ end
 function table.GetFirstKey(tab)
 end
 
+---  menu|client|server
 --- 🛑 **DEPRECATED**: Instead, index the table with a key of 1.  
 --- Non-numerically indexed tables are not ordered and do not have a first key.  
 --- Returns the first value found in the given table  
@@ -97,12 +110,14 @@ end
 function table.GetFirstValue(tab)
 end
 
+---  menu|client|server
 --- Returns all keys of a table.  
 --- @param tabl table @The table to get keys of
 --- @return table @Table of keys
 function table.GetKeys(tabl)
 end
 
+---  menu|client|server
 --- 🛑 **DEPRECATED**: Instead, use the result of the length (#) operator, ensuring it is not zero. Non-numerically indexed tables are not ordered and do not have a last key.  
 --- Returns the last key found in the given table  
 --- @param tab table @Table to retrieve key from
@@ -111,6 +126,7 @@ end
 function table.GetLastKey(tab)
 end
 
+---  menu|client|server
 --- 🛑 **DEPRECATED**: Instead, index the table with the result of the length (#) operator, ensuring it is not zero. Non-numerically indexed tables are not ordered and do not have a last key.  
 --- Returns the last value found in the given table  
 --- @param tab table @Table to retrieve value from
@@ -119,12 +135,14 @@ end
 function table.GetLastValue(tab)
 end
 
+---  menu|client|server
 --- Returns a key of the supplied table with the highest number value.  
 --- @param inputTable table @The table to search in.
 --- @return any @winningKey
 function table.GetWinningKey(inputTable)
 end
 
+---  menu|client|server
 --- Checks if a table has a value.  
 --- ⚠ **WARNING**: This function is **very inefficient for large tables** (O(n)) and should probably not be called in things that run each frame. Instead, consider a table structure such as example 2 below. Also see: Tables: Bad Habits  
 --- ℹ **NOTE**: For optimization, functions that look for a value by sorting the table should never be needed if you work on a table that you built yourself.  
@@ -134,6 +152,7 @@ end
 function table.HasValue(tbl, value)
 end
 
+---  menu|client|server
 --- Copies any missing data from base to target, and sets the target's `BaseClass` member to the base table's pointer.  
 --- See table.Merge, which overrides existing values and doesn't add a BaseClass member.  
 --- See also table.Add, which simply adds values of one table to another.  
@@ -144,6 +163,7 @@ end
 function table.Inherit(target, base)
 end
 
+---  menu|client|server
 --- Returns whether or not the given table is empty.  
 --- This works on both sequential and non-sequential tables, and is a lot faster to use than `table.Count(tbl) == 0`.  
 --- If you want to check if a table is not empty, use `next(tbl) ~= nil`, as it is slightly faster.  
@@ -152,12 +172,14 @@ end
 function table.IsEmpty(tab)
 end
 
+---  menu|client|server
 --- Returns whether or not the table's keys are sequential  
 --- @param tab table @Table to check
 --- @return boolean @Is sequential
 function table.IsSequential(tab)
 end
 
+---  menu|client|server
 --- Returns the first key found to be containing the supplied value  
 --- @param tab table @Table to search
 --- @param value any @Value to search for
@@ -165,6 +187,7 @@ end
 function table.KeyFromValue(tab, value)
 end
 
+---  menu|client|server
 --- Returns a table of keys containing the supplied value  
 --- @param tab table @Table to search
 --- @param value any @Value to search for
@@ -172,12 +195,14 @@ end
 function table.KeysFromValue(tab, value)
 end
 
+---  menu|client|server
 --- Returns a copy of the input table with all string keys converted to be lowercase recursively  
 --- @param tbl table @Table to convert
 --- @return table @New table
 function table.LowerKeyNames(tbl)
 end
 
+---  menu|client|server
 --- Returns an array of values of given with given key from each table of given table.  
 --- See also table.KeysFromValue.  
 --- @param inputTable table @The table to search in.
@@ -186,6 +211,7 @@ end
 function table.MemberValuesFromKey(inputTable, keyName)
 end
 
+---  menu|client|server
 --- Merges the contents of the second table with the content in the first one. The destination table will be modified.  
 --- See table.Inherit, which doesn't override existing values.  
 --- See also table.Add, which simply adds values of one table to another.  
@@ -196,6 +222,7 @@ end
 function table.Merge(destination, source)
 end
 
+---  menu|client|server
 --- Returns a random value from the supplied table.  
 --- ⚠ **WARNING**: This function iterates over the given table **twice**, therefore with sequential tables you should instead use following:  
 --- ```  
@@ -207,6 +234,7 @@ end
 function table.Random(haystack)
 end
 
+---  menu|client|server
 --- Removes the first instance of a given value from the specified table with table.remove, then returns the key that the value was found at.  
 --- ⚠ **WARNING**: Avoid usage of this function. It does not remove all instances of given value in the table, only the first found, and it does not work with non sequential tables!  
 --- @param tbl table @The table that will be searched.
@@ -215,12 +243,14 @@ end
 function table.RemoveByValue(tbl, val)
 end
 
+---  menu|client|server
 --- Returns a reversed copy of a sequential table. Any non-sequential and non-numeric keyvalue pairs will not be copied.  
 --- @param tbl table @Table to reverse.
 --- @return table @A reversed copy of the table.
 function table.Reverse(tbl)
 end
 
+---  menu|client|server
 --- Converts Vectors, Angles and booleans to be able to be converted to and from key-values via util.TableToKeyValues.  
 --- table.DeSanitise performs the opposite transformation.  
 --- @param tab table @Table to sanitise
@@ -228,11 +258,13 @@ end
 function table.Sanitise(tab)
 end
 
+---  menu|client|server
 --- Performs an inline [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) on the table in `O(n)` time  
 --- @param target table @The table to shuffle.
 function table.Shuffle(target)
 end
 
+---  menu|client|server
 --- Returns a list of keys sorted based on values of those keys.  
 --- For normal sorting see table.sort.  
 --- @param tab table @Table to sort
@@ -241,6 +273,7 @@ end
 function table.SortByKey(tab, descending)
 end
 
+---  menu|client|server
 --- Sorts a table by a named member.  
 --- @param tab table @Table to sort.
 --- @param memberKey any @The key used to identify the member.
@@ -248,12 +281,14 @@ end
 function table.SortByMember(tab, memberKey, ascending)
 end
 
+---  menu|client|server
 --- Sorts a table in reverse order from table.sort.  
 --- ℹ **NOTE**: This function modifies the table you give to it. Like table.sort, it does not return anything.  
 --- @param tbl table @The table to sort in descending order.
 function table.SortDesc(tbl)
 end
 
+---  menu|client|server
 --- Converts a table into a string  
 --- @param tbl table @The table to iterate over.
 --- @param displayName string @Optional
@@ -262,6 +297,7 @@ end
 function table.ToString(tbl, displayName, niceFormatting)
 end
 
+---  menu|client|server
 --- Concatenates the contents of a table to a string.  
 --- @param tbl table @The table to concatenate.
 --- @param concatenator string @A separator to insert between strings
@@ -271,6 +307,7 @@ end
 function table.concat(tbl, concatenator, startPos, endPos)
 end
 
+---  menu|client|server
 --- 🛑 **DEPRECATED**: This was deprecated in Lua 5.1 and removed in 5.2. You should use Global.pairs instead.  
 ---  Iterates for each key-value pair in the table, calling the function with the key and value of the pair. If the function returns anything, the loop is broken.  
 --- This is inherited from the original Lua implementation and is deprecated in Lua as of 5.1; see [here](http://lua-users.org/wiki/TableLibraryTutorial). You should use Global.pairs instead. The GLua interpretation of this is table.ForEach.  
@@ -280,6 +317,7 @@ end
 function table.foreach(tbl, callback)
 end
 
+---  menu|client|server
 --- 🛑 **DEPRECATED**: This was deprecated in Lua 5.1 and removed in 5.2. You should use Global.ipairs() instead.  
 ---  Iterates for each numeric index in the table in order.  
 --- This is inherited from the original Lua implementation and is deprecated in Lua as of 5.1; see [here](http://lua-users.org/wiki/TableLibraryTutorial). You should use Global.ipairs() instead.  
@@ -289,6 +327,7 @@ end
 function table.foreachi(table, func)
 end
 
+---  menu|client|server
 --- 🛑 **DEPRECATED**: This function was deprecated in Lua 5.1 and is removed in 5.2. Use the length (#) operator instead.  
 ---  Returns the length of the table.  
 --- @param tbl table @The table to check.
@@ -297,6 +336,7 @@ end
 function table.getn(tbl)
 end
 
+---  menu|client|server
 --- Inserts a value into a table at the end of the table or at the given position.  
 --- ℹ **NOTE**: This function does not call the `__newindex` [metamethod](Metamethods).  
 --- @param tbl table @The table to insert the variable into.
@@ -306,12 +346,14 @@ end
 function table.insert(tbl, position, value)
 end
 
+---  menu|client|server
 --- Returns the highest numerical key.  
 --- @param tbl table @The table to search.
 --- @return number @The highest numerical key.
 function table.maxn(tbl)
 end
 
+---  menu|client|server
 --- Moves elements from one part of a table to another part a given table. This is similar to assigning elements from the source table to the destination table in multiple assignments.  
 --- ℹ **NOTE**: This is only available on the x86-64 versions, because of the difference in the LuaJIT version. [See here](jit.version)  
 --- @param sourceTbl table @The source table from which the elements are to be moved.
@@ -323,6 +365,7 @@ end
 function table.move(sourceTbl, from, to, dest, destTbl)
 end
 
+---  menu|client|server
 --- Removes a value from a table and shifts any other values down to fill the gap.  
 --- ℹ **NOTE**: Does nothing if index is less than 1 or greater than `#tbl`  
 --- @param tbl table @The table to remove the value from.
@@ -331,6 +374,7 @@ end
 function table.remove(tbl, index)
 end
 
+---  menu|client|server
 --- Sorts a sequential table either ascending or by the given sort function.  
 --- ℹ **NOTE**: This function modifies the table you give to it.  
 --- @param tbl table @The table to sort.

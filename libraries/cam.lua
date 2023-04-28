@@ -1,6 +1,7 @@
 --- This directs all drawing to be done to a certain 2D or 3D plane or position, until the corresponding "End" function is called.  
 --- The matrix functions exist, but are mostly unusable unless you're familiar with the source engine's layout for each aspect.  
 _G.cam = {}
+---  client
 --- Shakes the screen at a certain position.  
 --- @param pos Vector @Origin of the shake.
 --- @param angles Angle @Angles of the shake.
@@ -8,31 +9,37 @@ _G.cam = {}
 function cam.ApplyShake(pos, angles, factor)
 end
 
+---  client
 --- Switches the renderer back to the previous drawing mode from a 3D context.  
 --- This function is an alias of cam.End3D.  
 --- 🦟 **BUG**: [This will crash the game if there is no context to end.](https://github.com/Facepunch/garrysmod-issues/issues/1091)  
 function cam.End()
 end
 
+---  client
 --- Switches the renderer back to the previous drawing mode from a 2D context.  
 --- 🦟 **BUG**: [This will crash the game if there is no context to end.](https://github.com/Facepunch/garrysmod-issues/issues/1091)  
 function cam.End2D()
 end
 
+---  client
 --- Switches the renderer back to the previous drawing mode from a 3D context.  
 --- 🦟 **BUG**: [This will crash the game if there is no context to end.](https://github.com/Facepunch/garrysmod-issues/issues/1091)  
 function cam.End3D()
 end
 
+---  client
 --- Switches the renderer back to the previous drawing mode from a 3D2D context.  
 --- 🦟 **BUG**: [This will crash the game if there is no context to end.](https://github.com/Facepunch/garrysmod-issues/issues/1091)  
 function cam.End3D2D()
 end
 
+---  client
 --- Switches the renderer back to the previous drawing mode from a 3D orthographic rendering context.  
 function cam.EndOrthoView()
 end
 
+---  client
 --- Returns a copy of the model matrix that is at the top of the stack.  
 --- ℹ **NOTE**: Editing the matrix **will not** edit the current view. To do so, you will have to **push** it.  
 --- ℹ **NOTE**: This function essentially returns the copy of the last pushed model matrix.  
@@ -40,16 +47,19 @@ end
 function cam.GetModelMatrix()
 end
 
+---  client
 --- Tells the renderer to ignore the depth buffer and draw any upcoming operation "ontop" of everything that was drawn yet.  
 --- This is identical to calling `render.DepthRange( 0, 0.01 )` for `true` and  `render.DepthRange( 0, 1 )` for `false`. See render.DepthRange.  
 --- @param ignoreZ boolean @Determines whenever to ignore the depth buffer or not.
 function cam.IgnoreZ(ignoreZ)
 end
 
+---  client
 --- Pops the current active rendering matrix from the stack and reinstates the previous one.  
 function cam.PopModelMatrix()
 end
 
+---  client
 --- Pushes the specified matrix onto the render matrix stack. Unlike opengl, this will replace the current model matrix.  
 --- ℹ **NOTE**: This does not work with cam.Start3D2D if `multiply` is false.  
 --- @param matrix VMatrix @The matrix to push.
@@ -57,12 +67,14 @@ end
 function cam.PushModelMatrix(matrix, multiply)
 end
 
+---  client
 --- Sets up a new rendering context. This is an extended version of cam.Start3D and cam.Start2D. Must be finished by cam.End3D or cam.End2D.  
 --- 🦟 **BUG**: [This will not update current view properties for 3D contexts.](https://github.com/Facepunch/garrysmod-issues/issues/2682)  
 --- @param dataTbl table @Render context config
 function cam.Start(dataTbl)
 end
 
+---  client
 --- Sets up a new 2D rendering context. Must be finished by cam.End2D.  
 --- This is almost always used with a render target from the render. To set its position use render.SetViewPort with a target already stored.  
 --- ℹ **NOTE**: This will put an identity matrix at the top of the model matrix stack. If you are trying to use cam.PushModelMatrix, call it after this function and not before.  
@@ -70,6 +82,7 @@ end
 function cam.Start2D()
 end
 
+---  client
 --- Sets up a new 3D rendering context. Must be finished by cam.End3D.  
 --- For more advanced settings such as an orthographic view, use cam.Start instead.  
 --- 🧱 **NOTE**: Provides a 3D rendering context  
@@ -89,6 +102,7 @@ end
 function cam.Start3D(pos, angles, fov, x, y, w, h, zNear, zFar)
 end
 
+---  client
 --- Sets up a new 2D rendering context. Must be finished by cam.End3D2D. This function pushes a new matrix onto the stack. (cam.PushModelMatrix)  
 --- Matrix formula:  
 --- ```  
@@ -106,6 +120,7 @@ end
 function cam.Start3D2D(pos, angles, scale)
 end
 
+---  client
 --- Sets up a new 3d context using orthographic projection.  
 --- @param leftOffset number @The left plane offset.
 --- @param topOffset number @The top plane offset.

@@ -3,6 +3,7 @@
 --- Use Panel:SetCookieName to change "save files".  
 --- @class DColorPalette : DIconLayout
 local DColorPalette = {}
+---  client
 --- 🛑 **DEPRECATED**:   
 --- Basically the same functionality as DColorPalette:OnValueChanged, you should use that instead!  
 --- @param clr table @The new color via the Color
@@ -11,11 +12,13 @@ local DColorPalette = {}
 function DColorPalette:DoClick(clr, btn)
 end
 
+---  client
 --- Returns the size of each palette button. Set by DColorPalette:SetButtonSize.  
 --- @return number @The size of each palette button
 function DColorPalette:GetButtonSize()
 end
 
+---  client
 --- Returns the ConVar name for the alpha channel of the color.  
 --- See also:  
 --- * DColorPalette:GetConVarR - For the red channel  
@@ -25,6 +28,7 @@ end
 function DColorPalette:GetConVarA()
 end
 
+---  client
 --- Returns the ConVar name for the blue channel of the color.  
 --- See also:  
 --- * DColorPalette:GetConVarR - For the red channel  
@@ -34,6 +38,7 @@ end
 function DColorPalette:GetConVarB()
 end
 
+---  client
 --- Returns the ConVar name for the green channel of the color.  
 --- See also:  
 --- * DColorPalette:GetConVarR - For the red channel  
@@ -43,6 +48,7 @@ end
 function DColorPalette:GetConVarG()
 end
 
+---  client
 --- Returns the ConVar name for the red channel of the color.  
 --- See also:  
 --- * DColorPalette:GetConVarG - For the green channel  
@@ -52,31 +58,37 @@ end
 function DColorPalette:GetConVarR()
 end
 
+---  client
 --- Returns the number of rows of the palette, provided 6 colors fill each row. This value is equal to the number of colors in the DColorPalette divided by 6.  
 --- @return number @Number of rows of the DColorPalette.
 function DColorPalette:GetNumRows()
 end
 
+---  client
 --- Called when a palette button has been pressed  
 --- @param pnl Panel @The DColorButton that was pressed.
 function DColorPalette:OnRightClickButton(pnl)
 end
 
+---  client
 --- Called when the color is changed after clicking a new value.  
 --- @param newcol table @The new color of the DColorPalette
 function DColorPalette:OnValueChanged(newcol)
 end
 
+---  client
 --- Resets this entire color palette to a default preset one, without saving.  
 --- See DColorPalette:ResetSavedColors for version that also saves the changes.  
 function DColorPalette:Reset()
 end
 
+---  client
 --- Resets this entire color palette to a default preset one and saves the changes.  
 --- See DColorPalette:Reset for version that does not save the changes.  
 function DColorPalette:ResetSavedColors()
 end
 
+---  client
 --- Saves the color of given button across sessions.  
 --- The color is saved as a panel cookie, see Panel:SetCookie and Panel:SetCookieName.  
 --- ```  
@@ -87,6 +99,7 @@ end
 function DColorPalette:SaveColor(btn, clr)
 end
 
+---  client
 --- Sets the size of each palette button.  
 --- This is best kept to such a number, where this equation would return a whole number:  
 --- `WidthOfColorPalette / ButtonSize= WholeNumber`  
@@ -95,6 +108,7 @@ end
 function DColorPalette:SetButtonSize(size)
 end
 
+---  client
 --- 🛑 **DEPRECATED**:   
 --- Currently does nothing. Intended to "select" the color.  
 --- @param clr table 
@@ -102,11 +116,13 @@ end
 function DColorPalette:SetColor(clr)
 end
 
+---  client
 --- Clears the palette and adds new buttons with given colors.  
 --- @param tab table @A number indexed table where each value is a Color
 function DColorPalette:SetColorButtons(tab)
 end
 
+---  client
 --- Sets the ConVar name for the alpha channel of the color.  
 --- See also:  
 --- * DColorPalette:SetConVarR - For the red channel  
@@ -116,6 +132,7 @@ end
 function DColorPalette:SetConVarA(convar)
 end
 
+---  client
 --- Sets the ConVar name for the blue channel of the color.  
 --- See also:  
 --- * DColorPalette:SetConVarR - For the red channel  
@@ -125,6 +142,7 @@ end
 function DColorPalette:SetConVarB(convar)
 end
 
+---  client
 --- Sets the ConVar name for the green channel of the color.  
 --- See also:  
 --- * DColorPalette:SetConVarR - For the red channel  
@@ -134,6 +152,7 @@ end
 function DColorPalette:SetConVarG(convar)
 end
 
+---  client
 --- Sets the ConVar name for the red channel of the color.  
 --- See also:  
 --- * DColorPalette:SetConVarG - For the green channel  
@@ -143,6 +162,7 @@ end
 function DColorPalette:SetConVarR(convar)
 end
 
+---  client
 --- Roughly sets the number of colors that can be picked by the user. If the DColorPalette is exactly 6 rows tall, this function will set the number of colors shown per row in the palette.  
 --- ℹ **NOTE**: DColorPalette:Reset or DColorPalette:ResetSavedColors must be called after this function to apply changes.  
 --- @param rows number @Scale for the range of colors that the user can pick

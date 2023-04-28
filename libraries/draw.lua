@@ -1,5 +1,6 @@
 --- The draw library's purpose is to simplify the usage of the surface library.  
 _G.draw = {}
+---  client|menu
 --- Simple draw text at position, but this will expand newlines and tabs.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- See also MarkupObject for limited width and markup support.  
@@ -12,6 +13,7 @@ _G.draw = {}
 function draw.DrawText(text, font, x, y, color, xAlign)
 end
 
+---  client|menu
 --- Returns the height of the specified font in pixels. This is equivalent to the height of the character `W`. See surface.GetTextSize.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param font string @Name of the font to get the height of.
@@ -19,11 +21,13 @@ end
 function draw.GetFontHeight(font)
 end
 
+---  client|menu
 --- Sets drawing texture to a default white texture (vgui/white) via surface.SetMaterial. Useful for resetting the drawing texture.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 function draw.NoTexture()
 end
 
+---  client|menu
 --- Draws a rounded rectangle.  
 --- ℹ **NOTE**: If you do not define a cornerRadius, surface.DrawRect will be used instead for performance.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
@@ -36,6 +40,7 @@ end
 function draw.RoundedBox(cornerRadius, x, y, width, height, color)
 end
 
+---  client|menu
 --- Draws a rounded rectangle. This function also lets you specify which corners are drawn rounded.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param cornerRadius number @Radius of the rounded corners, works best with a power of 2 number.
@@ -51,6 +56,7 @@ end
 function draw.RoundedBoxEx(cornerRadius, x, y, width, height, color, roundTopLeft, roundTopRight, roundBottomLeft, roundBottomRight)
 end
 
+---  client|menu
 --- Draws text on the screen.  
 --- ℹ **NOTE**: This function does not handle newlines properly. See draw.DrawText for a function that does.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
@@ -66,6 +72,7 @@ end
 function draw.SimpleText(text, font, x, y, color, xAlign, yAlign)
 end
 
+---  client|menu
 --- Creates a simple line of text that is outlined.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param Text string @The text to draw.
@@ -82,6 +89,7 @@ end
 function draw.SimpleTextOutlined(Text, font, x, y, color, xAlign, yAlign, outlinewidth, outlinecolor)
 end
 
+---  client|menu
 --- Works like draw.SimpleText but uses a table structure instead.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param textdata table @The text properties
@@ -90,6 +98,7 @@ end
 function draw.Text(textdata)
 end
 
+---  client|menu
 --- Works like draw.Text, but draws the text as a shadow.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param textdata table @The text properties
@@ -98,12 +107,14 @@ end
 function draw.TextShadow(textdata, distance, alpha)
 end
 
+---  client|menu
 --- Draws a texture with a table structure.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param texturedata table @The texture properties
 function draw.TexturedQuad(texturedata)
 end
 
+---  client|menu
 --- Draws a rounded box with text in it.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param bordersize number @Size of border, should be multiple of 2

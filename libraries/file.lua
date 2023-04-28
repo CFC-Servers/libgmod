@@ -7,12 +7,14 @@
 --- See File Search Paths for the descriptive list of path values.  
 --- For the full list of path values, type `path` in the console.  
 _G.file = {}
+---  menu|client|server
 --- Appends a file relative to the `data` folder.  
 --- @param name string @The file's name.
 --- @param content string @The content which should be appended to the file.
 function file.Append(name, content)
 end
 
+---  menu|client|server
 --- Returns the content of a file asynchronously.  
 --- All limitations of file.Read also apply.  
 --- ℹ **NOTE**: This function is currently broken in the Menu State and won't be fixed. [Bug Report](https://github.com/Facepunch/garrysmod-issues/issues/5433)  
@@ -24,16 +26,19 @@ end
 function file.AsyncRead(fileName, gamePath, callback, sync)
 end
 
+---  menu|client|server
 --- Creates a directory that is relative to the `data` folder.  
 --- @param name string @The directory's name.
 function file.CreateDir(name)
 end
 
+---  menu|client|server
 --- Deletes a file or `empty` folder that is relative to the **data** folder. You can't remove any files outside of **data** folder.  
 --- @param name string @The file name.
 function file.Delete(name)
 end
 
+---  menu|client|server
 --- Returns a boolean of whether the file or directory exists or not.  
 --- 🦟 **BUG**: [ This will sometimes return false clientside for directories received from the server via a clientside lua file. You can work around this by using file.Find with the path to the directory followed by a wildcard (no trailing forward slash) and see if the directory is inside the returned directories table (**see second example)**.](https://github.com/Facepunch/garrysmod-issues/issues/1038)  
 --- @param name string @The file or directory's name.
@@ -42,6 +47,7 @@ end
 function file.Exists(name, gamePath)
 end
 
+---  menu|client|server
 --- Returns a list of files and directories inside a single folder.  
 --- @param name string @The wildcard to search for
 --- @param path string @The path to look for the files and directories in
@@ -51,6 +57,7 @@ end
 function file.Find(name, path, sorting)
 end
 
+---  menu|client|server
 --- Returns whether the given file is a directory or not.  
 --- 🦟 **BUG**: [ This will sometimes return false clientside for directories received from the server via a clientside lua file. You can work around this by using file.Find with the path to the directory followed by a wildcard (no trailing forward slash) and see if the directory is inside the returned directories table (**see second example)**.](https://github.com/Facepunch/garrysmod-issues/issues/1038)  
 --- @param fileName string @The file or directory's name.
@@ -59,6 +66,7 @@ end
 function file.IsDir(fileName, gamePath)
 end
 
+---  menu|client|server
 --- Attempts to open a file with the given mode.  
 --- @param fileName string @The files name
 --- @param fileMode string @The mode to open the file in
@@ -67,6 +75,7 @@ end
 function file.Open(fileName, fileMode, gamePath)
 end
 
+---  menu|client|server
 --- Returns the content of a file.  
 --- ⚠ **WARNING**: Beware of casing -- some filesystems are case-sensitive. SRCDS on Linux seems to force file/directory creation to lowercase, but will not modify read operations.  
 --- @param fileName string @The name of the file.
@@ -75,6 +84,7 @@ end
 function file.Read(fileName, gamePath)
 end
 
+---  menu|client|server
 --- Attempts to rename a file with the given name to another given name.  
 --- This function is constrained to the `data/` folder.  
 --- @param orignalFileName string @The original file or folder name
@@ -83,12 +93,14 @@ end
 function file.Rename(orignalFileName, targetFileName)
 end
 
+---  menu|client|server
 --- Returns the file's size in bytes. If the file is not found, returns `-1`.  
 --- @param fileName string @The file's name.
 --- @param gamePath string @The path to look for the files and directories in
 function file.Size(fileName, gamePath)
 end
 
+---  menu|client|server
 --- Returns when the file or folder was last modified in Unix time.  
 --- @param path string @The **file** or **folder** path.
 --- @param gamePath string @The path to look for the files and directories in
@@ -96,6 +108,7 @@ end
 function file.Time(path, gamePath)
 end
 
+---  menu|client|server
 --- Writes the given string to a file. Erases all previous data in the file. To add data without deleting previous data, use file.Append.  
 --- @param fileName string @The name of the file being written into
 --- @param content string @The content that will be written into the file.

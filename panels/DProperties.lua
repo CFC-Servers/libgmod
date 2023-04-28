@@ -9,6 +9,7 @@
 --- * DProperty_Int  
 --- @class DProperties : Panel
 local DProperties = {}
+---  client
 --- Returns the DScrollPanel all the properties panels are attached to.  
 --- @return Panel @A DScrollPanel canvas
 function DProperties:GetCanvas()

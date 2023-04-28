@@ -1,6 +1,7 @@
 --- The debugoverlay library is mainly useful for 3D debugging, it can be used to draw shapes on the screen for debug purposes.  
 --- ℹ **NOTE**: These functions will not do anything unless the **developer** console variable is set to non 0.  
 _G.debugoverlay = {}
+---  client|server
 --- Displays an axis indicator at the specified position.  
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0  
 --- @param origin Vector @Position origin
@@ -11,6 +12,7 @@ _G.debugoverlay = {}
 function debugoverlay.Axis(origin, ang, size, lifetime, ignoreZ)
 end
 
+---  client|server
 --- Displays a solid coloured box at the specified position.  
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param origin Vector @Position origin
@@ -21,6 +23,7 @@ end
 function debugoverlay.Box(origin, mins, maxs, lifetime, color)
 end
 
+---  client|server
 --- Displays a solid colored rotated box at the specified position.  
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param pos Vector @World position
@@ -32,6 +35,7 @@ end
 function debugoverlay.BoxAngles(pos, mins, maxs, ang, lifetime, color)
 end
 
+---  client|server
 --- Creates a coloured cross at the specified position for the specified time.  
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param position Vector @Position origin
@@ -42,6 +46,7 @@ end
 function debugoverlay.Cross(position, size, lifetime, color, ignoreZ)
 end
 
+---  client|server
 --- Displays 2D text at the specified coordinates.  
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param pos Vector @The position in 3D to display the text.
@@ -52,12 +57,14 @@ end
 function debugoverlay.EntityTextAtPosition(pos, line, text, lifetime, color)
 end
 
+---  client|server
 --- Draws a 3D grid of limited size in given position.  
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param position Vector 
 function debugoverlay.Grid(position)
 end
 
+---  client|server
 --- Displays a coloured line at the specified position.  
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param pos1 Vector @First position of the line
@@ -68,6 +75,7 @@ end
 function debugoverlay.Line(pos1, pos2, lifetime, color, ignoreZ)
 end
 
+---  client|server
 --- Displays text triangle at the specified coordinates.  
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param x number @The position of the text, from 0 ( left ) to 1 ( right ).
@@ -78,6 +86,7 @@ end
 function debugoverlay.ScreenText(x, y, text, lifetime, color)
 end
 
+---  client|server
 --- Displays a coloured sphere at the specified position.  
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param origin Vector @Position origin
@@ -88,6 +97,7 @@ end
 function debugoverlay.Sphere(origin, size, lifetime, color, ignoreZ)
 end
 
+---  client|server
 --- Displays "swept" box, two boxes connected with lines by their verices.  
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param vStart Vector @The start position of the box.
@@ -100,6 +110,7 @@ end
 function debugoverlay.SweptBox(vStart, vEnd, vMins, vMaxs, ang, lifetime, color)
 end
 
+---  client|server
 --- Displays text at the specified position.  
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param origin Vector @Position origin
@@ -109,6 +120,7 @@ end
 function debugoverlay.Text(origin, text, lifetime, viewCheck)
 end
 
+---  client|server
 --- Displays a colored triangle at the specified coordinates.  
 --- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
 --- @param pos1 Vector @First point of the triangle

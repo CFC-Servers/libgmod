@@ -2,6 +2,7 @@
 --- Its base class is Entity so it inherits all of the client and shared functions used by Entity.  
 --- @class CSEnt : Entity
 local CSEnt = {}
+---  client
 --- Removes the clientside entity  
 function CSEnt:Remove()
 end

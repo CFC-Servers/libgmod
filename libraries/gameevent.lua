@@ -1,6 +1,7 @@
 --- Used to interface with the built-in game events system.  
 --- The following is a list of all available game events.  
 _G.gameevent = {}
+---  client|server
 --- Adds a [game event](gameevent) listener, creating a new hook using the hook library, which can be listened to via hook.Add with the given `eventName` as event.  
 --- List of valid events (with examples) can be found [here](gameevent).  
 --- ℹ **NOTE**:   

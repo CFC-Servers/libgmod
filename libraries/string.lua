@@ -21,6 +21,7 @@
 --- ⚠ **WARNING**: Making changes to the string *metatable* is not a good idea unless you know what you are doing. Use the string *library* instead.  
 --- This category lists functions available in the string *library*.  
 _G.string = {}
+---  menu|client|server
 --- Inserts commas for every third digit of a given number.  
 --- @param value number @The input number to commafy
 --- @param separator? string @An optional string that will be used instead of the default comma.
@@ -28,6 +29,7 @@ _G.string = {}
 function string.Comma(value, separator)
 end
 
+---  menu|client|server
 --- Returns whether or not the second passed string matches the end of the first.  
 --- @param str string @The string whose end is to be checked.
 --- @param end_ string @The string to be matched with the end of the first.
@@ -35,6 +37,7 @@ end
 function string.EndsWith(str, end_)
 end
 
+---  menu|client|server
 --- Splits a string up wherever it finds the given separator.  
 --- This is an alias of string.Split  
 --- and the reverse operation of string.Implode.  
@@ -45,6 +48,7 @@ end
 function string.Explode(separator, str, use_patterns)
 end
 
+---  menu|client|server
 --- Returns the time as a formatted string or as a table if no format is given.  
 --- @param float number @The time in seconds to format.
 --- @param format? string @An optional formatting to use
@@ -52,12 +56,14 @@ end
 function string.FormattedTime(float, format)
 end
 
+---  menu|client|server
 --- Creates a string from a Color variable.  
 --- @param color table @The color to put in the string.
 --- @return string @Output
 function string.FromColor(color)
 end
 
+---  menu|client|server
 --- 🛑 **DEPRECATED**: Use either string.sub(str, index, index) or str[index].  
 ---  Returns char value from the specified index in the supplied string.  
 --- @param str string @The string that you will be searching with the supplied index.
@@ -67,24 +73,28 @@ end
 function string.GetChar(str, index)
 end
 
+---  menu|client|server
 --- Returns extension of the file.  
 --- @param file string @String eg
 --- @return string @fileExtension
 function string.GetExtensionFromFilename(file)
 end
 
+---  menu|client|server
 --- Returns file name and extension.  
 --- @param pathString string @The string eg
 --- @return string @The file name
 function string.GetFileFromFilename(pathString)
 end
 
+---  menu|client|server
 --- Returns the path only from a file's path.  
 --- @param Inputstring string @String to get path from.
 --- @return string @Path
 function string.GetPathFromFilename(Inputstring)
 end
 
+---  menu|client|server
 --- 🛑 **DEPRECATED**: You really should just use table.concat.  
 --- Joins the values of a table together to form a string.  
 --- This is the reverse of string.Explode and is functionally identical to table.concat, but with less features.  
@@ -95,6 +105,7 @@ end
 function string.Implode(separator, pieces)
 end
 
+---  menu|client|server
 --- Interpolates a given string with the given table. This is useful for formatting localized strings.  
 --- @param str string @The string that should be interpolated.
 --- @param lookuptable table @The table to search in.
@@ -102,12 +113,14 @@ end
 function string.Interpolate(str, lookuptable)
 end
 
+---  menu|client|server
 --- Escapes special characters for JavaScript in a string, making the string safe for inclusion in to JavaScript strings.  
 --- @param str string @The string that should be escaped.
 --- @return string @The escaped string.
 function string.JavascriptSafe(str)
 end
 
+---  menu|client|server
 --- Returns everything left of supplied place of that string.  
 --- @param str string @The string to extract from.
 --- @param num number @Amount of chars relative to the beginning (starting from 1).
@@ -115,24 +128,28 @@ end
 function string.Left(str, num)
 end
 
+---  menu|client|server
 --- Converts a digital filesize to human-readable text.  
 --- @param bytes number @The filesize in bytes.
 --- @return string @The human-readable filesize, in Bytes/KB/MB/GB (whichever is appropriate).
 function string.NiceSize(bytes)
 end
 
+---  menu|client|server
 --- Formats the supplied number (in seconds) to the highest possible time unit.  
 --- @param num number @The number to format, in seconds.
 --- @return string @A nicely formatted time string.
 function string.NiceTime(num)
 end
 
+---  menu|client|server
 --- Escapes all special characters within a string, making the string safe for inclusion in a Lua pattern.  
 --- @param str string @The string to be sanitized
 --- @return string @The string that has been sanitized for inclusion in Lua patterns
 function string.PatternSafe(str)
 end
 
+---  menu|client|server
 --- Replaces all occurrences of the supplied second string.  
 --- @param str string @The string we are seeking to replace an occurrence(s).
 --- @param find string @What we are seeking to replace.
@@ -141,6 +158,7 @@ end
 function string.Replace(str, find, replace)
 end
 
+---  menu|client|server
 --- Returns the last n-th characters of the string.  
 --- @param str string @The string to extract from.
 --- @param num number @Amount of chars relative to the end (starting from 1).
@@ -148,6 +166,7 @@ end
 function string.Right(str, num)
 end
 
+---  menu|client|server
 --- Sets the character at the specific index of the string.  
 --- @param InputString string @The input string
 --- @param Index number @The character index, 1 is the first from left.
@@ -156,6 +175,7 @@ end
 function string.SetChar(InputString, Index, ReplacementChar)
 end
 
+---  menu|client|server
 --- Splits the string into a table of strings, separated by the second argument.  
 --- This is an alias of string.Explode.  
 --- @param Inputstring string @String to split
@@ -164,6 +184,7 @@ end
 function string.Split(Inputstring, Separator)
 end
 
+---  menu|client|server
 --- 🛑 **DEPRECATED**: Use string.StartsWith.  
 --- Returns whether or not the first string starts with the second. This is a alias of string.StartsWith.  
 --- @param inputStr string @String to check.
@@ -173,6 +194,7 @@ end
 function string.StartWith(inputStr, start)
 end
 
+---  menu|client|server
 --- Returns whether or not the first string starts with the second.  
 --- @param inputStr string @String to check.
 --- @param start string @String to check with.
@@ -180,30 +202,35 @@ end
 function string.StartsWith(inputStr, start)
 end
 
+---  menu|client|server
 --- Removes the extension of a path.  
 --- @param Inputstring string @The path to change.
 --- @return string @Modifiedstring
 function string.StripExtension(Inputstring)
 end
 
+---  menu|client|server
 --- Fetches a Color type from a string.  
 --- @param Inputstring string @The string to convert from.
 --- @return table @The output Color
 function string.ToColor(Inputstring)
 end
 
+---  menu|client|server
 --- Returns given time in "MM:SS" format.  
 --- @param time number @Time in seconds
 --- @return string @Formatted time
 function string.ToMinutesSeconds(time)
 end
 
+---  menu|client|server
 --- Returns given time in "MM:SS:MS" format.  
 --- @param time number @Time in seconds
 --- @return string @Formatted time
 function string.ToMinutesSecondsMilliseconds(time)
 end
 
+---  menu|client|server
 --- Splits the string into characters and creates a sequential table of characters.  
 --- ⚠ **WARNING**: As a result of the  encoding, non-ASCII characters will be split into more than one character in the output table. Each character value in the output table will always be 1 byte.  
 --- @param str string @The string you'll turn into a table.
@@ -211,6 +238,7 @@ end
 function string.ToTable(str)
 end
 
+---  menu|client|server
 --- Removes leading and trailing matches of a string.  
 --- @param Inputstring string @The string to trim.
 --- @param Char? string @String to match - can be multiple characters
@@ -218,6 +246,7 @@ end
 function string.Trim(Inputstring, Char)
 end
 
+---  menu|client|server
 --- Removes leading spaces/characters from a string.  
 --- @param str string @String to trim
 --- @param char string @Custom character to remove
@@ -225,6 +254,7 @@ end
 function string.TrimLeft(str, char)
 end
 
+---  menu|client|server
 --- Removes trailing spaces/passed character from a string.  
 --- @param str string @String to remove from
 --- @param char string @Custom character to remove, default is a space
@@ -232,6 +262,7 @@ end
 function string.TrimRight(str, char)
 end
 
+---  menu|client|server
 --- Returns the given string's characters in their numeric ASCII representation.  
 --- ⚠ **WARNING**: This function will throw an error if the slice length is greater than 8000 characters.  
 --- @param string string @The string to get the chars from.
@@ -241,12 +272,14 @@ end
 function string.byte(string, startPos, endPos)
 end
 
+---  menu|client|server
 --- Takes the given numerical bytes and converts them to a string.  
 --- @param ... any ... @The bytes to create the string from.
 --- @return string @String built from given bytes
 function string.char(...)
 end
 
+---  menu|client|server
 --- Returns the binary bytecode of the given function.  
 --- ℹ **NOTE**: This does not work with functions created in C/C++. An error will be thrown if it is  
 --- @param func function @The function to get the bytecode of
@@ -255,6 +288,7 @@ end
 function string.dump(func, stripDebugInfo)
 end
 
+---  menu|client|server
 --- Attempts to find the specified substring in a string.  
 --- ⚠ **WARNING**: This function uses Lua Patterns by default.  
 --- @param haystack string @The string to search in.
@@ -267,6 +301,7 @@ end
 function string.find(haystack, needle, startPos, noPatterns)
 end
 
+---  menu|client|server
 --- Formats the specified values into the string given.  
 --- @param format string @The string to be formatted.<br>
 --- @param ... any ... @Values to be formatted into the string.
@@ -274,6 +309,7 @@ end
 function string.format(format, ...)
 end
 
+---  menu|client|server
 --- 🛑 **DEPRECATED**: This function is removed in Lua versions later than what GMod is currently using. Use string.gmatch instead.  
 --- Returns an iterator function that is called for every complete match of the pattern, all sub matches will be passed as to the loop.  
 --- @param data string @The string to search in
@@ -283,6 +319,7 @@ end
 function string.gfind(data, pattern)
 end
 
+---  menu|client|server
 --- Using Patterns, returns an iterator which will return either one value if no capture groups are defined, or any capture group matches.  
 --- @param data string @The string to search in
 --- @param pattern string @The pattern to search for
@@ -290,6 +327,7 @@ end
 function string.gmatch(data, pattern)
 end
 
+---  menu|client|server
 --- This functions main purpose is to replace certain character sequences in a string using Patterns.  
 --- @param string string @String which should be modified.
 --- @param pattern string @The pattern that defines what should be matched and eventually be replaced.
@@ -300,12 +338,14 @@ end
 function string.gsub(string, pattern, replacement, maxReplaces)
 end
 
+---  menu|client|server
 --- Counts the number of characters in the string (length). This is equivalent to using the length operator (#).  
 --- @param str string @The string to find the length of.
 --- @return number @Length of the string
 function string.len(str)
 end
 
+---  menu|client|server
 --- Changes any upper-case letters in a string to lower-case letters.  
 --- ℹ **NOTE**: This function doesn't work on special non-English UTF-8 characters.  
 --- @param str string @The string to convert.
@@ -313,6 +353,7 @@ end
 function string.lower(str)
 end
 
+---  menu|client|server
 --- Finds a Pattern in a string.  
 --- @param string string @String which should be searched in for matches.
 --- @param pattern string @The pattern that defines what should be matched.
@@ -321,6 +362,7 @@ end
 function string.match(string, pattern, startPosition)
 end
 
+---  menu|client|server
 --- Repeats a string by the provided number, with an optional separator.  
 --- @param str string @The string to convert.
 --- @param repetitions number @Times to repeat, this value gets rounded internally.
@@ -329,12 +371,14 @@ end
 function string.rep(str, repetitions, separator)
 end
 
+---  menu|client|server
 --- Reverses a string.  
 --- @param str string @The string to be reversed.
 --- @return string @reversed string
 function string.reverse(str)
 end
 
+---  menu|client|server
 --- Returns a sub-string, starting from the character at position `StartPos` of the string (inclusive), and optionally ending at the character at position `EndPos` of the string (also inclusive). If EndPos is not given, the rest of the string is returned.  
 --- @param string string @The string you'll take a sub-string out of.
 --- @param StartPos number @The position of the first character that will be included in the sub-string.
@@ -343,6 +387,7 @@ end
 function string.sub(string, StartPos, EndPos)
 end
 
+---  menu|client|server
 --- Changes any lower-case letters in a string to upper-case letters.  
 --- ℹ **NOTE**: This function doesn't work on special non-English UTF-8 characters.  
 --- @param str string @The string to convert.

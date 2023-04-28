@@ -1,9 +1,11 @@
 --- The debug library is intended to help you debug your scripts, however it also has several other powerful uses. Some builtin debug function were removed in GMod due to security reasons  
 _G.debug = {}
+---  menu|client|server
 --- Prints out the lua function call stack to the console.  
 function debug.Trace()
 end
 
+---  menu|client|server
 --- Enters an interactive mode with the user, running each string that the user enters. Using simple commands and other debug facilities, the user can inspect global and local variables, change their values, evaluate expressions, and so on. A line containing only the word cont finishes this function, so that the caller continues its execution.  
 --- * Commands for debug.debug are not lexically nested within any function, and so have no direct access to local variables.  
 --- * This only works on the source dedicated server.  
@@ -11,12 +13,14 @@ end
 function debug.debug()
 end
 
+---  menu|client|server
 --- Returns the environment of the passed object. This can be set with debug.setfenv  
 --- @param object table @Object to get environment of
 --- @return table @Environment
 function debug.getfenv(object)
 end
 
+---  menu|client|server
 --- Returns the current hook settings of the passed thread. The thread argument can be omitted. This is completely different to gamemode hooks. More information on hooks can be found at http://www.lua.org/pil/23.2.html  
 --- @param thread? thread @Which thread to retrieve its hook from
 --- @return function @Hook function
@@ -25,6 +29,7 @@ end
 function debug.gethook(thread)
 end
 
+---  menu|client|server
 --- Returns debug information about a function.  
 --- @param funcOrStackLevel function @Takes either a function or a number representing the stack level as an argument
 --- @param fields? string @A string whose characters specify the information to be retrieved
@@ -32,6 +37,7 @@ end
 function debug.getinfo(funcOrStackLevel, fields)
 end
 
+---  menu|client|server
 --- Gets the name and value of a local variable indexed from the level.  
 --- ⚠ **WARNING**: When a function has a tailcall return, you cannot access the locals of this function.  
 --- @param thread? thread @The thread
@@ -42,12 +48,14 @@ end
 function debug.getlocal(thread, level, index)
 end
 
+---  menu|client|server
 --- Returns the metatable of an object. This function ignores the metatable's __metatable field.  
 --- @param object any @The object to retrieve the metatable from.
 --- @return table @The metatable of the given object.
 function debug.getmetatable(object)
 end
 
+---  menu|client|server
 --- Returns the internal Lua registry table.  
 --- The Lua registry is used by the engine and binary modules to create references to Lua values. Avoid creating entries into the registry with a number as the key, as they are reserved for the reference system.  
 --- ⚠ **WARNING**: Improper editing of the registry can result in unintended side effects, including crashing of the game.  
@@ -55,6 +63,7 @@ end
 function debug.getregistry()
 end
 
+---  menu|client|server
 --- Used for getting variable values in an index from the passed function. This does nothing for C functions.  
 --- @param func function @Function to get the upvalue indexed from.
 --- @param index number @The index in the upvalue array
@@ -63,6 +72,7 @@ end
 function debug.getupvalue(func, index)
 end
 
+---  menu|client|server
 --- Sets the environment of the passed object.  
 --- @param object table @Object to set environment of
 --- @param env table @Environment to set
@@ -70,6 +80,7 @@ end
 function debug.setfenv(object, env)
 end
 
+---  menu|client|server
 --- Sets the given function as a Lua hook. This is completely different to gamemode hooks. The thread argument can be completely omitted and calling this function with no arguments will remove the current hook. This is used by default for infinite loop detection. More information on hooks can be found at http://www.lua.org/pil/23.2.html and https://www.gammon.com.au/scripts/doc.php?lua=debug.sethook  
 --- Hooks are not always ran when code that has been compiled by LuaJIT's JIT compiler is being executed, this is due to Intermediate Representation internally storing constantly running bytecode for performance reasons.  
 --- @param thread thread @Thread to set the hook on
@@ -79,6 +90,7 @@ end
 function debug.sethook(thread, hook, mask, count)
 end
 
+---  menu|client|server
 --- <removed>This function was removed due to security concerns.</removed>  
 --- Sets a local variable's value.  
 --- @param thread? thread @The thread
@@ -89,6 +101,7 @@ end
 function debug.setlocal(thread, level, index, value)
 end
 
+---  menu|client|server
 --- Sets the object's metatable. Unlike Global.setmetatable, this function works regardless of whether the first object passed is a valid table or not; this function even works on primitive datatypes such as numbers, functions, and even nil.  
 --- @param object any @Object to set the metatable for.
 --- @param metatable table @The metatable to set for the object
@@ -96,6 +109,7 @@ end
 function debug.setmetatable(object, metatable)
 end
 
+---  menu|client|server
 --- <removed>This function was removed due to security concerns.</removed>  
 --- Sets the variable indexed from func  
 --- @param func function @The function to index the upvalue from
@@ -105,6 +119,7 @@ end
 function debug.setupvalue(func, index, val)
 end
 
+---  menu|client|server
 --- Returns a full execution stack trace.  
 --- @param thread? thread @Thread (ie
 --- @param message? string @Appended at the beginning of the traceback.
@@ -113,6 +128,7 @@ end
 function debug.traceback(thread, message, level)
 end
 
+---  menu|client|server
 --- <removed>This function was removed due to security concerns.</removed>  
 --- Returns an unique identifier for the upvalue indexed from func  
 --- @param func function @The function to index the upvalue from
@@ -121,6 +137,7 @@ end
 function debug.upvalueid(func, index)
 end
 
+---  menu|client|server
 --- <removed>This function was removed due to security concerns.</removed>  
 --- Make the n1-th upvalue of the Lua closure f1 refer to the n2-th upvalue of the Lua closure f2.  
 --- @param f1 function 

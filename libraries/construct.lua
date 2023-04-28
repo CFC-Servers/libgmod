@@ -1,5 +1,6 @@
 --- The construct library is used to control the physical properties of entities.  
 _G.construct = {}
+---  server
 --- Creates a magnet.  
 --- @param ply Player @Player that will have the numpad control over the magnet
 --- @param pos Vector @The position of the magnet
@@ -20,6 +21,7 @@ _G.construct = {}
 function construct.Magnet(ply, pos, ang, model, material, key, maxObjects, strength, nopull, allowrot, startOn, toggle, vel, aVel, frozen)
 end
 
+---  server
 --- Sets props physical properties.  
 --- @param ply Player @The player
 --- @param ent Entity @The entity to apply properties to

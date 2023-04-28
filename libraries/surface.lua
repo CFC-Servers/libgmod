@@ -1,5 +1,6 @@
 --- The surface library allows you to draw text and shapes on the screen. Primarily used for making HUDs & custom GUI panels.  
 _G.surface = {}
+---  client|menu
 --- Creates a new font.  
 --- To prevent the font from displaying incorrectly when using the `outline` setting, set `antialias` to false. This will ensure the text properly fills out the entire outline.  
 --- Be sure to check the List of Default Fonts first! Those fonts can be used without using this function.  
@@ -11,6 +12,7 @@ _G.surface = {}
 function surface.CreateFont(fontName, fontData)
 end
 
+---  client|menu
 --- 🛑 **DEPRECATED**:   
 --- Alias of Global.DisableClipping so use that instead.  
 --- Enables or disables the clipping used by the VGUI that limits the drawing operations to a panels bounds.  
@@ -20,6 +22,7 @@ end
 function surface.DisableClipping(disable)
 end
 
+---  client|menu
 --- Draws a hollow circle, made of lines. For a filled circle, see examples for surface.DrawPoly.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param originX number @The center x integer coordinate.
@@ -32,6 +35,7 @@ end
 function surface.DrawCircle(originX, originY, radius, r, g, b, a)
 end
 
+---  client|menu
 --- Draws a line from one point to another.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param startX number @The start x float coordinate.
@@ -41,6 +45,7 @@ end
 function surface.DrawLine(startX, startY, endX, endY)
 end
 
+---  client|menu
 --- Draws a hollow box with a given border width.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param x number @The start x integer coordinate.
@@ -51,6 +56,7 @@ end
 function surface.DrawOutlinedRect(x, y, w, h, thickness)
 end
 
+---  client|menu
 --- Draws a textured polygon (secretly a triangle fan) with a maximum of 4096 vertices.  
 --- Only works properly with convex polygons. You may try to render concave polygons, but there is no guarantee that things wont get messed up.  
 --- Unlike most surface library functions, non-integer coordinates are not rounded.  
@@ -60,6 +66,7 @@ end
 function surface.DrawPoly(vertices)
 end
 
+---  client|menu
 --- Draws a solid rectangle on the screen.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param x number @The X integer co-ordinate.
@@ -69,6 +76,7 @@ end
 function surface.DrawRect(x, y, width, height)
 end
 
+---  client|menu
 --- Draw the specified text on the screen, using the previously set position, font and color.  
 --- ℹ **NOTE**: This function does not handle newlines properly  
 --- ℹ **NOTE**: This function sets new text position at the end of the previous drawn text length - this can be used to change text properties (such as font or color) without recalculating and resetting text position. See example #2 for example use of this behavior.  
@@ -78,6 +86,7 @@ end
 function surface.DrawText(text, forceAdditive)
 end
 
+---  client|menu
 --- Draw a textured rectangle with the given position and dimensions on the screen, using the current active texture set with surface.SetMaterial. It is also affected by surface.SetDrawColor.  
 --- See also render.SetMaterial and render.DrawScreenQuadEx.  
 --- See also surface.DrawTexturedRectUV.  
@@ -89,6 +98,7 @@ end
 function surface.DrawTexturedRect(x, y, width, height)
 end
 
+---  client|menu
 --- Draw a textured rotated rectangle with the given position and dimensions and angle on the screen, using the current active texture.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param x number @The X integer co-ordinate, representing the center of the rectangle.
@@ -99,6 +109,7 @@ end
 function surface.DrawTexturedRectRotated(x, y, width, height, rotation)
 end
 
+---  client|menu
 --- Draws a textured rectangle with a repeated or partial texture.  
 --- u and v refer to texture coordinates.  
 --- * (u, v) = (0, 0) is the top left  
@@ -132,29 +143,34 @@ end
 function surface.DrawTexturedRectUV(x, y, width, height, startU, startV, endU, endV)
 end
 
+---  client|menu
 --- Returns the current alpha multiplier affecting drawing operations. This is set by surface.SetAlphaMultiplier or by the game engine in certain other cases.  
 --- @return number @The multiplier ranging from 0 to 1.
 function surface.GetAlphaMultiplier()
 end
 
+---  client|menu
 --- Returns the current color affecting draw operations.  
 --- 🦟 **BUG**: [The returned color will not have the color metatable.](https://github.com/Facepunch/garrysmod-issues/issues/2407)  
 --- @return table @The color that drawing operations will use as a Color.
 function surface.GetDrawColor()
 end
 
+---  client
 --- Gets the [HUD icon](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/scripts/hud_textures.txt) TextureID with the specified name.  
 --- @param name string @The name of the texture.
 --- @return number 
 function surface.GetHUDTexture(name)
 end
 
+---  client|menu
 --- Returns the current color affecting text draw operations.  
 --- 🦟 **BUG**: [The returned color will not have the color metatable.](https://github.com/Facepunch/garrysmod-issues/issues/2407)  
 --- @return table @The color that text drawing operations will use as a Color.
 function surface.GetTextColor()
 end
 
+---  client|menu
 --- Returns the width and height (in pixels) of the given text, but only if the font has been set with surface.SetFont.  
 --- @param text string @The string to check the size of.
 --- @return number @Width of the provided text.
@@ -162,6 +178,7 @@ end
 function surface.GetTextSize(text)
 end
 
+---  client|menu
 --- Returns the texture id of the material with the given name/path, for use with surface.SetTexture.  
 --- Opposite version of this function is surface.GetTextureNameByID.  
 --- ℹ **NOTE**: This function will not work with .png or .jpg images. For that, see Global.Material. You will probably want to use it regardless.  
@@ -170,12 +187,14 @@ end
 function surface.GetTextureID(name_or_path)
 end
 
+---  client|menu
 --- Returns name/path of texture by ID. Opposite version of this function is surface.GetTextureID.  
 --- @param id number @ID of texture.
 --- @return string @Returns name/path of texture.
 function surface.GetTextureNameByID(id)
 end
 
+---  client|menu
 --- Returns the size of the texture with the associated texture ID.  
 --- For `.png/.jpg` textures loaded with Global.Material you can use the `$realheight` and `$realwidth` material parameters (IMaterial:GetInt) to get the size of the image.  
 --- @param textureID number @The texture ID, returned by surface.GetTextureID.
@@ -184,11 +203,13 @@ end
 function surface.GetTextureSize(textureID)
 end
 
+---  client|menu
 --- Play a sound file directly on the client (such as UI sounds, etc).  
 --- @param soundfile string @The path to the sound file
 function surface.PlaySound(soundfile)
 end
 
+---  client|menu
 --- 🛑 **DEPRECATED**: You should use Global.ScrH instead.  
 --- Returns the height of the current client's screen.  
 --- @deprecated
@@ -196,6 +217,7 @@ end
 function surface.ScreenHeight()
 end
 
+---  client|menu
 --- 🛑 **DEPRECATED**: You should use Global.ScrW instead.  
 --- Returns the width of the current client's screen.  
 --- @deprecated
@@ -203,12 +225,14 @@ end
 function surface.ScreenWidth()
 end
 
+---  client|menu
 --- Sets the alpha multiplier that will influence all upcoming drawing operations.  
 --- See also render.SetBlend.  
 --- @param multiplier number @The multiplier ranging from 0 to 1.
 function surface.SetAlphaMultiplier(multiplier)
 end
 
+---  client|menu
 --- Set the color of any future shapes to be drawn, can be set by either using R, G, B, A as separate values or by a Color. Using a color structure is not recommended to be created procedurally.  
 --- ℹ **NOTE**: Providing a Color structure is slower than providing four numbers. You may use Color:Unpack for this.  
 --- ℹ **NOTE**: The alpha value may not work properly if you're using a material without `$vertexalpha`.  
@@ -221,12 +245,14 @@ end
 function surface.SetDrawColor(r, g, b, a)
 end
 
+---  client|menu
 --- Set the current font to be used for text operations later.  
 --- The fonts must first be created with surface.CreateFont or be one of the Default Fonts.  
 --- @param fontName string @The name of the font to use.
 function surface.SetFont(fontName)
 end
 
+---  client|menu
 --- Sets the material to be used in all upcoming draw operations using the surface library.  
 --- Not to be confused with render.SetMaterial.  
 --- If you need to unset the texture, use the draw.NoTexture convenience function.  
@@ -239,6 +265,7 @@ end
 function surface.SetMaterial(material)
 end
 
+---  client|menu
 --- Set the color of any future text to be drawn, can be set by either using R, G, B, A as separate numbers or by a Color.  
 --- Using a color structure is not recommended to be created procedurally.  
 --- ℹ **NOTE**: Providing a Color structure is slower than providing four numbers. You may use Color:Unpack for this.  
@@ -249,12 +276,14 @@ end
 function surface.SetTextColor(r, g, b, a)
 end
 
+---  client|menu
 --- Set the top-left position to draw any future text at.  
 --- @param x number @The X integer co-ordinate.
 --- @param y number @The Y integer co-ordinate.
 function surface.SetTextPos(x, y)
 end
 
+---  client|menu
 --- Sets the texture to be used in all upcoming draw operations using the surface library.  
 --- See surface.SetMaterial for an IMaterial alternative.  
 --- ⚠ **WARNING**: It's probably best to use the alternative mentioned above.  

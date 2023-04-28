@@ -2,6 +2,7 @@
 --- <internal></internal>  
 --- @class ContentHeader : DLabelEditable
 local ContentHeader = {}
+---  client
 --- Creates a Global.DermaMenu and adds a delete option before opening the menu  
 --- @param style string 
 --- @param hookname? string @A Populate Hook like PopulateEntities
