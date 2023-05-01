@@ -2696,7 +2696,7 @@
         "name": "WepSelectIcon",
         "type": "number",
         "default": "surface.GetTextureID( 'weapons/swep' )",
-        "description": "Path to\nan texture. Override this in your SWEP to set the icon in the weapon selection. This must be the texture ID,\nsee <page>surface.GetTextureID</page>. Alternatively you can render custom weapon selection via <page>\nWEAPON:DrawWeaponSelection</page>."
+        "description": "Path to\nan texture. Override this in your SWEP to set the icon in the weapon selection. This must be the texture ID,\nsee <page>surface.GetTextureID</page>. Alternatively you can render custom weapon selection via <page>WEAPON:DrawWeaponSelection</page>."
       },
       {
         "name": "CSMuzzleFlashes",
