@@ -7425,12 +7425,17 @@
           "client",
           "server"
         ],
-        "description": "Deletes a file or `empty` folder that is relative to the **data** folder. You can't remove any files outside of **data** folder.",
+        "description": "Deletes a file or `empty` folder that is relative to the **data** folder. You can't remove any files outside of **data** folder.\n<note>You are able to delete *any* file in the Menu state.</note>",
         "arguments": [
           {
             "name": "name",
             "type": "string",
             "description": "The file name."
+          },
+          {
+            "name": "path",
+            "type": "string",
+            "description": "The path to look for the files and directories in. See <page text=\"this list\">File_Search_Paths</page> for a list of valid paths.\n<note>This is only available in the menu state.</note>"
           }
         ]
       },
@@ -21121,7 +21126,7 @@
           {
             "name": "format",
             "type": "string",
-            "description": "The string to be formatted.<br>\nFollows this format: http://www.cplusplus.com/reference/cstdio/printf/\n\nThe following features are not supported in Lua:\n* The `n` specifier\n* The `*` width modifier\n* The `.*` precision modifier\n* All length modifiers\n\nThe following specifiers are exclusive to Lua:\n\n| Format | Description | Example of the output |\n|:------:|:-----------:|:---------------------:|\n| %p | Returns pointer to supplied structure (table/function) | `0xf20a8968` |\n| %q | Formats a string between double quotes, using escape sequences when necessary to ensure that it can safely be read back by the Lua interpreter | `\"test\\1\\2test\"` |"
+            "description": "The string to be formatted.<br>\nFollows this format: http://www.cplusplus.com/reference/cstdio/printf/\n\nThe following features are not supported in Lua:\n* The `n` specifier\n* The `*` width modifier\n* The `.*` precision modifier\n* All length modifiers\n\nThe following specifiers are exclusive to LuaJIT:\n\n| Format | Description | Example of the output |\n|:------:|:-----------:|:---------------------:|\n| %p | Returns pointer to supplied structure (table/function) | `0xf20a8968` |\n| %q | Formats a string between double quotes, using escape sequences when necessary to ensure that it can safely be read back by the Lua interpreter | `\"test\\1\\2test\"` |"
           },
           {
             "name": "formatParameters",
