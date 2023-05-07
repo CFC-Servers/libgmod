@@ -9,7 +9,7 @@ end
 
 ---  client|server
 --- Returns the air density used to calculate drag on physics objects.  
---- ⁉ **VALIDATE**: The unit is in `kg/m^3`.  
+--- ⁉ **VALIDATE**: The unit is in `kg/m³`.  
 --- @return number @Default value is 2.
 function physenv.GetAirDensity()
 end

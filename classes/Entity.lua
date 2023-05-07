@@ -3142,6 +3142,7 @@ end
 ---  client|server
 --- Sets a networked boolean value on the entity.  
 --- The value can then be accessed with Entity:GetNW2Bool both from client and server.  
+--- 🦟 **BUG**: [You should not use the NW2 System on entities that are based on a Lua Entity or else NW2Vars could get mixed up, updated multiple times or not be set.](https://github.com/Facepunch/garrysmod-issues/issues/5455)  
 --- ⚠ **WARNING**: The value will only be updated clientside if the entity is or enters the clients PVS. use Entity:SetNWBool instead  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- The value will only be networked if it isn't the same as the current value and unlike SetNW*  
@@ -3154,6 +3155,7 @@ end
 ---  client|server
 --- Sets a networked entity value on the entity.  
 --- The value can then be accessed with Entity:GetNW2Entity both from client and server.  
+--- 🦟 **BUG**: [You should not use the NW2 System on entities that are based on a Lua Entity or else NW2Vars could get mixed up, updated multiple times or not be set.](https://github.com/Facepunch/garrysmod-issues/issues/5455)  
 --- ⚠ **WARNING**: The value will only be updated clientside if the entity is or enters the clients PVS. use Entity:SetNWEntity instead  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- The value will only be networked if it isn't the same as the current value and unlike SetNW*  
@@ -3167,6 +3169,7 @@ end
 --- Sets a networked float (number) value on the entity.  
 --- The value can then be accessed with Entity:GetNW2Float both from client and server.  
 --- Unlike Entity:SetNW2Int, floats don't have to be whole numbers.  
+--- 🦟 **BUG**: [You should not use the NW2 System on entities that are based on a Lua Entity or else NW2Vars could get mixed up, updated multiple times or not be set.](https://github.com/Facepunch/garrysmod-issues/issues/5455)  
 --- ⚠ **WARNING**: The value will only be updated clientside if the entity is or enters the clients PVS. use Entity:SetNWFloat instead  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- The value will only be networked if it isn't the same as the current value and unlike SetNW*  
@@ -3180,6 +3183,7 @@ end
 --- Sets a networked integer (whole number) value on the entity.  
 --- The value can then be accessed with Entity:GetNW2Int both from client and server.  
 --- See Entity:SetNW2Float for numbers that aren't integers.  
+--- 🦟 **BUG**: [You should not use the NW2 System on entities that are based on a Lua Entity or else NW2Vars could get mixed up, updated multiple times or not be set.](https://github.com/Facepunch/garrysmod-issues/issues/5455)  
 --- ⚠ **WARNING**: The value will only be updated clientside if the entity is or enters the clients PVS.  
 --- The integer has a 32 bit limit. Use Entity:SetNWInt instead  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
@@ -3193,6 +3197,7 @@ end
 ---  client|server
 --- Sets a networked string value on the entity.  
 --- The value can then be accessed with Entity:GetNW2String both from client and server.  
+--- 🦟 **BUG**: [You should not use the NW2 System on entities that are based on a Lua Entity or else NW2Vars could get mixed up, updated multiple times or not be set.](https://github.com/Facepunch/garrysmod-issues/issues/5455)  
 --- ⚠ **WARNING**: The value will only be updated clientside if the entity is or enters the clients PVS. use Entity:SetNWString instead  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- The value will only be networked if it isn't the same as the current value and unlike SetNW*  
@@ -3216,6 +3221,7 @@ end
 --- | Vector          |  
 --- ⚠ **WARNING**: Trying to network a type that is not listed above leads to the value not being networked!  
 --- the value will only be updated clientside if the entity is or enters the clients PVS.  
+--- 🦟 **BUG**: [You should not use the NW2 System on entities that are based on a Lua Entity or else NW2Vars could get mixed up, updated multiple times or not be set.](https://github.com/Facepunch/garrysmod-issues/issues/5455)  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- The value will only be networked if it isn't the same as the current value and unlike SetNW*  
 --- the value will only be networked once and not every 10 seconds.  
@@ -3227,6 +3233,7 @@ end
 ---  client|server
 --- Sets a function to be called when the NW2Var changes. Internally uses GM:EntityNetworkedVarChanged to call the function.  
 --- Alias of Entity:SetNetworked2VarProxy  
+--- 🦟 **BUG**: [You should not use the NW2 System on entities that are based on a Lua Entity, or else this will be called multiple times and the NW2Var could get mixed up with other ones.](https://github.com/Facepunch/garrysmod-issues/issues/5455)  
 --- ℹ **NOTE**: Only one NW2VarProxy can be set per-var  
 --- Running this function will only set it for the realm it is called on.  
 --- @param key any @The key of the NW2Var to add callback for.
@@ -3237,6 +3244,7 @@ end
 ---  client|server
 --- Sets a networked vector value on the entity.  
 --- The value can then be accessed with Entity:GetNW2Vector both from client and server.  
+--- 🦟 **BUG**: [You should not use the NW2 System on entities that are based on a Lua Entity or else NW2Vars could get mixed up, updated multiple times or not be set.](https://github.com/Facepunch/garrysmod-issues/issues/5455)  
 --- ⚠ **WARNING**: The value will only be updated clientside if the entity is or enters the clients PVS. use Entity:SetNWVector instead  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- The value will only be networked if it isn't the same as the current value and unlike SetNW*  

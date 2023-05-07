@@ -15215,7 +15215,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a networked boolean value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNW2Bool</page> both from client and server.\n<warning>The value will only be updated clientside if the entity is or enters the clients PVS. use <page>Entity:SetNWBool</page> instead</warning>\n\n<note>Running this function clientside will only set it for the client it is called on.\nThe value will only be networked if it isn't the same as the current value and unlike SetNW*\nthe value will only be networked once and not every 10 seconds.</note>",
+        "description": "Sets a networked boolean value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNW2Bool</page> both from client and server.\n<bug issue=\"5455\">You should not use the NW2 System on entities that are based on a Lua Entity or else NW2Vars could get mixed up, updated multiple times or not be set.</bug>\n<warning>The value will only be updated clientside if the entity is or enters the clients PVS. use <page>Entity:SetNWBool</page> instead</warning>\n\n<note>Running this function clientside will only set it for the client it is called on.\nThe value will only be networked if it isn't the same as the current value and unlike SetNW*\nthe value will only be networked once and not every 10 seconds.</note>",
         "arguments": [
           {
             "name": "key",
@@ -15236,7 +15236,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a networked entity value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNW2Entity</page> both from client and server.\n<warning>The value will only be updated clientside if the entity is or enters the clients PVS. use <page>Entity:SetNWEntity</page> instead</warning>\n\n<note>Running this function clientside will only set it for the client it is called on.\nThe value will only be networked if it isn't the same as the current value and unlike SetNW*\nthe value will only be networked once and not every 10 seconds.</note>",
+        "description": "Sets a networked entity value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNW2Entity</page> both from client and server.\n<bug issue=\"5455\">You should not use the NW2 System on entities that are based on a Lua Entity or else NW2Vars could get mixed up, updated multiple times or not be set.</bug>\n<warning>The value will only be updated clientside if the entity is or enters the clients PVS. use <page>Entity:SetNWEntity</page> instead</warning>\n\n<note>Running this function clientside will only set it for the client it is called on.\nThe value will only be networked if it isn't the same as the current value and unlike SetNW*\nthe value will only be networked once and not every 10 seconds.</note>",
         "arguments": [
           {
             "name": "key",
@@ -15257,7 +15257,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a networked float (number) value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNW2Float</page> both from client and server.\n\nUnlike <page>Entity:SetNW2Int</page>, floats don't have to be whole numbers.\n<warning>The value will only be updated clientside if the entity is or enters the clients PVS. use <page>Entity:SetNWFloat</page> instead</warning>\n\n<note>Running this function clientside will only set it for the client it is called on.\nThe value will only be networked if it isn't the same as the current value and unlike SetNW*\nthe value will only be networked once and not every 10 seconds.</note>",
+        "description": "Sets a networked float (number) value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNW2Float</page> both from client and server.\n\nUnlike <page>Entity:SetNW2Int</page>, floats don't have to be whole numbers.\n<bug issue=\"5455\">You should not use the NW2 System on entities that are based on a Lua Entity or else NW2Vars could get mixed up, updated multiple times or not be set.</bug>\n<warning>The value will only be updated clientside if the entity is or enters the clients PVS. use <page>Entity:SetNWFloat</page> instead</warning>\n\n<note>Running this function clientside will only set it for the client it is called on.\nThe value will only be networked if it isn't the same as the current value and unlike SetNW*\nthe value will only be networked once and not every 10 seconds.</note>",
         "arguments": [
           {
             "name": "key",
@@ -15278,7 +15278,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a networked integer (whole number) value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNW2Int</page> both from client and server.\n\nSee <page>Entity:SetNW2Float</page> for numbers that aren't integers.\n<warning>The value will only be updated clientside if the entity is or enters the clients PVS.\nThe integer has a 32 bit limit. Use <page>Entity:SetNWInt</page> instead</warning>\n\n<note>Running this function clientside will only set it for the client it is called on.\nThe value will only be networked if it isn't the same as the current value and unlike SetNW*\nthe value will only be networked once and not every 10 seconds.</note>",
+        "description": "Sets a networked integer (whole number) value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNW2Int</page> both from client and server.\n\nSee <page>Entity:SetNW2Float</page> for numbers that aren't integers.\n<bug issue=\"5455\">You should not use the NW2 System on entities that are based on a Lua Entity or else NW2Vars could get mixed up, updated multiple times or not be set.</bug>\n<warning>The value will only be updated clientside if the entity is or enters the clients PVS.\nThe integer has a 32 bit limit. Use <page>Entity:SetNWInt</page> instead</warning>\n\n<note>Running this function clientside will only set it for the client it is called on.\nThe value will only be networked if it isn't the same as the current value and unlike SetNW*\nthe value will only be networked once and not every 10 seconds.</note>",
         "arguments": [
           {
             "name": "key",
@@ -15299,7 +15299,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a networked string value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNW2String</page> both from client and server.\n<warning>The value will only be updated clientside if the entity is or enters the clients PVS. use <page>Entity:SetNWString</page> instead</warning>\n\n<note>Running this function clientside will only set it for the client it is called on.\nThe value will only be networked if it isn't the same as the current value and unlike SetNW*\nthe value will only be networked once and not every 10 seconds.</note>",
+        "description": "Sets a networked string value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNW2String</page> both from client and server.\n<bug issue=\"5455\">You should not use the NW2 System on entities that are based on a Lua Entity or else NW2Vars could get mixed up, updated multiple times or not be set.</bug>\n<warning>The value will only be updated clientside if the entity is or enters the clients PVS. use <page>Entity:SetNWString</page> instead</warning>\n\n<note>Running this function clientside will only set it for the client it is called on.\nThe value will only be networked if it isn't the same as the current value and unlike SetNW*\nthe value will only be networked once and not every 10 seconds.</note>",
         "arguments": [
           {
             "name": "key",
@@ -15320,7 +15320,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a networked value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNW2Var</page> both from client and server.\n\n| Allowed Types   |\n| --------------- |\n| Angle           |\n| Boolean         |\n| Entity          |\n| Float           |\n| Int             |\n| String          |\n| Vector          |\n<warning>Trying to network a type that is not listed above leads to the value not being networked!\nthe value will only be updated clientside if the entity is or enters the clients PVS.</warning>\n\n<note>Running this function clientside will only set it for the client it is called on.\nThe value will only be networked if it isn't the same as the current value and unlike SetNW*\nthe value will only be networked once and not every 10 seconds.</note>",
+        "description": "Sets a networked value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNW2Var</page> both from client and server.\n\n| Allowed Types   |\n| --------------- |\n| Angle           |\n| Boolean         |\n| Entity          |\n| Float           |\n| Int             |\n| String          |\n| Vector          |\n<warning>Trying to network a type that is not listed above leads to the value not being networked!\nthe value will only be updated clientside if the entity is or enters the clients PVS.</warning>\n\n<bug issue=\"5455\">You should not use the NW2 System on entities that are based on a Lua Entity or else NW2Vars could get mixed up, updated multiple times or not be set.</bug>\n\n<note>Running this function clientside will only set it for the client it is called on.\nThe value will only be networked if it isn't the same as the current value and unlike SetNW*\nthe value will only be networked once and not every 10 seconds.</note>",
         "arguments": [
           {
             "name": "key",
@@ -15341,7 +15341,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a function to be called when the NW2Var changes. Internally uses <page>GM:EntityNetworkedVarChanged</page> to call the function.\nAlias of <page>Entity:SetNetworked2VarProxy</page>\n<note>Only one NW2VarProxy can be set per-var\nRunning this function will only set it for the realm it is called on.</note>",
+        "description": "Sets a function to be called when the NW2Var changes. Internally uses <page>GM:EntityNetworkedVarChanged</page> to call the function.\nAlias of <page>Entity:SetNetworked2VarProxy</page>\n<bug issue=\"5455\">You should not use the NW2 System on entities that are based on a Lua Entity, or else this will be called multiple times and the NW2Var could get mixed up with other ones.</bug>\n<note>Only one NW2VarProxy can be set per-var\nRunning this function will only set it for the realm it is called on.</note>",
         "arguments": [
           {
             "name": "key",
@@ -15362,7 +15362,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a networked vector value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNW2Vector</page> both from client and server.\n<warning>The value will only be updated clientside if the entity is or enters the clients PVS. use <page>Entity:SetNWVector</page> instead</warning>\n\n<note>Running this function clientside will only set it for the client it is called on.\nThe value will only be networked if it isn't the same as the current value and unlike SetNW*\nthe value will only be networked once and not every 10 seconds.</note>",
+        "description": "Sets a networked vector value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNW2Vector</page> both from client and server.\n<bug issue=\"5455\">You should not use the NW2 System on entities that are based on a Lua Entity or else NW2Vars could get mixed up, updated multiple times or not be set.</bug>\n<warning>The value will only be updated clientside if the entity is or enters the clients PVS. use <page>Entity:SetNWVector</page> instead</warning>\n\n<note>Running this function clientside will only set it for the client it is called on.\nThe value will only be networked if it isn't the same as the current value and unlike SetNW*\nthe value will only be networked once and not every 10 seconds.</note>",
         "arguments": [
           {
             "name": "key",
