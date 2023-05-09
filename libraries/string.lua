@@ -39,13 +39,13 @@ end
 
 ---  menu|client|server
 --- Splits a string up wherever it finds the given separator.  
---- This is an alias of string.Split  
---- and the reverse operation of string.Implode.  
+--- The function string.Split is an alias of this function, except that function doesn't support using patterns.  
+--- See string.Implode for the reverse operation of this function.  
 --- @param separator string @The string will be separated wherever this sequence is found.
 --- @param str string @The string to split up.
---- @param use_patterns boolean @Set this to true if your separator is a pattern.
+--- @param withpattern? boolean @Set this to true if your separator is a pattern.
 --- @return table @Exploded string as a numerical sequential table.
-function string.Explode(separator, str, use_patterns)
+function string.Explode(separator, str, withpattern)
 end
 
 ---  menu|client|server

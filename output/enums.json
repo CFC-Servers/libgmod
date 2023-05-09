@@ -12408,9 +12408,14 @@
         "value": 55
       },
       {
-        "name": "SNDLVL_60dB or SNDLVL_IDLE",
+        "name": "SNDLVL_60dB",
         "value": 60,
         "description": "Normal conversation, clothes dryer"
+      },
+      {
+        "name": "SNDLVL_IDLE",
+        "value": 60,
+        "description": "*The same as SNDLVL_60dB*"
       },
       {
         "name": "SNDLVL_65dB",
@@ -12427,14 +12432,24 @@
         "description": "Car, vacuum cleaner, mixer, electric sewing machine"
       },
       {
-        "name": "SNDLVL_75dB or SNDLVL_NORM",
+        "name": "SNDLVL_75dB",
         "value": 75,
         "description": "Busy traffic"
       },
       {
-        "name": "SNDLVL_80dB or SNDLVL_TALKING",
+        "name": "SNDLVL_NORM",
+        "value": 75,
+        "description": "*The same as SNDLVL_75dB*"
+      },
+      {
+        "name": "SNDLVL_80dB",
         "value": 80,
         "description": "Mini-bike, alarm clock, noisy restaurant, office tabulator, outboard motor, passing snowmobile"
+      },
+      {
+        "name": "SNDLVL_TALKING",
+        "value": 80,
+        "description": "*The same as SNDLVL_80dB*"
       },
       {
         "name": "SNDLVL_85dB",
@@ -12476,9 +12491,14 @@
         "description": "Air raid siren"
       },
       {
-        "name": "SNDLVL_140dB or SNDLVL_GUNFIRE",
+        "name": "SNDLVL_140dB",
         "value": 140,
         "description": "Threshold of pain, gunshot, jet engine"
+      },
+      {
+        "name": "SNDLVL_GUNFIRE",
+        "value": 140,
+        "description": "*The same as SNDLVL_140dB*"
       },
       {
         "name": "SNDLVL_150dB",
@@ -12494,7 +12514,7 @@
       "client",
       "server"
     ],
-    "description": "The sound's attenuation; how fast it drops away, enumerations used by <page>Global.EmitSound</page> and <page>Entity:EmitSound</page>.\n\n\n\nThe engine starts running into trouble below 60dB.\n\n<warning>These enumerations do not exist in game and are listed here only for reference</warning>",
+    "description": "The sound's attenuation; how fast it drops away, enumerations used by <page>Global.EmitSound</page> and <page>Entity:EmitSound</page>.\n\n\n\nThe engine starts running into trouble below 60dB.\n\n<warning>These enumerations do not exist in Lua and are listed here only for reference. They values and descriptions taken from [soundflags.h in Source SDK 2013](https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/sp/src/public/soundflags.h#L53)</warning>",
     "name": "SNDLVL"
   },
   {

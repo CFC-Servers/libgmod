@@ -214,7 +214,7 @@ end
 --- Can be used with steamworks.DownloadUGC  
 --- ℹ **NOTE**: Any error models currently loaded that the mounted addon provides will be reloaded.  
 --- Any error materials currently loaded that the mounted addon provides will NOT be reloaded. That means that this cannot be used to fix missing map materials, as the map materials are loaded before you are able to call this.  
---- @param path string @Location of the GMA file to mount, retrieved from steamworks.DownloadUGC
+--- @param path string @Location of the GMA file to mount, retrieved from steamworks.DownloadUGC or relative to the `garrysmod/` directory (ignores mounting)
 --- @return boolean @success
 --- @return table @If successful, a table of files that have been mounted
 function game.MountGMA(path)

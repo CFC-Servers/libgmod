@@ -4,7 +4,7 @@ local DListView = {}
 ---  client
 --- Adds a column to the listview.  
 --- @param column string @The name of the column to add.
---- @param position number @Sets the ordering of this column compared to other columns
+--- @param position? number @At which position to insert the new column compared to the other columns
 --- @return Panel @The newly created DListView_Column.
 function DListView:AddColumn(column, position)
 end
