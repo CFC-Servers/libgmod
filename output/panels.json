@@ -6991,7 +6991,8 @@
           {
             "name": "position",
             "type": "number",
-            "description": "Sets the ordering of this column compared to other columns. Starting index is 1."
+            "default": "nil",
+            "description": "At which position to insert the new column compared to the other columns. Set to 1 to add the new column before all other columns.\n\nBy default the column will be placed after all columns."
           }
         ],
         "returnValues": [
@@ -15304,7 +15305,7 @@
   },
   {
     "name": "EditablePanel",
-    "parent": "",
+    "parent": "Panel",
     "description": "Base panel used by <page>DFrame</page>, this panel is needed so that elements such as the <page>TextEntry</page> can obtain focus."
   },
   {

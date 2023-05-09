@@ -8321,7 +8321,7 @@
           {
             "name": "path",
             "type": "string",
-            "description": "Location of the GMA file to mount, retrieved from <page>steamworks.DownloadUGC</page>. This file does not have to end with the .gma extension, but will be interpreted as a GMA."
+            "description": "Location of the GMA file to mount, retrieved from <page>steamworks.DownloadUGC</page> or relative to the `garrysmod/` directory (ignores mounting). This file does not have to end with the .gma extension, but will be interpreted as a GMA."
           }
         ],
         "returnValues": [
@@ -21040,7 +21040,7 @@
           "client",
           "server"
         ],
-        "description": "Splits a string up wherever it finds the given separator.\n\nThis is an alias of <page>string.Split</page>\nand the reverse operation of <page>string.Implode</page>.",
+        "description": "Splits a string up wherever it finds the given separator.\n\nThe function <page>string.Split</page> is an alias of this function, except that function doesn't support using patterns.\n\nSee <page>string.Implode</page> for the reverse operation of this function.",
         "arguments": [
           {
             "name": "separator",
@@ -21053,8 +21053,9 @@
             "description": "The string to split up."
           },
           {
-            "name": "use_patterns",
+            "name": "withpattern",
             "type": "boolean",
+            "default": "false",
             "description": "Set this to true if your separator is a <page text=\"pattern\">Patterns</page>."
           }
         ],
