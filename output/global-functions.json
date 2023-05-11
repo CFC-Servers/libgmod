@@ -155,12 +155,12 @@
     "arguments": [
       {
         "name": "pnlContent",
-        "type": "panel",
+        "type": "Panel",
         "description": "The SMContentPanel of the Node"
       },
       {
         "name": "node",
-        "type": "panel",
+        "type": "Panel",
         "description": "The Node"
       },
       {
@@ -728,7 +728,7 @@
       {
         "name": "path",
         "type": "string",
-        "description": "Path to the file, relative to the garrysmod/lua/ directory."
+        "description": "Path to the file, relative to the `garrysmod/lua/` directory."
       }
     ],
     "returnValues": [
@@ -985,7 +985,7 @@
     "realms": [
       "client"
     ],
-    "description": "Creates a new particle system.\n\n<note>The particle effect must be precached with <page>Global.PrecacheParticleSystem</page> and the file its from must be added via <page>game.AddParticles</page> before it can be used!</note>",
+    "description": "Creates a new particle system. See also <page>Entity:CreateParticleEffect</page>\n\n<note>The particle effect must be precached with <page>Global.PrecacheParticleSystem</page> and the file its from must be added via <page>game.AddParticles</page> before it can be used!</note>",
     "arguments": [
       {
         "name": "ent",
@@ -1013,6 +1013,38 @@
         "type": "Vector",
         "default": "Vector( 0, 0, 0 )",
         "description": "The offset from the <page>Entity:GetPos</page> of the entity we are attaching this CP to."
+      }
+    ],
+    "returnValues": [
+      {
+        "type": "CNewParticleEffect",
+        "description": "The created particle system."
+      }
+    ]
+  },
+  {
+    "name": "CreateParticleSystemNoEntity",
+    "parent": "Global",
+    "realms": [
+      "client"
+    ],
+    "description": "Creates a new particle system, and sets control points 0 and 1 to given position, as well as optionally orientation of CP0 to the given angles. See also <page>Global.CreateParticleSystem</page>\n\n<note>The particle effect must be precached with <page>Global.PrecacheParticleSystem</page> and the file its from must be added via <page>game.AddParticles</page> before it can be used!</note>",
+    "arguments": [
+      {
+        "name": "effect",
+        "type": "string",
+        "description": "The name of the effect to create. It must be precached."
+      },
+      {
+        "name": "pos",
+        "type": "Vector",
+        "description": "The position for the particle system."
+      },
+      {
+        "name": "ang",
+        "type": "Angle",
+        "default": "Angle( 0, 0, 0 )",
+        "description": "The orientation of the particle system."
       }
     ],
     "returnValues": [
@@ -4931,7 +4963,7 @@
       "client",
       "server"
     ],
-    "description": "Creates a particle effect.\n\n<note>The particle effect must be precached with <page>Global.PrecacheParticleSystem</page> and the file its from must be added via <page>game.AddParticles</page> before it can be used!</note>",
+    "description": "Creates a particle effect. See also <page>Global.CreateParticleSystem</page>.\n\n<note>The particle effect must be precached **serverside** with <page>Global.PrecacheParticleSystem</page> and the file its from must be added via <page>game.AddParticles</page> before it can be used!</note>",
     "arguments": [
       {
         "name": "particleName",
@@ -4963,7 +4995,7 @@
       "client",
       "server"
     ],
-    "description": "Creates a particle effect with specialized parameters.\n\n<note>The particle effect must be precached with <page>Global.PrecacheParticleSystem</page> and the file its from must be added via <page>game.AddParticles</page> before it can be used!</note>",
+    "description": "Creates a particle effect with specialized parameters.\n\n<note>The particle effect must be precached **serverside** with <page>Global.PrecacheParticleSystem</page> and the file its from must be added via <page>game.AddParticles</page> before it can be used!</note>",
     "arguments": [
       {
         "name": "particleName",
@@ -5126,7 +5158,7 @@
       "client",
       "server"
     ],
-    "description": "Precaches the particle with the specified name.",
+    "description": "Precaches a particle system with the specified name. The particle system must come from a file that is loaded with <page>game.AddParticles</page> beforehand.",
     "arguments": [
       {
         "name": "particleSystemName",

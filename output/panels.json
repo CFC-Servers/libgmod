@@ -5326,7 +5326,8 @@
         "name": "AddFunction",
         "parent": "DHTML",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Defines a Javascript function that when called will call a Lua callback.\n<note>Must be called after the HTML document has fully loaded.</note>",
         "arguments": [
@@ -5351,7 +5352,8 @@
         "name": "Call",
         "parent": "DHTML",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Runs/Executes a string as JavaScript code in a panel.\n<note>This function does **NOT** evaluate expression (i.e. allow you to pass variables from JavaScript (JS) to Lua context).<br>Because a return value is nil/no value (a.k.a. void).<br>If you wish to pass/return values from JS to Lua, you may want to use <page>DHTML:AddFunction</page> function to accomplish that job.</note>\n<note>This function is an alias of <page>DHTML:QueueJavascript</page> ([source](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/lua/vgui/dhtml.lua#L62)).</note>",
         "arguments": [
@@ -5366,7 +5368,8 @@
         "name": "ConsoleMessage",
         "parent": "DHTML",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the page inside the <page>DHTML</page> window runs `console.log`. This can also be called within the Lua environment to emulate `console.log`. If the contained message begins with `RUNLUA:` the following text will be executed as code within the Lua environment (this is how Lua is called from DHTML windows).",
         "arguments": [
@@ -5381,7 +5384,8 @@
         "name": "GetAllowLua",
         "parent": "DHTML",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns if the loaded page can run Lua code, set by <page>DHTML:SetAllowLua</page>",
         "returnValues": [
@@ -5395,7 +5399,8 @@
         "name": "QueueJavascript",
         "parent": "DHTML",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Runs/Executes a string as JavaScript code in a panel.\n\n<note>This function does **NOT** evaluate expression (i.e. allow you to pass variables from JavaScript (JS) to Lua context).<br>Because a return value is nil/no value (a.k.a. void).<br>If you wish to pass/return values from JS to Lua, you may want to use <page>DHTML:AddFunction</page> function to accomplish that job.</note>\n<note>If <page>Panel:IsVisible</page> is `false`, <page>PANEL:Think</page> will **NOT** run, meaning the Javascript Queue will not be processed.<br><br>Consider overriding <page>PANEL:Paint</page> to stop the panel from drawing instead.</note>",
         "arguments": [
@@ -5410,7 +5415,8 @@
         "name": "SetAllowLua",
         "parent": "DHTML",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Determines whether the loaded page can run Lua code or not. See <page>DHTML</page> for how to run Lua from a DHTML window.",
         "arguments": [
@@ -5426,7 +5432,8 @@
         "name": "SetScrollbars",
         "parent": "DHTML",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>Broken. Use the CSS `overflow` rule instead.</deprecated> Sets if the loaded window should display scrollbars when the webpage is larger than the viewing window. This is similar to the CSS `overflow` rule.",
         "arguments": [
