@@ -28082,7 +28082,8 @@
           {
             "name": "teleport",
             "type": "boolean",
-            "default": "false"
+            "default": "false",
+            "description": "If `true`, temporarily disables collisions of the physics objects just before moving it, then enables collisions back again."
           }
         ]
       },
