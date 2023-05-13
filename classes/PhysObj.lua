@@ -442,7 +442,7 @@ end
 ---  client|server
 --- Sets the position of the physobject.  
 --- @param position Vector @The new position of the physobject in world coordinates
---- @param teleport? boolean 
+--- @param teleport? boolean @If `true`, temporarily disables collisions of the physics objects just before moving it, then enables collisions back again.
 function PhysObj:SetPos(position, teleport)
 end
 

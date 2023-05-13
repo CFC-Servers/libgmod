@@ -27,8 +27,8 @@ end
 ---  client
 --- This function creates a Custom Category in the Spawnlist. Use Global.GenerateSpawnlistFromPath if you want to create a category with the contents of a folder.  
 --- ⚠ **WARNING**: Using this function before SANDBOX:PopulateContent has been called will result in an error  
---- @param pnlContent panel @The SMContentPanel of the Node
---- @param node panel @The Node
+--- @param pnlContent Panel @The SMContentPanel of the Node
+--- @param node Panel @The Node
 --- @param parentid number @The ParentID to use
 --- @param customProps table @The Table with the Contents of the new Category
 function _G.AddPropsOfParent(pnlContent, node, parentid, customProps)
@@ -183,7 +183,7 @@ end
 
 ---  client|server
 --- Attempts to compile the given file. If successful, returns a function that can be called to perform the actual execution of the script.  
---- @param path string @Path to the file, relative to the garrysmod/lua/ directory.
+--- @param path string @Path to the file, relative to the `garrysmod/lua/` directory.
 --- @return function @The function which executes the script.
 function _G.CompileFile(path)
 end
@@ -247,7 +247,7 @@ function _G.CreateMaterial(name, shaderName, materialData)
 end
 
 ---  client
---- Creates a new particle system.  
+--- Creates a new particle system. See also Entity:CreateParticleEffect  
 --- ℹ **NOTE**: The particle effect must be precached with Global.PrecacheParticleSystem and the file its from must be added via game.AddParticles before it can be used!  
 --- @param ent Entity @The entity to attach the control point to.
 --- @param effect string @The name of the effect to create
@@ -256,6 +256,16 @@ end
 --- @param offset? Vector @The offset from the Entity:GetPos of the entity we are attaching this CP to.
 --- @return CNewParticleEffect @The created particle system.
 function _G.CreateParticleSystem(ent, effect, partAttachment, entAttachment, offset)
+end
+
+---  client
+--- Creates a new particle system, and sets control points 0 and 1 to given position, as well as optionally orientation of CP0 to the given angles. See also Global.CreateParticleSystem  
+--- ℹ **NOTE**: The particle effect must be precached with Global.PrecacheParticleSystem and the file its from must be added via game.AddParticles before it can be used!  
+--- @param effect string @The name of the effect to create
+--- @param pos Vector @The position for the particle system.
+--- @param ang? Angle @The orientation of the particle system.
+--- @return CNewParticleEffect @The created particle system.
+function _G.CreateParticleSystemNoEntity(effect, pos, ang)
 end
 
 ---  client|server
@@ -1296,8 +1306,8 @@ function _G.Particle(file)
 end
 
 ---  client|server
---- Creates a particle effect.  
---- ℹ **NOTE**: The particle effect must be precached with Global.PrecacheParticleSystem and the file its from must be added via game.AddParticles before it can be used!  
+--- Creates a particle effect. See also Global.CreateParticleSystem.  
+--- ℹ **NOTE**: The particle effect must be precached **serverside** with Global.PrecacheParticleSystem and the file its from must be added via game.AddParticles before it can be used!  
 --- @param particleName string @The name of the particle effect.
 --- @param position Vector @The start position of the effect.
 --- @param angles Angle @The orientation of the effect.
@@ -1307,7 +1317,7 @@ end
 
 ---  client|server
 --- Creates a particle effect with specialized parameters.  
---- ℹ **NOTE**: The particle effect must be precached with Global.PrecacheParticleSystem and the file its from must be added via game.AddParticles before it can be used!  
+--- ℹ **NOTE**: The particle effect must be precached **serverside** with Global.PrecacheParticleSystem and the file its from must be added via game.AddParticles before it can be used!  
 --- @param particleName string @The name of the particle effect.
 --- @param attachType number @Attachment type using Enums/PATTACH.
 --- @param entity Entity @The entity to be used in the way specified by the attachType.
@@ -1351,7 +1361,7 @@ function _G.PositionSpawnIcon(model, position, noAngles)
 end
 
 ---  client|server
---- Precaches the particle with the specified name.  
+--- Precaches a particle system with the specified name. The particle system must come from a file that is loaded with game.AddParticles beforehand.  
 --- @param particleSystemName string @The name of the particle system.
 function _G.PrecacheParticleSystem(particleSystemName)
 end

@@ -52,7 +52,7 @@ end
 --- @param y number @The start y integer coordinate.
 --- @param w number @The integer width.
 --- @param h number @The integer height.
---- @param thickness number @The thickness of the outlined box border.
+--- @param thickness? number @The thickness of the outlined box border.
 function surface.DrawOutlinedRect(x, y, w, h, thickness)
 end
 
