@@ -1591,9 +1591,12 @@ function _G.ScreenScale(Size)
 end
 
 ---  client|server
---- 🛑 **DEPRECATED**: This uses the umsg internally, which has been deprecated. Use the net instead.  
 --- Send a usermessage  
---- ℹ **NOTE**: Useless on client, only server can send info to client.  
+--- 🛑 **DEPRECATED**:   
+--- This uses the umsg internally, which has been deprecated. Use the net instead.  
+--- ℹ **NOTE**:   
+--- Using this clientside seems to cause the client to send the UserMessage to itself, which then get blocked internally.  
+--- only server can send info to client.  
 --- @param name string @The name of the usermessage
 --- @param recipients any @Can be a CRecipientFilter, table or Player object.
 --- @param ... any ... @Data to send in the usermessage

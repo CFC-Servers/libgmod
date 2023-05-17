@@ -45,6 +45,12 @@ function ProjectedTexture:GetHorizontalFOV()
 end
 
 ---  client
+--- Returns whenever or not the Texture should light up world geometry.  
+--- @return boolean @**true** if the Texture should light up world geometry.
+function ProjectedTexture:GetLightWorld()
+end
+
+---  client
 --- Returns the linear attenuation of the projected texture, which can also be set by ProjectedTexture:SetLinearAttenuation.  
 --- @return number @The linear attenuation.
 function ProjectedTexture:GetLinearAttenuation()
@@ -197,6 +203,12 @@ end
 --- You must call ProjectedTexture:Update after using this function for it to take effect.  
 --- @param hFOV number @The new horizontal Field Of View for the projected texture
 function ProjectedTexture:SetHorizontalFOV(hFOV)
+end
+
+---  client
+--- Set whenever or not the Texture should light up world geometry.  
+--- @param lightworld boolean @Set it to **true** if the Texture should light up world geometry.
+function ProjectedTexture:SetLightWorld(lightworld)
 end
 
 ---  client

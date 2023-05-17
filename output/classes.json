@@ -3739,6 +3739,36 @@
         ]
       },
       {
+        "name": "GetSpotEncounters",
+        "parent": "CNavArea",
+        "realms": [
+          "server"
+        ],
+        "description": "Returns all spots that we would encounter when we move to another navmesh. It seems to be broken currently?\n<validate>\nHow should this be used exactly? It doesn't accept another <page>CNavArea</page> to check with.\nIf it is\n[this](https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/mp/src/game/server/nav_area.h#L401)\nfunction, then it should accept another CNavArea if I'm not wrong.\nPlease adjust this page if you find out how this function works.\n</validate>",
+        "returnValues": [
+          {
+            "type": "table",
+            "name": "encounters",
+            "description": "A Table containing all spots that you encounter."
+          }
+        ]
+      },
+      {
+        "name": "GetSpotEncounters",
+        "parent": "CNavArea",
+        "realms": [
+          "server"
+        ],
+        "description": "Returns all <page text=\"CNavAreas\">CNavArea</page> that are Visible from this NavArea",
+        "returnValues": [
+          {
+            "type": "table",
+            "name": "areas",
+            "description": "A Sequential Table containing all <page text=\"CNavAreas\">CNavArea</page> that are Visible from this NavArea."
+          }
+        ]
+      },
+      {
         "name": "GetTotalCost",
         "parent": "CNavArea",
         "realms": [
@@ -14184,7 +14214,7 @@
           "client",
           "server"
         ],
-        "description": "Sets the health of the entity.\n\n<note>You may want to take <page>Entity:GetMaxHealth</page> into account when calculating what to set health to, in case a gamemode has a different max health than 100.</note>\n\n<bug issue=\"3572\">In some cases, setting health only on server side can cause hitches in movement, for example if something is modifying the player speed based on health. To solve this issue, it is better to set it shared in a predicted hook.</bug>",
+        "description": "Sets the health of the entity.\n\n<note>\nYou may want to take <page>Entity:GetMaxHealth</page> into account when calculating what to set health to, in case a gamemode has a different max health than 100.\nIn some cases, setting health only serverside can cause hitches in movement, for example if something is modifying the player speed based on health.\nTo solve this issue, it is better to set it shared in a predicted hook.\n</note>",
         "arguments": [
           {
             "name": "newHealth",
@@ -32586,6 +32616,21 @@
         ]
       },
       {
+        "name": "GetLightWorld",
+        "parent": "ProjectedTexture",
+        "realms": [
+          "client"
+        ],
+        "description": "Returns whenever or not the Texture should light up world geometry.",
+        "returnValues": [
+          {
+            "type": "boolean",
+            "name": "lightworld",
+            "description": "**true** if the Texture should light up world geometry."
+          }
+        ]
+      },
+      {
         "name": "GetLinearAttenuation",
         "parent": "ProjectedTexture",
         "realms": [
@@ -32905,6 +32950,21 @@
             "name": "hFOV",
             "type": "number",
             "description": "The new horizontal Field Of View for the projected texture. Must be in range between 0 and 180."
+          }
+        ]
+      },
+      {
+        "name": "SetLightWorld",
+        "parent": "ProjectedTexture",
+        "realms": [
+          "client"
+        ],
+        "description": "Set whenever or not the Texture should light up world geometry.",
+        "arguments": [
+          {
+            "name": "lightworld",
+            "type": "boolean",
+            "description": "Set it to **true** if the Texture should light up world geometry."
           }
         ]
       },

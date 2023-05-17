@@ -5985,7 +5985,7 @@
       "client",
       "server"
     ],
-    "description": "<deprecated>This uses the <page>umsg</page> internally, which has been deprecated. Use the <page>net</page> instead.</deprecated>\nSend a usermessage\n<note>Useless on client, only server can send info to client.</note>",
+    "description": "Send a usermessage\n<deprecated>\nThis uses the <page>umsg</page> internally, which has been deprecated. Use the <page>net</page> instead.\n</deprecated>\n\n<note>\nUsing this clientside seems to cause the client to send the UserMessage to itself, which then get blocked internally.\nonly server can send info to client.\n</note>",
     "arguments": [
       {
         "name": "name",

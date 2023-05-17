@@ -275,7 +275,6 @@ end
 ---  client|menu
 --- Sets the status of the clip renderer, returning previous state.  
 --- ⚠ **WARNING**: To prevent unintended rendering behavior of other mods/the game, you must reset the clipping state to its previous value.  
---- 🦟 **BUG**: [Reloading the map does not reset the previous value of this function.](https://github.com/Facepunch/garrysmod-issues/issues/3105)  
 --- @param state boolean @New clipping state.
 --- @return boolean @Previous clipping state.
 function render.EnableClipping(state)
@@ -780,7 +779,6 @@ end
 ---  client
 --- Sets lighting mode when rendering something.  
 --- ℹ **NOTE**: **Do not forget to restore the default value** to avoid unexpected behavior, like the world and the HUD/UI being affected  
---- 🦟 **BUG**: [Reloading the map does not reset the value of this function.](https://github.com/Facepunch/garrysmod-issues/issues/5368)  
 --- @param Mode number @Lighting render mode
 function render.SetLightingMode(Mode)
 end

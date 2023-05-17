@@ -2909,8 +2909,10 @@ end
 
 ---  client|server
 --- Sets the health of the entity.  
---- ℹ **NOTE**: You may want to take Entity:GetMaxHealth into account when calculating what to set health to, in case a gamemode has a different max health than 100.  
---- 🦟 **BUG**: [In some cases, setting health only on server side can cause hitches in movement, for example if something is modifying the player speed based on health. To solve this issue, it is better to set it shared in a predicted hook.](https://github.com/Facepunch/garrysmod-issues/issues/3572)  
+--- ℹ **NOTE**:   
+--- You may want to take Entity:GetMaxHealth into account when calculating what to set health to, in case a gamemode has a different max health than 100.  
+--- In some cases, setting health only serverside can cause hitches in movement, for example if something is modifying the player speed based on health.  
+--- To solve this issue, it is better to set it shared in a predicted hook.  
 --- @param newHealth number @New health value.
 function Entity:SetHealth(newHealth)
 end
