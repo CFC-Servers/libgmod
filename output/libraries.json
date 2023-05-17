@@ -7871,7 +7871,7 @@
           "client",
           "server"
         ],
-        "description": "If called serverside it will remove **ALL** entities which were not created by the map (not players or weapons held by players).\n\nOn the client it will remove decals, sounds, gibs, dead NPCs, and entities created via <page>ents.CreateClientProp</page>.\n\nThis function calls <page>GM:PreCleanupMap</page> before cleaning up the map and <page>GM:PostCleanupMap</page> after cleaning up the map.\n\n<bug issue=\"1142\">Calling this in a <page>ENTITY:StartTouch</page> or <page>ENTITY:Touch</page> hook will crash the game.</bug>\n\n<bug issue=\"2874\">Calling this destroys all BASS streams.</bug>\n\n<bug issue=\"3637\">This can crash when removing _firesmoke entities. **You can use the example below to workaround this issue.**</bug>",
+        "description": "If called serverside it will remove **ALL** entities which were not created by the map (not players or weapons held by players).\nIt won't remove Entities who have the <page text=\"EFL_KEEP_ON_RECREATE_ENTITIES\">enums/EFL</page> Flag set.\n\nOn the client it will remove decals, sounds, gibs, dead NPCs, and entities created via <page>ents.CreateClientProp</page>.\n\nThis function calls <page>GM:PreCleanupMap</page> before cleaning up the map and <page>GM:PostCleanupMap</page> after cleaning up the map.\n\n<bug issue=\"1142\">Calling this in a <page>ENTITY:StartTouch</page> or <page>ENTITY:Touch</page> hook will crash the game.</bug>\n\n<bug issue=\"2874\">Calling this destroys all BASS streams.</bug>\n\n<bug issue=\"3637\">This can crash when removing _firesmoke entities. **You can use the example below to workaround this issue.**</bug>",
         "arguments": [
           {
             "name": "dontSendToClients",
@@ -13956,7 +13956,7 @@
         "realms": [
           "server"
         ],
-        "description": "Loads a new navmesh from the .nav file for current map discarding any changes made to the navmesh previously."
+        "description": "Loads a new navmesh from the .nav file for current map discarding any changes made to the navmesh previously.\n<warning>\nCalling this function too soon, causes the Server to crash!\n</warning>"
       },
       {
         "name": "Reset",
@@ -17012,7 +17012,7 @@
           "client",
           "menu"
         ],
-        "description": "Sets the status of the clip renderer, returning previous state.\n\n<warning>To prevent unintended rendering behavior of other mods/the game, you must reset the clipping state to its previous value.</warning>\n\n<bug issue=\"3105\">Reloading the map does not reset the previous value of this function.</bug>",
+        "description": "Sets the status of the clip renderer, returning previous state.\n\n<warning>To prevent unintended rendering behavior of other mods/the game, you must reset the clipping state to its previous value.</warning>",
         "arguments": [
           {
             "name": "state",
@@ -18230,7 +18230,7 @@
         "realms": [
           "client"
         ],
-        "description": "Sets lighting mode when rendering something.\n\n<note>**Do not forget to restore the default value** to avoid unexpected behavior, like the world and the HUD/UI being affected</note>\n<bug issue=\"5368\">Reloading the map does not reset the value of this function.</bug>",
+        "description": "Sets lighting mode when rendering something.\n\n<note>**Do not forget to restore the default value** to avoid unexpected behavior, like the world and the HUD/UI being affected</note>",
         "arguments": [
           {
             "name": "Mode",
@@ -26504,7 +26504,8 @@
         "name": "IsOBBIntersectingOBB",
         "parent": "util",
         "realms": [
-          "client"
+          "client",
+          "server"
         ],
         "description": "Performs OBB on OBB intersection test.",
         "arguments": [

@@ -297,7 +297,7 @@ end
 function util.IsModelLoaded(modelName)
 end
 
----  client
+---  client|server
 --- Performs OBB on OBB intersection test.  
 --- @param box1Origin Vector @The center of the first box.
 --- @param box1Angles Angle @The angles of the first box.

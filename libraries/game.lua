@@ -26,6 +26,7 @@ end
 
 ---  client|server
 --- If called serverside it will remove **ALL** entities which were not created by the map (not players or weapons held by players).  
+--- It won't remove Entities who have the EFL_KEEP_ON_RECREATE_ENTITIES Flag set.  
 --- On the client it will remove decals, sounds, gibs, dead NPCs, and entities created via ents.CreateClientProp.  
 --- This function calls GM:PreCleanupMap before cleaning up the map and GM:PostCleanupMap after cleaning up the map.  
 --- 🦟 **BUG**: [Calling this in a ENTITY:StartTouch or ENTITY:Touch hook will crash the game.](https://github.com/Facepunch/garrysmod-issues/issues/1142)  
