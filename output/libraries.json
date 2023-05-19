@@ -855,7 +855,7 @@
         "realms": [
           "client"
         ],
-        "description": "Pushes the specified matrix onto the render matrix stack. Unlike opengl, this will replace the current model matrix.\n\n<note>This does not work with <page>cam.Start3D2D</page> if `multiply` is false.</note>",
+        "description": "Pushes the specified matrix onto the render matrix stack. Unlike opengl, this will replace the current model matrix.\n\n<note>This does not work with <page>cam.Start3D2D</page> if `multiply` is false.</note>\n<warning>When used in the Paint function of a panel, if you want to rely on the top-left position of the panel, you must use <page>VMatrix:Translate</page> with the (0, 0) position of the panel relative to the screen.</warning>",
         "arguments": [
           {
             "name": "matrix",
@@ -16780,7 +16780,7 @@
         "realms": [
           "client"
         ],
-        "description": "Draws the the current material set by <page>render.SetMaterial</page> to the area specified. Color cannot be customized.\n\nSee also <page>render.DrawScreenQuad</page>.\n\n<rendercontext hook=\"false\" type=\"2D\"></rendercontext>",
+        "description": "Draws the current material set by <page>render.SetMaterial</page> to the area specified. Color cannot be customized.\n\nSee also <page>render.DrawScreenQuad</page>.\n\n<rendercontext hook=\"false\" type=\"2D\"></rendercontext>",
         "arguments": [
           {
             "name": "startX",
