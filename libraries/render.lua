@@ -198,7 +198,7 @@ function render.DrawScreenQuad(applyPoster)
 end
 
 ---  client
---- Draws the the current material set by render.SetMaterial to the area specified. Color cannot be customized.  
+--- Draws the current material set by render.SetMaterial to the area specified. Color cannot be customized.  
 --- See also render.DrawScreenQuad.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param startX number @X start position of the rect.
