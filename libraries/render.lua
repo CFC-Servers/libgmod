@@ -632,6 +632,7 @@ end
 
 ---  client|menu
 --- Pushes a texture filter onto the minification texture filter stack.  
+--- See also render.PushFilterMag and render.PopFilterMin.  
 --- @param texFilterType number @The texture filter type, see Enums/TEXFILTER
 function render.PushFilterMin(texFilterType)
 end
