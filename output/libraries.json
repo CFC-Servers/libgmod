@@ -15863,7 +15863,7 @@
           "client",
           "server"
         ],
-        "description": "Retrieves correct hands for given player model. By default returns citizen hands.",
+        "description": "Retrieves correct hands for given player model. By default returns citizen hands.\n\n<note>See <page>player_manager.AddValidHands</page> for defining/linking hands to a model - this must be defined somewhere otherwise the model will return citizen hands here.</note>",
         "arguments": [
           {
             "name": "name",
@@ -17899,7 +17899,7 @@
           "client",
           "menu"
         ],
-        "description": "Pushes a texture filter onto the minification texture filter stack.",
+        "description": "Pushes a texture filter onto the minification texture filter stack.\n\nSee also <page>render.PushFilterMag</page> and <page>render.PopFilterMin</page>.",
         "arguments": [
           {
             "name": "texFilterType",

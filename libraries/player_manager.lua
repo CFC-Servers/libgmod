@@ -75,6 +75,7 @@ end
 
 ---  client|server
 --- Retrieves correct hands for given player model. By default returns citizen hands.  
+--- ℹ **NOTE**: See player_manager.AddValidHands for defining/linking hands to a model - this must be defined somewhere otherwise the model will return citizen hands here.  
 --- @param name string @Player model name
 --- @return table @A table with following contents:
 function player_manager.TranslatePlayerHands(name)
