@@ -3628,6 +3628,12 @@
         "type": "string",
         "description": "The filename of the Lua file you want to include."
       }
+    ],
+    "returnValues": [
+      {
+        "type": "vararg",
+        "description": "Anything that the executed Lua script returns."
+      }
     ]
   },
   {

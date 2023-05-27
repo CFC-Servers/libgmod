@@ -1000,6 +1000,7 @@ end
 --- The only difference is that on the serverside it also calls Global.AddCSLuaFile on the filename, so that it gets sent to the client.  
 --- @param filename string @The filename of the Lua file you want to include.
 --- @deprecated
+--- @return any ... @Anything that the executed Lua script returns.
 function _G.IncludeCS(filename)
 end
 
