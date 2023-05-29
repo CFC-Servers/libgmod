@@ -97,7 +97,7 @@ end
 ---  client|menu
 --- Returns an estimate of the server's performance. Equivalent to calling Global.FrameTime from the server, according to source code.  
 --- @return number @Frame time.
---- @return number @Server Framerate Std Deviation.
+--- @return number @Server framerate [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation).
 function engine.ServerFrameTime()
 end
 
