@@ -6768,7 +6768,7 @@
           },
           {
             "type": "number",
-            "description": "Server Framerate Std Deviation."
+            "description": "Server framerate [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation)."
           }
         ]
       },
@@ -8448,7 +8448,7 @@
   },
   {
     "name": "gameevent",
-    "description": "Used to interface with the built-in game events system.\n\nThe following is a list of all available game events.\n<pagelist category=\"gameevent\"></pagelist>",
+    "description": "Used to interface with the built-in game events system.\n\n<note>\nAll Serverside gameevents are networked and called clientside. It could happen that a gameevent is called twice because of this like <page text=\"OnRequestFullUpdate\">gameevent/OnRequestFullUpdate</page>.\n</note>\n\nThe following is a list of all available game events.\n<pagelist category=\"gameevent\"></pagelist>",
     "functions": [
       {
         "name": "Listen",
@@ -22549,13 +22549,34 @@
         ]
       },
       {
+        "name": "GetTextPos",
+        "parent": "surface",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "Returns the X and Y co-ordinate that has been set with <page>surface.SetTextPos</page>.",
+        "returnValues": [
+          {
+            "type": "number",
+            "name": "x",
+            "description": "The X integer co-ordinate."
+          },
+          {
+            "type": "number",
+            "name": "y",
+            "description": "The Y integer co-ordinate."
+          }
+        ]
+      },
+      {
         "name": "GetTextSize",
         "parent": "surface",
         "realms": [
           "client",
           "menu"
         ],
-        "description": "Returns the width and height (in pixels) of the given text, but only if the font has been set with <page>surface.SetFont</page>.",
+        "description": "Returns the width and height (in pixels) of the given text with the font that has been set with <page>surface.SetFont</page>.\n\n<validate>\nDoes not take into account new lines, the returned height is for the entire font (as specified by the font), not maximum of individual characters.</validate>",
         "arguments": [
           {
             "name": "text",
