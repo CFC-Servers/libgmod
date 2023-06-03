@@ -34,7 +34,7 @@ end
 
 ---  menu|client|server
 --- Deletes a file or `empty` folder that is relative to the **data** folder. You can't remove any files outside of **data** folder.  
---- ℹ **NOTE**: You are able to delete *any* file in the Menu state.  
+--- ℹ **NOTE**: You are able to delete **any** file in the Menu state.  
 --- @param name string @The file name.
 --- @param path string @The path to look for the files and directories in
 function file.Delete(name, path)

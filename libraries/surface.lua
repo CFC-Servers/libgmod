@@ -171,7 +171,16 @@ function surface.GetTextColor()
 end
 
 ---  client|menu
---- Returns the width and height (in pixels) of the given text, but only if the font has been set with surface.SetFont.  
+--- Returns the X and Y co-ordinate that has been set with surface.SetTextPos.  
+--- @return number @The X integer co-ordinate.
+--- @return number @The Y integer co-ordinate.
+function surface.GetTextPos()
+end
+
+---  client|menu
+--- Returns the width and height (in pixels) of the given text with the font that has been set with surface.SetFont.  
+--- ⁉ **VALIDATE**:   
+--- Does not take into account new lines, the returned height is for the entire font (as specified by the font), not maximum of individual characters.  
 --- @param text string @The string to check the size of.
 --- @return number @Width of the provided text.
 --- @return number @Height of the provided text.
