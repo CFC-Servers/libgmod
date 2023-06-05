@@ -705,15 +705,16 @@ end
 function _G.Format(format, ...)
 end
 
----  client
+---  client|server
 --- Returns the number of frames rendered since the game was launched.  
+--- ℹ **NOTE**: This function is currently only shared on the `dev` branch, and on other branches it only exists clientside.  
 function _G.FrameNumber()
 end
 
 ---  menu|client|server
 --- Returns the Global.CurTime-based time in seconds it took to render the last frame.  
 --- This should be used for frame/tick based timing, such as movement prediction or animations.  
---- For real-time-based frame time that isn't affected by host_timescale, use Global.RealFrameTime. RealFrameTime is more suited for things like GUIs or HUDs.  
+--- For real-time-based frame time that isn't affected by `host_timescale`, use Global.RealFrameTime. RealFrameTime is more suited for things like GUIs or HUDs.  
 --- @return number @time (in seconds)
 function _G.FrameTime()
 end
@@ -1000,6 +1001,7 @@ end
 --- The only difference is that on the serverside it also calls Global.AddCSLuaFile on the filename, so that it gets sent to the client.  
 --- @param filename string @The filename of the Lua file you want to include.
 --- @deprecated
+--- @return any ... @Anything that the executed Lua script returns.
 function _G.IncludeCS(filename)
 end
 
