@@ -345,8 +345,8 @@ end
 --- @param material string @Material of the rope.
 --- @param rigid boolean @Whether the constraint is rigid.
 --- @param color table @The color of the rope
---- @return Entity @Constraint
---- @return Entity @rope
+--- @return Entity @The constraint entity
+--- @return Entity @The rope entity
 function constraint.Rope(Ent1, Ent2, Bone1, Bone2, LPos1, LPos2, length, addlength, forcelimit, width, material, rigid, color)
 end
 

@@ -778,7 +778,7 @@
         "realms": [
           "client"
         ],
-        "description": "Switches the renderer back to the previous drawing mode from a 3D context.\n\nThis function is an alias of <page>cam.End3D</page>.\n\n<bug issue=\"1091\">This will crash the game if there is no context to end.</bug>"
+        "description": "Switches the renderer back to the previous drawing mode from a 3D context.\n\nThis function is an alias of <page>cam.End3D</page>."
       },
       {
         "name": "End2D",
@@ -786,7 +786,7 @@
         "realms": [
           "client"
         ],
-        "description": "Switches the renderer back to the previous drawing mode from a 2D context.\n\n<bug issue=\"1091\">This will crash the game if there is no context to end.</bug>"
+        "description": "Switches the renderer back to the previous drawing mode from a 2D context."
       },
       {
         "name": "End3D",
@@ -794,7 +794,7 @@
         "realms": [
           "client"
         ],
-        "description": "Switches the renderer back to the previous drawing mode from a 3D context.\n\n<bug issue=\"1091\">This will crash the game if there is no context to end.</bug>"
+        "description": "Switches the renderer back to the previous drawing mode from a 3D context."
       },
       {
         "name": "End3D2D",
@@ -802,7 +802,7 @@
         "realms": [
           "client"
         ],
-        "description": "Switches the renderer back to the previous drawing mode from a 3D2D context.\n\n<bug issue=\"1091\">This will crash the game if there is no context to end.</bug>"
+        "description": "Switches the renderer back to the previous drawing mode from a 3D2D context."
       },
       {
         "name": "EndOrthoView",
@@ -2721,11 +2721,13 @@
         "returnValues": [
           {
             "type": "Entity",
-            "description": "Constraint. Will be a keyframe_rope if you roping to the same bone on the same entity. Will return false if the constraint could not be created."
+            "name": "constraint",
+            "description": "The constraint entity. Will be a `keyframe_rope` if you are roping to the same bone on the same entity. Will return `false` if the constraint could not be created."
           },
           {
             "type": "Entity",
-            "description": "rope. Will return nil if \"Constraint\" is a keyframe_rope or if the constraint could not be created."
+            "name": "rope",
+            "description": "The rope entity. Will return `nil` if `constraint` return value is a `keyframe_rope` or if the constraint could not be created."
           }
         ]
       },
@@ -6768,7 +6770,7 @@
           },
           {
             "type": "number",
-            "description": "Server Framerate Std Deviation."
+            "description": "Server framerate [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation)."
           }
         ]
       },
@@ -7425,7 +7427,7 @@
           "client",
           "server"
         ],
-        "description": "Deletes a file or `empty` folder that is relative to the **data** folder. You can't remove any files outside of **data** folder.\n<note>You are able to delete *any* file in the Menu state.</note>",
+        "description": "Deletes a file or `empty` folder that is relative to the **data** folder. You can't remove any files outside of **data** folder.\n<note>You are able to delete **any** file in the Menu state.</note>",
         "arguments": [
           {
             "name": "name",
@@ -7447,7 +7449,7 @@
           "client",
           "server"
         ],
-        "description": "Returns a boolean of whether the file or directory exists or not.\n<bug issue=\"1038\"> This will sometimes return false clientside for directories received from the server via a clientside lua file. You can work around this by using <page>file.Find</page> with the path to the directory followed by a wildcard (no trailing forward slash) and see if the directory is inside the returned directories table (**see second example)**.</bug>",
+        "description": "Returns a boolean of whether the file or directory exists or not.\n<bug issue=\"1038\"> This will sometimes return false clientside for directories received from the server via a clientside lua file. You can work around this by using <page>file.Find</page> with the path to the directory followed by a wildcard (no trailing forward slash) and see if the directory is inside the returned directories table (**see second example)**. **This is fixed in the next update.**</bug>",
         "arguments": [
           {
             "name": "name",
@@ -7513,7 +7515,7 @@
           "client",
           "server"
         ],
-        "description": "Returns whether the given file is a directory or not.\n<bug issue=\"1038\"> This will sometimes return false clientside for directories received from the server via a clientside lua file. You can work around this by using <page>file.Find</page> with the path to the directory followed by a wildcard (no trailing forward slash) and see if the directory is inside the returned directories table (**see second example)**.</bug>",
+        "description": "Returns whether the given file is a directory or not.\n<bug issue=\"1038\"> This will sometimes return false clientside for directories received from the server via a clientside lua file. You can work around this by using <page>file.Find</page> with the path to the directory followed by a wildcard (no trailing forward slash) and see if the directory is inside the returned directories table (**see second example)**. **This is fixed in the next update.**</bug>",
         "arguments": [
           {
             "name": "fileName",
@@ -8448,7 +8450,7 @@
   },
   {
     "name": "gameevent",
-    "description": "Used to interface with the built-in game events system.\n\nThe following is a list of all available game events.\n<pagelist category=\"gameevent\"></pagelist>",
+    "description": "Used to interface with the built-in game events system.\n\n<note>\nAll Serverside gameevents are networked and called clientside. It could happen that a gameevent is called twice because of this like <page text=\"OnRequestFullUpdate\">gameevent/OnRequestFullUpdate</page>.\n</note>\n\nThe following is a list of all available game events.\n<pagelist category=\"gameevent\"></pagelist>",
     "functions": [
       {
         "name": "Listen",
@@ -22549,13 +22551,34 @@
         ]
       },
       {
+        "name": "GetTextPos",
+        "parent": "surface",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "Returns the X and Y co-ordinate that has been set with <page>surface.SetTextPos</page>.",
+        "returnValues": [
+          {
+            "type": "number",
+            "name": "x",
+            "description": "The X integer co-ordinate."
+          },
+          {
+            "type": "number",
+            "name": "y",
+            "description": "The Y integer co-ordinate."
+          }
+        ]
+      },
+      {
         "name": "GetTextSize",
         "parent": "surface",
         "realms": [
           "client",
           "menu"
         ],
-        "description": "Returns the width and height (in pixels) of the given text, but only if the font has been set with <page>surface.SetFont</page>.",
+        "description": "Returns the width and height (in pixels) of the given text with the font that has been set with <page>surface.SetFont</page>.\n\n<validate>\nDoes not take into account new lines, the returned height is for the entire font (as specified by the font), not maximum of individual characters.</validate>",
         "arguments": [
           {
             "name": "text",
@@ -23117,6 +23140,7 @@
           {
             "name": "concatenator",
             "type": "string",
+            "default": "\\",
             "description": "A separator to insert between strings"
           },
           {

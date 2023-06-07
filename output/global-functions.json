@@ -2432,9 +2432,10 @@
     "name": "FrameNumber",
     "parent": "Global",
     "realms": [
-      "client"
+      "client",
+      "server"
     ],
-    "description": "Returns the number of frames rendered since the game was launched."
+    "description": "Returns the number of frames rendered since the game was launched.\n<note>This function is currently only shared on the `dev` branch, and on other branches it only exists clientside.</note>"
   },
   {
     "name": "FrameTime",
@@ -2444,7 +2445,7 @@
       "client",
       "server"
     ],
-    "description": "Returns the <page>Global.CurTime</page>-based time in seconds it took to render the last frame.\n\nThis should be used for frame/tick based timing, such as movement prediction or animations.\n\nFor real-time-based frame time that isn't affected by host_timescale, use <page>Global.RealFrameTime</page>. RealFrameTime is more suited for things like GUIs or HUDs.",
+    "description": "Returns the <page>Global.CurTime</page>-based time in seconds it took to render the last frame.\n\nThis should be used for frame/tick based timing, such as movement prediction or animations.\n\nFor real-time-based frame time that isn't affected by `host_timescale`, use <page>Global.RealFrameTime</page>. RealFrameTime is more suited for things like GUIs or HUDs.",
     "returnValues": [
       {
         "type": "number",
@@ -3627,6 +3628,12 @@
         "name": "filename",
         "type": "string",
         "description": "The filename of the Lua file you want to include."
+      }
+    ],
+    "returnValues": [
+      {
+        "type": "vararg",
+        "description": "Anything that the executed Lua script returns."
       }
     ]
   },

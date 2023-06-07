@@ -16,8 +16,8 @@
   },
   {
     "name": "Button",
-    "parent": "DLabel",
-    "description": "<deprecated>Only exists for backwards compatibility with <page>Panel:SetActionFunction</page>. Use <page>DButton</page> instead.</deprecated>Creates a button that players can click on."
+    "parent": "DButton",
+    "description": "<deprecated>\nOnly exists for backwards compatibility with <page>Panel:SetActionFunction</page>. Use <page>DButton</page> instead.\n</deprecated>\n\nCreates a button that players can click on."
   },
   {
     "name": "CheckButton",
@@ -707,7 +707,8 @@
         "name": "GetBarColor",
         "parent": "DAlphaBar",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the base color of the alpha bar. This is the color for which the alpha channel is being modified.",
         "returnValues": [
@@ -721,7 +722,8 @@
         "name": "GetValue",
         "parent": "DAlphaBar",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the alpha value of the alpha bar.",
         "returnValues": [
@@ -735,7 +737,8 @@
         "name": "OnChange",
         "parent": "DAlphaBar",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when user changes the desired alpha value with the control.",
         "arguments": [
@@ -750,7 +753,8 @@
         "name": "SetBarColor",
         "parent": "DAlphaBar",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the base color of the alpha bar. This is the color for which the alpha channel is being modified.",
         "arguments": [
@@ -765,7 +769,8 @@
         "name": "SetValue",
         "parent": "DAlphaBar",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the alpha value or the alpha bar.",
         "arguments": [
@@ -906,13 +911,13 @@
   {
     "name": "DButton",
     "parent": "DLabel",
-    "description": "A standard Derma button.\n\n\nBy default, a <page>DButton</page> is 22px tall.",
     "functions": [
       {
         "name": "DoClick",
         "parent": "DButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the button is left clicked (on key release) by the player.\n\nThis will be called after <page>DButton:IsDown</page>.\n\nSee also <page>DButton:DoRightClick</page>."
       },
@@ -920,7 +925,8 @@
         "name": "DoRightClick",
         "parent": "DButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the button is right clicked (on key release) by the player.\n\nSee also <page>DButton:DoClick</page>."
       },
@@ -928,7 +934,8 @@
         "name": "GetDrawBorder",
         "parent": "DButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated></deprecated>\n\nReturns value set by <page>DButton:SetDrawBorder</page>. See that page for more info.",
         "returnValues": [
@@ -942,7 +949,8 @@
         "name": "IsDown",
         "parent": "DButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns true if the DButton is currently depressed (a user is clicking on it).",
         "returnValues": [
@@ -956,7 +964,8 @@
         "name": "SetConsoleCommand",
         "parent": "DButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets a console command to be called when the button is clicked.\n\nThis overrides the button's `DoClick` method.",
         "arguments": [
@@ -976,7 +985,8 @@
         "name": "SetDisabled",
         "parent": "DButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>Use <page>Panel:SetEnabled</page> instead.</deprecated>Sets whether or not the DButton is disabled.\n\nWhen disabled, the button is `greyed out` and cannot be clicked.",
         "arguments": [
@@ -991,7 +1001,8 @@
         "name": "SetDrawBorder",
         "parent": "DButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated></deprecated>\n\nDoes absolutely nothing at all. Default value is automatically set to true.",
         "arguments": [
@@ -1006,7 +1017,8 @@
         "name": "SetIcon",
         "parent": "DButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets an image to be displayed as the button's background. Alias of <page>DButton:SetImage</page>",
         "arguments": [
@@ -1022,7 +1034,8 @@
         "name": "SetImage",
         "parent": "DButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets an image to be displayed as the button's background.\n\nSee <page>DButton:SetMaterial</page> for equivalent function that uses <page>IMaterial</page> instead.\n\nAlso see: <page>DImageButton</page>",
         "arguments": [
@@ -1038,7 +1051,8 @@
         "name": "SetMaterial",
         "parent": "DButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets an image to be displayed as the button's background.\n\nSee <page>DButton:SetImage</page> for equivalent function that uses file paths instead. Also see <page>DImageButton</page>.",
         "arguments": [
@@ -1054,7 +1068,8 @@
         "name": "UpdateColours",
         "parent": "DButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "A hook called from within <page>DLabel</page>'s <page>PANEL:ApplySchemeSettings</page> to determine the color of the text on display.",
         "arguments": [
@@ -1075,13 +1090,14 @@
   {
     "name": "DCategoryList",
     "parent": "DScrollPanel",
-    "description": "A host for multiple <page>DCollapsibleCategory</page> panels. As the name suggests, each one of them can be collapsed or expanded on demand by the user.",
+    "description": "A host for multiple <page>DCollapsibleCategory</page> panels.\nAs the name suggests, each one of them can be collapsed or expanded on demand by the user.",
     "functions": [
       {
         "name": "Add",
         "parent": "DCategoryList",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a <page>DCollapsibleCategory</page> to the list.",
         "arguments": [
@@ -1102,7 +1118,8 @@
         "name": "AddItem",
         "parent": "DCategoryList",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds an element to the list.",
         "arguments": [
@@ -1117,7 +1134,8 @@
         "name": "UnselectAll",
         "parent": "DCategoryList",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Calls <page>Panel:UnselectAll</page> on all child elements, if they have it."
       }
@@ -1132,7 +1150,8 @@
         "name": "GetChecked",
         "parent": "DCheckBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the checked state of the checkbox.",
         "returnValues": [
@@ -1146,7 +1165,8 @@
         "name": "IsEditing",
         "parent": "DCheckBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the state of the checkbox is being edited. This means whether the user is currently clicking (mouse-down) on the checkbox, and applies to both the left and right mouse buttons.",
         "returnValues": [
@@ -1160,7 +1180,8 @@
         "name": "OnChange",
         "parent": "DCheckBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the \"checked\" state is changed.",
         "arguments": [
@@ -1175,7 +1196,8 @@
         "name": "SetChecked",
         "parent": "DCheckBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the checked state of the checkbox. Does not call the checkbox's <page>DCheckBox:OnChange</page> and <page>Panel:ConVarChanged</page> methods, unlike <page>DCheckBox:SetValue</page>.",
         "arguments": [
@@ -1190,7 +1212,8 @@
         "name": "SetValue",
         "parent": "DCheckBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the checked state of the checkbox, and calls the checkbox's <page>DCheckBox:OnChange</page> and <page>Panel:ConVarChanged</page> methods.",
         "arguments": [
@@ -1205,7 +1228,8 @@
         "name": "Toggle",
         "parent": "DCheckBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Toggles the checked state of the checkbox, and calls the checkbox's <page>DCheckBox:OnChange</page> and <page>Panel:ConVarChanged</page> methods. This is called by <page>DCheckBox:DoClick</page>."
       }
@@ -1214,13 +1238,14 @@
   {
     "name": "DCheckBoxLabel",
     "parent": "DPanel",
-    "description": "The **DCheckBoxLabel** is a <page>DCheckBox</page> with a <page>DLabel</page> next to it. It allows you to get a boolean value from the user (true/false - yes/no)",
+    "description": "The **DCheckBoxLabel** is a <page>DCheckBox</page> with a <page>DLabel</page> next to it.\nIt allows you to get a boolean value from the user (true/false - yes/no)",
     "functions": [
       {
         "name": "GetChecked",
         "parent": "DCheckBoxLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the checked state of the checkbox. This calls the checkbox's <page>DCheckBox:GetChecked</page> function.",
         "returnValues": [
@@ -1234,7 +1259,8 @@
         "name": "GetIndent",
         "parent": "DCheckBoxLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the indentation of the element on the X axis.",
         "returnValues": [
@@ -1248,7 +1274,8 @@
         "name": "OnChange",
         "parent": "DCheckBoxLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the \"checked\" state is changed.",
         "arguments": [
@@ -1263,7 +1290,8 @@
         "name": "SetBright",
         "parent": "DCheckBoxLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>You really should be using <page>DCheckBoxLabel:SetTextColor</page> instead</deprecated>\n\nSets the color of the <page>DCheckBoxLabel</page>'s text to the bright text color defined in the skin.",
         "arguments": [
@@ -1278,7 +1306,8 @@
         "name": "SetChecked",
         "parent": "DCheckBoxLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the checked state of the checkbox. Does not call <page>DCheckBoxLabel:OnChange</page> or <page>Panel:ConVarChanged</page>, unlike <page>DCheckBoxLabel:SetValue</page>.",
         "arguments": [
@@ -1293,7 +1322,8 @@
         "name": "SetConVar",
         "parent": "DCheckBoxLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the console variable to be set when the checked state of the <page>DCheckBoxLabel</page> changes.",
         "arguments": [
@@ -1308,7 +1338,8 @@
         "name": "SetDark",
         "parent": "DCheckBoxLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>You really should be using <page>DCheckBoxLabel:SetTextColor</page> instread</deprecated>\n\nSets the text of the <page>DCheckBoxLabel</page> to be dark colored.",
         "arguments": [
@@ -1323,7 +1354,8 @@
         "name": "SetFont",
         "parent": "DCheckBoxLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the font of the text part of the <page>DCheckBoxLabel</page>.",
         "arguments": [
@@ -1338,7 +1370,8 @@
         "name": "SetIndent",
         "parent": "DCheckBoxLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the indentation of the element on the X axis.",
         "arguments": [
@@ -1353,7 +1386,8 @@
         "name": "SetTextColor",
         "parent": "DCheckBoxLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the text color for the <page>DCheckBoxLabel</page>.",
         "arguments": [
@@ -1368,7 +1402,8 @@
         "name": "SetValue",
         "parent": "DCheckBoxLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the checked state of the checkbox, and calls <page>DCheckBoxLabel:OnChange</page> and the checkbox's <page>Panel:ConVarChanged</page> methods.",
         "arguments": [
@@ -1383,7 +1418,8 @@
         "name": "Toggle",
         "parent": "DCheckBoxLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Toggles the checked state of the <page>DCheckBoxLabel</page>."
       }
@@ -1398,7 +1434,8 @@
         "name": "Add",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a new text button to the collapsible category, like the tool menu in Spawnmenu.",
         "arguments": [
@@ -1419,7 +1456,8 @@
         "name": "AnimSlide",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nInternal function that handles the open/close animations.",
         "arguments": [
@@ -1441,7 +1479,8 @@
         "name": "DoExpansion",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Forces the category to open or collapse",
         "arguments": [
@@ -1456,7 +1495,8 @@
         "name": "GetAnimTime",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the expand/collapse animation time set by <page>DCollapsibleCategory:SetAnimTime</page>.",
         "returnValues": [
@@ -1470,7 +1510,8 @@
         "name": "GetExpanded",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the DCollapsibleCategory is expanded or not.",
         "returnValues": [
@@ -1484,7 +1525,8 @@
         "name": "GetHeaderHeight",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the header height of the <page>DCollapsibleCategory</page>.\n\nSee also <page>DCollapsibleCategory:SetHeaderHeight</page>.",
         "returnValues": [
@@ -1499,7 +1541,8 @@
         "name": "GetList",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "No Description",
         "returnValues": [
@@ -1512,7 +1555,8 @@
         "name": "GetPadding",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Doesn't actually do anything.\n\nReturns the number set by <page>DCollapsibleCategory:SetPadding</page>.",
         "returnValues": [
@@ -1525,7 +1569,8 @@
         "name": "GetPaintBackground",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether or not the background should be painted.",
         "returnValues": [
@@ -1539,7 +1584,8 @@
         "name": "GetStartHeight",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "No Description",
         "returnValues": [
@@ -1552,7 +1598,8 @@
         "name": "OnToggle",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called by <page>DCollapsibleCategory:Toggle</page>. This function does nothing by itself, as you're supposed to overwrite it.",
         "arguments": [
@@ -1567,7 +1614,8 @@
         "name": "SetAnimTime",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the time in seconds it takes to expand the DCollapsibleCategory",
         "arguments": [
@@ -1582,7 +1630,8 @@
         "name": "SetContents",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the contents of the DCollapsibleCategory.",
         "arguments": [
@@ -1597,7 +1646,8 @@
         "name": "SetExpanded",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether the <page>DCollapsibleCategory</page> is expanded or not upon opening the container.\n\nYou should use <page>DCollapsibleCategory:Toggle</page> or <page>DCollapsibleCategory:DoExpansion</page> instead.",
         "arguments": [
@@ -1613,7 +1663,8 @@
         "name": "SetHeaderHeight",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the header height of the <page>DCollapsibleCategory</page>.\n\nSee also <page>DCollapsibleCategory:GetHeaderHeight</page>.",
         "arguments": [
@@ -1628,7 +1679,8 @@
         "name": "SetLabel",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the name of the DCollapsibleCategory.",
         "arguments": [
@@ -1643,7 +1695,8 @@
         "name": "SetList",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "No Description",
         "arguments": [
@@ -1657,7 +1710,8 @@
         "name": "SetPadding",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Doesn't actually do anything.",
         "arguments": [
@@ -1671,7 +1725,8 @@
         "name": "SetPaintBackground",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether or not the background should be painted.",
         "arguments": [
@@ -1685,7 +1740,8 @@
         "name": "SetStartHeight",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "No Description",
         "arguments": [
@@ -1699,7 +1755,8 @@
         "name": "Toggle",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Toggles the expanded state of the <page>DCollapsibleCategory</page>.\n\nSee <page>DCollapsibleCategory:GetExpanded</page> for a function to retrieve the expanded state."
       },
@@ -1707,7 +1764,8 @@
         "name": "UnselectAll",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "No Description"
       },
@@ -1715,7 +1773,8 @@
         "name": "UpdateAltLines",
         "parent": "DCollapsibleCategory",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nUsed internally to update the \"AltLine\" property on all \"child\" panels."
       }
@@ -1730,7 +1789,8 @@
         "name": "GetColor",
         "parent": "DColorButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the color of the button",
         "returnValues": [
@@ -1744,7 +1804,8 @@
         "name": "GetID",
         "parent": "DColorButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the unique ID set by <page>DColorButton:SetID</page>.\n\nUsed internally by <page>DColorPalette</page>",
         "returnValues": [
@@ -1758,7 +1819,8 @@
         "name": "IsDown",
         "parent": "DColorButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the <page>DColorButton</page> is currently being pressed (the user is holding it down).",
         "returnValues": [
@@ -1771,7 +1833,8 @@
         "name": "SetColor",
         "parent": "DColorButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the color of the <page>DColorButton</page>.",
         "arguments": [
@@ -1792,7 +1855,8 @@
         "name": "SetID",
         "parent": "DColorButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Used internally by <page>DColorPalette</page> to detect which button is which.",
         "arguments": [
@@ -1885,7 +1949,8 @@
         "name": "GetBaseRGB",
         "parent": "DColorCube",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the base Color set by <page>DColorCube:SetBaseRGB</page>.",
         "returnValues": [
@@ -1899,7 +1964,8 @@
         "name": "GetHue",
         "parent": "DColorCube",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated></deprecated>\n\nReturns the value set by <page>DColorCube:SetHue</page>.",
         "returnValues": [
@@ -1912,7 +1978,8 @@
         "name": "GetRGB",
         "parent": "DColorCube",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the color cube's current set color.",
         "returnValues": [
@@ -1926,7 +1993,8 @@
         "name": "OnUserChanged",
         "parent": "DColorCube",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Function which is called when the color cube slider is moved (through user input). Meant to be overridden.",
         "arguments": [
@@ -1941,7 +2009,8 @@
         "name": "SetBaseRGB",
         "parent": "DColorCube",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the base color and the color used to draw the color cube panel itself.\n\n<note>Calling this when using a color that isn't 100% saturated and valued (<page>Global.HSVToColor</page> with saturation and value set to 1) causes the color cube to look inaccurate compared to the color that's returned by methods like <page>DColorCube:GetRGB</page> and <page>DColorCube:OnUserChanged</page>. You should use <page>DColorCube:SetColor</page> instead</note>",
         "arguments": [
@@ -1956,7 +2025,8 @@
         "name": "SetColor",
         "parent": "DColorCube",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the base color of the color cube and updates the slider position.",
         "arguments": [
@@ -1971,7 +2041,8 @@
         "name": "SetHue",
         "parent": "DColorCube",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated></deprecated>\n\nAppears to do nothing and unused.",
         "arguments": [
@@ -1985,7 +2056,8 @@
         "name": "SetRGB",
         "parent": "DColorCube",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nUsed internally to set the real \"output\" color of the panel.",
         "arguments": [
@@ -2000,7 +2072,8 @@
         "name": "TranslateValues",
         "parent": "DColorCube",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nUpdates the color cube RGB based on the given x and y position and returns its arguments. Similar to <page>DColorCube:UpdateColor</page>.",
         "arguments": [
@@ -2030,7 +2103,8 @@
         "name": "UpdateColor",
         "parent": "DColorCube",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nUpdates the color cube RGB based on the given x and y position. Similar to <page>DColorCube:TranslateValues</page>.",
         "arguments": [
@@ -2059,7 +2133,8 @@
         "name": "ConVarThink",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>"
       },
@@ -2067,7 +2142,8 @@
         "name": "DoConVarThink",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>",
         "arguments": [
@@ -2081,7 +2157,8 @@
         "name": "GetAlphaBar",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Return true if alpha bar is shown, false if not.",
         "returnValues": [
@@ -2095,7 +2172,8 @@
         "name": "GetColor",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the current selected color.",
         "returnValues": [
@@ -2109,7 +2187,8 @@
         "name": "GetConVarA",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the <page>ConVar</page> name for the alpha channel of the color.\n\nSee also:\n* <page>DColorMixer:GetConVarR</page> - For the red channel\n* <page>DColorMixer:GetConVarG</page> - For the green channel\n* <page>DColorMixer:GetConVarB</page> - For the blue channel",
         "returnValues": [
@@ -2123,7 +2202,8 @@
         "name": "GetConVarB",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the <page>ConVar</page> name for the blue channel of the color.\n\nSee also:\n* <page>DColorMixer:GetConVarR</page> - For the red channel\n* <page>DColorMixer:GetConVarG</page> - For the green channel\n* <page>DColorMixer:GetConVarA</page> - For the alpha channel",
         "returnValues": [
@@ -2137,7 +2217,8 @@
         "name": "GetConVarG",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the <page>ConVar</page> name for the green channel of the color.\n\nSee also:\n* <page>DColorMixer:GetConVarR</page> - For the red channel\n* <page>DColorMixer:GetConVarB</page> - For the blue channel\n* <page>DColorMixer:GetConVarA</page> - For the alpha channel",
         "returnValues": [
@@ -2151,7 +2232,8 @@
         "name": "GetConVarR",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the <page>ConVar</page> name for the red channel of the color.\n\nSee also:\n* <page>DColorMixer:GetConVarG</page> - For the green channel\n* <page>DColorMixer:GetConVarB</page> - For the blue channel\n* <page>DColorMixer:GetConVarA</page> - For the alpha channel",
         "returnValues": [
@@ -2165,7 +2247,8 @@
         "name": "GetPalette",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Return true if palette is shown, false if not.",
         "returnValues": [
@@ -2179,7 +2262,8 @@
         "name": "GetVector",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the color as a normalized <page>Vector</page>.",
         "returnValues": [
@@ -2193,7 +2277,8 @@
         "name": "GetWangs",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Return true if the wangs are shown, false if not.",
         "returnValues": [
@@ -2207,7 +2292,8 @@
         "name": "SetAlphaBar",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Show/Hide the alpha bar in DColorMixer",
         "arguments": [
@@ -2222,7 +2308,8 @@
         "name": "SetBaseColor",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the base color of the <page>DColorCube</page> part of the <page>DColorMixer</page>.\n\nSee also <page>DColorCube:SetBaseRGB</page>",
         "arguments": [
@@ -2237,7 +2324,8 @@
         "name": "SetColor",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the color of the <page>DColorMixer</page>",
         "arguments": [
@@ -2252,7 +2340,8 @@
         "name": "SetConVarA",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the <page>ConVar</page> name for the alpha channel of the color.\n\nSee also:\n* <page>DColorMixer:SetConVarR</page> - For the red channel\n* <page>DColorMixer:SetConVarG</page> - For the green channel\n* <page>DColorMixer:SetConVarB</page> - For the blue channel",
         "arguments": [
@@ -2267,7 +2356,8 @@
         "name": "SetConVarB",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the <page>ConVar</page> name for the blue channel of the color.\n\nSee also:\n* <page>DColorMixer:SetConVarR</page> - For the red channel\n* <page>DColorMixer:SetConVarG</page> - For the green channel\n* <page>DColorMixer:SetConVarA</page> - For the alpha channel",
         "arguments": [
@@ -2282,7 +2372,8 @@
         "name": "SetConVarG",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the <page>ConVar</page> name for the green channel of the color.\n\nSee also:\n* <page>DColorMixer:SetConVarR</page> - For the red channel\n* <page>DColorMixer:SetConVarB</page> - For the blue channel\n* <page>DColorMixer:SetConVarA</page> - For the alpha channel",
         "arguments": [
@@ -2297,7 +2388,8 @@
         "name": "SetConVarR",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the <page>ConVar</page> name for the red channel of the color.\n\nSee also:\n* <page>DColorMixer:SetConVarG</page> - For the green channel\n* <page>DColorMixer:SetConVarB</page> - For the blue channel\n* <page>DColorMixer:SetConVarA</page> - For the alpha channel",
         "arguments": [
@@ -2312,7 +2404,8 @@
         "name": "SetLabel",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the label's text to show.",
         "arguments": [
@@ -2328,7 +2421,8 @@
         "name": "SetPalette",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Show or hide the palette panel",
         "arguments": [
@@ -2343,7 +2437,8 @@
         "name": "SetVector",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the color of <page>DColorMixer</page> from a <page>Vector</page>. Alpha is not included.",
         "arguments": [
@@ -2358,7 +2453,8 @@
         "name": "SetWangs",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Show / Hide the colors indicators in DColorMixer",
         "arguments": [
@@ -2373,7 +2469,8 @@
         "name": "TranslateValues",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n<deprecated></deprecated>\n\nDoes nothing."
       },
@@ -2381,7 +2478,8 @@
         "name": "UpdateColor",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nUse <page>DColorMixer:SetColor</page> instead!",
         "arguments": [
@@ -2395,7 +2493,8 @@
         "name": "UpdateConVar",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>",
         "arguments": [
@@ -2420,7 +2519,8 @@
         "name": "UpdateConVars",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>",
         "arguments": [
@@ -2435,7 +2535,8 @@
         "name": "ValueChanged",
         "parent": "DColorMixer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the player changes the color of the <page>DColorMixer</page>.\n\n<bug>The returned color will not have the color metatable.</bug>",
         "arguments": [
@@ -2451,13 +2552,14 @@
   {
     "name": "DColorPalette",
     "parent": "DIconLayout",
-    "description": "The **DColorPalette** allows the player to select a color from a list of given colors.\n\nThis panel supports saving across sessions via the panel cookie system.\n\n\nUse <page>Panel:SetCookieName</page> to change \"save files\".",
+    "description": "The **DColorPalette** allows the player to select a color from a list of given colors.\nThis panel supports saving across sessions via the panel cookie system.\nUse <page>Panel:SetCookieName</page> to change \"save files\".",
     "functions": [
       {
         "name": "DoClick",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated></deprecated>\n\nBasically the same functionality as <page>DColorPalette:OnValueChanged</page>, you should use that instead!",
         "arguments": [
@@ -2477,7 +2579,8 @@
         "name": "GetButtonSize",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the size of each palette button. Set by <page>DColorPalette:SetButtonSize</page>.",
         "returnValues": [
@@ -2491,7 +2594,8 @@
         "name": "GetConVarA",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the <page>ConVar</page> name for the alpha channel of the color.\n\nSee also:\n* <page>DColorPalette:GetConVarR</page> - For the red channel\n* <page>DColorPalette:GetConVarG</page> - For the green channel\n* <page>DColorPalette:GetConVarB</page> - For the blue channel",
         "returnValues": [
@@ -2505,7 +2609,8 @@
         "name": "GetConVarB",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the <page>ConVar</page> name for the blue channel of the color.\n\nSee also:\n* <page>DColorPalette:GetConVarR</page> - For the red channel\n* <page>DColorPalette:GetConVarG</page> - For the green channel\n* <page>DColorPalette:GetConVarA</page> - For the alpha channel",
         "returnValues": [
@@ -2519,7 +2624,8 @@
         "name": "GetConVarG",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the <page>ConVar</page> name for the green channel of the color.\n\nSee also:\n* <page>DColorPalette:GetConVarR</page> - For the red channel\n* <page>DColorPalette:GetConVarB</page> - For the blue channel\n* <page>DColorPalette:GetConVarA</page> - For the alpha channel",
         "returnValues": [
@@ -2533,7 +2639,8 @@
         "name": "GetConVarR",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the <page>ConVar</page> name for the red channel of the color.\n\nSee also:\n* <page>DColorPalette:GetConVarG</page> - For the green channel\n* <page>DColorPalette:GetConVarB</page> - For the blue channel\n* <page>DColorPalette:GetConVarA</page> - For the alpha channel",
         "returnValues": [
@@ -2547,7 +2654,8 @@
         "name": "GetNumRows",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the number of rows of the palette, provided 6 colors fill each row. This value is equal to the number of colors in the DColorPalette divided by 6.",
         "returnValues": [
@@ -2561,7 +2669,8 @@
         "name": "NetworkColorChange",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nUsed internally to make sure changes on one palette affect other palettes with same name."
       },
@@ -2569,7 +2678,8 @@
         "name": "OnRightClickButton",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when a palette button has been pressed",
         "arguments": [
@@ -2584,7 +2694,8 @@
         "name": "OnValueChanged",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the color is changed after clicking a new value.",
         "arguments": [
@@ -2599,7 +2710,8 @@
         "name": "Reset",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Resets this entire color palette to a default preset one, without saving.\n\nSee <page>DColorPalette:ResetSavedColors</page> for version that also saves the changes."
       },
@@ -2607,7 +2719,8 @@
         "name": "ResetSavedColors",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Resets this entire color palette to a default preset one and saves the changes.\n\nSee <page>DColorPalette:Reset</page> for version that does not save the changes."
       },
@@ -2615,9 +2728,10 @@
         "name": "SaveColor",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
-        "description": "Saves the color of given button across sessions.\n\nThe color is saved as a panel cookie, see <page>Panel:SetCookie</page> and <page>Panel:SetCookieName</page>.\n```\n\n\n```\n\nIt is expected that the amount of colors per palette (<page>Panel:SetCookieName</page>) is the same every time.",
+        "description": "Saves the color of given button across sessions.\nThe color is saved as a panel cookie, see <page>Panel:SetCookie</page> and <page>Panel:SetCookieName</page>.\nIt is expected that the amount of colors per palette (<page>Panel:SetCookieName</page>) is the same every time.",
         "arguments": [
           {
             "name": "btn",
@@ -2635,7 +2749,8 @@
         "name": "SetButtonSize",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the size of each palette button.\n\nThis is best kept to such a number, where this equation would return a whole number:<br>\n`WidthOfColorPalette / ButtonSize= WholeNumber`\n\nIf not, there will be ugly whitespace on the right side of the panel.",
         "arguments": [
@@ -2650,7 +2765,8 @@
         "name": "SetColor",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated></deprecated>\n\nCurrently does nothing. Intended to \"select\" the color.",
         "arguments": [
@@ -2664,7 +2780,8 @@
         "name": "SetColorButtons",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Clears the palette and adds new buttons with given colors.",
         "arguments": [
@@ -2679,7 +2796,8 @@
         "name": "SetConVarA",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the <page>ConVar</page> name for the alpha channel of the color.\n\nSee also:\n* <page>DColorPalette:SetConVarR</page> - For the red channel\n* <page>DColorPalette:SetConVarG</page> - For the green channel\n* <page>DColorPalette:SetConVarB</page> - For the blue channel",
         "arguments": [
@@ -2694,7 +2812,8 @@
         "name": "SetConVarB",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the <page>ConVar</page> name for the blue channel of the color.\n\nSee also:\n* <page>DColorPalette:SetConVarR</page> - For the red channel\n* <page>DColorPalette:SetConVarG</page> - For the green channel\n* <page>DColorPalette:SetConVarA</page> - For the alpha channel",
         "arguments": [
@@ -2709,7 +2828,8 @@
         "name": "SetConVarG",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the <page>ConVar</page> name for the green channel of the color.\n\nSee also:\n* <page>DColorPalette:SetConVarR</page> - For the red channel\n* <page>DColorPalette:SetConVarB</page> - For the blue channel\n* <page>DColorPalette:SetConVarA</page> - For the alpha channel",
         "arguments": [
@@ -2724,7 +2844,8 @@
         "name": "SetConVarR",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the <page>ConVar</page> name for the red channel of the color.\n\nSee also:\n* <page>DColorPalette:SetConVarG</page> - For the green channel\n* <page>DColorPalette:SetConVarB</page> - For the blue channel\n* <page>DColorPalette:SetConVarA</page> - For the alpha channel",
         "arguments": [
@@ -2739,7 +2860,8 @@
         "name": "SetNumRows",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Roughly sets the number of colors that can be picked by the user. If the DColorPalette is exactly 6 rows tall, this function will set the number of colors shown per row in the palette.\n<note><page>DColorPalette:Reset</page> or <page>DColorPalette:ResetSavedColors</page> must be called after this function to apply changes.</note>",
         "arguments": [
@@ -2754,7 +2876,8 @@
         "name": "UpdateConVar",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nInternal helper function for <page>DColorPalette:UpdateConVars</page>.",
         "arguments": [
@@ -2779,7 +2902,8 @@
         "name": "UpdateConVars",
         "parent": "DColorPalette",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nUpdates all the console variables set by <page>DColorPalette:SetConVarR</page> and so on with given color.\n\nCalled internally when a palette color is clicked.",
         "arguments": [
@@ -2801,7 +2925,8 @@
         "name": "AddSheet",
         "parent": "DColumnSheet",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a new column/tab.",
         "arguments": [
@@ -2833,7 +2958,8 @@
         "name": "GetActiveButton",
         "parent": "DColumnSheet",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the active button of this <page>DColumnSheet</page>.",
         "returnValues": [
@@ -2847,7 +2973,8 @@
         "name": "SetActiveButton",
         "parent": "DColumnSheet",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nMakes a button an active button for this <page>DColumnSheet</page>.",
         "arguments": [
@@ -2862,7 +2989,8 @@
         "name": "UseButtonOnlyStyle",
         "parent": "DColumnSheet",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Makes the tabs/buttons show only the image and no text."
       }
@@ -2877,7 +3005,8 @@
         "name": "AddChoice",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a choice to the combo box.",
         "arguments": [
@@ -2916,7 +3045,8 @@
         "name": "AddSpacer",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a spacer below the currently last item in the drop down. Recommended to use with <page>DComboBox:SetSortItems</page> set to `false`."
       },
@@ -2924,7 +3054,8 @@
         "name": "ChooseOption",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Selects a combo box option by its index and changes the text displayed at the top of the combo box.",
         "arguments": [
@@ -2944,7 +3075,8 @@
         "name": "ChooseOptionID",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Selects an option within a combo box based on its table index.",
         "arguments": [
@@ -2959,7 +3091,8 @@
         "name": "Clear",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Clears the combo box's text value, choices, and data values."
       },
@@ -2967,7 +3100,8 @@
         "name": "CloseMenu",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Closes the combo box menu. Called when the combo box is clicked while open."
       },
@@ -2975,7 +3109,8 @@
         "name": "GetOptionData",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns an option's data based on the given index.",
         "arguments": [
@@ -2996,7 +3131,8 @@
         "name": "GetOptionText",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns an option's text based on the given index.",
         "arguments": [
@@ -3017,7 +3153,8 @@
         "name": "GetOptionTextByData",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns an option's text based on the given data.",
         "arguments": [
@@ -3038,7 +3175,8 @@
         "name": "GetSelected",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the currently selected option's text and data",
         "returnValues": [
@@ -3056,7 +3194,8 @@
         "name": "GetSelectedID",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the index (ID) of the currently selected option.",
         "returnValues": [
@@ -3070,7 +3209,8 @@
         "name": "GetSortItems",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns an whether the items in the dropdown will be alphabetically sorted or not.\n\nSee <page>DComboBox:SetSortItems</page>.",
         "returnValues": [
@@ -3084,7 +3224,8 @@
         "name": "IsMenuOpen",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether or not the combo box's menu is opened.",
         "returnValues": [
@@ -3098,7 +3239,8 @@
         "name": "OnMenuOpened",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the player opens the dropdown menu.",
         "arguments": [
@@ -3113,7 +3255,8 @@
         "name": "OnSelect",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when an option in the combo box is selected. This function does nothing by itself, you're supposed to overwrite it.",
         "arguments": [
@@ -3138,7 +3281,8 @@
         "name": "OpenMenu",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Opens the combo box drop down menu. Called when the combo box is clicked."
       },
@@ -3146,7 +3290,8 @@
         "name": "SetSortItems",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether or not the items should be sorted alphabetically in the dropdown menu of the <page>DComboBox</page>. If set to false, items will appear in the order they were added by <page>DComboBox:AddChoice</page> calls.\n\nThis is enabled by default.",
         "arguments": [
@@ -3161,7 +3306,8 @@
         "name": "SetValue",
         "parent": "DComboBox",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the text shown in the combo box when the menu is not collapsed.",
         "arguments": [
@@ -3183,7 +3329,8 @@
         "name": "DropAction_Copy",
         "parent": "DDragBase",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nInternal function used in <page>DDragBase:MakeDroppable</page>",
         "arguments": [
@@ -3213,7 +3360,8 @@
         "name": "DropAction_Normal",
         "parent": "DDragBase",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nInternal function used in <page>DDragBase:DropAction_Copy</page>",
         "arguments": [
@@ -3243,7 +3391,8 @@
         "name": "DropAction_Simple",
         "parent": "DDragBase",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nInternal function used in <page>DDragBase:DropAction_Normal</page>",
         "arguments": [
@@ -3273,7 +3422,8 @@
         "name": "GetDnD",
         "parent": "DDragBase",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "No Description",
         "returnValues": [
@@ -3287,7 +3437,8 @@
         "name": "GetUseLiveDrag",
         "parent": "DDragBase",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "No Description",
         "returnValues": [
@@ -3300,7 +3451,8 @@
         "name": "MakeDroppable",
         "parent": "DDragBase",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Makes the panel a receiver for any droppable panel with the same DnD name. Internally calls <page>Panel:Receiver</page>.",
         "arguments": [
@@ -3320,7 +3472,8 @@
         "name": "OnModified",
         "parent": "DDragBase",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when anything is dropped on or rearranged within the <page>DDragBase</page>."
       },
@@ -3328,7 +3481,8 @@
         "name": "SetDnD",
         "parent": "DDragBase",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "No Description",
         "arguments": [
@@ -3343,7 +3497,8 @@
         "name": "SetDropPos",
         "parent": "DDragBase",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Determines where you can drop stuff.\n\"4\" for left\n\"5\" for center\n\"6\" for right\n\"8\" for top\n\"2\" for bottom",
         "arguments": [
@@ -3359,7 +3514,8 @@
         "name": "SetUseLiveDrag",
         "parent": "DDragBase",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "No Description",
         "arguments": [
@@ -3373,7 +3529,8 @@
         "name": "UpdateDropTarget",
         "parent": "DDragBase",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nInternal function used in <page>DDragBase:DropAction_Normal</page>",
         "arguments": [
@@ -5371,7 +5528,7 @@
           "client",
           "menu"
         ],
-        "description": "Called when the page inside the <page>DHTML</page> window runs `console.log`. This can also be called within the Lua environment to emulate `console.log`. If the contained message begins with `RUNLUA:` the following text will be executed as code within the Lua environment (this is how Lua is called from DHTML windows).",
+        "description": "Called when the page inside the <page>DHTML</page> window runs the `console.log` javascript function. On the x86-64 beta, it's called for all built-in `console.*` javascript functions.\n\nIf <page>DHTML:SetAllowLua</page> is set to `true` and the message begins with `RUNLUA:`, the text following `RUNLUA:` will be executed as code within the Lua environment (this is how Lua is called from DHTML windows).",
         "arguments": [
           {
             "name": "msg",
@@ -7589,13 +7746,32 @@
   {
     "name": "DListView_Column",
     "parent": "Panel",
-    "description": "<internal></internal>A single column, used by <page>DListView</page>.",
+    "description": "<internal></internal>\n\nA single column, used by <page>DListView</page>.",
     "functions": [
+      {
+        "name": "DoClick",
+        "parent": "DListView_Column",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "Called when the column is left clicked (on key release) by the client.\n\nSee also <page>DListView_Column:DoRightClick</page>."
+      },
+      {
+        "name": "DoRightClick",
+        "parent": "DListView_Column",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "Called when the column is right clicked (on key release) by the client.\n\nSee also <page>DListView_Column:DoClick</page>."
+      },
       {
         "name": "GetColumnID",
         "parent": "DListView_Column",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the index used for this column.",
         "returnValues": [
@@ -7607,10 +7783,43 @@
         ]
       },
       {
+        "name": "GetMaxWidth",
+        "parent": "DListView_Column",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "Returns the maximum width set with <page>DListView_Column:SetMaxWidth</page>.",
+        "returnValues": [
+          {
+            "type": "number",
+            "name": "width",
+            "description": "The maximum width"
+          }
+        ]
+      },
+      {
+        "name": "GetMinWidth",
+        "parent": "DListView_Column",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "Returns the minimum width set with <page>DListView_Column:SetMinWidth</page>.",
+        "returnValues": [
+          {
+            "type": "number",
+            "name": "width",
+            "description": "The minimum width"
+          }
+        ]
+      },
+      {
         "name": "ResizeColumn",
         "parent": "DListView_Column",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Resizes the column, additionally adjusting the size of the column to the right, if any.",
         "arguments": [
@@ -7625,9 +7834,10 @@
         "name": "SetFixedWidth",
         "parent": "DListView_Column",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
-        "description": "Sets the fixed width of the column.",
+        "description": "Sets the fixed width of the column.\n<note>\nInternally this will set <page text=\"SetMinWidth\">DListView_Column:SetMinWidth</page> and <page text=\"SetMaxWidth\">DListView_Column:SetMaxWidth</page> to the value provided\n</note>",
         "arguments": [
           {
             "name": "width",
@@ -7640,7 +7850,8 @@
         "name": "SetMaxWidth",
         "parent": "DListView_Column",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the maximum width of a column.",
         "arguments": [
@@ -7655,7 +7866,8 @@
         "name": "SetMinWidth",
         "parent": "DListView_Column",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the minimum width of a column.",
         "arguments": [
@@ -7670,7 +7882,8 @@
         "name": "SetName",
         "parent": "DListView_Column",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the text in the column's header.",
         "arguments": [
@@ -7685,7 +7898,8 @@
         "name": "SetTextAlign",
         "parent": "DListView_Column",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the text alignment for the column",
         "arguments": [
@@ -7700,7 +7914,8 @@
         "name": "SetWidth",
         "parent": "DListView_Column",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the width of the panel.",
         "arguments": [
