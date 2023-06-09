@@ -641,6 +641,7 @@ end
 
 ---  client|server
 --- Returns players death ragdoll. The ragdoll is created by Player:CreateRagdoll.  
+--- 🦟 **BUG**: Calling Entity:GetPos server-side with this function then will return the position when Player:CreateRagdoll was used.  
 --- @return Entity @The ragdoll
 function Player:GetRagdollEntity()
 end

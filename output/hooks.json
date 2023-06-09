@@ -9810,7 +9810,7 @@
           "client",
           "server"
         ],
-        "description": "Called when the weapon entity is created.\n\n<note><page>Entity:GetOwner</page> will return NULL at this point because the weapon is not equpped by a player or NPC yet. Use <page>WEAPON:Equip</page> or <page>WEAPON:Deploy</page> if you need the owner to be valid.</note>\n\n<bug issue=\"2732\">This is sometimes not called clientside. You can work around this by setting a variable in Initialize and check if it exists in <page>WEAPON:Think</page>. See the example below.</bug>\n\n<bug issue=\"3015\">This is not called serverside after a quicksave.</bug>"
+        "description": "Called when the weapon entity is created.\n\n<note><page>Entity:GetOwner</page> will return NULL at this point because the weapon is not equpped by a player or NPC yet. Use <page>WEAPON:Equip</page> or <page>WEAPON:Deploy</page> if you need the owner to be valid.</note>\n\n<bug issue=\"3015\">This is not called serverside after a quicksave.</bug>"
       },
       {
         "name": "KeyValue",

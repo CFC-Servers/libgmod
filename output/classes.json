@@ -3754,21 +3754,6 @@
         ]
       },
       {
-        "name": "GetSpotEncounters",
-        "parent": "CNavArea",
-        "realms": [
-          "server"
-        ],
-        "description": "Returns all <page text=\"CNavAreas\">CNavArea</page> that are Visible from this NavArea",
-        "returnValues": [
-          {
-            "type": "table",
-            "name": "areas",
-            "description": "A Sequential Table containing all <page text=\"CNavAreas\">CNavArea</page> that are Visible from this NavArea."
-          }
-        ]
-      },
-      {
         "name": "GetTotalCost",
         "parent": "CNavArea",
         "realms": [
@@ -3779,6 +3764,21 @@
           {
             "type": "number",
             "description": "The total cost"
+          }
+        ]
+      },
+      {
+        "name": "GetVisibleAreas",
+        "parent": "CNavArea",
+        "realms": [
+          "server"
+        ],
+        "description": "Returns all <page text=\"CNavAreas\">CNavArea</page> that are visible from this NavArea.",
+        "returnValues": [
+          {
+            "type": "table",
+            "name": "areas",
+            "description": "A sequential table containing all <page text=\"CNavAreas\">CNavArea</page> that are visible from this NavArea."
           }
         ]
       },
@@ -29751,7 +29751,7 @@
           "client",
           "server"
         ],
-        "description": "Returns players death ragdoll. The ragdoll is created by <page>Player:CreateRagdoll</page>.",
+        "description": "Returns players death ragdoll. The ragdoll is created by <page>Player:CreateRagdoll</page>.\n<bug>Calling <page>Entity:GetPos</page> server-side with this function then will return the position when <page>Player:CreateRagdoll</page> was used.</bug>",
         "returnValues": [
           {
             "type": "Entity",

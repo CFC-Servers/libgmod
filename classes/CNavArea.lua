@@ -262,17 +262,17 @@ function CNavArea:GetSpotEncounters()
 end
 
 ---  server
---- Returns all CNavAreas that are Visible from this NavArea  
---- @return table @A Sequential Table containing all CNavAreas that are Visible from this NavArea.
-function CNavArea:GetSpotEncounters()
-end
-
----  server
 --- Returns the total cost when passing from starting area to the goal area through this node. Set by CNavArea:SetTotalCost.  
 --- Used in pathfinding via the [A* algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm).  
 --- More information can be found on the Simple Pathfinding page.  
 --- @return number @The total cost
 function CNavArea:GetTotalCost()
+end
+
+---  server
+--- Returns all CNavAreas that are visible from this NavArea.  
+--- @return table @A sequential table containing all CNavAreas that are visible from this NavArea.
+function CNavArea:GetVisibleAreas()
 end
 
 ---  server

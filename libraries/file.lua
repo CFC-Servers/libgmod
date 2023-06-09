@@ -34,7 +34,7 @@ end
 
 ---  menu|client|server
 --- Deletes a file or `empty` folder that is relative to the **data** folder. You can't remove any files outside of **data** folder.  
---- ℹ **NOTE**: You are able to delete *any* file in the Menu state.  
+--- ℹ **NOTE**: You are able to delete **any** file in the Menu state.  
 --- @param name string @The file name.
 --- @param path string @The path to look for the files and directories in
 function file.Delete(name, path)
@@ -42,7 +42,7 @@ end
 
 ---  menu|client|server
 --- Returns a boolean of whether the file or directory exists or not.  
---- 🦟 **BUG**: [ This will sometimes return false clientside for directories received from the server via a clientside lua file. You can work around this by using file.Find with the path to the directory followed by a wildcard (no trailing forward slash) and see if the directory is inside the returned directories table (**see second example)**.](https://github.com/Facepunch/garrysmod-issues/issues/1038)  
+--- 🦟 **BUG**: [ This will sometimes return false clientside for directories received from the server via a clientside lua file. You can work around this by using file.Find with the path to the directory followed by a wildcard (no trailing forward slash) and see if the directory is inside the returned directories table (**see second example)**. **This is fixed in the next update.**](https://github.com/Facepunch/garrysmod-issues/issues/1038)  
 --- @param name string @The file or directory's name.
 --- @param gamePath string @The path to look for the files and directories in
 --- @return boolean @Returns `true` if the file exists and `false` if it does not.
@@ -61,7 +61,7 @@ end
 
 ---  menu|client|server
 --- Returns whether the given file is a directory or not.  
---- 🦟 **BUG**: [ This will sometimes return false clientside for directories received from the server via a clientside lua file. You can work around this by using file.Find with the path to the directory followed by a wildcard (no trailing forward slash) and see if the directory is inside the returned directories table (**see second example)**.](https://github.com/Facepunch/garrysmod-issues/issues/1038)  
+--- 🦟 **BUG**: [ This will sometimes return false clientside for directories received from the server via a clientside lua file. You can work around this by using file.Find with the path to the directory followed by a wildcard (no trailing forward slash) and see if the directory is inside the returned directories table (**see second example)**. **This is fixed in the next update.**](https://github.com/Facepunch/garrysmod-issues/issues/1038)  
 --- @param fileName string @The file or directory's name.
 --- @param gamePath string @The path to look for the files and directories in
 --- @return boolean @`true` if the given path is a directory or `false` if it's a file.
