@@ -12,25 +12,21 @@ end
 ---  client
 --- Switches the renderer back to the previous drawing mode from a 3D context.  
 --- This function is an alias of cam.End3D.  
---- 🦟 **BUG**: [This will crash the game if there is no context to end.](https://github.com/Facepunch/garrysmod-issues/issues/1091)  
 function cam.End()
 end
 
 ---  client
 --- Switches the renderer back to the previous drawing mode from a 2D context.  
---- 🦟 **BUG**: [This will crash the game if there is no context to end.](https://github.com/Facepunch/garrysmod-issues/issues/1091)  
 function cam.End2D()
 end
 
 ---  client
 --- Switches the renderer back to the previous drawing mode from a 3D context.  
---- 🦟 **BUG**: [This will crash the game if there is no context to end.](https://github.com/Facepunch/garrysmod-issues/issues/1091)  
 function cam.End3D()
 end
 
 ---  client
 --- Switches the renderer back to the previous drawing mode from a 3D2D context.  
---- 🦟 **BUG**: [This will crash the game if there is no context to end.](https://github.com/Facepunch/garrysmod-issues/issues/1091)  
 function cam.End3D2D()
 end
 

@@ -600,6 +600,7 @@
       }
     ],
     "realms": [
+      "menu",
       "client",
       "server"
     ],
@@ -675,6 +676,7 @@
       }
     ],
     "realms": [
+      "menu",
       "client",
       "server"
     ],
@@ -1153,7 +1155,8 @@
       }
     ],
     "realms": [
-      "client"
+      "client",
+      "menu"
     ],
     "description": "Used for <page>surface.CreateFont</page>.",
     "name": "FontData"
@@ -1269,6 +1272,7 @@
       }
     ],
     "realms": [
+      "menu",
       "client",
       "server"
     ],
@@ -1834,7 +1838,8 @@
       }
     ],
     "realms": [
-      "client"
+      "client",
+      "menu"
     ],
     "description": "A structure containing vertex information for use with <page>surface.DrawPoly</page>.\n\nUV coordinates describe which part of a given texture should be drawn at a vertex - your graphics card's interpolator will fill in space between vertices. UV coords range from `0-1`, with `0` being top/left and `1` being bottom/right. If you're using a texture these are mandatory.\n\n<note>You must pass a table of tables with this structure to the function. **You need to pass at least 3 points.**\n\nYour points must be defined in a **clockwise order.** Otherwise, your shape will not render properly.</note>",
     "name": "PolygonVertex"
@@ -2837,7 +2842,8 @@
       }
     ],
     "realms": [
-      "client"
+      "client",
+      "menu"
     ],
     "description": "Used for <page>draw.Text</page>.",
     "name": "TextData"
@@ -3792,7 +3798,8 @@
       }
     ],
     "realms": [
-      "client"
+      "client",
+      "menu"
     ],
     "description": "Table used by <page>video.Record</page>.",
     "name": "VideoData"

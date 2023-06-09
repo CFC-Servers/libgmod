@@ -1,4 +1,6 @@
 --- Used to interface with the built-in game events system.  
+--- ℹ **NOTE**:   
+--- All Serverside gameevents are networked and called clientside. It could happen that a gameevent is called twice because of this like OnRequestFullUpdate.  
 --- The following is a list of all available game events.  
 _G.gameevent = {}
 ---  client|server
