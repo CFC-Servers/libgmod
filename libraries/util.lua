@@ -641,13 +641,11 @@ function util.TraceEntity(tracedata, ent)
 end
 
 ---  client|server
---- 🛑 **DEPRECATED**: This function is broken and returns the same values all the time  
---- Traces from one entity to another.  
---- @param ent1 Entity @The first entity to trace from
---- @param ent2 Entity @The second entity to trace to
---- @deprecated
+--- Identical to util.TraceHull but uses an entity for `mins`/`maxs` inputs.  
+--- @param tracedata table @Trace data
+--- @param ent Entity @The entity to use mins/maxs of for the hull trace.
 --- @return table @Trace result
-function util.TraceEntityHull(ent1, ent2)
+function util.TraceEntityHull(tracedata, ent)
 end
 
 ---  client|server

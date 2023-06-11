@@ -16522,7 +16522,7 @@
         "realms": [
           "server"
         ],
-        "description": "Applies the specified amount of damage to the entity with <page text=\"DMG_GENERIC\">Enums/DMG</page> flag.\n\n<warning>Calling this function on the victim entity in <page>ENTITY:OnTakeDamage</page> can cause infinite loops.</warning>\n<warning>This function does not seem to do any damage if you apply it to a player who is into a vehicle.</warning>",
+        "description": "Applies the specified amount of damage to the entity with <page text=\"DMG_GENERIC\">Enums/DMG</page> flag.\n\n<warning>Calling this function on the victim entity in <page>ENTITY:OnTakeDamage</page> can cause infinite loops.</warning>\n<warning>This function does not seem to do any damage if you apply it to a player who is into a vehicle. You need to call it on the vehicle instead.</warning>",
         "arguments": [
           {
             "name": "damageAmount",
@@ -16547,7 +16547,7 @@
         "realms": [
           "server"
         ],
-        "description": "Applies the damage specified by the damage info to the entity.\n\n<note>This function will not deal damage to a player inside a vehicle. You need to call it on the vehicle instead.</note>\n<warning>Calling this function on the victim entity in <page>ENTITY:OnTakeDamage</page> can cause infinite loops.</warning>",
+        "description": "Applies the damage specified by the damage info to the entity.\n\n<warning>Calling this function on the victim entity in <page>ENTITY:OnTakeDamage</page> can cause infinite loops.</warning>\n<warning>This function will not deal damage to a player inside a vehicle. You need to call it on the vehicle instead.</warning>",
         "arguments": [
           {
             "name": "damageInfo",
@@ -21183,14 +21183,6 @@
         ]
       },
       {
-        "name": "RemoveMemory",
-        "parent": "NPC",
-        "realms": [
-          "server"
-        ],
-        "description": "<deprecated></deprecated>\n\nThis function crashes the game no matter how it is used and will be removed in a future update.\n\nUse <page>NPC:ClearEnemyMemory</page> instead."
-      },
-      {
         "name": "ResetIdealActivity",
         "parent": "NPC",
         "realms": [
@@ -24294,7 +24286,7 @@
         "realms": [
           "client"
         ],
-        "description": "Focuses the panel and enables it to receive input.\n\nThis automatically calls <page>Panel:SetMouseInputEnabled</page> and <page>Panel:SetKeyboardInputEnabled</page> and sets them to `true`.\n\n<note>Panels derived from <page>Panel</page> will not work properly with this function. Due to this, any children will not be intractable with keyboard. Derive from <page>EditablePanel</page> instead.\n\nFor non gui related mouse focus, you can use <page>gui.EnableScreenClicker</page>.</note>"
+        "description": "Focuses the panel and enables it to receive input.\n\nThis automatically calls <page>Panel:SetMouseInputEnabled</page> and <page text=\"Panel:SetKeyboardInputEnabled\">Panel:SetKeyboardInputEnabled(lowercase)</page> and sets them to `true`.\n\n<note>Panels derived from <page>Panel</page> will not work properly with this function. Due to this, any children will not be intractable with keyboard. Derive from <page>EditablePanel</page> instead.\n\nFor non gui related mouse focus, you can use <page>gui.EnableScreenClicker</page>.</note>"
       },
       {
         "name": "MouseCapture",

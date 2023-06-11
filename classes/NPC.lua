@@ -660,14 +660,6 @@ function NPC:RememberUnreachable(ent, time)
 end
 
 ---  server
---- 🛑 **DEPRECATED**:   
---- This function crashes the game no matter how it is used and will be removed in a future update.  
---- Use NPC:ClearEnemyMemory instead.  
---- @deprecated
-function NPC:RemoveMemory()
-end
-
----  server
 --- Resets the ideal activity of the NPC. See also NPC:SetIdealActivity.  
 --- @param act number @The new activity
 function NPC:ResetIdealActivity(act)

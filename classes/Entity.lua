@@ -4035,7 +4035,7 @@ end
 ---  server
 --- Applies the specified amount of damage to the entity with DMG_GENERIC flag.  
 --- ⚠ **WARNING**: Calling this function on the victim entity in ENTITY:OnTakeDamage can cause infinite loops.  
---- ⚠ **WARNING**: This function does not seem to do any damage if you apply it to a player who is into a vehicle.  
+--- ⚠ **WARNING**: This function does not seem to do any damage if you apply it to a player who is into a vehicle. You need to call it on the vehicle instead.  
 --- @param damageAmount number @The amount of damage to be applied.
 --- @param attacker Entity @The entity that initiated the attack that caused the damage.
 --- @param inflictor Entity @The entity that applied the damage, eg
@@ -4044,8 +4044,8 @@ end
 
 ---  server
 --- Applies the damage specified by the damage info to the entity.  
---- ℹ **NOTE**: This function will not deal damage to a player inside a vehicle. You need to call it on the vehicle instead.  
 --- ⚠ **WARNING**: Calling this function on the victim entity in ENTITY:OnTakeDamage can cause infinite loops.  
+--- ⚠ **WARNING**: This function will not deal damage to a player inside a vehicle. You need to call it on the vehicle instead.  
 --- @param damageInfo CTakeDamageInfo @The damage to apply.
 function Entity:TakeDamageInfo(damageInfo)
 end
