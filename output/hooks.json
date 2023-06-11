@@ -8879,14 +8879,6 @@
         "description": "This hook makes the engine load the spawnlist text files.\nIt calls <page>spawnmenu.PopulateFromEngineTextFiles</page> by default."
       },
       {
-        "name": "PopulateSTOOLMenu",
-        "parent": "SANDBOX",
-        "realms": [
-          "client"
-        ],
-        "description": "Called to populate the Scripted Tool menu.\n\n<deprecated>This hook is never called. Use <page>SANDBOX:PopulateToolMenu</page> instead.</deprecated>"
-      },
-      {
         "name": "PopulateToolMenu",
         "parent": "SANDBOX",
         "realms": [

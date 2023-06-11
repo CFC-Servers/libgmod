@@ -8234,7 +8234,6 @@
       }
     ],
     "realms": [
-      "menu",
       "client",
       "server"
     ],

@@ -27623,17 +27623,17 @@
           "client",
           "server"
         ],
-        "description": "<deprecated>This function is broken and returns the same values all the time</deprecated>\nTraces from one entity to another.",
+        "description": "Identical to <page>util.TraceHull</page> but uses an entity for `mins`/`maxs` inputs.",
         "arguments": [
           {
-            "name": "ent1",
-            "type": "Entity",
-            "description": "The first entity to trace from"
+            "name": "tracedata",
+            "type": "table",
+            "description": "Trace data. See <page>Structures/Trace</page>"
           },
           {
-            "name": "ent2",
+            "name": "ent",
             "type": "Entity",
-            "description": "The second entity to trace to"
+            "description": "The entity to use mins/maxs of for the hull trace."
           }
         ],
         "returnValues": [
