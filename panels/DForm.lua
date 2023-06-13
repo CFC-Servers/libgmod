@@ -1,7 +1,7 @@
 --- An easy form with functions to quickly add form elements  
 --- @class DForm : DCollapsibleCategory
 local DForm = {}
----  client
+---  client|menu
 --- Adds one or two items to the DForm.  
 --- If this method is called with only one argument, it is added to the bottom of the form. If two arguments are passed, they are placed side-by-side at the bottom of the form.  
 --- Internally, this function is used by the various DForm functions to, for example, add labels to the left of buttons.  
@@ -10,7 +10,7 @@ local DForm = {}
 function DForm:AddItem(left, right)
 end
 
----  client
+---  client|menu
 --- Adds a DButton onto the DForm  
 --- @param text string @The text on the button
 --- @param concommand string @The concommand to run when the button is clicked
@@ -19,7 +19,7 @@ end
 function DForm:Button(text, concommand, ...)
 end
 
----  client
+---  client|menu
 --- Adds a DCheckBoxLabel onto the DForm.  
 --- ℹ **NOTE**: This will run DCheckBoxLabel:OnChange when being added. This is caused by Panel:SetConVar being used when this function is used. To avoid this, use DForm:AddItem with a DCheckBoxLabel.  
 --- @param label string @The label to be set next to the check box
@@ -28,7 +28,7 @@ end
 function DForm:CheckBox(label, convar)
 end
 
----  client
+---  client|menu
 --- Adds a DComboBox onto the DForm  
 --- @param title string @Text to the left of the combo box
 --- @param convar string @Console variable to change when the user selects something from the dropdown.
@@ -37,21 +37,21 @@ end
 function DForm:ComboBox(title, convar)
 end
 
----  client
+---  client|menu
 --- Adds a DLabel onto the DForm. Unlike DForm:Help, this is indented and is colored blue, depending on the derma skin.  
 --- @param help string @The help message to be displayed.
 --- @return Panel @The created DLabel
 function DForm:ControlHelp(help)
 end
 
----  client
+---  client|menu
 --- Adds a DLabel onto the DForm as a helper  
 --- @param help string @The help message to be displayed
 --- @return Panel @The created DLabel
 function DForm:Help(help)
 end
 
----  client
+---  client|menu
 --- Adds a DListBox onto the DForm  
 --- 🛑 **DEPRECATED**: Use DListView with DForm:AddItem instead.  
 --- @param label string @The label to set on the DListBox
@@ -61,7 +61,7 @@ end
 function DForm:ListBox(label)
 end
 
----  client
+---  client|menu
 --- Adds a DNumSlider onto the DForm  
 --- @param label string @The label of the DNumSlider
 --- @param convar string @The console variable to change when the slider is changed
@@ -72,7 +72,7 @@ end
 function DForm:NumSlider(label, convar, min, max, decimals)
 end
 
----  client
+---  client|menu
 --- Adds a DNumberWang onto the DForm  
 --- @param label string @The label to be placed next to the DNumberWang
 --- @param convar string @The console variable to change when the slider is changed
@@ -84,7 +84,7 @@ end
 function DForm:NumberWang(label, convar, min, max, decimals)
 end
 
----  client
+---  client|menu
 --- 🛑 **DEPRECATED**: This is derived from the deprecated DPanelSelect.  
 --- Creates a DPanelSelect and docks it to the top of the DForm.  
 --- @deprecated
@@ -92,7 +92,7 @@ end
 function DForm:PanelSelect()
 end
 
----  client
+---  client|menu
 --- Creates a PropSelect panel and docks it to the top of the DForm.  
 --- @param label string @The label to display above the prop select.
 --- @param convar string @The convar to set the selected model to.
@@ -102,20 +102,20 @@ end
 function DForm:PropSelect(label, convar, models, height)
 end
 
----  client
+---  client|menu
 --- 🛑 **DEPRECATED**:   
 --- Does nothing.  
 --- @deprecated
 function DForm:Rebuild()
 end
 
----  client
+---  client|menu
 --- Sets the title (header) name of the DForm. This is `Label` until set.  
 --- @param name string @The new header name.
 function DForm:SetName(name)
 end
 
----  client
+---  client|menu
 --- Adds a DTextEntry to a DForm  
 --- @param label string @The label to be next to the text entry
 --- @param convar string @The console variable to be changed when the text entry is changed

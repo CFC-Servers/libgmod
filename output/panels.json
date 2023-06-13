@@ -3555,7 +3555,8 @@
         "name": "Close",
         "parent": "DDrawer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Closes the <page>DDrawer</page>."
       },
@@ -3563,7 +3564,8 @@
         "name": "GetOpenSize",
         "parent": "DDrawer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Return the Open Size of DDrawer.",
         "returnValues": [
@@ -3577,7 +3579,8 @@
         "name": "GetOpenTime",
         "parent": "DDrawer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Return the Open Time of DDrawer.",
         "returnValues": [
@@ -3591,7 +3594,8 @@
         "name": "Open",
         "parent": "DDrawer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Opens the <page>DDrawer</page>."
       },
@@ -3599,7 +3603,8 @@
         "name": "SetOpenSize",
         "parent": "DDrawer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Set the height of DDrawer",
         "arguments": [
@@ -3614,7 +3619,8 @@
         "name": "SetOpenTime",
         "parent": "DDrawer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Set the time (in seconds) for DDrawer to open.",
         "arguments": [
@@ -3629,7 +3635,8 @@
         "name": "Toggle",
         "parent": "DDrawer",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Toggles the <page>DDrawer</page>."
       }
@@ -3702,13 +3709,14 @@
   {
     "name": "DExpandButton",
     "parent": "DButton",
-    "description": "<internal></internal>The little \"+\" button used by <page>DProperties</page> and <page>DTree_Node</page>.",
+    "description": "<internal></internal>\nThe little \"+\" button used by <page>DProperties</page> and <page>DTree_Node</page>.",
     "functions": [
       {
         "name": "GetExpanded",
         "parent": "DExpandButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether this DExpandButton is expanded or not.",
         "returnValues": [
@@ -3722,7 +3730,8 @@
         "name": "SetExpanded",
         "parent": "DExpandButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether this DExpandButton should be expanded or not. Only changes appearance.",
         "arguments": [
@@ -4149,7 +4158,8 @@
         "name": "AddItem",
         "parent": "DForm",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds one or two items to the DForm.\nIf this method is called with only one argument, it is added to the bottom of the form. If two arguments are passed, they are placed side-by-side at the bottom of the form.\n\nInternally, this function is used by the various DForm functions to, for example, add labels to the left of buttons.",
         "arguments": [
@@ -4170,7 +4180,8 @@
         "name": "Button",
         "parent": "DForm",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a <page>DButton</page> onto the <page>DForm</page>",
         "arguments": [
@@ -4201,7 +4212,8 @@
         "name": "CheckBox",
         "parent": "DForm",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a <page>DCheckBoxLabel</page> onto the <page>DForm</page>.\n<note>This will run <page>DCheckBoxLabel:OnChange</page> when being added. This is caused by <page>Panel:SetConVar</page> being used when this function is used. To avoid this, use <page>DForm:AddItem</page> with a <page>DCheckBoxLabel</page>.</note>",
         "arguments": [
@@ -4227,7 +4239,8 @@
         "name": "ComboBox",
         "parent": "DForm",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a <page>DComboBox</page> onto the <page>DForm</page>",
         "arguments": [
@@ -4257,7 +4270,8 @@
         "name": "ControlHelp",
         "parent": "DForm",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a <page>DLabel</page> onto the <page>DForm</page>. Unlike <page>DForm:Help</page>, this is indented and is colored blue, depending on the derma skin.",
         "arguments": [
@@ -4278,7 +4292,8 @@
         "name": "Help",
         "parent": "DForm",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a <page>DLabel</page> onto the <page>DForm</page> as a helper",
         "arguments": [
@@ -4299,7 +4314,8 @@
         "name": "ListBox",
         "parent": "DForm",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a <page>DListBox</page> onto the <page>DForm</page>\n<deprecated>Use <page>DListView</page> with <page>DForm:AddItem</page> instead.</deprecated>",
         "arguments": [
@@ -4324,7 +4340,8 @@
         "name": "NumberWang",
         "parent": "DForm",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a <page>DNumberWang</page> onto the <page>DForm</page>",
         "arguments": [
@@ -4370,7 +4387,8 @@
         "name": "NumSlider",
         "parent": "DForm",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a <page>DNumSlider</page> onto the <page>DForm</page>",
         "arguments": [
@@ -4412,7 +4430,8 @@
         "name": "PanelSelect",
         "parent": "DForm",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>This is derived from the deprecated <page>DPanelSelect</page>.</deprecated>Creates a <page>DPanelSelect</page> and docks it to the top of the DForm.",
         "returnValues": [
@@ -4426,7 +4445,8 @@
         "name": "PropSelect",
         "parent": "DForm",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Creates a <page>PropSelect</page> panel and docks it to the top of the DForm.",
         "arguments": [
@@ -4463,7 +4483,8 @@
         "name": "Rebuild",
         "parent": "DForm",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated></deprecated>\n\nDoes nothing."
       },
@@ -4471,7 +4492,8 @@
         "name": "SetName",
         "parent": "DForm",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the title (header) name of the DForm. This is `Label` until set.",
         "arguments": [
@@ -4486,7 +4508,8 @@
         "name": "TextEntry",
         "parent": "DForm",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a <page>DTextEntry</page> to a <page>DForm</page>",
         "arguments": [
@@ -4523,7 +4546,8 @@
         "name": "Center",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Centers the frame relative to the whole screen and invalidates its layout. This overrides <page>Panel:Center</page>."
       },
@@ -4531,7 +4555,8 @@
         "name": "Close",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Hides or removes the DFrame, and calls <page>DFrame:OnClose</page>.\n\nTo set whether the frame is hidden or removed, use <page>DFrame:SetDeleteOnClose</page>."
       },
@@ -4539,7 +4564,8 @@
         "name": "GetBackgroundBlur",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets whether the background behind the frame is being blurred.",
         "returnValues": [
@@ -4553,7 +4579,8 @@
         "name": "GetDeleteOnClose",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Determines whether or not the DFrame will be removed when it is closed. This is set with <page>DFrame:SetDeleteOnClose</page>.",
         "returnValues": [
@@ -4567,7 +4594,8 @@
         "name": "GetDraggable",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets whether or not the frame is draggable by the user.",
         "returnValues": [
@@ -4581,7 +4609,8 @@
         "name": "GetIsMenu",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets whether or not the frame is part of a derma menu. This is set with <page>DFrame:SetIsMenu</page>.",
         "returnValues": [
@@ -4595,7 +4624,8 @@
         "name": "GetMinHeight",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the minimum height the DFrame can be resized to by the user.\n\nYou must call <page>DFrame:SetSizable</page> before the user can resize the frame.",
         "returnValues": [
@@ -4609,7 +4639,8 @@
         "name": "GetMinWidth",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the minimum width the DFrame can be resized to by the user.\n\nYou must call <page>DFrame:SetSizable</page> before the user can resize the frame.",
         "returnValues": [
@@ -4623,7 +4654,8 @@
         "name": "GetPaintShadow",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets whether or not the shadow effect bordering the DFrame is being drawn.",
         "returnValues": [
@@ -4637,7 +4669,8 @@
         "name": "GetScreenLock",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets whether or not the DFrame is restricted to the boundaries of the screen resolution.",
         "returnValues": [
@@ -4651,7 +4684,8 @@
         "name": "GetSizable",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets whether or not the DFrame can be resized by the user.\n\nThis is achieved by clicking and dragging in the bottom right corner of the frame.",
         "returnValues": [
@@ -4665,7 +4699,8 @@
         "name": "GetTitle",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the title of the frame.",
         "returnValues": [
@@ -4679,7 +4714,8 @@
         "name": "IsActive",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Determines if the frame or one of its children has the screen focus.",
         "returnValues": [
@@ -4693,7 +4729,8 @@
         "name": "OnClose",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the DFrame is closed with <page>DFrame:Close</page>. This applies when the `close` button in the DFrame's control box is clicked.\n\nThis function does nothing and is safe to override.\n\nThis is **not** called when the DFrame is removed with <page>Panel:Remove</page>, see <page>PANEL:OnRemove</page> for that."
       },
@@ -4701,7 +4738,8 @@
         "name": "SetBackgroundBlur",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Indicate that the background elements won't be usable.",
         "arguments": [
@@ -4716,7 +4754,8 @@
         "name": "SetDeleteOnClose",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Determines whether or not the DFrame is removed when it is closed with <page>DFrame:Close</page>.",
         "arguments": [
@@ -4731,7 +4770,8 @@
         "name": "SetDraggable",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether the frame should be draggable by the user. The DFrame can only be dragged from its title bar.",
         "arguments": [
@@ -4746,7 +4786,8 @@
         "name": "SetIcon",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds or removes an icon on the left of the <page>DFrame</page>'s title.",
         "arguments": [
@@ -4761,7 +4802,8 @@
         "name": "SetIsMenu",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether the frame is part of a derma menu or not.\n\nIf this is set to `true`, <page>Global.CloseDermaMenus</page> will not be called when the frame is clicked, and thus any open menus will remain open.",
         "arguments": [
@@ -4776,7 +4818,8 @@
         "name": "SetMinHeight",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the minimum height the DFrame can be resized to by the user.\n\nThis only applies to users attempting to resize the frame; <page>Panel:SetTall</page> and similar methods will not be affected. You must call <page>DFrame:SetSizable</page> before the user can resize the frame.",
         "arguments": [
@@ -4791,7 +4834,8 @@
         "name": "SetMinWidth",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the minimum width the DFrame can be resized to by the user.\n\nThis only applies to users attempting to resize the frame; <page>Panel:SetWide</page> and similar methods will not be affected. You must call <page>DFrame:SetSizable</page> before the user can resize the frame.",
         "arguments": [
@@ -4806,7 +4850,8 @@
         "name": "SetPaintShadow",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether or not the shadow effect bordering the DFrame should be drawn.",
         "arguments": [
@@ -4821,7 +4866,8 @@
         "name": "SetScreenLock",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether the DFrame is restricted to the boundaries of the screen resolution.",
         "arguments": [
@@ -4836,7 +4882,8 @@
         "name": "SetSizable",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether or not the <page>DFrame</page> can be resized by the user.\n\nThis is achieved by clicking and dragging in the bottom right corner of the frame.\n\nYou can set the minimum size using <page>DFrame:SetMinWidth</page> and <page>DFrame:SetMinHeight</page>.",
         "arguments": [
@@ -4851,7 +4898,8 @@
         "name": "SetTitle",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the title of the frame.",
         "arguments": [
@@ -4866,7 +4914,8 @@
         "name": "ShowCloseButton",
         "parent": "DFrame",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Determines whether the DFrame's control box (close, minimise and maximise buttons) is displayed.",
         "arguments": [
@@ -4888,7 +4937,8 @@
         "name": "AddItem",
         "parent": "DGrid",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a new item to the grid.",
         "arguments": [
@@ -4903,7 +4953,8 @@
         "name": "GetCols",
         "parent": "DGrid",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the number of columns of this <page>DGrid</page>. Set by <page>DGrid:SetCols</page>.",
         "returnValues": [
@@ -4917,7 +4968,8 @@
         "name": "GetColWide",
         "parent": "DGrid",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the width of each column of the <page>DGrid</page>, which is set by <page>DGrid:SetColWide</page>.",
         "returnValues": [
@@ -4931,7 +4983,8 @@
         "name": "GetItems",
         "parent": "DGrid",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns a list of panels in the grid.",
         "returnValues": [
@@ -4945,7 +4998,8 @@
         "name": "GetRowHeight",
         "parent": "DGrid",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the height of each row of the <page>DGrid</page>, which is set by <page>DGrid:SetRowHeight</page>.",
         "returnValues": [
@@ -4959,7 +5013,8 @@
         "name": "RemoveItem",
         "parent": "DGrid",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Removes given panel from the <page>DGrid:GetItems</page>.",
         "arguments": [
@@ -4980,7 +5035,8 @@
         "name": "SetCols",
         "parent": "DGrid",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the number of columns this panel should have.\n\nThe <page>DGrid</page> will resize its width to match this value.",
         "arguments": [
@@ -4995,7 +5051,8 @@
         "name": "SetColWide",
         "parent": "DGrid",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the width of each column.\n\nThe cell panels (grid items) will not be resized or centered.",
         "arguments": [
@@ -5010,7 +5067,8 @@
         "name": "SetRowHeight",
         "parent": "DGrid",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the height of each row.\n\nThe cell panels (grid items) will not be resized or centered.",
         "arguments": [
@@ -5025,7 +5083,8 @@
         "name": "SortByMember",
         "parent": "DGrid",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sorts the items in the grid. Does not visually update the grid, use <page>Panel:InvalidateLayout</page> for that.",
         "arguments": [
@@ -5326,7 +5385,8 @@
         "name": "AddPanel",
         "parent": "DHorizontalScroller",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a panel to the <page>DHorizontalScroller</page>.",
         "arguments": [
@@ -5341,7 +5401,8 @@
         "name": "GetCanvas",
         "parent": "DHorizontalScroller",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the internal canvas panel where the content of <page>DHorizontalScroller</page> are placed on.",
         "returnValues": [
@@ -5355,7 +5416,8 @@
         "name": "GetOverlap",
         "parent": "DHorizontalScroller",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "No Description",
         "returnValues": [
@@ -5368,7 +5430,8 @@
         "name": "GetShowDropTargets",
         "parent": "DHorizontalScroller",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "No Description",
         "returnValues": [
@@ -5381,7 +5444,8 @@
         "name": "MakeDroppable",
         "parent": "DHorizontalScroller",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Same as <page>DDragBase:MakeDroppable</page>.\nTODO: Transclude or whatever to here?",
         "arguments": [
@@ -5395,7 +5459,8 @@
         "name": "OnDragModified",
         "parent": "DHorizontalScroller",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the panel is scrolled."
       },
@@ -5403,7 +5468,8 @@
         "name": "ScrollToChild",
         "parent": "DHorizontalScroller",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Scrolls the <page>DHorizontalScroller</page> to given child panel.",
         "arguments": [
@@ -5418,7 +5484,8 @@
         "name": "SetOverlap",
         "parent": "DHorizontalScroller",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Controls the spacing between elements of the horizontal scroller.",
         "arguments": [
@@ -5433,7 +5500,8 @@
         "name": "SetScroll",
         "parent": "DHorizontalScroller",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the scroll amount, automatically clamping the value.",
         "arguments": [
@@ -5448,7 +5516,8 @@
         "name": "SetShowDropTargets",
         "parent": "DHorizontalScroller",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "No Description",
         "arguments": [
@@ -5462,7 +5531,8 @@
         "name": "SetUseLiveDrag",
         "parent": "DHorizontalScroller",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Same as <page>DDragBase:SetUseLiveDrag</page>",
         "arguments": [
@@ -5620,7 +5690,8 @@
         "name": "FinishedLoading",
         "parent": "DHTMLControls",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>"
       },
@@ -5628,7 +5699,8 @@
         "name": "SetButtonColor",
         "parent": "DHTMLControls",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the color of the navigation buttons.",
         "arguments": [
@@ -5643,7 +5715,8 @@
         "name": "SetHTML",
         "parent": "DHTMLControls",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the <page>DHTML</page> element to control with these <page>DHTMLControls</page>.",
         "arguments": [
@@ -5658,7 +5731,8 @@
         "name": "StartedLoading",
         "parent": "DHTMLControls",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>"
       },
@@ -5666,7 +5740,8 @@
         "name": "UpdateHistory",
         "parent": "DHTMLControls",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nBasically adds an URL to the history.",
         "arguments": [
@@ -5680,7 +5755,8 @@
         "name": "UpdateNavButtonStatus",
         "parent": "DHTMLControls",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>"
       }
@@ -5695,7 +5771,8 @@
         "name": "Fill",
         "parent": "DIconBrowser",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nAutomatically called to fill the browser with icons. Will not work if <page>DIconBrowser:SetManual</page> is set to true."
       },
@@ -5703,7 +5780,8 @@
         "name": "FilterByText",
         "parent": "DIconBrowser",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "A simple unused search feature, hides all icons that do not contain given text in their file path.",
         "arguments": [
@@ -5718,7 +5796,8 @@
         "name": "GetManual",
         "parent": "DIconBrowser",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether or not the browser should fill itself with icons.",
         "returnValues": [
@@ -5731,7 +5810,8 @@
         "name": "GetSelectedIcon",
         "parent": "DIconBrowser",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the currently selected icon's file path.",
         "returnValues": [
@@ -5745,7 +5825,8 @@
         "name": "OnChange",
         "parent": "DIconBrowser",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the selected icon was changed. Use <page>DIconBrowser:GetSelectedIcon</page> to get the selected icon's filepath."
       },
@@ -5753,7 +5834,8 @@
         "name": "OnChangeInternal",
         "parent": "DIconBrowser",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nUse <page>DIconBrowser:OnChange</page> instead"
       },
@@ -5761,7 +5843,8 @@
         "name": "ScrollToSelected",
         "parent": "DIconBrowser",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Scrolls the browser to the selected icon"
       },
@@ -5769,7 +5852,8 @@
         "name": "SelectIcon",
         "parent": "DIconBrowser",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Selects an icon from file path",
         "arguments": [
@@ -5784,7 +5868,8 @@
         "name": "SetManual",
         "parent": "DIconBrowser",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether or not the browser should automatically fill itself with icons.",
         "arguments": [
@@ -5798,7 +5883,8 @@
         "name": "SetSelectedIcon",
         "parent": "DIconBrowser",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nSet the currently selected file path. Do not use. Use <page>DIconBrowser:SelectIcon</page> instead.",
         "arguments": [
@@ -5819,7 +5905,8 @@
         "name": "Copy",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Creates a replica of the DIconLayout it is called on.",
         "returnValues": [
@@ -5833,7 +5920,8 @@
         "name": "CopyContents",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Copies the contents (Child elements) of another <page>DIconLayout</page> to itself.",
         "arguments": [
@@ -5848,7 +5936,8 @@
         "name": "GetBorder",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the size of the border.",
         "returnValues": [
@@ -5861,7 +5950,8 @@
         "name": "GetLayoutDir",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the direction that it will be layed out, using the DOCK enumerations.",
         "returnValues": [
@@ -5875,7 +5965,8 @@
         "name": "GetSpaceX",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the distance between two 'icons' on the X axis.",
         "returnValues": [
@@ -5889,7 +5980,8 @@
         "name": "GetSpaceY",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns distance between two \"Icons\" on the Y axis.",
         "returnValues": [
@@ -5903,7 +5995,8 @@
         "name": "GetStretchHeight",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the icon layout will stretch its height to fit all the children.\n\nSee also <page>DIconLayout:GetStretchWidth</page>",
         "returnValues": [
@@ -5916,7 +6009,8 @@
         "name": "GetStretchWidth",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the icon layout will stretch its width to fit all the children.\n\nSee also <page>DIconLayout:GetStretchHeight</page>",
         "returnValues": [
@@ -5929,7 +6023,8 @@
         "name": "Layout",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Resets layout vars before calling <page>Panel:InvalidateLayout</page>. This is called when children are added or removed, and must be called when the spacing, border or layout direction is changed."
       },
@@ -5937,7 +6032,8 @@
         "name": "LayoutIcons_LEFT",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nUsed internally to layout the child elements if the <page>DIconLayout:SetLayoutDir</page> is set to LEFT (See <page>Enums/DOCK</page>)."
       },
@@ -5945,7 +6041,8 @@
         "name": "LayoutIcons_TOP",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nUsed internally to layout the child elements if the <page>DIconLayout:SetLayoutDir</page> is set to TOP (See <page>Enums/DOCK</page>)."
       },
@@ -5953,7 +6050,8 @@
         "name": "OnModified",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the panel is modified."
       },
@@ -5961,7 +6059,8 @@
         "name": "SetBorder",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the internal border (padding) within the DIconLayout. This will not change its size, only the positioning of children. You must call <page>DIconLayout:Layout</page> in order for the changes to take effect.",
         "arguments": [
@@ -5976,7 +6075,8 @@
         "name": "SetLayoutDir",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the direction that it will be layed out, using the <page>Enums/DOCK</page>.\n\nCurrently only TOP and LEFT are supported.",
         "arguments": [
@@ -5991,7 +6091,8 @@
         "name": "SetSpaceX",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the horizontal (x) spacing between children within the DIconLayout. You must call <page>DIconLayout:Layout</page> in order for the changes to take effect.",
         "arguments": [
@@ -6006,7 +6107,8 @@
         "name": "SetSpaceY",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the vertical (y) spacing between children within the DIconLayout. You must call <page>DIconLayout:Layout</page> in order for the changes to take effect.",
         "arguments": [
@@ -6021,7 +6123,8 @@
         "name": "SetStretchHeight",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "If set to true, the icon layout will stretch its height to fit all the children.\n\nSee also <page>DIconLayout:SetStretchWidth</page>",
         "arguments": [
@@ -6035,7 +6138,8 @@
         "name": "SetStretchWidth",
         "parent": "DIconLayout",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "If set to true, the icon layout will stretch its width to fit all the children.\n\nSee also <page>DIconLayout:SetStretchHeight</page>",
         "arguments": [
@@ -6056,7 +6160,8 @@
         "name": "DoLoadMaterial",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nActually loads the <page>IMaterial</page> to render it. Called from <page>DImage:LoadMaterial</page>."
       },
@@ -6064,7 +6169,8 @@
         "name": "FixVertexLitMaterial",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\n\"Fixes\" the current material of the <page>DImage</page> if it has VertexLit shader by creating a new one with the same name and a prefix of \"_DImage\" and automatically calling <page>DImage:SetMaterial</page> with the new material.\n\nThis fixes the problem where using materials using shaders that expect lighting information causing \"weird\" flickering when displayed in 2D/Unlit environment."
       },
@@ -6072,7 +6178,8 @@
         "name": "GetFailsafeMatName",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nReturns the texture path set by <page>DImage:SetFailsafeMatName</page>.",
         "returnValues": [
@@ -6085,7 +6192,8 @@
         "name": "GetImage",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the image loaded in the image panel.",
         "returnValues": [
@@ -6099,7 +6207,8 @@
         "name": "GetImageColor",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the color override of the image panel.",
         "returnValues": [
@@ -6114,7 +6223,8 @@
         "name": "GetKeepAspect",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the <page>DImage</page> should keep the aspect ratio of its image when being resized.\n\nSee <page>DImage:SetKeepAspect</page> for more info on how it works.",
         "returnValues": [
@@ -6128,7 +6238,8 @@
         "name": "GetMaterial",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the current <page>Global.Material</page> of the <page>DImage</page>.",
         "returnValues": [
@@ -6141,7 +6252,8 @@
         "name": "GetMatName",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nReturns the texture path set by <page>DImage:SetMatName</page>.",
         "returnValues": [
@@ -6154,7 +6266,8 @@
         "name": "LoadMaterial",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nInitializes the loading process of the material to render if it is not loaded yet.\n\nYou do not need to call this function. It is done for you automatically."
       },
@@ -6162,7 +6275,8 @@
         "name": "PaintAt",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Paints a ghost copy of the DImage panel at the given position and dimensions. This function overrides <page>Panel:PaintAt</page>.",
         "arguments": [
@@ -6192,7 +6306,8 @@
         "name": "SetFailsafeMatName",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nSets the backup material to be loaded when the image is first rendered. Used by <page>DImage:SetOnViewMaterial</page>.",
         "arguments": [
@@ -6206,7 +6321,8 @@
         "name": "SetImage",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the image to load into the frame. If the first image can't be loaded and `strBackup` is set, that image will be loaded instead.\n\nThis eventually calls <page>DImage:SetMaterial</page>.",
         "arguments": [
@@ -6227,7 +6343,8 @@
         "name": "SetImageColor",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the image's color override.",
         "arguments": [
@@ -6242,7 +6359,8 @@
         "name": "SetKeepAspect",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether the <page>DImage</page> should keep the aspect ratio of its image when being resized.\n\nNote that this will not try to fit the image inside the button, but instead it will fill the button with the image.",
         "arguments": [
@@ -6257,7 +6375,8 @@
         "name": "SetMaterial",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets a <page>Global.Material</page> directly as an image.",
         "arguments": [
@@ -6272,7 +6391,8 @@
         "name": "SetMatName",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nSets the material to be loaded when the image is first rendered. Used by <page>DImage:SetOnViewMaterial</page>.",
         "arguments": [
@@ -6286,7 +6406,8 @@
         "name": "SetOnViewMaterial",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Similar to <page>DImage:SetImage</page>, but will only do the expensive part of actually loading the textures/material if the material is about to be rendered/viewed.\n\nUseful for cases like <page>DIconBrowser</page>, where there are hundreds of small icons in 1 panel in a list that do not need all to be loaded at the same time.",
         "arguments": [
@@ -6304,7 +6425,8 @@
         "name": "Unloaded",
         "parent": "DImage",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns true if the image is **not** yet loaded.",
         "returnValues": [
@@ -6324,7 +6446,8 @@
         "name": "GetImage",
         "parent": "DImageButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the \"image\" of the <page>DImageButton</page>. Equivalent of <page>DImage:GetImage</page>.",
         "returnValues": [
@@ -6338,7 +6461,8 @@
         "name": "GetStretchToFit",
         "parent": "DImageButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the image inside the button should be stretched to fit it or not\n\nSee <page>DImageButton:SetStretchToFit</page>",
         "returnValues": [
@@ -6351,7 +6475,8 @@
         "name": "SetColor",
         "parent": "DImageButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the color of the image. Equivalent of <page>DImage:SetImageColor</page>",
         "arguments": [
@@ -6366,7 +6491,8 @@
         "name": "SetIcon",
         "parent": "DImageButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated></deprecated>\n\nAlias of <page>DImageButton:SetImage</page>."
       },
@@ -6374,7 +6500,8 @@
         "name": "SetImage",
         "parent": "DImageButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the \"image\" of the <page>DImageButton</page>. Equivalent of <page>DImage:SetImage</page>.",
         "arguments": [
@@ -6394,7 +6521,8 @@
         "name": "SetImageVisible",
         "parent": "DImageButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Hides or shows the image of the image button. Internally this calls <page>Panel:SetVisible</page> on the internal <page>DImage</page>.",
         "arguments": [
@@ -6409,7 +6537,8 @@
         "name": "SetKeepAspect",
         "parent": "DImageButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether the <page>DImageButton</page> should keep the aspect ratio of its image. Equivalent of <page>DImage:SetKeepAspect</page>.\n\nNote that this will not try to fit the image inside the button, but instead it will fill the button with the image.",
         "arguments": [
@@ -6424,7 +6553,8 @@
         "name": "SetMaterial",
         "parent": "DImageButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets a <page>Global.Material</page> directly as an image. Equivalent of <page>DImage:SetMaterial</page>.",
         "arguments": [
@@ -6439,7 +6569,8 @@
         "name": "SetOnViewMaterial",
         "parent": "DImageButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "See <page>DImage:SetOnViewMaterial</page>",
         "arguments": [
@@ -6457,7 +6588,8 @@
         "name": "SetStretchToFit",
         "parent": "DImageButton",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether the image inside the <page>DImageButton</page> should be stretched to fill the entire size of the button, without preserving aspect ratio.\n\nIf set to false, the image will not be resized at all.",
         "arguments": [
@@ -6515,7 +6647,8 @@
         "name": "DoClick",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the label is left clicked (on key release) by the player.\n\nThis will be called after <page>DLabel:OnDepressed</page> and <page>DLabel:OnReleased</page>.\n\nThis can be overridden; by default, it calls <page>DLabel:Toggle</page>.\n\nSee also <page>DLabel:DoRightClick</page>, <page>DLabel:DoMiddleClick</page> and <page>DLabel:DoDoubleClick</page>."
       },
@@ -6523,7 +6656,8 @@
         "name": "DoClickInternal",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called just before <page>DLabel:DoClick</page>.\n\nIn <page>DLabel</page> does nothing and is safe to override. Used by <page>DMenuOption</page> and <page>DCollapsibleCategory</page>'s tabs."
       },
@@ -6531,7 +6665,8 @@
         "name": "DoDoubleClick",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the label is double clicked by the player with left clicks.\n\n<page>DLabel:SetDoubleClickingEnabled</page> must be set to true for this hook to work, which it is by default.\n\nThis will be called after <page>DLabel:OnDepressed</page> and <page>DLabel:OnReleased</page> and <page>DLabel:DoClick</page>.\n\nSee also <page>DLabel:DoRightClick</page> and <page>DLabel:DoMiddleClick</page>."
       },
@@ -6539,7 +6674,8 @@
         "name": "DoDoubleClickInternal",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called just before <page>DLabel:DoDoubleClick</page>. In <page>DLabel</page> does nothing and is safe to override."
       },
@@ -6547,7 +6683,8 @@
         "name": "DoMiddleClick",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the label is middle mouse (Mouse wheel, also known as mouse 3) clicked (on key release) by the player.\n\nThis will be called after <page>DLabel:OnDepressed</page> and <page>DLabel:OnReleased</page>.\n\nSee also <page>DLabel:DoClick</page>, <page>DLabel:DoRightClick</page> and <page>DLabel:DoDoubleClick</page>."
       },
@@ -6555,7 +6692,8 @@
         "name": "DoRightClick",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the label is right clicked (on key release) by the player.\n\nThis will be called after <page>DLabel:OnDepressed</page> and <page>DLabel:OnReleased</page>.\n\nSee also <page>DLabel:DoClick</page>, <page>DLabel:DoMiddleClick</page> and <page>DLabel:DoDoubleClick</page>."
       },
@@ -6563,7 +6701,8 @@
         "name": "GetAutoStretchVertical",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the label stretches vertically or not.\n\nSet by <page>DLabel:SetAutoStretchVertical</page>.",
         "returnValues": [
@@ -6577,7 +6716,8 @@
         "name": "GetBright",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the <page>DLabel</page> should set its text color to the current skin's bright text color.\n\nSee <page>DLabel:SetBright</page>.",
         "returnValues": [
@@ -6590,7 +6730,8 @@
         "name": "GetColor",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the actual color of the text.\n\nSee also <page>DLabel:GetTextColor</page> and <page>DLabel:GetTextStyleColor</page>.",
         "returnValues": [
@@ -6604,7 +6745,8 @@
         "name": "GetDark",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the <page>DLabel</page> should set its text color to the current skin's dark text color.\n\nSee <page>DLabel:SetDark</page>.",
         "returnValues": [
@@ -6617,7 +6759,8 @@
         "name": "GetDisabled",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>Use <page>Panel:IsEnabled</page> instead.</deprecated>\n\nGets the disabled state of the <page>DLabel</page>. This is set with <page>DLabel:SetDisabled</page>.",
         "returnValues": [
@@ -6631,7 +6774,8 @@
         "name": "GetDoubleClickingEnabled",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether or not double clicking will call <page>DLabel:DoDoubleClick</page>.\n\nSee <page>DLabel:SetDoubleClickingEnabled</page>.",
         "returnValues": [
@@ -6645,7 +6789,8 @@
         "name": "GetFont",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the current font of the DLabel. This is set with <page>DLabel:SetFont</page>.",
         "returnValues": [
@@ -6659,7 +6804,8 @@
         "name": "GetHighlight",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the <page>DLabel</page> should set its text color to the current skin's highlighted text color.\n\nSee <page>DLabel:SetHighlight</page>.",
         "returnValues": [
@@ -6672,7 +6818,8 @@
         "name": "GetIsToggle",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the toggle functionality is enabled for a label. Set with <page>DLabel:SetIsToggle</page>.",
         "returnValues": [
@@ -6686,7 +6833,8 @@
         "name": "GetTextColor",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the \"override\" text color, set by <page>DLabel:SetTextColor</page>.",
         "returnValues": [
@@ -6700,7 +6848,8 @@
         "name": "GetTextStyleColor",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nReturns the \"internal\" or fallback color of the text.\n\nSee also <page>DLabel:GetTextColor</page> and <page>DLabel:SetTextStyleColor</page>.",
         "returnValues": [
@@ -6714,7 +6863,8 @@
         "name": "GetToggle",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the current toggle state of the label. This can be set with <page>DLabel:SetToggle</page> and toggled with <page>DLabel:Toggle</page>.\n\nIn order to use toggle functionality, you must first call <page>DLabel:SetIsToggle</page> with `true`, as it is disabled by default.",
         "returnValues": [
@@ -6728,7 +6878,8 @@
         "name": "OnDepressed",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the player presses the label with any mouse button.\n\nThis works as an alternative to <page>PANEL:OnMousePressed</page> as that hook is used heavily by <page>DLabel</page> and overriding it will break functionality.\n\nSee also <page>DLabel:DoClick</page>, <page>DLabel:DoMiddleClick</page>, <page>DLabel:DoRightClick</page>, <page>DLabel:OnReleased</page> and <page>DLabel:DoDoubleClick</page>."
       },
@@ -6736,7 +6887,8 @@
         "name": "OnReleased",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the player releases any mouse button on the label. This is always called after <page>DLabel:OnDepressed</page>.\n\nThis works as an alternative to <page>PANEL:OnMouseReleased</page> as that hook is used heavily by <page>DLabel</page> and overriding it will break functionality.\n\nSee also <page>DLabel:DoClick</page>, <page>DLabel:DoMiddleClick</page>, <page>DLabel:DoRightClick</page> and <page>DLabel:DoDoubleClick</page>."
       },
@@ -6744,7 +6896,8 @@
         "name": "OnToggled",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when the toggle state of the label is changed by <page>DLabel:Toggle</page>.\n\nIn order to use toggle functionality, you must first call <page>DLabel:SetIsToggle</page> with `true`, as it is disabled by default.",
         "arguments": [
@@ -6759,7 +6912,8 @@
         "name": "SetAutoStretchVertical",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Automatically adjusts the height of the label dependent of the height of the text inside of it.",
         "arguments": [
@@ -6774,7 +6928,8 @@
         "name": "SetBright",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>You really should use <page>DLabel:SetTextColor</page>.</deprecated>\n\nSets the color of the text to the bright text color defined in the skin.\n\nSee also <page>DLabel:SetDark</page> and <page>DLabel:SetHighlight</page>.\n\nYou should only consider using this if you are using background elements that are not manually painted and are using the skin colors.",
         "arguments": [
@@ -6789,7 +6944,8 @@
         "name": "SetColor",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Changes color of label. Alias of <page>DLabel:SetTextColor</page>.",
         "arguments": [
@@ -6804,7 +6960,8 @@
         "name": "SetDark",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>You really should use <page>DLabel:SetTextColor</page>.</deprecated>\n\nSets the color of the text to the dark text color defined in the skin.\n\nSee also <page>DLabel:SetBright</page> and <page>DLabel:SetHighlight</page>.\n\nYou should only consider using this if you are using background elements that are not manually painted and are using the skin colors.",
         "arguments": [
@@ -6819,7 +6976,8 @@
         "name": "SetDisabled",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>Use <page>Panel:SetEnabled</page> instead.</deprecated>\n\nSets the disabled state of the <page>DLabel</page>.\n\nWhen disabled, the label does not respond to click, toggle or drag & drop actions.",
         "arguments": [
@@ -6834,7 +6992,8 @@
         "name": "SetDoubleClickingEnabled",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether or not double clicking should call <page>DLabel:DoDoubleClick</page>.\n\nThis is enabled by default.",
         "arguments": [
@@ -6849,7 +7008,8 @@
         "name": "SetFont",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the font of the label.",
         "arguments": [
@@ -6864,7 +7024,8 @@
         "name": "SetHighlight",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>You really should use <page>DLabel:SetTextColor</page>.</deprecated>\n\nSets the color of the text to the highlight text color defined in the skin.\n\nFor the default Derma skin this makes the label red.\n\nSee also <page>DLabel:SetBright</page> and <page>DLabel:SetDark</page>.\n\nYou should only consider using this if you are using background elements that are not manually painted and are using the skin colors.",
         "arguments": [
@@ -6879,7 +7040,8 @@
         "name": "SetIsToggle",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Enables or disables toggle functionality for a label. Retrieved with <page>DLabel:GetIsToggle</page>.\n\nYou must call this before using <page>DLabel:SetToggle</page>, <page>DLabel:GetToggle</page> or <page>DLabel:Toggle</page>.",
         "arguments": [
@@ -6894,7 +7056,8 @@
         "name": "SetTextColor",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the text color of the <page>DLabel</page>. This will take precedence over <page>DLabel:SetTextStyleColor</page>.",
         "arguments": [
@@ -6909,7 +7072,8 @@
         "name": "SetTextStyleColor",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal>Use <page>DLabel:SetTextColor</page> instead!</internal>\n\n\nUsed by <page>DLabel:SetDark</page>, <page>DLabel:SetBright</page> and <page>DLabel:SetHighlight</page> to set the text color without affecting <page>DLabel:SetTextColor</page> calls.",
         "arguments": [
@@ -6924,7 +7088,8 @@
         "name": "SetToggle",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the toggle state of the label. This can be retrieved with <page>DLabel:GetToggle</page> and toggled with <page>DLabel:Toggle</page>.\n\nIn order to use toggle functionality, you must first call <page>DLabel:SetIsToggle</page> with `true`, as it is disabled by default.",
         "arguments": [
@@ -6939,7 +7104,8 @@
         "name": "Toggle",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Toggles the label's state. This can be set and retrieved with <page>DLabel:SetToggle</page> and <page>DLabel:GetToggle</page>.\n\nIn order to use toggle functionality, you must first call <page>DLabel:SetIsToggle</page> with `true`, as it is disabled by default."
       },
@@ -6947,7 +7113,8 @@
         "name": "UpdateColours",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "A hook called from within <page>PANEL:ApplySchemeSettings</page> to determine the color of the text on display.",
         "arguments": [
@@ -6962,7 +7129,8 @@
         "name": "UpdateFGColor",
         "parent": "DLabel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nCalled internally to update the color of the text."
       }
@@ -7034,7 +7202,8 @@
         "name": "GetColor",
         "parent": "DLabelURL",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the current text color of the <page>DLabelURL</page>. Alias as <page>DLabelURL:GetTextColor</page>.",
         "returnValues": [
@@ -7048,7 +7217,8 @@
         "name": "GetTextColor",
         "parent": "DLabelURL",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the current text color of the <page>DLabelURL</page> set by <page>DLabelURL:SetTextColor</page>.",
         "returnValues": [
@@ -7062,7 +7232,8 @@
         "name": "GetTextStyleColor",
         "parent": "DLabelURL",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the color set by <page>DLabelURL:SetTextStyleColor</page>.",
         "returnValues": [
@@ -7076,7 +7247,8 @@
         "name": "SetColor",
         "parent": "DLabelURL",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Alias of <page>DLabelURL:SetTextColor</page>.",
         "arguments": [
@@ -7091,7 +7263,8 @@
         "name": "SetTextColor",
         "parent": "DLabelURL",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the text color of the <page>DLabelURL</page>. Overrides <page>DLabelURL:SetTextStyleColor</page>.\n\n\nThis should only be used immediately after it is created, and otherwise <page>Panel:SetFGColor</page>.",
         "arguments": [
@@ -7106,7 +7279,8 @@
         "name": "SetTextStyleColor",
         "parent": "DLabelURL",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the base text color of the <page>DLabelURL</page>. This is overridden by <page>DLabelURL:SetTextColor</page>.",
         "arguments": [
@@ -7143,7 +7317,8 @@
         "name": "AddColumn",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a column to the listview.",
         "arguments": [
@@ -7170,7 +7345,8 @@
         "name": "AddLine",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a line to the list view.",
         "arguments": [
@@ -7191,7 +7367,8 @@
         "name": "ClearSelection",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Clears the current selection in the DListView."
       },
@@ -7199,7 +7376,8 @@
         "name": "ColumnWidth",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the width of a column.",
         "arguments": [
@@ -7220,7 +7398,8 @@
         "name": "DataLayout",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Creates the lines and gets the height of the contents, in a DListView.",
         "returnValues": [
@@ -7234,7 +7413,8 @@
         "name": "DisableScrollbar",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Removes the scrollbar."
       },
@@ -7242,7 +7422,8 @@
         "name": "DoDoubleClick",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when a line in the DListView is double clicked.",
         "arguments": [
@@ -7262,7 +7443,8 @@
         "name": "FixColumnsLayout",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nInternal helper function called from the <page>PANEL:PerformLayout</page> of <page>DListView</page>."
       },
@@ -7270,7 +7452,8 @@
         "name": "GetCanvas",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the canvas.",
         "returnValues": [
@@ -7284,7 +7467,8 @@
         "name": "GetDataHeight",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the height of the data of the <page>DListView</page>.\n\nSee also <page>DListView:SetDataHeight</page>.",
         "returnValues": [
@@ -7298,7 +7482,8 @@
         "name": "GetDirty",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nSee <page>DListView:SetDirty</page>.",
         "returnValues": [
@@ -7311,7 +7496,8 @@
         "name": "GetHeaderHeight",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the height of the header of the <page>DListView</page>.\n\nSee also <page>DListView:SetHeaderHeight</page>.",
         "returnValues": [
@@ -7325,7 +7511,8 @@
         "name": "GetHideHeaders",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the header line should be visible on not.",
         "returnValues": [
@@ -7339,7 +7526,8 @@
         "name": "GetInnerTall",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the height of <page>DListView:GetCanvas</page>.\n\nIntended to represent the height of all data lines.",
         "returnValues": [
@@ -7353,7 +7541,8 @@
         "name": "GetLine",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the <page>DListView_Line</page> at the given index.",
         "arguments": [
@@ -7374,7 +7563,8 @@
         "name": "GetLines",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets all of the lines added to the DListView.",
         "returnValues": [
@@ -7388,7 +7578,8 @@
         "name": "GetMultiSelect",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether multiple lines can be selected or not.\n\nSee <page>DListView:SetMultiSelect</page>.",
         "returnValues": [
@@ -7402,7 +7593,8 @@
         "name": "GetSelected",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets all of the lines that are currently selected.",
         "returnValues": [
@@ -7416,7 +7608,8 @@
         "name": "GetSelectedLine",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the currently selected <page>DListView_Line</page> index.\n\nIf <page>DListView:SetMultiSelect</page> is set to true, only the first line of all selected lines will be returned. Use <page>DListView:GetSelected</page> instead to get all of the selected lines.",
         "returnValues": [
@@ -7434,7 +7627,8 @@
         "name": "GetSortable",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether sorting of columns by clicking their headers is allowed or not.\n\nSee also <page>DListView:SetSortable</page>.",
         "returnValues": [
@@ -7448,7 +7642,8 @@
         "name": "GetSortedID",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nConverts LineID to SortedID",
         "arguments": [
@@ -7468,7 +7663,8 @@
         "name": "OnClickLine",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal>Use <page>DListView:OnRowSelected</page> instead!</internal>\n\nCalled whenever a line is clicked.",
         "arguments": [
@@ -7488,7 +7684,8 @@
         "name": "OnRequestResize",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nCalled from <page>DListView_Column</page>.",
         "arguments": [
@@ -7507,7 +7704,8 @@
         "name": "OnRowRightClick",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called when a row is right-clicked",
         "arguments": [
@@ -7527,7 +7725,8 @@
         "name": "OnRowSelected",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called internally by <page>DListView:OnClickLine</page> when a line is selected. This is the function you should override to define the behavior when a line is selected.",
         "arguments": [
@@ -7547,7 +7746,8 @@
         "name": "RemoveLine",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Removes a line from the list view.",
         "arguments": [
@@ -7562,7 +7762,8 @@
         "name": "SelectFirstItem",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Selects the line at the first index of the DListView if one has been added."
       },
@@ -7570,7 +7771,8 @@
         "name": "SelectItem",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Selects a line in the listview.",
         "arguments": [
@@ -7585,7 +7787,8 @@
         "name": "SetDataHeight",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the height of all lines of the <page>DListView</page> except for the header line.\n\nSee also <page>DListView:SetHeaderHeight</page>.",
         "arguments": [
@@ -7600,7 +7803,8 @@
         "name": "SetDirty",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\n\nUsed internally to signify if the <page>DListView</page> needs a rebuild.",
         "arguments": [
@@ -7614,7 +7818,8 @@
         "name": "SetHeaderHeight",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the height of the header line of the <page>DListView</page>.\n\nSee also <page>DListView:SetDataHeight</page>.",
         "arguments": [
@@ -7629,7 +7834,8 @@
         "name": "SetHideHeaders",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether the header line should be visible on not.",
         "arguments": [
@@ -7644,7 +7850,8 @@
         "name": "SetMultiSelect",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether multiple lines can be selected by the user by using the <key>Ctrl</key> or <key>Shift</key> keys. When set to false, only one line can be selected.",
         "arguments": [
@@ -7659,7 +7866,8 @@
         "name": "SetSortable",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Enables/disables the sorting of columns by clicking.\n<note>\nThis will only affect columns that are created after this function is called. Existing columns will be unaffected.\n</note>",
         "arguments": [
@@ -7674,7 +7882,8 @@
         "name": "SortByColumn",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sorts the items in the specified column.",
         "arguments": [
@@ -7695,7 +7904,8 @@
         "name": "SortByColumns",
         "parent": "DListView",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sorts the list based on given columns.\n\nAll arguments are optional",
         "arguments": [
