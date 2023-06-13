@@ -7192,7 +7192,15 @@
         "realms": [
           "server"
         ],
-        "description": "Clears all registered events for map i/o outputs of the Entity."
+        "description": "Clears all registered events for map I/O outputs on this entity. If a string is given, will use the string as a wildcard to limit removed outputs by name matches.",
+        "arguments": [
+          {
+            "name": "outputName",
+            "type": "string",
+            "default": "nil",
+            "description": "An optional string that will be used to limit removed outputs by name matches, supports wildcards."
+          }
+        ]
       },
       {
         "name": "ClearPoseParameters",

@@ -160,8 +160,9 @@ function Entity:CallOnRemove(identifier, removeFunc, ...)
 end
 
 ---  server
---- Clears all registered events for map i/o outputs of the Entity.  
-function Entity:ClearAllOutputs()
+--- Clears all registered events for map I/O outputs on this entity. If a string is given, will use the string as a wildcard to limit removed outputs by name matches.  
+--- @param outputName? string @An optional string that will be used to limit removed outputs by name matches, supports wildcards.
+function Entity:ClearAllOutputs(outputName)
 end
 
 ---  client|server

@@ -24303,7 +24303,7 @@
           "client",
           "server"
         ],
-        "description": "Returns a table with all player of the specified team.",
+        "description": "Returns a table with all player of the specified team.\n<note>This function returns a sequential table, meaning it should be looped with <page>Global.ipairs</page> instead of <page>Global.pairs</page> for efficiency reasons.</note>",
         "arguments": [
           {
             "name": "teamIndex",
@@ -24314,7 +24314,7 @@
         "returnValues": [
           {
             "type": "table",
-            "description": "A table of <page>Player</page>s that belong to the requested team."
+            "description": "A sequential table of <page>Player</page>s that belong to the requested team."
           }
         ]
       },

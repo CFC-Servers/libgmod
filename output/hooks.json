@@ -28,17 +28,17 @@
           {
             "name": "library",
             "type": "string",
-            "description": "Library name of the JS function you are defining."
+            "description": "Library name of the JS function that was called."
           },
           {
             "name": "name",
             "type": "string",
-            "description": "Name of the JS function you are defining."
+            "description": "Name of the JS function that was called."
           },
           {
-            "name": "callback",
-            "type": "function",
-            "description": "Function called when the JS function is called. Arguments passed to the JS function will be passed here."
+            "name": "arguments",
+            "type": "table",
+            "description": "Table containing all arguments passed to the JS function."
           }
         ],
         "returnValues": [
