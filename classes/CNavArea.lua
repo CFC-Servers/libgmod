@@ -250,14 +250,8 @@ function CNavArea:GetSizeY()
 end
 
 ---  server
---- Returns all spots that we would encounter when we move to another navmesh. It seems to be broken currently?  
---- ⁉ **VALIDATE**:   
---- How should this be used exactly? It doesn't accept another CNavArea to check with.  
---- If it is  
---- [this](https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/mp/src/game/server/nav_area.h#L401)  
---- function, then it should accept another CNavArea if I'm not wrong.  
---- Please adjust this page if you find out how this function works.  
---- @return table @A Table containing all spots that you encounter.
+--- Returns all possible path segments through a CNavArea, and the dangerous spots to look at as we traverse that path segment.  
+--- @return table @A sequential list of spot encounters in the following format:
 function CNavArea:GetSpotEncounters()
 end
 
@@ -270,8 +264,8 @@ function CNavArea:GetTotalCost()
 end
 
 ---  server
---- Returns all CNavAreas that are visible from this NavArea.  
---- @return table @A sequential table containing all CNavAreas that are visible from this NavArea.
+--- Returns all CNavAreas that are visible from this CNavArea.  
+--- @return table @A sequential table containing all CNavAreas that are visible from this CNavArea.
 function CNavArea:GetVisibleAreas()
 end
 

@@ -397,7 +397,7 @@ function math.TimeFraction(start, end_, current)
 end
 
 ---  menu|client|server
---- Rounds towards zero.  
+--- Trim unwanted decimal places.  
 --- @param num number @The number to truncate
 --- @param digits? number @The amount of digits to keep after the point.
 --- @return number @The result.

@@ -1,5 +1,11 @@
 --- The engine library provides functions to access various features in the game's engine, most are related to the demo and save systems.  
 _G.engine = {}
+---  client|server
+--- Returns non paused Global.FrameTime.  
+--- @return number @Frame time.
+function engine.AbsoluteFrameTime()
+end
+
 ---  menu|client|server
 --- Returns the name of the currently running gamemode.  
 --- @return string @The active gamemode's name
