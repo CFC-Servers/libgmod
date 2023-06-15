@@ -754,7 +754,7 @@
         "arguments": [
           {
             "name": "color",
-            "type": "number",
+            "type": "Number",
             "description": "Color represented by a byte."
           }
         ]
@@ -3744,12 +3744,12 @@
         "realms": [
           "server"
         ],
-        "description": "Returns all spots that we would encounter when we move to another navmesh. It seems to be broken currently?\n<validate>\nHow should this be used exactly? It doesn't accept another <page>CNavArea</page> to check with.\nIf it is\n[this](https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/mp/src/game/server/nav_area.h#L401)\nfunction, then it should accept another CNavArea if I'm not wrong.\nPlease adjust this page if you find out how this function works.\n</validate>",
+        "description": "Returns all possible path segments through a <page>CNavArea</page>, and the dangerous spots to look at as we traverse that path segment.",
         "returnValues": [
           {
             "type": "table",
             "name": "encounters",
-            "description": "A Table containing all spots that you encounter."
+            "description": "A sequential list of spot encounters in the following format:\n* <page>CNavArea</page> **from** - What <page>CNavArea</page> the path segment is coming from\n* <page>Vector</page> **from_pos** - Origin position of the path segment\n* <page>number</page> **from_dir** - Source [Enums/NavDir](NavDir) direction of the path segment\n* <page>CNavArea</page> **to** - What [CNavArea]() the path segment is going towards\n* <page>Vector</page> **to_pos** - Target position of the path segment\n* <page>number</page> **to_dir** - Target [Enums/NavDir](NavDir) direction of the path segment\n* <page>table</page> **spots** - List of spots to look at, a sequential list of the following structures:\n* <page>Vector</page> **pos** - Position of the spot\n* <page>table</page> **flags** - Type of spot this is\n* <page>CNavArea</page> **area** - The nav area the spot belongs to"
           }
         ]
       },
@@ -3773,12 +3773,12 @@
         "realms": [
           "server"
         ],
-        "description": "Returns all <page text=\"CNavAreas\">CNavArea</page> that are visible from this NavArea.",
+        "description": "Returns all <page>CNavArea</page>s that are visible from this <page>CNavArea</page>.",
         "returnValues": [
           {
             "type": "table",
             "name": "areas",
-            "description": "A sequential table containing all <page text=\"CNavAreas\">CNavArea</page> that are visible from this NavArea."
+            "description": "A sequential table containing all <page>CNavArea</page>s that are visible from this <page>CNavArea</page>."
           }
         ]
       },
@@ -32626,7 +32626,7 @@
           {
             "type": "boolean",
             "name": "lightworld",
-            "description": "**true** if the Texture should light up world geometry."
+            "description": "`true` if the Texture should light up world geometry."
           }
         ]
       },
@@ -32964,7 +32964,7 @@
           {
             "name": "lightworld",
             "type": "boolean",
-            "description": "Set it to **true** if the Texture should light up world geometry."
+            "description": "Set it to `true` if the Texture should light up world geometry."
           }
         ]
       },

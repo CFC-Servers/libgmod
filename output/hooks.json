@@ -9462,7 +9462,7 @@
         "returnValues": [
           {
             "type": "boolean",
-            "description": "Return true to not do the default thing - which is to call UTIL_ImpactTrace in C++"
+            "description": "Return true to not do the default thing - which is to call `UTIL_ImpactTrace` in C++"
           }
         ]
       },

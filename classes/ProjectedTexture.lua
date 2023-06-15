@@ -46,7 +46,7 @@ end
 
 ---  client
 --- Returns whenever or not the Texture should light up world geometry.  
---- @return boolean @**true** if the Texture should light up world geometry.
+--- @return boolean @`true` if the Texture should light up world geometry.
 function ProjectedTexture:GetLightWorld()
 end
 
@@ -207,7 +207,7 @@ end
 
 ---  client
 --- Set whenever or not the Texture should light up world geometry.  
---- @param lightworld boolean @Set it to **true** if the Texture should light up world geometry.
+--- @param lightworld boolean @Set it to `true` if the Texture should light up world geometry.
 function ProjectedTexture:SetLightWorld(lightworld)
 end
 

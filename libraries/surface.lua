@@ -77,12 +77,11 @@ function surface.DrawRect(x, y, width, height)
 end
 
 ---  client|menu
---- Draw the specified text on the screen, using the previously set position, font and color.  
---- ℹ **NOTE**: This function does not handle newlines properly  
---- ℹ **NOTE**: This function sets new text position at the end of the previous drawn text length - this can be used to change text properties (such as font or color) without recalculating and resetting text position. See example #2 for example use of this behavior.  
+--- Draw the specified text on the screen, using the previously set [position](surface.SetTextPos), [font](surface.SetFont) and [color](surface.SetTextColor). This function does **not** handle newlines.  
+--- This function moves the [text position](surface.SetTextPos) by the length of the drawn text - this can be used to change text properties (such as font or color) without having to manually recalculate the text position. See example #2 for example use of this behavior.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param text string @The text to be rendered.
---- @param forceAdditive? boolean @`true` to force text to render additive, `false` to force not additive, `nil` to use font's value.
+--- @param forceAdditive? boolean @`true` to force text to render additive, `false` to force not additive, `nil` to use font's value
 function surface.DrawText(text, forceAdditive)
 end
 
@@ -171,7 +170,7 @@ function surface.GetTextColor()
 end
 
 ---  client|menu
---- Returns the X and Y co-ordinate that has been set with surface.SetTextPos.  
+--- Returns the X and Y co-ordinate that has been set with surface.SetTextPos or changed by surface.DrawText.  
 --- @return number @The X integer co-ordinate.
 --- @return number @The Y integer co-ordinate.
 function surface.GetTextPos()

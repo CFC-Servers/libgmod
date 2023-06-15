@@ -6538,6 +6538,21 @@
     "description": "The engine library provides functions to access various features in the game's engine, most are related to the demo and save systems.",
     "functions": [
       {
+        "name": "AbsoluteFrameTime",
+        "parent": "engine",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Returns non paused <page>Global.FrameTime</page>.",
+        "returnValues": [
+          {
+            "type": "number",
+            "description": "Frame time."
+          }
+        ]
+      },
+      {
         "name": "ActiveGamemode",
         "parent": "engine",
         "realms": [
@@ -12887,7 +12902,7 @@
           "client",
           "server"
         ],
-        "description": "Rounds towards zero.",
+        "description": "Trim unwanted decimal places.",
         "arguments": [
           {
             "name": "num",
@@ -22351,7 +22366,7 @@
           "client",
           "menu"
         ],
-        "description": "Draw the specified text on the screen, using the previously set position, font and color.\n\n<note>This function does not handle newlines properly</note>\n<note>This function sets new text position at the end of the previous drawn text length - this can be used to change text properties (such as font or color) without recalculating and resetting text position. See example #2 for example use of this behavior.</note>\n\n<rendercontext hook=\"false\" type=\"2D\"></rendercontext>",
+        "description": "Draw the specified text on the screen, using the previously set [position](surface.SetTextPos), [font](surface.SetFont) and [color](surface.SetTextColor). This function does **not** handle newlines.\n\nThis function moves the [text position](surface.SetTextPos) by the length of the drawn text - this can be used to change text properties (such as font or color) without having to manually recalculate the text position. See example #2 for example use of this behavior.\n\n<rendercontext hook=\"false\" type=\"2D\"></rendercontext>",
         "arguments": [
           {
             "name": "text",
@@ -22362,7 +22377,7 @@
             "name": "forceAdditive",
             "type": "boolean",
             "default": "nil",
-            "description": "`true` to force text to render additive, `false` to force not additive, `nil` to use font's value."
+            "description": "`true` to force text to render additive, `false` to force not additive, `nil` to use font's value.\n\nWhen additive rendering is enabled, the rendered text pixels will be added to the existing screen pixels, rather than replacing them outright. This means black text will be invisible, and drawing on a pure white background will be impossible.\n\n<upload src=\"70c/8db6ce804200a43.png\" size=\"21270\" name=\"image.png\">\n</upload>"
           }
         ]
       },
@@ -22557,7 +22572,7 @@
           "client",
           "menu"
         ],
-        "description": "Returns the X and Y co-ordinate that has been set with <page>surface.SetTextPos</page>.",
+        "description": "Returns the X and Y co-ordinate that has been set with <page>surface.SetTextPos</page> or changed by <page>surface.DrawText</page>.",
         "returnValues": [
           {
             "type": "number",
