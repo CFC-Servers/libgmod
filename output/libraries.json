@@ -7261,7 +7261,7 @@
           "client",
           "server"
         ],
-        "description": "Returns a table of all existing entities. The table is sequential",
+        "description": "Returns a table of all existing entities.\n<note>This function returns a sequential table, meaning it should be looped with <page>Global.ipairs</page> instead of <page>Global.pairs</page> for efficiency reasons.</note>",
         "returnValues": [
           {
             "type": "table",
@@ -18045,6 +18045,21 @@
         ]
       },
       {
+        "name": "RenderFlashlights",
+        "parent": "render",
+        "realms": [
+          "client"
+        ],
+        "description": "Renders additive flashlights on an <page>IMesh</page>, a direct replacement for [render.PushFlashlightMode]().",
+        "arguments": [
+          {
+            "name": "renderFunc",
+            "type": "function",
+            "description": "The function that renders the <page>IMesh</page>, or a model."
+          }
+        ]
+      },
+      {
         "name": "RenderHUD",
         "parent": "render",
         "realms": [
@@ -25954,7 +25969,7 @@
           {
             "name": "color",
             "type": "table",
-            "description": "The color of the decal. Uses the <page>Color</page>.\n\nThis only works when used on a brush model and only if the decal material has set **$vertexcolor** to 1."
+            "description": "The color of the decal. Uses the <page>Color</page>.\n\nThis only works when used on a brush model and only if the decal material has set `$vertexcolor` to `1`."
           },
           {
             "name": "w",
@@ -26066,7 +26081,7 @@
           "client",
           "server"
         ],
-        "description": "Creates an effect with the specified data.\n\nFor Orange Box `.pcf` particles, see <page>Global.ParticleEffect</page>, <page>Global.ParticleEffectAttach</page> and  <page>Global.CreateParticleSystem</page>.\n\n<note>\nWhen dispatching an effect from the server, some values may be clamped for networking optimizations. Visit the Set accessors on <page>CEffectData</page> to see which ones are affected.\n\nYou will need to couple this function with <page>Global.IsFirstTimePredicted</page> if you want to use it in <page text=\"predicted hook\">Prediction</page>.\n</note>",
+        "description": "Creates an effect with the specified data.\n\nFor Orange Box `.pcf` particles, see <page>Global.ParticleEffect</page>, <page>Global.ParticleEffectAttach</page> and  <page>Global.CreateParticleSystem</page>.\n\n<note>\nWhen dispatching an effect from the server, some values may be clamped for networking optimizations. Visit the Set accessors on <page>CEffectData</page> to see which ones are affected.\n\nYou will need to couple this function with <page>Global.IsFirstTimePredicted</page> if you want to use it in a <page text=\"predicted hook\">Prediction</page>.\n</note>",
         "arguments": [
           {
             "name": "effectName",

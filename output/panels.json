@@ -12806,7 +12806,8 @@
         "name": "GetPanel",
         "parent": "DTab",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the panel that the tab represents.",
         "returnValues": [
@@ -12820,7 +12821,8 @@
         "name": "IsActive",
         "parent": "DTab",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the tab is the currently selected tab of the associated <page>DPropertySheet</page>.",
         "returnValues": [
@@ -12841,7 +12843,8 @@
         "name": "AllowInput",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called whenever the value of the panel has been updated (whether by user input or otherwise).\n\nIt allows you to determine whether a user can modify the <page>TextEntry</page>'s text.\n\nBy default, this only checks whether the panel disallows numeric characters, preventing it from being edited if the value contains any.\n\nThis is actually an engine hook that only works on <page>TextEntry</page> derived elements.",
         "arguments": [
@@ -12862,7 +12865,8 @@
         "name": "CheckNumeric",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether a string is numeric or not.\nAlways returns false if the <page>DTextEntry:SetNumeric</page> is set to false.",
         "arguments": [
@@ -12883,7 +12887,8 @@
         "name": "GetAutoComplete",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called by the DTextEntry when a list of autocompletion options is requested. Meant to be overridden.",
         "arguments": [
@@ -12904,7 +12909,8 @@
         "name": "GetCursorColor",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the cursor color of a DTextEntry.",
         "returnValues": [
@@ -12918,7 +12924,8 @@
         "name": "GetEnterAllowed",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether pressing Enter can cause the panel to lose focus. Note that a multiline DTextEntry cannot be escaped using the Enter key even when this function returns true.",
         "returnValues": [
@@ -12932,7 +12939,8 @@
         "name": "GetFloat",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the contents of the DTextEntry as a number.",
         "returnValues": [
@@ -12946,7 +12954,8 @@
         "name": "GetInt",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Similar to <page>DTextEntry:GetFloat</page>, but rounds the value to the nearest integer.",
         "returnValues": [
@@ -12960,7 +12969,8 @@
         "name": "GetNumeric",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether only numeric characters (123456789.-) can be entered into the DTextEntry.",
         "returnValues": [
@@ -12974,7 +12984,8 @@
         "name": "GetPaintBackground",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Whether the background is displayed or not",
         "returnValues": [
@@ -12989,7 +13000,8 @@
         "name": "GetPlaceholderColor",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Return current color of panel placeholder",
         "returnValues": [
@@ -13003,7 +13015,8 @@
         "name": "GetPlaceholderText",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the placeholder text set with <page>DTextEntry:SetPlaceholderText</page>.",
         "returnValues": [
@@ -13016,7 +13029,8 @@
         "name": "GetTextColor",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the text color of a DTextEntry.",
         "returnValues": [
@@ -13030,7 +13044,8 @@
         "name": "GetUpdateOnType",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the <page>DTextEntry</page> is set to run <page>DTextEntry:OnValueChange</page> every time a character is typed or deleted or only when Enter is pressed.",
         "returnValues": [
@@ -13043,7 +13058,8 @@
         "name": "IsEditing",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether this DTextEntry is being edited or not. (i.e. has focus)",
         "returnValues": [
@@ -13057,7 +13073,8 @@
         "name": "IsMultiline",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Determines whether or not <page>DTextEntry</page> is in multi-line mode. This is set with <page>DTextEntry:SetMultiline</page>.",
         "returnValues": [
@@ -13071,7 +13088,8 @@
         "name": "OnChange",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called internally by <page>DTextEntry:OnTextChanged</page> when the user modifies the text in the DTextEntry.\n\nYou should override this function to define custom behavior when the DTextEntry text changes."
       },
@@ -13079,7 +13097,8 @@
         "name": "OnEnter",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called whenever enter is pressed on a DTextEntry.\n\n<note><page>DTextEntry:IsEditing</page> will still return true in this callback!</note>",
         "arguments": [
@@ -13094,7 +13113,8 @@
         "name": "OnGetFocus",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called whenever the DTextEntry gains focus."
       },
@@ -13102,7 +13122,8 @@
         "name": "OnKeyCode",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called from DTextEntry's <page>TextEntry:OnKeyCodeTyped</page> override whenever a valid character is typed while the text entry is focused.",
         "arguments": [
@@ -13117,7 +13138,8 @@
         "name": "OnLoseFocus",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called whenever the DTextEntry lose focus."
       },
@@ -13125,7 +13147,8 @@
         "name": "OnTextChanged",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>Called internally when the text inside the DTextEntry changes.\n\nYou should not override this function. Use <page>DTextEntry:OnValueChange</page> instead.",
         "arguments": [
@@ -13140,7 +13163,8 @@
         "name": "OnValueChange",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called internally when the text changes of the <page>DTextEntry</page> are applied. (And set to the attached console variable, if one is given)\n\nSee also <page>DTextEntry:OnChange</page> for a function that is called on every text change, even if the console variable is not updated.\n\nYou should override this function to define custom behavior when the text changes.\n\nThis method is called:\n* When Enter is pressed after typing\n* When <page>DTextEntry:SetValue</page> is used\n* For every key typed - only if <page>DTextEntry:SetUpdateOnType</page> was set to true (default is false)",
         "arguments": [
@@ -13155,7 +13179,8 @@
         "name": "OpenAutoComplete",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal>You really should be using <page>DTextEntry:GetAutoComplete</page> instead.</internal>\nBuilds a <page>DMenu</page> for the DTextEntry based on the input table.",
         "arguments": [
@@ -13170,7 +13195,8 @@
         "name": "SetCursorColor",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the cursor's color in  DTextEntry (the blinking line).",
         "arguments": [
@@ -13185,7 +13211,8 @@
         "name": "SetDisabled",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>Use <page>Panel:SetEnabled</page> instead.</deprecated>\n\nDisables input on a DTextEntry and greys it out visually. This differs from <page>DTextEntry:SetEditable</page> which doesn't visually change the textbox.",
         "arguments": [
@@ -13200,7 +13227,8 @@
         "name": "SetDrawLanguageID",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the visibility of the language selection box when typing in non-English mode.\n\nSee <page>Panel:SetDrawLanguageIDAtLeft</page> for a function that changes the position of the language selection box.",
         "arguments": [
@@ -13215,7 +13243,8 @@
         "name": "SetDrawLanguageIDAtLeft",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets where to draw the language selection box.\n\nSee <page>Panel:SetDrawLanguageID</page> for a function that hides or shows the language selection box.",
         "arguments": [
@@ -13230,7 +13259,8 @@
         "name": "SetEditable",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Disables Input on a DTextEntry. This differs from <page>DTextEntry:SetDisabled</page> - SetEditable will not affect the appearance of the textbox.",
         "arguments": [
@@ -13245,7 +13275,8 @@
         "name": "SetEnterAllowed",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether pressing the Enter key will cause the DTextEntry to lose focus or not, provided it is not multiline. This is true by default.",
         "arguments": [
@@ -13260,7 +13291,8 @@
         "name": "SetFont",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Changes the font of the DTextEntry.",
         "arguments": [
@@ -13275,7 +13307,8 @@
         "name": "SetHistoryEnabled",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Enables or disables the history functionality of  <page>DTextEntry</page>.",
         "arguments": [
@@ -13290,7 +13323,8 @@
         "name": "SetMultiline",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Enables or disables the multi-line functionality of <page>DTextEntry</page>.",
         "arguments": [
@@ -13305,7 +13339,8 @@
         "name": "SetNumeric",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether or not to decline non-numeric characters as input.\n\nNumeric characters are 1234567890.-",
         "arguments": [
@@ -13320,7 +13355,8 @@
         "name": "SetPaintBackground",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether to show background.",
         "arguments": [
@@ -13335,7 +13371,8 @@
         "name": "SetPlaceholderColor",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Allow you to set placeholder color.",
         "arguments": [
@@ -13351,7 +13388,8 @@
         "name": "SetPlaceholderText",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the placeholder text that will be shown while the text entry has no user text. The player will not need to delete the placeholder text if they decide to start typing.",
         "arguments": [
@@ -13366,7 +13404,8 @@
         "name": "SetTabbingDisabled",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether or not the panel accepts tab key.\n<note>Disabling tab key prevents the panel from unfocusing by mouse, however, still works for focusing to other keyboard focus.</note>",
         "arguments": [
@@ -13381,7 +13420,8 @@
         "name": "SetTextColor",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the text color of the <page>DTextEntry</page>.",
         "arguments": [
@@ -13396,7 +13436,8 @@
         "name": "SetUpdateOnType",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether we should fire <page>DTextEntry:OnValueChange</page> every time we type or delete a character or only when Enter is pressed.",
         "arguments": [
@@ -13410,7 +13451,8 @@
         "name": "SetValue",
         "parent": "DTextEntry",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the text of the <page>DTextEntry</page> and calls <page>DTextEntry:OnValueChange</page>.\n\n<note>The text of the <page>DTextEntry</page> only changes if it's not currently being typed in. If you would rather set the text regardless, use <page>Panel:SetText</page>.</note>",
         "arguments": [

@@ -21858,7 +21858,8 @@
         "name": "PaintingDragging",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Set to true by the <page>dragndrop</page> system when the panel is being drawn for the drag'n'drop.",
         "returnValues": [
@@ -21872,7 +21873,8 @@
         "name": "Add",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds the specified object to the panel.",
         "arguments": [
@@ -21893,7 +21895,8 @@
         "name": "AddText",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>Does nothing</deprecated>\nThis function does nothing."
       },
@@ -21901,7 +21904,8 @@
         "name": "AlignBottom",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Aligns the panel on the bottom of its parent with the specified offset.",
         "arguments": [
@@ -21917,7 +21921,8 @@
         "name": "AlignLeft",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Aligns the panel on the left of its parent with the specified offset.",
         "arguments": [
@@ -21933,7 +21938,8 @@
         "name": "AlignRight",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Aligns the panel on the right of its parent with the specified offset.",
         "arguments": [
@@ -21949,7 +21955,8 @@
         "name": "AlignTop",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Aligns the panel on the top of its parent with the specified offset.",
         "arguments": [
@@ -21965,7 +21972,8 @@
         "name": "AlphaTo",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Uses animation to transition the current alpha value of a panel to a new alpha, over a set period of time and after a specified delay.",
         "arguments": [
@@ -21997,7 +22005,8 @@
         "name": "AnimationThinkInternal",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Performs the per-frame operations required for panel animations.\n\nThis is called every frame by <page>PANEL:AnimationThink</page>."
       },
@@ -22005,7 +22014,8 @@
         "name": "AnimTail",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the <page>Global.SysTime</page> value when all animations for this panel object will end.",
         "returnValues": [
@@ -22019,7 +22029,8 @@
         "name": "AppendText",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Appends text to a <page>RichText</page> element. This does not automatically add a new line.",
         "arguments": [
@@ -22034,7 +22045,8 @@
         "name": "ApplyGWEN",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Used by <page>Panel:LoadGWENFile</page> and <page>Panel:LoadGWENString</page> to apply a GWEN controls table to a panel object.\n\nYou can do this manually using <page>file.Read</page> and <page>util.JSONToTable</page> to import and create a GWEN table structure from a `.gwen` file. This method can then be called, passing the GWEN table's `Controls` member.",
         "arguments": [
@@ -22049,7 +22061,8 @@
         "name": "Center",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Centers the panel on its parent."
       },
@@ -22057,7 +22070,8 @@
         "name": "CenterHorizontal",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Centers the panel horizontally with specified fraction.",
         "arguments": [
@@ -22073,7 +22087,8 @@
         "name": "CenterVertical",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Centers the panel vertically with specified fraction.",
         "arguments": [
@@ -22089,7 +22104,8 @@
         "name": "ChildCount",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the amount of children of the of panel.",
         "returnValues": [
@@ -22103,7 +22119,8 @@
         "name": "ChildrenSize",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the width and height of the space between the position of the panel (upper-left corner) and the max bound of the children panels (farthest reaching lower-right corner).",
         "returnValues": [
@@ -22121,7 +22138,8 @@
         "name": "Clear",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Marks all of the panel's children for deletion."
       },
@@ -22129,7 +22147,8 @@
         "name": "ColorTo",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Fades panels color to specified one. It won't work unless panel has SetColor function.",
         "arguments": [
@@ -22159,7 +22178,8 @@
         "name": "Command",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sends an action command signal to the panel. The response is handled by <page>PANEL:ActionSignal</page>.",
         "arguments": [
@@ -22174,7 +22194,8 @@
         "name": "ConVarChanged",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Updates a panel object's associated console variable. This must first be set up with <page>Global.Derma_Install_Convar_Functions</page>, and have a ConVar set using <page>Panel:SetConVar</page>.",
         "arguments": [
@@ -22189,7 +22210,8 @@
         "name": "ConVarNumberThink",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "A think hook for <page>Panel</page>s using ConVars as a value. Call it in the Think hook. Sets the panel's value should the convar change.\n\nThis function is best for: checkboxes, sliders, number wangs\n\nFor a string alternative, see <page>Panel:ConVarStringThink</page>.\n\n<note>Make sure your Panel has a SetValue function, else you may get errors.</note>"
       },
@@ -22197,7 +22219,8 @@
         "name": "ConVarStringThink",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "A think hook for <page text=\"panels\">Panel</page> using ConVars as a value. Call it in the Think hook. Sets the panel's value should the convar change.\n\nThis function is best for: text inputs, read-only inputs, dropdown selects\n\nFor a number alternative, see <page>Panel:ConVarNumberThink</page>.\n\n<note>Make sure your Panel has a SetValue function, else you may get errors.</note>"
       },
@@ -22205,7 +22228,8 @@
         "name": "CopyBase",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the size, position and dock state of the passed panel object, and applies it to this one.",
         "arguments": [
@@ -22220,7 +22244,8 @@
         "name": "CopyBounds",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Copies position and size of the panel.",
         "arguments": [
@@ -22235,7 +22260,8 @@
         "name": "CopyHeight",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Copies the height of the panel.",
         "arguments": [
@@ -22250,7 +22276,8 @@
         "name": "CopyPos",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Copies the position of the panel.",
         "arguments": [
@@ -22265,7 +22292,8 @@
         "name": "CopySelected",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Performs the <key>CONTROL</key> + <key>C</key> key combination effect ( Copy selection to clipboard ) on selected text in a <page>TextEntry</page> or <page>RichText</page> based element."
       },
@@ -22273,7 +22301,8 @@
         "name": "CopyWidth",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Copies the width of the panel.",
         "arguments": [
@@ -22288,7 +22317,8 @@
         "name": "CursorPos",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the cursor position relative to the top left of the panel.\n\nThis is equivalent to calling <page>gui.MousePos</page> and then <page>Panel:ScreenToLocal</page>.\n\n<warning>This function uses a cached value for the screen position of the panel, computed at the end of the last VGUI Think/Layout pass.\n\nie. inaccurate results may be returned if the panel or any of its ancestors have been repositioned outside of <page>PANEL:Think</page> or <page>PANEL:PerformLayout</page> within the last frame.</warning>",
         "returnValues": [
@@ -22306,7 +22336,8 @@
         "name": "CutSelected",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Performs the <key>CONTROL</key> + <key>X</key> (delete text and copy it to clipboard buffer) action on selected text in a <page>TextEntry</page> or <page>RichText</page> based element."
       },
@@ -22314,7 +22345,8 @@
         "name": "DeleteCookie",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Deletes a cookie value using the panel's cookie name ( <page>Panel:GetCookieName</page> ) and the passed extension.",
         "arguments": [
@@ -22329,7 +22361,8 @@
         "name": "DisableLerp",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Resets the panel object's <page>Panel:SetPos</page> method and removes its animation table (`Panel.LerpAnim`). This effectively undoes the changes made by <page>Panel:LerpPositions</page>.\n\nIn order to use Lerp animation again, you must call <page>Panel:Stop</page> before setting its `SetPosReal` property to `nil`. See the example below."
       },
@@ -22337,7 +22370,8 @@
         "name": "Distance",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the linear distance from the center of this panel object and another. **Both panels must have the same parent for this function to work properly.**",
         "arguments": [
@@ -22358,7 +22392,8 @@
         "name": "DistanceFrom",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the distance between the center of this panel object and a specified point **local to the parent panel**.",
         "arguments": [
@@ -22384,7 +22419,8 @@
         "name": "Dock",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the dock type for the panel, making the panel \"dock\" in a certain direction, modifying it's position and size.\n\nYou can set the inner spacing of a panel's docking using <page>Panel:DockPadding</page>, which will affect docked child panels, and you can set the outer spacing of a panel's docking using <page>Panel:DockMargin</page>, which affects how docked siblings are positioned/sized.\n\nYou may need to use <page>Panel:SetZPos</page> to ensure child panels (<page>DTextEntry</page>) stay in a specific order.\n\n<note>After using this function, if you want to get the correct panel's bounds (position, size), use <page>Panel:InvalidateParent</page> (use `true` as argument if you need to update immediately)</note>",
         "arguments": [
@@ -22399,7 +22435,8 @@
         "name": "DockMargin",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the dock margin of the panel.\n\nThe dock margin is the extra space that will be left around the edge when this element is docked inside its parent element.",
         "arguments": [
@@ -22429,7 +22466,8 @@
         "name": "DockPadding",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the dock padding of the panel.\n\nThe dock padding is the extra space that will be left around the edge when child elements are docked inside this element.",
         "arguments": [
@@ -22459,7 +22497,8 @@
         "name": "DoModal",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Makes the panel \"lock\" the screen until it is removed. All input will be directed to the given panel.\n\nIt will silently fail if used while cursor is not visible.\nCall <page>Panel:MakePopup</page> before calling this function.\nThis must be called on a panel derived from <page>EditablePanel</page>."
       },
@@ -22467,7 +22506,8 @@
         "name": "DragClick",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Called by <page>Panel:DragMouseRelease</page> when a user clicks one mouse button whilst dragging with another.",
         "returnValues": [
@@ -22481,7 +22521,8 @@
         "name": "DragHover",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Called by <page>dragndrop.HoverThink</page> to perform actions on an object that is dragged and hovered over another.",
         "arguments": [
@@ -22496,7 +22537,8 @@
         "name": "DragHoverEnd",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Called to end a drag and hover action. This resets the panel's <page>PANEL:PaintOver</page> method, and is primarily used by <page>dragndrop.StopDragging</page>."
       },
@@ -22504,7 +22546,8 @@
         "name": "DragMousePress",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called to inform the <page>dragndrop</page> that a mouse button is being held down on a panel object.",
         "arguments": [
@@ -22519,7 +22562,8 @@
         "name": "DragMouseRelease",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Called to inform the <page>dragndrop</page> that a mouse button has been depressed on a panel object.",
         "arguments": [
@@ -22540,7 +22584,8 @@
         "name": "DrawDragHover",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Called to draw the drop target when an object is being dragged across another. See <page>Panel:SetDropTarget</page>.",
         "arguments": [
@@ -22570,7 +22615,8 @@
         "name": "DrawFilledRect",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Draws a coloured rectangle to fill the panel object this method is called on. The colour is set using <page>surface.SetDrawColor</page>. This should only be called within the object's <page>PANEL:Paint</page> or <page>PANEL:PaintOver</page> hooks, as a shortcut for <page>surface.DrawRect</page>."
       },
@@ -22578,7 +22624,8 @@
         "name": "DrawOutlinedRect",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Draws a hollow rectangle the size of the panel object this method is called on, with a border width of 1 px. The border colour is set using <page>surface.SetDrawColor</page>. This should only be called within the object's <page>PANEL:Paint</page> or <page>PANEL:PaintOver</page> hooks, as a shortcut for <page>surface.DrawOutlinedRect</page>."
       },
@@ -22586,7 +22633,8 @@
         "name": "DrawSelections",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Used to draw the magenta highlight colour of a panel object when it is selected. This should be called in the object's <page>PANEL:PaintOver</page> hook. Once this is implemented, the highlight colour will be displayed only when the object is selectable and selected. This is achieved using <page>Panel:SetSelectable</page> and <page>Panel:SetSelected</page> respectively."
       },
@@ -22594,7 +22642,8 @@
         "name": "DrawTextEntryText",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Used to draw the text in a <page>DTextEntry</page> within a derma skin. This should be called within the <page>SKIN:PaintTextEntry</page> skin hook.\n<note>Will silently fail if any of arguments are not <page>Color</page>.</note>",
         "arguments": [
@@ -22619,7 +22668,8 @@
         "name": "DrawTexturedRect",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Draws a textured rectangle to fill the panel object this method is called on. The texture is set using <page>surface.SetTexture</page> or <page>surface.SetMaterial</page>. This should only be called within the object's <page>PANEL:Paint</page> or <page>PANEL:PaintOver</page> hooks, as a shortcut for <page>surface.DrawTexturedRect</page>."
       },
@@ -22627,7 +22677,8 @@
         "name": "Droppable",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Makes this panel droppable. This is used with <page>Panel:Receiver</page> to create drag and drop events.\n\nCan be called multiple times with different names allowing to be dropped onto different receivers.",
         "arguments": [
@@ -22648,7 +22699,8 @@
         "name": "EndBoxSelection",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Completes a box selection. If the end point of the selection box is within the selection canvas, mouse capture is disabled for the panel object, and the selected state of each child object within the selection box is toggled.",
         "returnValues": [
@@ -22662,7 +22714,8 @@
         "name": "Exec",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Used to run commands within a <page>DHTML</page> window.",
         "arguments": [
@@ -22677,7 +22730,8 @@
         "name": "Find",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Finds a panel in its children(and sub children) with the given name.",
         "arguments": [
@@ -22698,7 +22752,8 @@
         "name": "FocusNext",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Focuses the next panel in the focus queue."
       },
@@ -22706,7 +22761,8 @@
         "name": "FocusPrevious",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Focuses the previous panel in the focus queue."
       },
@@ -22714,7 +22770,8 @@
         "name": "GetAlpha",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the alpha multiplier for this panel.",
         "returnValues": [
@@ -22728,7 +22785,8 @@
         "name": "GetBGColor",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the background color of a panel such as a <page>RichText</page>, <page>Label</page> or <page>DColorCube</page>.\n\n<note>This doesn't apply to all VGUI elements and its function varies between them</note>",
         "returnValues": [
@@ -22743,7 +22801,8 @@
         "name": "GetBounds",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the position and size of the panel.\n\nThis is equivalent to calling <page>Panel:GetPos</page> and <page>Panel:GetSize</page> together.",
         "returnValues": [
@@ -22769,7 +22828,8 @@
         "name": "GetCaretPos",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the position/offset of the caret (or text cursor) in a text-based panel object.",
         "returnValues": [
@@ -22783,7 +22843,8 @@
         "name": "GetChild",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets a child by its index. For use with <page>Panel:ChildCount</page>.",
         "arguments": [
@@ -22798,7 +22859,8 @@
         "name": "GetChildPosition",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets a child object's position relative to this panel object. The number of levels is not relevant; the child may have many parents between itself and the object on which the method is called.",
         "arguments": [
@@ -22823,7 +22885,8 @@
         "name": "GetChildren",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns a table with all the child panels of the panel.",
         "returnValues": [
@@ -22837,7 +22900,8 @@
         "name": "GetChildrenInRect",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns a table of all visible, selectable children of the panel object that lie at least partially within the specified rectangle.",
         "arguments": [
@@ -22873,7 +22937,8 @@
         "name": "GetClassName",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the class name of the panel.",
         "returnValues": [
@@ -22887,7 +22952,8 @@
         "name": "GetClosestChild",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the child of this panel object that is closest to the specified point. The point is relative to the object on which the method is called. The distance the child is from this point is also returned.",
         "arguments": [
@@ -22917,7 +22983,8 @@
         "name": "GetContentSize",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the size of the content/children within a panel object.\n\nOnly works with <page>Label</page> derived panels by default such as <page>DLabel</page>.\n\n\nWill also work on any panel that manually implements this method.",
         "returnValues": [
@@ -22935,7 +23002,8 @@
         "name": "GetCookie",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the value of a cookie stored by the panel object. This can also be done with <page>cookie.GetString</page>, using the panel's cookie name, a fullstop, and then the actual name of the cookie.\n\nMake sure the panel's cookie name has not changed since writing, or the cookie will not be accessible. This can be done with <page>Panel:GetCookieName</page> and <page>Panel:SetCookieName</page>.",
         "arguments": [
@@ -22961,7 +23029,8 @@
         "name": "GetCookieName",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the name the panel uses to store cookies. This is set with <page>Panel:SetCookieName</page>.",
         "returnValues": [
@@ -22975,7 +23044,8 @@
         "name": "GetCookieNumber",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the value of a cookie stored by the panel object, as a number. This can also be done with <page>cookie.GetNumber</page>, using the panel's cookie name, a fullstop, and then the actual name of the cookie.\n\nMake sure the panel's cookie name has not changed since writing, or the cookie will not be accessible. This can be done with <page>Panel:GetCookieName</page> and <page>Panel:SetCookieName</page>.",
         "arguments": [
@@ -23001,7 +23071,8 @@
         "name": "GetDock",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns a dock enum for the panel's current docking type.",
         "returnValues": [
@@ -23015,7 +23086,8 @@
         "name": "GetDockMargin",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the docked margins of the panel. (set by <page>Panel:DockMargin</page>)",
         "returnValues": [
@@ -23041,7 +23113,8 @@
         "name": "GetDockPadding",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the docked padding of the panel. (set by <page>Panel:DockPadding</page>)",
         "returnValues": [
@@ -23067,7 +23140,8 @@
         "name": "GetFGColor",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the foreground color of the panel.\n\nFor a <page>Label</page> or <page>RichText</page>, this is the color of its text.\n\n<note>This doesn't apply to all VGUI elements (such as <page>DLabel</page>) and its function varies between them</note>",
         "returnValues": [
@@ -23082,7 +23156,8 @@
         "name": "GetFont",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the name of the font that the panel renders its text with.\n\nThis is the same font name set with <page>Panel:SetFontInternal</page>.",
         "returnValues": [
@@ -23110,7 +23185,8 @@
         "name": "GetMaximumCharCount",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the current maximum character count.\n\nThis function will only work on <page>RichText</page> and <page>TextEntry</page> panels and their derivatives.",
         "returnValues": [
@@ -23125,7 +23201,8 @@
         "name": "GetName",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the internal name of the panel. Can be set via <page>Panel:SetName</page>.",
         "returnValues": [
@@ -23139,7 +23216,8 @@
         "name": "GetNumLines",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the number of lines in a <page>RichText</page>. You must wait a couple frames before calling this after using <page>Panel:AppendText</page> or <page>Panel:SetText</page>, otherwise it will return the number of text lines before the text change.\n\n<note>Even though this function can be called on any panel, it will only work with <page>RichText</page></note>",
         "returnValues": [
@@ -23153,7 +23231,8 @@
         "name": "GetParent",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the parent of the panel, returns nil if there is no parent.",
         "returnValues": [
@@ -23167,7 +23246,8 @@
         "name": "GetPos",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the position of the panel relative to its <page>Panel:GetParent</page>.\n\nIf you require the panel's position **and** size, consider using <page>Panel:GetBounds</page> instead.\n\nIf you need the position in screen space, see <page>Panel:LocalToScreen</page>.\n\nSee also <page>Panel:GetX</page> and <page>Panel:GetY</page>.",
         "returnValues": [
@@ -23185,7 +23265,8 @@
         "name": "GetSelectedChildren",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns a table of all children of the panel object that are selected. This is recursive, and the returned table will include tables for any child objects that also have children. This means that not all first-level members in the returned table will be of type <page>Panel</page>.",
         "returnValues": [
@@ -23199,7 +23280,8 @@
         "name": "GetSelectedTextRange",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the currently selected range of text.\n\nThis function will only work on <page>RichText</page> and <page>TextEntry</page> panels and their derivatives.",
         "returnValues": [
@@ -23219,7 +23301,8 @@
         "name": "GetSelectionCanvas",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the panel object (`self`) if it has been enabled as a selection canvas. This is achieved using <page>Panel:SetSelectionCanvas</page>.",
         "returnValues": [
@@ -23233,7 +23316,8 @@
         "name": "GetSize",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the size of the panel.\n\nIf you require both the panel's position and size, consider using <page>Panel:GetBounds</page> instead.",
         "returnValues": [
@@ -23251,7 +23335,8 @@
         "name": "GetSkin",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the table for the derma skin currently being used by this panel object.",
         "returnValues": [
@@ -23265,7 +23350,8 @@
         "name": "GetTable",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the internal Lua table of the panel.",
         "returnValues": [
@@ -23279,7 +23365,8 @@
         "name": "GetTall",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the height of the panel.\n\nSee <page>Panel:GetWide</page> for the width of the panel. See also <page>Panel:GetSize</page> for a function that returns both.",
         "returnValues": [
@@ -23293,7 +23380,8 @@
         "name": "GetText",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the panel's text (where applicable).\n\nThis method returns a maximum of 1023 bytes, except for <page>DTextEntry</page>.",
         "returnValues": [
@@ -23307,7 +23395,8 @@
         "name": "GetTextInset",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the left and top text margins of a text-based panel object, such as a <page>DButton</page> or <page>DLabel</page>. This is set with <page>Panel:SetTextInset</page>.",
         "returnValues": [
@@ -23325,7 +23414,8 @@
         "name": "GetTextSize",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the size of the text within a <page>Label</page> derived panel.",
         "returnValues": [
@@ -23343,7 +23433,8 @@
         "name": "GetTooltip",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the tooltip text that was set with <page>PANEL:SetTooltip</page>.",
         "returnValues": [
@@ -23358,7 +23449,8 @@
         "name": "GetTooltipDelay",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the tooltip delay (time between hovering over the panel, and the tooltip showing up) that was set with <page>Panel:SetTooltipDelay</page>, or nothing if it was not set.\n\nIf the delay is not explicitly set by this function, it will fallback to the value of the `tooltip_delay` <page>ConVar</page>, which is `0.5` by default.",
         "returnValues": [
@@ -23373,7 +23465,8 @@
         "name": "GetTooltipPanel",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the tooltip panel that was set with <page>PANEL:SetTooltipPanel</page>.",
         "returnValues": [
@@ -23388,7 +23481,8 @@
         "name": "GetValidReceiverSlot",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets valid receiver slot of currently dragged panel.",
         "returnValues": [
@@ -23406,7 +23500,8 @@
         "name": "GetValue",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the value the panel holds.\n\nIn engine is only implemented for <page>CheckButton</page>, <page>Label</page> and <page>TextEntry</page> as a string.\n\n<note>This function is limited to 8092 Bytes. If using <page>DTextEntry</page>, use <page>Panel:GetText</page> for unlimited bytes.</note>",
         "returnValues": [
@@ -23420,7 +23515,8 @@
         "name": "GetWide",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the width of the panel.\n\nSee <page>Panel:GetTall</page> for the height of the panel. See also <page>Panel:GetSize</page> for a function that returns both.",
         "returnValues": [
@@ -23434,7 +23530,8 @@
         "name": "GetX",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the X position of the panel relative to its <page>Panel:GetParent</page>.\n\nUses <page>Panel:GetPos</page> internally.",
         "returnValues": [
@@ -23448,7 +23545,8 @@
         "name": "GetY",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the Y position of the panel relative to its <page>Panel:GetParent</page>.\n\nUses <page>Panel:GetPos</page> internally.",
         "returnValues": [
@@ -23462,7 +23560,8 @@
         "name": "GetZPos",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the Z position of the panel.",
         "returnValues": [
@@ -23476,7 +23575,8 @@
         "name": "GoBack",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Goes back one page in the HTML panel's history if available."
       },
@@ -23484,7 +23584,8 @@
         "name": "GoForward",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Goes forward one page in the HTML panel's history if available."
       },
@@ -23492,7 +23593,8 @@
         "name": "GoToHistoryOffset",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Goes to the page in the HTML panel's history at the specified relative offset.",
         "arguments": [
@@ -23507,7 +23609,8 @@
         "name": "GotoTextEnd",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Causes a <page>RichText</page> element to scroll to the bottom of its text."
       },
@@ -23515,7 +23618,8 @@
         "name": "GotoTextStart",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Causes a <page>RichText</page> element to scroll to the top of its text.\n\n<bug issue=\"2239\">This does not work on the same frame as <page>Panel:SetText</page>.</bug>"
       },
@@ -23523,7 +23627,8 @@
         "name": "GWEN_SetCheckboxText",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Used by <page>Panel:ApplyGWEN</page> to apply the `CheckboxText` property to a <page>DCheckBoxLabel</page>. This does exactly the same as <page>Panel:GWEN_SetText</page>, but exists to cater for the seperate GWEN properties.",
         "arguments": [
@@ -23538,7 +23643,8 @@
         "name": "GWEN_SetControlName",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Used by <page>Panel:ApplyGWEN</page> to apply the `ControlName` property to a panel. This calls <page>Panel:SetName</page>.",
         "arguments": [
@@ -23553,7 +23659,8 @@
         "name": "GWEN_SetDock",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Used by <page>Panel:ApplyGWEN</page> to apply the `Dock` property to a  panel object. This calls <page>Panel:Dock</page>.",
         "arguments": [
@@ -23568,7 +23675,8 @@
         "name": "GWEN_SetHorizontalAlign",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Used by <page>Panel:ApplyGWEN</page> to apply the `HorizontalAlign` property to a  panel object. This calls <page>Panel:SetContentAlignment</page>.",
         "arguments": [
@@ -23583,7 +23691,8 @@
         "name": "GWEN_SetMargin",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Used by <page>Panel:ApplyGWEN</page> to apply the `Margin` property to a  panel object. This calls <page>Panel:DockMargin</page>.",
         "arguments": [
@@ -23598,7 +23707,8 @@
         "name": "GWEN_SetMax",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Used by <page>Panel:ApplyGWEN</page> to apply the `Max` property to a  <page>DNumberWang</page>, <page>Slider</page>, <page>DNumSlider</page> or <page>DNumberScratch</page>. This calls `SetMax` on one of the previously listed methods.",
         "arguments": [
@@ -23613,7 +23723,8 @@
         "name": "GWEN_SetMin",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Used by <page>Panel:ApplyGWEN</page> to apply the `Min` property to a  <page>DNumberWang</page>, <page>Slider</page>, <page>DNumSlider</page> or <page>DNumberScratch</page>. This calls `SetMin` on one of the previously listed methods.",
         "arguments": [
@@ -23628,7 +23739,8 @@
         "name": "GWEN_SetPosition",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Used by <page>Panel:ApplyGWEN</page> to apply the `Position` property to a  panel object. This calls <page>Panel:SetPos</page>.",
         "arguments": [
@@ -23643,7 +23755,8 @@
         "name": "GWEN_SetSize",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Used by <page>Panel:ApplyGWEN</page> to apply the `Size` property to a  panel object. This calls <page>Panel:SetSize</page>.",
         "arguments": [
@@ -23658,7 +23771,8 @@
         "name": "GWEN_SetText",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal> Used by <page>Panel:ApplyGWEN</page> to apply the `Text` property to a panel.",
         "arguments": [
@@ -23673,7 +23787,8 @@
         "name": "HasChildren",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whenever the panel has child panels.",
         "returnValues": [
@@ -23687,7 +23802,8 @@
         "name": "HasFocus",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns if the panel is focused.",
         "returnValues": [
@@ -23701,7 +23817,8 @@
         "name": "HasHierarchicalFocus",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns if the panel or any of its children(sub children and so on) has the focus.",
         "returnValues": [
@@ -23715,7 +23832,8 @@
         "name": "HasParent",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the panel is a descendent of the given panel.",
         "arguments": [
@@ -23735,7 +23853,8 @@
         "name": "Hide",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Makes a panel invisible."
       },
@@ -23743,7 +23862,8 @@
         "name": "InsertClickableTextEnd",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Marks the end of a clickable text segment in a <page>RichText</page> element, started with <page>Panel:InsertClickableTextStart</page>."
       },
@@ -23751,7 +23871,8 @@
         "name": "InsertClickableTextStart",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Starts the insertion of clickable text for a <page>RichText</page> element. Any text appended with <page>Panel:AppendText</page> between this call and <page>Panel:InsertClickableTextEnd</page> will become clickable text.\n\nThe hook <page>PANEL:ActionSignal</page> is called when the text is clicked, with \"TextClicked\" as the signal name and `signalValue` as the signal value.\n\n<note>The clickable text is a separate Derma panel which will not inherit the current font from the `RichText`.</note>",
         "arguments": [
@@ -23766,7 +23887,8 @@
         "name": "InsertColorChange",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Inserts a color change in a <page>RichText</page> element, which affects the color of all text added with <page>Panel:AppendText</page> until another color change is applied.",
         "arguments": [
@@ -23796,7 +23918,8 @@
         "name": "InsertFade",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Begins a text fade for a <page>RichText</page> element where the last appended text segment is fully faded out after a specific amount of time, at a specific speed.\n\nThe alpha of the text at any given time is determined by the text's base alpha * ((`sustain` - <page>Global.CurTime</page>) / `length`) where <page>Global.CurTime</page> is added to `sustain` when this method is called.",
         "arguments": [
@@ -23816,7 +23939,8 @@
         "name": "InvalidateChildren",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Invalidates the layout of this panel object and all its children. This will cause these objects to re-layout immediately, calling <page>PANEL:PerformLayout</page>. If you want to perform the layout in the next frame, you will have loop manually through all children, and call <page>Panel:InvalidateLayout</page> on each.",
         "arguments": [
@@ -23832,7 +23956,8 @@
         "name": "InvalidateLayout",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Causes the panel to re-layout in the next frame. During the layout process  <page>PANEL:PerformLayout</page> will be called on the target panel.\n\nYou should avoid calling this function every frame.\n\n<bug issue=\"2574\">Using this on a panel after clicking on a docked element will cause docked elements to reorient themselves incorrectly. This can be fixed by assigning a unique <page>Panel:SetZPos</page> to each docked element.</bug>",
         "arguments": [
@@ -23848,7 +23973,8 @@
         "name": "InvalidateParent",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Calls <page>Panel:InvalidateLayout</page> on the panel's <page text=\"parent\">Panel:GetParent</page>. This function will silently fail if the panel has no parent.\n\nThis will cause the parent panel to re-layout, calling <page>PANEL:PerformLayout</page>.\n\nInternally sets `LayingOutParent` to `true` on this panel, and will silently fail if it is already set.",
         "arguments": [
@@ -23864,7 +23990,8 @@
         "name": "IsChildHovered",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Determines whether the mouse cursor is hovered over one of this panel object's children. This is a reverse process using <page>vgui.GetHoveredPanel</page>, and looks upward to find the parent.",
         "arguments": [
@@ -23886,7 +24013,8 @@
         "name": "IsDraggable",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether this panel is draggable ( if user is able to drag it ) or not.",
         "returnValues": [
@@ -23900,7 +24028,8 @@
         "name": "IsDragging",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether this panel is currently being dragged or not.",
         "returnValues": [
@@ -23914,7 +24043,8 @@
         "name": "IsEnabled",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the the panel is enabled or disabled.\n\nSee <page>Panel:SetEnabled</page> for a function that makes the panel enabled or disabled.",
         "returnValues": [
@@ -23928,7 +24058,8 @@
         "name": "IsHovered",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the mouse cursor is hovering over this panel or not\n\nUses <page>vgui.GetHoveredPanel</page> internally.\n\nRequires <page>Panel:SetMouseInputEnabled</page> to be set to true.",
         "returnValues": [
@@ -23942,7 +24073,8 @@
         "name": "IsKeyboardInputEnabled",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns true if the panel can receive keyboard input.",
         "returnValues": [
@@ -23956,7 +24088,8 @@
         "name": "IsLoading",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Determines whether or not a <page>HTML</page> or <page>DHTML</page> element is currently loading a page.\n\n<note>Before calling <page>Panel:SetHTML</page> or <page>DHTML:OpenURL</page>, the result seems to be `false` with the Awesomium web renderer and `true` for the Chromium web renderer. This difference can be used to determine the available HTML5 capabilities.</note>\n<note>On Awesomium, the result remains `true` until the root document is loaded and when in-page content is loading (when adding pictures, frames, etc.). During this state, the HTML texture is not refreshed and the panel is not painted (it becomes invisible).\n\nOn Chromium, the value is only `true` when the root document is not ready. The rendering is not suspended when in-page elements are loading.</note>",
         "returnValues": [
@@ -23970,7 +24103,8 @@
         "name": "IsMarkedForDeletion",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns if the panel is going to be deleted in the next frame.",
         "returnValues": [
@@ -23984,7 +24118,8 @@
         "name": "IsModal",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the panel was made modal or not. See <page>Panel:DoModal</page>.",
         "returnValues": [
@@ -23998,7 +24133,8 @@
         "name": "IsMouseInputEnabled",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns true if the panel can receive mouse input.",
         "returnValues": [
@@ -24012,7 +24148,8 @@
         "name": "IsOurChild",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns whether the panel contains the given panel, recursively.",
         "arguments": [
@@ -24032,7 +24169,8 @@
         "name": "IsPopup",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns if the panel was made popup or not. See <page>Panel:MakePopup</page>",
         "returnValues": [
@@ -24046,7 +24184,8 @@
         "name": "IsSelectable",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Determines if the panel object is selectable (like icons in the Spawn Menu, holding <key>Shift</key>). This is set with <page>Panel:SetSelectable</page>.",
         "returnValues": [
@@ -24060,7 +24199,8 @@
         "name": "IsSelected",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns if the panel object is selected (like icons in the Spawn Menu, holding <key>Shift</key>). This can be set in Lua using <page>Panel:SetSelected</page>.",
         "returnValues": [
@@ -24074,7 +24214,8 @@
         "name": "IsSelectionCanvas",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Determines if the panel object is a selection canvas or not. This is set with <page>Panel:SetSelectionCanvas</page>.",
         "returnValues": [
@@ -24088,7 +24229,8 @@
         "name": "IsValid",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns if the panel is valid and not marked for deletion.",
         "returnValues": [
@@ -24102,7 +24244,8 @@
         "name": "IsVisible",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns if the panel is visible. This will **NOT** take into account visibility of the parent.",
         "returnValues": [
@@ -24116,7 +24259,8 @@
         "name": "IsWorldClicker",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns if a panel allows world clicking set by <page>Panel:SetWorldClicker</page>.",
         "returnValues": [
@@ -24130,7 +24274,8 @@
         "name": "KillFocus",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Remove the focus from the panel."
       },
@@ -24138,7 +24283,8 @@
         "name": "LerpPositions",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Redefines the panel object's <page>Panel:SetPos</page> method to operate using frame-by-frame linear interpolation (<page>Global.Lerp</page>). When the panel's position is changed, it will move to the target position at the speed defined. You can undo this with <page>Panel:DisableLerp</page>.\n\nUnlike the other panel animation functions, such as <page>Panel:MoveTo</page>, this animation method will not operate whilst the game is paused. This is because it relies on <page>Global.FrameTime</page>.",
         "arguments": [
@@ -24158,7 +24304,8 @@
         "name": "LoadControlsFromFile",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated></deprecated>\n<internal></internal>\nSimilar to <page>Panel:LoadControlsFromString</page> but loads controls from a file.",
         "arguments": [
@@ -24173,7 +24320,8 @@
         "name": "LoadControlsFromString",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated></deprecated>\n<internal></internal>\nLoads controls(positions, etc) from given data. This is what the default options menu uses.",
         "arguments": [
@@ -24188,7 +24336,8 @@
         "name": "LoadGWENFile",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Loads a .gwen file (created by GWEN Designer) and calls <page>Panel:LoadGWENString</page> with the contents of the loaded file.\n\nUsed to load panel controls from a file.",
         "arguments": [
@@ -24209,7 +24358,8 @@
         "name": "LoadGWENString",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Loads controls for the panel from a JSON string.",
         "arguments": [
@@ -24224,7 +24374,8 @@
         "name": "LoadTGAImage",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets a new image to be loaded by a <page>TGAImage</page>.",
         "arguments": [
@@ -24244,7 +24395,8 @@
         "name": "LocalCursorPos",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the cursor position local to the position of the panel (usually the upper-left corner).",
         "returnValues": [
@@ -24262,7 +24414,8 @@
         "name": "LocalToScreen",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Gets the absolute screen position of the position specified relative to the panel.\n\nSee also <page>Panel:ScreenToLocal</page>.\n\n<warning>This function uses a cached value for the screen position of the panel, computed at the end of the last VGUI Think/Layout pass, so inaccurate results may be returned if the panel or any of its ancestors have been re-positioned outside of <page>PANEL:Think</page> or <page>PANEL:PerformLayout</page> within the last frame.</warning>\n\n<note>If the panel uses <page>Panel:Dock</page>, this function will return 0, 0 when the panel was created. The position will be updated in the next frame.</note>",
         "arguments": [
@@ -24292,7 +24445,8 @@
         "name": "MakePopup",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Focuses the panel and enables it to receive input.\n\nThis automatically calls <page>Panel:SetMouseInputEnabled</page> and <page text=\"Panel:SetKeyboardInputEnabled\">Panel:SetKeyboardInputEnabled(lowercase)</page> and sets them to `true`.\n\n<note>Panels derived from <page>Panel</page> will not work properly with this function. Due to this, any children will not be intractable with keyboard. Derive from <page>EditablePanel</page> instead.\n\nFor non gui related mouse focus, you can use <page>gui.EnableScreenClicker</page>.</note>"
       },
@@ -24300,7 +24454,8 @@
         "name": "MouseCapture",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Allows the panel to receive mouse input even if the mouse cursor is outside the bounds of the panel.",
         "arguments": [
@@ -24315,7 +24470,8 @@
         "name": "MoveAbove",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Places the panel above the passed panel with the specified offset.",
         "arguments": [
@@ -24336,7 +24492,8 @@
         "name": "MoveBelow",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Places the panel below the passed panel with the specified offset.",
         "arguments": [
@@ -24357,7 +24514,8 @@
         "name": "MoveBy",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Moves the panel by the specified coordinates using animation.",
         "arguments": [
@@ -24400,7 +24558,8 @@
         "name": "MoveLeftOf",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Places the panel left to the passed panel with the specified offset.",
         "arguments": [
@@ -24421,7 +24580,8 @@
         "name": "MoveRightOf",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Places the panel right to the passed panel with the specified offset.",
         "arguments": [
@@ -24442,7 +24602,8 @@
         "name": "MoveTo",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Moves the panel to the specified position using animation.\n<note>Setting the ease argument to 0 will result in the animation happening instantly, this applies to all MoveTo/SizeTo functions</note>",
         "arguments": [
@@ -24484,7 +24645,8 @@
         "name": "MoveToAfter",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Moves this panel object in front of the specified sibling (child of the same parent) in the render order, and shuffles up the Z-positions of siblings now behind.",
         "arguments": [
@@ -24505,7 +24667,8 @@
         "name": "MoveToBack",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Moves the panel object behind all other panels on screen. If the panel has been made a pop-up with <page>Panel:MakePopup</page>, it will still draw in front of any panels that haven't."
       },
@@ -24513,7 +24676,8 @@
         "name": "MoveToBefore",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Moves this panel object behind the specified sibling (child of the same parent) in the render order, and shuffles up the <page>Panel:SetZPos</page> of siblings now in front.",
         "arguments": [
@@ -24534,7 +24698,8 @@
         "name": "MoveToFront",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Moves the panel in front of all other panels on screen. Unless the panel has been made a pop-up using <page>Panel:MakePopup</page>, it will still draw behind any that have."
       },
@@ -24542,7 +24707,8 @@
         "name": "NewAnimation",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Creates a new animation for the panel object.\n\nMethods that use this function:\n* <page>Panel:MoveTo</page>\n* <page>Panel:SizeTo</page>\n* <page>Panel:SlideUp</page>\n* <page>Panel:SlideDown</page>\n* <page>Panel:ColorTo</page>\n* <page>Panel:AlphaTo</page>\n* <page>Panel:MoveBy</page>\n* <page>Panel:LerpPositions</page>",
         "arguments": [
@@ -24581,7 +24747,8 @@
         "name": "NewObject",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>",
         "arguments": [
@@ -24595,7 +24762,8 @@
         "name": "NewObjectCallback",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>",
         "arguments": [
@@ -24613,7 +24781,8 @@
         "name": "NoClipping",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether this panel's drawings should be clipped within the parent panel's bounds.\n\nSee also <page>Global.DisableClipping</page>.",
         "arguments": [
@@ -24628,7 +24797,8 @@
         "name": "NumSelectedChildren",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Returns the number of children of the panel object that are selected. This is equivalent to calling <page>Panel:IsSelected</page> on all child objects and counting the number of returns that are `true`.",
         "returnValues": [
@@ -24642,7 +24812,8 @@
         "name": "OpenURL",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Instructs a HTML control to download and parse a HTML script using the passed URL.\n\nThis function can also be used on [HTML](https://wiki.facepunch.com/gmod/HTML).",
         "arguments": [
@@ -24657,7 +24828,8 @@
         "name": "PaintAt",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Paints a ghost copy of the panel at the given position.\n<warning>\nBreaks Z pos of panel <page>PANEL:SetZPos</page>\n</warning>",
         "arguments": [
@@ -24677,7 +24849,8 @@
         "name": "PaintManual",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Paints the panel at its current position. To use this you must call <page>Panel:SetPaintedManually</page>(true)."
       },
@@ -24693,7 +24866,8 @@
         "name": "Paste",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>Due to privacy concerns, this function has been disabled</deprecated>\n\nOnly works for TextEntries.\n\nPastes the contents of the clipboard into the TextEntry.\n\n<note>Tab characters will be dropped from the pasted text</note>"
       },
@@ -24701,7 +24875,8 @@
         "name": "PositionLabel",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the width and position of a <page>DLabel</page> and places the passed panel object directly to the right of it. Returns the `y` value of the bottom of the tallest object. The panel on which this method is run is not relevant; only the passed objects are affected.",
         "arguments": [
@@ -24742,7 +24917,8 @@
         "name": "PostMessage",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>Only used in deprecated Derma controls.</deprecated>Sends a command to the panel.",
         "arguments": [
@@ -24767,7 +24943,8 @@
         "name": "Prepare",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>\nInstalls Lua defined functions into the panel."
       },
@@ -24775,7 +24952,8 @@
         "name": "Queue",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Enables the queue for panel animations. If enabled, the next new animation will begin after all current animations have ended. This must be called before <page>Panel:NewAnimation</page> to work, and only applies to the next new animation. If you want to queue many, you must call this before each."
       },
@@ -24806,7 +24984,8 @@
         "name": "Receiver",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Allows the panel to receive drag and drop events. Can be called multiple times with different names to receive multiple different draggable panel events.",
         "arguments": [
@@ -24831,7 +25010,8 @@
         "name": "Refresh",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Refreshes the HTML panel's current page.",
         "arguments": [
@@ -24847,7 +25027,8 @@
         "name": "Remove",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Marks a panel for deletion so it will be deleted on the next frame.\n\nThis will not mark child panels for deletion this frame, but they will be marked and deleted in the next frame.\n\nSee also <page>Panel:IsMarkedForDeletion</page>\n\nWill automatically call <page>Panel:InvalidateParent</page>."
       },
@@ -24855,7 +25036,8 @@
         "name": "RequestFocus",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Attempts to obtain focus for this panel."
       },
@@ -24863,7 +25045,8 @@
         "name": "ResetAllFades",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Resets all text fades in a <page>RichText</page> element made with <page>Panel:InsertFade</page>.",
         "arguments": [
@@ -24888,7 +25071,8 @@
         "name": "RunJavascript",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Runs/Executes a string as JavaScript code in a panel.\n<note>This function does **NOT** evaluate expression (i.e. allow you to pass variables from JavaScript (JS) to Lua context).<br>Because a return value is nil/no value (a.k.a. void).<br>If you wish to pass/return values from JS to Lua, you may want to use <page>DHTML:AddFunction</page> function to accomplish that job.</note>\n<note>The Awesomium web renderer automatically delays the code execution if the document is not ready, but the Chromium web renderer does not!\n\nThis means that with Chromium, you cannot JavaScript run code immediatly after calling <page>Panel:SetHTML</page> or <page>DHTML:OpenURL</page>. You should wait for the events <page>PANEL:OnDocumentReady</page> or <page>PANEL:OnFinishLoadingDocument</page> to be triggered before proceeding, otherwise you may manipulate an empty / incomplete document.</note>",
         "arguments": [
@@ -24903,7 +25087,8 @@
         "name": "SaveUndoState",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Saves the current state (caret position and the text inside) of a <page>TextEntry</page> as an undo state.\n\nSee also <page>Panel:Undo</page>."
       },
@@ -24911,7 +25096,8 @@
         "name": "ScreenToLocal",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Translates global screen coordinate to coordinates relative to the panel.\n\nSee also <page>Panel:LocalToScreen</page>.\n\n<warning>This function uses a cached value for the screen position of the panel, computed at the end of the last VGUI Think/Layout pass, so inaccurate results may be returned if the panel or any of its ancestors have been re-positioned outside of <page>PANEL:Think</page> or <page>PANEL:PerformLayout</page> within the last frame.</warning>",
         "arguments": [
@@ -24941,7 +25127,8 @@
         "name": "SelectAll",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Selects all items within a panel or object. For text-based objects, selects all text."
       },
@@ -24949,7 +25136,8 @@
         "name": "SelectAllOnFocus",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "If called on a text entry, clicking the text entry for the first time will automatically select all of the text ready to be copied by the user."
       },
@@ -24957,7 +25145,8 @@
         "name": "SelectAllText",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>Duplicate of <page>Panel:SelectAll</page>.</deprecated>\n\nSelects all the text in a panel object. Will not select non-text items; for this, use <page>Panel:SelectAll</page>."
       },
@@ -24965,7 +25154,8 @@
         "name": "SelectNone",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Deselects all items in a panel object. For text-based objects, this will deselect all text."
       },
@@ -24973,7 +25163,8 @@
         "name": "SetAchievement",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the achievement to be displayed by <page>AchievementIcon</page>.",
         "arguments": [
@@ -24988,7 +25179,8 @@
         "name": "SetActionFunction",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>Does nothing at all.</deprecated>\n\nUsed in <page>Button</page> to call a function when the button is clicked and in <page>Slider</page> when the value changes.",
         "arguments": [
@@ -25003,7 +25195,8 @@
         "name": "SetAllowNonAsciiCharacters",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Configures a text input to allow user to type characters that are not included in the US-ASCII (7-bit ASCII) character set.\n\nCharacters not included in US-ASCII are multi-byte characters in UTF-8. They can be accented characters, non-Latin characters and special characters.",
         "arguments": [
@@ -25018,7 +25211,8 @@
         "name": "SetAlpha",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the alpha multiplier for the panel",
         "arguments": [
@@ -25033,7 +25227,8 @@
         "name": "SetAnimationEnabled",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Enables or disables animations for the panel object by overriding the <page>PANEL:AnimationThink</page> hook to nil and back.",
         "arguments": [
@@ -25048,7 +25243,8 @@
         "name": "SetAutoDelete",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whenever the panel should be removed if the parent was removed.",
         "arguments": [
@@ -25063,7 +25259,8 @@
         "name": "SetBGColor",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the background color of a panel such as a <page>RichText</page>, <page>Label</page> or <page>DColorCube</page>.\n\n<note>This doesn't apply to all VGUI elements and its function varies between them</note>\n\nFor <page>DLabel</page> elements, you must use <page>Panel:SetPaintBackgroundEnabled</page>( true ) before applying the color.\n\nThis will not work on setup of the panel - you should use this function in a hook like <page>PANEL:ApplySchemeSettings</page> or <page>PANEL:PerformLayout</page>.",
         "arguments": [
@@ -25093,7 +25290,8 @@
         "name": "SetBGColorEx",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>Sets the background color of the panel.",
         "arguments": [
@@ -25123,7 +25321,8 @@
         "name": "SetCaretPos",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the position of the caret (or text cursor) in a text-based panel object.",
         "arguments": [
@@ -25138,7 +25337,8 @@
         "name": "SetCommand",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the action signal command that's fired when a <page>Button</page> is clicked. The hook <page>PANEL:ActionSignal</page> is called as the click response.\n\nThis has no effect on buttons unless it has had its `AddActionSignalTarget` method called (an internal function not available by default in Garry's Mod LUA).\n\nA better alternative is calling <page>Panel:Command</page> when a <page>DButton</page> is clicked."
       },
@@ -25146,7 +25346,8 @@
         "name": "SetContentAlignment",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the alignment of the contents.",
         "arguments": [
@@ -25161,7 +25362,8 @@
         "name": "SetConVar",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<warning>This function does not exist on all panels</warning>\n<warning>This function cannot interact with serverside convars unless you are host</warning>\n<note>Blocked convars will not work with this, see <page>Blocked ConCommands</page></note>\n\nSets this panel's convar. When the convar changes this panel will update automatically.\n\nFor developer implementation, see <page>Global.Derma_Install_Convar_Functions</page>.",
         "arguments": [
@@ -25176,7 +25378,8 @@
         "name": "SetCookie",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Stores a string in the named cookie using <page>Panel:GetCookieName</page> as prefix.\n\nYou can also retrieve and modify this cookie by using the <page>cookie</page>. Cookies are stored in this format:\n\n```\npanelCookieName.cookieName\n```\n\n\n<warning>The panel's cookie name MUST be set for this function to work. See <page>Panel:SetCookieName</page>.</warning>",
         "arguments": [
@@ -25196,7 +25399,8 @@
         "name": "SetCookieName",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the panel's cookie name. Calls <page>PANEL:LoadCookies</page> if defined.",
         "arguments": [
@@ -25211,7 +25415,8 @@
         "name": "SetCursor",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the appearance of the cursor. You can find a list of all available cursors with image previews [here](https://wiki.facepunch.com/gmod/Cursors).",
         "arguments": [
@@ -25226,7 +25431,8 @@
         "name": "SetDragParent",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the drag parent.\n\nDrag parent means that when we start to drag this panel, we'll really start dragging the defined parent.",
         "arguments": [
@@ -25241,7 +25447,8 @@
         "name": "SetDrawOnTop",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Makes the panel render in front of all others, including the spawn menu and main menu.\n\nPriority is given based on the last call, so of two panels that call this method, the second will draw in front of the first.\n\n<note>This only makes the panel **draw** above other panels. If there's another panel that would have otherwise covered it, users will not be able to interact with it.\n\nCompletely disregards <page>PANEL:ParentToHUD</page>.</note>\n\n<warning>This does not work when using <page>PANEL:SetPaintedManually</page> or <page>PANEL:PaintAt</page>.</warning>",
         "arguments": [
@@ -25257,7 +25464,8 @@
         "name": "SetDropTarget",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the target area for dropping when an object is being dragged around this panel using the <page>dragndrop</page>.\n\nThis draws a target box of the specified size and position, until <page>Panel:DragHoverEnd</page> is called. It uses <page>Panel:DrawDragHover</page> to draw this area.",
         "arguments": [
@@ -25287,7 +25495,8 @@
         "name": "SetEnabled",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the enabled state of a disable-able panel object, such as a <page>DButton</page> or <page>DTextEntry</page>.\n\nSee <page>Panel:IsEnabled</page> for a function that retrieves the \"enabled\" state of a panel.",
         "arguments": [
@@ -25302,7 +25511,8 @@
         "name": "SetExpensiveShadow",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Adds a shadow falling to the bottom right corner of the panel's text. This has no effect on panels that do not derive from Label.",
         "arguments": [
@@ -25322,7 +25532,8 @@
         "name": "SetFGColor",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the foreground color of a panel.\n\nFor a <page>Label</page> or <page>RichText</page>, this is the color of its text.\n\nThis function calls <page>Panel:SetFGColorEx</page> internally.\n\n<note>This doesn't apply to all VGUI elements (such as <page>DLabel</page>) and its function varies between them</note>",
         "arguments": [
@@ -25352,7 +25563,8 @@
         "name": "SetFGColorEx",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<internal></internal>Sets the foreground color of the panel.\n\nFor labels, this is the color of their text.",
         "arguments": [
@@ -25382,7 +25594,8 @@
         "name": "SetFocusTopLevel",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the panel that owns this FocusNavGroup to be the root in the focus traversal hierarchy. This function will only work on EditablePanel class panels and its derivatives.",
         "arguments": [
@@ -25396,7 +25609,8 @@
         "name": "SetFontInternal",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the font used to render this panel's text. This works for <page>Label</page>, <page>TextEntry</page> and <page>RichText</page>, but it's a better idea to use their local `SetFont` (<page>DTextEntry:SetFont</page>, <page>DLabel:SetFont</page>) methods when available.\n\nTo retrieve the font used by a panel, call <page>Panel:GetFont</page>.",
         "arguments": [
@@ -25411,7 +25625,8 @@
         "name": "SetHeight",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the height of the panel.\n\nCalls <page>PANEL:OnSizeChanged</page> and marks this panel for layout (<page>Panel:InvalidateLayout</page>).\n\n\nSee also <page>Panel:SetSize</page>.",
         "arguments": [
@@ -25426,7 +25641,8 @@
         "name": "SetHTML",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Allows you to set HTML code within a panel.",
         "arguments": [
@@ -25456,7 +25672,8 @@
         "name": "SetKeyBoardInputEnabled",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>Alias of <page text=\"Panel:SetKeyboardInputEnabled\">Panel:SetKeyboardInputEnabled(lowercase)</page></deprecated>Enables or disables the keyboard input for the panel.",
         "arguments": [
@@ -25471,7 +25688,8 @@
         "name": "SetMaximumCharCount",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the maximum character count this panel should have.\n\nThis function will only work on <page>RichText</page> and <page>TextEntry</page> panels and their derivatives.",
         "arguments": [
@@ -25486,7 +25704,8 @@
         "name": "SetMinimumSize",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the minimum dimensions of the panel or object.\n\nYou can restrict either or both values.\n\nCalling the function without arguments will remove the minimum size.",
         "arguments": [
@@ -25534,7 +25753,8 @@
         "name": "SetMouseInputEnabled",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Enables or disables the mouse input for the panel.\n<note>Panels parented to the context menu will not be clickable unless <page text=\"Panel:SetKeyboardInputEnabled\">Panel:SetKeyboardInputEnabled(lowercase)</page> is enabled or <page>Panel:MakePopup</page> has been called. If you want the panel to have mouse input but you do not want to prevent players from moving, set <page text=\"Panel:SetKeyboardInputEnabled\">Panel:SetKeyboardInputEnabled(lowercase)</page> to false immediately after calling <page>Panel:MakePopup</page>.</note>",
         "arguments": [
@@ -25549,7 +25769,8 @@
         "name": "SetName",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the internal name of the panel. Can be retrieved with <page>Panel:GetName</page>.",
         "arguments": [
@@ -25564,7 +25785,8 @@
         "name": "SetPaintBackgroundEnabled",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whenever all the default background of the panel should be drawn or not.",
         "arguments": [
@@ -25579,7 +25801,8 @@
         "name": "SetPaintBorderEnabled",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whenever all the default border of the panel should be drawn or not.",
         "arguments": [
@@ -25594,7 +25817,8 @@
         "name": "SetPaintedManually",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Enables or disables painting of the panel manually with <page>Panel:PaintManual</page>.",
         "arguments": [
@@ -25609,7 +25833,8 @@
         "name": "SetPaintFunction",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>This function does nothing.</deprecated>\nThis function does nothing."
       },
@@ -25617,7 +25842,8 @@
         "name": "SetParent",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the parent of the panel.\n<note>Panels parented to the context menu will not be clickable unless <page>Panel:SetMouseInputEnabled</page> and <page text=\"Panel:SetKeyboardInputEnabled\">Panel:SetKeyboardInputEnabled(lowercase)</page> are both true or <page>Panel:MakePopup</page> has been called. If you want the panel to have mouse input but you do not want to prevent players from moving, set <page text=\"Panel:SetKeyboardInputEnabled\">Panel:SetKeyboardInputEnabled(lowercase)</page> to false immediately after calling <page>Panel:MakePopup</page>.</note>",
         "arguments": [
@@ -25652,7 +25878,8 @@
         "name": "SetPopupStayAtBack",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "If this panel object has been made a popup with <page>Panel:MakePopup</page>, this method will prevent it from drawing in front of other panels when it receives input focus.",
         "arguments": [
@@ -25667,7 +25894,8 @@
         "name": "SetPos",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the position of the panel's top left corner.\n\nThis will trigger <page>PANEL:PerformLayout</page>. You should avoid calling this function in <page>PANEL:PerformLayout</page> to avoid infinite loops.\n\nSee also <page>Panel:SetX</page> and <page>Panel:SetY</page>.\n\n<note>If you wish to position and re-size panels without much guesswork and have them look good on different screen resolutions, you may find <page>Panel:Dock</page> useful</note>",
         "arguments": [
@@ -25687,7 +25915,8 @@
         "name": "SetRenderInScreenshots",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whenever the panel should be rendered in the next screenshot.",
         "arguments": [
@@ -25702,7 +25931,8 @@
         "name": "SetSelectable",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether the panel object can be selected or not (like icons in the Spawn Menu, holding <key>Shift</key>). If enabled, this will affect the function of a <page>DButton</page> whilst <key>Shift</key> is pressed. <page>Panel:SetSelected</page> can be used to select/deselect the object.",
         "arguments": [
@@ -25717,7 +25947,8 @@
         "name": "SetSelected",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the selected state of a selectable panel object. This functionality is set with <page>Panel:SetSelectable</page> and checked with <page>Panel:IsSelectable</page>.",
         "arguments": [
@@ -25733,7 +25964,8 @@
         "name": "SetSelectionCanvas",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Enables the panel object for selection (much like the spawn menu).",
         "arguments": [
@@ -25748,7 +25980,8 @@
         "name": "SetSize",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the size of the panel.\n\nCalls <page>PANEL:OnSizeChanged</page> and marks this panel for layout (<page>Panel:InvalidateLayout</page>).\n\n\nSee also <page>Panel:SetWidth</page> and <page>Panel:SetHeight</page>.\n\n<note>If you wish to position and re-size panels without much guesswork and have them look good on different screen resolutions, you may find <page>Panel:Dock</page> useful</note>",
         "arguments": [
@@ -25768,7 +26001,8 @@
         "name": "SetSkin",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the derma skin that the panel object will use, and refreshes all panels with <page>derma.RefreshSkins</page>.",
         "arguments": [
@@ -25818,7 +26052,8 @@
         "name": "SetTabPosition",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "When TAB is pressed, the next selectable panel in the number sequence is selected.",
         "arguments": [
@@ -25832,7 +26067,8 @@
         "name": "SetTall",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets height of a panel. An alias of <page>Panel:SetHeight</page>.",
         "arguments": [
@@ -25847,7 +26083,8 @@
         "name": "SetTerm",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Removes the panel after given time in seconds.\n<note>This function will not work if <page>PANEL:AnimationThink</page> is overridden, unless <page>Panel:AnimationThinkInternal</page> is called every frame.</note>",
         "arguments": [
@@ -25862,7 +26099,8 @@
         "name": "SetText",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the text value of a panel object containing text, such as a <page>Label</page>, <page>TextEntry</page> or  <page>RichText</page> and their derivatives, such as <page>DLabel</page>, <page>DTextEntry</page> or <page>DButton</page>.\n\n<warning>When used on a <page>Label</page> or its derivatives ( <page>DLabel</page> and <page>DButton</page> ), it will automatically call <page>Panel:InvalidateLayout</page>, meaning that you should avoid running this function every frame on these panels to avoid unnecessary performance loss.</warning>",
         "arguments": [
@@ -25877,7 +26115,8 @@
         "name": "SetTextInset",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the left and top text margins of a text-based panel object, such as a <page>DButton</page> or <page>DLabel</page>.",
         "arguments": [
@@ -25897,7 +26136,8 @@
         "name": "SetTextSelectionColors",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets text selection colors of a <page>RichText</page> element.",
         "arguments": [
@@ -25917,7 +26157,8 @@
         "name": "SetToFullHeight",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the height of a <page>RichText</page> element to accommodate the text inside.\n\n<note>This function internally relies on <page>Panel:GetNumLines</page>, so it should be called at least a couple frames after modifying the text using <page>Panel:AppendText</page></note>"
       },
@@ -25925,7 +26166,8 @@
         "name": "SetTooltip",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the tooltip to be displayed when a player hovers over the panel object with their cursor.",
         "arguments": [
@@ -25940,7 +26182,8 @@
         "name": "SetTooltipDelay",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the tooltip delay. (time between hovering over the panel, and the tooltip showing up)\n\nCan be retrieved with <page>Panel:GetTooltipDelay</page>.",
         "arguments": [
@@ -25955,7 +26198,8 @@
         "name": "SetTooltipPanel",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the panel to be displayed as contents of a <page>DTooltip</page> when a player hovers over the panel object with their cursor. See <page>Panel:SetTooltipPanelOverride</page> if you are looking to override <page>DTooltip</page> itself.\n\n<note><page>Panel:SetTooltip</page> will override this functionality.</note>\n\n<warning>\nCalling this from <page>PANEL:OnCursorEntered</page> is too late! The tooltip will not be displayed or be updated.\n\nGiven panel or the previously set one will **NOT** be automatically removed.\n</warning>",
         "arguments": [
@@ -25971,7 +26215,8 @@
         "name": "SetTooltipPanelOverride",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the panel class to be created instead of <page>DTooltip</page> when the player hovers over this panel and a tooltip needs creating.",
         "arguments": [
@@ -25986,7 +26231,8 @@
         "name": "SetUnderlineFont",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the underlined font for use by clickable text in a <page>RichText</page>. See also <page>Panel:InsertClickableTextStart</page>\n\nThis function will only work on <page>RichText</page> panels.",
         "arguments": [
@@ -26001,7 +26247,8 @@
         "name": "SetURL",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the URL of a link-based panel such as <page>DLabelURL</page>.",
         "arguments": [
@@ -26016,7 +26263,8 @@
         "name": "SetVerticalScrollbarEnabled",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the visibility of the vertical scrollbar.\n\nWorks for <page>RichText</page> and <page>TextEntry</page>.",
         "arguments": [
@@ -26032,7 +26280,8 @@
         "name": "SetVisible",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the \"visibility\" of the panel.",
         "arguments": [
@@ -26047,7 +26296,8 @@
         "name": "SetWide",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets width of a panel. An alias of <page>Panel:SetWidth</page>.",
         "arguments": [
@@ -26062,7 +26312,8 @@
         "name": "SetWidth",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the width of the panel.\n\nCalls <page>PANEL:OnSizeChanged</page> and marks this panel for layout (<page>Panel:InvalidateLayout</page>).\n\n\nSee also <page>Panel:SetSize</page>.",
         "arguments": [
@@ -26077,7 +26328,8 @@
         "name": "SetWorldClicker",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "This makes it so that when you're hovering over this panel you can `click` on the world. Your viewmodel will aim etc. This is primarily used for the Sandbox context menu.\n\n<bug issue=\"3467\">This function doesn't scale with custom FOV specified by <page>GM:CalcView</page> or <page>WEAPON:TranslateFOV</page>.</bug>",
         "arguments": [
@@ -26091,7 +26343,8 @@
         "name": "SetWrap",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets whether text wrapping should be enabled or disabled on <page>Label</page> and <page>DLabel</page> panels.\nUse <page>DLabel:SetAutoStretchVertical</page> to automatically correct vertical size; <page>Panel:SizeToContents</page> will not set the correct height.",
         "arguments": [
@@ -26106,7 +26359,8 @@
         "name": "SetX",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the X position of the panel.\n\nUses <page>Panel:SetPos</page> internally.",
         "arguments": [
@@ -26121,7 +26375,8 @@
         "name": "SetY",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the Y position of the panel.\n\nUses <page>Panel:SetPos</page> internally.",
         "arguments": [
@@ -26136,7 +26391,8 @@
         "name": "SetZPos",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the panels z position which determines the rendering order.\n\nPanels with lower z positions appear behind panels with higher z positions.\n\nThis also controls in which order panels docked with <page>Panel:Dock</page> appears.",
         "arguments": [
@@ -26151,7 +26407,8 @@
         "name": "Show",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Makes a panel visible."
       },
@@ -26159,7 +26416,8 @@
         "name": "SizeTo",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Uses animation to resize the panel to the specified size.",
         "arguments": [
@@ -26203,7 +26461,8 @@
         "name": "SizeToChildren",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Resizes the panel to fit the bounds of its children.\n\n<note>Your panel must have its layout updated (<page>Panel:InvalidateLayout</page>) for this function to work properly.</note>\n<note>The sizeW and sizeH parameters are false by default. Therefore, calling this function with no arguments will result in a no-op.</note>",
         "arguments": [
@@ -26225,7 +26484,8 @@
         "name": "SizeToContents",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Resizes the panel so that its width and height fit all of the content inside.\n\n<note>Only works on <page>Label</page> derived panels such as <page>DLabel</page> by default, and on any panel that manually implemented the <page>Panel:SizeToContents</page> method, such as <page>DNumberWang</page> and <page>DImage</page>.</note>\n\n<warning>You must call this function **AFTER** setting text/font, adjusting child panels or otherwise altering the panel.</warning>"
       },
@@ -26233,7 +26493,8 @@
         "name": "SizeToContentsX",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Resizes the panel object's width to accommodate all child objects/contents.\n\nOnly works on <page>Label</page> derived panels such as <page>DLabel</page> by default, and on any panel that manually implemented <page>Panel:GetContentSize</page> method.\n\n<note>You must call this function **AFTER** setting text/font or adjusting child panels.</note>",
         "arguments": [
@@ -26249,7 +26510,8 @@
         "name": "SizeToContentsY",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Resizes the panel object's height to accommodate all child objects/contents.\n\nOnly works on <page>Label</page> derived panels such as <page>DLabel</page> by default, and on any panel that manually implemented <page>Panel:GetContentSize</page> method.\n\n<note>You must call this function **AFTER** setting text/font or adjusting child panels.</note>",
         "arguments": [
@@ -26265,7 +26527,8 @@
         "name": "SlideDown",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Slides the panel in from above.",
         "arguments": [
@@ -26280,7 +26543,8 @@
         "name": "SlideUp",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Slides the panel out to the top.",
         "arguments": [
@@ -26295,7 +26559,8 @@
         "name": "StartBoxSelection",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Begins a box selection, enables mouse capture for the panel object, and sets the start point of the selection box to the mouse cursor's position, relative to this object. For this to work, either the object or its parent must be enabled as a selection canvas. This is set using <page>Panel:SetSelectionCanvas</page>."
       },
@@ -26303,7 +26568,8 @@
         "name": "Stop",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Stops all panel animations by clearing its animation list. This also clears all delayed animations."
       },
@@ -26311,7 +26577,8 @@
         "name": "StretchBottomTo",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Resizes the panel object's height so that its bottom is aligned with the top of the passed panel. An offset greater than zero will reduce the panel's height to leave a gap between it and the passed panel.",
         "arguments": [
@@ -26332,7 +26599,8 @@
         "name": "StretchRightTo",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Resizes the panel object's width so that its right edge is aligned with the left of the passed panel. An offset greater than zero will reduce the panel's width to leave a gap between it and the passed panel.",
         "arguments": [
@@ -26353,7 +26621,8 @@
         "name": "StretchToParent",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Sets the dimensions of the panel to fill its parent. It will only stretch in directions that aren't nil.",
         "arguments": [
@@ -26383,7 +26652,8 @@
         "name": "ToggleSelection",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Toggles the selected state of a selectable panel object. This functionality is set with <page>Panel:SetSelectable</page> and checked with <page>Panel:IsSelectable</page>. To check whether the object is selected or not, <page>Panel:IsSelected</page> is used."
       },
@@ -26391,7 +26661,8 @@
         "name": "ToggleVisible",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Toggles the visibility of a panel and all its children."
       },
@@ -26399,7 +26670,8 @@
         "name": "Undo",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Restores the last saved state (caret position and the text inside) of a <page>TextEntry</page>. Should act identically to pressing CTRL+Z in a <page>TextEntry</page>.\n\nSee also <page>Panel:SaveUndoState</page>."
       },
@@ -26407,7 +26679,8 @@
         "name": "UnselectAll",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Recursively deselects this panel object and all of its children. This will cascade to all child objects at every level below the parent."
       },
@@ -26415,7 +26688,8 @@
         "name": "UpdateHTMLTexture",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "Forcibly updates the panels' HTML Material, similar to when Paint is called on it.<br>This is only useful if the panel is not normally visible, i.e the panel exists purely for its HTML Material.\n<note>Only works on with panels that have a HTML Material. See <page>Panel:GetHTMLMaterial</page> for more details.</note>\n<note>A good place to call this is in the <page>GM:PreRender</page> hook</note>"
       },
@@ -26423,7 +26697,8 @@
         "name": "Valid",
         "parent": "Panel",
         "realms": [
-          "client"
+          "client",
+          "menu"
         ],
         "description": "<deprecated>Use <page>Panel:IsValid</page> instead.</deprecated>Returns if a given panel is valid or not.",
         "returnValues": [
@@ -30120,7 +30395,7 @@
           "client",
           "server"
         ],
-        "description": "Returns a table of the player's weapons.",
+        "description": "Returns a table of the player's weapons.\n<note>\nThis function returns a sequential table, meaning it should be looped with <page>Global.ipairs</page> instead of <page>Global.pairs</page> for efficiency reasons.\n</note>",
         "returnValues": [
           {
             "type": "table",

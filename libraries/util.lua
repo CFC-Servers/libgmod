@@ -139,7 +139,7 @@ end
 --- For Orange Box `.pcf` particles, see Global.ParticleEffect, Global.ParticleEffectAttach and  Global.CreateParticleSystem.  
 --- ℹ **NOTE**:   
 --- When dispatching an effect from the server, some values may be clamped for networking optimizations. Visit the Set accessors on CEffectData to see which ones are affected.  
---- You will need to couple this function with Global.IsFirstTimePredicted if you want to use it in predicted hook.  
+--- You will need to couple this function with Global.IsFirstTimePredicted if you want to use it in a predicted hook.  
 --- @param effectName string @The name of the effect to create
 --- @param effectData CEffectData @The effect data describing the effect.
 --- @param allowOverride? boolean @Whether Lua-defined effects should override engine-defined effects with the same name for this/single function call.
