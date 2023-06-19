@@ -677,6 +677,12 @@ function render.RedownloadAllLightmaps(DoStaticProps, UpdateStaticLighting)
 end
 
 ---  client
+--- Renders additive flashlights on an IMesh, a direct replacement for [render.PushFlashlightMode]().  
+--- @param renderFunc function @The function that renders the IMesh, or a model.
+function render.RenderFlashlights(renderFunc)
+end
+
+---  client
 --- Renders the HUD on the screen.  
 --- @param x number @X position for the HUD draw origin.
 --- @param y number @Y position for the HUD draw origin.

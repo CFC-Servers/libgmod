@@ -118,7 +118,8 @@ function ents.FireTargets(target, activator, caller, usetype, value)
 end
 
 ---  client|server
---- Returns a table of all existing entities. The table is sequential  
+--- Returns a table of all existing entities.  
+--- ℹ **NOTE**: This function returns a sequential table, meaning it should be looped with Global.ipairs instead of Global.pairs for efficiency reasons.  
 --- @return table @Table of all existing Entitys.
 function ents.GetAll()
 end

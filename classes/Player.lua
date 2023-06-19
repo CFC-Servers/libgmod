@@ -797,6 +797,8 @@ end
 
 ---  client|server
 --- Returns a table of the player's weapons.  
+--- ℹ **NOTE**:   
+--- This function returns a sequential table, meaning it should be looped with Global.ipairs instead of Global.pairs for efficiency reasons.  
 --- @return table @All the weapons the player currently has.
 function Player:GetWeapons()
 end
