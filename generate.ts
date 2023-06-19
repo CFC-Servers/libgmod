@@ -31,7 +31,8 @@ let TYPE_NAME_OVERRIDES: { [key: string]: string } = {
 
 let OVERLOADS: { [key: string]: string } = {
     "surface.SetDrawColor": "fun(color: table)",
-    "_G.setfenv": "fun(stackLevel: number, environment: table)"
+    "_G.setfenv": "fun(stackLevel: number, environment: table)",
+    "CLuaEmitter:Add": "fun(material: IMaterial, position: Vector)"
 };
 
 function getTypeName(ret: string): string {
@@ -241,9 +242,9 @@ function handleFunc(func: Func, sepr?: string): undefined | string {
     if(func.deprecated) {
         args += "--- @deprecated\n";
     }
-    const singature = `${getTypeName(func.parent)}${sepr || "."}${func.name}`;
-    if(OVERLOADS[singature]) {
-        args += `--- @overload ${OVERLOADS[singature]}\n`;
+    const signature = `${getTypeName(func.parent)}${sepr || "."}${func.name}`;
+    if(OVERLOADS[signature]) {
+        args += `--- @overload ${OVERLOADS[signature]}\n`;
     }
     let ret = "";
     if (func.returnValues && func.returnValues.length > 0) {

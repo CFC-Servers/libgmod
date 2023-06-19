@@ -5,6 +5,7 @@ local CLuaEmitter = {}
 --- Creates a new CLuaParticle with the given material and position.  
 --- @param material string @The particles material
 --- @param position Vector @The position to spawn the particle on.
+--- @overload fun(material: IMaterial, position: Vector)
 --- @return CLuaParticle @The created particle, if any.
 function CLuaEmitter:Add(material, position)
 end
