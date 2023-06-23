@@ -9985,22 +9985,6 @@
         "description": "Called when secondary attack button ( +attack2 ) is pressed.\n\nFor issues with this hook being called rapidly on the client side, see the global function <page>Global.IsFirstTimePredicted</page>."
       },
       {
-        "name": "SetDeploySpeed",
-        "parent": "WEAPON",
-        "realms": [
-          "client",
-          "server"
-        ],
-        "description": "Sets the weapon deploy speed. This value needs to match on client and server.",
-        "arguments": [
-          {
-            "name": "speed",
-            "type": "number",
-            "description": "The value to set deploy speed to. Negative will slow down playback."
-          }
-        ]
-      },
-      {
         "name": "SetupDataTables",
         "parent": "WEAPON",
         "realms": [

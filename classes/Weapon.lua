@@ -53,6 +53,12 @@ function Weapon:GetActivity()
 end
 
 ---  client|server
+--- Returns the weapon deploy speed, as set by Weapon:SetDeploySpeed. If not previously set, the value will be polled from the `sv_defaultdeployspeed` ConVar.  
+--- @return number @The value to set deploy speed to.
+function Weapon:GetDeploySpeed()
+end
+
+---  client|server
 --- Returns the hold type of the weapon.  
 --- @return string @The hold type of the weapon
 function Weapon:GetHoldType()
@@ -187,6 +193,12 @@ end
 --- Lets you change the number of bullets in the given weapons secondary clip.  
 --- @param ammo number @The amount of bullets the clip should contain
 function Weapon:SetClip2(ammo)
+end
+
+---  client|server
+--- Sets the weapon deploy speed. This value needs to match on client and server.  
+--- @param speed number @The value to set deploy speed to
+function Weapon:SetDeploySpeed(speed)
 end
 
 ---  client|server

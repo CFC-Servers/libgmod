@@ -156,9 +156,9 @@ end
 
 ---  client|server
 --- Returns the difficulty level of the game.  
---- **TIP:** You can use this function in your scripted NPCs or Nextbots to make them harder, however, it is a good idea to lock powerful attacks behind the highest difficulty instead of just increasing the health.  
---- ℹ **NOTE**: Internally this is tied to the gamerules entity, so you'll have to wait to wait until GM:InitPostEntity is called to return the skill level  
---- @return number @The difficulty level, Easy( 1 ), Normal( 2 ), Hard( 3 ).
+--- **TIP:** You can use this function in your scripted NPCs or Nextbots to make them stronger, however, it is a good idea to lock powerful attacks behind the highest difficulty instead of just increasing the health.  
+--- ℹ **NOTE**: Internally this is tied to the gamerules entity, so you'll have to wait until GM:InitPostEntity is called to return the skill level  
+--- @return number @The difficulty level, Easy (1), Normal (2), Hard (3).
 function game.GetSkillLevel()
 end
 

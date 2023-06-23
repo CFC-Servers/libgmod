@@ -30643,7 +30643,7 @@
         "returnValues": [
           {
             "type": "boolean",
-            "description": "True if the player is the listen server host, false otherwise.\n\nThis will always be true in single player, and false on a dedicated server."
+            "description": "`true` if the player is the listen server host, `false` otherwise.\n\nThis will always be `true` in single player, and `false` on a dedicated server."
           }
         ]
       },
@@ -36652,6 +36652,22 @@
         ]
       },
       {
+        "name": "GetDeploySpeed",
+        "parent": "Weapon",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Returns the weapon deploy speed, as set by <page>Weapon:SetDeploySpeed</page>. If not previously set, the value will be polled from the `sv_defaultdeployspeed` <page>ConVar</page>.",
+        "returnValues": [
+          {
+            "type": "number",
+            "name": "speed",
+            "description": "The value to set deploy speed to."
+          }
+        ]
+      },
+      {
         "name": "GetHoldType",
         "parent": "Weapon",
         "realms": [
@@ -36981,6 +36997,22 @@
             "name": "ammo",
             "type": "number",
             "description": "The amount of bullets the clip should contain"
+          }
+        ]
+      },
+      {
+        "name": "SetDeploySpeed",
+        "parent": "Weapon",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Sets the weapon deploy speed. This value needs to match on client and server.",
+        "arguments": [
+          {
+            "name": "speed",
+            "type": "number",
+            "description": "The value to set deploy speed to. Values less than `1` will slow down the animations. Minimum value is `0.1`."
           }
         ]
       },
