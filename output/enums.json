@@ -8225,12 +8225,17 @@
       {
         "name": "EF_PARENT_ANIMATES",
         "value": 512,
-        "description": "Always assume that the parent entity is animating"
+        "description": "Always assume that the parent entity is animating."
       },
       {
         "name": "EF_FOLLOWBONE",
         "value": 1024,
-        "description": "Internal flag that is set by <page>Entity:FollowBone</page>"
+        "description": "Internal flag that is set by <page>Entity:FollowBone</page>."
+      },
+      {
+        "name": "EF_NOFLASHLIGHT",
+        "value": 8192,
+        "description": "Makes the entity not accept being lit by projected textures, including the player's flashlight."
       }
     ],
     "realms": [

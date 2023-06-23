@@ -898,7 +898,7 @@ end
 
 ---  server
 --- Returns if a player is the host of the current session.  
---- @return boolean @True if the player is the listen server host, false otherwise
+--- @return boolean @`true` if the player is the listen server host, `false` otherwise
 function Player:IsListenServerHost()
 end
 

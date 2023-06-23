@@ -4082,7 +4082,7 @@
           "client",
           "server"
         ],
-        "description": "Displays an axis indicator at the specified position.\n\n<note>This function will silently fail if the **developer** <page>ConVar</page> is set to 0</note>",
+        "description": "Displays an axis indicator at the specified position.\n\n<note>This function will silently fail if the `developer` <page>ConVar</page> is set to `0`. It is not networked to clients, except for the <page text=\"listen server host\">Player:IsListenServerHost</page>.</note>",
         "arguments": [
           {
             "name": "origin",
@@ -4120,7 +4120,7 @@
           "client",
           "server"
         ],
-        "description": "Displays a solid coloured box at the specified position.\n\n<note>This function will silently fail if the **developer** <page>ConVar</page> is set to 0.</note>",
+        "description": "Displays a solid coloured box at the specified position.\n\n<note>This function will silently fail if the `developer` <page>ConVar</page> is set to `0`. It is not networked to clients, except for the <page text=\"listen server host\">Player:IsListenServerHost</page>.</note>",
         "arguments": [
           {
             "name": "origin",
@@ -4158,7 +4158,7 @@
           "client",
           "server"
         ],
-        "description": "Displays a solid colored rotated box at the specified position.\n\n<note>This function will silently fail if the **developer** <page>ConVar</page> is set to 0.</note>",
+        "description": "Displays a solid colored rotated box at the specified position.\n\n<note>This function will silently fail if the `developer` <page>ConVar</page> is set to `0`. It is not networked to clients, except for the <page text=\"listen server host\">Player:IsListenServerHost</page>.</note>",
         "arguments": [
           {
             "name": "pos",
@@ -4201,7 +4201,7 @@
           "client",
           "server"
         ],
-        "description": "Creates a coloured cross at the specified position for the specified time.\n\n<note>This function will silently fail if the **developer** <page>ConVar</page> is set to 0.</note>",
+        "description": "Creates a coloured cross at the specified position for the specified time.\n\n<note>This function will silently fail if the `developer` <page>ConVar</page> is set to `0`. It is not networked to clients, except for the <page text=\"listen server host\">Player:IsListenServerHost</page>.</note>",
         "arguments": [
           {
             "name": "position",
@@ -4240,7 +4240,7 @@
           "client",
           "server"
         ],
-        "description": "Displays 2D text at the specified coordinates.\n\n<note>This function will silently fail if the **developer** <page>ConVar</page> is set to 0.</note>",
+        "description": "Displays 2D text at the specified coordinates.\n\n<note>This function will silently fail if the `developer` <page>ConVar</page> is set to `0`. It is not networked to clients, except for the <page text=\"listen server host\">Player:IsListenServerHost</page>.</note>",
         "arguments": [
           {
             "name": "pos",
@@ -4278,7 +4278,7 @@
           "client",
           "server"
         ],
-        "description": "Draws a 3D grid of limited size in given position.\n\n<note>This function will silently fail if the **developer** <page>ConVar</page> is set to 0.</note>",
+        "description": "Draws a 3D grid of limited size in given position.\n\n<note>This function will silently fail if the `developer` <page>ConVar</page> is set to `0`. It is not networked to clients, except for the <page text=\"listen server host\">Player:IsListenServerHost</page>.</note>",
         "arguments": [
           {
             "name": "position",
@@ -4293,7 +4293,7 @@
           "client",
           "server"
         ],
-        "description": "Displays a coloured line at the specified position.\n\n<note>This function will silently fail if the **developer** <page>ConVar</page> is set to 0.</note>",
+        "description": "Displays a coloured line at the specified position.\n\n<note>This function will silently fail if the `developer` <page>ConVar</page> is set to `0`. It is not networked to clients, except for the <page text=\"listen server host\">Player:IsListenServerHost</page>.</note>",
         "arguments": [
           {
             "name": "pos1",
@@ -4332,7 +4332,7 @@
           "client",
           "server"
         ],
-        "description": "Displays text triangle at the specified coordinates.\n\n<note>This function will silently fail if the **developer** <page>ConVar</page> is set to 0.</note>",
+        "description": "Displays text triangle at the specified coordinates.\n\n<note>This function will silently fail if the `developer` <page>ConVar</page> is set to `0`. It is not networked to clients, except for the <page text=\"listen server host\">Player:IsListenServerHost</page>.</note>",
         "arguments": [
           {
             "name": "x",
@@ -4370,7 +4370,7 @@
           "client",
           "server"
         ],
-        "description": "Displays a coloured sphere at the specified position.\n\n<note>This function will silently fail if the **developer** <page>ConVar</page> is set to 0.</note>",
+        "description": "Displays a coloured sphere at the specified position.\n\n<note>This function will silently fail if the `developer` <page>ConVar</page> is set to `0`. It is not networked to clients, except for the <page text=\"listen server host\">Player:IsListenServerHost</page>.</note>",
         "arguments": [
           {
             "name": "origin",
@@ -4409,7 +4409,7 @@
           "client",
           "server"
         ],
-        "description": "Displays \"swept\" box, two boxes connected with lines by their verices.\n\n<note>This function will silently fail if the **developer** <page>ConVar</page> is set to 0.</note>",
+        "description": "Displays \"swept\" box, two boxes connected with lines by their verices.\n\n<note>This function will silently fail if the `developer` <page>ConVar</page> is set to `0`. It is not networked to clients, except for the <page text=\"listen server host\">Player:IsListenServerHost</page>.</note>",
         "arguments": [
           {
             "name": "vStart",
@@ -4456,7 +4456,7 @@
           "client",
           "server"
         ],
-        "description": "Displays text at the specified position.\n\n<note>This function will silently fail if the **developer** <page>ConVar</page> is set to 0.</note>",
+        "description": "Displays text at the specified position.\n\n<note>This function will silently fail if the `developer` <page>ConVar</page> is set to `0`. It is not networked to clients, except for the <page text=\"listen server host\">Player:IsListenServerHost</page>.</note>",
         "arguments": [
           {
             "name": "origin",
@@ -4489,7 +4489,7 @@
           "client",
           "server"
         ],
-        "description": "Displays a colored triangle at the specified coordinates.\n\n<note>This function will silently fail if the **developer** <page>ConVar</page> is set to 0.</note>",
+        "description": "Displays a colored triangle at the specified coordinates.\n\n<note>This function will silently fail if the `developer` <page>ConVar</page> is set to `0`. It is not networked to clients, except for the <page text=\"listen server host\">Player:IsListenServerHost</page>.</note>",
         "arguments": [
           {
             "name": "pos1",
@@ -8215,11 +8215,11 @@
           "client",
           "server"
         ],
-        "description": "Returns the difficulty level of the game.\n\n**TIP:** You can use this function in your scripted NPCs or Nextbots to make them harder, however, it is a good idea to lock powerful attacks behind the highest difficulty instead of just increasing the health.\n\n<note>Internally this is tied to the gamerules entity, so you'll have to wait to wait until <page>GM:InitPostEntity</page> is called to return the skill level</note>",
+        "description": "Returns the difficulty level of the game.\n\n**TIP:** You can use this function in your scripted NPCs or Nextbots to make them stronger, however, it is a good idea to lock powerful attacks behind the highest difficulty instead of just increasing the health.\n\n<note>Internally this is tied to the gamerules entity, so you'll have to wait until <page>GM:InitPostEntity</page> is called to return the skill level</note>",
         "returnValues": [
           {
             "type": "number",
-            "description": "The difficulty level, Easy( 1 ), Normal( 2 ), Hard( 3 )."
+            "description": "The difficulty level, Easy (1), Normal (2), Hard (3)."
           }
         ]
       },

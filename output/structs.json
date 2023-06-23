@@ -2253,34 +2253,24 @@
   {
     "fields": [
       {
+        "name": "sound",
+        "type": "string",
+        "description": "Path to the sound file to be used in this sound effect, relative to `sound/` directory (so exclude the `sound/` part).\n\nCan be a table of sound files, in which case the sound will be chosen randomly every time from the provided list.\n\nEach sound path can be prepended with a special character for special effects. You can learn more about this [here](https://developer.valvesoftware.com/wiki/Soundscripts#Sound_Characters)."
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "description": "The name of the soundscript, to be referenced by in functions such as <page>Entity:EmitSound</page>."
+      },
+      {
         "name": "channel",
         "type": "number",
         "description": "The sound channel to play in. See <page>Enums/CHAN</page>"
       },
       {
-        "name": "name",
-        "type": "string",
-        "description": "The name of the sound."
-      },
-      {
-        "name": "pitchstart",
-        "type": "number",
-        "description": "The initial pitch.\n<warning>Deprecated, use pitch.</warning>"
-      },
-      {
-        "name": "pitchend",
-        "type": "number",
-        "description": "The pitch end.\n<warning>Deprecated, use pitch.</warning>"
-      },
-      {
         "name": "level",
         "type": "number",
-        "description": "The soundlevel of the sound in dB. See <page>Enums/SNDLVL</page>."
-      },
-      {
-        "name": "sound",
-        "type": "string",
-        "description": "The sound file to be used in this sound effect. Can be a table of sound files. Relative to \"sound\" directory (must be in a subfolder, so sound/test.wav will not work)."
+        "description": "The soundlevel of the sound in dB. See <page>Enums/SNDLVL</page>. This will affect how far the sound can be heard."
       },
       {
         "name": "volume",
@@ -2293,6 +2283,16 @@
         "type": "number",
         "default": "100",
         "description": "The pitch of the sound. Can be a table of two numbers, a minimum and a maximum value."
+      },
+      {
+        "name": "pitchstart",
+        "type": "number",
+        "description": "The initial pitch.\n<warning>Deprecated, use pitch.</warning>"
+      },
+      {
+        "name": "pitchend",
+        "type": "number",
+        "description": "The pitch end.\n<warning>Deprecated, use pitch.</warning>"
       }
     ],
     "realms": [

@@ -3,7 +3,7 @@
 _G.debugoverlay = {}
 ---  client|server
 --- Displays an axis indicator at the specified position.  
---- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0  
+--- ℹ **NOTE**: This function will silently fail if the `developer` ConVar is set to `0`. It is not networked to clients, except for the listen server host.  
 --- @param origin Vector @Position origin
 --- @param ang Angle @Angle of the axis
 --- @param size number @Size of the axis
@@ -14,7 +14,7 @@ end
 
 ---  client|server
 --- Displays a solid coloured box at the specified position.  
---- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
+--- ℹ **NOTE**: This function will silently fail if the `developer` ConVar is set to `0`. It is not networked to clients, except for the listen server host.  
 --- @param origin Vector @Position origin
 --- @param mins Vector @Minimum bounds of the box
 --- @param maxs Vector @Maximum bounds of the box
@@ -25,7 +25,7 @@ end
 
 ---  client|server
 --- Displays a solid colored rotated box at the specified position.  
---- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
+--- ℹ **NOTE**: This function will silently fail if the `developer` ConVar is set to `0`. It is not networked to clients, except for the listen server host.  
 --- @param pos Vector @World position
 --- @param mins Vector @The mins of the box (lowest corner)
 --- @param maxs Vector @The maxs of the box (highest corner)
@@ -37,7 +37,7 @@ end
 
 ---  client|server
 --- Creates a coloured cross at the specified position for the specified time.  
---- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
+--- ℹ **NOTE**: This function will silently fail if the `developer` ConVar is set to `0`. It is not networked to clients, except for the listen server host.  
 --- @param position Vector @Position origin
 --- @param size number @Size of the cross
 --- @param lifetime? number @Number of seconds the cross will appear for
@@ -48,7 +48,7 @@ end
 
 ---  client|server
 --- Displays 2D text at the specified coordinates.  
---- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
+--- ℹ **NOTE**: This function will silently fail if the `developer` ConVar is set to `0`. It is not networked to clients, except for the listen server host.  
 --- @param pos Vector @The position in 3D to display the text.
 --- @param line number @Line of text, will offset text on the to display the new line unobstructed
 --- @param text string @The text to display
@@ -59,14 +59,14 @@ end
 
 ---  client|server
 --- Draws a 3D grid of limited size in given position.  
---- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
+--- ℹ **NOTE**: This function will silently fail if the `developer` ConVar is set to `0`. It is not networked to clients, except for the listen server host.  
 --- @param position Vector 
 function debugoverlay.Grid(position)
 end
 
 ---  client|server
 --- Displays a coloured line at the specified position.  
---- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
+--- ℹ **NOTE**: This function will silently fail if the `developer` ConVar is set to `0`. It is not networked to clients, except for the listen server host.  
 --- @param pos1 Vector @First position of the line
 --- @param pos2 Vector @Second position of the line
 --- @param lifetime? number @Number of seconds to appear
@@ -77,7 +77,7 @@ end
 
 ---  client|server
 --- Displays text triangle at the specified coordinates.  
---- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
+--- ℹ **NOTE**: This function will silently fail if the `developer` ConVar is set to `0`. It is not networked to clients, except for the listen server host.  
 --- @param x number @The position of the text, from 0 ( left ) to 1 ( right ).
 --- @param y number @The position of the text, from 0 ( top ) to 1 ( bottom ).
 --- @param text string @The text to display
@@ -88,7 +88,7 @@ end
 
 ---  client|server
 --- Displays a coloured sphere at the specified position.  
---- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
+--- ℹ **NOTE**: This function will silently fail if the `developer` ConVar is set to `0`. It is not networked to clients, except for the listen server host.  
 --- @param origin Vector @Position origin
 --- @param size number @Size of the sphere
 --- @param lifetime? number @Number of seconds to appear
@@ -99,7 +99,7 @@ end
 
 ---  client|server
 --- Displays "swept" box, two boxes connected with lines by their verices.  
---- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
+--- ℹ **NOTE**: This function will silently fail if the `developer` ConVar is set to `0`. It is not networked to clients, except for the listen server host.  
 --- @param vStart Vector @The start position of the box.
 --- @param vEnd Vector @The end position of the box.
 --- @param vMins Vector @The "minimum" edge of the box.
@@ -112,7 +112,7 @@ end
 
 ---  client|server
 --- Displays text at the specified position.  
---- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
+--- ℹ **NOTE**: This function will silently fail if the `developer` ConVar is set to `0`. It is not networked to clients, except for the listen server host.  
 --- @param origin Vector @Position origin
 --- @param text string @String message to display
 --- @param lifetime? number @Number of seconds to appear
@@ -122,7 +122,7 @@ end
 
 ---  client|server
 --- Displays a colored triangle at the specified coordinates.  
---- ℹ **NOTE**: This function will silently fail if the **developer** ConVar is set to 0.  
+--- ℹ **NOTE**: This function will silently fail if the `developer` ConVar is set to `0`. It is not networked to clients, except for the listen server host.  
 --- @param pos1 Vector @First point of the triangle
 --- @param pos2 Vector @Second point of the triangle
 --- @param pos3 Vector @Third point of the triangle
