@@ -7070,7 +7070,7 @@
           "client",
           "server"
         ],
-        "description": "Gets all entities with the given model, supports wildcards. This works internally by iterating over <page>ents.GetAll</page>.",
+        "description": "Gets all entities with the given model, supports wildcards.\n<note>This works internally by iterating over <page>ents.GetAll</page>.</note>",
         "arguments": [
           {
             "name": "model",
@@ -7199,7 +7199,7 @@
           "client",
           "server"
         ],
-        "description": "Gets all entities within the specified sphere.\n\n<note>Clientside entities will not be returned by this function.\n\nThis function internally calls <page>ents.FindInBox</page> with some [radius checks](https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/sp/src/public/collisionutils.cpp#L256-L301).</note>",
+        "description": "Gets all entities within the specified sphere.\n\n<note>Clientside entities will not be returned by this function.</note>\n<note>This function internally calls <page>ents.FindInBox</page> with some [radius checks](https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/sp/src/public/collisionutils.cpp#L256-L301).</note>",
         "arguments": [
           {
             "name": "origin",
