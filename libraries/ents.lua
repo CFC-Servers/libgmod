@@ -52,7 +52,8 @@ function ents.FindByClassAndParent(class, parent)
 end
 
 ---  client|server
---- Gets all entities with the given model, supports wildcards. This works internally by iterating over ents.GetAll.  
+--- Gets all entities with the given model, supports wildcards.  
+--- ℹ **NOTE**: This works internally by iterating over ents.GetAll.  
 --- @param model string @The model of the entities to find.
 --- @return table @A table of all found entities.
 function ents.FindByModel(model)
@@ -100,7 +101,7 @@ end
 ---  client|server
 --- Gets all entities within the specified sphere.  
 --- ℹ **NOTE**: Clientside entities will not be returned by this function.  
---- This function internally calls ents.FindInBox with some [radius checks](https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/sp/src/public/collisionutils.cpp#L256-L301).  
+--- ℹ **NOTE**: This function internally calls ents.FindInBox with some [radius checks](https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/sp/src/public/collisionutils.cpp#L256-L301).  
 --- @param origin Vector @Center of the sphere.
 --- @param radius number @Radius of the sphere.
 --- @return table @A table of all found Entitys
