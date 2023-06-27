@@ -7021,7 +7021,7 @@
           "client",
           "server"
         ],
-        "description": "Gets all entities with the given class, supports wildcards. This works internally by iterating over <page>ents.GetAll</page>. Even if internally ents.GetAll is used, It is faster to use ents.FindByClass than ents.GetAll with a single class comparison.\n\n<note>Asterisks (*) are the only wildcard supported.</note>",
+        "description": "Gets all entities with the given class, supports wildcards. This works internally by iterating over <page>ents.GetAll</page>. Even if internally ents.GetAll is used, It is faster to use ents.FindByClass than ents.GetAll with a single class comparison.\n\n<note>Asterisks (*) are the only wildcard supported.</note>\n<note>This function returns a sequential table, meaning it should be looped with <page>Global.ipairs</page> instead of <page>Global.pairs</page> for efficiency reasons.</note>",
         "arguments": [
           {
             "name": "class",

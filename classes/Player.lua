@@ -969,8 +969,7 @@ function Player:IsVoiceAudible()
 end
 
 ---  client|server
---- Returns if the player is in the context menu.  
---- ℹ **NOTE**: Although this is shared, it will only work properly on the CLIENT for the local player. Using this serverside or on other players will return false.  
+--- Returns whether the player is using the world clicking feature, see Panel:SetWorldClicker  
 --- @return boolean @Is the player world clicking or not.
 function Player:IsWorldClicking()
 end
