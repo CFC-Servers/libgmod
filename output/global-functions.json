@@ -2435,7 +2435,7 @@
       "client",
       "server"
     ],
-    "description": "Returns the number of frames rendered since the game was launched.\n<note>This function is currently only shared on the `dev` branch, and on other branches it only exists clientside.</note>"
+    "description": "Returns the number of frames rendered since the game was launched."
   },
   {
     "name": "FrameTime",

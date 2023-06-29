@@ -38,6 +38,7 @@ end
 ---  client|server
 --- Gets all entities with the given class, supports wildcards. This works internally by iterating over ents.GetAll. Even if internally ents.GetAll is used, It is faster to use ents.FindByClass than ents.GetAll with a single class comparison.  
 --- ℹ **NOTE**: Asterisks (*) are the only wildcard supported.  
+--- ℹ **NOTE**: This function returns a sequential table, meaning it should be looped with Global.ipairs instead of Global.pairs for efficiency reasons.  
 --- @param class string @The class of the entities to find.
 --- @return table @A table containing all found entities
 function ents.FindByClass(class)

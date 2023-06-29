@@ -245,7 +245,6 @@ end
 ---  server
 --- Sets the difficulty level of the game, can be retrieved with game.GetSkillLevel.  
 --- This will automatically change whenever the "skill" convar is modified serverside.  
---- 🦟 **BUG**: [This function will not work if the skill convar doesn't match the targeted value. To work around this, you must use RunConsoleCommand("skill", num) alongside this function.](https://github.com/Facepunch/garrysmod-issues/issues/3491)  
 --- @param level number @The difficulty level, Easy( 1 ), Normal( 2 ), Hard( 3 ).
 function game.SetSkillLevel(level)
 end

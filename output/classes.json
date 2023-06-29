@@ -4877,7 +4877,7 @@
           {
             "name": "forward",
             "type": "Vector",
-            "description": "The forward direction for given control point"
+            "description": "The forward direction for given control point.\n\nThis can also be an <page>Angle</page>, in which case the other 2 arguments are not used."
           },
           {
             "name": "right",
@@ -7232,6 +7232,7 @@
         "name": "CreatedByMap",
         "parent": "Entity",
         "realms": [
+          "client",
           "server"
         ],
         "description": "Returns whether the entity was created by map or not.",
@@ -8037,11 +8038,11 @@
           "client",
           "server"
         ],
-        "description": "Returns the amount of bones in the entity.\n\n<note>Will return -1 for <page>Global.ClientsideModel</page> or undrawn entities until <page>Entity:SetupBones</page> is called on the entity.</note>",
+        "description": "Returns the amount of bones in the entity.\n\n<note>Will return `0` for <page>Global.ClientsideModel</page> or undrawn entities until <page>Entity:SetupBones</page> is called on the entity.</note>",
         "returnValues": [
           {
             "type": "number",
-            "description": "The amount of bones in given entity; -1 on failure."
+            "description": "The amount of bones in given entity."
           }
         ]
       },
@@ -8409,9 +8410,10 @@
         "name": "GetCreationID",
         "parent": "Entity",
         "realms": [
+          "client",
           "server"
         ],
-        "description": "Returns entity's creation ID. Unlike <page>Entity:EntIndex</page> or  <page>Entity:MapCreationID</page>, it will always increase and old values won't be reused.",
+        "description": "Returns entity's creation ID. Unlike <page>Entity:EntIndex</page> or <page>Entity:MapCreationID</page>.\n\nIt will increase up until value of `10 000 000`, at which point it will reset back to `0`.",
         "returnValues": [
           {
             "type": "number",
@@ -8849,9 +8851,10 @@
         "name": "GetFriction",
         "parent": "Entity",
         "realms": [
+          "client",
           "server"
         ],
-        "description": "Returns how much friction an entity has. Entities default to 1 (100%) and can be higher or even negative.",
+        "description": "Returns the friction modifier for this entity. Entities default to `1` (100%) and can be higher.",
         "returnValues": [
           {
             "type": "number",
@@ -12659,6 +12662,7 @@
         "name": "MapCreationID",
         "parent": "Entity",
         "realms": [
+          "client",
           "server"
         ],
         "description": "Returns entity's map creation ID. Unlike <page>Entity:EntIndex</page> or <page>Entity:GetCreationID</page>, it will always be the same on same map, no matter how much you clean up or restart it.\n\nTo be used in conjunction with <page>ents.GetMapCreatedEntity</page>.",
@@ -14172,9 +14176,10 @@
         "name": "SetFriction",
         "parent": "Entity",
         "realms": [
+          "client",
           "server"
         ],
-        "description": "Sets how much friction an entity has when sliding against a surface. Entities default to 1 (100%) and can be higher or even negative.\n<note>This only multiplies the friction of the entity, to change the value itself use <page>PhysObj:SetMaterial</page>.</note>\n\n<note>Works only for MOVETYPE_STEP entities.</note>\n\n<bug issue=\"1395\">This has no effect on players.</bug>",
+        "description": "Sets friction multiplier for this entity when sliding against a surface. Entities default to 1 (100%) and can be higher.\n\nFor players, the range is 0 to 10.\n\n<note>This only multiplies the friction of the entity, to change the value itself use <page>PhysObj:SetMaterial</page>.</note>\n\n<note>Works only for MOVETYPE_STEP entities.</note>",
         "arguments": [
           {
             "name": "friction",
@@ -26331,11 +26336,12 @@
           "client",
           "menu"
         ],
-        "description": "This makes it so that when you're hovering over this panel you can `click` on the world. Your viewmodel will aim etc. This is primarily used for the Sandbox context menu.\n\n<bug issue=\"3467\">This function doesn't scale with custom FOV specified by <page>GM:CalcView</page> or <page>WEAPON:TranslateFOV</page>.</bug>",
+        "description": "This makes it so that when you're hovering over this panel you can \"click\" on the world. Your weapon aim (and its viewmodel) will follow the cursor. This is primarily used for the Sandbox context menu.\n\n<bug issue=\"3467\">This function doesn't scale with custom FOV specified by <page>GM:CalcView</page> or <page>WEAPON:TranslateFOV</page>.</bug>",
         "arguments": [
           {
-            "name": "enabled",
-            "type": "boolean"
+            "name": "enable",
+            "type": "boolean",
+            "description": "Whether to enable or disable the feature for this panel."
           }
         ]
       },
@@ -30485,7 +30491,7 @@
           "client",
           "server"
         ],
-        "description": "Returns whether the player has god mode or not, contolled by <page>Player:GodEnable</page> and <page>Player:GodDisable</page>.\n\n<bug issue=\"2038\">This is not synced between the client and server. This will cause the client to always return false even in godmode.</bug>",
+        "description": "Returns whether the player has god mode or not, contolled by <page>Player:GodEnable</page> and <page>Player:GodDisable</page>.",
         "returnValues": [
           {
             "type": "boolean",
@@ -30808,7 +30814,7 @@
           "client",
           "server"
         ],
-        "description": "Returns if the player is in the context menu.\n\n<note>Although this is shared, it will only work properly on the CLIENT for the local player. Using this serverside or on other players will return false.</note>",
+        "description": "Returns whether the player is using the world clicking feature, see <page>Panel:SetWorldClicker</page>",
         "returnValues": [
           {
             "type": "boolean",
@@ -30823,7 +30829,7 @@
           "client",
           "server"
         ],
-        "description": "Returns whether the world clicking is disabled for given player or not. See <page>Player:DisableWorldClicking</page>.\n\n<bug>This value is meant to be networked to the client, but is not currently.</bug>",
+        "description": "Returns whether the world clicking is disabled for given player or not. See <page>Player:DisableWorldClicking</page>.",
         "returnValues": [
           {
             "type": "boolean",
@@ -31905,12 +31911,12 @@
           "client",
           "server"
         ],
-        "description": "Sets whenever the player should not collide with their teammates.\n\n<note>This will only work for teams with ID 1 to 4 due to internal Engine limitations.</note>\n<note>This causes traces with <page text=\"COLLISION_GROUP_PLAYER\">Enums/COLLISION_GROUP</page> to pass through players.</note>",
+        "description": "Sets whenever the player should not collide with their teammates, based on their <page>Player:Team</page>.\n\n<note>This will only work for teams with ID 1 to 4 due to internal Engine limitations.</note>\n<note>This causes traces with <page text=\"COLLISION_GROUP_PLAYER\">Enums/COLLISION_GROUP</page> to pass through players.</note>",
         "arguments": [
           {
             "name": "shouldNotCollide",
             "type": "boolean",
-            "description": "True to disable, false to enable collision."
+            "description": "`true` to disable, `false` to enable collision."
           }
         ]
       },

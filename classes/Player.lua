@@ -833,7 +833,6 @@ end
 
 ---  client|server
 --- Returns whether the player has god mode or not, contolled by Player:GodEnable and Player:GodDisable.  
---- 🦟 **BUG**: [This is not synced between the client and server. This will cause the client to always return false even in godmode.](https://github.com/Facepunch/garrysmod-issues/issues/2038)  
 --- @return boolean @Whether the player has god mode or not.
 function Player:HasGodMode()
 end
@@ -969,15 +968,13 @@ function Player:IsVoiceAudible()
 end
 
 ---  client|server
---- Returns if the player is in the context menu.  
---- ℹ **NOTE**: Although this is shared, it will only work properly on the CLIENT for the local player. Using this serverside or on other players will return false.  
+--- Returns whether the player is using the world clicking feature, see Panel:SetWorldClicker  
 --- @return boolean @Is the player world clicking or not.
 function Player:IsWorldClicking()
 end
 
 ---  client|server
 --- Returns whether the world clicking is disabled for given player or not. See Player:DisableWorldClicking.  
---- 🦟 **BUG**: This value is meant to be networked to the client, but is not currently.  
 --- @return boolean @Whether the world clicking is disabled or not.
 function Player:IsWorldClickingDisabled()
 end
@@ -1418,10 +1415,10 @@ function Player:SetMuted(mute)
 end
 
 ---  client|server
---- Sets whenever the player should not collide with their teammates.  
+--- Sets whenever the player should not collide with their teammates, based on their Player:Team.  
 --- ℹ **NOTE**: This will only work for teams with ID 1 to 4 due to internal Engine limitations.  
 --- ℹ **NOTE**: This causes traces with COLLISION_GROUP_PLAYER to pass through players.  
---- @param shouldNotCollide boolean @True to disable, false to enable collision.
+--- @param shouldNotCollide boolean @`true` to disable, `false` to enable collision.
 function Player:SetNoCollideWithTeammates(shouldNotCollide)
 end
 

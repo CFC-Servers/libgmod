@@ -200,7 +200,7 @@ end
 function Entity:CreateShadow()
 end
 
----  server
+---  client|server
 --- Returns whether the entity was created by map or not.  
 --- @return boolean @Is created by map?
 function Entity:CreatedByMap()
@@ -525,8 +525,8 @@ end
 
 ---  client|server
 --- Returns the amount of bones in the entity.  
---- ℹ **NOTE**: Will return -1 for Global.ClientsideModel or undrawn entities until Entity:SetupBones is called on the entity.  
---- @return number @The amount of bones in given entity; -1 on failure.
+--- ℹ **NOTE**: Will return `0` for Global.ClientsideModel or undrawn entities until Entity:SetupBones is called on the entity.  
+--- @return number @The amount of bones in given entity.
 function Entity:GetBoneCount()
 end
 
@@ -685,8 +685,9 @@ end
 function Entity:GetConstrainedPhysObjects()
 end
 
----  server
---- Returns entity's creation ID. Unlike Entity:EntIndex or  Entity:MapCreationID, it will always increase and old values won't be reused.  
+---  client|server
+--- Returns entity's creation ID. Unlike Entity:EntIndex or Entity:MapCreationID.  
+--- It will increase up until value of `10 000 000`, at which point it will reset back to `0`.  
 --- @return number @The creation ID
 function Entity:GetCreationID()
 end
@@ -794,8 +795,8 @@ end
 function Entity:GetForward()
 end
 
----  server
---- Returns how much friction an entity has. Entities default to 1 (100%) and can be higher or even negative.  
+---  client|server
+--- Returns the friction modifier for this entity. Entities default to `1` (100%) and can be higher.  
 --- @return number @friction
 function Entity:GetFriction()
 end
@@ -2290,7 +2291,7 @@ end
 function Entity:ManipulateBoneScale(boneID, scale)
 end
 
----  server
+---  client|server
 --- Returns entity's map creation ID. Unlike Entity:EntIndex or Entity:GetCreationID, it will always be the same on same map, no matter how much you clean up or restart it.  
 --- To be used in conjunction with ents.GetMapCreatedEntity.  
 --- @return number @The map creation ID or -1 if the entity is not compiled into the map.
@@ -2886,11 +2887,11 @@ end
 function Entity:SetFlexWeight(flex, weight)
 end
 
----  server
---- Sets how much friction an entity has when sliding against a surface. Entities default to 1 (100%) and can be higher or even negative.  
+---  client|server
+--- Sets friction multiplier for this entity when sliding against a surface. Entities default to 1 (100%) and can be higher.  
+--- For players, the range is 0 to 10.  
 --- ℹ **NOTE**: This only multiplies the friction of the entity, to change the value itself use PhysObj:SetMaterial.  
 --- ℹ **NOTE**: Works only for MOVETYPE_STEP entities.  
---- 🦟 **BUG**: [This has no effect on players.](https://github.com/Facepunch/garrysmod-issues/issues/1395)  
 --- @param friction number @Friction multiplier
 function Entity:SetFriction(friction)
 end
