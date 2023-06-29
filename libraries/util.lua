@@ -183,8 +183,8 @@ end
 --- ℹ **NOTE**: This does not work on brush models (`*number` models)  
 --- See also ENTITY:GetRenderMesh.  
 --- @param model string @The full path to a model to get the visual meshes of.
---- @param lod? number 
---- @param bodygroupMask? number 
+--- @param lod? number @Which LOD to retrieve
+--- @param bodygroupMask? number @Bodygroup combination for the model
 --- @return table @A table of tables with the following format:
 --- @return table @A table of tables containing the model bind pose (where the keys are the bone ID) with the following contents:
 function util.GetModelMeshes(model, lod, bodygroupMask)

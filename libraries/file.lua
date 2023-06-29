@@ -42,7 +42,6 @@ end
 
 ---  menu|client|server
 --- Returns a boolean of whether the file or directory exists or not.  
---- 🦟 **BUG**: [ This will sometimes return false clientside for directories received from the server via a clientside lua file. You can work around this by using file.Find with the path to the directory followed by a wildcard (no trailing forward slash) and see if the directory is inside the returned directories table (**see second example)**. **This is fixed in the next update.**](https://github.com/Facepunch/garrysmod-issues/issues/1038)  
 --- @param name string @The file or directory's name.
 --- @param gamePath string @The path to look for the files and directories in
 --- @return boolean @Returns `true` if the file exists and `false` if it does not.

@@ -229,7 +229,7 @@ function net.WriteDouble(double)
 end
 
 ---  client|server
---- Appends an entity to the current net message.  
+--- Appends an entity to the current net message using its Entity:EntIndex.  
 --- @param entity Entity @The entity to be sent.
 function net.WriteEntity(entity)
 end

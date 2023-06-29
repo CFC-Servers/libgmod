@@ -1697,10 +1697,10 @@ function Panel:SetWidth(width)
 end
 
 ---  client|menu
---- This makes it so that when you're hovering over this panel you can `click` on the world. Your viewmodel will aim etc. This is primarily used for the Sandbox context menu.  
+--- This makes it so that when you're hovering over this panel you can "click" on the world. Your weapon aim (and its viewmodel) will follow the cursor. This is primarily used for the Sandbox context menu.  
 --- 🦟 **BUG**: [This function doesn't scale with custom FOV specified by GM:CalcView or WEAPON:TranslateFOV.](https://github.com/Facepunch/garrysmod-issues/issues/3467)  
---- @param enabled boolean 
-function Panel:SetWorldClicker(enabled)
+--- @param enable boolean @Whether to enable or disable the feature for this panel.
+function Panel:SetWorldClicker(enable)
 end
 
 ---  client|menu

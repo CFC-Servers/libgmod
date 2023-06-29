@@ -677,7 +677,7 @@ function render.RedownloadAllLightmaps(DoStaticProps, UpdateStaticLighting)
 end
 
 ---  client
---- Renders additive flashlights on an IMesh, a direct replacement for [render.PushFlashlightMode]().  
+--- Renders additive flashlights on an IMesh, a direct replacement for render.PushFlashlightMode.  
 --- @param renderFunc function @The function that renders the IMesh, or a model.
 function render.RenderFlashlights(renderFunc)
 end

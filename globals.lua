@@ -707,7 +707,6 @@ end
 
 ---  client|server
 --- Returns the number of frames rendered since the game was launched.  
---- ℹ **NOTE**: This function is currently only shared on the `dev` branch, and on other branches it only exists clientside.  
 function _G.FrameNumber()
 end
 

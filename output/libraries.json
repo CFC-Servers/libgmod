@@ -7021,7 +7021,7 @@
           "client",
           "server"
         ],
-        "description": "Gets all entities with the given class, supports wildcards. This works internally by iterating over <page>ents.GetAll</page>. Even if internally ents.GetAll is used, It is faster to use ents.FindByClass than ents.GetAll with a single class comparison.\n\n<note>Asterisks (*) are the only wildcard supported.</note>",
+        "description": "Gets all entities with the given class, supports wildcards. This works internally by iterating over <page>ents.GetAll</page>. Even if internally ents.GetAll is used, It is faster to use ents.FindByClass than ents.GetAll with a single class comparison.\n\n<note>Asterisks (*) are the only wildcard supported.</note>\n<note>This function returns a sequential table, meaning it should be looped with <page>Global.ipairs</page> instead of <page>Global.pairs</page> for efficiency reasons.</note>",
         "arguments": [
           {
             "name": "class",
@@ -7464,7 +7464,7 @@
           "client",
           "server"
         ],
-        "description": "Returns a boolean of whether the file or directory exists or not.\n<bug issue=\"1038\"> This will sometimes return false clientside for directories received from the server via a clientside lua file. You can work around this by using <page>file.Find</page> with the path to the directory followed by a wildcard (no trailing forward slash) and see if the directory is inside the returned directories table (**see second example)**. **This is fixed in the next update.**</bug>",
+        "description": "Returns a boolean of whether the file or directory exists or not.",
         "arguments": [
           {
             "name": "name",
@@ -8407,7 +8407,7 @@
         "realms": [
           "server"
         ],
-        "description": "Sets the difficulty level of the game, can be retrieved with <page>game.GetSkillLevel</page>.\n\nThis will automatically change whenever the \"skill\" convar is modified serverside.\n\n<bug issue=\"3491\">This function will not work if the skill convar doesn't match the targeted value. To work around this, you must use RunConsoleCommand(\"skill\", num) alongside this function.</bug>",
+        "description": "Sets the difficulty level of the game, can be retrieved with <page>game.GetSkillLevel</page>.\n\nThis will automatically change whenever the \"skill\" convar is modified serverside.",
         "arguments": [
           {
             "name": "level",
@@ -14633,7 +14633,7 @@
           "client",
           "server"
         ],
-        "description": "Appends an entity to the current net message.",
+        "description": "Appends an entity to the current net message using its <page>Entity:EntIndex</page>.",
         "arguments": [
           {
             "name": "entity",
@@ -18050,7 +18050,7 @@
         "realms": [
           "client"
         ],
-        "description": "Renders additive flashlights on an <page>IMesh</page>, a direct replacement for [render.PushFlashlightMode]().",
+        "description": "Renders additive flashlights on an <page>IMesh</page>, a direct replacement for <page>render.PushFlashlightMode</page>.",
         "arguments": [
           {
             "name": "renderFunc",
@@ -26207,12 +26207,14 @@
           {
             "name": "lod",
             "type": "number",
-            "default": "0"
+            "default": "0",
+            "description": "Which LOD to retrieve. 0 is the best quality, increasing the number lowers the model quaility."
           },
           {
             "name": "bodygroupMask",
             "type": "number",
-            "default": "0"
+            "default": "0",
+            "description": "Bodygroup combination for the model. This can be in format of `\"000000\"` where each number represents a bodygroup option."
           }
         ],
         "returnValues": [
