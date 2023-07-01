@@ -7857,7 +7857,7 @@
           "client",
           "server"
         ],
-        "description": "Loads a particle file.\n\n<note>You will still need to call this function clientside regardless if you create the particle effects serverside.</note>",
+        "description": "Loads a particle file. Individual particle systems will still need to be precached with <page>Global.PrecacheParticleSystem</page>.\n\n<note>You will still need to call this function clientside regardless if you create the particle effects serverside.</note>",
         "arguments": [
           {
             "name": "particleFileName",
@@ -17454,7 +17454,8 @@
         ],
         "returnValues": [
           {
-            "type": "ITexture"
+            "type": "ITexture",
+            "description": "The requested texture."
           }
         ]
       },
@@ -18830,7 +18831,15 @@
         "realms": [
           "client"
         ],
-        "description": "Copies the entire screen to the screen effect texture, which can be acquired via <page>render.GetScreenEffectTexture</page>. This function is mainly intended to be used in <page>GM:RenderScreenspaceEffects</page>"
+        "description": "Copies the entire screen to the screen effect texture, which can be acquired via <page>render.GetScreenEffectTexture</page>. This function is mainly intended to be used in <page>GM:RenderScreenspaceEffects</page>",
+        "arguments": [
+          {
+            "name": "textureIndex",
+            "type": "number",
+            "default": "0",
+            "description": "Texture index to update. Max index is 3, but engine only creates the first two for you."
+          }
+        ]
       },
       {
         "name": "WorldMaterialOverride",
