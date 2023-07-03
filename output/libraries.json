@@ -7857,7 +7857,7 @@
           "client",
           "server"
         ],
-        "description": "Loads a particle file.\n\n<note>You will still need to call this function clientside regardless if you create the particle effects serverside.</note>",
+        "description": "Loads a particle file. Individual particle systems will still need to be precached with <page>Global.PrecacheParticleSystem</page>.\n\n<note>You will still need to call this function clientside regardless if you create the particle effects serverside.</note>",
         "arguments": [
           {
             "name": "particleFileName",
@@ -17454,7 +17454,8 @@
         ],
         "returnValues": [
           {
-            "type": "ITexture"
+            "type": "ITexture",
+            "description": "The requested texture."
           }
         ]
       },
@@ -18830,7 +18831,15 @@
         "realms": [
           "client"
         ],
-        "description": "Copies the entire screen to the screen effect texture, which can be acquired via <page>render.GetScreenEffectTexture</page>. This function is mainly intended to be used in <page>GM:RenderScreenspaceEffects</page>"
+        "description": "Copies the entire screen to the screen effect texture, which can be acquired via <page>render.GetScreenEffectTexture</page>. This function is mainly intended to be used in <page>GM:RenderScreenspaceEffects</page>",
+        "arguments": [
+          {
+            "name": "textureIndex",
+            "type": "number",
+            "default": "0",
+            "description": "Texture index to update. Max index is 3, but engine only creates the first two for you."
+          }
+        ]
       },
       {
         "name": "WorldMaterialOverride",
@@ -23080,7 +23089,7 @@
           "client",
           "server"
         ],
-        "description": "Adds the contents from one table into another. The target table will be modified.\n\nSee also <page>table.insert</page>, <page>table.Inherit</page> and <page>table.Merge</page>.",
+        "description": "Adds all values from `source` table into the `target` table. This is most useful for sequential tables, not \"dictionary\" or \"map\" tables. See <page>table.Merge</page> if you want to merge 2 tables into one.\n\nSee <page>table.insert</page> for a function that adds a single value, and <page>table.Inherit</page> for a function that inherits keys from one table to another.",
         "arguments": [
           {
             "name": "target",
@@ -23627,7 +23636,7 @@
           "client",
           "server"
         ],
-        "description": "Copies any missing data from base to target, and sets the target's `BaseClass` member to the base table's pointer.\n\nSee <page>table.Merge</page>, which overrides existing values and doesn't add a BaseClass member.\n\n\nSee also <page>table.Add</page>, which simply adds values of one table to another.\n\n<bug pull=\"1304\">Sub-tables aren't inherited. The target's table value will take priority.</bug>",
+        "description": "Copies any missing data from `base` to `target`, and sets the `target`'s `BaseClass` member to the `base` table's pointer.\n\nSee <page>table.Merge</page>, which overrides existing values and doesn't add a BaseClass member.\n\n\nSee also <page>table.Add</page>, which simply adds values of one table to another.\n\n<bug pull=\"1304\">Sub-tables aren't inherited. The target's table value will take priority.</bug>",
         "arguments": [
           {
             "name": "target",
@@ -23864,7 +23873,7 @@
           "client",
           "server"
         ],
-        "description": "Merges the contents of the second table with the content in the first one. The destination table will be modified.\n\nSee <page>table.Inherit</page>, which doesn't override existing values.\n\n\nSee also <page>table.Add</page>, which simply adds values of one table to another.\n<note>This function will cause a stack overflow under certain circumstances.</note>",
+        "description": "Merges the key-value pairs of the `source` table with the key-value pairs in the `destination` table.\n\nSee <page>table.Inherit</page>, which doesn't override existing values.\n\n\nSee also <page>table.Add</page>, which simply adds values of one table to another.\n<note>This function can cause a stack overflow under certain circumstances.</note>",
         "arguments": [
           {
             "name": "destination",

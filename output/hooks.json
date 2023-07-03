@@ -4716,7 +4716,7 @@
         "returnValues": [
           {
             "type": "boolean",
-            "description": "Allow spawn"
+            "description": "Return a non-nil value to prevent respawn."
           }
         ]
       },

@@ -5165,7 +5165,7 @@
       "client",
       "server"
     ],
-    "description": "Precaches a particle system with the specified name. The particle system must come from a file that is loaded with <page>game.AddParticles</page> beforehand.",
+    "description": "Precaches a particle system with the specified name. The particle system must come from a file that is loaded with <page>game.AddParticles</page> beforehand.\n\nWhen used on the server, it automatically precaches the particle on client.\n\n<warning>There is a limit of 4096 precached particles on the server. So only precache particles that are actually going to be used.</warning>",
     "arguments": [
       {
         "name": "particleSystemName",
