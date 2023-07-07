@@ -1363,6 +1363,8 @@ end
 
 ---  client|server
 --- Precaches a particle system with the specified name. The particle system must come from a file that is loaded with game.AddParticles beforehand.  
+--- When used on the server, it automatically precaches the particle on client.  
+--- ⚠ **WARNING**: There is a limit of 4096 precached particles on the server. So only precache particles that are actually going to be used.  
 --- @param particleSystemName string @The name of the particle system.
 function _G.PrecacheParticleSystem(particleSystemName)
 end
