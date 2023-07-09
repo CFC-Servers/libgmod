@@ -147,7 +147,7 @@ end
 function ents.GetEdictCount()
 end
 
----  server
+---  client|server
 --- Returns entity that has given Entity:MapCreationID.  
 --- @param id number @Entity's creation id
 --- @return Entity @Found entity

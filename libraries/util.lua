@@ -307,8 +307,9 @@ end
 --- @param box2Angles Angle @The angles of the second box.
 --- @param box2Mins Vector @The min position of the second box.
 --- @param box2Maxs Vector @The max position of the second box.
+--- @param tolerance number @Tolerance for error
 --- @return boolean @Whether there is an intersection.
-function util.IsOBBIntersectingOBB(box1Origin, box1Angles, box1Mins, box1Maxs, box2Origin, box2Angles, box2Mins, box2Maxs)
+function util.IsOBBIntersectingOBB(box1Origin, box1Angles, box1Mins, box1Maxs, box2Origin, box2Angles, box2Mins, box2Maxs, tolerance)
 end
 
 ---  client

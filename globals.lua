@@ -984,7 +984,6 @@ end
 ---  menu|client|server
 --- Launches an asynchronous http request with the given parameters.  
 --- 🦟 **BUG**: [This cannot send or receive multiple headers with the same name.](https://github.com/Facepunch/garrysmod-issues/issues/2232)  
---- 🦟 **BUG**: [This function fails with an `invalid url` error if the substring `"10."` appears anywhere in the URL, when `-allowlocalhttp` is not active. Where possible, this can be worked around by encoding the `.` character as `%2E`.](https://github.com/Facepunch/garrysmod-issues/issues/4133)  
 --- ℹ **NOTE**: HTTP-requests that respond with a large body may return an `unsuccessful` error. Try using the [Range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range) header to download the file in chunks.  
 --- ℹ **NOTE**:   
 --- HTTP-requests to destinations on private networks (such as `192.168.0.1`) won't work.  
@@ -1363,6 +1362,8 @@ end
 
 ---  client|server
 --- Precaches a particle system with the specified name. The particle system must come from a file that is loaded with game.AddParticles beforehand.  
+--- When used on the server, it automatically precaches the particle on client.  
+--- ⚠ **WARNING**: There is a limit of 4096 precached particles on the server. So only precache particles that are actually going to be used.  
 --- @param particleSystemName string @The name of the particle system.
 function _G.PrecacheParticleSystem(particleSystemName)
 end

@@ -3576,7 +3576,7 @@
       "client",
       "server"
     ],
-    "description": "Launches an asynchronous http request with the given parameters.\n\n<bug issue=\"2232\">This cannot send or receive multiple headers with the same name.</bug>\n<bug issue=\"4133\">This function fails with an `invalid url` error if the substring `\"10.\"` appears anywhere in the URL, when `-allowlocalhttp` is not active. Where possible, this can be worked around by encoding the `.` character as `%2E`.</bug>\n<note>HTTP-requests that respond with a large body may return an `unsuccessful` error. Try using the [Range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range) header to download the file in chunks.</note>\n<note>\nHTTP-requests to destinations on private networks (such as `192.168.0.1`) won't work.\n<br>\nTo enable HTTP-requests to destinations on private networks use <page>Command Line Parameters</page> `-allowlocalhttp`.\n</note>",
+    "description": "Launches an asynchronous http request with the given parameters.\n\n<bug issue=\"2232\">This cannot send or receive multiple headers with the same name.</bug>\n<note>HTTP-requests that respond with a large body may return an `unsuccessful` error. Try using the [Range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range) header to download the file in chunks.</note>\n<note>\nHTTP-requests to destinations on private networks (such as `192.168.0.1`) won't work.\n<br>\nTo enable HTTP-requests to destinations on private networks use <page>Command Line Parameters</page> `-allowlocalhttp`.\n</note>",
     "arguments": [
       {
         "name": "parameters",
@@ -5165,7 +5165,7 @@
       "client",
       "server"
     ],
-    "description": "Precaches a particle system with the specified name. The particle system must come from a file that is loaded with <page>game.AddParticles</page> beforehand.",
+    "description": "Precaches a particle system with the specified name. The particle system must come from a file that is loaded with <page>game.AddParticles</page> beforehand.\n\nWhen used on the server, it automatically precaches the particle on client.\n\n<warning>There is a limit of 4096 precached particles on the server. So only precache particles that are actually going to be used.</warning>",
     "arguments": [
       {
         "name": "particleSystemName",

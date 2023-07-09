@@ -7332,6 +7332,7 @@
         "name": "GetMapCreatedEntity",
         "parent": "ents",
         "realms": [
+          "client",
           "server"
         ],
         "description": "Returns entity that has given <page>Entity:MapCreationID</page>.",
@@ -7857,7 +7858,7 @@
           "client",
           "server"
         ],
-        "description": "Loads a particle file.\n\n<note>You will still need to call this function clientside regardless if you create the particle effects serverside.</note>",
+        "description": "Loads a particle file. Individual particle systems will still need to be precached with <page>Global.PrecacheParticleSystem</page>.\n\n<note>You will still need to call this function clientside regardless if you create the particle effects serverside.</note>",
         "arguments": [
           {
             "name": "particleFileName",
@@ -9482,7 +9483,7 @@
           "client",
           "server"
         ],
-        "description": "Launches an asynchronous **GET** request to a HTTP server.\n\nHTTP requests returning a status code >= `400` are still considered a success and will call the <page text=\"onSuccess\">Structures/HTTPRequest</page> callback.\n\nThe <page text=\"onFailure\">Structures/HTTPRequest</page> callback is usually only called on DNS or TCP errors (e.g. the website is unavailable or the domain does not exist).\n\nA rough overview of possible <page text=\"onFailure\">Structures/HTTPRequest</page> messages:\n* `invalid url` - Invalid/empty url ( no request was attempted )\n* `invalid request` - Steam HTTP lib failed to create a HTTP request\n* `error` - OnComplete callback's second argument, `bError`, is `true`\n* `unsuccessful` - OnComplete's first argument, `pResult->m_bRequestSuccessful`, returned `false`\n\n<note>HTTP-requests that respond with a large body may return an `unsuccessful` error. Try using the [Range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range) header to download the file in chunks.</note>\n<note>\nHTTP-requests to destinations on private networks (such as `192.168.0.1`) won't work.\n<br>\nTo enable HTTP-requests to destinations on private networks use <page>Command Line Parameters</page> `-allowlocalhttp` (serverside only).\n</note>",
+        "description": "Launches an asynchronous **GET** request to a HTTP server.\n\nHTTP requests returning a status code >= `400` are still considered a success and will call the <page text=\"onSuccess\">Structures/HTTPRequest</page> callback.\n\nThe <page text=\"onFailure\">Structures/HTTPRequest</page> callback is usually only called on DNS or TCP errors (e.g. the website is unavailable or the domain does not exist).\n\nA rough overview of possible <page text=\"onFailure\">Structures/HTTPRequest</page> messages:\n* `invalid url` - Invalid/empty url ( no request was attempted )\n* `invalid request` - Steam HTTP lib failed to create a HTTP request\n* `error` - OnComplete callback's second argument, `bError`, is `true`\n* `unsuccessful` - OnComplete's first argument, `pResult->m_bRequestSuccessful`, returned `false`\n\n<bug issue=\"2232\">This cannot send or receive multiple headers with the same name.</bug>\n<note>HTTP-requests that respond with a large body may return an `unsuccessful` error. Try using the [Range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range) header to download the file in chunks.</note>\n<note>\nHTTP-requests to destinations on private networks (such as `192.168.0.1`) won't work.\n<br>\nTo enable HTTP-requests to destinations on private networks use <page>Command Line Parameters</page> `-allowlocalhttp`.\n</note>",
         "arguments": [
           {
             "name": "url",
@@ -9517,7 +9518,7 @@
           "client",
           "server"
         ],
-        "description": "Sends an asynchronous **POST** request to a HTTP server.\n\nHTTP requests returning a status code >= `400` are still considered a success and will call the <page text=\"onSuccess\">Structures/HTTPRequest</page> callback.\n\nThe <page text=\"onFailure\">Structures/HTTPRequest</page> callback is usually only called on DNS or TCP errors (e.g. the website is unavailable or the domain does not exist).\n\n<note>HTTP-requests that respond with a large body may return an `unsuccessful` error. Try using the [Range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range) header to download the file in chunks.</note>\n<note>HTTP-requests to destinations on private networks (such as `192.168.0.1`) won't work.<br> To enable HTTP-requests to destinations on private networks use <page>Command Line Parameters</page> `-allowlocalhttp` (serverside only).</note>",
+        "description": "Sends an asynchronous **POST** request to a HTTP server.\n\nHTTP requests returning a status code >= `400` are still considered a success and will call the <page text=\"onSuccess\">Structures/HTTPRequest</page> callback.\n\nThe <page text=\"onFailure\">Structures/HTTPRequest</page> callback is usually only called on DNS or TCP errors (e.g. the website is unavailable or the domain does not exist).\n\n<bug issue=\"2232\">This cannot send or receive multiple headers with the same name.</bug>\n<note>HTTP-requests that respond with a large body may return an `unsuccessful` error. Try using the [Range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range) header to download the file in chunks.</note>\n<note>\nHTTP-requests to destinations on private networks (such as `192.168.0.1`) won't work.\n<br>\nTo enable HTTP-requests to destinations on private networks use <page>Command Line Parameters</page> `-allowlocalhttp`.\n</note>",
         "arguments": [
           {
             "name": "url",
@@ -10825,7 +10826,7 @@
         "description": "A convenience function that converts a <page>Color</page> into its markup ready string representation.",
         "arguments": [
           {
-            "name": "clr",
+            "name": "col",
             "type": "Color",
             "description": "The <page>Color</page> to convert."
           }
@@ -17454,7 +17455,8 @@
         ],
         "returnValues": [
           {
-            "type": "ITexture"
+            "type": "ITexture",
+            "description": "The requested texture."
           }
         ]
       },
@@ -18830,7 +18832,15 @@
         "realms": [
           "client"
         ],
-        "description": "Copies the entire screen to the screen effect texture, which can be acquired via <page>render.GetScreenEffectTexture</page>. This function is mainly intended to be used in <page>GM:RenderScreenspaceEffects</page>"
+        "description": "Copies the entire screen to the screen effect texture, which can be acquired via <page>render.GetScreenEffectTexture</page>. This function is mainly intended to be used in <page>GM:RenderScreenspaceEffects</page>",
+        "arguments": [
+          {
+            "name": "textureIndex",
+            "type": "number",
+            "default": "0",
+            "description": "Texture index to update. Max index is 3, but engine only creates the first two for you."
+          }
+        ]
       },
       {
         "name": "WorldMaterialOverride",
@@ -21265,15 +21275,15 @@
         "description": "Returns extension of the file.",
         "arguments": [
           {
-            "name": "file",
+            "name": "path",
             "type": "string",
-            "description": "String eg. file-path to get the file extensions from."
+            "description": "The string eg. file-path to get the file extension from."
           }
         ],
         "returnValues": [
           {
             "type": "string",
-            "description": "fileExtension"
+            "description": "File extension or `nil`."
           }
         ]
       },
@@ -21288,7 +21298,7 @@
         "description": "Returns file name and extension.",
         "arguments": [
           {
-            "name": "pathString",
+            "name": "path",
             "type": "string",
             "description": "The string eg. file-path to get the file-name from."
           }
@@ -21296,7 +21306,7 @@
         "returnValues": [
           {
             "type": "string",
-            "description": "The file name"
+            "description": "File name or unmodified string."
           }
         ]
       },
@@ -21311,15 +21321,15 @@
         "description": "Returns the path only from a file's path.",
         "arguments": [
           {
-            "name": "Inputstring",
+            "name": "path",
             "type": "string",
-            "description": "String to get path from."
+            "description": "The string eg. file-path to get the path from."
           }
         ],
         "returnValues": [
           {
             "type": "string",
-            "description": "Path"
+            "description": "Path or empty string."
           }
         ]
       },
@@ -21923,15 +21933,15 @@
         "description": "Removes the extension of a path.",
         "arguments": [
           {
-            "name": "Inputstring",
+            "name": "path",
             "type": "string",
-            "description": "The path to change."
+            "description": "The string eg. file-path to strip the extension."
           }
         ],
         "returnValues": [
           {
             "type": "string",
-            "description": "Modifiedstring"
+            "description": "File-path without extension or unmodified string."
           }
         ]
       },
@@ -23080,7 +23090,7 @@
           "client",
           "server"
         ],
-        "description": "Adds the contents from one table into another. The target table will be modified.\n\nSee also <page>table.insert</page>, <page>table.Inherit</page> and <page>table.Merge</page>.",
+        "description": "Adds all values from `source` table into the `target` table. This is most useful for sequential tables, not \"dictionary\" or \"map\" tables. See <page>table.Merge</page> if you want to merge 2 tables into one.\n\nSee <page>table.insert</page> for a function that adds a single value, and <page>table.Inherit</page> for a function that inherits keys from one table to another.",
         "arguments": [
           {
             "name": "target",
@@ -23627,7 +23637,7 @@
           "client",
           "server"
         ],
-        "description": "Copies any missing data from base to target, and sets the target's `BaseClass` member to the base table's pointer.\n\nSee <page>table.Merge</page>, which overrides existing values and doesn't add a BaseClass member.\n\n\nSee also <page>table.Add</page>, which simply adds values of one table to another.\n\n<bug pull=\"1304\">Sub-tables aren't inherited. The target's table value will take priority.</bug>",
+        "description": "Copies any missing data from `base` to `target`, and sets the `target`'s `BaseClass` member to the `base` table's pointer.\n\nSee <page>table.Merge</page>, which overrides existing values and doesn't add a BaseClass member.\n\n\nSee also <page>table.Add</page>, which simply adds values of one table to another.\n\n<bug pull=\"1304\">Sub-tables aren't inherited. The target's table value will take priority.</bug>",
         "arguments": [
           {
             "name": "target",
@@ -23864,7 +23874,7 @@
           "client",
           "server"
         ],
-        "description": "Merges the contents of the second table with the content in the first one. The destination table will be modified.\n\nSee <page>table.Inherit</page>, which doesn't override existing values.\n\n\nSee also <page>table.Add</page>, which simply adds values of one table to another.\n<note>This function will cause a stack overflow under certain circumstances.</note>",
+        "description": "Merges the key-value pairs of the `source` table with the key-value pairs in the `destination` table.\n\nSee <page>table.Inherit</page>, which doesn't override existing values.\n\n\nSee also <page>table.Add</page>, which simply adds values of one table to another.\n<note>This function can cause a stack overflow under certain circumstances.</note>",
         "arguments": [
           {
             "name": "destination",
@@ -26604,6 +26614,11 @@
             "name": "box2Maxs",
             "type": "Vector",
             "description": "The max position of the second box."
+          },
+          {
+            "name": "tolerance",
+            "type": "number",
+            "description": "Tolerance for error. Leave at 0 if unsure."
           }
         ],
         "returnValues": [

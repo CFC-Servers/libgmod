@@ -2,9 +2,9 @@
 _G.markup = {}
 ---  client|menu
 --- A convenience function that converts a Color into its markup ready string representation.  
---- @param clr Color @The Color to convert.
+--- @param col Color @The Color to convert.
 --- @return string @The markup color, for example `255,255,255`.
-function markup.Color(clr)
+function markup.Color(col)
 end
 
 ---  client|menu
