@@ -75,23 +75,23 @@ end
 
 ---  menu|client|server
 --- Returns extension of the file.  
---- @param file string @String eg
---- @return string @fileExtension
-function string.GetExtensionFromFilename(file)
+--- @param path string @The string eg
+--- @return string @File extension or `nil`.
+function string.GetExtensionFromFilename(path)
 end
 
 ---  menu|client|server
 --- Returns file name and extension.  
---- @param pathString string @The string eg
---- @return string @The file name
-function string.GetFileFromFilename(pathString)
+--- @param path string @The string eg
+--- @return string @File name or unmodified string.
+function string.GetFileFromFilename(path)
 end
 
 ---  menu|client|server
 --- Returns the path only from a file's path.  
---- @param Inputstring string @String to get path from.
---- @return string @Path
-function string.GetPathFromFilename(Inputstring)
+--- @param path string @The string eg
+--- @return string @Path or empty string.
+function string.GetPathFromFilename(path)
 end
 
 ---  menu|client|server
@@ -204,9 +204,9 @@ end
 
 ---  menu|client|server
 --- Removes the extension of a path.  
---- @param Inputstring string @The path to change.
---- @return string @Modifiedstring
-function string.StripExtension(Inputstring)
+--- @param path string @The string eg
+--- @return string @File-path without extension or unmodified string.
+function string.StripExtension(path)
 end
 
 ---  menu|client|server

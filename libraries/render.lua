@@ -443,7 +443,7 @@ end
 --- Obtain an ITexture of the screen. You must call render.UpdateScreenEffectTexture in order to update this texture with the currently rendered scene.  
 --- This texture is mainly used within GM:RenderScreenspaceEffects  
 --- @param textureIndex? number @Max index is 3, but engine only creates the first two for you.
---- @return ITexture 
+--- @return ITexture @The requested texture.
 function render.GetScreenEffectTexture(textureIndex)
 end
 
@@ -1020,7 +1020,8 @@ end
 
 ---  client
 --- Copies the entire screen to the screen effect texture, which can be acquired via render.GetScreenEffectTexture. This function is mainly intended to be used in GM:RenderScreenspaceEffects  
-function render.UpdateScreenEffectTexture()
+--- @param textureIndex? number @Texture index to update
+function render.UpdateScreenEffectTexture(textureIndex)
 end
 
 ---  client

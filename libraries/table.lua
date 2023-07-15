@@ -3,8 +3,8 @@
 --- This category lists the functions available in the table `library`.  
 _G.table = {}
 ---  menu|client|server
---- Adds the contents from one table into another. The target table will be modified.  
---- See also table.insert, table.Inherit and table.Merge.  
+--- Adds all values from `source` table into the `target` table. This is most useful for sequential tables, not "dictionary" or "map" tables. See table.Merge if you want to merge 2 tables into one.  
+--- See table.insert for a function that adds a single value, and table.Inherit for a function that inherits keys from one table to another.  
 --- @param target table @The table to insert the new values into.
 --- @param source table @The table to retrieve the values from.
 --- @return table @The target table.
@@ -153,7 +153,7 @@ function table.HasValue(tbl, value)
 end
 
 ---  menu|client|server
---- Copies any missing data from base to target, and sets the target's `BaseClass` member to the base table's pointer.  
+--- Copies any missing data from `base` to `target`, and sets the `target`'s `BaseClass` member to the `base` table's pointer.  
 --- See table.Merge, which overrides existing values and doesn't add a BaseClass member.  
 --- See also table.Add, which simply adds values of one table to another.  
 --- 🦟 **BUG**: [Sub-tables aren't inherited. The target's table value will take priority.](https://github.com/Facepunch/garrysmod/pull/1304)  
@@ -212,10 +212,10 @@ function table.MemberValuesFromKey(inputTable, keyName)
 end
 
 ---  menu|client|server
---- Merges the contents of the second table with the content in the first one. The destination table will be modified.  
+--- Merges the key-value pairs of the `source` table with the key-value pairs in the `destination` table.  
 --- See table.Inherit, which doesn't override existing values.  
 --- See also table.Add, which simply adds values of one table to another.  
---- ℹ **NOTE**: This function will cause a stack overflow under certain circumstances.  
+--- ℹ **NOTE**: This function can cause a stack overflow under certain circumstances.  
 --- @param destination table @The table you want the source table to merge with
 --- @param source table @The table you want to merge with the destination table
 --- @return table @Destination table

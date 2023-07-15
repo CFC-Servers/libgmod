@@ -18,7 +18,7 @@ function game.AddDecal(decalName, materialName)
 end
 
 ---  client|server
---- Loads a particle file.  
+--- Loads a particle file. Individual particle systems will still need to be precached with Global.PrecacheParticleSystem.  
 --- ℹ **NOTE**: You will still need to call this function clientside regardless if you create the particle effects serverside.  
 --- @param particleFileName string @The path of the file to add
 function game.AddParticles(particleFileName)

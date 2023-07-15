@@ -4827,7 +4827,7 @@
         "realms": [
           "client"
         ],
-        "description": "Essentially makes child control point follow the parent entity.",
+        "description": "Sets an entity to given control point for particle to use.",
         "arguments": [
           {
             "name": "child",
@@ -4837,7 +4837,7 @@
           {
             "name": "parent",
             "type": "Entity",
-            "description": "The parent entity to follow."
+            "description": "The entity to set."
           }
         ]
       },
@@ -35866,7 +35866,7 @@
   },
   {
     "name": "VMatrix",
-    "description": "A 4x4 matrix.\n\nThis page lists all possible functions to manipulate matrices.\n\nThis object can be created by <page>Global.Matrix</page>.\n\nMetamethod | Second Operand | Description\n---------- | -------------- | -----------\n`__add` | <page>VMatrix</page> | Returns new <page>VMatrix</page> with the result of addition.\n`__eq` | <page>any</page> | Compares 2 operands, if they both are <page>VMatrix</page>, compares each individual component.\n`__mul` | <page>VMatrix</page> or <page>Vector</page> | Returns new <page>VMatrix</page> with the result of multiplication.\n`__sub` | <page>VMatrix</page> | Returns new <page>VMatrix</page> with the result of subtraction.\n`__tostring` |  | Returns a <page>string</page> in format `[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]`.",
+    "description": "A 4x4 matrix.\n\nThis page lists all possible functions to manipulate matrices.\n\nThis object can be created by <page>Global.Matrix</page>.\n\nMetamethod | Second Operand | Description\n---------- | -------------- | -----------\n`__add` | <page>VMatrix</page> | Returns new <page>VMatrix</page> with the result of addition.\n`__eq` | <page>any</page> | Compares 2 operands, if they both are <page>VMatrix</page>, compares each individual component.\n`__mul` | <page>VMatrix</page> or <page>Vector</page> | Returns new <page>VMatrix</page> or <page>Vector</page> with the result of multiplication.\n`__sub` | <page>VMatrix</page> | Returns new <page>VMatrix</page> with the result of subtraction.\n`__tostring` |  | Returns a <page>string</page> in format `[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]`.",
     "functions": [
       {
         "name": "Add",

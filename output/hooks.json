@@ -4716,7 +4716,7 @@
         "returnValues": [
           {
             "type": "boolean",
-            "description": "Allow spawn"
+            "description": "Return a non-nil value to prevent respawn."
           }
         ]
       },
@@ -7795,7 +7795,7 @@
         "realms": [
           "client"
         ],
-        "description": "Called whenever the panels' layout needs to be performed again. This means all child panels must be re-positioned to fit the possibly new size of this panel.\n\nThis can be triggered in numerous ways:\n* <page>Panel:InvalidateLayout</page> was called this or previous frame (depending on the argument)\n* A child element was added to this panel (TODO: Verify me)\n* The size of this panel has changed\n\n<warning>Do **NOT** call this function directly. Use <page>Panel:InvalidateLayout</page> instead!</warning>\n\n<example>\n<description>Creating a resizeable DFrame with a 'sidebar' that rescales along with the DFrame</description>\n<code>\nlocal frame = vgui.Create(\"DFrame\")\nframe:SetSize(500, 400)\nframe:Center()\nframe:SetSizable(true)\n-- oPerformLayout stores the original PerformLayout function\n-- We store it because we are going to overwrite it with our own to scale the Sidebar\n-- We then call the original function to maintain proper functionality of the frame\n-- You can find the original PerformLayout here https://github.com/Facepunch/garrysmod/blob/master/garrysmod/lua/vgui/dframe.lua#L234-L258\nlocal oPerformLayout = frame.PerformLayout\n\nframe.PerformLayout = function(pnl, w, h)\noPerformLayout(pnl, w, h)\npnl.Sidebar:SetWide(w * 0.5)\nend\n\nframe.Sidebar = frame:Add(\"DPanel\")\nframe.Sidebar:Dock(LEFT)\n\nframe.Sidebar.Paint = function(pnl, w, h)\nsurface.SetDrawColor(255, 0, 0)\nsurface.DrawRect(0, 0, w, h)\nend\n\nframe.Sidebar.PerformLayout = function(pnl, w, h)\nlocal buttonWidth = w * 0.5\nlocal buttonHeight = h * 0.5\npnl.Button:SetSize(buttonWidth, buttonHeight)\n-- now we center our button\npnl.Button:SetPos(w / 2 - buttonWidth / 2, h / 2 - buttonHeight / 2)\nend\n\nframe.Sidebar.Button = frame.Sidebar:Add(\"DButton\")\nframe.Sidebar.Button:SetText(\"Hello!\")\n</code>\n</example>",
+        "description": "Called whenever the panels' layout needs to be performed again. This means all child panels must be re-positioned to fit the possibly new size of this panel.\n\nThis can be triggered in numerous ways:\n* <page>Panel:InvalidateLayout</page> was called this or previous frame (depending on the argument)\n* <page>Panel:SetPos</page> called more than once on the same panel ([Issue](https://github.com/Facepunch/garrysmod-issues/issues/5519))\n* A child element was added to this panel (TODO: Verify me)\n* The size of this panel has changed\n<warning>Do **NOT** call this function directly. Use <page>Panel:InvalidateLayout</page> instead!</warning>",
         "arguments": [
           {
             "name": "width",
@@ -9038,7 +9038,13 @@
           "client",
           "server"
         ],
-        "description": "Called when <page>WEAPON:Deploy</page> of the toolgun is called.\n\nThis is also called when switching from another tool on the server."
+        "description": "Called when <page>WEAPON:Deploy</page> of the toolgun is called.\n\nThis is also called when switching from another tool on the server.",
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "Return true to allow switching away from the toolgun using lastinv command"
+          }
+        ]
       },
       {
         "name": "DrawHUD",
