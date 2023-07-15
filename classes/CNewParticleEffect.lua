@@ -73,9 +73,9 @@ function CNewParticleEffect:SetControlPoint(cpID, value)
 end
 
 ---  client
---- Essentially makes child control point follow the parent entity.  
+--- Sets an entity to given control point for particle to use.  
 --- @param child number @The child control point ID, 0 to 63.
---- @param parent Entity @The parent entity to follow.
+--- @param parent Entity @The entity to set.
 function CNewParticleEffect:SetControlPointEntity(child, parent)
 end
 

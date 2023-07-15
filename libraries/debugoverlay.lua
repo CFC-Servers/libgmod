@@ -98,7 +98,7 @@ function debugoverlay.Sphere(origin, size, lifetime, color, ignoreZ)
 end
 
 ---  client|server
---- Displays "swept" box, two boxes connected with lines by their verices.  
+--- Displays "swept" box, two boxes connected with lines by their vertices.  
 --- ℹ **NOTE**: This function will silently fail if the `developer` ConVar is set to `0`. It is not networked to clients, except for the listen server host.  
 --- @param vStart Vector @The start position of the box.
 --- @param vEnd Vector @The end position of the box.
