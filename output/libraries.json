@@ -10627,7 +10627,7 @@
         "returnValues": [
           {
             "type": "string",
-            "description": "The translated phrase, or the input string if no translation was found"
+            "description": "The translated phrase, or the input string if no translation was found. There is a limit of 1024 bytes for the returned string."
           }
         ]
       }
