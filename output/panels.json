@@ -12837,7 +12837,7 @@
   {
     "name": "DTextEntry",
     "parent": "TextEntry",
-    "description": "A form which may be used to display text the player is meant to select and copy or alternately allow them to enter some text of their own.\n\n<note>Do note that at least one of your `DTextEntry`'s parents must either be an <page>EditablePanel</page> or derived from it (like a <page>DFrame</page>, for example), else it won't be able to focus and thus be unselectable.\n\nYou must also call <page>Panel:MakePopup</page> on said panel or the `DTextEntry` will not work.</note>",
+    "description": "A form which may be used to display text the player is meant to select and copy or alternately allow them to enter some text of their own.\n\n<note>At least one of your `DTextEntry`'s parents must either be an <page>EditablePanel</page> or derived from it (like a <page>DFrame</page>, for example), else it won't be able to focus and thus be unselectable.\n\nYou must also call <page>Panel:MakePopup</page> on said panel or the `DTextEntry` will not work.</note>",
     "functions": [
       {
         "name": "AllowInput",

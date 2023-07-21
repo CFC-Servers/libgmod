@@ -10627,7 +10627,7 @@
         "returnValues": [
           {
             "type": "string",
-            "description": "The translated phrase, or the input string if no translation was found"
+            "description": "The translated phrase, or the input string if no translation was found. There is a limit of 1024 bytes for the returned string."
           }
         ]
       }
@@ -26415,17 +26415,17 @@
           "client",
           "server"
         ],
-        "description": "Performs a \"ray\" box intersection and returns position, normal and the fraction.",
+        "description": "Performs a Ray-OBB (Orientated Bounding Box) intersection and returns position, normal and the fraction if there was an intersection.",
         "arguments": [
           {
             "name": "rayStart",
             "type": "Vector",
-            "description": "Origin/start position of the ray."
+            "description": "Origin or start position of the ray."
           },
           {
             "name": "rayDelta",
             "type": "Vector",
-            "description": "The ray vector itself. This can be thought of as: the ray end point relative to the start point.\n\nNote that in this implementation, the ray is not infinite - it's only a segment."
+            "description": "The ray vector itself, the ray end point relative to the start point. Can be implemented as `direction * distance`\n\nNote that in this implementation, the ray is not infinite - it's only a segment."
           },
           {
             "name": "boxOrigin",
@@ -26435,7 +26435,7 @@
           {
             "name": "boxAngles",
             "type": "Angle",
-            "description": "The angles of the box."
+            "description": "The angle of the box."
           },
           {
             "name": "boxMins",
