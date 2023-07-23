@@ -1,5 +1,5 @@
 --- A form which may be used to display text the player is meant to select and copy or alternately allow them to enter some text of their own.  
---- ℹ **NOTE**: Do note that at least one of your `DTextEntry`'s parents must either be an EditablePanel or derived from it (like a DFrame, for example), else it won't be able to focus and thus be unselectable.  
+--- ℹ **NOTE**: At least one of your `DTextEntry`'s parents must either be an EditablePanel or derived from it (like a DFrame, for example), else it won't be able to focus and thus be unselectable.  
 --- You must also call Panel:MakePopup on said panel or the `DTextEntry` will not work.  
 --- @class DTextEntry : TextEntry
 local DTextEntry = {}
