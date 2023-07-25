@@ -2927,6 +2927,7 @@ end
 
 ---  client
 --- Enables or disable the inverse kinematic usage of this entity.  
+--- ⚠ **WARNING**: Calling this with false outside of ENTITY:Initialize requires a model change to take effect.  
 --- @param useIK? boolean @The state of the IK.
 function Entity:SetIK(useIK)
 end
@@ -3261,7 +3262,7 @@ end
 ---  client|server
 --- Sets a networked angle value on the entity.  
 --- The value can then be accessed with Entity:GetNWAngle both from client and server.  
---- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Angle. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Angle. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage#nwlimits  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value Angle @The value to set
@@ -3271,7 +3272,7 @@ end
 ---  client|server
 --- Sets a networked boolean value on the entity.  
 --- The value can then be accessed with Entity:GetNWBool both from client and server.  
---- ⚠ **WARNING**: There's a 4096 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Bool. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ⚠ **WARNING**: There's a 4096 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Bool. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage#nwlimits  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value boolean @The value to set
@@ -3281,7 +3282,7 @@ end
 ---  client|server
 --- Sets a networked entity value on the entity.  
 --- The value can then be accessed with Entity:GetNWEntity both from client and server.  
---- ⚠ **WARNING**: There's a 4096 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Entity. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ⚠ **WARNING**: There's a 4096 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Entity. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage#nwlimits  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value Entity @The value to set
@@ -3292,7 +3293,7 @@ end
 --- Sets a networked float (number) value on the entity.  
 --- The value can then be accessed with Entity:GetNWFloat both from client and server.  
 --- Unlike Entity:SetNWInt, floats don't have to be whole numbers.  
---- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Float. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Float. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage#nwlimits  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value number @The value to set
@@ -3303,7 +3304,7 @@ end
 --- Sets a networked integer (whole number) value on the entity.  
 --- The value can then be accessed with Entity:GetNWInt both from client and server.  
 --- See Entity:SetNWFloat for numbers that aren't integers.  
---- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Int. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Int. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage#nwlimits  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- 🦟 **BUG**: [This function will not round decimal values as it actually networks a float internally.](https://github.com/Facepunch/garrysmod-issues/issues/3374)  
 --- @param key string @The key to associate the value with
@@ -3314,7 +3315,7 @@ end
 ---  client|server
 --- Sets a networked string value on the entity.  
 --- The value can then be accessed with Entity:GetNWString both from client and server.  
---- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2String. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2String. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage#nwlimits  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value string @The value to set, up to 199 characters.
@@ -3333,7 +3334,7 @@ end
 ---  client|server
 --- Sets a networked vector value on the entity.  
 --- The value can then be accessed with Entity:GetNWVector both from client and server.  
---- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Vector. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Vector. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage#nwlimits  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value Vector @The value to set

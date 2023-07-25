@@ -7765,7 +7765,7 @@
           "client",
           "server"
         ],
-        "description": "Gets the angles of given entity.\n\n<bug issue=\"2764\">This returns incorrect results for the local player clientside.</bug>\n\n<bug issue=\"3106\">This will return the local player's <page>Global.EyeAngles</page> in <page text=\"rendering hooks\">Category:3D_Rendering_Hooks</page>.</bug>\n\n<bug issue=\"3107\">This will return <page>Global.Angle</page>(0,0,0) in <page text=\"rendering hooks\">Category:3D_Rendering_Hooks</page> while paused in single-player.</bug>",
+        "description": "Gets the angles of given entity.\n\n<bug issue=\"2764\">This returns incorrect results for the local player clientside.</bug>\n\n<bug issue=\"3106\">This will return the local player's <page>Global.EyeAngles</page> in <page text=\"rendering hooks\">3D_Rendering_Hooks</page>.</bug>\n\n<bug issue=\"3107\">This will return <page>Global.Angle</page>(0,0,0) in <page text=\"rendering hooks\">3D_Rendering_Hooks</page> while paused in single-player.</bug>",
         "returnValues": [
           {
             "type": "Angle",
@@ -14258,7 +14258,7 @@
         "realms": [
           "client"
         ],
-        "description": "Enables or disable the inverse kinematic usage of this entity.",
+        "description": "Enables or disable the inverse kinematic usage of this entity.\n<warning>Calling this with false outside of <page>ENTITY:Initialize</page> requires a model change to take effect.</warning>",
         "arguments": [
           {
             "name": "useIK",
@@ -15426,7 +15426,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a networked angle value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNWAngle</page> both from client and server.\n<warning>There's a 4095 slots Network limit. If you need more, consider using the <page>net</page> library or <page>Entity:SetNW2Angle</page>. You should also consider the fact that you have way too many variables. You can learn more about this limit here: <page>Networking_Usage</page></warning>\n<note>Running this function clientside will only set it for the client it is called on.</note>",
+        "description": "Sets a networked angle value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNWAngle</page> both from client and server.\n<warning>There's a 4095 slots Network limit. If you need more, consider using the <page>net</page> library or <page>Entity:SetNW2Angle</page>. You should also consider the fact that you have way too many variables. You can learn more about this limit here: <page>Networking_Usage#nwlimits</page></warning>\n<note>Running this function clientside will only set it for the client it is called on.</note>",
         "arguments": [
           {
             "name": "key",
@@ -15447,7 +15447,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a networked boolean value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNWBool</page> both from client and server.\n<warning>There's a 4096 slots Network limit. If you need more, consider using the <page>net</page> library or <page>Entity:SetNW2Bool</page>. You should also consider the fact that you have way too many variables. You can learn more about this limit here: <page>Networking_Usage</page></warning>\n<note>Running this function clientside will only set it for the client it is called on.</note>",
+        "description": "Sets a networked boolean value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNWBool</page> both from client and server.\n<warning>There's a 4096 slots Network limit. If you need more, consider using the <page>net</page> library or <page>Entity:SetNW2Bool</page>. You should also consider the fact that you have way too many variables. You can learn more about this limit here: <page>Networking_Usage#nwlimits</page></warning>\n<note>Running this function clientside will only set it for the client it is called on.</note>",
         "arguments": [
           {
             "name": "key",
@@ -15468,7 +15468,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a networked entity value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNWEntity</page> both from client and server.\n<warning>There's a 4096 slots Network limit. If you need more, consider using the <page>net</page> library or <page>Entity:SetNW2Entity</page>. You should also consider the fact that you have way too many variables. You can learn more about this limit here: <page>Networking_Usage</page></warning>\n<note>Running this function clientside will only set it for the client it is called on.</note>",
+        "description": "Sets a networked entity value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNWEntity</page> both from client and server.\n<warning>There's a 4096 slots Network limit. If you need more, consider using the <page>net</page> library or <page>Entity:SetNW2Entity</page>. You should also consider the fact that you have way too many variables. You can learn more about this limit here: <page>Networking_Usage#nwlimits</page></warning>\n<note>Running this function clientside will only set it for the client it is called on.</note>",
         "arguments": [
           {
             "name": "key",
@@ -15489,7 +15489,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a networked float (number) value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNWFloat</page> both from client and server.\n\nUnlike <page>Entity:SetNWInt</page>, floats don't have to be whole numbers.\n<warning>There's a 4095 slots Network limit. If you need more, consider using the <page>net</page> library or <page>Entity:SetNW2Float</page>. You should also consider the fact that you have way too many variables. You can learn more about this limit here: <page>Networking_Usage</page></warning>\n<note>Running this function clientside will only set it for the client it is called on.</note>",
+        "description": "Sets a networked float (number) value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNWFloat</page> both from client and server.\n\nUnlike <page>Entity:SetNWInt</page>, floats don't have to be whole numbers.\n<warning>There's a 4095 slots Network limit. If you need more, consider using the <page>net</page> library or <page>Entity:SetNW2Float</page>. You should also consider the fact that you have way too many variables. You can learn more about this limit here: <page>Networking_Usage#nwlimits</page></warning>\n<note>Running this function clientside will only set it for the client it is called on.</note>",
         "arguments": [
           {
             "name": "key",
@@ -15510,7 +15510,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a networked integer (whole number) value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNWInt</page> both from client and server.\n\nSee <page>Entity:SetNWFloat</page> for numbers that aren't integers.\n<warning>There's a 4095 slots Network limit. If you need more, consider using the <page>net</page> library or <page>Entity:SetNW2Int</page>. You should also consider the fact that you have way too many variables. You can learn more about this limit here: <page>Networking_Usage</page></warning>\n<note>Running this function clientside will only set it for the client it is called on.</note>\n<bug issue=\"3374\">This function will not round decimal values as it actually networks a float internally.</bug>",
+        "description": "Sets a networked integer (whole number) value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNWInt</page> both from client and server.\n\nSee <page>Entity:SetNWFloat</page> for numbers that aren't integers.\n<warning>There's a 4095 slots Network limit. If you need more, consider using the <page>net</page> library or <page>Entity:SetNW2Int</page>. You should also consider the fact that you have way too many variables. You can learn more about this limit here: <page>Networking_Usage#nwlimits</page></warning>\n<note>Running this function clientside will only set it for the client it is called on.</note>\n<bug issue=\"3374\">This function will not round decimal values as it actually networks a float internally.</bug>",
         "arguments": [
           {
             "name": "key",
@@ -15531,7 +15531,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a networked string value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNWString</page> both from client and server.\n<warning>There's a 4095 slots Network limit. If you need more, consider using the <page>net</page> library or <page>Entity:SetNW2String</page>. You should also consider the fact that you have way too many variables. You can learn more about this limit here: <page>Networking_Usage</page></warning>\n<note>Running this function clientside will only set it for the client it is called on.</note>",
+        "description": "Sets a networked string value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNWString</page> both from client and server.\n<warning>There's a 4095 slots Network limit. If you need more, consider using the <page>net</page> library or <page>Entity:SetNW2String</page>. You should also consider the fact that you have way too many variables. You can learn more about this limit here: <page>Networking_Usage#nwlimits</page></warning>\n<note>Running this function clientside will only set it for the client it is called on.</note>",
         "arguments": [
           {
             "name": "key",
@@ -15573,7 +15573,7 @@
           "client",
           "server"
         ],
-        "description": "Sets a networked vector value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNWVector</page> both from client and server.\n<warning>There's a 4095 slots Network limit. If you need more, consider using the <page>net</page> library or <page>Entity:SetNW2Vector</page>. You should also consider the fact that you have way too many variables. You can learn more about this limit here: <page>Networking_Usage</page></warning>\n<note>Running this function clientside will only set it for the client it is called on.</note>",
+        "description": "Sets a networked vector value on the entity.\n\nThe value can then be accessed with <page>Entity:GetNWVector</page> both from client and server.\n<warning>There's a 4095 slots Network limit. If you need more, consider using the <page>net</page> library or <page>Entity:SetNW2Vector</page>. You should also consider the fact that you have way too many variables. You can learn more about this limit here: <page>Networking_Usage#nwlimits</page></warning>\n<note>Running this function clientside will only set it for the client it is called on.</note>",
         "arguments": [
           {
             "name": "key",
