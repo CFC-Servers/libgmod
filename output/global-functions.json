@@ -846,7 +846,7 @@
         "name": "userinfo",
         "type": "boolean",
         "default": "false",
-        "description": "Should the ConVar and its containing data be sent to the server when it has changed. This make the convar accessible from server using <page>Player:GetInfoNum</page> and similar functions."
+        "description": "Should the ConVar and its containing data be sent to the server when it has changed. This makes the convar accessible from server using <page>Player:GetInfoNum</page> and similar functions."
       },
       {
         "name": "helptext",
