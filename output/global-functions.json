@@ -846,7 +846,7 @@
         "name": "userinfo",
         "type": "boolean",
         "default": "false",
-        "description": "Should the ConVar and its containing data be sent to the server when it has changed. This make the convar accessible from server using <page>Player:GetInfoNum</page> and similar functions."
+        "description": "Should the ConVar and its containing data be sent to the server when it has changed. This makes the convar accessible from server using <page>Player:GetInfoNum</page> and similar functions."
       },
       {
         "name": "helptext",
@@ -939,7 +939,7 @@
       "client",
       "menu"
     ],
-    "description": "Creates a new material with the specified name and shader.\n\n<note>Materials created with this function can be used in <page>Entity:SetMaterial</page> and <page>Entity:SetSubMaterial</page> by prepending a \"!\" to their material name argument.</note>\n\n<note>This does not work with [patch materials](https://developer.valvesoftware.com/wiki/Patch).</note>\n\n<bug issue=\"1531\">.pngs must be loaded with <page>Global.Material</page> before being used with this function.</bug>\n\n<bug issue=\"3103\">This will not create a new material if another material object with the same name already exists.</bug>",
+    "description": "Creates a new material with the specified name and shader.\n\n<note>Materials created with this function can be used in <page>Entity:SetMaterial</page> and <page>Entity:SetSubMaterial</page> by prepending a \"!\" to their material name argument.</note>\n\n<note>This does not work with [patch materials](https://developer.valvesoftware.com/wiki/Patch).</note>\n\n<bug issue=\"1531\">.pngs must be loaded with <page>Global.Material</page> before being used with this function.</bug>\n\n<note>This will not create a new material if another material object with the same name already exists. All Materials created by this functions are cleaned up on map shutdown.</note>",
     "arguments": [
       {
         "name": "name",
@@ -3767,18 +3767,18 @@
       "client",
       "server"
     ],
-    "description": "Returns if the given NPC class name is an enemy.\n\nReturns true if the entity name is one of the following:\n* \"npc_antlion\"\n* \"npc_antlionguard\"\n* \"npc_antlionguardian\"\n* \"npc_barnacle\"\n* \"npc_breen\"\n* \"npc_clawscanner\"\n* \"npc_combine_s\"\n* \"npc_cscanner\"\n* \"npc_fastzombie\"\n* \"npc_fastzombie_torso\"\n* \"npc_headcrab\"\n* \"npc_headcrab_fast\"\n* \"npc_headcrab_poison\"\n* \"npc_hunter\"\n* \"npc_metropolice\"\n* \"npc_manhack\"\n* \"npc_poisonzombie\"\n* \"npc_strider\"\n* \"npc_stalker\"\n* \"npc_zombie\"\n* \"npc_zombie_torso\"\n* \"npc_zombine\"",
+    "description": "Returns if the given NPC class name is an enemy.\n\n<note>Some NPCs are missing from this list even though they are hostile to players. If you'd like to complete this function until this [pull request](https://github.com/Facepunch/garrysmod/pull/2000) is merged, here are the missing NPCs: `npc_combine_camera`, `npc_turret_ceiling`, `npc_combinedropship`, `npc_combinegunship`, `npc_helicopter`, `npc_turret_floor`, `npc_antlion_worker`, `npc_headcrab_black`.</note>\n\nReturns `true` if the entity name is one of the following:\n* `npc_antlion`\n* `npc_antlionguard`\n* `npc_antlionguardian`\n* `npc_barnacle`\n* `npc_breen`\n* `npc_clawscanner`\n* `npc_combine_s`\n* `npc_cscanner`\n* `npc_fastzombie`\n* `npc_fastzombie_torso`\n* `npc_headcrab`\n* `npc_headcrab_fast`\n* `npc_headcrab_poison`\n* `npc_hunter`\n* `npc_metropolice`\n* `npc_manhack`\n* `npc_poisonzombie`\n* `npc_strider`\n* `npc_stalker`\n* `npc_zombie`\n* `npc_zombie_torso`\n* `npc_zombine`",
     "arguments": [
       {
         "name": "className",
         "type": "string",
-        "description": "Class name of the entity to check"
+        "description": "Class name of the entity to check."
       }
     ],
     "returnValues": [
       {
         "type": "boolean",
-        "description": "Is an enemy"
+        "description": "Is an enemy?"
       }
     ]
   },
@@ -3828,7 +3828,7 @@
       "client",
       "server"
     ],
-    "description": "Returns if the given NPC class name is a friend.\n\nReturns true if the entity name is one of the following:\n* \"npc_alyx\"\n* \"npc_barney\"\n* \"npc_citizen\"\n* \"npc_dog\"\n* \"npc_eli\"\n* \"npc_fisherman\"\n* \"npc_gman\"\n* \"npc_kleiner\"\n* \"npc_magnusson\"\n* \"npc_monk\"\n* \"npc_mossman\"\n* \"npc_odessa\"\n* \"npc_vortigaunt\"",
+    "description": "Returns if the given NPC class name is a friend.\n\nReturns `true` if the entity name is one of the following:\n* `npc_alyx`\n* `npc_barney`\n* `npc_citizen`\n* `npc_dog`\n* `npc_eli`\n* `npc_fisherman`\n* `npc_gman`\n* `npc_kleiner`\n* `npc_magnusson`\n* `npc_monk`\n* `npc_mossman`\n* `npc_odessa`\n* `npc_vortigaunt`",
     "arguments": [
       {
         "name": "className",

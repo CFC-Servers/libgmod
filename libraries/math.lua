@@ -53,7 +53,7 @@ function math.ApproachAngle(currentAngle, targetAngle, rate)
 end
 
 ---  menu|client|server
---- Basic code for  algorithm.  
+--- Basic code for Bezier-Spline algorithm.  
 --- @param tDiff number @From 0 to 1, where alongside the spline the point will be.
 --- @param tPoints table @A table of Vectors
 --- @param tMax number @Just leave this at 1.

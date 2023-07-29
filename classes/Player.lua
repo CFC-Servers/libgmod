@@ -2,10 +2,10 @@
 --- @class Player : Entity
 local Player = {}
 ---  client|server
---- Returns the player's AccountID aka SteamID3. (`[U:1:AccountID]`)  
+--- Returns the player's AccountID part of their full SteamID.  
+--- Since this does not include other vital parts of the SteamID such as "Account Type" and "Account Instance", it should be avoided, as AccountIDs are finite, and can be the same for multiple valid accounts.  
 --- See Player:SteamID for the text representation of the full SteamID.  
 --- See Player:SteamID64 for a 64bit representation of the full SteamID.  
---- Unlike other variations of SteamID, SteamID3 does not include the "Account Type" and "Account Instance" part of the SteamID.  
 --- ℹ **NOTE**: In a `-multirun` environment, this will return `no value` for all "copies" of a player because they are not authenticated with Steam.  
 --- For bots this will return values starting with `0` for the first bot, `1` for the second bot and so on. It will return `no value` clientside for bots.  
 --- @return number @The AccountID of Player's SteamID.
@@ -1612,7 +1612,6 @@ end
 
 ---  server
 --- Starts spectate mode for given player. This will also affect the players movetype in some cases.  
---- 🦟 **BUG**: [Using this function while spectating the player's own ragdoll will cause it to teleport it to the center of the map. You will spectate the ragdoll even after it's been teleported. This only happens on the client of the player spectating the ragdoll and is purely client-side.](https://github.com/Facepunch/garrysmod-issues/issues/4608)  
 --- @param mode number @Spectate mode, see Enums/OBS_MODE.
 function Player:Spectate(mode)
 end
@@ -1659,7 +1658,7 @@ end
 
 ---  client|server
 --- Returns the player's SteamID.  
---- See Player:AccountID for a shorter version of the SteamID and Player:SteamID64 for the Community/Profile formatted SteamID.  
+--- See Player:AccountID for a shorter version of the SteamID and Player:SteamID64 for the full SteamID.  
 --- ℹ **NOTE**: In a `-multirun` environment, this will return `STEAM_0:0:0` (serverside) or `NULL` (clientside) for all "copies" of a player because they are not authenticated with Steam.  
 --- For Bots this will return `BOT` on the server and on the client it returns `NULL`.  
 --- @return string @SteamID
@@ -1667,8 +1666,8 @@ function Player:SteamID()
 end
 
 ---  client|server
---- Returns the player's 64-bit SteamID aka CommunityID.  
---- See Player:AccountID for a shorter version of the SteamID and Player:SteamID for the normal version of the SteamID.  
+--- Returns the player's full 64-bit SteamID aka Community ID. Information on how data is packed into this value can be found [here](https://developer.valvesoftware.com/wiki/SteamID).  
+--- See Player:AccountID for a function that returns only the Account ID part of the SteamID and Player:SteamID for the text version of the SteamID.  
 --- ℹ **NOTE**: In a `-multirun` environment, this will return `nil` for all "copies" of a player because they are not authenticated with Steam.  
 --- For bots, this will return `90071996842377216` (equivalent to `STEAM_0:0:0`) for the first bot to join.  
 --- For each additional bot, the number increases by 1. So the next bot will be `90071996842377217` (`STEAM_0:1:0`) then `90071996842377218` (`STEAM_0:0:1`) and so on.  
@@ -1781,8 +1780,8 @@ function Player:UnfreezePhysicsObjects()
 end
 
 ---  client|server
---- 🛑 **DEPRECATED**: Use Player:SteamID64, Player:SteamID or Player:AccountID to uniquely identify players instead.  
---- ⚠ **WARNING**: **This function has collisions,** where more than one player has the same UniqueID. It is **highly** recommended to use Player:AccountID, Player:SteamID or Player:SteamID64 instead, which are guaranteed to be unique to each player.  
+--- 🛑 **DEPRECATED**:   
+--- **This function has collisions,** where more than one player can have the same UniqueID. It is **highly** recommended to use Player:SteamID64 or Player:SteamID instead, which are guaranteed to be unique to each player.  
 --- Returns a 32 bit integer that remains constant for a player across joins/leaves and across different servers. This can be used when a string is inappropriate - e.g. in a database primary key.  
 --- ℹ **NOTE**: In Singleplayer, this function will always return 1.  
 --- @deprecated
@@ -1792,8 +1791,8 @@ end
 
 ---  client|server
 --- 🛑 **DEPRECATED**: This is based on Player:UniqueID which is deprecated and vulnerable to collisions.  
---- Returns a table that will stay allocated for the specific player between connects until the server shuts down.  
---- ℹ **NOTE**: This table is not synchronized between client and server.  
+--- Returns a table that will stay allocated for the specific player serveside between connects until the server shuts down. On client it has no such special behavior.  
+--- ℹ **NOTE**: This table is not synchronized (networked) between client and server.  
 --- @param key any @Unique table key.
 --- @deprecated
 --- @return table @The table that contains any info you have put in it.

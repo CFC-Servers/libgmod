@@ -238,7 +238,7 @@ end
 --- ℹ **NOTE**: Materials created with this function can be used in Entity:SetMaterial and Entity:SetSubMaterial by prepending a "!" to their material name argument.  
 --- ℹ **NOTE**: This does not work with [patch materials](https://developer.valvesoftware.com/wiki/Patch).  
 --- 🦟 **BUG**: [.pngs must be loaded with Global.Material before being used with this function.](https://github.com/Facepunch/garrysmod-issues/issues/1531)  
---- 🦟 **BUG**: [This will not create a new material if another material object with the same name already exists.](https://github.com/Facepunch/garrysmod-issues/issues/3103)  
+--- ℹ **NOTE**: This will not create a new material if another material object with the same name already exists. All Materials created by this functions are cleaned up on map shutdown.  
 --- @param name string @The material name
 --- @param shaderName string @The shader name
 --- @param materialData table @Key-value table that contains shader parameters and proxies
@@ -1013,31 +1013,32 @@ end
 
 ---  menu|client|server
 --- Returns if the given NPC class name is an enemy.  
---- Returns true if the entity name is one of the following:  
---- * "npc_antlion"  
---- * "npc_antlionguard"  
---- * "npc_antlionguardian"  
---- * "npc_barnacle"  
---- * "npc_breen"  
---- * "npc_clawscanner"  
---- * "npc_combine_s"  
---- * "npc_cscanner"  
---- * "npc_fastzombie"  
---- * "npc_fastzombie_torso"  
---- * "npc_headcrab"  
---- * "npc_headcrab_fast"  
---- * "npc_headcrab_poison"  
---- * "npc_hunter"  
---- * "npc_metropolice"  
---- * "npc_manhack"  
---- * "npc_poisonzombie"  
---- * "npc_strider"  
---- * "npc_stalker"  
---- * "npc_zombie"  
---- * "npc_zombie_torso"  
---- * "npc_zombine"  
---- @param className string @Class name of the entity to check
---- @return boolean @Is an enemy
+--- ℹ **NOTE**: Some NPCs are missing from this list even though they are hostile to players. If you'd like to complete this function until this [pull request](https://github.com/Facepunch/garrysmod/pull/2000) is merged, here are the missing NPCs: `npc_combine_camera`, `npc_turret_ceiling`, `npc_combinedropship`, `npc_combinegunship`, `npc_helicopter`, `npc_turret_floor`, `npc_antlion_worker`, `npc_headcrab_black`.  
+--- Returns `true` if the entity name is one of the following:  
+--- * `npc_antlion`  
+--- * `npc_antlionguard`  
+--- * `npc_antlionguardian`  
+--- * `npc_barnacle`  
+--- * `npc_breen`  
+--- * `npc_clawscanner`  
+--- * `npc_combine_s`  
+--- * `npc_cscanner`  
+--- * `npc_fastzombie`  
+--- * `npc_fastzombie_torso`  
+--- * `npc_headcrab`  
+--- * `npc_headcrab_fast`  
+--- * `npc_headcrab_poison`  
+--- * `npc_hunter`  
+--- * `npc_metropolice`  
+--- * `npc_manhack`  
+--- * `npc_poisonzombie`  
+--- * `npc_strider`  
+--- * `npc_stalker`  
+--- * `npc_zombie`  
+--- * `npc_zombie_torso`  
+--- * `npc_zombine`  
+--- @param className string @Class name of the entity to check.
+--- @return boolean @Is an enemy?
 function _G.IsEnemyEntityName(className)
 end
 
@@ -1059,20 +1060,20 @@ end
 
 ---  menu|client|server
 --- Returns if the given NPC class name is a friend.  
---- Returns true if the entity name is one of the following:  
---- * "npc_alyx"  
---- * "npc_barney"  
---- * "npc_citizen"  
---- * "npc_dog"  
---- * "npc_eli"  
---- * "npc_fisherman"  
---- * "npc_gman"  
---- * "npc_kleiner"  
---- * "npc_magnusson"  
---- * "npc_monk"  
---- * "npc_mossman"  
---- * "npc_odessa"  
---- * "npc_vortigaunt"  
+--- Returns `true` if the entity name is one of the following:  
+--- * `npc_alyx`  
+--- * `npc_barney`  
+--- * `npc_citizen`  
+--- * `npc_dog`  
+--- * `npc_eli`  
+--- * `npc_fisherman`  
+--- * `npc_gman`  
+--- * `npc_kleiner`  
+--- * `npc_magnusson`  
+--- * `npc_monk`  
+--- * `npc_mossman`  
+--- * `npc_odessa`  
+--- * `npc_vortigaunt`  
 --- @param className string @Class name of the entity to check
 --- @return boolean @Is a friend
 function _G.IsFriendEntityName(className)
