@@ -66,9 +66,9 @@ end
 ---  client
 --- Called when a file is double-clicked.  
 --- ℹ **NOTE**: Double-clicking a file or icon will trigger **both** this and DFileBrowser:OnSelect.  
---- @param filePath string @The path to the file that was double-clicked.
 --- @param selectedPanel Panel @The panel that was double-clicked to select this file.<br><br>This will either be a DListView_Line or SpawnIcon depending on whether the mod
-function DFileBrowser:OnDoubleClick(filePath, selectedPanel)
+--- @param filePath string @The path to the file that was double-clicked.
+function DFileBrowser:OnDoubleClick(selectedPanel, filePath)
 end
 
 ---  client
@@ -81,9 +81,9 @@ end
 
 ---  client
 --- Called when a file is selected.  
---- @param filePath string @The path to the file that was selected.
 --- @param selectedPanel Panel @The panel that was clicked to select this file.<br><br>This will either be a DListView_Line or SpawnIcon depending on whether the model view
-function DFileBrowser:OnSelect(filePath, selectedPanel)
+--- @param filePath string @The path to the file that was selected.
+function DFileBrowser:OnSelect(selectedPanel, filePath)
 end
 
 ---  client

@@ -6330,7 +6330,7 @@
           "client",
           "server"
         ],
-        "description": "This hook allows you to change how much damage a player receives when one takes damage to a specific body part.\n\n<note>This is called only for bullet damage a player receives, you should use <page>GM:EntityTakeDamage</page> instead if you need to detect *ALL* damage.</note>",
+        "description": "This hook allows you to change how much damage a player receives when one takes damage to a specific body part.\n\n<note>This is called only for bullet damage a player receives, you should use <page>GM:EntityTakeDamage</page> instead if you need to detect **ALL** damage.</note>",
         "arguments": [
           {
             "name": "ply",

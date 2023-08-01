@@ -142,7 +142,7 @@ function Entity:BoundingRadius()
 end
 
 ---  client|server
---- Calls all NetworkVarNotify functions with the given new value, but doesn't change the real value.  
+--- Calls all Entity:NetworkVarNotify functions with the given new value, but doesn't change the real value.  
 --- @param Type string @The NetworkVar Type
 --- @param index number @The NetworkVar index.
 --- @param new_value any @The new value.
@@ -1024,7 +1024,7 @@ end
 
 ---  client|server
 --- Gets the model of given entity.  
---- 🦟 **BUG**: [This does not necessarily return the model's path, as is the case for brush and virtual models. This is intentional behaviour, however, there is currently no way to retrieve the actual file path.](https://github.com/Facepunch/garrysmod-issues/issues/2246)  
+--- 🦟 **BUG**: This does not necessarily return the model's path, as is the case for brush and virtual models. This is intentional behaviour, however, there is currently no way to retrieve the actual file path.  
 --- @return string @The entity's model
 function Entity:GetModel()
 end
@@ -1995,9 +1995,44 @@ end
 
 ---  client
 --- 🛑 **DEPRECATED**:   
+--- This function got disabled and will always throw an error if it's used. This is the error:  
+--- ```lua  
+--- [ERROR] InitializeAsClientEntity is deprecated and should no longer be used.  
+--- ```  
+--- ⚠ **WARNING**:   
+--- **These are the reasons why this function was disabled:**  
+--- Calling this on **ANY**(even clientside only) entity will cause random crashes, and it will crash the game as soon as the entity is removed!  
+--- **Some bugs if you call it on an entity that is not clientside only:**  
+--- All NWVars break clientside for the given player.  
+--- The EntIndex becomes -1.  
+--- The Entity Table gets cleared every time this function is called.  
+--- <note>  
+--- As soon as the Entity re-enters the PVS, some bugs will fix themself, but it will still crash the game if the entity gets removed!  
+--- This is behavior only happens for entities, not for players!  
+--- </note>  
+--- Calling this function on the World creates a permanent warning that will spam your console.  
+--- ```lua  
+--- ] lua_run_cl Entity(0):InitializeAsClientEntity()  
+--- Refusing to render the map on an entity to prevent crashes! (x9330)  
+--- ```  
+--- Calling this function on an entity that is not **clientside only** causes all networking to break for that specific entity and an Engine Error will occur on a full update  
+--- (a full update can be forced with `cl_fullupdate`):  
+--- <upload src="b04e5/8db8f2ceed2528b.png" size="3320" name="image.png">  
+--- Calling this function on a player causes a bunch of unexpected behavior and your game will crash as soon as the player is removed/leaves the server.  
+--- **Some bugs if you set it on a player (all Entity bugs apply here):**  
+--- You get some values displayed in the top-left of your screen for some reason.  
+--- If you call this function on the local player, it causes your eye pos to be your position (EyePos == GetPos):  
+--- The Player name becomes `ERRORNAME`  
+--- As soon as the player re-enters the PVS, it crashes the game!  
+--- ```lua  
+--- lua_run_cl LocalPlayer():InitializeAsClientEntity()  
+--- ] lua_run_cl print(LocalPlayer())  
+--- Player [-1][ERRORNAME]  
+--- ```  
+--- <upload src="b04e5/8db8f305bc00016.png" size="1506807" name="image.png">  
+--- </upload></upload>  
 --- Initializes this entity as being clientside only.  
---- Only works on entities fully created clientside, and as such it has currently no use due this being automatically called by ents.CreateClientProp, ents.CreateClientside, Global.ClientsideModel and Global.ClientsideScene.  
---- 🦟 **BUG**: [Calling this on a clientside entity will crash the game.](https://github.com/Facepunch/garrysmod-issues/issues/3368)  
+--- Only works on entities fully created clientside, and as such it has currently no use due to this being automatically called by ents.CreateClientProp, ents.CreateClientside, Global.ClientsideModel and Global.ClientsideScene.  
 --- @deprecated
 function Entity:InitializeAsClientEntity()
 end
@@ -2875,7 +2910,6 @@ end
 
 ---  client|server
 --- Sets the flex scale of the entity.  
---- 🦟 **BUG**: [This does not work on Global.ClientsideModels or Global.ClientsideRagdolls.](https://github.com/Facepunch/garrysmod-issues/issues/1779)  
 --- @param scale number @The new flex scale to set to
 function Entity:SetFlexScale(scale)
 end
@@ -2927,6 +2961,7 @@ end
 
 ---  client
 --- Enables or disable the inverse kinematic usage of this entity.  
+--- ⚠ **WARNING**: Calling this with false outside of ENTITY:Initialize requires a model change to take effect.  
 --- @param useIK? boolean @The state of the IK.
 function Entity:SetIK(useIK)
 end
@@ -3261,7 +3296,7 @@ end
 ---  client|server
 --- Sets a networked angle value on the entity.  
 --- The value can then be accessed with Entity:GetNWAngle both from client and server.  
---- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Angle. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Angle. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage#nwlimits  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value Angle @The value to set
@@ -3271,7 +3306,7 @@ end
 ---  client|server
 --- Sets a networked boolean value on the entity.  
 --- The value can then be accessed with Entity:GetNWBool both from client and server.  
---- ⚠ **WARNING**: There's a 4096 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Bool. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ⚠ **WARNING**: There's a 4096 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Bool. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage#nwlimits  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value boolean @The value to set
@@ -3281,7 +3316,7 @@ end
 ---  client|server
 --- Sets a networked entity value on the entity.  
 --- The value can then be accessed with Entity:GetNWEntity both from client and server.  
---- ⚠ **WARNING**: There's a 4096 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Entity. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ⚠ **WARNING**: There's a 4096 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Entity. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage#nwlimits  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value Entity @The value to set
@@ -3292,7 +3327,7 @@ end
 --- Sets a networked float (number) value on the entity.  
 --- The value can then be accessed with Entity:GetNWFloat both from client and server.  
 --- Unlike Entity:SetNWInt, floats don't have to be whole numbers.  
---- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Float. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Float. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage#nwlimits  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value number @The value to set
@@ -3303,7 +3338,7 @@ end
 --- Sets a networked integer (whole number) value on the entity.  
 --- The value can then be accessed with Entity:GetNWInt both from client and server.  
 --- See Entity:SetNWFloat for numbers that aren't integers.  
---- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Int. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Int. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage#nwlimits  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- 🦟 **BUG**: [This function will not round decimal values as it actually networks a float internally.](https://github.com/Facepunch/garrysmod-issues/issues/3374)  
 --- @param key string @The key to associate the value with
@@ -3314,7 +3349,7 @@ end
 ---  client|server
 --- Sets a networked string value on the entity.  
 --- The value can then be accessed with Entity:GetNWString both from client and server.  
---- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2String. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2String. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage#nwlimits  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value string @The value to set, up to 199 characters.
@@ -3333,7 +3368,7 @@ end
 ---  client|server
 --- Sets a networked vector value on the entity.  
 --- The value can then be accessed with Entity:GetNWVector both from client and server.  
---- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Vector. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage  
+--- ⚠ **WARNING**: There's a 4095 slots Network limit. If you need more, consider using the net library or Entity:SetNW2Vector. You should also consider the fact that you have way too many variables. You can learn more about this limit here: Networking_Usage#nwlimits  
 --- ℹ **NOTE**: Running this function clientside will only set it for the client it is called on.  
 --- @param key string @The key to associate the value with
 --- @param value Vector @The value to set
@@ -3799,7 +3834,6 @@ end
 ---  client|server
 --- Sets a save value for an entity. You can see a full list of an entity's save values by creating it and printing Entity:GetSaveTable().  
 --- See Entity:GetInternalVariable for the opposite of this function.  
---- 🦟 **BUG**: [This does not type-check entity keys. Setting an entity key to a non-entity value will treat it as NULL.](https://github.com/Facepunch/garrysmod-issues/issues/4065)  
 --- @param name string @Name of the save value to set
 --- @param value any @Value to set
 --- @return boolean @Key successfully set
