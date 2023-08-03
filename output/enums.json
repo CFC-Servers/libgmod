@@ -7299,7 +7299,8 @@
       },
       {
         "name": "COLLISION_GROUP_NPC",
-        "value": 9
+        "value": 9,
+        "description": "Generic NPC group"
       },
       {
         "name": "COLLISION_GROUP_IN_VEHICLE",
@@ -7342,11 +7343,13 @@
       },
       {
         "name": "COLLISION_GROUP_NPC_ACTOR",
-        "value": 18
+        "value": 18,
+        "description": "Used so NPCs in scripts ignore the player"
       },
       {
         "name": "COLLISION_GROUP_NPC_SCRIPTED",
-        "value": 19
+        "value": 19,
+        "description": "Used for NPCs in scripts that should not collide with each other"
       },
       {
         "name": "COLLISION_GROUP_WORLD",

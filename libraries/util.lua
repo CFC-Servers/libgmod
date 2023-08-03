@@ -253,11 +253,11 @@ function util.GetUserGroups()
 end
 
 ---  client|server
---- Performs a "ray" box intersection and returns position, normal and the fraction.  
---- @param rayStart Vector @Origin/start position of the ray.
---- @param rayDelta Vector @The ray vector itself
+--- Performs a Ray-OBB (Orientated Bounding Box) intersection and returns position, normal and the fraction if there was an intersection.  
+--- @param rayStart Vector @Origin or start position of the ray.
+--- @param rayDelta Vector @The ray vector itself, the ray end point relative to the start point
 --- @param boxOrigin Vector @The center of the box.
---- @param boxAngles Angle @The angles of the box.
+--- @param boxAngles Angle @The angle of the box.
 --- @param boxMins Vector @The min position of the box.
 --- @param boxMaxs Vector @The max position of the box.
 --- @return Vector @Hit position, nil if not hit.

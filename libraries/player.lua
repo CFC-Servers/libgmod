@@ -26,7 +26,7 @@ function player.GetBots()
 end
 
 ---  client|server
---- Gets the player with the specified AccountID.  
+--- Tried to get the player with the specified Player:AccountID.  
 --- ⚠ **WARNING**: Internally this function iterates over all players in the server, meaning it can be quite expensive in a performance-critical context.  
 --- @param accountID number @The Player:AccountID to find the player by.
 --- @return Player @Player if one is found, false otherwise.

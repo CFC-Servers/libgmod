@@ -15,7 +15,7 @@ function weapons.GetList()
 end
 
 ---  client|server
---- Gets the REAL weapon table, not a copy. The produced table does `not` inherit fields from the weapon's base class, unlike weapons.Get.  
+--- Gets the REAL weapon table, not a copy. The produced table does *not* inherit fields from the weapon's base class, unlike weapons.Get.  
 --- ⚠ **WARNING**: Modifying this table will modify what is stored by the weapons library. Take a copy or use weapons.Get to avoid this.  
 --- @param weapon_class string @Weapon class to retrieve weapon table of
 --- @return table @The weapon table
