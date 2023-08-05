@@ -3892,14 +3892,14 @@
         "description": "Called when a file is double-clicked.\n\n<note>Double-clicking a file or icon will trigger **both** this and <page>DFileBrowser:OnSelect</page>.</note>",
         "arguments": [
           {
-            "name": "filePath",
-            "type": "string",
-            "description": "The path to the file that was double-clicked."
-          },
-          {
             "name": "selectedPanel",
             "type": "Panel",
             "description": "The panel that was double-clicked to select this file.<br><br>This will either be a <page>DListView_Line</page> or <page>SpawnIcon</page> depending on whether the model viewer mode is enabled. See <page>DFileBrowser:SetModels</page>."
+          },
+          {
+            "name": "filePath",
+            "type": "string",
+            "description": "The path to the file that was double-clicked."
           }
         ]
       },
@@ -3932,14 +3932,14 @@
         "description": "Called when a file is selected.",
         "arguments": [
           {
-            "name": "filePath",
-            "type": "string",
-            "description": "The path to the file that was selected."
-          },
-          {
             "name": "selectedPanel",
             "type": "Panel",
             "description": "The panel that was clicked to select this file.<br><br>This will either be a <page>DListView_Line</page> or <page>SpawnIcon</page> depending on whether the model viewer mode is enabled. See <page>DFileBrowser:SetModels</page>."
+          },
+          {
+            "name": "filePath",
+            "type": "string",
+            "description": "The path to the file that was selected."
           }
         ]
       },
@@ -12837,7 +12837,7 @@
   {
     "name": "DTextEntry",
     "parent": "TextEntry",
-    "description": "A form which may be used to display text the player is meant to select and copy or alternately allow them to enter some text of their own.\n\n<note>Do note that at least one of your `DTextEntry`'s parents must either be an <page>EditablePanel</page> or derived from it (like a <page>DFrame</page>, for example), else it won't be able to focus and thus be unselectable.\n\nYou must also call <page>Panel:MakePopup</page> on said panel or the `DTextEntry` will not work.</note>",
+    "description": "A form which may be used to display text the player is meant to select and copy or alternately allow them to enter some text of their own.\n\n<note>At least one of your `DTextEntry`'s parents must either be an <page>EditablePanel</page> or derived from it (like a <page>DFrame</page>, for example), else it won't be able to focus and thus be unselectable.\n\nYou must also call <page>Panel:MakePopup</page> on said panel or the `DTextEntry` will not work.</note>",
     "functions": [
       {
         "name": "AllowInput",
@@ -13358,7 +13358,7 @@
           "client",
           "menu"
         ],
-        "description": "Sets whether to show background.",
+        "description": "Sets whether to show the default background of the DTextEntry.",
         "arguments": [
           {
             "name": "show",

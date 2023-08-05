@@ -53,7 +53,7 @@ function math.ApproachAngle(currentAngle, targetAngle, rate)
 end
 
 ---  menu|client|server
---- Basic code for  algorithm.  
+--- Basic code for Bezier-Spline algorithm.  
 --- @param tDiff number @From 0 to 1, where alongside the spline the point will be.
 --- @param tPoints table @A table of Vectors
 --- @param tMax number @Just leave this at 1.
@@ -75,6 +75,18 @@ end
 --- @param max number @The maximum value, this function will **never** return a number greater than this.
 --- @return number @The clamped value.
 function math.Clamp(input, min, max)
+end
+
+---  menu|client|server
+--- Lerp point between 4 control points with cubic bezier.  
+--- ℹ **NOTE**: There is quadratic function math.QuadraticBezier which works with 3 control points.  
+--- @param frac number @The fraction for finding the result
+--- @param p0 Vector @First control point
+--- @param p1 Vector @First tangent
+--- @param p2 Vector @Second tangent
+--- @param p3 Vector @Second control point
+--- @return Vector @Point between control points at the specified fraction
+function math.CubicBezier(frac, p0, p1, p2, p3)
 end
 
 ---  menu|client|server
@@ -349,6 +361,17 @@ end
 --- @param fraction number @Fraction of the progress to ease, from 0 to 1
 --- @return number @"Eased" Value, from 0 to 1
 function math.ease.OutSine(fraction)
+end
+
+---  menu|client|server
+--- Lerp point between 3 control points with quadratic bezier.  
+--- ℹ **NOTE**: There is cubic function math.CubicBezier which works with 4 control points.  
+--- @param frac number @The fraction for finding the result
+--- @param p0 Vector @First control point
+--- @param p1 Vector @Tangent
+--- @param p2 Vector @Second control point
+--- @return Vector @Point between control points at the specified fraction
+function math.QuadraticBezier(frac, p0, p1, p2)
 end
 
 ---  menu|client|server
