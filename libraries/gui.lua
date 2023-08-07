@@ -7,7 +7,8 @@ end
 
 ---  client
 --- Enables the mouse cursor without restricting player movement, like using Sandbox's context menu.  
---- 🦟 **BUG**: [Some CUserCmd functions will return incorrect values when this function is active.](https://github.com/Facepunch/garrysmod-issues/issues/982)  
+--- ℹ **NOTE**:   
+--- Some CUserCmd functions will return incorrect values when this function is active because [the user input is getting overtaken by the vgui system](https://github.com/Facepunch/garrysmod-issues/issues/982#issuecomment-505671531).  
 --- @param enabled boolean @Whether the cursor should be enabled or not
 function gui.EnableScreenClicker(enabled)
 end

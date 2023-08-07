@@ -1492,7 +1492,8 @@
       }
     ],
     "realms": [
-      "client"
+      "client",
+      "server"
     ],
     "description": "Table structure representing a mesh vertex used by various functions, such as <page>IMesh:BuildFromTriangles</page> and <page>Entity:PhysicsFromMesh</page> and returned by functions such as <page>util.GetModelMeshes</page> and  <page>PhysObj:GetMesh</page>.",
     "name": "MeshVertex"
@@ -3736,7 +3737,7 @@
       {
         "name": "KeyValues",
         "type": "table",
-        "default": "{ 'vehiclescript' = 'scripts/vehicles/prisoner_pod.txt' , 'limitview' = 0}",
+        "default": "{ ['vehiclescript'] = 'scripts/vehicles/prisoner_pod.txt' , ['limitview'] = 0}",
         "description": "<validate>Do any other values belong in the KeyValues table?</validate>"
       }
     ],

@@ -1356,7 +1356,7 @@
           "client",
           "server"
         ],
-        "description": "Removes a console command.\n\n<bug issue=\"1183\">This will not always remove the command from auto-complete.</bug>\n<bug issue=\"1183\"><page>concommand.Add</page> will fail if the concommand was previously removed with this function in a different realm (creating a command on the client that was removed from the server and vice-versa).</bug>",
+        "description": "Removes a console command.\n\n<bug issue=\"1183\"><page>concommand.Add</page> will fail if the concommand was previously removed with this function in a different realm (creating a command on the client that was removed from the server and vice-versa).</bug>",
         "arguments": [
           {
             "name": "name",
@@ -7531,7 +7531,7 @@
           "client",
           "server"
         ],
-        "description": "Returns whether the given file is a directory or not.\n<bug issue=\"1038\"> This will sometimes return false clientside for directories received from the server via a clientside lua file. You can work around this by using <page>file.Find</page> with the path to the directory followed by a wildcard (no trailing forward slash) and see if the directory is inside the returned directories table (**see second example)**. **This is fixed in the next update.**</bug>",
+        "description": "Returns whether the given file is a directory or not.",
         "arguments": [
           {
             "name": "fileName",
@@ -8261,7 +8261,7 @@
           "client",
           "server"
         ],
-        "description": "Returns true if the server is a dedicated server, false if it is a listen server or a singleplayer game.\n\n<bug issue=\"1495\">This always returns false on the client.</bug>",
+        "description": "Returns true if the server is a dedicated server, false if it is a listen server or a singleplayer game.",
         "returnValues": [
           {
             "type": "boolean",
@@ -8728,7 +8728,7 @@
         "realms": [
           "client"
         ],
-        "description": "Enables the mouse cursor without restricting player movement, like using Sandbox's context menu.\n\n<bug issue=\"982\">Some <page>CUserCmd</page> functions will return incorrect values when this function is active.</bug>",
+        "description": "Enables the mouse cursor without restricting player movement, like using Sandbox's context menu.\n\n<note>\nSome <page>CUserCmd</page> functions will return incorrect values when this function is active because [the user input is getting overtaken by the vgui system](https://github.com/Facepunch/garrysmod-issues/issues/982#issuecomment-505671531).\n</note>",
         "arguments": [
           {
             "name": "enabled",
@@ -10627,7 +10627,7 @@
         "returnValues": [
           {
             "type": "string",
-            "description": "The translated phrase, or the input string if no translation was found"
+            "description": "The translated phrase, or the input string if no translation was found. There is a limit of 1024 bytes for the returned string."
           }
         ]
       }
@@ -11140,7 +11140,7 @@
           "client",
           "server"
         ],
-        "description": "Basic code for  algorithm.",
+        "description": "Basic code for Bezier-Spline algorithm.",
         "arguments": [
           {
             "name": "tDiff",
@@ -11298,6 +11298,49 @@
           {
             "type": "number",
             "description": "The hyperbolic cosine of the given angle."
+          }
+        ]
+      },
+      {
+        "name": "CubicBezier",
+        "parent": "math",
+        "realms": [
+          "menu",
+          "client",
+          "server"
+        ],
+        "description": "Lerp point between 4 control points with cubic bezier.\n<note>There is quadratic function <page>math.QuadraticBezier</page> which works with 3 control points.</note>",
+        "arguments": [
+          {
+            "name": "frac",
+            "type": "number",
+            "description": "The fraction for finding the result. This number is clamped between 0 and 1."
+          },
+          {
+            "name": "p0",
+            "type": "Vector",
+            "description": "First control point"
+          },
+          {
+            "name": "p1",
+            "type": "Vector",
+            "description": "First tangent"
+          },
+          {
+            "name": "p2",
+            "type": "Vector",
+            "description": "Second tangent"
+          },
+          {
+            "name": "p3",
+            "type": "Vector",
+            "description": "Second control point"
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "Vector",
+            "description": "Point between control points at the specified fraction"
           }
         ]
       },
@@ -12546,6 +12589,44 @@
           {
             "type": "number",
             "description": "y power of x"
+          }
+        ]
+      },
+      {
+        "name": "QuadraticBezier",
+        "parent": "math",
+        "realms": [
+          "menu",
+          "client",
+          "server"
+        ],
+        "description": "Lerp point between 3 control points with quadratic bezier.\n<note>There is cubic function <page>math.CubicBezier</page> which works with 4 control points.</note>",
+        "arguments": [
+          {
+            "name": "frac",
+            "type": "number",
+            "description": "The fraction for finding the result. This number is clamped between 0 and 1."
+          },
+          {
+            "name": "p0",
+            "type": "Vector",
+            "description": "First control point"
+          },
+          {
+            "name": "p1",
+            "type": "Vector",
+            "description": "Tangent"
+          },
+          {
+            "name": "p2",
+            "type": "Vector",
+            "description": "Second control point"
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "Vector",
+            "description": "Point between control points at the specified fraction"
           }
         ]
       },
@@ -15518,7 +15599,7 @@
           "client",
           "server"
         ],
-        "description": "Gets the player with the specified AccountID.\n<warning>Internally this function iterates over all players in the server, meaning it can be quite expensive in a performance-critical context.</warning>",
+        "description": "Tried to get the player with the specified <page>Player:AccountID</page>.\n<warning>Internally this function iterates over all players in the server, meaning it can be quite expensive in a performance-critical context.</warning>",
         "arguments": [
           {
             "name": "accountID",
@@ -17645,7 +17726,7 @@
         "realms": [
           "client"
         ],
-        "description": "Creates a new <page>Global.ClientsideModel</page>, renders it at the specified pos/ang, and removes it. Can also be given an existing <page>CSEnt</page> to reuse instead.\n\n<note>This function is only meant to be used in a single render pass kind of scenario, if you need to render a model continuously, use a cached <page>Global.ClientsideModel</page> and provide it as a second argument.</note>\n\n<bug issue=\"3307\">Using this with a map model (<page>game.GetWorld</page>():<page text=\"GetModel\">Entity:GetModel</page>()) crashes the game.</bug>",
+        "description": "Creates a new <page>Global.ClientsideModel</page>, renders it at the specified pos/ang, and removes it. Can also be given an existing <page>CSEnt</page> to reuse instead.\n\n<note>This function is only meant to be used in a single render pass kind of scenario, if you need to render a model continuously, use a cached <page>Global.ClientsideModel</page> and provide it as a second argument.</note>\n\n<bug issue=\"2688\">Using this with a map model (<page>game.GetWorld</page>():<page text=\"GetModel\">Entity:GetModel</page>()) crashes the game.</bug>",
         "arguments": [
           {
             "name": "settings",
@@ -17933,7 +18014,7 @@
         "realms": [
           "client"
         ],
-        "description": "Enables the flashlight projection for the upcoming rendering.\n\n<bug issue=\"3029\">This will leave models lit under specific conditions.</bug>",
+        "description": "Enables the flashlight projection for the upcoming rendering.\n\n<warning>This will leave models lit under specific conditions. You should use <page>render.RenderFlashlights</page> which is meant as a direct replacement for this function.</warning>",
         "arguments": [
           {
             "name": "enable",
@@ -20621,17 +20702,17 @@
           {
             "name": "offset",
             "type": "number",
-            "description": "How much of results to skip from first one. Mainly used for pages."
+            "description": "How much of results to skip from first one. This is useful for pagination. Negative values are invalid."
           },
           {
             "name": "numRetrieve",
             "type": "number",
-            "description": "How much items to retrieve, up to 50 at a time."
+            "description": "How many items to retrieve, up to 50 at a time. Negative values are invalid."
           },
           {
             "name": "days",
             "type": "number",
-            "description": "When getting Most Popular content from Steam, this determines a time period. ( 7 = most popular addons in last 7 days, 1 = most popular addons today, etc )"
+            "description": "When getting `trending` content from Steam, this determines a time period, in range of days from 0 to 365. ( 7 = most popular addons in last 7 days, 30 = most popular addons in the last month, etc )"
           },
           {
             "name": "userID",
@@ -26415,17 +26496,17 @@
           "client",
           "server"
         ],
-        "description": "Performs a \"ray\" box intersection and returns position, normal and the fraction.",
+        "description": "Performs a Ray-OBB (Orientated Bounding Box) intersection and returns position, normal and the fraction if there was an intersection.",
         "arguments": [
           {
             "name": "rayStart",
             "type": "Vector",
-            "description": "Origin/start position of the ray."
+            "description": "Origin or start position of the ray."
           },
           {
             "name": "rayDelta",
             "type": "Vector",
-            "description": "The ray vector itself. This can be thought of as: the ray end point relative to the start point.\n\nNote that in this implementation, the ray is not infinite - it's only a segment."
+            "description": "The ray vector itself, the ray end point relative to the start point. Can be implemented as `direction * distance`\n\nNote that in this implementation, the ray is not infinite - it's only a segment."
           },
           {
             "name": "boxOrigin",
@@ -26435,7 +26516,7 @@
           {
             "name": "boxAngles",
             "type": "Angle",
-            "description": "The angles of the box."
+            "description": "The angle of the box."
           },
           {
             "name": "boxMins",
@@ -27123,7 +27204,7 @@
           "client",
           "server"
         ],
-        "description": "Performs a trace with the given origin, direction, and filter.",
+        "description": "Performs a trace with the given origin, direction, and filter.\n<note>\nThis function will throw an error in the menu realm because it internally uses util.TraceLine which doesn't exist in the menu realm and thus error.\n</note>",
         "arguments": [
           {
             "name": "origin",
@@ -28215,7 +28296,7 @@
           "client",
           "server"
         ],
-        "description": "Gets the REAL weapon table, not a copy. The produced table does `not` inherit fields from the weapon's base class, unlike <page>weapons.Get</page>.\n\n<warning>Modifying this table will modify what is stored by the weapons library. Take a copy or use <page>weapons.Get</page> to avoid this.</warning>",
+        "description": "Gets the REAL weapon table, not a copy. The produced table does *not* inherit fields from the weapon's base class, unlike <page>weapons.Get</page>.\n\n<warning>Modifying this table will modify what is stored by the weapons library. Take a copy or use <page>weapons.Get</page> to avoid this.</warning>",
         "arguments": [
           {
             "name": "weapon_class",

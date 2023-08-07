@@ -180,7 +180,6 @@ end
 
 ---  client|server
 --- Returns true if the server is a dedicated server, false if it is a listen server or a singleplayer game.  
---- 🦟 **BUG**: [This always returns false on the client.](https://github.com/Facepunch/garrysmod-issues/issues/1495)  
 --- @return boolean @Is the server dedicated or not.
 function game.IsDedicated()
 end

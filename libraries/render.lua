@@ -520,7 +520,7 @@ end
 ---  client
 --- Creates a new Global.ClientsideModel, renders it at the specified pos/ang, and removes it. Can also be given an existing CSEnt to reuse instead.  
 --- ℹ **NOTE**: This function is only meant to be used in a single render pass kind of scenario, if you need to render a model continuously, use a cached Global.ClientsideModel and provide it as a second argument.  
---- 🦟 **BUG**: [Using this with a map model (game.GetWorld():GetModel()) crashes the game.](https://github.com/Facepunch/garrysmod-issues/issues/3307)  
+--- 🦟 **BUG**: [Using this with a map model (game.GetWorld():GetModel()) crashes the game.](https://github.com/Facepunch/garrysmod-issues/issues/2688)  
 --- @param settings table @Requires:
 --- @param ent? CSEnt @If provided, this entity will be reused instead of creating a new one with Global.ClientsideModel
 function render.Model(settings, ent)
@@ -639,7 +639,7 @@ end
 
 ---  client
 --- Enables the flashlight projection for the upcoming rendering.  
---- 🦟 **BUG**: [This will leave models lit under specific conditions.](https://github.com/Facepunch/garrysmod-issues/issues/3029)  
+--- ⚠ **WARNING**: This will leave models lit under specific conditions. You should use render.RenderFlashlights which is meant as a direct replacement for this function.  
 --- @param enable? boolean @Whether the flashlight mode should be enabled or disabled.
 function render.PushFlashlightMode(enable)
 end
