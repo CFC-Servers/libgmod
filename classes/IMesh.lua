@@ -1,5 +1,8 @@
---- Renderable mesh object, can be used to create models on the fly. The only way to create your own IMesh object is to call Mesh.  
---- 🦟 **BUG**: [IMeshes only respond to one projected texture.](https://github.com/Facepunch/garrysmod-issues/issues/2301)  
+--- Renderable mesh object, can be used to create models on the fly.  
+--- The only way to create your own IMesh object is to call Global.Mesh.  
+--- ℹ **NOTE**:   
+--- IMeshes only respond to one projected texture.  
+--- See the render.RenderFlashlights function and example that solves this problem.  
 --- @class IMesh
 local IMesh = {}
 ---  client

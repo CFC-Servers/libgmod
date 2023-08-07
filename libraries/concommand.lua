@@ -20,7 +20,6 @@ end
 
 ---  menu|client|server
 --- Removes a console command.  
---- 🦟 **BUG**: [This will not always remove the command from auto-complete.](https://github.com/Facepunch/garrysmod-issues/issues/1183)  
 --- 🦟 **BUG**: [concommand.Add will fail if the concommand was previously removed with this function in a different realm (creating a command on the client that was removed from the server and vice-versa).](https://github.com/Facepunch/garrysmod-issues/issues/1183)  
 --- @param name string @The name of the command to be removed.
 function concommand.Remove(name)
