@@ -6,8 +6,8 @@ local Player = {}
 --- Since this does not include other vital parts of the SteamID such as "Account Type" and "Account Instance", it should be avoided, as AccountIDs are finite, and can be the same for multiple valid accounts.  
 --- See Player:SteamID for the text representation of the full SteamID.  
 --- See Player:SteamID64 for a 64bit representation of the full SteamID.  
---- ℹ **NOTE**: In a `-multirun` environment, this will return `no value` for all "copies" of a player because they are not authenticated with Steam.  
---- For bots this will return values starting with `0` for the first bot, `1` for the second bot and so on. It will return `no value` clientside for bots.  
+--- ℹ **NOTE**: In a `-multirun` environment, this will return `-1` for all "copies" of a player because they are not authenticated with Steam.  
+--- For bots this will return values starting with `0` for the first bot, `1` for the second bot and so on.  
 --- @return number @The AccountID of Player's SteamID.
 function Player:AccountID()
 end
@@ -1668,10 +1668,9 @@ end
 ---  client|server
 --- Returns the player's full 64-bit SteamID aka Community ID. Information on how data is packed into this value can be found [here](https://developer.valvesoftware.com/wiki/SteamID).  
 --- See Player:AccountID for a function that returns only the Account ID part of the SteamID and Player:SteamID for the text version of the SteamID.  
---- ℹ **NOTE**: In a `-multirun` environment, this will return `nil` for all "copies" of a player because they are not authenticated with Steam.  
+--- ℹ **NOTE**: In a `-multirun` environment, this will return `"0"` for all "copies" of a player because they are not authenticated with Steam.  
 --- For bots, this will return `90071996842377216` (equivalent to `STEAM_0:0:0`) for the first bot to join.  
 --- For each additional bot, the number increases by 1. So the next bot will be `90071996842377217` (`STEAM_0:1:0`) then `90071996842377218` (`STEAM_0:0:1`) and so on.  
---- It returns `no value` for bots clientside.  
 --- @return string @Player's 64-bit SteamID aka CommunityID.
 function Player:SteamID64()
 end

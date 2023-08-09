@@ -276,11 +276,32 @@ end
 function util.IntersectRayWithPlane(rayOrigin, rayDirection, planePosition, planeNormal)
 end
 
+---  client|server
+--- Performs a ray-sphere intersection and returns the intersection positions or nil.  
+--- @param rayOrigin Vector @Origin/start position of the ray.
+--- @param rayDelta Vector @The end position of the ray relative to the start position
+--- @param shperePosition Vector @Any position of the sphere.
+--- @param sphereRadius number @The radius of the sphere.
+--- @return number @The first intersection position along the ray, or `nil` if there is no intersection.
+--- @return number @The second intersection position along the ray, or `nil` if there is no intersection.
+function util.IntersectRayWithSphere(rayOrigin, rayDelta, shperePosition, sphereRadius)
+end
+
 ---  menu|client|server
 --- Returns whether a binary module is installed and is resolvable by Global.require.  
 --- @param name string @Name of the binary module, exactly the same as you would enter it as the argument to Global.require.
 --- @return boolean @Whether the binary module is installed and Global.require can resolve it.
 function util.IsBinaryModuleInstalled(name)
+end
+
+---  client|server
+--- Performs a box-sphere intersection and returns whether there was an intersection or not.  
+--- @param boxMin Vector @The minimum extents of the Axis-Aligned box.
+--- @param boxMax Vector @The maximum extents of the Axis-Aligned box.
+--- @param shpere2Position Vector @Any position of the second sphere.
+--- @param sphere2Radius number @The radius of the second sphere.
+--- @return boolean @`true` if there is an intersection, `false` otherwise.
+function util.IsBoxIntersectingSphere(boxMin, boxMax, shpere2Position, sphere2Radius)
 end
 
 ---  server
@@ -312,12 +333,33 @@ end
 function util.IsOBBIntersectingOBB(box1Origin, box1Angles, box1Mins, box1Maxs, box2Origin, box2Angles, box2Mins, box2Maxs, tolerance)
 end
 
+---  client|server
+--- Returns whether a point is within a cone or not.  
+--- @param point Vector @The position of the point to test.
+--- @param coneOrigin Vector @The position of the cone tip.
+--- @param coneAxis Vector @The direction of the cone.
+--- @param coneSine number @The sine of the cone's angle.
+--- @param coneLength number @Length of the cone's axis.
+--- @return boolean @`true` if the point is within the cone, `false` otherwise.
+function util.IsPointInCone(point, coneOrigin, coneAxis, coneSine, coneLength)
+end
+
 ---  client
 --- Check whether the skybox is visible from the point specified.  
 --- ℹ **NOTE**: This will always return true in fullbright maps.  
 --- @param position Vector @The position to check the skybox visibility from.
 --- @return boolean @Whether the skybox is visible from the position.
 function util.IsSkyboxVisibleFromPoint(position)
+end
+
+---  client|server
+--- Performs a sphere-sphere intersection and returns whether there was an intersection or not.  
+--- @param shpere1Position Vector @Any position of the first sphere.
+--- @param sphere1Radius number @The radius of the first sphere.
+--- @param shpere2Position Vector @Any position of the second sphere.
+--- @param sphere2Radius number @The radius of the second sphere.
+--- @return boolean @`true` if there is an intersection, `false` otherwise.
+function util.IsSphereIntersectingSphere(shpere1Position, sphere1Radius, shpere2Position, sphere2Radius)
 end
 
 ---  client|server
