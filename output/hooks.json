@@ -1655,7 +1655,7 @@
         "realms": [
           "client"
         ],
-        "description": "Adds a death notice entry.\n\n<bug issue=\"2611\" pull=\"1380\">You cannot use <page>hook.Add</page> on this hook yet.</bug>",
+        "description": "Adds a death notice entry.",
         "arguments": [
           {
             "name": "attacker",
@@ -5103,7 +5103,7 @@
           "client",
           "server"
         ],
-        "description": "Called after the player's think.",
+        "description": "Called after the player's think.\n<note>On the client side, it is only called for the local player.</note>",
         "arguments": [
           {
             "name": "ply",
@@ -6732,7 +6732,7 @@
           "client",
           "server"
         ],
-        "description": "Allows you to translate player activities.",
+        "description": "<note>Isn't call when CalcMainActivity return a valid override sequence id</note>\nAllows you to translate player activities.",
         "arguments": [
           {
             "name": "ply",
@@ -8305,6 +8305,20 @@
           "client"
         ],
         "description": "Called when the context menu is supposedly opened.\n\nThis is simply an alias of <page>GM:OnContextMenuOpen</page> but will **not** be called if <page>SANDBOX:ContextMenuOpen</page> prevents the context menu from opening.\n\nThis hook **will** be called even if the context menu doesn't actually exist, i.e. <page>SANDBOX:ContextMenuEnabled</page> blocked its creation."
+      },
+      {
+        "name": "ContextMenuShowTool",
+        "parent": "SANDBOX",
+        "realms": [
+          "client"
+        ],
+        "description": "Called to poll if active tool settings should appear in the context menu. Please note that this is only called on initial opening of the context menu, not every frame the context menu is in use.",
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "Return `false` to prevent active tool settings from displaying in the context menu."
+          }
+        ]
       },
       {
         "name": "OnRevertSpawnlist",

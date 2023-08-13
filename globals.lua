@@ -1612,10 +1612,19 @@ function _G.ScrW()
 end
 
 ---  client
---- Returns a number based on the Size argument and your screen's width. The screen's width is always equal to size 640. This function is primarily used for scaling font sizes.  
---- @param Size number @The number you want to scale.
+--- Returns a number based on the `size` argument and the players' screen width. The width is scaled in relation to `640x480` resolution.  This function is primarily used for scaling font sizes.  
+--- See Global.ScreenScaleH for a function that scales from height.  
+--- @param size number @The number you want to scale.
 --- @return number @The scaled number based on your screen's width
-function _G.ScreenScale(Size)
+function _G.ScreenScale(size)
+end
+
+---  client
+--- Returns a number based on the `size` argument and players' screen height. The height is scaled in relation to `640x480` resolution.  This function is primarily used for scaling font sizes.  
+--- See Global.ScreenScale for a function that scales from width.  
+--- @param size number @The number you want to scale.
+--- @return number @The scaled number based on your screen's height.
+function _G.ScreenScaleH(size)
 end
 
 ---  client|server

@@ -83,6 +83,20 @@ function table.FindPrev(tbl, value)
 end
 
 ---  menu|client|server
+--- Flips key-value pairs of each element within a table, so that each value becomes the key, and each key becomes the value.  
+--- ⚠ **WARNING**: Take care when using this function, as a Lua table cannot contain multiple instances of the same key. As such, data loss is possible when using this function on tables with duplicate values.  
+--- ```  
+--- local test = { test = 1, test2 = 1 }  
+--- local f = table.Flip( test )  
+--- PrintTable( f )  
+--- -- Outputs "1	=	test2"  
+--- ```  
+--- @param input table @The table to flip items of.
+--- @return table @The flipped table.
+function table.Flip(input)
+end
+
+---  menu|client|server
 --- Inserts a value in to the given table even if the table is non-existent  
 --- @param tab? table @Table to insert value in to
 --- @param value any @Value to insert
@@ -220,6 +234,14 @@ end
 --- @param source table @The table you want to merge with the destination table
 --- @return table @Destination table
 function table.Merge(destination, source)
+end
+
+---  menu|client|server
+--- Packs a set of items into a table and returns the new table. It is meant as an alternative implementation of `table.pack` from newer versions of Lua.  
+--- @param ... any ... @The items to pack into a table.
+--- @return table @A table containing the `items`.
+--- @return number @The amount of items that were added to the table.
+function table.Pack(...)
 end
 
 ---  menu|client|server
