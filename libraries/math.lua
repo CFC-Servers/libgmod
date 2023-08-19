@@ -69,6 +69,17 @@ function math.BinToInt(string)
 end
 
 ---  menu|client|server
+--- Cubic Hermite spline algorithm.  
+--- @param frac number @From 0 to 1, where alongside the spline the point will be.
+--- @param point0 Vector @First point for the spline.
+--- @param tan0 Vector @Tangent for the first point for the spline.
+--- @param point1 Vector @Second point for the spline.
+--- @param tan1 Vector @Tangent for the second point for the spline.
+--- @return Vector @Point on the cubic Hermite spline, at given fraction.
+function math.CHSpline(frac, point0, tan0, point1, tan1)
+end
+
+---  menu|client|server
 --- Clamps a number between a minimum and maximum value.  
 --- @param input number @The number to clamp.
 --- @param min number @The minimum value, this function will **never** return a number less than this.
@@ -79,7 +90,7 @@ end
 
 ---  menu|client|server
 --- Lerp point between 4 control points with cubic bezier.  
---- ℹ **NOTE**: There is quadratic function math.QuadraticBezier which works with 3 control points.  
+--- See math.QuadraticBezier for a similar function which works with 3 control points.  
 --- @param frac number @The fraction for finding the result
 --- @param p0 Vector @First control point
 --- @param p1 Vector @First tangent
@@ -365,7 +376,7 @@ end
 
 ---  menu|client|server
 --- Lerp point between 3 control points with quadratic bezier.  
---- ℹ **NOTE**: There is cubic function math.CubicBezier which works with 4 control points.  
+--- See math.CubicBezier for a function which works with 4 control points.  
 --- @param frac number @The fraction for finding the result
 --- @param p0 Vector @First control point
 --- @param p1 Vector @Tangent
