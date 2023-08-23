@@ -99,8 +99,8 @@ function NPC:ConditionName(cond)
 end
 
 ---  server
---- Returns the way the NPC "feels" about the entity.  
---- @param ent Entity @The entity to get the disposition from.
+--- Returns the way the NPC "feels" about a given entity.  
+--- @param ent Entity @The entity to test our disposition towards.
 --- @return number @The NPCs disposition, see Enums/D.
 function NPC:Disposition(ent)
 end
