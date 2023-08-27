@@ -22,6 +22,7 @@ end
 
 ---  client|server
 --- Returns the last simulation duration of the in-game physics.  
+--- 🦟 **BUG**: [Seems to experience significant loss of precision after several hours of uptime.](https://github.com/Facepunch/garrysmod-issues/issues/5558)  
 --- @return number @The last simulation duration of the in-game physics in seconds
 function physenv.GetLastSimulationTime()
 end

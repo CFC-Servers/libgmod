@@ -1655,7 +1655,7 @@
         "realms": [
           "client"
         ],
-        "description": "Adds a death notice entry.\n\n<bug issue=\"2611\" pull=\"1380\">You cannot use <page>hook.Add</page> on this hook yet.</bug>",
+        "description": "Adds a death notice entry.",
         "arguments": [
           {
             "name": "attacker",
@@ -2313,7 +2313,7 @@
         "realms": [
           "server"
         ],
-        "description": "Handles the player's death.\n\nThis hook is **not** called if the player is killed by <page>Player:KillSilent</page>. See <page>GM:PlayerSilentDeath</page> for that.\n\n* <page>GM:PlayerDeath</page> is called after this hook\n* <page>GM:PostPlayerDeath</page> is called after that",
+        "description": "Handles the player's death.\n\nThis hook is **not** called if the player is killed by <page>Player:KillSilent</page>. See <page>GM:PlayerSilentDeath</page> for that.\n\n* <page>GM:PlayerDeath</page> is called after this hook\n* <page>GM:PostPlayerDeath</page> is called after that\n\n<note><page>Player:Alive</page> will return false in this hook.</note>",
         "arguments": [
           {
             "name": "ply",
@@ -4659,7 +4659,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called when a player is killed by <page>Player:Kill</page> or any other normal means.\n\nThis hook is **not** called if the player is killed by <page>Player:KillSilent</page>. See <page>GM:PlayerSilentDeath</page> for that.\n\n* <page>GM:DoPlayerDeath</page> is called **before** this hook.\n* <page>GM:PostPlayerDeath</page> is called **after** this hook.\n\nSee <page>Player:LastHitGroup</page> if you need to get the last hit hitgroup of the player.\n\n<note><page>Player:Alive</page> will return true in this hook.</note>",
+        "description": "Called when a player is killed by <page>Player:Kill</page> or any other normal means.\n\nThis hook is **not** called if the player is killed by <page>Player:KillSilent</page>. See <page>GM:PlayerSilentDeath</page> for that.\n\n* <page>GM:DoPlayerDeath</page> is called **before** this hook.\n* <page>GM:PostPlayerDeath</page> is called **after** this hook.\n\nSee <page>Player:LastHitGroup</page> if you need to get the last hit hitgroup of the player.\n\n<note><page>Player:Alive</page> will return false in this hook.</note>",
         "arguments": [
           {
             "name": "victim",
@@ -5103,7 +5103,7 @@
           "client",
           "server"
         ],
-        "description": "Called after the player's think.",
+        "description": "Called after the player's think.\n<note>On the client side, it is only called for the local player.</note>",
         "arguments": [
           {
             "name": "ply",
@@ -5818,7 +5818,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called right after <page>GM:DoPlayerDeath</page>, <page>GM:PlayerDeath</page> and <page>GM:PlayerSilentDeath</page>.\n\nThis hook will be called for all deaths, including <page>Player:KillSilent</page>\n\n<note>The player is considered dead when this is hook is called, <page>Player:Alive</page> will return false.</note>",
+        "description": "Called right after <page>GM:DoPlayerDeath</page>, <page>GM:PlayerDeath</page> and <page>GM:PlayerSilentDeath</page>.\n\nThis hook will be called for all deaths, including <page>Player:KillSilent</page>\n\n<note><page>Player:Alive</page> will return false in this hook.</note>",
         "arguments": [
           {
             "name": "ply",
@@ -6732,7 +6732,7 @@
           "client",
           "server"
         ],
-        "description": "Allows you to translate player activities.",
+        "description": "<note>Isn't call when CalcMainActivity return a valid override sequence id</note>\nAllows you to translate player activities.",
         "arguments": [
           {
             "name": "ply",
@@ -8305,6 +8305,20 @@
           "client"
         ],
         "description": "Called when the context menu is supposedly opened.\n\nThis is simply an alias of <page>GM:OnContextMenuOpen</page> but will **not** be called if <page>SANDBOX:ContextMenuOpen</page> prevents the context menu from opening.\n\nThis hook **will** be called even if the context menu doesn't actually exist, i.e. <page>SANDBOX:ContextMenuEnabled</page> blocked its creation."
+      },
+      {
+        "name": "ContextMenuShowTool",
+        "parent": "SANDBOX",
+        "realms": [
+          "client"
+        ],
+        "description": "Called to poll if active tool settings should appear in the context menu. Please note that this is only called on initial opening of the context menu, not every frame the context menu is in use.",
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "Return `false` to prevent active tool settings from displaying in the context menu."
+          }
+        ]
       },
       {
         "name": "OnRevertSpawnlist",
