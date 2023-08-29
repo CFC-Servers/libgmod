@@ -241,7 +241,7 @@ function net.WriteFloat(float)
 end
 
 ---  client|server
---- Appends an integer - a whole number - to the current net message. Can be read back with net.ReadInt on the receiving end.  
+--- Appends a signed integer - a whole number, positive/negative - to the current net message. Can be read back with net.ReadInt on the receiving end.  
 --- Use net.WriteUInt to send an unsigned number (that you know will **never** be negative). Use net.WriteFloat for a non-whole number (e.g. `2.25`).  
 --- @param integer number @The integer to be sent.
 --- @param bitCount number @The amount of bits the number consists of

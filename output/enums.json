@@ -13732,6 +13732,60 @@
   {
     "fields": [
       {
+        "name": "VIEW_MAIN",
+        "value": 0,
+        "description": "Default value"
+      },
+      {
+        "name": "VIEW_3DSKY",
+        "value": 1,
+        "description": "3D skybox"
+      },
+      {
+        "name": "VIEW_MONITOR",
+        "value": 2,
+        "description": "Rendering for `_rt_Camera` base texture material (`func_monitor`, `info_camera_link`)."
+      },
+      {
+        "name": "VIEW_REFLECTION",
+        "value": 3,
+        "description": "Water reflection"
+      },
+      {
+        "name": "VIEW_REFRACTION",
+        "value": 4,
+        "description": "Water refraction"
+      },
+      {
+        "name": "VIEW_INTRO_PLAYER",
+        "value": 5,
+        "description": "Used by `script_intro` entity."
+      },
+      {
+        "name": "VIEW_INTRO_CAMERA",
+        "value": 6,
+        "description": "Used by `script_intro` entity."
+      },
+      {
+        "name": "VIEW_SHADOW_DEPTH_TEXTURE",
+        "value": 7,
+        "description": "Internally used for <page>Global.ProjectedTexture</page> and flashlight."
+      },
+      {
+        "name": "VIEW_SSAO",
+        "value": 8,
+        "description": "For SSAO depth. Can be accessed via <page>render.GetResolvedFullFrameDepth</page>."
+      }
+    ],
+    "realms": [
+      "client"
+    ],
+    "description": "Enumerations used by <page>render.RenderView</page> inside of <page>Structures/ViewData</page>.",
+    "name": "VIEW"
+  },
+  {
+    "fields": [
+      {
         "name": "WEAPON_PROFICIENCY_POOR",
         "value": 0,
         "description": "The NPC will miss a large majority of their shots."

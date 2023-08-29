@@ -11923,7 +11923,7 @@
         "realms": [
           "client"
         ],
-        "description": "<deprecated>\nThis function got disabled and will always throw an error if it's used. This is the error:\n```lua\n[ERROR] InitializeAsClientEntity is deprecated and should no longer be used.\n```\n</deprecated>\n\n<warning>\n**These are the reasons why this function was disabled:**\nCalling this on **ANY**(even clientside only) entity will cause random crashes, and it will crash the game as soon as the entity is removed!\n\n**Some bugs if you call it on an entity that is not clientside only:**\nAll NWVars break clientside for the given player.\nThe EntIndex becomes -1.\nThe <page text=\"Entity Table\">Entity:GetTable</page> gets cleared every time this function is called.\n\n<note>\nAs soon as the Entity re-enters the PVS, some bugs will fix themself, but it will still crash the game if the entity gets removed!\nThis is behavior only happens for entities, not for players!\n</note>\n\nCalling this function on the World creates a permanent warning that will spam your console.\n```lua\n] lua_run_cl Entity(0):InitializeAsClientEntity()\nRefusing to render the map on an entity to prevent crashes! (x9330)\n```\nCalling this function on an entity that is not **clientside only** causes all networking to break for that specific entity and an Engine Error will occur on a full update\n(a full update can be forced with `cl_fullupdate`):\n<upload src=\"b04e5/8db8f2ceed2528b.png\" size=\"3320\" name=\"image.png\">\n\nCalling this function on a player causes a bunch of unexpected behavior and your game will crash as soon as the player is removed/leaves the server.\n\n**Some bugs if you set it on a player (all Entity bugs apply here):**\nYou get some values displayed in the top-left of your screen for some reason.\nIf you call this function on the local player, it causes your eye pos to be your position (EyePos == GetPos):\nThe Player name becomes `ERRORNAME`\nAs soon as the player re-enters the PVS, it crashes the game!\n```lua\nlua_run_cl LocalPlayer():InitializeAsClientEntity()\n] lua_run_cl print(LocalPlayer())\nPlayer [-1][ERRORNAME]\n```\n<upload src=\"b04e5/8db8f305bc00016.png\" size=\"1506807\" name=\"image.png\">\n</upload></upload></warning>\n\nInitializes this entity as being clientside only.\n\nOnly works on entities fully created clientside, and as such it has currently no use due to this being automatically called by <page>ents.CreateClientProp</page>, <page>ents.CreateClientside</page>, <page>Global.ClientsideModel</page> and <page>Global.ClientsideScene</page>."
+        "description": "<deprecated>\nThis function got disabled and will always throw an error if it's used. This is the error:\n```\n[ERROR] InitializeAsClientEntity is deprecated and should no longer be used.\n```\n</deprecated>\n\nInitializes this entity as being clientside only.\n\nOnly works on entities fully created clientside, and as such it currently has no use due to this being automatically called by <page>ents.CreateClientProp</page>, <page>ents.CreateClientside</page>, <page>Global.ClientsideModel</page> and <page>Global.ClientsideScene</page>."
       },
       {
         "name": "Input",
@@ -12142,7 +12142,7 @@
           "client",
           "server"
         ],
-        "description": "Returns if the entity is going to be deleted in the next frame.",
+        "description": "Returns if the entity is going to be deleted in the next frame. Entities marked for deletion should not be accessed.",
         "returnValues": [
           {
             "type": "boolean",
@@ -15863,12 +15863,13 @@
         "realms": [
           "client"
         ],
-        "description": "Sets the render angles of the Entity.",
+        "description": "Sets the render angle override for the Entity.",
         "arguments": [
           {
             "name": "newAngles",
             "type": "Angle",
-            "description": "The new render angles to be set to."
+            "default": "nil",
+            "description": "The new render angles to be set to. To disable the override, set to <page>nil</page>."
           }
         ]
       },
@@ -15997,12 +15998,13 @@
         "realms": [
           "client"
         ],
-        "description": "Set the origin in which the Entity will be drawn from.",
+        "description": "Set the render origin override, a position where the Entity will be rendered at.",
         "arguments": [
           {
             "name": "newOrigin",
             "type": "Vector",
-            "description": "The new origin in world coordinates where the Entity's model will now be rendered from."
+            "default": "nil",
+            "description": "The new origin in world coordinates where the Entity's model will now be rendered at. To disable the override, set to <page>nil</page>."
           }
         ]
       },
@@ -19804,12 +19806,12 @@
         "realms": [
           "server"
         ],
-        "description": "Returns the way the NPC \"feels\" about the entity.",
+        "description": "Returns the way the NPC \"feels\" about a given entity.",
         "arguments": [
           {
             "name": "ent",
             "type": "Entity",
-            "description": "The entity to get the disposition from."
+            "description": "The entity to test our disposition towards."
           }
         ],
         "returnValues": [
@@ -24850,7 +24852,7 @@
           "client",
           "menu"
         ],
-        "description": "Paints a ghost copy of the panel at the given position.\n<warning>\nBreaks Z pos of panel <page>PANEL:SetZPos</page>\n</warning>",
+        "description": "Paints a ghost copy of the panel at the given position.\n<warning>\nThis function sets Z pos of panel's children (<page>PANEL:SetZPos</page>)\n</warning>",
         "arguments": [
           {
             "name": "posX",
@@ -24871,7 +24873,15 @@
           "client",
           "menu"
         ],
-        "description": "Paints the panel at its current position. To use this you must call <page>Panel:SetPaintedManually</page>(true)."
+        "description": "Paints the panel at its current position. To use this you must call <page>Panel:SetPaintedManually</page>(true).",
+        "arguments": [
+          {
+            "name": "unclamp",
+            "type": "boolean",
+            "default": "false",
+            "description": "If set, overrides panels' clipping so that it can render fully when its size is larger than the game's resolution."
+          }
+        ]
       },
       {
         "name": "ParentToHUD",
@@ -28548,7 +28558,7 @@
           "client",
           "server"
         ],
-        "description": "Returns the player's AccountID part of their full SteamID.\n\nSince this does not include other vital parts of the SteamID such as \"Account Type\" and \"Account Instance\", it should be avoided, as AccountIDs are finite, and can be the same for multiple valid accounts.\n\nSee <page>Player:SteamID</page> for the text representation of the full SteamID.\nSee <page>Player:SteamID64</page> for a 64bit representation of the full SteamID.\n\n<note>In a `-multirun` environment, this will return `no value` for all \"copies\" of a player because they are not authenticated with Steam.\n\nFor bots this will return values starting with `0` for the first bot, `1` for the second bot and so on. It will return `no value` clientside for bots.</note>",
+        "description": "Returns the player's AccountID part of their full SteamID.\n\nSince this does not include other vital parts of the SteamID such as \"Account Type\" and \"Account Instance\", it should be avoided, as AccountIDs are finite, and can be the same for multiple valid accounts.\n\nSee <page>Player:SteamID</page> for the text representation of the full SteamID.\nSee <page>Player:SteamID64</page> for a 64bit representation of the full SteamID.\n\n<note>In a `-multirun` environment, this will return `-1` for all \"copies\" of a player because they are not authenticated with Steam.\n\nFor bots this will return values starting with `0` for the first bot, `1` for the second bot and so on.</note>",
         "returnValues": [
           {
             "type": "number",
@@ -30657,6 +30667,7 @@
         "name": "IsListenServerHost",
         "parent": "Player",
         "realms": [
+          "client",
           "server"
         ],
         "description": "Returns if a player is the host of the current session.",
@@ -31385,7 +31396,7 @@
           {
             "name": "name",
             "type": "string",
-            "description": "Name/class/index of the hint. The text of the hint will contain this value. ( \"#Hint_\" .. name ) An example is `PhysgunFreeze`."
+            "description": "Name/class/index of the hint. You can find a list of hint names for this function <page text=\"here\">List_of_Hint_Classes</page>."
           },
           {
             "name": "delay",
@@ -32032,7 +32043,7 @@
           "client",
           "server"
         ],
-        "description": "Sets the render angles of a player.",
+        "description": "Sets the render angles of a player. Value set by this function is reset to player's angles (<page>Entity:GetAngles</page>) right after <page>GM:UpdateAnimation</page>.",
         "arguments": [
           {
             "name": "ang",
@@ -32472,7 +32483,7 @@
           "client",
           "server"
         ],
-        "description": "Returns the player's SteamID.\n\nSee <page>Player:AccountID</page> for a shorter version of the SteamID and <page>Player:SteamID64</page> for the full SteamID.\n\n<note>In a `-multirun` environment, this will return `STEAM_0:0:0` (serverside) or `NULL` (clientside) for all \"copies\" of a player because they are not authenticated with Steam.\n\nFor Bots this will return `BOT` on the server and on the client it returns `NULL`.</note>",
+        "description": "Returns the player's SteamID.\n\nSee <page>Player:AccountID</page> for a shorter version of the SteamID and <page>Player:SteamID64</page> for the full SteamID.\n\n<note>In a `-multirun` environment, this will return `STEAM_0:0:0` (serverside) or `NULL` (clientside) for all \"copies\" of a player because they are not authenticated with Steam.\n\nFor Bots this will return `BOT`.</note>",
         "returnValues": [
           {
             "type": "string",
@@ -32487,7 +32498,7 @@
           "client",
           "server"
         ],
-        "description": "Returns the player's full 64-bit SteamID aka Community ID. Information on how data is packed into this value can be found [here](https://developer.valvesoftware.com/wiki/SteamID).\n\nSee <page>Player:AccountID</page> for a function that returns only the Account ID part of the SteamID and <page>Player:SteamID</page> for the text version of the SteamID.\n\n<note>In a `-multirun` environment, this will return `nil` for all \"copies\" of a player because they are not authenticated with Steam.\n\nFor bots, this will return `90071996842377216` (equivalent to `STEAM_0:0:0`) for the first bot to join.\n\nFor each additional bot, the number increases by 1. So the next bot will be `90071996842377217` (`STEAM_0:1:0`) then `90071996842377218` (`STEAM_0:0:1`) and so on.\n\nIt returns `no value` for bots clientside.</note>",
+        "description": "Returns the player's full 64-bit SteamID aka Community ID. Information on how data is packed into this value can be found [here](https://developer.valvesoftware.com/wiki/SteamID).\n\nSee <page>Player:AccountID</page> for a function that returns only the Account ID part of the SteamID and <page>Player:SteamID</page> for the text version of the SteamID.\n\n<note>In a `-multirun` environment, this will return `\"0\"` for all \"copies\" of a player because they are not authenticated with Steam.\n\nFor bots, this will return `90071996842377216` (equivalent to `STEAM_0:0:0`) for the first bot to join.\n\nFor each additional bot, the number increases by 1. So the next bot will be `90071996842377217` (`STEAM_0:1:0`) then `90071996842377218` (`STEAM_0:0:1`) and so on.</note>",
         "returnValues": [
           {
             "type": "string",
@@ -32563,7 +32574,7 @@
           {
             "name": "name",
             "type": "string",
-            "description": "Hint name/class/index to prevent from showing up"
+            "description": "Hint name/class/index to prevent from showing up. You can find a list of hint names for this function <page text=\"here\">List_of_Hint_Classes</page>."
           }
         ]
       },
