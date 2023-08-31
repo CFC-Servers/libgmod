@@ -1080,7 +1080,7 @@ end
 ---  client|menu
 --- Paints a ghost copy of the panel at the given position.  
 --- ⚠ **WARNING**:   
---- Breaks Z pos of panel PANEL:SetZPos  
+--- This function sets Z pos of panel's children (PANEL:SetZPos)  
 --- @param posX number @The x coordinate to draw the panel from.
 --- @param posY number @The y coordinate to draw the panel from.
 function Panel:PaintAt(posX, posY)
@@ -1088,7 +1088,8 @@ end
 
 ---  client|menu
 --- Paints the panel at its current position. To use this you must call Panel:SetPaintedManually(true).  
-function Panel:PaintManual()
+--- @param unclamp? boolean @If set, overrides panels' clipping so that it can render fully when its size is larger than the game's resolution.
+function Panel:PaintManual(unclamp)
 end
 
 ---  client|menu
