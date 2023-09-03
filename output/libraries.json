@@ -3861,7 +3861,7 @@
           {
             "name": "count",
             "type": "number",
-            "description": "How often to call the hook (in instructions). 0 for every instruction"
+            "description": "How often to call the hook (in instructions). 0 for every instruction. Can be omitted."
           }
         ]
       },
@@ -5695,12 +5695,12 @@
           "client",
           "server"
         ],
-        "description": "Allow this entity to be duplicated",
+        "description": "Allow entities with given class name to be duplicated. See <page>duplicator.Disallow</page> for the opposite effect.",
         "arguments": [
           {
             "name": "classname",
             "type": "string",
-            "description": "An entity's classname"
+            "description": "An entity's classname to allow duuplicating."
           }
         ]
       },
@@ -5882,6 +5882,22 @@
           {
             "type": "Entity",
             "description": "The newly created entity"
+          }
+        ]
+      },
+      {
+        "name": "Disallow",
+        "parent": "duplicator",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Disallow this entity to be duplicated. Opposite of <page>duplicator.Allow</page>.\n\nBy default, all classes are disallowed to be duplicated. This function is useful for temporarily disabling duplication of certain entity classes that may have been previously allowed.",
+        "arguments": [
+          {
+            "name": "classname",
+            "type": "string",
+            "description": "An entity's classname to disallow duplicating."
           }
         ]
       },
@@ -10627,7 +10643,7 @@
         "returnValues": [
           {
             "type": "string",
-            "description": "The translated phrase, or the input string if no translation was found. There is a limit of 1024 bytes for the returned string."
+            "description": "The translated phrase, or the input string if no translation was found. There is a limit of 4000 bytes for the returned string."
           }
         ]
       }
@@ -11223,6 +11239,49 @@
         ]
       },
       {
+        "name": "CHSpline",
+        "parent": "math",
+        "realms": [
+          "menu",
+          "client",
+          "server"
+        ],
+        "description": "Cubic Hermite spline algorithm.",
+        "arguments": [
+          {
+            "name": "frac",
+            "type": "number",
+            "description": "From 0 to 1, where alongside the spline the point will be."
+          },
+          {
+            "name": "point0",
+            "type": "Vector",
+            "description": "First point for the spline."
+          },
+          {
+            "name": "tan0",
+            "type": "Vector",
+            "description": "Tangent for the first point for the spline."
+          },
+          {
+            "name": "point1",
+            "type": "Vector",
+            "description": "Second point for the spline."
+          },
+          {
+            "name": "tan1",
+            "type": "Vector",
+            "description": "Tangent for the second point for the spline."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "Vector",
+            "description": "Point on the cubic Hermite spline, at given fraction."
+          }
+        ]
+      },
+      {
         "name": "Clamp",
         "parent": "math",
         "realms": [
@@ -11309,7 +11368,7 @@
           "client",
           "server"
         ],
-        "description": "Lerp point between 4 control points with cubic bezier.\n<note>There is quadratic function <page>math.QuadraticBezier</page> which works with 3 control points.</note>",
+        "description": "Lerp point between 4 control points with cubic bezier.\n\nSee <page>math.QuadraticBezier</page> for a similar function which works with 3 control points.",
         "arguments": [
           {
             "name": "frac",
@@ -12600,7 +12659,7 @@
           "client",
           "server"
         ],
-        "description": "Lerp point between 3 control points with quadratic bezier.\n<note>There is cubic function <page>math.CubicBezier</page> which works with 4 control points.</note>",
+        "description": "Lerp point between 3 control points with quadratic bezier.\n\nSee <page>math.CubicBezier</page> for a function which works with 4 control points.",
         "arguments": [
           {
             "name": "frac",
@@ -14469,6 +14528,21 @@
         ]
       },
       {
+        "name": "ReadUInt64",
+        "parent": "net",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Reads a unsigned integer with 64 bits from the received net message.\n\n<warning>You **must** read information in same order as you write it.</warning>",
+        "returnValues": [
+          {
+            "type": "string",
+            "description": "The uint64 number."
+          }
+        ]
+      },
+      {
         "name": "ReadVector",
         "parent": "net",
         "realms": [
@@ -14747,7 +14821,7 @@
           "client",
           "server"
         ],
-        "description": "Appends an integer - a whole number - to the current net message. Can be read back with <page>net.ReadInt</page> on the receiving end.\n\nUse <page>net.WriteUInt</page> to send an unsigned number (that you know will **never** be negative). Use <page>net.WriteFloat</page> for a non-whole number (e.g. `2.25`).",
+        "description": "Appends a signed integer - a whole number, positive/negative - to the current net message. Can be read back with <page>net.ReadInt</page> on the receiving end.\n\nUse <page>net.WriteUInt</page> to send an unsigned number (that you know will **never** be negative). Use <page>net.WriteFloat</page> for a non-whole number (e.g. `2.25`).",
         "arguments": [
           {
             "name": "integer",
@@ -14859,6 +14933,22 @@
             "name": "numberOfBits",
             "type": "number",
             "description": "The size of the integer to be sent, in bits. Acceptable values range from any number `1` to `32` inclusive.\n\nFor reference: `1` = bit, `4` = nibble, `8` = byte, `16` = short, `32` = long.\n\nConsult the table below to determine the bit count you need. The minimum value for all bit counts is `0`.\n\n| Bit Count |  Maximum value |\n|-----------|:--------------:|\n| 1 | 1  |\n| 2 | 3  |\n| 3 | 7  |\n| 4 | 15 |\n| 5 | 31 |\n| 6 | 63 |\n| 7 | 127 |\n| 8 | 255 |\n| 9 | 511 |\n| 10 | 1023 |\n| 11 | 2047 |\n| 12 | 4095 |\n| 13 | 8191 |\n| 14 | 16383 |\n| 15 | 32767 |\n| 16 | 65535 |\n| 17 | 131071 |\n| 18 | 262143 |\n| 19 | 524287  |\n| 20 | 1048575  |\n| 21 | 2097151  |\n| 22 | 4194303  |\n| 23 | 8388607  |\n| 24 | 16777215  |\n| 25 | 33554431  |\n| 26 | 67108863  |\n| 27 | 134217727  |\n| 28 | 268435455  |\n| 29 | 536870911  |\n| 30 | 1073741823 |\n| 31 | 2147483647 |\n| 32 | 4294967295 |"
+          }
+        ]
+      },
+      {
+        "name": "WriteUInt64",
+        "parent": "net",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Appends an unsigned integer with 64 bits to the current net message.\n<note>\nThe limit for an uint64 is 18.446.744.073.709.551.615.\nEverything above the limit will be set to the limit.\n\nUnsigned numbers **do not** support negative numbers.\nIf you use negative numbers, it will read it incorrectly (limit + (input + 1)).\nYou can give it a number, but it will break as soon as it has 14 digits\n</note>",
+        "arguments": [
+          {
+            "name": "uint64",
+            "type": "string",
+            "description": "The uint64 to be sent."
           }
         ]
       },
@@ -15464,7 +15554,7 @@
           "client",
           "server"
         ],
-        "description": "Returns the last simulation duration of the in-game physics.",
+        "description": "Returns the last simulation duration of the in-game physics.\n<bug issue=\"5558\">Seems to experience significant loss of precision after several hours of uptime.</bug>",
         "returnValues": [
           {
             "type": "number",
@@ -20712,7 +20802,7 @@
           {
             "name": "days",
             "type": "number",
-            "description": "When getting `trending` content from Steam, this determines a time period, in range of days from 0 to 365. ( 7 = most popular addons in last 7 days, 30 = most popular addons in the last month, etc )"
+            "description": "When getting `popular` or `trending` content from Steam, this determines a time period, in range of days from 0 to 365. ( 7 = most popular addons in last 7 days, 30 = most popular addons in the last month, etc ). If given a zero, will automatically choose a value, which is 7 for `trending`."
           },
           {
             "name": "userID",
@@ -23449,6 +23539,29 @@
         ]
       },
       {
+        "name": "Flip",
+        "parent": "table",
+        "realms": [
+          "menu",
+          "client",
+          "server"
+        ],
+        "description": "Flips key-value pairs of each element within a table, so that each value becomes the key, and each key becomes the value.\n\n<warning>Take care when using this function, as a Lua table cannot contain multiple instances of the same key. As such, data loss is possible when using this function on tables with duplicate values.\n\n```\nlocal test = { test = 1, test2 = 1 }\nlocal f = table.Flip( test )\nPrintTable( f )\n-- Outputs \"1\t=\ttest2\"\n```\n</warning>",
+        "arguments": [
+          {
+            "name": "input",
+            "type": "table",
+            "description": "The table to flip items of."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "table",
+            "description": "The flipped table."
+          }
+        ]
+      },
+      {
         "name": "ForceInsert",
         "parent": "table",
         "realms": [
@@ -24019,6 +24132,33 @@
         ]
       },
       {
+        "name": "Pack",
+        "parent": "table",
+        "realms": [
+          "menu",
+          "client",
+          "server"
+        ],
+        "description": "Packs a set of items into a table and returns the new table. It is meant as an alternative implementation of `table.pack` from newer versions of Lua.",
+        "arguments": [
+          {
+            "name": "items",
+            "type": "vararg",
+            "description": "The items to pack into a table."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "table",
+            "description": "A table containing the `items`."
+          },
+          {
+            "type": "number",
+            "description": "The amount of items that were added to the table."
+          }
+        ]
+      },
+      {
         "name": "Random",
         "parent": "table",
         "realms": [
@@ -24173,7 +24313,7 @@
           "client",
           "server"
         ],
-        "description": "Sorts a sequential table either ascending or by the given sort function.\n<note>This function modifies the table you give to it.</note>",
+        "description": "Sorts a sequential table either ascending or by the given sort function.\n<note>This function modifies the table you give to it and internally uses the [quick sort algorithm](http://www.lua.org/source/5.2/ltablib.c.html#sort).</note>",
         "arguments": [
           {
             "name": "tbl",
@@ -24343,7 +24483,7 @@
           "client",
           "server"
         ],
-        "description": "Returns a table consisting of information on every defined team",
+        "description": "Returns the real table consisting of information on every defined team",
         "returnValues": [
           {
             "type": "table",
@@ -24760,11 +24900,13 @@
           {
             "name": "repetitions",
             "type": "number",
+            "default": "nil",
             "description": "Repetitions. Use `0` for infinite or `nil` to keep previous value."
           },
           {
             "name": "func",
             "type": "function",
+            "default": "nil",
             "description": "The new function. Use `nil` to keep previous value."
           }
         ],
@@ -26582,6 +26724,47 @@
         ]
       },
       {
+        "name": "IntersectRayWithSphere",
+        "parent": "util",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Performs a ray-sphere intersection and returns the intersection positions or nil.",
+        "arguments": [
+          {
+            "name": "rayOrigin",
+            "type": "Vector",
+            "description": "Origin/start position of the ray."
+          },
+          {
+            "name": "rayDelta",
+            "type": "Vector",
+            "description": "The end position of the ray relative to the start position. Equivalent of `direction * distance`."
+          },
+          {
+            "name": "shperePosition",
+            "type": "Vector",
+            "description": "Any position of the sphere."
+          },
+          {
+            "name": "sphereRadius",
+            "type": "number",
+            "description": "The radius of the sphere."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "number",
+            "description": "The first intersection position along the ray, or `nil` if there is no intersection."
+          },
+          {
+            "type": "number",
+            "description": "The second intersection position along the ray, or `nil` if there is no intersection."
+          }
+        ]
+      },
+      {
         "name": "IsBinaryModuleInstalled",
         "parent": "util",
         "realms": [
@@ -26601,6 +26784,43 @@
           {
             "type": "boolean",
             "description": "Whether the binary module is installed and <page>Global.require</page> can resolve it."
+          }
+        ]
+      },
+      {
+        "name": "IsBoxIntersectingSphere",
+        "parent": "util",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Performs a box-sphere intersection and returns whether there was an intersection or not.",
+        "arguments": [
+          {
+            "name": "boxMin",
+            "type": "Vector",
+            "description": "The minimum extents of the Axis-Aligned box."
+          },
+          {
+            "name": "boxMax",
+            "type": "Vector",
+            "description": "The maximum extents of the Axis-Aligned box."
+          },
+          {
+            "name": "shpere2Position",
+            "type": "Vector",
+            "description": "Any position of the second sphere."
+          },
+          {
+            "name": "sphere2Radius",
+            "type": "number",
+            "description": "The radius of the second sphere."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "`true` if there is an intersection, `false` otherwise."
           }
         ]
       },
@@ -26710,6 +26930,48 @@
         ]
       },
       {
+        "name": "IsPointInCone",
+        "parent": "util",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Returns whether a point is within a cone or not.",
+        "arguments": [
+          {
+            "name": "point",
+            "type": "Vector",
+            "description": "The position of the point to test."
+          },
+          {
+            "name": "coneOrigin",
+            "type": "Vector",
+            "description": "The position of the cone tip."
+          },
+          {
+            "name": "coneAxis",
+            "type": "Vector",
+            "description": "The direction of the cone."
+          },
+          {
+            "name": "coneSine",
+            "type": "number",
+            "description": "The sine of the cone's angle."
+          },
+          {
+            "name": "coneLength",
+            "type": "number",
+            "description": "Length of the cone's axis."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "`true` if the point is within the cone, `false` otherwise."
+          }
+        ]
+      },
+      {
         "name": "IsSkyboxVisibleFromPoint",
         "parent": "util",
         "realms": [
@@ -26727,6 +26989,43 @@
           {
             "type": "boolean",
             "description": "Whether the skybox is visible from the position."
+          }
+        ]
+      },
+      {
+        "name": "IsSphereIntersectingSphere",
+        "parent": "util",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Performs a sphere-sphere intersection and returns whether there was an intersection or not.",
+        "arguments": [
+          {
+            "name": "sphere1Position",
+            "type": "Vector",
+            "description": "Any position of the first sphere."
+          },
+          {
+            "name": "sphere1Radius",
+            "type": "number",
+            "description": "The radius of the first sphere."
+          },
+          {
+            "name": "sphere2Position",
+            "type": "Vector",
+            "description": "Any position of the second sphere."
+          },
+          {
+            "name": "sphere2Radius",
+            "type": "number",
+            "description": "The radius of the second sphere."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "`true` if there is an intersection, `false` otherwise."
           }
         ]
       },
@@ -27319,12 +27618,12 @@
           {
             "name": "amplitude",
             "type": "number",
-            "description": "The strength of the effect."
+            "description": "The strength of the effect. How far away from its origin the camera will move while shaking."
           },
           {
             "name": "frequency",
             "type": "number",
-            "description": "The frequency of the effect in hertz."
+            "description": "How many times per second to change the direction of the camera wobble. 40 is generally enough; values higher are hardly distinguishable."
           },
           {
             "name": "duration",
