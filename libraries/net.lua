@@ -130,6 +130,13 @@ function net.ReadUInt(numberOfBits)
 end
 
 ---  client|server
+--- Reads a unsigned integer with 64 bits from the received net message.  
+--- ⚠ **WARNING**: You **must** read information in same order as you write it.  
+--- @return string @The uint64 number.
+function net.ReadUInt64()
+end
+
+---  client|server
 --- Reads a vector from the received net message. Vectors sent by this function are **compressed**, which may result in precision loss. See net.WriteVector for more information.  
 --- ⚠ **WARNING**: You **must** read information in same order as you write it.  
 --- @return Vector @The read vector, or `Vector( 0, 0, 0 )` if no vector could be read.
@@ -241,7 +248,7 @@ function net.WriteFloat(float)
 end
 
 ---  client|server
---- Appends an integer - a whole number - to the current net message. Can be read back with net.ReadInt on the receiving end.  
+--- Appends a signed integer - a whole number, positive/negative - to the current net message. Can be read back with net.ReadInt on the receiving end.  
 --- Use net.WriteUInt to send an unsigned number (that you know will **never** be negative). Use net.WriteFloat for a non-whole number (e.g. `2.25`).  
 --- @param integer number @The integer to be sent.
 --- @param bitCount number @The amount of bits the number consists of
@@ -281,6 +288,18 @@ end
 --- @param unsignedInteger number @The unsigned integer to be sent.
 --- @param numberOfBits number @The size of the integer to be sent, in bits
 function net.WriteUInt(unsignedInteger, numberOfBits)
+end
+
+---  client|server
+--- Appends an unsigned integer with 64 bits to the current net message.  
+--- ℹ **NOTE**:   
+--- The limit for an uint64 is 18.446.744.073.709.551.615.  
+--- Everything above the limit will be set to the limit.  
+--- Unsigned numbers **do not** support negative numbers.  
+--- If you use negative numbers, it will read it incorrectly (limit + (input + 1)).  
+--- You can give it a number, but it will break as soon as it has 14 digits  
+--- @param uint64 number @The uint64 to be sent.
+function net.WriteUInt64(uint64)
 end
 
 ---  client|server

@@ -3928,6 +3928,12 @@
         "description": "Disables default engine bloom and pauses the \"brightness changes\" on HDR maps."
       },
       {
+        "name": "viewid",
+        "type": "number",
+        "default": "0",
+        "description": "This is identifying which logical part of the scene an entity is being redered in, see <page>Enums/VIEW</page>."
+      },
+      {
         "name": "offcenter",
         "type": "table",
         "description": "This allows you to \"zoom in\" on a part of the screen - for example, the top-left quarter of the screen. This is similar to how [poster splits the screen](https://garry.blog/poster-screenshots/) into separate renders.\n\nIt's a table with 4 keys, controlling what portion of the screen to draw:\n* left - where the left edge starts. Natural value is 0.\n* right - where the right edge ends. Natural value is equal to w (the width of the viewport).\n* top - where the `bottom` edge starts. Natural value is 0.\n* bottom - where the `top` edge ends. Natural value is equal to h (the height of the viewport).\n\nNote that top and bottom are reversed.\n\nValues outside the viewport are allowed, but not recommended - instead you should increase the view FOV."
