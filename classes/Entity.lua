@@ -765,13 +765,14 @@ end
 
 ---  client|server
 --- Returns flex name.  
---- @param id number @The flex id to look up name of
---- @return string @The flex name
+--- @param id number @The flex index to look up name of
+--- @return string @The flex name, or no value if the requested ID is out of bounds.
 function Entity:GetFlexName(id)
 end
 
 ---  client|server
---- Returns the number of flexes this entity has.  
+--- Returns the number of flex controllers this entity's model has.  
+--- ℹ **NOTE**: Please note that while this function can return the real number of flex controllers, the game supports only a certain amount due to networking limitations. See Entity:SetFlexWeight.  
 --- @return number @The number of flexes.
 function Entity:GetFlexNum()
 end
@@ -783,9 +784,9 @@ function Entity:GetFlexScale()
 end
 
 ---  client|server
---- Returns current weight ( value ) of the flex.  
+--- Returns current weight ( value ) of given flex controller. Please see Entity:SetFlexWeight regarding limitations.  
 --- @param flex number @The ID of the flex to get weight of
---- @return number @The current weight of the flex
+--- @return number @The current weight of the flex, or 0 if out of bounds.
 function Entity:GetFlexWeight(flex)
 end
 
@@ -1996,43 +1997,11 @@ end
 ---  client
 --- 🛑 **DEPRECATED**:   
 --- This function got disabled and will always throw an error if it's used. This is the error:  
---- ```lua  
+--- ```  
 --- [ERROR] InitializeAsClientEntity is deprecated and should no longer be used.  
 --- ```  
---- ⚠ **WARNING**:   
---- **These are the reasons why this function was disabled:**  
---- Calling this on **ANY**(even clientside only) entity will cause random crashes, and it will crash the game as soon as the entity is removed!  
---- **Some bugs if you call it on an entity that is not clientside only:**  
---- All NWVars break clientside for the given player.  
---- The EntIndex becomes -1.  
---- The Entity Table gets cleared every time this function is called.  
---- <note>  
---- As soon as the Entity re-enters the PVS, some bugs will fix themself, but it will still crash the game if the entity gets removed!  
---- This is behavior only happens for entities, not for players!  
---- </note>  
---- Calling this function on the World creates a permanent warning that will spam your console.  
---- ```lua  
---- ] lua_run_cl Entity(0):InitializeAsClientEntity()  
---- Refusing to render the map on an entity to prevent crashes! (x9330)  
---- ```  
---- Calling this function on an entity that is not **clientside only** causes all networking to break for that specific entity and an Engine Error will occur on a full update  
---- (a full update can be forced with `cl_fullupdate`):  
---- <upload src="b04e5/8db8f2ceed2528b.png" size="3320" name="image.png">  
---- Calling this function on a player causes a bunch of unexpected behavior and your game will crash as soon as the player is removed/leaves the server.  
---- **Some bugs if you set it on a player (all Entity bugs apply here):**  
---- You get some values displayed in the top-left of your screen for some reason.  
---- If you call this function on the local player, it causes your eye pos to be your position (EyePos == GetPos):  
---- The Player name becomes `ERRORNAME`  
---- As soon as the player re-enters the PVS, it crashes the game!  
---- ```lua  
---- lua_run_cl LocalPlayer():InitializeAsClientEntity()  
---- ] lua_run_cl print(LocalPlayer())  
---- Player [-1][ERRORNAME]  
---- ```  
---- <upload src="b04e5/8db8f305bc00016.png" size="1506807" name="image.png">  
---- </upload></upload>  
 --- Initializes this entity as being clientside only.  
---- Only works on entities fully created clientside, and as such it has currently no use due to this being automatically called by ents.CreateClientProp, ents.CreateClientside, Global.ClientsideModel and Global.ClientsideScene.  
+--- Only works on entities fully created clientside, and as such it currently has no use due to this being automatically called by ents.CreateClientProp, ents.CreateClientside, Global.ClientsideModel and Global.ClientsideScene.  
 --- @deprecated
 function Entity:InitializeAsClientEntity()
 end
@@ -2116,7 +2085,7 @@ function Entity:IsLineOfSightClear(target)
 end
 
 ---  client|server
---- Returns if the entity is going to be deleted in the next frame.  
+--- Returns if the entity is going to be deleted in the next frame. Entities marked for deletion should not be accessed.  
 --- @return boolean @If the entity is going to be deleted.
 function Entity:IsMarkedForDeletion()
 end
@@ -2910,13 +2879,14 @@ function Entity:SetEyeTarget(pos)
 end
 
 ---  client|server
---- Sets the flex scale of the entity.  
+--- Sets the scale of all the flexes of this entity. See Entity:SetFlexWeight.  
 --- @param scale number @The new flex scale to set to
 function Entity:SetFlexScale(scale)
 end
 
 ---  client|server
---- Sets the flex weight.  
+--- Sets the weight/value of given flex controller.  
+--- ℹ **NOTE**: Only `96` flex controllers can be set! Flex controllers on models with higher amounts will not be accessible.  
 --- @param flex number @The ID of the flex to modify weight of
 --- @param weight number @The new weight to set
 function Entity:SetFlexWeight(flex, weight)
@@ -3780,8 +3750,8 @@ function Entity:SetRagdollPos(boneid, pos)
 end
 
 ---  client
---- Sets the render angles of the Entity.  
---- @param newAngles Angle @The new render angles to be set to.
+--- Sets the render angle override for the Entity.  
+--- @param newAngles? Angle @The new render angles to be set to
 function Entity:SetRenderAngles(newAngles)
 end
 
@@ -3827,8 +3797,8 @@ function Entity:SetRenderMode(renderMode)
 end
 
 ---  client
---- Set the origin in which the Entity will be drawn from.  
---- @param newOrigin Vector @The new origin in world coordinates where the Entity's model will now be rendered from.
+--- Set the render origin override, a position where the Entity will be rendered at.  
+--- @param newOrigin? Vector @The new origin in world coordinates where the Entity's model will now be rendered at
 function Entity:SetRenderOrigin(newOrigin)
 end
 
