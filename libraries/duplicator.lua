@@ -1,8 +1,8 @@
 --- The duplicator library allows you to specify what should be saved when someone attempts to duplicate your custom entity with the duplicator tool. It can also be used by 3rd party duplicator tools to make use of the built in system.  
 _G.duplicator = {}
 ---  client|server
---- Allow this entity to be duplicated  
---- @param classname string @An entity's classname
+--- Allow entities with given class name to be duplicated. See duplicator.Disallow for the opposite effect.  
+--- @param classname string @An entity's classname to allow duuplicating.
 function duplicator.Allow(classname)
 end
 
@@ -58,6 +58,13 @@ end
 --- @param entTable table @The duplication data to build the entity with
 --- @return Entity @The newly created entity
 function duplicator.CreateEntityFromTable(ply, entTable)
+end
+
+---  client|server
+--- Disallow this entity to be duplicated. Opposite of duplicator.Allow.  
+--- By default, all classes are disallowed to be duplicated. This function is useful for temporarily disabling duplication of certain entity classes that may have been previously allowed.  
+--- @param classname string @An entity's classname to disallow duplicating.
+function duplicator.Disallow(classname)
 end
 
 ---  server
