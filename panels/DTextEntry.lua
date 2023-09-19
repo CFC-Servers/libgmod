@@ -4,10 +4,18 @@
 --- @class DTextEntry : TextEntry
 local DTextEntry = {}
 ---  client|menu
+--- Adds an entry to DTextEntry's history.  
+--- See DTextEntry:SetHistoryEnabled.  
+--- @param text string @Text to add to the text entry's history.
+function DTextEntry:AddHistory(text)
+end
+
+---  client|menu
 --- Called whenever the value of the panel has been updated (whether by user input or otherwise).  
 --- It allows you to determine whether a user can modify the TextEntry's text.  
 --- By default, this only checks whether the panel disallows numeric characters, preventing it from being edited if the value contains any.  
 --- This is actually an engine hook that only works on TextEntry derived elements.  
+--- If you are looking for a way to modify character limits, see Panel:SetMaximumCharCount  
 --- @param char string @The last character entered into the panel.
 --- @return boolean @Return `true` to prevent the value from changing, `false` to allow it.
 function DTextEntry:AllowInput(char)
@@ -188,7 +196,8 @@ function DTextEntry:SetFont(font)
 end
 
 ---  client|menu
---- Enables or disables the history functionality of  DTextEntry.  
+--- Enables or disables the history functionality of  DTextEntry. This allows the player to scroll through history elements using up and down arrow keys.  
+--- See DTextEntry:AddHistory.  
 --- @param enable boolean @Whether to enable history or not.
 function DTextEntry:SetHistoryEnabled(enable)
 end
