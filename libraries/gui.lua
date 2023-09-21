@@ -6,6 +6,14 @@ function gui.ActivateGameUI()
 end
 
 ---  client
+--- Pushes text to the closed caption box.  
+--- @param text string @The caption to emit
+--- @param duration number @How long the caption should stay for
+--- @param fromPlayer boolean @Is this caption coming from the player?
+function gui.AddCaption(text, duration, fromPlayer)
+end
+
+---  client
 --- Enables the mouse cursor without restricting player movement, like using Sandbox's context menu.  
 --- ℹ **NOTE**:   
 --- Some CUserCmd functions will return incorrect values when this function is active because [the user input is getting overtaken by the vgui system](https://github.com/Facepunch/garrysmod-issues/issues/982#issuecomment-505671531).  

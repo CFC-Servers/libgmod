@@ -1646,7 +1646,7 @@
       "client",
       "server"
     ],
-    "description": "Table used by <page>physenv.SetPerformanceSettings</page>.",
+    "description": "Table used by <page>physenv.SetPerformanceSettings</page> and <page>physenv.GetPerformanceSettings</page>.",
     "name": "PhysEnvPerformanceSettings"
   },
   {
@@ -3926,6 +3926,12 @@
         "type": "boolean",
         "default": "true",
         "description": "Disables default engine bloom and pauses the \"brightness changes\" on HDR maps."
+      },
+      {
+        "name": "viewid",
+        "type": "number",
+        "default": "0",
+        "description": "This is identifying which logical part of the scene an entity is being redered in, see <page>Enums/VIEW</page>."
       },
       {
         "name": "offcenter",
