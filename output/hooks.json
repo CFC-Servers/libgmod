@@ -1154,7 +1154,7 @@
           {
             "name": "ply",
             "type": "Player",
-            "description": "The player who pasted the entity.\n\n<warning>This may not be a valid player in some circumstances. For example, when a save is loaded from the main menu, this hook will be called before the player is spawned. This argument will be a NULL entity in that case.</warning>\n<bug pull=\"1408\">This will be nil for invalid players.</bug>"
+            "description": "The player who pasted the entity.\n\n<warning>This may not be a valid player in some circumstances. For example, when a save is loaded from the main menu, this hook will be called before the player is spawned. This argument will be a NULL entity in that case.</warning>"
           },
           {
             "name": "ent",
@@ -1655,7 +1655,7 @@
         "realms": [
           "client"
         ],
-        "description": "Adds a death notice entry.\n\n<bug issue=\"2611\" pull=\"1380\">You cannot use <page>hook.Add</page> on this hook yet.</bug>",
+        "description": "Adds a death notice entry.",
         "arguments": [
           {
             "name": "attacker",
@@ -2313,7 +2313,7 @@
         "realms": [
           "server"
         ],
-        "description": "Handles the player's death.\n\nThis hook is **not** called if the player is killed by <page>Player:KillSilent</page>. See <page>GM:PlayerSilentDeath</page> for that.\n\n* <page>GM:PlayerDeath</page> is called after this hook\n* <page>GM:PostPlayerDeath</page> is called after that",
+        "description": "Handles the player's death.\n\nThis hook is **not** called if the player is killed by <page>Player:KillSilent</page>. See <page>GM:PlayerSilentDeath</page> for that.\n\n* <page>GM:PlayerDeath</page> is called after this hook\n* <page>GM:PostPlayerDeath</page> is called after that\n\n<note><page>Player:Alive</page> will return false in this hook.</note>",
         "arguments": [
           {
             "name": "ply",
@@ -2375,7 +2375,7 @@
         "realms": [
           "client"
         ],
-        "description": "Allows you to override physgun beam drawing.\n\n<bug issue=\"3294\">This is still called when physgun_drawbeams is disabled.</bug>",
+        "description": "Allows you to override physgun effects rendering.\n\n<note>This is still called when `physgun_drawbeams` is set to `0`, because this hook is also capable of overriding physgun sprite effects, while the convar does not.</note>",
         "arguments": [
           {
             "name": "ply",
@@ -2411,7 +2411,7 @@
         "returnValues": [
           {
             "type": "boolean",
-            "description": "Return false to hide default beam"
+            "description": "Return false to hide default effects"
           }
         ]
       },
@@ -2555,7 +2555,7 @@
           "client",
           "server"
         ],
-        "description": "Called right before the removal of an entity.\n<bug issue=\"4675\">This hook is called during clientside full updates. See <page>ENTITY:OnRemove#clientsidebehaviourremarks</page> for more information.</bug>",
+        "description": "Called right before the removal of an entity.\n<note>\nThis hook is called during clientside full updates. See <page>ENTITY:OnRemove#clientsidebehaviourremarks</page> for more information.\n**This is fixed on the dev branch**\n</note>",
         "arguments": [
           {
             "name": "ent",
@@ -3085,7 +3085,7 @@
           "client",
           "server"
         ],
-        "description": "Allows to override player landing animations.",
+        "description": "Called every frame by the player model animation system. Allows to override player landing animations.",
         "arguments": [
           {
             "name": "ply",
@@ -3672,6 +3672,42 @@
         ]
       },
       {
+        "name": "OnCloseCaptionEmit",
+        "parent": "GM",
+        "realms": [
+          "client"
+        ],
+        "description": "Called when a caption has been emitted to the closed caption box.",
+        "arguments": [
+          {
+            "name": "soundScript",
+            "type": "string",
+            "description": "The name of the soundscript, or `customLuaToken` if it's from <page>gui.AddCaption</page>"
+          },
+          {
+            "name": "duration",
+            "type": "number",
+            "description": "How long the caption should stay for"
+          },
+          {
+            "name": "fromPlayer",
+            "type": "boolean",
+            "description": "Is this caption coming from the player?"
+          },
+          {
+            "name": "fullText",
+            "type": "string",
+            "description": "The caption. Can be nil if its token is not registered"
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "Return `true` to prevent the caption from appearing"
+          }
+        ]
+      },
+      {
         "name": "OnContextMenuClose",
         "parent": "GM",
         "realms": [
@@ -3899,12 +3935,6 @@
             "type": "Player",
             "description": "The player who tried to freeze the entity."
           }
-        ],
-        "returnValues": [
-          {
-            "type": "boolean",
-            "description": "Allows you to override whether the player can freeze the entity"
-          }
         ]
       },
       {
@@ -4048,6 +4078,27 @@
           {
             "type": "boolean",
             "description": "Return true to suppress default action"
+          }
+        ]
+      },
+      {
+        "name": "OnPlayerJump",
+        "parent": "GM",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Called when a player jumps.",
+        "arguments": [
+          {
+            "name": "player",
+            "type": "Entity",
+            "description": "Player"
+          },
+          {
+            "name": "speed",
+            "type": "number",
+            "description": "The velocity/impulse of the jump"
           }
         ]
       },
@@ -4659,7 +4710,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called when a player is killed by <page>Player:Kill</page> or any other normal means.\n\nThis hook is **not** called if the player is killed by <page>Player:KillSilent</page>. See <page>GM:PlayerSilentDeath</page> for that.\n\n* <page>GM:DoPlayerDeath</page> is called **before** this hook.\n* <page>GM:PostPlayerDeath</page> is called **after** this hook.\n\nSee <page>Player:LastHitGroup</page> if you need to get the last hit hitgroup of the player.\n\n<note><page>Player:Alive</page> will return true in this hook.</note>",
+        "description": "Called when a player is killed by <page>Player:Kill</page> or any other normal means.\n\nThis hook is **not** called if the player is killed by <page>Player:KillSilent</page>. See <page>GM:PlayerSilentDeath</page> for that.\n\n* <page>GM:DoPlayerDeath</page> is called **before** this hook.\n* <page>GM:PostPlayerDeath</page> is called **after** this hook.\n\nSee <page>Player:LastHitGroup</page> if you need to get the last hit hitgroup of the player.\n\n<note><page>Player:Alive</page> will return false in this hook.</note>",
         "arguments": [
           {
             "name": "victim",
@@ -5103,7 +5154,7 @@
           "client",
           "server"
         ],
-        "description": "Called after the player's think.",
+        "description": "Called after the player's think.\n<note>On the client side, it is only called for the local player.</note>",
         "arguments": [
           {
             "name": "ply",
@@ -5818,7 +5869,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called right after <page>GM:DoPlayerDeath</page>, <page>GM:PlayerDeath</page> and <page>GM:PlayerSilentDeath</page>.\n\nThis hook will be called for all deaths, including <page>Player:KillSilent</page>\n\n<note>The player is considered dead when this is hook is called, <page>Player:Alive</page> will return false.</note>",
+        "description": "Called right after <page>GM:DoPlayerDeath</page>, <page>GM:PlayerDeath</page> and <page>GM:PlayerSilentDeath</page>.\n\nThis hook will be called for all deaths, including <page>Player:KillSilent</page>\n\n<note><page>Player:Alive</page> will return false in this hook.</note>",
         "arguments": [
           {
             "name": "ply",
@@ -6664,7 +6715,7 @@
           "client",
           "server"
         ],
-        "description": "Allows you to change the players inputs before they are processed by the server.\n\n\n\n\nThis is basically a shared version of <page>GM:CreateMove</page>.\n\n<note>This function is also called for bots, making it the best solution to control them so far</note>\n\n<note>This hook is predicted, but not by usual means, this hook is called when a <page>CUserCmd</page> is generated on the client, and on the server when it is received, so it is necessary for this hook to be called clientside even on singleplayer</note>",
+        "description": "Allows you to change the players inputs before they are processed by the server. This function is also called for bots, making it the best solution to control them.\n\nThis is basically a shared version of <page>GM:CreateMove</page>.\n\n\n<note>This hook is predicted, but not by usual means, it is called when a <page>CUserCmd</page> is generated on the client, and on the server when it is received, so it is necessary for this hook to be called clientside even on singleplayer</note>",
         "arguments": [
           {
             "name": "ply",
@@ -6732,7 +6783,7 @@
           "client",
           "server"
         ],
-        "description": "Allows you to translate player activities.",
+        "description": "<note>Isn't call when CalcMainActivity return a valid override sequence id</note>\nAllows you to translate player activities.",
         "arguments": [
           {
             "name": "ply",
@@ -7151,7 +7202,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called when the nextbot NPC sees another Nextbot NPC or a Player.\n<note>This hook will only run after <page>NextBot:SetFOV</page> or other vision related function is called on the nextbot. See <page>NextBot:IsAbleToSee</page> for more details.</note>\n<bug issue=\"4734\">This hook is not called in some scenarios.</bug>",
+        "description": "Called when the nextbot NPC sees another Nextbot NPC or a Player.\n<note>This hook will only run after <page>NextBot:SetFOV</page> or other vision related function is called on the nextbot. See <page>NextBot:IsAbleToSee</page> for more details.</note>",
         "arguments": [
           {
             "name": "ent",
@@ -7166,7 +7217,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called when the nextbot NPC loses sight of another Nextbot NPC or a Player.\n<note>This hook will only run after <page>NextBot:SetFOV</page> or other vision related function is called on the nextbot. See <page>NextBot:IsAbleToSee</page> for more details.</note>\n<bug issue=\"4734\">This hook is not called in some scenarios.</bug>",
+        "description": "Called when the nextbot NPC loses sight of another Nextbot NPC or a Player.\n<note>This hook will only run after <page>NextBot:SetFOV</page> or other vision related function is called on the nextbot. See <page>NextBot:IsAbleToSee</page> for more details.</note>",
         "arguments": [
           {
             "name": "ent",
@@ -8307,6 +8358,20 @@
         "description": "Called when the context menu is supposedly opened.\n\nThis is simply an alias of <page>GM:OnContextMenuOpen</page> but will **not** be called if <page>SANDBOX:ContextMenuOpen</page> prevents the context menu from opening.\n\nThis hook **will** be called even if the context menu doesn't actually exist, i.e. <page>SANDBOX:ContextMenuEnabled</page> blocked its creation."
       },
       {
+        "name": "ContextMenuShowTool",
+        "parent": "SANDBOX",
+        "realms": [
+          "client"
+        ],
+        "description": "Called to poll if active tool settings should appear in the context menu. Please note that this is only called on initial opening of the context menu, not every frame the context menu is in use.",
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "Return `false` to prevent active tool settings from displaying in the context menu."
+          }
+        ]
+      },
+      {
         "name": "OnRevertSpawnlist",
         "parent": "SANDBOX",
         "realms": [
@@ -9263,7 +9328,7 @@
         "realms": [
           "client"
         ],
-        "description": "Allows you to adjust player view while this weapon in use.\n\nThis hook is called from the default implementation of <page>GM:CalcView</page> which is [here](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/gamemodes/base/gamemode/cl_init.lua#L387-L395). Therefore, it will not be called if any other hook added to CalcView returns any value, or if the current gamemode overrides the default hook and does not call the SWEP function.\n\n<bug pull=\"1348\">SWEPs that define this function will not work with the <page text=\"taunt camera.\">Global.TauntCamera</page></bug>",
+        "description": "Allows you to adjust player view while this weapon in use.\n\nThis hook is called from the default implementation of <page>GM:CalcView</page> which is [here](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/gamemodes/base/gamemode/cl_init.lua#L387-L395). Therefore, it will not be called if any other hook added to `CalcView` returns any value, or if the current gamemode overrides the default hook and does not call the SWEP function.",
         "arguments": [
           {
             "name": "ply",
