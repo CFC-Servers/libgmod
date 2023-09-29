@@ -1058,7 +1058,7 @@
     "realms": [
       "server"
     ],
-    "description": "Data structure used by the <page>duplicator</page> to store and load entity data.\n\nIt is created by <page>duplicator.CopyEntTable</page> and can be loaded by <page>duplicator.CreateEntityFromTable</page>.\n\nIt also shows up in several other contexts:\n* <page>duplicator.RegisterEntityClass</page>\n* <page>ENTITY:OnEntityCopyTableFinish</page>\n* <page>ENTITY:OnDuplicated</page>\n\n<note>1=In addition to all fields listed here, any field saved on the entity will be saved as-is to this table. For example, if you set ent.FavoriteFood = \"Steak\" before duplicating it, this structure will also contain the field FavoriteFood with the value \"Steak\".</note>",
+    "description": "Data structure used by the <page>duplicator</page> to store and load entity data.\n\nIt is created by <page>duplicator.CopyEntTable</page> and can be loaded by <page>duplicator.CreateEntityFromTable</page>.\n\nIt also shows up in several other contexts:\n* <page>duplicator.RegisterEntityClass</page>\n* <page>ENTITY:OnEntityCopyTableFinish</page>\n* <page>ENTITY:OnDuplicated</page>\n\n<note>In addition to all fields listed here, any field saved on the entity will be saved as-is to this table. For example, if you set `ent.FavoriteFood = \"Steak\"` before duplicating it, this structure will also contain the field `FavoriteFood` with the value `\"Steak\"`.</note>",
     "name": "EntityCopyData"
   },
   {
@@ -1646,7 +1646,7 @@
       "client",
       "server"
     ],
-    "description": "Table used by <page>physenv.SetPerformanceSettings</page>.",
+    "description": "Table used by <page>physenv.SetPerformanceSettings</page> and <page>physenv.GetPerformanceSettings</page>.",
     "name": "PhysEnvPerformanceSettings"
   },
   {
@@ -3926,6 +3926,12 @@
         "type": "boolean",
         "default": "true",
         "description": "Disables default engine bloom and pauses the \"brightness changes\" on HDR maps."
+      },
+      {
+        "name": "viewid",
+        "type": "number",
+        "default": "0",
+        "description": "This is identifying which logical part of the scene an entity is being redered in, see <page>Enums/VIEW</page>."
       },
       {
         "name": "offcenter",
