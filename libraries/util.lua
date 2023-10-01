@@ -276,11 +276,32 @@ end
 function util.IntersectRayWithPlane(rayOrigin, rayDirection, planePosition, planeNormal)
 end
 
+---  client|server
+--- Performs a ray-sphere intersection and returns the intersection positions or nil.  
+--- @param rayOrigin Vector @Origin/start position of the ray.
+--- @param rayDelta Vector @The end position of the ray relative to the start position
+--- @param shperePosition Vector @Any position of the sphere.
+--- @param sphereRadius number @The radius of the sphere.
+--- @return number @The first intersection position along the ray, or `nil` if there is no intersection.
+--- @return number @The second intersection position along the ray, or `nil` if there is no intersection.
+function util.IntersectRayWithSphere(rayOrigin, rayDelta, shperePosition, sphereRadius)
+end
+
 ---  menu|client|server
 --- Returns whether a binary module is installed and is resolvable by Global.require.  
 --- @param name string @Name of the binary module, exactly the same as you would enter it as the argument to Global.require.
 --- @return boolean @Whether the binary module is installed and Global.require can resolve it.
 function util.IsBinaryModuleInstalled(name)
+end
+
+---  client|server
+--- Performs a box-sphere intersection and returns whether there was an intersection or not.  
+--- @param boxMin Vector @The minimum extents of the Axis-Aligned box.
+--- @param boxMax Vector @The maximum extents of the Axis-Aligned box.
+--- @param shpere2Position Vector @Any position of the second sphere.
+--- @param sphere2Radius number @The radius of the second sphere.
+--- @return boolean @`true` if there is an intersection, `false` otherwise.
+function util.IsBoxIntersectingSphere(boxMin, boxMax, shpere2Position, sphere2Radius)
 end
 
 ---  server
@@ -312,12 +333,33 @@ end
 function util.IsOBBIntersectingOBB(box1Origin, box1Angles, box1Mins, box1Maxs, box2Origin, box2Angles, box2Mins, box2Maxs, tolerance)
 end
 
+---  client|server
+--- Returns whether a point is within a cone or not.  
+--- @param point Vector @The position of the point to test.
+--- @param coneOrigin Vector @The position of the cone tip.
+--- @param coneAxis Vector @The direction of the cone.
+--- @param coneSine number @The sine of the cone's angle.
+--- @param coneLength number @Length of the cone's axis.
+--- @return boolean @`true` if the point is within the cone, `false` otherwise.
+function util.IsPointInCone(point, coneOrigin, coneAxis, coneSine, coneLength)
+end
+
 ---  client
 --- Check whether the skybox is visible from the point specified.  
 --- ℹ **NOTE**: This will always return true in fullbright maps.  
 --- @param position Vector @The position to check the skybox visibility from.
 --- @return boolean @Whether the skybox is visible from the position.
 function util.IsSkyboxVisibleFromPoint(position)
+end
+
+---  client|server
+--- Performs a sphere-sphere intersection and returns whether there was an intersection or not.  
+--- @param sphere1Position Vector @Any position of the first sphere.
+--- @param sphere1Radius number @The radius of the first sphere.
+--- @param sphere2Position Vector @Any position of the second sphere.
+--- @param sphere2Radius number @The radius of the second sphere.
+--- @return boolean @`true` if there is an intersection, `false` otherwise.
+function util.IsSphereIntersectingSphere(sphere1Position, sphere1Radius, sphere2Position, sphere2Radius)
 end
 
 ---  client|server
@@ -369,13 +411,13 @@ end
 
 ---  menu|client|server
 --- Converts a JSON string to a Lua table.  
---- ⚠ **WARNING**: Keys are converted to numbers wherever possible. This means using Player:SteamID64 as keys won't work.  
---- There is a limit of 15,000 keys total.  
---- 🦟 **BUG**: [This will attempt cast the string keys "inf", "nan", "true", and "false" to their respective Lua values. This completely ignores nulls in arrays.](https://github.com/Facepunch/garrysmod-issues/issues/3561)  
+--- 🦟 **BUG**: [This will attempt to cast the string keys "inf", "nan", "true", and "false" to their respective Lua values. This completely ignores nulls in arrays.](https://github.com/Facepunch/garrysmod-issues/issues/3561)  
 --- 🦟 **BUG**: [Colors will not have the color metatable.](https://github.com/Facepunch/garrysmod-issues/issues/2407)  
 --- @param json string @The JSON string to convert.
+--- @param ignorelimits? boolean @ignore the depth and breadth limits, **use at your own risk!**
+--- @param ignoreconversions? boolean @ignore string to number conversions for table keys
 --- @return table @The table containing converted information
-function util.JSONToTable(json)
+function util.JSONToTable(json, ignorelimits, ignoreconversions)
 end
 
 ---  menu|client|server
@@ -527,15 +569,16 @@ end
 --- Makes the screen shake.  
 --- ℹ **NOTE**: The screen shake effect is rendered by modifying the view origin on the client. If you override the view origin in GM:CalcView you may not be able to see the shake effect.  
 --- @param pos Vector @The origin of the effect
---- @param amplitude number @The strength of the effect.
---- @param frequency number @The frequency of the effect in hertz.
+--- @param amplitude number @The strength of the effect
+--- @param frequency number @How many times per second to change the direction of the camera wobble
 --- @param duration number @The duration of the effect in seconds.
 --- @param radius number @The range from the origin within which views will be affected, in Hammer units
-function util.ScreenShake(pos, amplitude, frequency, duration, radius)
+--- @param airshake? boolean @whether players in the air should also be affected.
+function util.ScreenShake(pos, amplitude, frequency, duration, radius, airshake)
 end
 
 ---  menu|client|server
---- Sets PData for offline player using his SteamID.  
+--- Sets PData for offline player using their SteamID.  
 --- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
 --- @param steamID string @SteamID of the player.
 --- @param name string @Variable name to store the value in.
@@ -600,10 +643,8 @@ end
 
 ---  menu|client|server
 --- Converts a table to a JSON string.  
---- ⚠ **WARNING**: Trying to serialize or deserialize SteamID64s in JSON will NOT work correctly. They will be interpreted as numbers which cannot be precisely stored by JavaScript, Lua and JSON, leading to loss of data. You may want to use util.SteamIDFrom64 to work around this.  
---- Alternatively, just append a character to the SteamID64 to force util.JSONToTable to treat it as a string.  
---- ⚠ **WARNING**: All integers will be converted to decimals (5 -> 5.0).  
 --- ⚠ **WARNING**: All keys are strings in the JSON format, so all keys will be converted to strings!  
+--- All integers will be converted to decimals (5 -> 5.0).  
 --- 🦟 **BUG**: [This will produce invalid JSON if the provided table contains nan or inf values.](https://github.com/Facepunch/garrysmod-issues/issues/3561)  
 --- @param table table @Table to convert.
 --- @param prettyPrint? boolean @Format and indent the JSON.
