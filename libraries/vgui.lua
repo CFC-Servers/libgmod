@@ -22,7 +22,7 @@ end
 
 ---  client|menu
 --- Returns whenever the cursor is currently active and visible.  
---- @return boolean @isCursorVisible
+--- @return boolean @Whether the cursor is visible or not.
 function vgui.CursorVisible()
 end
 
