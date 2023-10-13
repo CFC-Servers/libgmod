@@ -4,10 +4,18 @@
 --- @class DTextEntry : TextEntry
 local DTextEntry = {}
 ---  client|menu
+--- Adds an entry to DTextEntry's history.  
+--- See DTextEntry:SetHistoryEnabled.  
+--- @param text string @Text to add to the text entry's history.
+function DTextEntry:AddHistory(text)
+end
+
+---  client|menu
 --- Called whenever the value of the panel has been updated (whether by user input or otherwise).  
 --- It allows you to determine whether a user can modify the TextEntry's text.  
 --- By default, this only checks whether the panel disallows numeric characters, preventing it from being edited if the value contains any.  
 --- This is actually an engine hook that only works on TextEntry derived elements.  
+--- If you are looking for a way to modify character limits, see Panel:SetMaximumCharCount  
 --- @param char string @The last character entered into the panel.
 --- @return boolean @Return `true` to prevent the value from changing, `false` to allow it.
 function DTextEntry:AllowInput(char)
@@ -95,12 +103,6 @@ function DTextEntry:IsEditing()
 end
 
 ---  client|menu
---- Determines whether or not DTextEntry is in multi-line mode. This is set with DTextEntry:SetMultiline.  
---- @return boolean @Whether the object is in multi-line mode or not.
-function DTextEntry:IsMultiline()
-end
-
----  client|menu
 --- Called internally by DTextEntry:OnTextChanged when the user modifies the text in the DTextEntry.  
 --- You should override this function to define custom behavior when the DTextEntry text changes.  
 function DTextEntry:OnChange()
@@ -156,20 +158,6 @@ function DTextEntry:SetDisabled(disabled)
 end
 
 ---  client|menu
---- Sets the visibility of the language selection box when typing in non-English mode.  
---- See Panel:SetDrawLanguageIDAtLeft for a function that changes the position of the language selection box.  
---- @param visible boolean @true to make it visible, false to hide it.
-function DTextEntry:SetDrawLanguageID(visible)
-end
-
----  client|menu
---- Sets where to draw the language selection box.  
---- See Panel:SetDrawLanguageID for a function that hides or shows the language selection box.  
---- @param left boolean @true = left, false = right
-function DTextEntry:SetDrawLanguageIDAtLeft(left)
-end
-
----  client|menu
 --- Disables Input on a DTextEntry. This differs from DTextEntry:SetDisabled - SetEditable will not affect the appearance of the textbox.  
 --- @param enabled boolean @Whether the DTextEntry should be editable
 function DTextEntry:SetEditable(enabled)
@@ -188,15 +176,10 @@ function DTextEntry:SetFont(font)
 end
 
 ---  client|menu
---- Enables or disables the history functionality of  DTextEntry.  
+--- Enables or disables the history functionality of  DTextEntry. This allows the player to scroll through history elements using up and down arrow keys.  
+--- See DTextEntry:AddHistory.  
 --- @param enable boolean @Whether to enable history or not.
 function DTextEntry:SetHistoryEnabled(enable)
-end
-
----  client|menu
---- Enables or disables the multi-line functionality of DTextEntry.  
---- @param multiline boolean @Whether to enable multiline or not.
-function DTextEntry:SetMultiline(multiline)
 end
 
 ---  client|menu

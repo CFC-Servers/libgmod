@@ -54,7 +54,7 @@ function CRecipientFilter:RemovePAS(position)
 end
 
 ---  server
---- Removes all players that can see this PVS from the recipient filter.  
+--- Removes all players that can see this [PVS(Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community") from the recipient filter.  
 --- @param pos Vector @Position that players may be able to see.
 function CRecipientFilter:RemovePVS(pos)
 end
