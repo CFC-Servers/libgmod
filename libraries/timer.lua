@@ -4,8 +4,8 @@ _G.timer = {}
 --- Adjusts the timer if the timer with the given identifier exists.  
 --- @param identifier any @Identifier of the timer to adjust.
 --- @param delay number @The delay interval in seconds
---- @param repetitions number @Repetitions
---- @param func function @The new function
+--- @param repetitions? number @Repetitions
+--- @param func? function @The new function
 --- @return boolean @`true` if succeeded.
 function timer.Adjust(identifier, delay, repetitions, func)
 end
