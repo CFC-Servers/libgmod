@@ -294,7 +294,7 @@ end
 ---  client|menu
 --- Sets the texture to be used in all upcoming draw operations using the surface library.  
 --- See surface.SetMaterial for an IMaterial alternative.  
---- ⚠ **WARNING**: It's probably best to use the alternative mentioned above.  
+--- ℹ **NOTE**: It's probably best to use the alternative mentioned above.  
 --- @param textureID number @The ID of the texture to draw with returned by surface.GetTextureID.
 function surface.SetTexture(textureID)
 end

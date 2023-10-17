@@ -5545,6 +5545,11 @@
     ]
   },
   {
+    "name": "DHScrollBar",
+    "parent": "Panel",
+    "description": "A generic horizontal scrollbar. See the vertical alternative [here](DVScrollBar).\n\nThe scrollbar notably contains `DHScrollBar.btnLeft`, `DHScrollBar.btnRight`, and `DHScrollBar.btnGrip` which are the left button, right button, and grip respectively. Editing the paint functions of these allows custom scrollbar styling, although it is a better idea to use [Derma Skins](Derma_Skin_Creation)."
+  },
+  {
     "name": "DHTML",
     "parent": "Awesomium",
     "description": "The DHTML control wraps the internal Awesomium framework, supports calling Javascript functions from Lua, as well as running Lua from within the HTML. Running Lua code is disabled by default.",
@@ -11406,6 +11411,11 @@
     "description": "<deprecated>This is derived from the deprecated <page>DPanelList</page>.</deprecated> A base panel for things like <page>DModelSelect</page>. Basically, a list of panels that can be selected. Selected panel can be retrieved and has visual indication of being selected."
   },
   {
+    "name": "DPanPanel",
+    "parent": "DPanel",
+    "description": "A panel similar to <page>DScrollPanel</page>, but that allows the player to pan around, for example a zoomed in image within a small window."
+  },
+  {
     "name": "DProgress",
     "parent": "Panel",
     "description": "A progressbar, works with a fraction between 0 and 1 where 0 is 0% and 1 is 100%.",
@@ -12840,13 +12850,29 @@
     "description": "A form which may be used to display text the player is meant to select and copy or alternately allow them to enter some text of their own.\n\n<note>At least one of your `DTextEntry`'s parents must either be an <page>EditablePanel</page> or derived from it (like a <page>DFrame</page>, for example), else it won't be able to focus and thus be unselectable.\n\nYou must also call <page>Panel:MakePopup</page> on said panel or the `DTextEntry` will not work.</note>",
     "functions": [
       {
+        "name": "AddHistory",
+        "parent": "DTextEntry",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "Adds an entry to <page>DTextEntry</page>'s history.\n\nSee <page>DTextEntry:SetHistoryEnabled</page>.",
+        "arguments": [
+          {
+            "name": "text",
+            "type": "string",
+            "description": "Text to add to the text entry's history."
+          }
+        ]
+      },
+      {
         "name": "AllowInput",
         "parent": "DTextEntry",
         "realms": [
           "client",
           "menu"
         ],
-        "description": "Called whenever the value of the panel has been updated (whether by user input or otherwise).\n\nIt allows you to determine whether a user can modify the <page>TextEntry</page>'s text.\n\nBy default, this only checks whether the panel disallows numeric characters, preventing it from being edited if the value contains any.\n\nThis is actually an engine hook that only works on <page>TextEntry</page> derived elements.",
+        "description": "Called whenever the value of the panel has been updated (whether by user input or otherwise).\n\nIt allows you to determine whether a user can modify the <page>TextEntry</page>'s text.\n\nBy default, this only checks whether the panel disallows numeric characters, preventing it from being edited if the value contains any.\n\nThis is actually an engine hook that only works on <page>TextEntry</page> derived elements.\n\nIf you are looking for a way to modify character limits, see <page>Panel:SetMaximumCharCount</page>",
         "arguments": [
           {
             "name": "char",
@@ -13070,28 +13096,13 @@
         ]
       },
       {
-        "name": "IsMultiline",
-        "parent": "DTextEntry",
-        "realms": [
-          "client",
-          "menu"
-        ],
-        "description": "Determines whether or not <page>DTextEntry</page> is in multi-line mode. This is set with <page>DTextEntry:SetMultiline</page>.",
-        "returnValues": [
-          {
-            "type": "boolean",
-            "description": "Whether the object is in multi-line mode or not."
-          }
-        ]
-      },
-      {
         "name": "OnChange",
         "parent": "DTextEntry",
         "realms": [
           "client",
           "menu"
         ],
-        "description": "Called internally by <page>DTextEntry:OnTextChanged</page> when the user modifies the text in the DTextEntry.\n\nYou should override this function to define custom behavior when the DTextEntry text changes."
+        "description": "Called internally by <page>DTextEntry:OnTextChanged</page> when the user modifies the text in the <page>DTextEntry</page>.\n\nYou should override this function to define custom behavior when the <page>DTextEntry</page> text changes."
       },
       {
         "name": "OnEnter",
@@ -13100,7 +13111,7 @@
           "client",
           "menu"
         ],
-        "description": "Called whenever enter is pressed on a DTextEntry.\n\n<note><page>DTextEntry:IsEditing</page> will still return true in this callback!</note>",
+        "description": "Called whenever enter is pressed on a <page>DTextEntry</page>.\n\n<note><page>DTextEntry:IsEditing</page> will still return true in this callback!</note>",
         "arguments": [
           {
             "name": "value",
@@ -13116,7 +13127,7 @@
           "client",
           "menu"
         ],
-        "description": "Called whenever the DTextEntry gains focus."
+        "description": "Called whenever the <page>DTextEntry</page> gains focus."
       },
       {
         "name": "OnKeyCode",
@@ -13125,7 +13136,7 @@
           "client",
           "menu"
         ],
-        "description": "Called from DTextEntry's <page>TextEntry:OnKeyCodeTyped</page> override whenever a valid character is typed while the text entry is focused.",
+        "description": "Called from <page>DTextEntry</page>'s <page>TextEntry:OnKeyCodeTyped</page> override whenever a valid character is typed while the text entry is focused.",
         "arguments": [
           {
             "name": "keyCode",
@@ -13141,7 +13152,7 @@
           "client",
           "menu"
         ],
-        "description": "Called whenever the DTextEntry lose focus."
+        "description": "Called whenever the <page>DTextEntry</page> lose focus."
       },
       {
         "name": "OnTextChanged",
@@ -13224,38 +13235,6 @@
         ]
       },
       {
-        "name": "SetDrawLanguageID",
-        "parent": "DTextEntry",
-        "realms": [
-          "client",
-          "menu"
-        ],
-        "description": "Sets the visibility of the language selection box when typing in non-English mode.\n\nSee <page>Panel:SetDrawLanguageIDAtLeft</page> for a function that changes the position of the language selection box.",
-        "arguments": [
-          {
-            "name": "visible",
-            "type": "boolean",
-            "description": "true to make it visible, false to hide it."
-          }
-        ]
-      },
-      {
-        "name": "SetDrawLanguageIDAtLeft",
-        "parent": "DTextEntry",
-        "realms": [
-          "client",
-          "menu"
-        ],
-        "description": "Sets where to draw the language selection box.\n\nSee <page>Panel:SetDrawLanguageID</page> for a function that hides or shows the language selection box.",
-        "arguments": [
-          {
-            "name": "left",
-            "type": "boolean",
-            "description": "true = left, false = right"
-          }
-        ]
-      },
-      {
         "name": "SetEditable",
         "parent": "DTextEntry",
         "realms": [
@@ -13310,28 +13289,12 @@
           "client",
           "menu"
         ],
-        "description": "Enables or disables the history functionality of  <page>DTextEntry</page>.",
+        "description": "Enables or disables the history functionality of  <page>DTextEntry</page>. This allows the player to scroll through history elements using up and down arrow keys.\n\nSee <page>DTextEntry:AddHistory</page>.",
         "arguments": [
           {
             "name": "enable",
             "type": "boolean",
             "description": "Whether to enable history or not."
-          }
-        ]
-      },
-      {
-        "name": "SetMultiline",
-        "parent": "DTextEntry",
-        "realms": [
-          "client",
-          "menu"
-        ],
-        "description": "Enables or disables the multi-line functionality of <page>DTextEntry</page>.",
-        "arguments": [
-          {
-            "name": "multiline",
-            "type": "boolean",
-            "description": "Whether to enable multiline or not."
           }
         ]
       },
@@ -13462,6 +13425,15 @@
             "description": "The value to set."
           }
         ]
+      },
+      {
+        "name": "UpdateConvarValue",
+        "parent": "DTextEntry",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "<internal>Used by <page>DTextEntry:OnTextChanged</page>, <page>DTextEntry:OnEnter</page> and <page>DTextEntry:OnLoseFocus</page></internal>\n\nUpdates the ConVar associated with the TextEntry to its new value."
       }
     ]
   },
@@ -15793,7 +15765,7 @@
   {
     "name": "DVScrollBar",
     "parent": "Panel",
-    "description": "<internal>Use <page>DScrollPanel</page>.</internal>A scrollbar used in <page>DScrollPanel</page>.\n\nThe scrollbar notably contains **DVScrollBar.btnUp, DVScrollBar.btnDown, and DVScrollBar.btnGrip** which are the up button, down button, and grip respectively. Editing the paint functions of these allows custom scrollbar styling. See <page>DScrollPanel:GetVBar</page> for an example.",
+    "description": "A generic vertical scrollbar, used in <page>DScrollPanel</page>. See the horizontal alternative [here](DHScrollBar).\n\nThe scrollbar notably contains `DVScrollBar.btnUp`, `DVScrollBar.btnDown`, and `DVScrollBar.btnGrip` which are the up button, down button, and grip respectively. Editing the paint functions of these allows custom scrollbar styling (See <page>DScrollPanel:GetVBar</page> for an example), although it is a better idea to use [Derma Skins](Derma_Skin_Creation).",
     "functions": [
       {
         "name": "AddScroll",
@@ -16210,7 +16182,7 @@
   {
     "name": "Label",
     "parent": "Panel",
-    "description": "A basic label or \"single line text area\" that is non-editable."
+    "description": "A basic label or \"single line text area\" that is non-editable. You might be looking for <page>DLabel</page>."
   },
   {
     "name": "Material",
@@ -16459,7 +16431,7 @@
         "arguments": [
           {
             "name": "panel",
-            "type": "panel",
+            "type": "Panel",
             "description": "Panel to switch to"
           }
         ]
@@ -16469,7 +16441,7 @@
   {
     "name": "TextEntry",
     "parent": "Panel",
-    "description": "Basic text input field.",
+    "description": "Basic text input field. See <page>DTextEntry</page> for a more advanced version.",
     "functions": [
       {
         "name": "OnKeyCodeTyped",
