@@ -63,8 +63,8 @@ end
 
 ---  client|menu
 --- Resets the depth buffer.  
---- 🦟 **BUG**: [This function also clears the stencil buffer. Use render.Clear in the meantime.](https://github.com/Facepunch/garrysmod-issues/issues/3317)  
-function render.ClearDepth()
+--- @param clearStencil? boolean @Whether to also clear the stencil buffer.
+function render.ClearDepth(clearStencil)
 end
 
 ---  client
@@ -498,9 +498,9 @@ function render.MaterialOverride(material)
 end
 
 ---  client
---- Similar to render.MaterialOverride, but overrides the materials per index.  
+--- Similar to render.MaterialOverride, but overrides the materials per index. Similar to Entity:SetSubMaterial  
 --- render.MaterialOverride overrides effects of this function.  
---- @param index number @Starts with 0, the index of the material to override
+--- @param index number @The index of the material to override, in range of 0 to 31.
 --- @param material IMaterial @The material to override with
 function render.MaterialOverrideByIndex(index, material)
 end
