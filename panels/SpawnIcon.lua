@@ -1,4 +1,6 @@
---- A "spawn icon" displays an image for the given model path. It is mostly used in the Spawn Menu (`Q`). It uses ModelImage internally.  
+--- A "spawn icon" displays an image for the given model path.  
+--- It is mostly used in the Spawn Menu (`Q`).  
+--- It uses ModelImage internally.  
 --- @class SpawnIcon : DButton
 local SpawnIcon = {}
 ---  client
