@@ -1,4 +1,6 @@
---- <internal>Unless you know what you are doing and you benefit from this panel, you should be using the DProperties instead.</internal>  
+--- <internal>  
+--- Unless you know what you are doing and you benefit from this panel, you should be using the DProperties instead.  
+--- </internal>  
 --- A panel used by the Editable Entities system.  
 --- @class DEntityProperties : DProperties
 local DEntityProperties = {}

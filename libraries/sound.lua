@@ -2,6 +2,7 @@
 _G.sound = {}
 ---  client|server
 --- Creates a sound script. It can also override sounds, which seems to only work when set on the server.  
+--- You can find a list of common sound scripts that are shipped with the game by default here: Common Sounds.  
 --- @param soundData table @The sounds properties
 function sound.Add(soundData)
 end
@@ -55,12 +56,12 @@ end
 ---  client|server
 --- Plays a sound from the specified position in the world.  
 --- If you want to play a sound without a position, such as a UI sound, use surface.PlaySound instead.  
---- @param Name string @A path to the sound
---- @param Pos Vector @Where the sound should play.
---- @param Level number @Sound level in decibels
---- @param Pitch number @The sound pitch
---- @param Volume number @Output volume of the sound in range 0 to 1.
-function sound.Play(Name, Pos, Level, Pitch, Volume)
+--- @param snd string @The sound to play
+--- @param pos Vector @Where the sound should play.
+--- @param level? number @Sound level in decibels
+--- @param pitch? number @The sound pitch
+--- @param volume? number @Output volume of the sound in range 0 to 1.
+function sound.Play(snd, pos, level, pitch, volume)
 end
 
 ---  client
