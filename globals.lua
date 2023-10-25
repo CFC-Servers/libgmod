@@ -12,7 +12,14 @@ end
 --- Marks a Lua file to be sent to clients when they join the server. Doesn't do anything on the client - this means you can use it in a shared file without problems.  
 --- ⚠ **WARNING**: If the file trying to be added is empty, an error will occur, and the file will not be sent to the client  
 --- The string cannot have whitespace.  
---- ℹ **NOTE**: This function is not needed for scripts located in **lua/autorun/** and **lua/autorun/client/**: they are automatically sent to clients.  
+--- ℹ **NOTE**:   
+--- This function is not needed for scripts located in these paths because they are automatically sent to clients.  
+--- **lua/matproxy/**  
+--- **lua/postprocess/**  
+--- **lua/vgui/**  
+--- **lua/skins/**  
+--- **lua/autorun/**  
+--- **lua/autorun/client/**  
 --- You can add up to **8192** files. Each file can be up to **64KB** compressed (LZMA)  
 --- @param file? string @The name/path to the Lua file that should be sent, **relative to the garrysmod/lua folder**
 function _G.AddCSLuaFile(file)
@@ -606,11 +613,10 @@ function _G.EmitSentence(soundName, position, entity, channel, volume, soundLeve
 end
 
 ---  client|server
---- Emits the specified sound at the specified position.  
---- 🦟 **BUG**: Sounds must be precached serverside manually before they can be played. util.PrecacheSound does not work for this purpose, Entity:EmitSound does the trick  
+--- Emits the specified sound at the specified position. See also Entity:EmitSound if you wish to play sounds on a specific entity.  
 --- @param soundName string @The sound to play
---- @param position Vector @The position where the sound is meant to play, used only for a network  filter (`CPASAttenuationFilter`) to decide which players will hear t
---- @param entity number @The entity to emit the sound from
+--- @param position Vector @The position where the sound is meant to play, which is also used for a network filter (`CPASAttenuationFilter`) to decide which players wil
+--- @param entity? number @The entity to emit the sound from
 --- @param channel? number @The sound channel, see Enums/CHAN.
 --- @param volume? number @The volume of the sound, from 0 to 1
 --- @param soundLevel? number @The sound level of the sound, see Enums/SNDLVL
@@ -914,6 +920,7 @@ end
 --- Creates or gets the rendertarget with the given name.  
 --- See Global.GetRenderTargetEx for an advanced version of this function with more options.  
 --- 🦟 **BUG**: [This crashes when used on a cubemap texture.](https://github.com/Facepunch/garrysmod-issues/issues/2885)  
+--- ⚠ **WARNING**: Rendertargets are not garbage-collected, which means they will remain in memory until you disconnect. So make sure to avoid creating new ones unecessarily and re-use as many of your existing rendertargets as possible to avoid filling up all your memory.  
 --- ℹ **NOTE**:   
 --- Calling this function is equivalent to  
 --- ```lua  
@@ -1179,7 +1186,8 @@ end
 ---  menu|client|server
 --- Performs a linear interpolation from the start number to the end number.  
 --- This function provides a very efficient and easy way to smooth out movements.  
---- ℹ **NOTE**: This function is not meant to be used with constant value in the first argument, if you're dealing with animation! Use a value that changes over time. See example for **proper** usage of Lerp for animations.  
+--- See also math.ease for functions that allow to have non linear animations using linear interpolation.  
+--- ℹ **NOTE**: This function is not meant to be used with constant value in the first argument if you're dealing with animation! Use a value that changes over time. See example for **proper** usage of Lerp for animations.  
 --- @param t number @The fraction for finding the result
 --- @param from number @The starting number
 --- @param to number @The ending number
@@ -1243,6 +1251,7 @@ end
 ---  menu|client|server
 --- Either returns the material with the given name, or loads the material interpreting the first argument as the path.  
 --- ℹ **NOTE**: When using .png or .jpg textures, try to make their sizes Power Of 2 (1, 2, 4, 8, 16, 32, 64, etc). While images are no longer scaled to Power of 2 sizes since February 2019, it is a good practice for things like icons, etc.  
+--- ℹ **NOTE**: Server-side, the Material function can consistently return an invalid material (with '__error') depending on the file type loaded; however, .vtf and .vmt files appear unaffected.  
 --- ⚠ **WARNING**: This function is very expensive when used in rendering hooks or in operations requiring very frequent calls. It is better to store the Material in a variable (like in the examples).  
 --- @param materialName string @The material name or path
 --- @param pngParameters? string @A string containing space separated keywords which will be used to add material parameters
@@ -1259,7 +1268,7 @@ function _G.Matrix(data)
 end
 
 ---  client
---- Returns a new mesh object.  
+--- Returns a new static mesh object.  
 --- @param mat? IMaterial @The material the mesh is intended to be rendered with
 --- @return IMesh @The created object.
 function _G.Mesh(mat)
@@ -1355,7 +1364,7 @@ end
 --- Creates a new CLuaEmitter.  
 --- ℹ **NOTE**: Do not forget to delete the emitter with CLuaEmitter:Finish once you are done with it  
 --- @param position Vector @The start position of the emitter
---- @param use3D boolean @Whenever to render the particles in 2D or 3D mode.
+--- @param use3D? boolean @Whenever to render the particles in 2D or 3D mode
 --- @return CLuaEmitter @The new particle emitter.
 function _G.ParticleEmitter(position, use3D)
 end
@@ -1612,10 +1621,19 @@ function _G.ScrW()
 end
 
 ---  client
---- Returns a number based on the Size argument and your screen's width. The screen's width is always equal to size 640. This function is primarily used for scaling font sizes.  
---- @param Size number @The number you want to scale.
+--- Returns a number based on the `size` argument and the players' screen width. The width is scaled in relation to `640x480` resolution.  This function is primarily used for scaling font sizes.  
+--- See Global.ScreenScaleH for a function that scales from height.  
+--- @param size number @The number you want to scale.
 --- @return number @The scaled number based on your screen's width
-function _G.ScreenScale(Size)
+function _G.ScreenScale(size)
+end
+
+---  client
+--- Returns a number based on the `size` argument and players' screen height. The height is scaled in relation to `640x480` resolution.  This function is primarily used for scaling font sizes.  
+--- See Global.ScreenScale for a function that scales from width.  
+--- @param size number @The number you want to scale.
+--- @return number @The scaled number based on your screen's height.
+function _G.ScreenScaleH(size)
 end
 
 ---  client|server
@@ -1623,8 +1641,7 @@ end
 --- 🛑 **DEPRECATED**:   
 --- This uses the umsg internally, which has been deprecated. Use the net instead.  
 --- ℹ **NOTE**:   
---- Using this clientside seems to cause the client to send the UserMessage to itself, which then get blocked internally.  
---- only server can send info to client.  
+--- This does nothing clientside.  
 --- @param name string @The name of the usermessage
 --- @param recipients any @Can be a CRecipientFilter, table or Player object.
 --- @param ... any ... @Data to send in the usermessage
@@ -2181,7 +2198,6 @@ end
 --- Calls a function and catches an error that can be thrown while the execution of the call.  
 --- 🦟 **BUG**: [This cannot stop errors from hooks called from the engine.](https://github.com/Facepunch/garrysmod-issues/issues/2036)  
 --- 🦟 **BUG**: [This does not stop Global.Error and Global.ErrorNoHalt from sending error messages to the server (if called clientside) or calling the GM:OnLuaError hook. The success boolean returned will always return true and thus you will not get the error message returned. Global.error does not exhibit these behaviours.](https://github.com/Facepunch/garrysmod-issues/issues/2498)  
---- 🦟 **BUG**: [This does not stop errors incurred by Global.include.](https://github.com/Facepunch/garrysmod-issues/issues/3112)  
 --- @param func function @Function to be executed and of which the errors should be caught of
 --- @param ... any ... @Arguments to call the function with.
 --- @return boolean @If the function had no errors occur within it.
@@ -2303,8 +2319,7 @@ end
 --- Attempts to call the first function. If the execution succeeds, this returns `true` followed by the returns of the function. If execution fails, this returns `false` and the second function is called with the error message.  
 --- Unlike in Global.pcall, the stack is not unwound and can therefore be used for stack analyses with the debug.  
 --- 🦟 **BUG**: [This cannot stop errors from hooks called from the engine.](https://github.com/Facepunch/garrysmod-issues/issues/2036)  
---- 🦟 **BUG**: [This does not stop Global.Error and Global.ErrorNoHalt from sending error messages to the server (if called clientside) or calling the GM:OnLuaError hook. The success boolean returned will always return true and thus you will not get the error message returned. Global.error does not exhibit these behaviours.](https://github.com/Facepunch/garrysmod-issues/issues/2498)  
---- 🦟 **BUG**: [This does not stop errors incurred by Global.include.](https://github.com/Facepunch/garrysmod-issues/issues/3112)  
+--- 🦟 **BUG**: [This does not stop Global.Error and Global.ErrorNoHalt (As well as Global.include) from sending error messages to the server (if called clientside) or calling the GM:OnLuaError hook. The success boolean returned will always return true and thus you will not get the error message returned. Global.error does not exhibit these behaviours.](https://github.com/Facepunch/garrysmod-issues/issues/2498)  
 --- @param func function @The function to call initially.
 --- @param errorCallback function @The function to be called if execution of the first fails; the error message is passed as a string
 --- @param ... any ... @Arguments to pass to the initial function.
