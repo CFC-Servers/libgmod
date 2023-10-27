@@ -145,7 +145,7 @@ function Vector:LengthSqr()
 end
 
 ---  menu|client|server
---- Scales the vector by the given number (that means x, y and z are multiplied by that value) or Vector.  
+--- Scales the vector by the given number (that means x, y and z are multiplied by that value), a Vector (X, Y, and Z of each vector are multiplied) or a VMatrix (Transforms the vector by the matrix's rotation/translation).  
 --- @param multiplier number @The value to scale the vector with.
 function Vector:Mul(multiplier)
 end

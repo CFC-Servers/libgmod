@@ -1,5 +1,7 @@
 --- <internal></internal>  
---- An internal panel used by DMenu. It acts as a menu option that can be checked. It automatically sets and reads the given console variable.  
+--- An internal panel used by DMenu.  
+--- It acts as a menu option that can be checked.  
+--- It automatically sets and reads the given console variable.  
 --- It can be right clicked to toggle without closing the DMenu.  
 --- Use DMenu:AddCVar instead.  
 --- @class DMenuOptionCVar : DMenuOption

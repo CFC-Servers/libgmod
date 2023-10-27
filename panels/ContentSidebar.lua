@@ -1,7 +1,7 @@
+--- <internal></internal>  
 --- The ContentSidebar is internally used by the spawnmenu and manages things like the Spawnmenu Toolbar.  
 --- It internally uses a DTree which is accessible with ContentSidebar .Tree.  
 --- When ContentSidebar:EnableModify has been called ContentSidebar.Toolbox will return a ContentSidebarToolbox  
---- <internal></internal>  
 --- @class ContentSidebar : DPanel
 local ContentSidebar = {}
 ---  client

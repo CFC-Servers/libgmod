@@ -92,7 +92,7 @@ function ents.FindInCone(origin, normal, range, angle_cos)
 end
 
 ---  server
---- Finds all entities that lie within a [PVS](https://developer.valvesoftware.com/wiki/PVS).  
+--- Finds all entities that lie within a [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community").  
 --- ℹ **NOTE**: The function won't take in to account Global.AddOriginToPVS and the like.  
 --- @param viewPoint any @Entity or Vector to find entities within the PVS of
 --- @return table @The found Entitys.
@@ -121,6 +121,7 @@ end
 
 ---  client|server
 --- Returns a table of all existing entities.  
+--- Consider using ents.Iterator instead for better performance.  
 --- ℹ **NOTE**: This function returns a sequential table, meaning it should be looped with Global.ipairs instead of Global.pairs for efficiency reasons.  
 --- @return table @Table of all existing Entitys.
 function ents.GetAll()
@@ -152,5 +153,14 @@ end
 --- @param id number @Entity's creation id
 --- @return Entity @Found entity
 function ents.GetMapCreatedEntity(id)
+end
+
+---  client|server
+--- Returns an iterator for all existing entities.  
+--- This will be quite a bit faster than ents.GetAll, especially when using the `break` keyword.  
+--- @return function @Iterator function
+--- @return table @Table of all existing Entitys.
+--- @return number @Will always be 0
+function ents.Iterator()
 end
 

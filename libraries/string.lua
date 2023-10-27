@@ -22,6 +22,14 @@
 --- This category lists functions available in the string *library*.  
 _G.string = {}
 ---  menu|client|server
+--- Converts a cardinal (`111`) number to its [ordinal/sequential variation](https://en.wikipedia.org/wiki/Ordinal_numeral) (`111th`).  
+--- See also Global.STNDRD for a function that returns just the suffix.  
+--- @param input number @A number to convert to ordinal.
+--- @return string @The ordinal numeral.
+function string.CardinalToOrdinal(input)
+end
+
+---  menu|client|server
 --- Inserts commas for every third digit of a given number.  
 --- @param value number @The input number to commafy
 --- @param separator? string @An optional string that will be used instead of the default comma.
