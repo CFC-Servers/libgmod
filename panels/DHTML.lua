@@ -1,4 +1,5 @@
---- The DHTML control wraps the internal Awesomium framework, supports calling Javascript functions from Lua, as well as running Lua from within the HTML. Running Lua code is disabled by default.  
+--- The DHTML control wraps the internal Awesomium framework, supports calling Javascript functions from Lua,  
+--- as well as running Lua from within the HTML. Running Lua code is disabled by default.  
 --- @class DHTML : Awesomium
 local DHTML = {}
 ---  client|menu
