@@ -1,4 +1,6 @@
---- The spawn icon used for SWEPs and other SENTs, commonly featured as part of the spawn menu. Do note that at least one of your ContentIcon's parents must either be an EditablePanel or derived from it (like a DFrame, for example), else it won't be able to focus and thus be unclickable.  
+--- The spawn icon used for SWEPs and other SENTs, commonly featured as part of the spawn menu.  
+--- Do note that at least one of your ContentIcon's parents must either be an EditablePanel or derived from it  
+--- (like a DFrame, for example), else it won't be able to focus and thus be unclickable.  
 --- This control only exists in Sandbox derived gamemodes.  
 --- @class ContentIcon : DButton
 local ContentIcon = {}
