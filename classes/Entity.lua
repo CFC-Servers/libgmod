@@ -151,9 +151,8 @@ end
 
 ---  client|server
 --- Causes a specified function to be run if the entity is removed by any means. This can later be undone by Entity:RemoveCallOnRemove if you need it to not run.  
---- 🦟 **BUG**: [This hook is called during clientside full updates. See ENTITY:OnRemove#clientsidebehaviourremarks for more information.](https://github.com/Facepunch/garrysmod-issues/issues/4675)  
---- 🦟 **BUG**: [Using players with this function will provide a gimped entity to the callback.](https://github.com/Facepunch/garrysmod/pull/1275)  
---- @param identifier string @Identifier of the function within CallOnRemove
+--- ⚠ **WARNING**: This hook is called clientside during full updates. See GM:EntityRemoved for more information.  
+--- @param identifier string @Identifier that can be optionally used with Entity:RemoveCallOnRemove to undo this call on remove.
 --- @param removeFunc function @Function to be called on remove
 --- @param ... any ... @Optional arguments to pass to removeFunc
 function Entity:CallOnRemove(identifier, removeFunc, ...)
@@ -306,8 +305,7 @@ end
 --- To disable it, use Entity:DisableMatrix.  
 --- If your old scales are wrong due to a recent update, use Entity:SetLegacyTransform as a quick fix.  
 --- ℹ **NOTE**: The matrix can also be modified to apply a custom rotation and offset via the VMatrix:SetAngles and VMatrix:SetTranslation functions.  
---- 🦟 **BUG**: [This does not scale procedural bones.](https://github.com/Facepunch/garrysmod-issues/issues/3502)  
---- 🦟 **BUG**: [This disables inverse kinematics of an entity.](https://github.com/Facepunch/garrysmod-issues/issues/3502)  
+--- 🦟 **BUG**: [This does not scale procedural bones, and disables inverse kinematics of the entity.](https://github.com/Facepunch/garrysmod-issues/issues/3502)  
 --- @param matrixType string @The name of the matrix type
 --- @param matrix VMatrix @The matrix to apply before drawing the entity.
 function Entity:EnableMatrix(matrixType, matrix)
@@ -373,7 +371,7 @@ end
 --- Fires a bullet.  
 --- When used in a  hook such as WEAPON:Think or WEAPON:PrimaryAttack, it will use Player:LagCompensation internally.  
 --- ℹ **NOTE**: Lag compensation will not work if this function is called in a timer, regardless if the timer was made in a  hook.  
---- Due to how FireBullets is set up internally, bullet tracers will always originate from attachment 1.  
+--- ℹ **NOTE**: Due to how FireBullets is set up internally, bullet tracers will always originate from attachment 1.  
 --- @param bulletInfo table @The bullet data to be used
 --- @param suppressHostEvents? boolean @Has the effect of encasing the FireBullets call in Global.SuppressHostEvents, only works in multiplayer.
 function Entity:FireBullets(bulletInfo, suppressHostEvents)
@@ -656,14 +654,13 @@ end
 
 ---  client|server
 --- Returns the color the entity is set to.  
---- 🦟 **BUG**: [The returned color will not have the color metatable.](https://github.com/Facepunch/garrysmod-issues/issues/2407)  
 --- @return table @The color of the entity as a Color.
 function Entity:GetColor()
 end
 
 ---  client|server
---- Returns the color the entity is set to.  
---- ℹ **NOTE**: This functions will return Colors set with Entity:GetColor  
+--- Returns the color the entity is set to without using a color object.  
+--- Internally used to implement Entity:GetColor.  
 --- @return number 
 --- @return number 
 --- @return number 
@@ -765,13 +762,14 @@ end
 
 ---  client|server
 --- Returns flex name.  
---- @param id number @The flex id to look up name of
---- @return string @The flex name
+--- @param id number @The flex index to look up name of
+--- @return string @The flex name, or no value if the requested ID is out of bounds.
 function Entity:GetFlexName(id)
 end
 
 ---  client|server
---- Returns the number of flexes this entity has.  
+--- Returns the number of flex controllers this entity's model has.  
+--- ℹ **NOTE**: Please note that while this function can return the real number of flex controllers, the game supports only a certain amount due to networking limitations. See Entity:SetFlexWeight.  
 --- @return number @The number of flexes.
 function Entity:GetFlexNum()
 end
@@ -783,9 +781,9 @@ function Entity:GetFlexScale()
 end
 
 ---  client|server
---- Returns current weight ( value ) of the flex.  
+--- Returns current weight ( value ) of given flex controller. Please see Entity:SetFlexWeight regarding limitations.  
 --- @param flex number @The ID of the flex to get weight of
---- @return number @The current weight of the flex
+--- @return number @The current weight of the flex, or 0 if out of bounds.
 function Entity:GetFlexWeight(flex)
 end
 
@@ -1796,8 +1794,7 @@ end
 
 ---  client|server
 --- Checks if the entity plays a sound when picked up by a player.  
---- 🦟 **BUG**: [This will return nil if Entity:SetShouldPlayPickupSound has not been called.](https://github.com/Facepunch/garrysmod/pull/1488)  
---- @return boolean @True if it plays the pickup sound, false otherwise.
+--- @return boolean @`true` if it plays the pickup sound, `false` otherwise.
 function Entity:GetShouldPlayPickupSound()
 end
 
@@ -1832,7 +1829,7 @@ function Entity:GetSpawnEffect()
 end
 
 ---  client|server
---- Returns the bitwise spawn flags used by the entity.  
+--- Returns the bitwise spawn flags used by the entity. These can be set by Entity:SetKeyValue.  
 --- @return number @The spawn flags of the entity, see SF_Enums.
 function Entity:GetSpawnFlags()
 end
@@ -1860,8 +1857,8 @@ function Entity:GetSurroundingBounds()
 end
 
 ---  client|server
---- Returns the table that contains all values saved within the entity.  
---- @return table @entTable
+--- Returns the table that contains all script values saved within the entity.  
+--- @return table @The entity's Lua table.
 function Entity:GetTable()
 end
 
@@ -1880,7 +1877,6 @@ end
 
 ---  server
 --- Returns if the entity is unfreezable, meaning it can't be frozen with the physgun. By default props are freezable, so this function will typically return false.  
---- 🦟 **BUG**: [This will return nil if Entity:SetUnFreezable has not been called.](https://github.com/Facepunch/garrysmod/pull/1488)  
 --- @return boolean @True if the entity is unfreezable, false otherwise.
 function Entity:GetUnFreezable()
 end
@@ -1908,9 +1904,8 @@ function Entity:GetVelocity()
 end
 
 ---  server
---- 🛑 **DEPRECATED**:   
+--- 🛑 **DEPRECATED**: The function **currently** does nothing and always returns nil  
 --- Returns ID of workshop addon that the entity is from.  
---- ⚠ **WARNING**: The function **currently** does nothing and always returns nil  
 --- @deprecated
 --- @return number @The workshop ID
 function Entity:GetWorkshopID()
@@ -1996,43 +1991,11 @@ end
 ---  client
 --- 🛑 **DEPRECATED**:   
 --- This function got disabled and will always throw an error if it's used. This is the error:  
---- ```lua  
+--- ```  
 --- [ERROR] InitializeAsClientEntity is deprecated and should no longer be used.  
 --- ```  
---- ⚠ **WARNING**:   
---- **These are the reasons why this function was disabled:**  
---- Calling this on **ANY**(even clientside only) entity will cause random crashes, and it will crash the game as soon as the entity is removed!  
---- **Some bugs if you call it on an entity that is not clientside only:**  
---- All NWVars break clientside for the given player.  
---- The EntIndex becomes -1.  
---- The Entity Table gets cleared every time this function is called.  
---- <note>  
---- As soon as the Entity re-enters the PVS, some bugs will fix themself, but it will still crash the game if the entity gets removed!  
---- This is behavior only happens for entities, not for players!  
---- </note>  
---- Calling this function on the World creates a permanent warning that will spam your console.  
---- ```lua  
---- ] lua_run_cl Entity(0):InitializeAsClientEntity()  
---- Refusing to render the map on an entity to prevent crashes! (x9330)  
---- ```  
---- Calling this function on an entity that is not **clientside only** causes all networking to break for that specific entity and an Engine Error will occur on a full update  
---- (a full update can be forced with `cl_fullupdate`):  
---- <upload src="b04e5/8db8f2ceed2528b.png" size="3320" name="image.png">  
---- Calling this function on a player causes a bunch of unexpected behavior and your game will crash as soon as the player is removed/leaves the server.  
---- **Some bugs if you set it on a player (all Entity bugs apply here):**  
---- You get some values displayed in the top-left of your screen for some reason.  
---- If you call this function on the local player, it causes your eye pos to be your position (EyePos == GetPos):  
---- The Player name becomes `ERRORNAME`  
---- As soon as the player re-enters the PVS, it crashes the game!  
---- ```lua  
---- lua_run_cl LocalPlayer():InitializeAsClientEntity()  
---- ] lua_run_cl print(LocalPlayer())  
---- Player [-1][ERRORNAME]  
---- ```  
---- <upload src="b04e5/8db8f305bc00016.png" size="1506807" name="image.png">  
---- </upload></upload>  
 --- Initializes this entity as being clientside only.  
---- Only works on entities fully created clientside, and as such it has currently no use due to this being automatically called by ents.CreateClientProp, ents.CreateClientside, Global.ClientsideModel and Global.ClientsideScene.  
+--- Only works on entities fully created clientside, and as such it currently has no use due to this being automatically called by ents.CreateClientProp, ents.CreateClientside, Global.ClientsideModel and Global.ClientsideScene.  
 --- @deprecated
 function Entity:InitializeAsClientEntity()
 end
@@ -2068,7 +2031,9 @@ function Entity:IsConstraint()
 end
 
 ---  client|server
---- Returns whether the entity is dormant or not. Client/server entities become dormant when they leave the PVS on the server. Client side entities can decide for themselves whether to become dormant. This mainly applies to PVS.  
+--- Returns whether the entity is dormant or not.  
+--- Client/server entities become dormant when they leave the PVS on the server. Client side entities can decide for themselves whether to become dormant.  
+--- This mainly applies to [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community").  
 --- @return boolean @Whether the entity is dormant or not.
 function Entity:IsDormant()
 end
@@ -2116,7 +2081,7 @@ function Entity:IsLineOfSightClear(target)
 end
 
 ---  client|server
---- Returns if the entity is going to be deleted in the next frame.  
+--- Returns if the entity is going to be deleted in the next frame. Entities marked for deletion should not be accessed.  
 --- @return boolean @If the entity is going to be deleted.
 function Entity:IsMarkedForDeletion()
 end
@@ -2625,7 +2590,7 @@ end
 
 ---  client|server
 --- Removes a function previously added via Entity:CallOnRemove.  
---- @param identifier string @Identifier of the function within CallOnRemove
+--- @param identifier string @Identifier of the function given to Entity:CallOnRemove.
 function Entity:RemoveCallOnRemove(identifier)
 end
 
@@ -2735,7 +2700,6 @@ end
 ---  client|server
 --- Sends sequence animation to the view model. It is recommended to use this for view model animations, instead of Entity:ResetSequence.  
 --- This function is only usable on view models.  
---- 🦟 **BUG**: [Sequences 0-6 will not be looped regardless if they're marked as a looped animation or not.](https://github.com/Facepunch/garrysmod-issues/issues/3229)  
 --- @param seq number @The sequence ID returned by Entity:LookupSequence or  Entity:SelectWeightedSequence.
 function Entity:SendViewModelMatchingSequence(seq)
 end
@@ -2862,8 +2826,8 @@ function Entity:SetColor(color)
 end
 
 ---  client|server
---- Sets the color of an entity.  
---- ℹ **NOTE**: This function overrides Colors set with Entity:SetColor  
+--- Sets the color of an entity without usage of a Global.Color object.  
+--- Used internally to implement Entity:SetColor.  
 --- @param r number 
 --- @param g number 
 --- @param b number 
@@ -2910,13 +2874,14 @@ function Entity:SetEyeTarget(pos)
 end
 
 ---  client|server
---- Sets the flex scale of the entity.  
+--- Sets the scale of all the flexes of this entity. See Entity:SetFlexWeight.  
 --- @param scale number @The new flex scale to set to
 function Entity:SetFlexScale(scale)
 end
 
 ---  client|server
---- Sets the flex weight.  
+--- Sets the weight/value of given flex controller.  
+--- ℹ **NOTE**: Only `96` flex controllers can be set! Flex controllers on models with higher amounts will not be accessible.  
 --- @param flex number @The ID of the flex to modify weight of
 --- @param weight number @The new weight to set
 function Entity:SetFlexWeight(flex, weight)
@@ -2934,6 +2899,7 @@ end
 ---  client|server
 --- Sets the gravity multiplier of the entity.  
 --- 🦟 **BUG**: [This function is not predicted.](https://github.com/Facepunch/garrysmod-issues/issues/3648)  
+--- ℹ **NOTE**: This only works on players  
 --- @param gravityMultiplier number @Value which specifies the gravity multiplier.
 function Entity:SetGravity(gravityMultiplier)
 end
@@ -3719,10 +3685,10 @@ end
 
 ---  client|server
 --- Moves the entity to the specified position.  
+--- Some entities, such as ragdolls, will continually reset their position. Consider using PhysObj:SetPos on every physics object to move ragdolls.  
 --- ℹ **NOTE**: If the new position doesn't take effect right away, you can use Entity:SetupBones to force it to do so. This issue is especially common when trying to render the same entity twice or more in a single frame at different positions.  
---- ⚠ **WARNING**: Entities with Entity:GetSolid of SOLID_BBOX will have their angles reset!  
+--- ⚠ **WARNING**: Entities with Entity:GetSolid of `SOLID_BBOX` will have their angles reset!  
 --- 🦟 **BUG**: [This will fail inside of predicted functions called during player movement processing. This includes WEAPON:PrimaryAttack and WEAPON:Think.](https://github.com/Facepunch/garrysmod-issues/issues/2447)  
---- ℹ **NOTE**: Some entities, such as ragdolls, will appear unaffected by this function in the next frame. Consider PhysObj:SetPos if necessary.  
 --- @param position Vector @The position to move the entity to.
 function Entity:SetPos(position)
 end
@@ -3780,8 +3746,8 @@ function Entity:SetRagdollPos(boneid, pos)
 end
 
 ---  client
---- Sets the render angles of the Entity.  
---- @param newAngles Angle @The new render angles to be set to.
+--- Sets the render angle override for the Entity.  
+--- @param newAngles? Angle @The new render angles to be set to
 function Entity:SetRenderAngles(newAngles)
 end
 
@@ -3827,8 +3793,8 @@ function Entity:SetRenderMode(renderMode)
 end
 
 ---  client
---- Set the origin in which the Entity will be drawn from.  
---- @param newOrigin Vector @The new origin in world coordinates where the Entity's model will now be rendered from.
+--- Set the render origin override, a position where the Entity will be rendered at.  
+--- @param newOrigin? Vector @The new origin in world coordinates where the Entity's model will now be rendered at
 function Entity:SetRenderOrigin(newOrigin)
 end
 
@@ -3954,7 +3920,7 @@ end
 ---  client|server
 --- Sets the entity's velocity. For entities with physics, consider using PhysObj:SetVelocity on the PhysObj of the entity.  
 --- ℹ **NOTE**: Actually binds to CBaseEntity::SetBaseVelocity() which sets the entity's velocity due to forces applied by other entities.  
---- ⚠ **WARNING**: If applied to a player, this will actually **ADD** velocity, not set it.  
+--- ⚠ **WARNING**: If applied to a player, this will actually **ADD** velocity, not set it. (due to how movement code handles base velocity)  
 --- @param velocity Vector @The new velocity to set.
 function Entity:SetVelocity(velocity)
 end
@@ -4094,7 +4060,7 @@ function Entity:TakePhysicsDamage(dmginfo)
 end
 
 ---  server
---- Check if the given position or entity is within this entity's PVS.  
+--- Check if the given position or entity is within this entity's [PVS(Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community").  
 --- See also Entity:IsDormant.  
 --- ℹ **NOTE**: The function won't take in to account Global.AddOriginToPVS and the like.  
 --- @param testPoint any @Entity or Vector to test against

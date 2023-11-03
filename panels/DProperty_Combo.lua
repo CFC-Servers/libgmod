@@ -1,4 +1,5 @@
---- <internal></internal> DComboBox control for a DProperties panel.  
+--- <internal></internal>  
+--- DComboBox control for a DProperties panel.  
 --- @class DProperty_Combo : DProperty_Generic
 local DProperty_Combo = {}
 ---  client

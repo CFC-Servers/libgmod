@@ -7366,303 +7366,303 @@
       "client",
       "server"
     ],
-    "description": "Enumerations used by <page>Entity:SetCollisionGroup</page> and <page>Entity:GetCollisionGroup</page>.",
+    "description": "Enumerations used by <page>Entity:SetCollisionGroup</page>, <page>Entity:GetCollisionGroup</page> and <page text=\"Traces\">Structures/Trace#collisiongroup</page>.",
     "name": "COLLISION_GROUP"
   },
   {
     "fields": [
       {
-        "name": "COND_BEHIND_ENEMY",
+        "name": "COND.BEHIND_ENEMY",
         "value": 29
       },
       {
-        "name": "COND_BETTER_WEAPON_AVAILABLE",
+        "name": "COND.BETTER_WEAPON_AVAILABLE",
         "value": 46
       },
       {
-        "name": "COND_CAN_MELEE_ATTACK1",
+        "name": "COND.CAN_MELEE_ATTACK1",
         "value": 23
       },
       {
-        "name": "COND_CAN_MELEE_ATTACK2",
+        "name": "COND.CAN_MELEE_ATTACK2",
         "value": 24
       },
       {
-        "name": "COND_CAN_RANGE_ATTACK1",
+        "name": "COND.CAN_RANGE_ATTACK1",
         "value": 21
       },
       {
-        "name": "COND_CAN_RANGE_ATTACK2",
+        "name": "COND.CAN_RANGE_ATTACK2",
         "value": 22
       },
       {
-        "name": "COND_ENEMY_DEAD",
+        "name": "COND.ENEMY_DEAD",
         "value": 30
       },
       {
-        "name": "COND_ENEMY_FACING_ME",
+        "name": "COND.ENEMY_FACING_ME",
         "value": 28
       },
       {
-        "name": "COND_ENEMY_OCCLUDED",
+        "name": "COND.ENEMY_OCCLUDED",
         "value": 13
       },
       {
-        "name": "COND_ENEMY_TOO_FAR",
+        "name": "COND.ENEMY_TOO_FAR",
         "value": 27
       },
       {
-        "name": "COND_ENEMY_UNREACHABLE",
+        "name": "COND.ENEMY_UNREACHABLE",
         "value": 31
       },
       {
-        "name": "COND_ENEMY_WENT_NULL",
+        "name": "COND.ENEMY_WENT_NULL",
         "value": 12
       },
       {
-        "name": "COND_FLOATING_OFF_GROUND",
+        "name": "COND.FLOATING_OFF_GROUND",
         "value": 61
       },
       {
-        "name": "COND_GIVE_WAY",
+        "name": "COND.GIVE_WAY",
         "value": 48
       },
       {
-        "name": "COND_HAVE_ENEMY_LOS",
+        "name": "COND.HAVE_ENEMY_LOS",
         "value": 15
       },
       {
-        "name": "COND_HAVE_TARGET_LOS",
+        "name": "COND.HAVE_TARGET_LOS",
         "value": 16
       },
       {
-        "name": "COND_HEALTH_ITEM_AVAILABLE",
+        "name": "COND.HEALTH_ITEM_AVAILABLE",
         "value": 47
       },
       {
-        "name": "COND_HEAR_BUGBAIT",
+        "name": "COND.HEAR_BUGBAIT",
         "value": 52
       },
       {
-        "name": "COND_HEAR_BULLET_IMPACT",
+        "name": "COND.HEAR_BULLET_IMPACT",
         "value": 56
       },
       {
-        "name": "COND_HEAR_COMBAT",
+        "name": "COND.HEAR_COMBAT",
         "value": 53
       },
       {
-        "name": "COND_HEAR_DANGER",
+        "name": "COND.HEAR_DANGER",
         "value": 50
       },
       {
-        "name": "COND_HEAR_MOVE_AWAY",
+        "name": "COND.HEAR_MOVE_AWAY",
         "value": 58
       },
       {
-        "name": "COND_HEAR_PHYSICS_DANGER",
+        "name": "COND.HEAR_PHYSICS_DANGER",
         "value": 57
       },
       {
-        "name": "COND_HEAR_PLAYER",
+        "name": "COND.HEAR_PLAYER",
         "value": 55
       },
       {
-        "name": "COND_HEAR_SPOOKY",
+        "name": "COND.HEAR_SPOOKY",
         "value": 59
       },
       {
-        "name": "COND_HEAR_THUMPER",
+        "name": "COND.HEAR_THUMPER",
         "value": 51
       },
       {
-        "name": "COND_HEAR_WORLD",
+        "name": "COND.HEAR_WORLD",
         "value": 54
       },
       {
-        "name": "COND_HEAVY_DAMAGE",
+        "name": "COND.HEAVY_DAMAGE",
         "value": 18
       },
       {
-        "name": "COND_IDLE_INTERRUPT",
+        "name": "COND.IDLE_INTERRUPT",
         "value": 2
       },
       {
-        "name": "COND_IN_PVS",
+        "name": "COND.IN_PVS",
         "value": 1
       },
       {
-        "name": "COND_LIGHT_DAMAGE",
+        "name": "COND.LIGHT_DAMAGE",
         "value": 17
       },
       {
-        "name": "COND_LOST_ENEMY",
+        "name": "COND.LOST_ENEMY",
         "value": 11
       },
       {
-        "name": "COND_LOST_PLAYER",
+        "name": "COND.LOST_PLAYER",
         "value": 33
       },
       {
-        "name": "COND_LOW_PRIMARY_AMMO",
+        "name": "COND.LOW_PRIMARY_AMMO",
         "value": 3
       },
       {
-        "name": "COND_MOBBED_BY_ENEMIES",
+        "name": "COND.MOBBED_BY_ENEMIES",
         "value": 62
       },
       {
-        "name": "COND_NEW_ENEMY",
+        "name": "COND.NEW_ENEMY",
         "value": 26
       },
       {
-        "name": "COND_NO_CUSTOM_INTERRUPTS",
+        "name": "COND.NO_CUSTOM_INTERRUPTS",
         "value": 70
       },
       {
-        "name": "COND_NO_HEAR_DANGER",
+        "name": "COND.NO_HEAR_DANGER",
         "value": 60
       },
       {
-        "name": "COND_NO_PRIMARY_AMMO",
+        "name": "COND.NO_PRIMARY_AMMO",
         "value": 4
       },
       {
-        "name": "COND_NO_SECONDARY_AMMO",
+        "name": "COND.NO_SECONDARY_AMMO",
         "value": 5
       },
       {
-        "name": "COND_NO_WEAPON",
+        "name": "COND.NO_WEAPON",
         "value": 6
       },
       {
-        "name": "COND_NONE",
+        "name": "COND.NONE",
         "value": 0,
         "description": "No additional conditions are being played"
       },
       {
-        "name": "COND_NOT_FACING_ATTACK",
+        "name": "COND.NOT_FACING_ATTACK",
         "value": 40
       },
       {
-        "name": "COND_NPC_FREEZE",
+        "name": "COND.NPC_FREEZE",
         "value": 67,
         "description": "Freezes NPC movement"
       },
       {
-        "name": "COND_NPC_UNFREEZE",
+        "name": "COND.NPC_UNFREEZE",
         "value": 68,
         "description": "Unfreezes NPC movement"
       },
       {
-        "name": "COND_PHYSICS_DAMAGE",
+        "name": "COND.PHYSICS_DAMAGE",
         "value": 19
       },
       {
-        "name": "COND_PLAYER_ADDED_TO_SQUAD",
+        "name": "COND.PLAYER_ADDED_TO_SQUAD",
         "value": 64
       },
       {
-        "name": "COND_PLAYER_PUSHING",
+        "name": "COND.PLAYER_PUSHING",
         "value": 66
       },
       {
-        "name": "COND_PLAYER_REMOVED_FROM_SQUAD",
+        "name": "COND.PLAYER_REMOVED_FROM_SQUAD",
         "value": 65
       },
       {
-        "name": "COND_PROVOKED",
+        "name": "COND.PROVOKED",
         "value": 25
       },
       {
-        "name": "COND_RECEIVED_ORDERS",
+        "name": "COND.RECEIVED_ORDERS",
         "value": 63
       },
       {
-        "name": "COND_REPEATED_DAMAGE",
+        "name": "COND.REPEATED_DAMAGE",
         "value": 20
       },
       {
-        "name": "COND_SCHEDULE_DONE",
+        "name": "COND.SCHEDULE_DONE",
         "value": 36
       },
       {
-        "name": "COND_SEE_DISLIKE",
+        "name": "COND.SEE_DISLIKE",
         "value": 9
       },
       {
-        "name": "COND_SEE_ENEMY",
+        "name": "COND.SEE_ENEMY",
         "value": 10
       },
       {
-        "name": "COND_SEE_FEAR",
+        "name": "COND.SEE_FEAR",
         "value": 8
       },
       {
-        "name": "COND_SEE_HATE",
+        "name": "COND.SEE_HATE",
         "value": 7
       },
       {
-        "name": "COND_SEE_NEMESIS",
+        "name": "COND.SEE_NEMESIS",
         "value": 34
       },
       {
-        "name": "COND_SEE_PLAYER",
+        "name": "COND.SEE_PLAYER",
         "value": 32
       },
       {
-        "name": "COND_SMELL",
+        "name": "COND.SMELL",
         "value": 37
       },
       {
-        "name": "COND_TALKER_RESPOND_TO_QUESTION",
+        "name": "COND.TALKER_RESPOND_TO_QUESTION",
         "value": 69
       },
       {
-        "name": "COND_TARGET_OCCLUDED",
+        "name": "COND.TARGET_OCCLUDED",
         "value": 14
       },
       {
-        "name": "COND_TASK_FAILED",
+        "name": "COND.TASK_FAILED",
         "value": 35
       },
       {
-        "name": "COND_TOO_CLOSE_TO_ATTACK",
+        "name": "COND.TOO_CLOSE_TO_ATTACK",
         "value": 38
       },
       {
-        "name": "COND_TOO_FAR_TO_ATTACK",
+        "name": "COND.TOO_FAR_TO_ATTACK",
         "value": 39
       },
       {
-        "name": "COND_WAY_CLEAR",
+        "name": "COND.WAY_CLEAR",
         "value": 49
       },
       {
-        "name": "COND_WEAPON_BLOCKED_BY_FRIEND",
+        "name": "COND.WEAPON_BLOCKED_BY_FRIEND",
         "value": 42
       },
       {
-        "name": "COND_WEAPON_HAS_LOS",
+        "name": "COND.WEAPON_HAS_LOS",
         "value": 41
       },
       {
-        "name": "COND_WEAPON_PLAYER_IN_SPREAD",
+        "name": "COND.WEAPON_PLAYER_IN_SPREAD",
         "value": 43
       },
       {
-        "name": "COND_WEAPON_PLAYER_NEAR_TARGET",
+        "name": "COND.WEAPON_PLAYER_NEAR_TARGET",
         "value": 44
       },
       {
-        "name": "COND_WEAPON_SIGHT_OCCLUDED",
+        "name": "COND-WEAPON_SIGHT_OCCLUDED",
         "value": 45
       }
     ],
     "realms": [
       "server"
     ],
-    "description": "Enumerations for NPC conditions, used by <page>NPC:SetCondition</page>. Serverside only.\n\n<note>There are more conditions than listed here after **COND_NO_CUSTOM_INTERRUPTS**(70) but the name depends on what's returned by <page>NPC:ConditionName</page></note>\n\n<warning>These enumerations do not exist in game and are listed here only for reference</warning>",
+    "description": "Enumerations for NPC conditions, used by <page>NPC:SetCondition</page>. Serverside only.\n\n<note>\nUnlike other Enums `COND` is a table that contains all the enums.\n\nThere are more conditions than listed here after **COND_NO_CUSTOM_INTERRUPTS**(70)\nbut the name depends on what's returned by <page>NPC:ConditionName</page>\n</note>",
     "name": "COND"
   },
   {
@@ -9093,6 +9093,60 @@
     ],
     "description": "Enumerations used by <page>IGModAudioChannel:GetState</page>. Clientside only.",
     "name": "GMOD_CHANNEL"
+  },
+  {
+    "fields": [
+      {
+        "name": "GOALTYPE_NONE",
+        "value": 0,
+        "description": "No goal type."
+      },
+      {
+        "name": "GOALTYPE_TARGETENT",
+        "value": 1,
+        "description": "The goal type is an entity."
+      },
+      {
+        "name": "GOALTYPE_ENEMY",
+        "value": 2,
+        "description": "The goal type is the enemy entity."
+      },
+      {
+        "name": "GOALTYPE_PATHCORNER",
+        "value": 3,
+        "description": "The goal type is a path corner."
+      },
+      {
+        "name": "GOALTYPE_LOCATION",
+        "value": 4,
+        "description": "The goal type is a position."
+      },
+      {
+        "name": "GOALTYPE_LOCATION_NEAREST_NODE",
+        "value": 5,
+        "description": "The goal type is a node nearest to a certain position."
+      },
+      {
+        "name": "GOALTYPE_FLANK",
+        "value": 6,
+        "description": "Goal type is a flank location."
+      },
+      {
+        "name": "GOALTYPE_COVER",
+        "value": 7,
+        "description": "Goal type is a cover spot."
+      },
+      {
+        "name": "GOALTYPE_INVALID",
+        "value": 8,
+        "description": "Invalid goal type."
+      }
+    ],
+    "realms": [
+      "server"
+    ],
+    "description": "Used by <page>NPC:GetCurGoalType</page>.\n\n<warning>These enumerations do not exist in game and are listed here only for reference</warning>",
+    "name": "GOALTYPE"
   },
   {
     "fields": [
@@ -10826,12 +10880,17 @@
       {
         "name": "NAV_MESH_CLIFF",
         "value": 32768,
-        "description": "This nav area is adjacent to a drop of at least CliffHeight"
+        "description": "This nav area is adjacent to a drop of at least `CliffHeight` (300 hammer units). Unused by base game."
       },
       {
         "name": "NAV_MESH_FUNC_COST",
         "value": 536870912,
-        "description": "Area has designer specified cost controlled by func_nav_cost entities"
+        "description": "Area has designer specified cost controlled by `func_nav_cost` entities"
+      },
+      {
+        "name": "NAV_MESH_BLOCKED_PROPDOOR",
+        "value": 268435456,
+        "description": "Whether the area has a `prop_door_rotating` that is blocking it (because the door is closed)"
       },
       {
         "name": "NAV_MESH_HAS_ELEVATOR",
@@ -10840,7 +10899,8 @@
       },
       {
         "name": "NAV_MESH_NAV_BLOCKER",
-        "value": -2147483648
+        "value": -2147483648,
+        "description": "Whether the area is blocked by a `func_nav_blocker` entity and is impassible."
       }
     ],
     "realms": [
@@ -11681,12 +11741,12 @@
       {
         "name": "SCHED_FORCED_GO",
         "value": 71,
-        "description": "Force walk to position (debug)."
+        "description": "Force walk to SaveValue: m_vecLastPosition (debug)."
       },
       {
         "name": "SCHED_FORCED_GO_RUN",
         "value": 72,
-        "description": "Force run to position (debug)."
+        "description": "Force run to SaveValue: m_vecLastPosition (debug)."
       },
       {
         "name": "SCHED_GET_HEALTHKIT",
@@ -11776,7 +11836,7 @@
       {
         "name": "SCHED_NPC_FREEZE",
         "value": 73,
-        "description": "Prevents movement until COND_NPC_UNFREEZE(68) is set."
+        "description": "Prevents movement until COND.NPC_UNFREEZE(68) is set."
       },
       {
         "name": "SCHED_PATROL_RUN",
@@ -12989,7 +13049,7 @@
     "realms": [
       "client"
     ],
-    "description": "Used by <page>ENTITY:Draw</page> and <page>ENTITY:DrawTranslucent</page>.",
+    "description": "Used by <page>ENTITY:Draw</page> <page>GM:PostPlayerDraw</page>, <page>GM:PrePlayerDraw</page> and <page>ENTITY:DrawTranslucent</page>.",
     "name": "STUDIO"
   },
   {
@@ -13334,7 +13394,7 @@
       {
         "name": "TEXTUREFLAGS_IMMEDIATE_CLEANUP",
         "value": 1048576,
-        "description": "<deprecated></deprecated>\nImmediately destroy this texture when its reference count hits zero\n\n(aka TEXTUREFLAGS_UNUSED_00100000)"
+        "description": "<deprecated notag=\"1\"></deprecated>\nImmediately destroy this texture when its reference count hits zero\n\n(aka TEXTUREFLAGS_UNUSED_00100000)"
       },
       {
         "name": "TEXTUREFLAGS_UNUSED_00200000",
@@ -13442,7 +13502,7 @@
       {
         "name": "TRANSMIT_PVS",
         "value": 2,
-        "description": "Transmit when entity is in players view"
+        "description": "Transmit when entity is in players [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS \"PVS - Valve Developer Community\")"
       }
     ],
     "realms": [
@@ -13728,6 +13788,60 @@
     ],
     "description": "Enumerations used by <page>ENTITY:Use</page>.\n\nNot to be confused with <page>Enums/_USE</page> used by <page>Entity:SetUseType</page>.",
     "name": "USE"
+  },
+  {
+    "fields": [
+      {
+        "name": "VIEW_MAIN",
+        "value": 0,
+        "description": "Default value"
+      },
+      {
+        "name": "VIEW_3DSKY",
+        "value": 1,
+        "description": "3D skybox"
+      },
+      {
+        "name": "VIEW_MONITOR",
+        "value": 2,
+        "description": "Rendering for `_rt_Camera` base texture material (`func_monitor`, `info_camera_link`)."
+      },
+      {
+        "name": "VIEW_REFLECTION",
+        "value": 3,
+        "description": "Water reflection"
+      },
+      {
+        "name": "VIEW_REFRACTION",
+        "value": 4,
+        "description": "Water refraction"
+      },
+      {
+        "name": "VIEW_INTRO_PLAYER",
+        "value": 5,
+        "description": "Used by `script_intro` entity."
+      },
+      {
+        "name": "VIEW_INTRO_CAMERA",
+        "value": 6,
+        "description": "Used by `script_intro` entity."
+      },
+      {
+        "name": "VIEW_SHADOW_DEPTH_TEXTURE",
+        "value": 7,
+        "description": "Internally used for <page>Global.ProjectedTexture</page> and flashlight."
+      },
+      {
+        "name": "VIEW_SSAO",
+        "value": 8,
+        "description": "For SSAO depth. Can be accessed via <page>render.GetResolvedFullFrameDepth</page>."
+      }
+    ],
+    "realms": [
+      "client"
+    ],
+    "description": "Enumerations used by <page>render.RenderView</page> inside of <page>Structures/ViewData</page>.",
+    "name": "VIEW"
   },
   {
     "fields": [
