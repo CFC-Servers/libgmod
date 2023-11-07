@@ -1,4 +1,5 @@
---- Choose a number from a number line, with zooming for precision. Zoom in by moving your mouse forward and moving back does the opposite. Looks like a blue circle until you click and hold on it  
+--- Choose a number from a number line, with zooming for precision.  
+--- Zoom in by moving your mouse forward and moving back does the opposite. Looks like a blue circle until you click and hold on it  
 --- @class DNumberScratch : DImageButton
 local DNumberScratch = {}
 ---  client|menu
