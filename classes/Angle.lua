@@ -30,6 +30,14 @@ function Angle:Forward()
 end
 
 ---  menu|client|server
+--- Returns if the angle is equal to another angle with the given tolerance.  
+--- @param compare Angle @The angle to compare to.
+--- @param tolerance number @The tolerance range.
+--- @return boolean @Are the angles equal or not.
+function Angle:IsEqualTol(compare, tolerance)
+end
+
+---  menu|client|server
 --- Returns whether the pitch, yaw and roll are 0 or not.  
 --- @return boolean @Whether the pitch, yaw and roll are 0 or not.
 function Angle:IsZero()

@@ -1,5 +1,5 @@
---- <internal>Use DScrollPanel.</internal>A scrollbar used in DScrollPanel.  
---- The scrollbar notably contains **DVScrollBar.btnUp, DVScrollBar.btnDown, and DVScrollBar.btnGrip** which are the up button, down button, and grip respectively. Editing the paint functions of these allows custom scrollbar styling. See DScrollPanel:GetVBar for an example.  
+--- A generic vertical scrollbar, used in DScrollPanel. See the horizontal alternative [here](DHScrollBar).  
+--- The scrollbar notably contains `DVScrollBar.btnUp`, `DVScrollBar.btnDown`, and `DVScrollBar.btnGrip` which are the up button, down button, and grip respectively. Editing the paint functions of these allows custom scrollbar styling (See DScrollPanel:GetVBar for an example), although it is a better idea to use [Derma Skins](Derma_Skin_Creation).  
 --- @class DVScrollBar : Panel
 local DVScrollBar = {}
 ---  client|menu
