@@ -26,7 +26,7 @@ end
 
 ---  menu|client|server
 --- Calculates the cross product of this vector and the passed one.  
---- The cross product of two vectors is a 3-dimensional vector with a direction perpendicular (at right angles) to both of them (according to the right-hand rule), and magnitude equal to the area of parallelogram they span. This is defined as the product of the magnitudes, the sine of the angle between them, and unit (normal) vector `n` defined by the right-hand rule:  
+--- The cross product of two vectors is a 3-dimensional vector with a direction perpendicular (at right angles) to both of them (according to the [right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule)), and magnitude equal to the area of parallelogram they span. This is defined as the product of the magnitudes, the sine of the angle between them, and unit (normal) vector `n` defined by the right-hand rule:  
 --- :**a** × **b** = |**a**| |**b**| sin(θ) **n̂**  
 --- where **a** and **b** are vectors, and **n̂** is a unit vector (magnitude of 1) perpendicular to both.  
 --- @param otherVector Vector @Vector to calculate the cross product with.
@@ -145,7 +145,7 @@ function Vector:LengthSqr()
 end
 
 ---  menu|client|server
---- Scales the vector by the given number (that means x, y and z are multiplied by that value) or Vector.  
+--- Scales the vector by the given number (that means x, y and z are multiplied by that value), a Vector (X, Y, and Z of each vector are multiplied) or a VMatrix (Transforms the vector by the matrix's rotation/translation).  
 --- @param multiplier number @The value to scale the vector with.
 function Vector:Mul(multiplier)
 end
