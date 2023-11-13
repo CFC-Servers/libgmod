@@ -22,7 +22,7 @@ end
 
 ---  client
 --- Switches the current panel with the given panel  
---- @param panel panel @Panel to switch to
+--- @param panel Panel @Panel to switch to
 function SpawnmenuContentPanel:SwitchPanel(panel)
 end
 

@@ -13,7 +13,7 @@ function CRecipientFilter:AddPAS(pos)
 end
 
 ---  server
---- Adds all players that are in the same [PVS(Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community") as this position.  
+--- Adds all players that are in the same [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community") as this position.  
 --- @param Position Vector @PVS position that players may be able to see.
 function CRecipientFilter:AddPVS(Position)
 end
@@ -48,13 +48,13 @@ function CRecipientFilter:RemoveAllPlayers()
 end
 
 ---  server
---- Removes all players from the filter that are in Potentially Audible Set for given position.  
+--- Removes all players from the filter that are in [PAS (Potentially Audible Set)](https://developer.valvesoftware.com/wiki/PAS "PAS - Valve Developer Community") for given position.  
 --- @param position Vector @The position to test
 function CRecipientFilter:RemovePAS(position)
 end
 
 ---  server
---- Removes all players that can see this PVS from the recipient filter.  
+--- Removes all players that can see this [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community") from the recipient filter.  
 --- @param pos Vector @Position that players may be able to see.
 function CRecipientFilter:RemovePVS(pos)
 end

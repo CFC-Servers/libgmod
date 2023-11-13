@@ -1,6 +1,6 @@
 --- <internal></internal>  
 --- This panel is created whenever you add a node to a DTree.  
---- The root node of a DTree is also a DTree_Node and controls much of its action; it can be accessed with DTree:Root.  
+--- The root node of a DTree is also a DTree_Node and controls much of its action. it can be accessed with DTree:Root.  
 --- @class DTree_Node : DPanel
 local DTree_Node = {}
 ---  client|menu
