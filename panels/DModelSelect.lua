@@ -1,5 +1,6 @@
---- 🛑 **DEPRECATED**: This is derived from the deprecated DPanelList.  
----  A vertical list of models.  
+--- 🛑 **DEPRECATED**:   
+--- This is derived from the deprecated DPanelList.  
+--- A vertical list of models.  
 --- @class DModelSelect : DPanelSelect
 local DModelSelect = {}
 ---  client

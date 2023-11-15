@@ -1,4 +1,5 @@
---- <internal></internal>A panel used by DListView  
+--- <internal></internal>  
+--- A panel used by DListView  
 --- @class DListView_Line : Panel
 local DListView_Line = {}
 ---  client|menu
