@@ -1,5 +1,6 @@
 --- A really simple grid layout panel.  
---- ℹ **NOTE**: This panel will set its size automatically based on set column count. This makes it play badly with Panel:Dock and cause a PANEL:PerformLayout call every frame.  
+--- ℹ **NOTE**: This panel will set its size automatically based on set column count.  
+--- This makes it play badly with Panel:Dock and cause a PANEL:PerformLayout call every frame.  
 --- @class DGrid : Panel
 local DGrid = {}
 ---  client|menu

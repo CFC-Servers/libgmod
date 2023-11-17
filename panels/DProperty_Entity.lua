@@ -1,3 +1,4 @@
---- <internal></internal>Entity picker control for the DProperties panel.  
+--- <internal></internal>  
+--- Entity picker control for the DProperties panel.  
 --- @class DProperty_Entity : DProperty_Generic
 local DProperty_Entity = {}

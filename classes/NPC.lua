@@ -99,8 +99,8 @@ function NPC:ConditionName(cond)
 end
 
 ---  server
---- Returns the way the NPC "feels" about the entity.  
---- @param ent Entity @The entity to get the disposition from.
+--- Returns the way the NPC "feels" about a given entity.  
+--- @param ent Entity @The entity to test our disposition towards.
 --- @return number @The NPCs disposition, see Enums/D.
 function NPC:Disposition(ent)
 end
@@ -153,6 +153,12 @@ function NPC:GetArrivalActivity()
 end
 
 ---  server
+--- Returns the direction from the NPC origin to its current navigational destination.  
+--- @return Vector @The arrival direction.
+function NPC:GetArrivalDirection()
+end
+
+---  server
 --- Returns the sequence to be played when the NPC arrives at its goal.  
 --- @return number @Sequence ID to be played, or -1 if there's no sequence.
 function NPC:GetArrivalSequence()
@@ -169,6 +175,12 @@ end
 --- Returns the entity blocking the NPC along its path.  
 --- @return Entity @Blocking entity
 function NPC:GetBlockingEntity()
+end
+
+---  server
+--- Returns the goal type for current navigation path.  
+--- @return number @The goal type
+function NPC:GetCurGoalType()
 end
 
 ---  server
@@ -233,6 +245,18 @@ function NPC:GetExpression()
 end
 
 ---  server
+--- Returns the position we are trying to reach, if any.  
+--- @return Vector @The position we are trying to reach.
+function NPC:GetGoalPos()
+end
+
+---  server
+--- Returns the entity we are trying to reach, if any.  
+--- @return Entity @The entity we are trying to reach, or `NULL`.
+function NPC:GetGoalTarget()
+end
+
+---  server
 --- Returns NPCs hull type set by NPC:SetHullType.  
 --- @return number @Hull type, see Enums/HULL
 function NPC:GetHullType()
@@ -254,6 +278,12 @@ end
 --- Returns the ideal move speed of the NPC.  
 --- @return number @The ideal move speed.
 function NPC:GetIdealMoveSpeed()
+end
+
+---  server
+--- Returns the ideal yaw (left right rotation) for this NPC at this moment.  
+--- @return number @The ideal yaw.
+function NPC:GetIdealYaw()
 end
 
 ---  server
@@ -390,6 +420,12 @@ function NPC:GetTimeEnemyLastReacquired(enemy)
 end
 
 ---  server
+--- Returns the view offset of the NPC. Set by NPC:SetViewOffset.  
+--- @return Vector @The view offset of the NPC.
+function NPC:GetViewOffset()
+end
+
+---  server
 --- Returns a specific weapon the NPC owns.  
 --- @param class string @A classname of the weapon to try to get.
 --- @return Weapon @The weapon for the specified class, or NULL of the NPC doesn't have given weapon.
@@ -446,6 +482,12 @@ end
 --- @param enemy Entity @The enemy to ignore.
 --- @param until number @How long to ignore the enemy for
 function NPC:IgnoreEnemyUntil(enemy, until)
+end
+
+---  server
+--- Returns whether the current navigational waypoint is the final one.  
+--- @return boolean @Whether the current navigational waypoint is the final one.
+function NPC:IsCurWaypointGoal()
 end
 
 ---  server
@@ -739,7 +781,7 @@ end
 ---  server
 --- Sets the target for an NPC.  
 --- @param enemy Entity @The enemy that the NPC should target
---- @param newenemy? boolean @Calls NPC:SetCondition(COND_NEW_ENEMY) if the new enemy is valid and not equal to the last enemy.
+--- @param newenemy? boolean @Calls NPC:SetCondition(COND.NEW_ENEMY) if the new enemy is valid and not equal to the last enemy.
 function NPC:SetEnemy(enemy, newenemy)
 end
 
@@ -860,6 +902,20 @@ function NPC:SetTaskStatus(status)
 end
 
 ---  server
+--- Sets given entity as an unforgettable enemy.  
+--- @param enemy Entity @The enemy entity to set.
+--- @param set? boolean @The entity to set.
+function NPC:SetUnforgettable(enemy, set)
+end
+
+---  server
+--- Sets the view offset of the NPC. Player alternative of Player:SetViewOffset.  
+--- This affects NPC's NPC:GetShootPos.  
+--- @param  Vector @The view offset to set.
+function NPC:SetViewOffset()
+end
+
+---  server
 --- Forces the NPC to start an engine task, this has different results for every NPC.  
 --- @param task number @The id of the task to start, see [ai_task.h](https://github.com/ValveSoftware/source-sdk-2013/blob/55ed12f8d1eb6887d348be03aee5573d44177ffb/
 --- @param taskData number @The task data as a float, not all tasks make use of it.
@@ -905,35 +961,38 @@ function NPC:UpdateTurnActivity()
 end
 
 ---  server
---- Only usable on "ai" base entities.  
+--- ℹ **NOTE**: This function only works on `ai` type [SENTs](Scripted_Entities).  
 --- @return boolean @If we succeeded setting the behavior.
 function NPC:UseActBusyBehavior()
 end
 
 ---  server
---- @return boolean 
+--- ℹ **NOTE**: This function only works on `ai` type [SENTs](Scripted_Entities).  
+--- @return boolean @Whether the action succeeded.
 function NPC:UseAssaultBehavior()
 end
 
 ---  server
---- Only usable on "ai" base entities.  
+--- ℹ **NOTE**: This function only works on `ai` type [SENTs](Scripted_Entities).  
 --- @return boolean @If we succeeded setting the behavior.
 function NPC:UseFollowBehavior()
 end
 
 ---  server
---- @return boolean 
+--- ℹ **NOTE**: This function only works on `ai` type [SENTs](Scripted_Entities).  
+--- @return boolean @Whether the action succeeded.
 function NPC:UseFuncTankBehavior()
 end
 
 ---  server
---- @return boolean 
+--- ℹ **NOTE**: This function only works on `ai` type [SENTs](Scripted_Entities).  
+--- @return boolean @Whether the action succeeded.
 function NPC:UseLeadBehavior()
 end
 
 ---  server
---- Undoes the other Use*Behavior functions.  
---- Only usable on "ai" base entities.  
+--- Undoes the other `Use*Behavior` functions.  
+--- ℹ **NOTE**: This function only works on `ai` type [SENTs](Scripted_Entities).  
 function NPC:UseNoBehavior()
 end
 
