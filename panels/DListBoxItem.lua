@@ -1,3 +1,5 @@
---- <internal>Used by DListBox.</internal>  
+--- <internal>  
+--- Used by DListBox.  
+--- </internal>  
 --- @class DListBoxItem : DLabel
 local DListBoxItem = {}

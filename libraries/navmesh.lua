@@ -28,19 +28,36 @@ function navmesh.CreateNavArea(corner, opposite_corner)
 end
 
 ---  server
+--- Creates a new CNavLadder.  
+--- @param top Vector @The top position of the ladder.
+--- @param bottom Vector @The bottom position of the ladder.
+--- @param width number @Width for the new ladder.
+--- @param dir Vector @Directional vector in which way the ladder should be facing
+--- @param maxHeightAboveTopArea? number @If above 0, will limit how much the top of the ladder can be adjusted to the closest CNavArea when automatically connecting the newly create
+--- @return CNavLadder @The new CNavLadder or nil if we failed for some reason.
+function navmesh.CreateNavLadder(top, bottom, width, dir, maxHeightAboveTopArea)
+end
+
+---  server
 --- Returns a bunch of areas within distance, used to find hiding spots by NextBots for example.  
 --- @param pos Vector @The position to search around
 --- @param radius number @Radius to search within
---- @param stepdown number @Maximum stepdown( fall distance ) allowed
---- @param stepup number @Maximum stepup( jump height ) allowed
+--- @param stepHeight number @Maximum step up height allowed
+--- @param dropHeight number @Maximum step down (fall distance) allowed
 --- @return table @A table of CNavAreas
-function navmesh.Find(pos, radius, stepdown, stepup)
+function navmesh.Find(pos, radius, stepHeight, dropHeight)
 end
 
 ---  server
 --- Returns an integer indexed table of all CNavAreas on the current map. If the map doesn't have a navmesh generated then this will return an empty table.  
 --- @return table @A table of all the CNavAreas on the current map.
 function navmesh.GetAllNavAreas()
+end
+
+---  server
+--- Returns a table of all blocked CNavAreas on the current map. See CNavArea:MarkAsBlocked.  
+--- @return table @A table of all the blocked CNavAreas on the current map.
+function navmesh.GetBlockedAreas()
 end
 
 ---  server
