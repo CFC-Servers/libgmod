@@ -1,5 +1,7 @@
---- DIconLayout is what replaced DPanelList in Garry's Mod 13. DPanelList still exists in GMod but is deprecated and does not support the new GWEN skin.  
---- DIconLayout is used to make a list of panels. Unlike DPanelList, DIconLayout does not automatically add a scroll bar - the example below shows you how you can do this.  
+--- DIconLayout is what replaced DPanelList in Garry's Mod 13.  
+--- DPanelList still exists in GMod but is deprecated and does not support the new GWEN skin.  
+--- DIconLayout is used to make a list of panels.  
+--- Unlike DPanelList, DIconLayout does not automatically add a scroll bar - the example below shows you how you can do this.  
 --- @class DIconLayout : DDragBase
 local DIconLayout = {}
 ---  client|menu
