@@ -1,4 +1,5 @@
---- Simply a DIconLayout which automatically displays all of the Silkicons. Used as a way to get the user to select an icon.  
+--- Simply a DIconLayout which automatically displays all of the Silkicons.  
+--- Used as a way to get the user to select an icon.  
 --- @class DIconBrowser : DScrollPanel
 local DIconBrowser = {}
 ---  client|menu

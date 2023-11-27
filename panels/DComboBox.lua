@@ -106,6 +106,14 @@ function DComboBox:OpenMenu()
 end
 
 ---  client|menu
+--- Called when the player opens the dropdown menu.  
+--- @param index number @The index of the option to remove.
+--- @return string @The text of the removed option.
+--- @return any @The data of the removed option that was provided.
+function DComboBox:RemoveChoice(index)
+end
+
+---  client|menu
 --- Sets whether or not the items should be sorted alphabetically in the dropdown menu of the DComboBox. If set to false, items will appear in the order they were added by DComboBox:AddChoice calls.  
 --- This is enabled by default.  
 --- @param sort boolean @true to enable, false to disable
