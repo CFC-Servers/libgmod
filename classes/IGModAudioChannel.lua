@@ -61,7 +61,7 @@ function IGModAudioChannel:GetFileName()
 end
 
 ---  client
---- Returns the length of sound played by the sound channel.  
+--- Returns the length of sound played by the sound channel in seconds.  
 --- @return number @The length of the sound
 function IGModAudioChannel:GetLength()
 end

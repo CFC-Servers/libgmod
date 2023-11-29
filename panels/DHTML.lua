@@ -1,4 +1,5 @@
---- The DHTML control wraps the internal Awesomium framework, supports calling Javascript functions from Lua, as well as running Lua from within the HTML. Running Lua code is disabled by default.  
+--- The DHTML control wraps the internal Awesomium framework, supports calling Javascript functions from Lua,  
+--- as well as running Lua from within the HTML. Running Lua code is disabled by default.  
 --- @class DHTML : Awesomium
 local DHTML = {}
 ---  client|menu
@@ -31,6 +32,53 @@ end
 --- Returns if the loaded page can run Lua code, set by DHTML:SetAllowLua  
 --- @return boolean @Whether or not Lua code can be called from the loaded page.
 function DHTML:GetAllowLua()
+end
+
+---  client
+--- Called when this panel begins loading a page.  
+--- @param url string @The URL of the current page.
+function DHTML:OnBeginLoadingDocument(url)
+end
+
+---  client
+--- Called by the engine when a callback function is called.  
+--- @param library string @Library name of the JS function that was called.
+--- @param name string @Name of the JS function that was called.
+--- @param arguments table @Table containing all arguments passed to the JS function.
+--- @return boolean @Return `true` to suppress default engine action.
+function DHTML:OnCallback(library, name, arguments)
+end
+
+---  client
+--- Called by HTML panels when the target URL of the frame has changed, this happens when you hover over a link.  
+--- @param url string @New target URL.
+function DHTML:OnChangeTargetURL(url)
+end
+
+---  client
+--- Called by HTML panels when the title of the loaded page has been changed.  
+--- @param newTitle string @The new title of the page.
+function DHTML:OnChangeTitle(newTitle)
+end
+
+---  client
+--- Called by HTML panels when the page attempts to open a new child view (such as a popup or new tab).  
+--- @param sourceURL string @The URL of the page requesting to create a child.
+--- @param targetURL string @The URL of the requested child.
+--- @param isPopup boolean @True if the requested view is a popup.
+function DHTML:OnChildViewCreated(sourceURL, targetURL, isPopup)
+end
+
+---  client
+--- Called by HTML panels when the panel's DOM has been set up. You can run JavaScript in here.  
+--- @param url string @The URL of the current page.
+function DHTML:OnDocumentReady(url)
+end
+
+---  client
+--- Called when this panel successfully loads a page.  
+--- @param url string @The URL of the current page.
+function DHTML:OnFinishLoadingDocument(url)
 end
 
 ---  client|menu

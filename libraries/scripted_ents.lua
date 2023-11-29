@@ -8,13 +8,6 @@ function scripted_ents.Alias(alias, classname)
 end
 
 ---  client|server
---- Returns a copy of the ENT table for a class, including functions defined by the base class  
---- @param classname string @The classname of the ENT table to return, can be an alias
---- @return table @entTable
-function scripted_ents.Get(classname)
-end
-
----  client|server
 --- Returns a copy of the list of all ENT tables registered  
 --- @return table @A table of all entities in the following format: (table keys are the classnames)
 function scripted_ents.GetList()

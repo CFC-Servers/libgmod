@@ -1,7 +1,17 @@
---- Similarly to DIconLayout, this lays out panels in two dimensions as tiles. The difference between this and DIconLayout is that DIconLayout items all have the same height while DTileLayout items do not have this enforcement. DTileLayout will find the best way to "pack" its children. For example, in a two column layout, a item of height 2 units will be placed in one column while two items of height 1 unit will be placed in the other column. It is worth noting however that because this panel iterates through its children in an undefined order and lays out while it is iterating, there is no guarantee that this packing will lead to the lowest possible height.  
+--- Similarly to DIconLayout, this lays out panels in two dimensions as tiles.  
+--- The difference between this and DIconLayout is that DIconLayout items all have the same height while  
+--- DTileLayout items do not have this enforcement.  
+--- DTileLayout will find the best way to "pack" its children.  
+--- For example, in a two column layout, a item of height 2 units will be placed in one column while  
+--- two items of height 1 unit will be placed in the other column.  
+--- It is worth noting however that because this panel iterates through its children in an undefined order and lays out while  
+--- it is iterating, there is no guarantee that this packing will lead to the lowest possible height.  
 --- This is used by the spawnmenu to arrange spawnicons.  
---- The base size defines the smallest a tile can be, and it will resize vertically to accommodate all child panels. The number of elements in each row is determined by the base size and width.  
---- It also optionally permits the rearrangement of these tiles. To enable this functionality, call DDragBase:MakeDroppable on the DTileLayout with a unique identifier. All panels added following this will be moveable.  
+--- The base size defines the smallest a tile can be, and it will resize vertically to accommodate all child panels.  
+--- The number of elements in each row is determined by the base size and width.  
+--- It also optionally permits the rearrangement of these tiles.  
+--- To enable this functionality, call DDragBase:MakeDroppable on the DTileLayout with a unique identifier.  
+--- All panels added following this will be moveable.  
 --- @class DTileLayout : DDragBase
 local DTileLayout = {}
 ---  client
