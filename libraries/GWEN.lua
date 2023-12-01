@@ -27,7 +27,7 @@ function GWEN.CreateTextureCentered(x, y, w, h, mat_override___null)
 end
 
 ---  client|menu
---- Used in derma skins to create a rectangle drawing function from an image. The texture of the rectangle will be scaled. The texture is taken from SKIN.GwenTexture when mat_override it's not supplied  
+--- Used in derma skins to create a rectangle drawing function from an image. The texture of the rectangle will be scaled. The texture is taken from SKIN.GwenTexture when mat_override is not supplied  
 --- @param x number @The X coordinate on the texture
 --- @param y number @The Y coordinate on the texture
 --- @param w number @Width of the area on texture

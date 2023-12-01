@@ -162,7 +162,8 @@ end
 
 ---  server
 --- Makes the bot jump. It must be on ground (Entity:IsOnGround) and its model must have `ACT_JUMP` activity.  
-function CLuaLocomotion:Jump()
+--- @param act? number @The activity to use as the jumping animation.
+function CLuaLocomotion:Jump(act)
 end
 
 ---  server

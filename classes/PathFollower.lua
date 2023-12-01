@@ -18,7 +18,7 @@ function PathFollower:Compute(from, to, generator)
 end
 
 ---  server
---- Draws the path. This is meant for debugging - and uses debug overlay.  
+--- Draws the path. This is meant for debugging - and uses debugoverlay.  
 function PathFollower:Draw()
 end
 
