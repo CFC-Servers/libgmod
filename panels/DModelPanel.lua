@@ -62,6 +62,13 @@ function DModelPanel:GetModel()
 end
 
 ---  client
+--- By default, this function slowly rotates and animates the entity being rendered.  
+--- If you want to change this behavior, you should override it.  
+--- @param entity Entity @The entity that is being rendered.
+function DModelPanel:LayoutEntity(entity)
+end
+
+---  client
 --- Called when the entity of the DModelPanel was drawn.  
 --- This is a rendering hook with 3d drawing context.  
 --- @param ent Entity @The clientside entity of the DModelPanel that has been drawn.
@@ -76,7 +83,7 @@ function DModelPanel:PreDrawModel(ent)
 end
 
 ---  client
---- This function is used in the **DModelPanel:LayoutEntity**. It will set the active model to the last set animation using Entity:SetSequence. By default, it is the walking animation.  
+--- This function is used in DModelPanel:LayoutEntity. It will progress the animation, set using Entity:SetSequence. By default, it is the walking animation.  
 function DModelPanel:RunAnimation()
 end
 

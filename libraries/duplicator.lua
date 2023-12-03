@@ -1,8 +1,8 @@
 --- The duplicator library allows you to specify what should be saved when someone attempts to duplicate your custom entity with the duplicator tool. It can also be used by 3rd party duplicator tools to make use of the built in system.  
 _G.duplicator = {}
 ---  client|server
---- Allow this entity to be duplicated  
---- @param classname string @An entity's classname
+--- Allow entities with given class name to be duplicated. See duplicator.Disallow for the opposite effect.  
+--- @param classname string @An entity's classname to allow duuplicating.
 function duplicator.Allow(classname)
 end
 
@@ -18,6 +18,12 @@ end
 --- @param ply Player @The player whose entity this is
 --- @param ent Entity @The entity in question
 function duplicator.ApplyEntityModifiers(ply, ent)
+end
+
+---  client|server
+--- A list of all entity bone modifiers registered with duplicator.RegisterBoneModifier.  
+--- @return table @The list of all entity bone modifiers.
+function duplicator.BoneModifiers()
 end
 
 ---  server
@@ -60,6 +66,13 @@ end
 function duplicator.CreateEntityFromTable(ply, entTable)
 end
 
+---  client|server
+--- Disallow this entity to be duplicated. Opposite of duplicator.Allow.  
+--- By default, all classes are disallowed to be duplicated. This function is useful for temporarily disabling duplication of certain entity classes that may have been previously allowed.  
+--- @param classname string @An entity's classname to disallow duplicating.
+function duplicator.Disallow(classname)
+end
+
 ---  server
 --- "Restores the bone's data."  
 --- Loops through Bones and calls Entity:ManipulateBoneScale, Entity:ManipulateBoneAngles and Entity:ManipulateBonePosition on ent with the table keys and the subtable values s, a and p respectively.  
@@ -92,6 +105,12 @@ end
 --- @param ply? Player @The player who owns the entity
 --- @param data table @The data to be applied onto the entity
 function duplicator.DoGenericPhysics(ent, ply, data)
+end
+
+---  client|server
+--- A list of all entity modifiers registered with duplicator.RegisterEntityModifier.  
+--- @return table @The list of all entity modifiers.
+function duplicator.EntityModifiers()
 end
 
 ---  client|server
