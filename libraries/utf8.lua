@@ -16,6 +16,12 @@ end
 function utf8.char(...)
 end
 
+---  client|menu
+--- This is NOT a function, it's a pattern (a string, not a function) which matches exactly one UTF-8 byte sequence, assuming that the subject is a valid UTF-8 string.  
+--- @return string @```
+function utf8.charpattern()
+end
+
 ---  menu|client|server
 --- Returns the codepoints (as numbers) from all characters in the given string that start between byte position startPos and endPos. It raises an error if it meets any invalid byte sequence. This functions similarly to string.byte.  
 --- @param string string @The string that you will get the code(s) from.

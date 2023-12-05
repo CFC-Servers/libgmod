@@ -213,6 +213,10 @@ end
 
 ---  client|menu
 --- Play a sound file directly on the client (such as UI sounds, etc).  
+--- ℹ **NOTE**:   
+--- Valid sample rates: **11025 Hz, 22050 Hz and 44100 Hz**, otherwise you may see this kind of message:  
+--- `Unsupported 32-bit wave file your_sound.wav` and  
+--- `Invalid sample rate (48000) for sound 'your_sound.wav'`  
 --- @param soundfile string @The path to the sound file
 function surface.PlaySound(soundfile)
 end
@@ -294,7 +298,7 @@ end
 ---  client|menu
 --- Sets the texture to be used in all upcoming draw operations using the surface library.  
 --- See surface.SetMaterial for an IMaterial alternative.  
---- ⚠ **WARNING**: It's probably best to use the alternative mentioned above.  
+--- ℹ **NOTE**: It's probably best to use the alternative mentioned above.  
 --- @param textureID number @The ID of the texture to draw with returned by surface.GetTextureID.
 function surface.SetTexture(textureID)
 end

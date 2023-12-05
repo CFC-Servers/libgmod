@@ -1,141 +1,5 @@
 [
   {
-    "name": "DHTML",
-    "functions": [
-      {
-        "name": "OnBeginLoadingDocument",
-        "parent": "DHTML",
-        "realms": [
-          "client"
-        ],
-        "description": "Called when this panel begins loading a page.",
-        "arguments": [
-          {
-            "name": "url",
-            "type": "string",
-            "description": "The URL of the current page."
-          }
-        ]
-      },
-      {
-        "name": "OnCallback",
-        "parent": "DHTML",
-        "realms": [
-          "client"
-        ],
-        "description": "Called by the engine when a callback function is called.",
-        "arguments": [
-          {
-            "name": "library",
-            "type": "string",
-            "description": "Library name of the JS function that was called."
-          },
-          {
-            "name": "name",
-            "type": "string",
-            "description": "Name of the JS function that was called."
-          },
-          {
-            "name": "arguments",
-            "type": "table",
-            "description": "Table containing all arguments passed to the JS function."
-          }
-        ],
-        "returnValues": [
-          {
-            "type": "boolean",
-            "description": "Return `true` to suppress default engine action."
-          }
-        ]
-      },
-      {
-        "name": "OnChangeTargetURL",
-        "parent": "DHTML",
-        "realms": [
-          "client"
-        ],
-        "description": "Called by HTML panels when the target URL of the frame has changed, this happens when you hover over a link.",
-        "arguments": [
-          {
-            "name": "url",
-            "type": "string",
-            "description": "New target URL."
-          }
-        ]
-      },
-      {
-        "name": "OnChangeTitle",
-        "parent": "DHTML",
-        "realms": [
-          "client"
-        ],
-        "description": "Called by HTML panels when the title of the loaded page has been changed.",
-        "arguments": [
-          {
-            "name": "newTitle",
-            "type": "string",
-            "description": "The new title of the page."
-          }
-        ]
-      },
-      {
-        "name": "OnChildViewCreated",
-        "parent": "DHTML",
-        "realms": [
-          "client"
-        ],
-        "description": "Called by HTML panels when the page attempts to open a new child view (such as a popup or new tab).",
-        "arguments": [
-          {
-            "name": "sourceURL",
-            "type": "string",
-            "description": "The URL of the page requesting to create a child."
-          },
-          {
-            "name": "targetURL",
-            "type": "string",
-            "description": "The URL of the requested child."
-          },
-          {
-            "name": "isPopup",
-            "type": "boolean",
-            "description": "True if the requested view is a popup."
-          }
-        ]
-      },
-      {
-        "name": "OnDocumentReady",
-        "parent": "DHTML",
-        "realms": [
-          "client"
-        ],
-        "description": "Called by HTML panels when the panel's DOM has been set up. You can run JavaScript in here.",
-        "arguments": [
-          {
-            "name": "url",
-            "type": "string",
-            "description": "The URL of the current page."
-          }
-        ]
-      },
-      {
-        "name": "OnFinishLoadingDocument",
-        "parent": "DHTML",
-        "realms": [
-          "client"
-        ],
-        "description": "Called when this panel successfully loads a page.",
-        "arguments": [
-          {
-            "name": "url",
-            "type": "string",
-            "description": "The URL of the current page."
-          }
-        ]
-      }
-    ]
-  },
-  {
     "name": "EFFECT",
     "functions": [
       {
@@ -143,7 +7,8 @@
         "parent": "EFFECT",
         "realms": [
           "client"
-        ]
+        ],
+        "description": "Effect alternative to <page>ENTITY:EndTouch</page>."
       },
       {
         "name": "GetTracerShootPos",
@@ -224,7 +89,8 @@
         "parent": "EFFECT",
         "realms": [
           "client"
-        ]
+        ],
+        "description": "Effect alternative to <page>ENTITY:StartTouch</page>."
       },
       {
         "name": "Think",
@@ -245,7 +111,8 @@
         "parent": "EFFECT",
         "realms": [
           "client"
-        ]
+        ],
+        "description": "Effect alternative to <page>ENTITY:Touch</page>."
       }
     ]
   },
@@ -481,7 +348,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called whenever an engine schedule is being ran.\n<note>This hook only exists for **ai** type SENTs</note>"
+        "description": "Called whenever an engine schedule is being ran.\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>"
       },
       {
         "name": "DoSchedule",
@@ -549,7 +416,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called whenever an engine schedule is finished.\n<note>This hook only exists for **ai** type SENTs</note>"
+        "description": "Called whenever an engine schedule is finished.\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>"
       },
       {
         "name": "ExpressionFinished",
@@ -557,7 +424,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called when an NPC's expression has finished.\n<note>This hook only exists for **ai** type SENTs</note>",
+        "description": "Called when an NPC's expression has finished.\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>",
         "arguments": [
           {
             "name": "strExp",
@@ -882,7 +749,7 @@
         "realms": [
           "server"
         ],
-        "description": "Start the next task in specific schedule.\n<note>This hook only exists for **ai** type SENTs</note>",
+        "description": "Start the next task in specific schedule.\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>",
         "arguments": [
           {
             "name": "sched",
@@ -932,7 +799,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called each time the NPC updates its condition.\n<note>This hook only exists for **ai** type SENTs</note>",
+        "description": "Called each time the NPC updates its condition.\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>",
         "arguments": [
           {
             "name": "conditionID",
@@ -952,7 +819,7 @@
           {
             "name": "entTable",
             "type": "table",
-            "description": "<page>Structures/EntityCopyData</page> of the source entity."
+            "description": "The stored data about the original entity that was duplicated. This would typically contain the <page>Entity:GetTable</page> fields that are serializalble. See <page>Structures/EntityCopyData</page>."
           }
         ]
       },
@@ -1003,7 +870,14 @@
           "client",
           "server"
         ],
-        "description": "Called when the entity is about to be removed.\n\nSee also <page>Entity:CallOnRemove</page>, which can even be used on engine (non-Lua) entities.\n\n<example>\n<description>Create an explosion when the entity will be removed. To create an entity, you can read <page>ents.Create</page>.</description>\n<code>\nfunction ENT:OnRemove()\nlocal explosion = ents.Create( \"env_explosion\" ) -- The explosion entity\nexplosion:SetPos( self:GetPos() ) -- Put the position of the explosion at the position of the entity\nexplosion:Spawn() -- Spawn the explosion\nexplosion:SetKeyValue( \"iMagnitude\", \"50\" ) -- the magnitude of the explosion\nexplosion:Fire( \"Explode\", 0, 0 ) -- explode\nend\n</code>\n</example>"
+        "description": "Called when the entity is about to be removed.\n\nSee also <page>Entity:CallOnRemove</page>, which can even be used on engine (non-Lua) entities.\n\n<example>\n<description>Create an explosion when the entity will be removed. To create an entity, you can read <page>ents.Create</page>.</description>\n<code>\nfunction ENT:OnRemove()\nlocal explosion = ents.Create( \"env_explosion\" ) -- The explosion entity\nexplosion:SetPos( self:GetPos() ) -- Put the position of the explosion at the position of the entity\nexplosion:Spawn() -- Spawn the explosion\nexplosion:SetKeyValue( \"iMagnitude\", \"50\" ) -- the magnitude of the explosion\nexplosion:Fire( \"Explode\", 0, 0 ) -- explode\nend\n</code>\n</example>",
+        "arguments": [
+          {
+            "name": "fullUpdate",
+            "type": "boolean",
+            "description": "Whether the removal is happening due to a full update clientside.\n\nThe entity may or **may not** be recreated immediately after, depending on whether it is in the local player's [PVS](https://developer.valvesoftware.com/wiki/PVS \"PVS - Valve Developer Community\"). (See <page>Entity:IsDormant</page>)"
+          }
+        ]
       },
       {
         "name": "OnRestore",
@@ -1041,7 +915,27 @@
         "realms": [
           "server"
         ],
-        "description": "Called from the engine when TaskComplete is called.\nThis allows us to move onto the next task - even when TaskComplete was called from an engine side task.\n\n<note>This hook only exists for **ai** type SENTs</note>"
+        "description": "Called from the engine when TaskComplete is called.\nThis allows us to move onto the next task - even when TaskComplete was called from an engine side task.\n\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>"
+      },
+      {
+        "name": "OnTaskFailed",
+        "parent": "ENTITY",
+        "realms": [
+          "server"
+        ],
+        "description": "Called when a task this NPC was running has failed for whatever reason.\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>",
+        "arguments": [
+          {
+            "name": "failCode",
+            "type": "number",
+            "description": "The fail code for the task."
+          },
+          {
+            "name": "failReason",
+            "type": "string",
+            "description": "If set, a custom reason for the failure."
+          }
+        ]
       },
       {
         "name": "PassesTriggerFilters",
@@ -1154,17 +1048,17 @@
           {
             "name": "ply",
             "type": "Player",
-            "description": "The player who pasted the entity.\n\n<warning>This may not be a valid player in some circumstances. For example, when a save is loaded from the main menu, this hook will be called before the player is spawned. This argument will be a NULL entity in that case.</warning>\n<bug pull=\"1408\">This will be nil for invalid players.</bug>"
+            "description": "The player who pasted the entity.\n\n<warning>This may not be a valid player in some circumstances. For example, when a save is loaded from the main menu, this hook will be called before the player is spawned. This argument will be a NULL entity in that case.</warning>"
           },
           {
             "name": "ent",
             "type": "Entity",
-            "description": "The entity itself. Same as 'self'."
+            "description": "The entity itself. Same as `self` within the function context."
           },
           {
             "name": "createdEntities",
             "type": "table",
-            "description": "All entities that are within the placed dupe. <note>The keys of each value in this table are the original entity indexes when the duplication was created. This can be utilized to restore entity references that don't get saved in duplications.</note>"
+            "description": "All entities that are within the placed dupe.\n<note>The keys of each value in this table are the original entity indexes when the duplication was created. This can be utilized to restore entity references that don't get saved in duplications.</note>"
           }
         ]
       },
@@ -1197,7 +1091,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called from the engine every 0.1 seconds. Returning `true` inside this hook will allow `CAI_BaseNPC::MaintainSchedule` to also be called.\n\n<note>This hook only exists for **ai** type SENTs</note>"
+        "description": "Called from the engine every 0.1 seconds. Returning `true` inside this hook will allow `CAI_BaseNPC::MaintainSchedule` to also be called.\n\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>"
       },
       {
         "name": "RunEngineTask",
@@ -1205,7 +1099,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called when an engine task is ran on the entity.\n\n<note>This hook only exists for **ai** type SENTs</note>",
+        "description": "Called when an engine task is ran on the entity.\n\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>",
         "arguments": [
           {
             "name": "taskID",
@@ -1231,7 +1125,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called every think on running task.\nThe actual task function should tell us when the task is finished.\n<note>This hook only exists for **ai** type SENTs</note>",
+        "description": "Called every think on running task.\nThe actual task function should tell us when the task is finished.\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>",
         "arguments": [
           {
             "name": "task",
@@ -1246,7 +1140,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called whenever a schedule is finished.\n<note>This hook only exists for **ai** type SENTs</note>"
+        "description": "Called whenever a schedule is finished.\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>"
       },
       {
         "name": "SelectSchedule",
@@ -1254,7 +1148,7 @@
         "realms": [
           "server"
         ],
-        "description": "Set the schedule we should be playing right now.\n<note>This hook only exists for **ai** type SENTs</note>",
+        "description": "Set the schedule we should be playing right now.\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>",
         "arguments": [
           {
             "name": "iNPCState",
@@ -1284,7 +1178,7 @@
         "realms": [
           "server"
         ],
-        "description": "Sets the current task.\n<note>This hook only exists for **ai** type SENTs</note>",
+        "description": "Sets the current task.\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>",
         "arguments": [
           {
             "name": "task",
@@ -1333,7 +1227,7 @@
         "realms": [
           "server"
         ],
-        "description": "Starts an engine schedule.\n<note>This hook only exists for **ai** type SENTs</note>",
+        "description": "Starts an engine schedule.\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>",
         "arguments": [
           {
             "name": "scheduleID",
@@ -1348,7 +1242,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called when an engine task has been started on the entity.\n\n<note>This hook only exists for **ai** type SENTs</note>",
+        "description": "Called when an engine task has been started on the entity.\n\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>",
         "arguments": [
           {
             "name": "taskID",
@@ -1374,7 +1268,7 @@
         "realms": [
           "server"
         ],
-        "description": "Starts a schedule previously created by <page>ai_schedule.New</page>.\n\nNot to be confused with <page>ENTITY:StartEngineSchedule</page> or <page>NPC:SetSchedule</page> which start an Engine-based schedule.\n\n<note>This hook only exists for **ai** type SENTs</note>",
+        "description": "Starts a schedule previously created by <page>ai_schedule.New</page>.\n\nNot to be confused with <page>ENTITY:StartEngineSchedule</page> or <page>NPC:SetSchedule</page> which start an Engine-based schedule.\n\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>",
         "arguments": [
           {
             "name": "sched",
@@ -1389,7 +1283,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called once on starting task.\n<note>This hook only exists for **ai** type SENTs</note>",
+        "description": "Called once on starting task.\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>",
         "arguments": [
           {
             "name": "task",
@@ -1439,7 +1333,7 @@
         "realms": [
           "server"
         ],
-        "description": "Returns true if the current running Task is finished.\n<note>This hook only exists for **ai** type SENTs</note>",
+        "description": "Returns true if the current running Task is finished.\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>",
         "returnValues": [
           {
             "type": "boolean",
@@ -1453,7 +1347,7 @@
         "realms": [
           "server"
         ],
-        "description": "Returns how many seconds we've been doing this current task\n<note>This hook only exists for **ai** type SENTs</note>",
+        "description": "Returns how many seconds we've been doing this current task\n<note>This hook only exists for `ai` type [SENTs](Scripted_Entities).</note>",
         "returnValues": [
           {
             "type": "number",
@@ -1530,6 +1424,27 @@
             "name": "entity",
             "type": "Entity",
             "description": "The entity that touched it."
+          }
+        ]
+      },
+      {
+        "name": "TranslateActivity",
+        "parent": "ENTITY",
+        "realms": [
+          "server"
+        ],
+        "description": "<note>This hook only exists for `ai` type SENTs.</note>",
+        "arguments": [
+          {
+            "name": "act",
+            "type": "number",
+            "description": "The activity to translate. See <page>Enums/ACT</page>."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "number",
+            "description": "The activity that should override the incoming activity. See <page>Enums/ACT</page>.\n\nDo not return anything to not override."
           }
         ]
       },
@@ -1655,7 +1570,7 @@
         "realms": [
           "client"
         ],
-        "description": "Adds a death notice entry.\n\n<bug issue=\"2611\" pull=\"1380\">You cannot use <page>hook.Add</page> on this hook yet.</bug>",
+        "description": "Adds a death notice entry.",
         "arguments": [
           {
             "name": "attacker",
@@ -1890,6 +1805,32 @@
         ]
       },
       {
+        "name": "CanCreateUndo",
+        "parent": "GM",
+        "realms": [
+          "server"
+        ],
+        "description": "Called whenever a players tries to create an undo.",
+        "arguments": [
+          {
+            "name": "ply",
+            "type": "Player",
+            "description": "The player who tried to create something."
+          },
+          {
+            "name": "undo",
+            "type": "table",
+            "description": "The undo table as a <page>Structures/Undo</page>."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "Return false to disallow creation of the undo."
+          }
+        ]
+      },
+      {
         "name": "CanEditVariable",
         "parent": "GM",
         "realms": [
@@ -2036,6 +1977,38 @@
           {
             "type": "boolean",
             "description": "True if they can unfreeze."
+          }
+        ]
+      },
+      {
+        "name": "CanProperty",
+        "parent": "GM",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Controls if a property can be used or not.",
+        "arguments": [
+          {
+            "name": "ply",
+            "type": "Player",
+            "description": "Player, that tried to use the property"
+          },
+          {
+            "name": "property",
+            "type": "string",
+            "description": "Class of the property that is tried to use, for example - bonemanipulate\n\n<warning>This is not guaranteed to be the internal property name used in <page>properties.Add</page>!</warning>"
+          },
+          {
+            "name": "ent",
+            "type": "Entity",
+            "description": "The entity, on which property is tried to be used on"
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "Return false to disallow using that property"
           }
         ]
       },
@@ -2313,7 +2286,7 @@
         "realms": [
           "server"
         ],
-        "description": "Handles the player's death.\n\nThis hook is **not** called if the player is killed by <page>Player:KillSilent</page>. See <page>GM:PlayerSilentDeath</page> for that.\n\n* <page>GM:PlayerDeath</page> is called after this hook\n* <page>GM:PostPlayerDeath</page> is called after that",
+        "description": "Handles the player's death.\n\nThis hook is **not** called if the player is killed by <page>Player:KillSilent</page>. See <page>GM:PlayerSilentDeath</page> for that.\n\n* <page>GM:PlayerDeath</page> is called after this hook\n* <page>GM:PostPlayerDeath</page> is called after that\n\n<note><page>Player:Alive</page> will return false in this hook.</note>",
         "arguments": [
           {
             "name": "ply",
@@ -2367,7 +2340,7 @@
           "client",
           "menu"
         ],
-        "description": "Called after all other 2D draw hooks are called. Draws over all VGUI Panels and HUDs.\n\nUnlike <page>GM:HUDPaint</page>, this hook is called with the game paused and while the Camera SWEP is equipped.\n\n<note>Only gets called when r_drawvgui is enabled.</note>\n<rendercontext hook=\"true\" type=\"2D\"></rendercontext>"
+        "description": "Called after all other 2D draw hooks are called. Draws over all VGUI Panels and HUDs.\n\nUnlike <page>GM:HUDPaint</page>, this hook is called with the game paused and while the Camera SWEP is equipped.\n\n<note>Only gets called when `r_drawvgui` is enabled.</note>\n<rendercontext hook=\"true\" type=\"2D\"></rendercontext>"
       },
       {
         "name": "DrawPhysgunBeam",
@@ -2375,7 +2348,7 @@
         "realms": [
           "client"
         ],
-        "description": "Allows you to override physgun beam drawing.\n\n<bug issue=\"3294\">This is still called when physgun_drawbeams is disabled.</bug>",
+        "description": "Allows you to override physgun effects rendering.\n\n<note>This is still called when `physgun_drawbeams` is set to `0`, because this hook is also capable of overriding physgun sprite effects, while the convar does not.</note>",
         "arguments": [
           {
             "name": "ply",
@@ -2411,7 +2384,7 @@
         "returnValues": [
           {
             "type": "boolean",
-            "description": "Return false to hide default beam"
+            "description": "Return false to hide default effects"
           }
         ]
       },
@@ -2443,7 +2416,7 @@
           "client",
           "server"
         ],
-        "description": "Called whenever a sound has been played. This will not be called clientside if the server played the sound without the client also calling <page>Entity:EmitSound</page>.\n\n<bug issue=\"1021\">This is not called for scripted sequences.</bug>",
+        "description": "Called whenever a sound has been played. This will not be called clientside if the server played the sound without the client also calling <page>Entity:EmitSound</page>.\n\n<bug issue=\"1021\">This is not called for scripted sentences. This was fixed.</bug>",
         "arguments": [
           {
             "name": "data",
@@ -2555,12 +2528,17 @@
           "client",
           "server"
         ],
-        "description": "Called right before the removal of an entity.\n<bug issue=\"4675\">This hook is called during clientside full updates. See <page>ENTITY:OnRemove#clientsidebehaviourremarks</page> for more information.</bug>",
+        "description": "Called right before removal of an entity.\n<warning>This hook is called clientside during full updates due to how networking works in the Source Engine.\n\nThis can happen when the client briefly loses connection to the server, and can be simulated via `cl_fullupdate` for testing purposes.</warning>",
         "arguments": [
           {
             "name": "ent",
             "type": "Entity",
             "description": "Entity being removed"
+          },
+          {
+            "name": "fullUpdate",
+            "type": "boolean",
+            "description": "Whether the removal is happening due to a full update clientside.\n\nThe entity may or **may not** be recreated immediately after, depending on whether it is in the local player's [PVS](https://developer.valvesoftware.com/wiki/PVS \"PVS - Valve Developer Community\"). (See <page>Entity:IsDormant</page>)"
           }
         ]
       },
@@ -2675,6 +2653,27 @@
           "server"
         ],
         "description": "Called when game content has been changed, for example an addon or a mountable game was (un)mounted."
+      },
+      {
+        "name": "GetDeathNoticeEntityName",
+        "parent": "GM",
+        "realms": [
+          "server"
+        ],
+        "description": "An internal function used to get an untranslated string to show in the kill feed as the entity's name. See <page>GM:SendDeathNotice</page>",
+        "arguments": [
+          {
+            "name": "ent",
+            "type": "Entity",
+            "description": "The entity to get a name of."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "string",
+            "description": "The untranslated name for given NPC. The translation/localization would happen on the client."
+          }
+        ]
       },
       {
         "name": "GetFallDamage",
@@ -3003,6 +3002,26 @@
         ]
       },
       {
+        "name": "HandlePlayerArmorReduction",
+        "parent": "GM",
+        "realms": [
+          "server"
+        ],
+        "description": "Called to handle player armor reduction, when player receives damage.\n\n<validate>Clarify hook order with other damage hooks.</validate>",
+        "arguments": [
+          {
+            "name": "ply",
+            "type": "Player",
+            "description": "The player that took damage."
+          },
+          {
+            "name": "dmginfo",
+            "type": "CTakeDamageInfo",
+            "description": "The taken damage."
+          }
+        ]
+      },
+      {
         "name": "HandlePlayerDriving",
         "parent": "GM",
         "realms": [
@@ -3085,7 +3104,7 @@
           "client",
           "server"
         ],
-        "description": "Allows to override player landing animations.",
+        "description": "Called every frame by the player model animation system. Allows to override player landing animations.",
         "arguments": [
           {
             "name": "ply",
@@ -3323,7 +3342,7 @@
           "client",
           "server"
         ],
-        "description": "Called after the gamemode loads and starts."
+        "description": "Called after the gamemode loads and starts.\n\nNo entities would be present at the time this hook is called, please see <page>GM:InitPostEntity</page> for a one time fire hook after all map entities have been initialized."
       },
       {
         "name": "InitPostEntity",
@@ -3332,7 +3351,7 @@
           "client",
           "server"
         ],
-        "description": "Called after all the entities are initialized. Starting from this hook <page>Global.LocalPlayer</page> will return valid object.\n\n<note>At this point the client only knows about the entities that are within the spawnpoints' [PVS](https://en.wikipedia.org/wiki/Potentially_visible_set). For instance, if the server sends an entity that is not within this PVS, the client will receive it as NULL entity.</note>"
+        "description": "Called after all the entities are initialized. Starting from this hook <page>Global.LocalPlayer</page> will return valid object.\n\n<note>At this point the client only knows about the entities that are within the spawnpoints' [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS \"PVS - Valve Developer Community\"). For instance, if the server sends an entity that is not within this PVS, the client will receive it as NULL entity.</note>"
       },
       {
         "name": "InputMouseApply",
@@ -3594,7 +3613,7 @@
         "realms": [
           "client"
         ],
-        "description": "Called whenever this entity changes its transmission state for this <page>Global.LocalPlayer</page>, such as exiting or re entering the [PVS](https://developer.valvesoftware.com/wiki/PVS).\n\n<note>\nThis is the best place to handle the reset of <page>Entity:SetPredictable</page>, as this would be usually called when the player lags and requests a full packet update.\n\nWhen the entity stops transmitting, <page>Entity:IsDormant</page> will only return true **after** this hook.\n</note>",
+        "description": "Called whenever this entity changes its transmission state for this <page>Global.LocalPlayer</page>, such as exiting or re entering the [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS \"PVS - Valve Developer Community\").\n\n<note>\nThis is the best place to handle the reset of <page>Entity:SetPredictable</page>, as this would be usually called when the player lags and requests a full packet update.\n\nWhen the entity stops transmitting, <page>Entity:IsDormant</page> will only return true **after** this hook.\n</note>",
         "arguments": [
           {
             "name": "entity",
@@ -3668,6 +3687,42 @@
             "type": "boolean",
             "name": "suppress",
             "description": "Return false to suppress the cleanup notification."
+          }
+        ]
+      },
+      {
+        "name": "OnCloseCaptionEmit",
+        "parent": "GM",
+        "realms": [
+          "client"
+        ],
+        "description": "Called when a caption has been emitted to the closed caption box.",
+        "arguments": [
+          {
+            "name": "soundScript",
+            "type": "string",
+            "description": "The name of the soundscript, or `customLuaToken` if it's from <page>gui.AddCaption</page>"
+          },
+          {
+            "name": "duration",
+            "type": "number",
+            "description": "How long the caption should stay for"
+          },
+          {
+            "name": "fromPlayer",
+            "type": "boolean",
+            "description": "Is this caption coming from the player?"
+          },
+          {
+            "name": "fullText",
+            "type": "string",
+            "description": "The caption. Can be nil if its token is not registered"
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "Return `true` to prevent the caption from appearing"
           }
         ]
       },
@@ -3899,12 +3954,6 @@
             "type": "Player",
             "description": "The player who tried to freeze the entity."
           }
-        ],
-        "returnValues": [
-          {
-            "type": "boolean",
-            "description": "Allows you to override whether the player can freeze the entity"
-          }
         ]
       },
       {
@@ -4052,6 +4101,27 @@
         ]
       },
       {
+        "name": "OnPlayerJump",
+        "parent": "GM",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Called when a player jumps.",
+        "arguments": [
+          {
+            "name": "player",
+            "type": "Entity",
+            "description": "Player"
+          },
+          {
+            "name": "speed",
+            "type": "number",
+            "description": "The velocity/impulse of the jump"
+          }
+        ]
+      },
+      {
         "name": "OnPlayerPhysicsDrop",
         "parent": "GM",
         "realms": [
@@ -4111,7 +4181,7 @@
         "realms": [
           "client"
         ],
-        "description": "Called when the player's screen resolution of the game changes.\n<page>Global.ScrW</page> and <page>Global.ScrH</page> will return the new values when this hook is called.",
+        "description": "Called when the player's screen resolution of the game changes.\n\n<page>Global.ScrW</page> and <page>Global.ScrH</page> will return the new values when this hook is called.",
         "arguments": [
           {
             "name": "oldWidth",
@@ -4122,6 +4192,16 @@
             "name": "oldHeight",
             "type": "number",
             "description": "The previous height of the game's window."
+          },
+          {
+            "name": "newWidth",
+            "type": "number",
+            "description": "The new/current width of the game's window."
+          },
+          {
+            "name": "newHeight",
+            "type": "number",
+            "description": "The new/current height of the game's window."
           }
         ]
       },
@@ -4162,7 +4242,7 @@
         "realms": [
           "client"
         ],
-        "description": "Called when DTextEntry loses focus.",
+        "description": "Called when a <page>DTextEntry</page> loses focus.",
         "arguments": [
           {
             "name": "panel",
@@ -4412,7 +4492,7 @@
         "realms": [
           "server"
         ],
-        "description": "Decides whether a player can hear another player using voice chat.\n\n<note>This hook is called **several** times a tick, so ensure your code is efficient.</note>",
+        "description": "Decides whether a player can hear another player using voice chat.\n\n<warning>This hook is called **several** times a tick, so ensure your code is efficient.</warning>",
         "arguments": [
           {
             "name": "listener",
@@ -4659,7 +4739,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called when a player is killed by <page>Player:Kill</page> or any other normal means.\n\nThis hook is **not** called if the player is killed by <page>Player:KillSilent</page>. See <page>GM:PlayerSilentDeath</page> for that.\n\n* <page>GM:DoPlayerDeath</page> is called **before** this hook.\n* <page>GM:PostPlayerDeath</page> is called **after** this hook.\n\nSee <page>Player:LastHitGroup</page> if you need to get the last hit hitgroup of the player.\n\n<note><page>Player:Alive</page> will return true in this hook.</note>",
+        "description": "Called when a player is killed by <page>Player:Kill</page> or any other normal means.\n\nThis hook is **not** called if the player is killed by <page>Player:KillSilent</page>. See <page>GM:PlayerSilentDeath</page> for that.\n\n* <page>GM:DoPlayerDeath</page> is called **before** this hook.\n* <page>GM:PostPlayerDeath</page> is called **after** this hook.\n\nSee <page>Player:LastHitGroup</page> if you need to get the last hit hitgroup of the player.\n\n<note><page>Player:Alive</page> will return false in this hook.</note>",
         "arguments": [
           {
             "name": "victim",
@@ -5103,7 +5183,7 @@
           "client",
           "server"
         ],
-        "description": "Called after the player's think.",
+        "description": "Called after the player's think.\n<note>On the client side, it is only called for the local player.</note>",
         "arguments": [
           {
             "name": "ply",
@@ -5780,6 +5860,33 @@
         ]
       },
       {
+        "name": "PostEntityFireBullets",
+        "parent": "GM",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Called every time a bullet pellet is fired from an entity.\n\n<warning>This hook is called directly from <page>Entity:FireBullets</page>. Due to this, you cannot call <page>Entity:FireBullets</page> inside this hook or an infinite loop will occur crashing the game.</warning>",
+        "arguments": [
+          {
+            "name": "entity",
+            "type": "Entity",
+            "description": "The entity that fired the bullet"
+          },
+          {
+            "name": "data",
+            "type": "table",
+            "description": "The bullet data. Contains the following keys:\n* <page>table</page> **Trace** - The bullet pellet trace result. See <page>Structures/TraceResult</page>\n\nFrom <page>Structures/Bullet</page>:\n* `AmmoType`, `Tracer`, `Damage`, `Force`, `Attacker`, `TracerName`."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "Return `false` to suppress the bullet."
+          }
+        ]
+      },
+      {
         "name": "PostEntityTakeDamage",
         "parent": "GM",
         "realms": [
@@ -5818,7 +5925,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called right after <page>GM:DoPlayerDeath</page>, <page>GM:PlayerDeath</page> and <page>GM:PlayerSilentDeath</page>.\n\nThis hook will be called for all deaths, including <page>Player:KillSilent</page>\n\n<note>The player is considered dead when this is hook is called, <page>Player:Alive</page> will return false.</note>",
+        "description": "Called right after <page>GM:DoPlayerDeath</page>, <page>GM:PlayerDeath</page> and <page>GM:PlayerSilentDeath</page>.\n\nThis hook will be called for all deaths, including <page>Player:KillSilent</page>\n\n<note><page>Player:Alive</page> will return false in this hook.</note>",
         "arguments": [
           {
             "name": "ply",
@@ -6378,6 +6485,36 @@
         ]
       },
       {
+        "name": "SendDeathNotice",
+        "parent": "GM",
+        "realms": [
+          "server"
+        ],
+        "description": "An internal function used to send a death notice event to all clients.",
+        "arguments": [
+          {
+            "name": "attacker",
+            "type": "Entity",
+            "description": "The entity that caused the death."
+          },
+          {
+            "name": "inflictor",
+            "type": "Entity",
+            "description": "The attacker's weapon or the attacker itself if no weapon was equipped."
+          },
+          {
+            "name": "victim",
+            "type": "Entity",
+            "description": "The entity that died."
+          },
+          {
+            "name": "flags",
+            "type": "number",
+            "description": "Death notice flags. 1 = Friendly victim (to the player), 2 = friendly attacker (to the player)"
+          }
+        ]
+      },
+      {
         "name": "SetPlayerSpeed",
         "parent": "GM",
         "realms": [
@@ -6435,7 +6572,7 @@
         "realms": [
           "server"
         ],
-        "description": "Allows you to add extra positions to the player's PVS. This is the place to call <page>Global.AddOriginToPVS</page>.",
+        "description": "Allows you to add extra positions to the player's [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS \"PVS - Valve Developer Community\"). This is the place to call <page>Global.AddOriginToPVS</page>.",
         "arguments": [
           {
             "name": "ply",
@@ -6538,7 +6675,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called when a player executes `gm_showhelp` console command. ( Default bind is <key>F1</key> )",
+        "description": "Called when a player executes `gm_showhelp` console command. (Default bind is <key>F1</key>)",
         "arguments": [
           {
             "name": "ply",
@@ -6664,7 +6801,7 @@
           "client",
           "server"
         ],
-        "description": "Allows you to change the players inputs before they are processed by the server.\n\n\n\n\nThis is basically a shared version of <page>GM:CreateMove</page>.\n\n<note>This function is also called for bots, making it the best solution to control them so far</note>\n\n<note>This hook is predicted, but not by usual means, this hook is called when a <page>CUserCmd</page> is generated on the client, and on the server when it is received, so it is necessary for this hook to be called clientside even on singleplayer</note>",
+        "description": "Allows you to change the players inputs before they are processed by the server. This function is also called for bots, making it the best solution to control them.\n\nThis is basically a shared version of <page>GM:CreateMove</page>.\n\n\n<note>This hook is predicted, but not by usual means, it is called when a <page>CUserCmd</page> is generated on the client, and on the server when it is received, so it is necessary for this hook to be called clientside even on singleplayer</note>",
         "arguments": [
           {
             "name": "ply",
@@ -6732,7 +6869,7 @@
           "client",
           "server"
         ],
-        "description": "Allows you to translate player activities.",
+        "description": "<note>Isn't call when CalcMainActivity return a valid override sequence id</note>\nAllows you to translate player activities.",
         "arguments": [
           {
             "name": "ply",
@@ -7151,7 +7288,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called when the nextbot NPC sees another Nextbot NPC or a Player.\n<note>This hook will only run after <page>NextBot:SetFOV</page> or other vision related function is called on the nextbot. See <page>NextBot:IsAbleToSee</page> for more details.</note>\n<bug issue=\"4734\">This hook is not called in some scenarios.</bug>",
+        "description": "Called when the nextbot NPC sees another Nextbot NPC or a Player.\n<note>This hook will only run after <page>NextBot:SetFOV</page> or other vision related function is called on the nextbot. See <page>NextBot:IsAbleToSee</page> for more details.</note>",
         "arguments": [
           {
             "name": "ent",
@@ -7166,7 +7303,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called when the nextbot NPC loses sight of another Nextbot NPC or a Player.\n<note>This hook will only run after <page>NextBot:SetFOV</page> or other vision related function is called on the nextbot. See <page>NextBot:IsAbleToSee</page> for more details.</note>\n<bug issue=\"4734\">This hook is not called in some scenarios.</bug>",
+        "description": "Called when the nextbot NPC loses sight of another Nextbot NPC or a Player.\n<note>This hook will only run after <page>NextBot:SetFOV</page> or other vision related function is called on the nextbot. See <page>NextBot:IsAbleToSee</page> for more details.</note>",
         "arguments": [
           {
             "name": "ent",
@@ -7698,6 +7835,16 @@
             "name": "oldHeight",
             "type": "number",
             "description": "The previous height of the game's window"
+          },
+          {
+            "name": "newWidth",
+            "type": "number",
+            "description": "The new/current width of the game's window."
+          },
+          {
+            "name": "newHeight",
+            "type": "number",
+            "description": "The new/current height of the game's window."
           }
         ]
       },
@@ -8154,38 +8301,6 @@
         ]
       },
       {
-        "name": "CanProperty",
-        "parent": "SANDBOX",
-        "realms": [
-          "client",
-          "server"
-        ],
-        "description": "Controls if a property can be used or not.",
-        "arguments": [
-          {
-            "name": "ply",
-            "type": "Player",
-            "description": "Player, that tried to use the property"
-          },
-          {
-            "name": "property",
-            "type": "string",
-            "description": "Class of the property that is tried to use, for example - bonemanipulate\n\n<warning>This is not guaranteed to be the internal property name used in <page>properties.Add</page>!</warning>"
-          },
-          {
-            "name": "ent",
-            "type": "Entity",
-            "description": "The entity, on which property is tried to be used on"
-          }
-        ],
-        "returnValues": [
-          {
-            "type": "boolean",
-            "description": "Return false to disallow using that property"
-          }
-        ]
-      },
-      {
         "name": "CanTool",
         "parent": "SANDBOX",
         "realms": [
@@ -8305,6 +8420,20 @@
           "client"
         ],
         "description": "Called when the context menu is supposedly opened.\n\nThis is simply an alias of <page>GM:OnContextMenuOpen</page> but will **not** be called if <page>SANDBOX:ContextMenuOpen</page> prevents the context menu from opening.\n\nThis hook **will** be called even if the context menu doesn't actually exist, i.e. <page>SANDBOX:ContextMenuEnabled</page> blocked its creation."
+      },
+      {
+        "name": "ContextMenuShowTool",
+        "parent": "SANDBOX",
+        "realms": [
+          "client"
+        ],
+        "description": "Called to poll if active tool settings should appear in the context menu. Please note that this is only called on initial opening of the context menu, not every frame the context menu is in use.",
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "Return `false` to prevent active tool settings from displaying in the context menu."
+          }
+        ]
       },
       {
         "name": "OnRevertSpawnlist",
@@ -8805,17 +8934,17 @@
         "arguments": [
           {
             "name": "pnlContent",
-            "type": "panel",
+            "type": "Panel",
             "description": "The SpawnmenuContentPanel"
           },
           {
             "name": "tree",
-            "type": "panel",
+            "type": "Panel",
             "description": "The ContentNavBar tree from the SpawnmenuContentPanel"
           },
           {
             "name": "node",
-            "type": "panel",
+            "type": "Panel",
             "description": "The old Spawnlists"
           }
         ]
@@ -8830,17 +8959,17 @@
         "arguments": [
           {
             "name": "pnlContent",
-            "type": "panel",
+            "type": "Panel",
             "description": "The SpawnmenuContentPanel"
           },
           {
             "name": "tree",
-            "type": "panel",
+            "type": "Panel",
             "description": "The ContentNavBar tree from the SpawnmenuContentPanel"
           },
           {
             "name": "node",
-            "type": "panel",
+            "type": "Panel",
             "description": "The old Spawnlists"
           }
         ]
@@ -8855,17 +8984,17 @@
         "arguments": [
           {
             "name": "pnlContent",
-            "type": "panel",
+            "type": "Panel",
             "description": "The SpawnmenuContentPanel"
           },
           {
             "name": "tree",
-            "type": "panel",
+            "type": "Panel",
             "description": "The ContentNavBar tree from the SpawnmenuContentPanel"
           },
           {
             "name": "node",
-            "type": "panel",
+            "type": "Panel",
             "description": "The old Spawnlists"
           }
         ]
@@ -8884,7 +9013,7 @@
         "realms": [
           "client"
         ],
-        "description": "Add the STOOLS to the tool menu. You want to call <page>spawnmenu.AddToolMenuOption</page> in this hook."
+        "description": "Add the <page text=\"Scripted TOOLs\">TOOL</page> to the tool menu. You want to call <page>spawnmenu.AddToolMenuOption</page> in this hook."
       },
       {
         "name": "PopulateVehicles",
@@ -8896,17 +9025,17 @@
         "arguments": [
           {
             "name": "pnlContent",
-            "type": "panel",
+            "type": "Panel",
             "description": "The SpawnmenuContentPanel"
           },
           {
             "name": "tree",
-            "type": "panel",
+            "type": "Panel",
             "description": "The ContentNavBar tree from the SpawnmenuContentPanel"
           },
           {
             "name": "node",
-            "type": "panel",
+            "type": "Panel",
             "description": "The old Spawnlists"
           }
         ]
@@ -8921,17 +9050,17 @@
         "arguments": [
           {
             "name": "pnlContent",
-            "type": "panel",
+            "type": "Panel",
             "description": "The SpawnmenuContentPanel"
           },
           {
             "name": "tree",
-            "type": "panel",
+            "type": "Panel",
             "description": "The ContentNavBar tree from the SpawnmenuContentPanel"
           },
           {
             "name": "node",
-            "type": "panel",
+            "type": "Panel",
             "description": "The old Spawnlists"
           }
         ]
@@ -8943,6 +9072,33 @@
           "client"
         ],
         "description": "Called right after the Lua Loaded tool menus are reloaded. This is a good place to set up any <page>ControlPanel</page>s."
+      },
+      {
+        "name": "PreRegisterTOOL",
+        "parent": "SANDBOX",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Called just before registering a Sandbox scripted tool.",
+        "arguments": [
+          {
+            "name": "tool",
+            "type": "table",
+            "description": "The TOOL table to be registered. See <page>Structures/TOOL</page>."
+          },
+          {
+            "name": "class",
+            "type": "string",
+            "description": "The class name to be assigned."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "Return `false` to prevent the TOOL from being registered."
+          }
+        ]
       },
       {
         "name": "PreReloadToolsMenu",
@@ -9263,7 +9419,7 @@
         "realms": [
           "client"
         ],
-        "description": "Allows you to adjust player view while this weapon in use.\n\nThis hook is called from the default implementation of <page>GM:CalcView</page> which is [here](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/gamemodes/base/gamemode/cl_init.lua#L387-L395). Therefore, it will not be called if any other hook added to CalcView returns any value, or if the current gamemode overrides the default hook and does not call the SWEP function.\n\n<bug pull=\"1348\">SWEPs that define this function will not work with the <page text=\"taunt camera.\">Global.TauntCamera</page></bug>",
+        "description": "Allows you to adjust player view while this weapon in use.\n\nThis hook is called from the default implementation of <page>GM:CalcView</page> which is [here](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/gamemodes/base/gamemode/cl_init.lua#L387-L395). Therefore, it will not be called if any other hook added to `CalcView` returns any value, or if the current gamemode overrides the default hook and does not call the SWEP function.",
         "arguments": [
           {
             "name": "ply",

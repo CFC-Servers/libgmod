@@ -1,4 +1,5 @@
---- The **DColorCombo** allows the user to choose color, without alpha, using DColorMixer or DColorPalette in a tabbed view.  
+--- The **DColorCombo** allows the user to choose color, without alpha,  
+--- using DColorMixer or DColorPalette in a tabbed view.  
 --- @class DColorCombo : DPropertySheet
 local DColorCombo = {}
 ---  client

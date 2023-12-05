@@ -3,11 +3,11 @@
 local Player = {}
 ---  client|server
 --- Returns the player's AccountID part of their full SteamID.  
---- Since this does not include other vital parts of the SteamID such as "Account Type" and "Account Instance", it should be avoided, as AccountIDs are finite, and can be the same for multiple valid accounts.  
+--- Since this does not include other vital parts of the SteamID such as "Account Type" and "Account Instance", it should be avoided, as AccountIDs are finite, and can theoretically be the same for multiple valid accounts.  
 --- See Player:SteamID for the text representation of the full SteamID.  
 --- See Player:SteamID64 for a 64bit representation of the full SteamID.  
---- ℹ **NOTE**: In a `-multirun` environment, this will return `no value` for all "copies" of a player because they are not authenticated with Steam.  
---- For bots this will return values starting with `0` for the first bot, `1` for the second bot and so on. It will return `no value` clientside for bots.  
+--- ℹ **NOTE**: In a `-multirun` environment, this will return `-1` for all "copies" of a player because they are not authenticated with Steam.  
+--- For bots this will return values starting with `0` for the first bot, `1` for the second bot and so on.  
 --- @return number @The AccountID of Player's SteamID.
 function Player:AccountID()
 end
@@ -152,10 +152,9 @@ function Player:CheckLimit(limitType)
 end
 
 ---  client|server
---- Runs the concommand on the player. This does not work on bots.  
+--- Runs the concommand on the player. This does not work on bots. If used clientside, always runs the command on the local player.  
 --- If you wish to directly modify the movement input of bots, use GM:StartCommand instead.  
 --- ℹ **NOTE**: Some commands/convars are blocked from being ran/changed using this function, usually to prevent harm/annoyance to clients. For a list of blocked commands, see Blocked ConCommands.  
---- 🦟 **BUG**: On clientside running a ConCommand on an other player will not throw any warnings or errors but will run the ConCommand on LocalPlayer() instead.  
 --- @param command string @command to run
 function Player:ConCommand(command)
 end
@@ -322,7 +321,7 @@ end
 ---  client|server
 --- Returns the player's active weapon.  
 --- If used on a Global.LocalPlayer() and the player is spectating another player with `OBS_MODE_IN_EYE`, the weapon returned will be of the spectated player.  
---- @return Weapon @The weapon the player currently has equipped.
+--- @return Weapon @The weapon the player currently has equipped or NULL if the player doesn't have an active weapon eg
 function Player:GetActiveWeapon()
 end
 
@@ -588,8 +587,8 @@ function Player:GetObserverTarget()
 end
 
 ---  client|server
---- Returns a **P**layer **Data** key-value pair from the SQL database. (sv.db when called on server,  cl.db when called on client)  
---- Internally uses the sql.  
+--- Returns a **P**ersistent **Data** key-value pair from the SQL database. (`sv.db` when called on server, `cl.db` when called on client)  
+--- Internally uses the sql library. See util.GetPData for cases when the player is not currently on the server.  
 --- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
 --- ℹ **NOTE**: PData is not networked from servers to clients!  
 --- @param key string @Name of the PData key
@@ -895,7 +894,7 @@ end
 function Player:IsFullyAuthenticated()
 end
 
----  server
+---  client|server
 --- Returns if a player is the host of the current session.  
 --- @return boolean @`true` if the player is the listen server host, `false` otherwise
 function Player:IsListenServerHost()
@@ -965,6 +964,12 @@ end
 --- Returns if the player can be heard by the local player.  
 --- @return boolean @isAudible
 function Player:IsVoiceAudible()
+end
+
+---  client|server
+--- Returns if the player currently walking. (`+walk` keybind)  
+--- @return boolean @True if the player is currently walking.
+function Player:IsWalking()
 end
 
 ---  client|server
@@ -1159,8 +1164,8 @@ function Player:RemoveAmmo(ammoCount, ammoName)
 end
 
 ---  client|server
---- Removes a **P**layer **Data** key-value pair from the SQL database. (sv.db when called on server,  cl.db when called on client)  
---- Internally uses the sql.  
+--- Removes a **P**ersistent **Data** key-value pair from the SQL database. (`sv.db` when called on server, `cl.db` when called on client)  
+--- Internally uses the sql library. See util.RemovePData for cases when the player is not currently on the server.  
 --- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
 --- @param key string @Key to remove
 --- @return boolean @true is succeeded, false otherwise
@@ -1300,7 +1305,7 @@ end
 ---  client|server
 --- Applies the specified sound filter to the player.  
 --- @param soundFilter number @The index of the sound filter to apply
---- @param fastReset boolean @If set to true the sound filter will be removed faster.
+--- @param fastReset boolean @If set to true the sound filter will be removed faster
 function Player:SetDSP(soundFilter, fastReset)
 end
 
@@ -1436,8 +1441,8 @@ function Player:SetObserverMode(mode)
 end
 
 ---  client|server
---- Writes a **P**layer **Data** key-value pair to the SQL database. (sv.db when called on server,  cl.db when called on client)  
---- Internally uses the sql.  
+--- Writes a **P**ersistent **Data** key-value pair to the SQL database. (`sv.db` when called on server, `cl.db` when called on client)  
+--- Internally uses the sql library. See util.SetPData for cases when the player is not currently on the server.  
 --- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
 --- ℹ **NOTE**: PData is not networked from servers to clients!  
 --- @param key string @Name of the PData key
@@ -1460,7 +1465,7 @@ function Player:SetPressedWidget(pressedWidget)
 end
 
 ---  client|server
---- Sets the render angles of a player.  
+--- Sets the render angles of a player. Value set by this function is reset to player's angles (Entity:GetAngles) right after GM:UpdateAnimation.  
 --- @param ang Angle @The new render angles to set
 function Player:SetRenderAngles(ang)
 end
@@ -1632,13 +1637,11 @@ end
 
 ---  server
 --- Disables the sprint on the player.  
---- 🦟 **BUG**: [Not working - use Player:SetRunSpeed or CMoveData:SetMaxSpeed in a GM:Move hook, instead.](https://github.com/Facepunch/garrysmod-issues/issues/2390)  
 function Player:SprintDisable()
 end
 
 ---  server
 --- Enables the sprint on the player.  
---- 🦟 **BUG**: [Not working - use Player:SetRunSpeed or CMoveData:SetMaxSpeed in a GM:Move hook, instead.](https://github.com/Facepunch/garrysmod-issues/issues/2390)  
 function Player:SprintEnable()
 end
 
@@ -1659,20 +1662,20 @@ end
 ---  client|server
 --- Returns the player's SteamID.  
 --- See Player:AccountID for a shorter version of the SteamID and Player:SteamID64 for the full SteamID.  
+--- It is recommended to use Player:SteamID64 over the other SteamID formats whenever possible.  
 --- ℹ **NOTE**: In a `-multirun` environment, this will return `STEAM_0:0:0` (serverside) or `NULL` (clientside) for all "copies" of a player because they are not authenticated with Steam.  
---- For Bots this will return `BOT` on the server and on the client it returns `NULL`.  
---- @return string @SteamID
+--- For Bots this will return `BOT`.  
+--- @return string @"Text" representation of the player's SteamID.
 function Player:SteamID()
 end
 
 ---  client|server
---- Returns the player's full 64-bit SteamID aka Community ID. Information on how data is packed into this value can be found [here](https://developer.valvesoftware.com/wiki/SteamID).  
+--- Returns the player's full **64-bit SteamID**, also known as **CommunityID**. Information on how data is packed into this value can be found [here](https://developer.valvesoftware.com/wiki/SteamID).  
 --- See Player:AccountID for a function that returns only the Account ID part of the SteamID and Player:SteamID for the text version of the SteamID.  
---- ℹ **NOTE**: In a `-multirun` environment, this will return `nil` for all "copies" of a player because they are not authenticated with Steam.  
+--- ℹ **NOTE**: In a `-multirun` environment, this will return `"0"` for all "copies" of a player because they are not authenticated with Steam.  
 --- For bots, this will return `90071996842377216` (equivalent to `STEAM_0:0:0`) for the first bot to join.  
 --- For each additional bot, the number increases by 1. So the next bot will be `90071996842377217` (`STEAM_0:1:0`) then `90071996842377218` (`STEAM_0:0:1`) and so on.  
---- It returns `no value` for bots clientside.  
---- @return string @Player's 64-bit SteamID aka CommunityID.
+--- @return string @Player's 64-bit SteamID aka CommunityID
 function Player:SteamID64()
 end
 
@@ -1698,7 +1701,9 @@ function Player:StopZooming()
 end
 
 ---  server
+--- 🛑 **DEPRECATED**: Alias of Player:RemoveAllAmmo  
 --- Removes all ammo from the player.  
+--- @deprecated
 function Player:StripAmmo()
 end
 

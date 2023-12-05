@@ -2,6 +2,12 @@
 --- @class CNavArea
 local CNavArea = {}
 ---  server
+--- Adds given attributes to given CNavArea. See CNavArea:HasAttributes and CNavArea:SetAttributes.  
+--- @param attribs number @The attributes to add, as a bitflag
+function CNavArea:AddAttributes(attribs)
+end
+
+---  server
 --- Adds a hiding spot onto this nav area.  
 --- There's a limit of 255 hiding spots per area.  
 --- @param pos Vector @The position on the nav area
@@ -82,10 +88,18 @@ function CNavArea:DrawSpots()
 end
 
 ---  server
---- Returns a table of all the CNavAreas that have a  ( one and two way ) connection **from** this CNavArea.  
+--- Returns a list of all the CNavAreas that have a one-way connection **to** this CNavArea and their pre-computed distances.  
+--- If an area has a one-way incoming connection to this CNavArea, then it will **not** be returned from this function, use CNavArea:GetIncomingConnectionDistances to get all one-way incoming connections.  
+--- @param dir? number @If set, will only return areas in the specified direction
+--- @return table @A list of tables in the following format:
+function CNavArea:GetAdjacentAreaDistances(dir)
+end
+
+---  server
+--- Returns a list of all the CNavAreas that have a  (one and two way) connection **from** this CNavArea.  
 --- If an area has a one-way incoming connection to this CNavArea, then it will **not** be returned from this function, use CNavArea:GetIncomingConnections to get all one-way incoming connections.  
 --- See CNavArea:GetAdjacentAreasAtSide for a function that only returns areas from one side/direction.  
---- @return table @A table of all CNavArea that have a ( one and two way ) connection **from** this CNavArea
+--- @return table @A list of all CNavArea that have a (one and two way) connection **from** this CNavArea
 function CNavArea:GetAdjacentAreas()
 end
 
@@ -172,6 +186,14 @@ end
 --- Returns this CNavAreas unique ID.  
 --- @return number @The unique ID.
 function CNavArea:GetID()
+end
+
+---  server
+--- Returns a table of all the CNavAreas that have a one-way connection **to** this CNavArea and their pre-computed distances.  
+--- If a CNavArea has a two-way connection **to or from** this CNavArea then it will not be returned from this function, use CNavArea:GetAdjacentAreaDistances to get outgoing (one and two way) connections.  
+--- @param dir? number @If set, will only return areas in the specified direction
+--- @return table @A list of tables in the following format:
+function CNavArea:GetIncomingConnectionDistances(dir)
 end
 
 ---  server
@@ -331,6 +353,12 @@ function CNavArea:IsCoplanar(navArea)
 end
 
 ---  server
+--- Returns whether the CNavArea would damage if traversed, as set by CNavArea:MarkAsDamaging.  
+--- @return boolean @Whether the area is damaging or not
+function CNavArea:IsDamaging()
+end
+
+---  server
 --- Returns whether this Nav Area is flat within the tolerance of the **nav_coplanar_slope_limit_displacement** and **nav_coplanar_slope_limit** convars.  
 --- @return boolean @Whether this CNavArea is mostly flat.
 function CNavArea:IsFlat()
@@ -409,6 +437,24 @@ function CNavArea:IsVisible(pos)
 end
 
 ---  server
+--- Marks the area as blocked and unable to be traversed. See CNavArea:IsBlocked and CNavArea:MarkAsUnblocked.  
+--- @param teamID? number @TeamID to mark the area as blocked for
+function CNavArea:MarkAsBlocked(teamID)
+end
+
+---  server
+--- Marks the area as damaging if traversed, for example when, for example having poisonous or no atmosphere, or a temporary fire present. See CNavArea:IsDamaging.  
+--- @param duration number @For how long the area should stay marked as damaging
+function CNavArea:MarkAsDamaging(duration)
+end
+
+---  server
+--- Unblocked this area if it was previously blocked by CNavArea:MarkAsBlocked.  
+--- @param teamID? number @TeamID to unblock the area for
+function CNavArea:MarkAsUnblocked(teamID)
+end
+
+---  server
 --- Drops a corner or all corners of a CNavArea to the ground below it.  
 --- @param corner number @The corner(s) to drop, uses Enums/NavCorner
 function CNavArea:PlaceOnGround(corner)
@@ -428,6 +474,12 @@ function CNavArea:Remove()
 end
 
 ---  server
+--- Removes given attributes from given CNavArea. See also CNavArea:SetAttributes.  
+--- @param attribs number @The attributes to remove, as a bitflag
+function CNavArea:RemoveAttributes(attribs)
+end
+
+---  server
 --- Removes this node from the Closed List.  
 --- Used in pathfinding via the [A* algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm).  
 --- More information can be found on the Simple Pathfinding page.  
@@ -435,8 +487,8 @@ function CNavArea:RemoveFromClosedList()
 end
 
 ---  server
---- Sets the attributes for given CNavArea.  
---- @param attribs number @The attribute bitflag
+--- Sets the attributes for given CNavArea. See CNavArea:HasAttributes.  
+--- @param attribs number @The attributes to set, as a bitflag
 function CNavArea:SetAttributes(attribs)
 end
 

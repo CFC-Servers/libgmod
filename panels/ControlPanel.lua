@@ -7,6 +7,7 @@ local ControlPanel = {}
 --- @param type string @The control type to add
 --- @param controlinfo table @Each control takes their own table structure
 --- @deprecated
+--- @return Panel @Returns created control
 function ControlPanel:AddControl(type, controlinfo)
 end
 

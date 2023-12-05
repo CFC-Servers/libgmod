@@ -14,7 +14,7 @@ function team.BestAutoJoinTeam()
 end
 
 ---  client|server
---- Returns a table consisting of information on every defined team  
+--- Returns the real table consisting of information on every defined team  
 --- @return table @Team info
 function team.GetAllTeams()
 end

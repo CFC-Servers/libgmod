@@ -98,7 +98,7 @@
       "client",
       "server"
     ],
-    "description": "Marks a Lua file to be sent to clients when they join the server. Doesn't do anything on the client - this means you can use it in a shared file without problems.\n\n<warning>If the file trying to be added is empty, an error will occur, and the file will not be sent to the client\n\nThe string cannot have whitespace.</warning>\n\n<note>This function is not needed for scripts located in **lua/autorun/** and **lua/autorun/client/**: they are automatically sent to clients.\n\nYou can add up to **8192** files. Each file can be up to **64KB** compressed (LZMA)</note>",
+    "description": "Marks a Lua file to be sent to clients when they join the server. Doesn't do anything on the client - this means you can use it in a shared file without problems.\n\n<warning>If the file trying to be added is empty, an error will occur, and the file will not be sent to the client\n\nThe string cannot have whitespace.</warning>\n\n<note>\nThis function is not needed for scripts located in these paths because they are automatically sent to clients.\n**lua/matproxy/**\n**lua/postprocess/**\n**lua/vgui/**\n**lua/skins/**\n**lua/autorun/**\n**lua/autorun/client/**\n\nYou can add up to **8192** files. Each file can be up to **64KB** compressed (LZMA)\n</note>",
     "arguments": [
       {
         "name": "file",
@@ -894,7 +894,7 @@
       {
         "name": "name",
         "type": "string",
-        "description": "Name of the <page>ConVar</page>.\n\nThis cannot be a name of an engine console command or console variable. It will silently fail if it is. If it is the same name as another lua ConVar, it will return that ConVar object."
+        "description": "Name of the <page>ConVar</page>.\n\nThis cannot be a name of an engine console command or console variable. It will throw an error if it is. If it is the same name as another lua ConVar, it will return that ConVar object."
       },
       {
         "name": "value",
@@ -1110,7 +1110,7 @@
       "client",
       "server"
     ],
-    "description": "Returns a sound parented to the specified entity.\n\n<note>You can only create one CSoundPatch per audio file, per entity at the same time.</note>",
+    "description": "Returns a sound parented to the specified entity.\n\n<note>You can only create one CSoundPatch per audio file, per entity at the same time.</note>\n<note>\nValid sample rates: **11025 Hz, 22050 Hz and 44100 Hz**, otherwise you may see this kind of message:\n\n`Unsupported 32-bit wave file your_sound.wav` and\n`Invalid sample rate (48000) for sound 'your_sound.wav'`\n</note>",
     "arguments": [
       {
         "name": "targetEnt",
@@ -1132,7 +1132,7 @@
     "returnValues": [
       {
         "type": "CSoundPatch",
-        "description": "The sound object"
+        "description": "The sound object. You should keep a reference to this object for as long as you wish the sound to play!"
       }
     ]
   },
@@ -1297,7 +1297,7 @@
       "client",
       "menu"
     ],
-    "description": "Draws background blur around the given panel.",
+    "description": "Draws background blur around the given panel.\n<note>Calling this on the same <page>Panel</page> multiple times makes the blur darker.</note>",
     "arguments": [
       {
         "name": "panel",
@@ -2090,7 +2090,7 @@
       "client",
       "server"
     ],
-    "description": "Emits the specified sound at the specified position.\n\n<bug>Sounds must be precached serverside manually before they can be played. <page>util.PrecacheSound</page> does not work for this purpose, <page>Entity:EmitSound</page> does the trick</bug>",
+    "description": "Emits the specified sound at the specified position. See also <page>Entity:EmitSound</page> if you wish to play sounds on a specific entity.\n\n<note>\nValid sample rates: **11025 Hz, 22050 Hz and 44100 Hz**, otherwise you may see this kind of message:\n\n`Unsupported 32-bit wave file your_sound.wav` and\n`Invalid sample rate (48000) for sound 'your_sound.wav'`\n</note>",
     "arguments": [
       {
         "name": "soundName",
@@ -2100,11 +2100,12 @@
       {
         "name": "position",
         "type": "Vector",
-        "description": "The position where the sound is meant to play, used only for a network  filter (`CPASAttenuationFilter`) to decide which players will hear the sound."
+        "description": "The position where the sound is meant to play, which is also used for a network filter (`CPASAttenuationFilter`) to decide which players will hear the sound."
       },
       {
         "name": "entity",
         "type": "number",
+        "default": "0",
         "description": "The entity to emit the sound from. Can be an <page>Entity:EntIndex</page> or one of the following:\n* `0` - Plays sound on the world (position set to `0,0,0`)\n* `-1` - Plays sound on the local player (on server acts as `0`)\n* `-2` - Plays UI sound (position set to `0,0,0`, no spatial sound, on server acts as `0`)"
       },
       {
@@ -2142,6 +2143,12 @@
         "type": "number",
         "default": "0",
         "description": "The DSP preset for this sound. [List of DSP presets](https://developer.valvesoftware.com/wiki/Dsp_presets)"
+      },
+      {
+        "name": "filter",
+        "type": "CRecipientFilter",
+        "default": "nil",
+        "description": "If set serverside, the sound will only be networked to the clients in the filter."
       }
     ]
   },
@@ -3332,7 +3339,7 @@
     "realms": [
       "client"
     ],
-    "description": "Creates or gets the rendertarget with the given name.\n\nSee <page>Global.GetRenderTargetEx</page> for an advanced version of this function with more options.\n\n<bug issue=\"2885\">This crashes when used on a cubemap texture.</bug>\n\n<note>\nCalling this function is equivalent to\n```lua\nGetRenderTargetEx(name,\nwidth, height,\nRT_SIZE_NO_CHANGE,\nMATERIAL_RT_DEPTH_SEPARATE,\nbit.bor(2, 256),\n0,\nIMAGE_FORMAT_BGRA8888\n)\n```\n</note>",
+    "description": "Creates or gets the rendertarget with the given name.\n\nSee <page>Global.GetRenderTargetEx</page> for an advanced version of this function with more options.\n\n<bug issue=\"2885\">This crashes when used on a cubemap texture.</bug>\n<warning>Rendertargets are not garbage-collected, which means they will remain in memory until you disconnect. So make sure to avoid creating new ones unecessarily and re-use as many of your existing rendertargets as possible to avoid filling up all your memory.</warning>\n<note>\nCalling this function is equivalent to\n```lua\nGetRenderTargetEx(name,\nwidth, height,\nRT_SIZE_NO_CHANGE,\nMATERIAL_RT_DEPTH_SEPARATE,\nbit.bor(2, 256),\n0,\nIMAGE_FORMAT_BGRA8888\n)\n```\n</note>",
     "arguments": [
       {
         "name": "name",
@@ -3783,14 +3790,14 @@
     ]
   },
   {
-    "name": "IsEntity",
+    "name": "isentity",
     "parent": "Global",
     "realms": [
       "menu",
       "client",
       "server"
     ],
-    "description": "Returns if the passed object is an <page>Entity</page>. Alias of <page>Global.isentity</page>.",
+    "description": "Returns if the passed object is an <page>Entity</page>.",
     "arguments": [
       {
         "name": "variable",
@@ -4280,7 +4287,7 @@
       "client",
       "server"
     ],
-    "description": "Performs a linear interpolation from the start number to the end number.\n\nThis function provides a very efficient and easy way to smooth out movements.\n<note>This function is not meant to be used with constant value in the first argument, if you're dealing with animation! Use a value that changes over time. See example for **proper** usage of Lerp for animations.</note>",
+    "description": "Performs a linear interpolation from the start number to the end number.\n\nThis function provides a very efficient and easy way to smooth out movements.\n\nSee also <page>math.ease</page> for functions that allow to have non linear animations using linear interpolation.\n\n<note>This function is not meant to be used with constant value in the first argument if you're dealing with animation! Use a value that changes over time. See example for **proper** usage of Lerp for animations.</note>",
     "arguments": [
       {
         "name": "t",
@@ -4508,7 +4515,7 @@
       "client",
       "server"
     ],
-    "description": "Either returns the material with the given name, or loads the material interpreting the first argument as the path.\n\n<note>When using .png or .jpg textures, try to make their sizes Power Of 2 (1, 2, 4, 8, 16, 32, 64, etc). While images are no longer scaled to Power of 2 sizes since February 2019, it is a good practice for things like icons, etc.</note>\n<warning>This function is very expensive when used in rendering hooks or in operations requiring very frequent calls. It is better to store the Material in a variable (like in the examples).</warning>",
+    "description": "Either returns the material with the given name, or loads the material interpreting the first argument as the path.\n\n<note>When using .png or .jpg textures, try to make their sizes Power Of 2 (1, 2, 4, 8, 16, 32, 64, etc). While images are no longer scaled to Power of 2 sizes since February 2019, it is a good practice for things like icons, etc.</note>\n<note>Server-side, the Material function can consistently return an invalid material (with '__error') depending on the file type loaded; however, .vtf and .vmt files appear unaffected.</note>\n<warning>This function is very expensive when used in rendering hooks or in operations requiring very frequent calls. It is better to store the Material in a variable (like in the examples).</warning>",
     "arguments": [
       {
         "name": "materialName",
@@ -4577,7 +4584,7 @@
     "realms": [
       "client"
     ],
-    "description": "Returns a new mesh object.",
+    "description": "Returns a new static mesh object.",
     "arguments": [
       {
         "name": "mat",
@@ -5041,7 +5048,8 @@
       {
         "name": "use3D",
         "type": "boolean",
-        "description": "Whenever to render the particles in 2D or 3D mode."
+        "default": "false",
+        "description": "Whenever to render the particles in 2D or 3D mode. Supplying \"true\" will enable 3D (non-billboarded), otherwise it will default to 2D."
       }
     ],
     "returnValues": [
@@ -5080,7 +5088,7 @@
       "client",
       "server"
     ],
-    "description": "Calls a function and catches an error that can be thrown while the execution of the call.\n\n<bug issue=\"2036\">This cannot stop errors from hooks called from the engine.</bug>\n\n<bug issue=\"2498\">This does not stop <page>Global.Error</page> and <page>Global.ErrorNoHalt</page> from sending error messages to the server (if called clientside) or calling the <page>GM:OnLuaError</page> hook. The success boolean returned will always return true and thus you will not get the error message returned. <page>Global.error</page> does not exhibit these behaviours.</bug>\n\n<bug issue=\"3112\">This does not stop errors incurred by <page>Global.include</page>.</bug>",
+    "description": "Calls a function and catches an error that can be thrown while the execution of the call.\n\n<bug issue=\"2036\">This cannot stop errors from hooks called from the engine.</bug>\n\n<bug issue=\"2498\">This does not stop <page>Global.Error</page> and <page>Global.ErrorNoHalt</page> from sending error messages to the server (if called clientside) or calling the <page>GM:OnLuaError</page> hook. The success boolean returned will always return true and thus you will not get the error message returned. <page>Global.error</page> does not exhibit these behaviours.</bug>",
     "arguments": [
       {
         "name": "func",
@@ -5701,7 +5709,7 @@
       "client",
       "server"
     ],
-    "description": "First tries to load a binary module with the given name, if unsuccessful, it tries to load a Lua module with the given name.\n\n<bug issue=\"1041\" request=\"813\">Running this function with <page>Global.pcall</page> or <page>Global.xpcall</page> will still print an error that counts towards sv_kickerrornum.</bug>\n<note>This function will try to load local client file if `sv_allowcslua` is **1**</note>\n<note>\nModules can't be installed as part of an addon and have to be put directly into **garrysmod/lua/bin/** to be detected.\nThis is a safety measure, because modules can be malicious and harm the system.\n</note>",
+    "description": "First tries to load a binary module with the given name, if unsuccessful, it tries to load a Lua module with the given name.\n\n<bug issue=\"1041\" request=\"813\">Running this function with <page>Global.pcall</page> or <page>Global.xpcall</page> will still print an error that counts towards sv_kickerrornum.</bug>\n<note>This function will try to load local client file if `sv_allowcslua` is set to `1`</note>\n<note>\nBinary modules can't be installed as part of an addon and have to be put directly into ``garrysmod/lua/bin/`` to be detected.\nThis is a safety measure, because modules can be malicious and harm the system.\n</note>",
     "arguments": [
       {
         "name": "name",
@@ -5747,12 +5755,12 @@
     "realms": [
       "menu"
     ],
-    "description": "Runs a menu command. Equivalent to <page>Global.RunConsoleCommand</page>( \"gamemenucommand\", command ) unless the command starts with the \"engine\" keyword in which case it is equivalent to <page>Global.RunConsoleCommand</page>( command ).",
+    "description": "Runs a menu command. Equivalent to <page>Global.RunConsoleCommand</page>`( \"gamemenucommand\", command )` unless the command starts with the `\"engine\"` keyword in which case it is equivalent to <page>Global.RunConsoleCommand</page>`( command )`.",
     "arguments": [
       {
         "name": "command",
         "type": "string",
-        "description": "The menu command to run\n\nShould be one of the following:\n* Disconnect - Disconnects from the current server.\n* OpenBenchmarkDialog - Opens the \"Video Hardware Stress Test\" dialog.\n* OpenChangeGameDialog - Does not work in GMod.\n* OpenCreateMultiplayerGameDialog - Opens the Source dialog for creating a listen server.\n* OpenCustomMapsDialog - Does nothing.\n* OpenFriendsDialog - Does nothing.\n* OpenGameMenu - Does not work in GMod.\n* OpenLoadCommentaryDialog - Opens the \"Developer Commentary\" selection dialog. Useless in GMod.\n* OpenLoadDemoDialog - Does nothing.\n* OpenLoadGameDialog - Opens the Source \"Load Game\" dialog.\n* OpenNewGameDialog - Opens the \"New Game\" dialog. Useless in GMod.\n* OpenOptionsDialog - Opens the options dialog.\n* OpenPlayerListDialog - Opens the \"Mute Players\" dialog that shows all players connected to the server and allows to mute them.\n* OpenSaveGameDialog - Opens the Source \"Save Game\" dialog.\n* OpenServerBrowser - Opens the legacy server browser.\n* Quit - Quits the game `without` confirmation (unlike other Source games).\n* QuitNoConfirm - Quits the game without confirmation (like other Source games).\n* ResumeGame - Closes the menu and returns to the game.\n* engine <concommand> - Runs a console command. Unlike <page>Global.RunConsoleCommand</page>( <concommand> ) It will ignore <page>Blocked ConCommands</page></concommand></concommand>"
+        "description": "The menu command to run\n\nShould be one of the following:\n* `Disconnect` - Disconnects from the current server.\n* `OpenBenchmarkDialog` - Opens the \"Video Hardware Stress Test\" dialog.\n* `OpenChangeGameDialog` - Does not work in GMod.\n* `OpenCreateMultiplayerGameDialog` - Opens the Source dialog for creating a listen server.\n* `OpenCustomMapsDialog` - Does nothing.\n* `OpenFriendsDialog` - Does nothing.\n* `OpenGameMenu` - Does not work in GMod.\n* `OpenLoadCommentaryDialog` - Opens the \"Developer Commentary\" selection dialog. Useless in GMod.\n* `OpenLoadDemoDialog` - Does nothing.\n* `OpenLoadGameDialog` - Opens the Source \"Load Game\" dialog.\n* `OpenNewGameDialog` - Opens the \"New Game\" dialog. Useless in GMod.\n* `OpenOptionsDialog` - Opens the options dialog.\n* `OpenPlayerListDialog` - Opens the \"Mute Players\" dialog that shows all players connected to the server and allows to mute them.\n* `OpenSaveGameDialog` - Opens the Source \"Save Game\" dialog.\n* `OpenServerBrowser` - Opens the legacy server browser.\n* `Quit` - Quits the game **without** confirmation (unlike other Source games).\n* `QuitNoConfirm` - Quits the game without confirmation (like other Source games).\n* `ResumeGame` - Closes the menu and returns to the game.\n* `engine <concommand>` - Runs a console command. Unlike <page>Global.RunConsoleCommand</page>( <concommand> ) It will ignore <page>Blocked ConCommands</page></concommand></concommand>"
       }
     ]
   },
@@ -5911,10 +5919,10 @@
     "realms": [
       "client"
     ],
-    "description": "Returns a number based on the Size argument and your screen's width. The screen's width is always equal to size 640. This function is primarily used for scaling font sizes.",
+    "description": "Returns a number based on the `size` argument and the players' screen width. The width is scaled in relation to `640x480` resolution.  This function is primarily used for scaling font sizes.\n\nSee <page>Global.ScreenScaleH</page> for a function that scales from height.",
     "arguments": [
       {
-        "name": "Size",
+        "name": "size",
         "type": "number",
         "description": "The number you want to scale."
       }
@@ -5923,6 +5931,27 @@
       {
         "type": "number",
         "description": "The scaled number based on your screen's width"
+      }
+    ]
+  },
+  {
+    "name": "ScreenScaleH",
+    "parent": "Global",
+    "realms": [
+      "client"
+    ],
+    "description": "Returns a number based on the `size` argument and players' screen height. The height is scaled in relation to `640x480` resolution.  This function is primarily used for scaling font sizes.\n\nSee <page>Global.ScreenScale</page> for a function that scales from width.",
+    "arguments": [
+      {
+        "name": "size",
+        "type": "number",
+        "description": "The number you want to scale."
+      }
+    ],
+    "returnValues": [
+      {
+        "type": "number",
+        "description": "The scaled number based on your screen's height."
       }
     ]
   },
@@ -5991,7 +6020,7 @@
       "client",
       "server"
     ],
-    "description": "Send a usermessage\n<deprecated>\nThis uses the <page>umsg</page> internally, which has been deprecated. Use the <page>net</page> instead.\n</deprecated>\n\n<note>\nUsing this clientside seems to cause the client to send the UserMessage to itself, which then get blocked internally.\nonly server can send info to client.\n</note>",
+    "description": "Send a usermessage\n<deprecated>\nThis uses the <page>umsg</page> internally, which has been deprecated. Use the <page>net</page> instead.\n</deprecated>\n\n<note>\nThis does nothing clientside.\n</note>",
     "arguments": [
       {
         "name": "name",
@@ -7339,7 +7368,7 @@
       "client",
       "server"
     ],
-    "description": "Attempts to call the first function. If the execution succeeds, this returns `true` followed by the returns of the function. If execution fails, this returns `false` and the second function is called with the error message.\n\nUnlike in <page>Global.pcall</page>, the stack is not unwound and can therefore be used for stack analyses with the <page>debug</page>.\n\n<bug issue=\"2036\">This cannot stop errors from hooks called from the engine.</bug>\n\n<bug issue=\"2498\">This does not stop <page>Global.Error</page> and <page>Global.ErrorNoHalt</page> from sending error messages to the server (if called clientside) or calling the <page>GM:OnLuaError</page> hook. The success boolean returned will always return true and thus you will not get the error message returned. <page>Global.error</page> does not exhibit these behaviours.</bug>\n\n<bug issue=\"3112\">This does not stop errors incurred by <page>Global.include</page>.</bug>",
+    "description": "Attempts to call the first function. If the execution succeeds, this returns `true` followed by the returns of the function. If execution fails, this returns `false` and the second function is called with the error message.\n\nUnlike in <page>Global.pcall</page>, the stack is not unwound and can therefore be used for stack analyses with the <page>debug</page>.\n\n<bug issue=\"2036\">This cannot stop errors from hooks called from the engine.</bug>\n\n<bug issue=\"2498\">This does not stop <page>Global.Error</page> and <page>Global.ErrorNoHalt</page> (As well as <page>Global.include</page>) from sending error messages to the server (if called clientside) or calling the <page>GM:OnLuaError</page> hook. The success boolean returned will always return true and thus you will not get the error message returned. <page>Global.error</page> does not exhibit these behaviours.</bug>",
     "arguments": [
       {
         "name": "func",
