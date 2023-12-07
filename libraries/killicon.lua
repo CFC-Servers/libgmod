@@ -1,4 +1,3 @@
---- The killicon library is used to add to and control the icons that appear in the top right of your screen when a player is killed.  
 _G.killicon = {}
 ---  client
 --- Creates new kill icon using a texture.  
@@ -9,42 +8,12 @@ function killicon.Add(class, texture, color)
 end
 
 ---  client
---- Creates kill icon from existing one.  
---- @param new_class string @New class of the kill icon
---- @param existing_class string @Already existing kill icon class
-function killicon.AddAlias(new_class, existing_class)
-end
-
----  client
 --- Adds kill icon for given weapon/entity class using special font.  
---- @param class string @Weapon or entity class
---- @param font string @Font to be used
---- @param symbol string @The symbol to be used
---- @param color table @Color of the killicon
-function killicon.AddFont(class, font, symbol, color)
-end
-
----  client
---- Draws a kill icon.  
---- @param x number @X coordinate of the icon
---- @param y number @Y coordinate of the icon
---- @param name string @Classname of the kill icon
---- @param alpha number @Alpha/transparency value ( 0 - 255 ) of the icon
-function killicon.Draw(x, y, name, alpha)
-end
-
----  client
---- Checks if kill icon exists for given class.  
---- @param class string @The class to test
---- @return boolean @Returns true if kill icon exists
-function killicon.Exists(class)
-end
-
----  client
---- Returns the size of a kill icon.  
---- @param name string @Classname of the kill icon
---- @return number @Width of the kill icon
---- @return number @Height of the kill icon
-function killicon.GetSize(name)
+--- @param class string @Weapon or entity class.
+--- @param font string @Font to be used.
+--- @param symbol string @The symbol to be used.
+--- @param color table @Color of the killicon.
+--- @param heightScale_? number @Used internally to correct certain killicons to more closely match their visual size.
+function killicon.AddFont(class, font, symbol, color, heightScale_)
 end
 

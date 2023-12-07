@@ -1,13 +1,4 @@
---- The os library is a standard Lua library originally intended to allow Lua access to various features of the Operating System it's running on, however many of the features and functions have been removed in Garry's Mod due to security issues. It's only used in Garry's Mod for date & time operations.  
 _G.os = {}
----  menu|client|server
---- Returns the approximate cpu time the application ran.  
---- See also Global.SysTime  
---- ℹ **NOTE**: This function has different precision on Linux (1/100).  
---- @return number @runtime
-function os.clock()
-end
-
 ---  menu|client|server
 --- Returns the date/time as a formatted string or in a table.  
 --- @param format string @The format string

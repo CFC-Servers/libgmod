@@ -1,31 +1,9 @@
---- The ai library.  
 _G.ai = {}
 ---  server
---- Translates a schedule name to its corresponding ID.  
---- @param sched string @Then schedule name
---- @return number @The schedule ID, see Enums/SCHED
-function ai.GetScheduleID(sched)
-end
-
----  server
---- Returns the squad leader of the given squad.  
---- @param squad string @The squad name.
---- @return NPC @The squad leader.
-function ai.GetSquadLeader(squad)
-end
-
----  server
---- Returns the amount of members a given squad has.  
+--- Returns the amount of members a given squad has. See also ai.GetSquadMembers.  
 --- @param squad string @The squad name.
 --- @return number @The member count.
 function ai.GetSquadMemberCount(squad)
-end
-
----  server
---- Returns all members of a given squad.  
---- @param squad string @The squad name.
---- @return table @A table of NPCs.
-function ai.GetSquadMembers(squad)
 end
 
 ---  server

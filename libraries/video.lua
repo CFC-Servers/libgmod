@@ -1,4 +1,3 @@
---- The video library.  
 _G.video = {}
 ---  client|menu
 --- Attempts to create an IVideoWriter.  
