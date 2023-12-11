@@ -25,6 +25,12 @@ function properties.GetHovered(pos, aimVec)
 end
 
 ---  client|server
+--- A list of all properties registered with properties.Add.  
+--- @return table @The list of all properties
+function properties.List()
+end
+
+---  client|server
 --- Checks if player hovers over any entities and open a properties menu for it.  
 --- @param eyepos Vector @The eye pos of a player
 --- @param eyevec Vector @The aim vector of a player

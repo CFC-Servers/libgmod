@@ -309,6 +309,7 @@ end
 
 ---  client
 --- Updates the Projected Light and applies all previously set parameters.  
+--- The best place to call this function is in GM:PreDrawOpaqueRenderables.  
 function ProjectedTexture:Update()
 end
 
