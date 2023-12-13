@@ -459,8 +459,8 @@ function PhysObj:SetVelocityInstantaneous(velocity)
 end
 
 ---  client|server
---- Makes the physics object "sleep".  
---- The physics object will no longer be moving unless it is "woken up" by either a collision with another moving object, or by PhysObj:Wake. This is an optimization feature of the physics engine.  
+--- Makes the physics object "sleep". The physics object will no longer be moving unless it is "woken up" by either a collision with another moving object, or by PhysObj:Wake.  
+--- This is an optimization feature of the physics engine. Normally physics objects will automatically "sleep" when not moving for a short while, to save resources, but it can be used for other purposes, for example to temporarily suspend an object mid air.  
 function PhysObj:Sleep()
 end
 
@@ -475,7 +475,7 @@ function PhysObj:UpdateShadow(targetPosition, targetAngles, frameTime)
 end
 
 ---  client|server
---- Wakes the physics object.  
+--- Wakes the physics object, so that it will continue to simulate physics/gravity.  
 --- See PhysObj:Sleep for more information.  
 function PhysObj:Wake()
 end

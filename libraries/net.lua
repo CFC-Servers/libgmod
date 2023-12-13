@@ -69,7 +69,7 @@ function net.ReadDouble()
 end
 
 ---  client|server
---- Reads an entity from the received net message. You should always check if the specified entity exists as it may have been removed and therefore `NULL` if it is outside of the players [PVS](https://developer.valvesoftware.com/wiki/PVS) or was already removed.  
+--- Reads an entity from the received net message. You should always check if the specified entity exists as it may have been removed and therefore `NULL` if it is outside of the players [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community") or was already removed.  
 --- ⚠ **WARNING**: You **must** read information in same order as you write it.  
 --- @return Entity @The entity, or `Entity(0)` if no entity could be read.
 function net.ReadEntity()
@@ -105,6 +105,14 @@ function net.ReadNormal()
 end
 
 ---  client|server
+--- Reads a player entity that was written with net.WritePlayer from the received net message.  
+--- You should always check if the specified entity exists as it may have been removed and therefore `NULL` if it is outside of the local players [PVS](https://developer.valvesoftware.com/wiki/PVS) or was already removed.  
+--- ⚠ **WARNING**: You **must** read information in same order as you write it.  
+--- @return Player @The player, or `Entity(0)` if no entity could be read.
+function net.ReadPlayer()
+end
+
+---  client|server
 --- Reads a [null-terminated string](https://en.wikipedia.org/wiki/Null-terminated_string) from the net stream. The size of the string is 8 bits plus 8 bits for every ASCII character in the string.  
 --- ⚠ **WARNING**: You **must** read information in same order as you write it.  
 --- @return string @The read string, or a string with `0` length if no string could be read.
@@ -113,12 +121,13 @@ end
 
 ---  client|server
 --- Reads a table from the received net message.  
---- ℹ **NOTE**: Sometimes when sending a table through the net library, the order of the keys may be switched. So be cautious when comparing (See example 1).  
---- ⚠ **WARNING**: You **must** read information in same order as you write it.  
 --- See net.WriteTable for extra info.  
+--- ℹ **NOTE**: Sometimes when sending a table through the net library, the order of the keys may be switched. So be cautious when comparing (See example 1).  
 --- You may get `net.ReadType: Couldn't read type X` during the execution of the function, the problem is that you are sending objects that **cannot** be serialized/sent over the network.  
---- @return table @Table recieved via the net message, or a blank table if no table could be read.
-function net.ReadTable()
+--- ⚠ **WARNING**: You **must** read information in same order as you write it.  
+--- @param sequential? boolean @Set to `true` if the input table is sequential
+--- @return table @Table received via the net message, or a blank table if no table could be read.
+function net.ReadTable(sequential)
 end
 
 ---  client|server
@@ -127,6 +136,13 @@ end
 --- @param numberOfBits number @The size of the integer to be read, in bits
 --- @return number @The unsigned integer read, or `0` if the integer could not be read.
 function net.ReadUInt(numberOfBits)
+end
+
+---  client|server
+--- Reads a unsigned integer with 64 bits from the received net message.  
+--- ⚠ **WARNING**: You **must** read information in same order as you write it.  
+--- @return string @The uint64 number
+function net.ReadUInt64()
 end
 
 ---  client|server
@@ -166,7 +182,7 @@ function net.SendPAS(position)
 end
 
 ---  server
---- Sends the message to all players the position is in the [PVS](https://developer.valvesoftware.com/wiki/PVS) of or, more simply said, sends the message to players that can potentially see this position.  
+--- Sends the message to all players in the [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community") of the position, or, more simply said, sends the message to players that can potentially see this position.  
 --- @param position Vector @Position that must be in players' visibility set.
 function net.SendPVS(position)
 end
@@ -230,6 +246,7 @@ end
 
 ---  client|server
 --- Appends an entity to the current net message using its Entity:EntIndex.  
+--- See net.ReadEntity for the function to read the entity.  
 --- @param entity Entity @The entity to be sent.
 function net.WriteEntity(entity)
 end
@@ -241,7 +258,7 @@ function net.WriteFloat(float)
 end
 
 ---  client|server
---- Appends an integer - a whole number - to the current net message. Can be read back with net.ReadInt on the receiving end.  
+--- Appends a signed integer - a whole number, positive/negative - to the current net message. Can be read back with net.ReadInt on the receiving end.  
 --- Use net.WriteUInt to send an unsigned number (that you know will **never** be negative). Use net.WriteFloat for a non-whole number (e.g. `2.25`).  
 --- @param integer number @The integer to be sent.
 --- @param bitCount number @The amount of bits the number consists of
@@ -262,16 +279,24 @@ function net.WriteNormal(normal)
 end
 
 ---  client|server
+--- Appends a player entity to the current net message using its Entity:EntIndex. This saves a small amount of network bandwidth over net.WriteEntity.  
+--- See net.ReadPlayer for the function to read the entity.  
+--- @param ply Player @The player to be sent.
+function net.WritePlayer(ply)
+end
+
+---  client|server
 --- Appends a string to the current net message. The size of the string is 8 bits plus 8 bits for every ASCII character in the string. The maximum allowed length of a single written string is **65532 characters**.  
 --- @param string string @The string to be sent.
 function net.WriteString(string)
 end
 
 ---  client|server
---- Appends a table to the current net message. Adds **16 extra bits** per key/value pair so you're better off writing each individual key/value as the exact type if possible.  
+--- Appends a table to the current net message. Adds **16 extra bits** per key/value pair, so you're better off writing each individual key/value as the exact type if possible.  
 --- ⚠ **WARNING**: All net messages have a **64kb** buffer. This function will not check or error when that buffer is overflown. You might want to consider using util.TableToJSON and util.Compress and send the resulting string in **60kb** chunks, doing the opposite on the receiving end.  
 --- @param table table @The table to be sent
-function net.WriteTable(table)
+--- @param sequential? boolean @Set to `true` if the input table is sequential
+function net.WriteTable(table, sequential)
 end
 
 ---  client|server
@@ -281,6 +306,16 @@ end
 --- @param unsignedInteger number @The unsigned integer to be sent.
 --- @param numberOfBits number @The size of the integer to be sent, in bits
 function net.WriteUInt(unsignedInteger, numberOfBits)
+end
+
+---  client|server
+--- Appends an unsigned integer with 64 bits to the current net message.  
+--- ℹ **NOTE**:   
+--- The limit for an uint64 is 18.446.744.073.709.551.615.  
+--- Everything above the limit will be set to the limit.  
+--- Unsigned numbers **do not** support negative numbers.  
+--- @param uint64 string @The uint64 to be sent
+function net.WriteUInt64(uint64)
 end
 
 ---  client|server

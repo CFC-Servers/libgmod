@@ -198,7 +198,7 @@ function Vehicle:IsEngineStarted()
 end
 
 ---  client|server
---- Returns true if the vehicle object is a valid or not. This will return false when Vehicle functions are not usable on the vehicle.  
+--- Returns true if the vehicle object is a valid or not. This will return `false` when Vehicle functions are not usable on the vehicle.  
 --- @return boolean @Is the vehicle a valid vehicle or not
 function Vehicle:IsValidVehicle()
 end
