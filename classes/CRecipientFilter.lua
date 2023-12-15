@@ -13,7 +13,7 @@ function CRecipientFilter:AddPAS(pos)
 end
 
 ---  server
---- Adds all players that are in the same [PVS(Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community") as this position.  
+--- Adds all players that are in the same [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community") as this position.  
 --- @param Position Vector @PVS position that players may be able to see.
 function CRecipientFilter:AddPVS(Position)
 end
@@ -22,6 +22,12 @@ end
 --- Adds a player to the recipient filter  
 --- @param Player Player @Player to add to the recipient filter.
 function CRecipientFilter:AddPlayer(Player)
+end
+
+---  server
+--- Adds players to the recipient filter from a given table or another recipient filter.  
+--- @param input CRecipientFilter @The filter to add players from
+function CRecipientFilter:AddPlayers(input)
 end
 
 ---  server
@@ -48,13 +54,19 @@ function CRecipientFilter:RemoveAllPlayers()
 end
 
 ---  server
---- Removes all players from the filter that are in Potentially Audible Set for given position.  
+--- Remove players from this recipient filter that are **NOT** present in a given table or recipient filter.  
+--- @param input CRecipientFilter @The filter that contains a list of players to test against
+function CRecipientFilter:RemoveMismatchedPlayers(input)
+end
+
+---  server
+--- Removes all players from the filter that are in [PAS (Potentially Audible Set)](https://developer.valvesoftware.com/wiki/PAS "PAS - Valve Developer Community") for given position.  
 --- @param position Vector @The position to test
 function CRecipientFilter:RemovePAS(position)
 end
 
 ---  server
---- Removes all players that can see this PVS from the recipient filter.  
+--- Removes all players that can see this [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community") from the recipient filter.  
 --- @param pos Vector @Position that players may be able to see.
 function CRecipientFilter:RemovePVS(pos)
 end
@@ -63,6 +75,12 @@ end
 --- Removes the player from the recipient filter.  
 --- @param Player Player @The player that should be in the recipient filter if you call this function.
 function CRecipientFilter:RemovePlayer(Player)
+end
+
+---  server
+--- Remove players from this recipient filter that are present in a given table or recipient filter.  
+--- @param input CRecipientFilter @The filter that contains a list of players to remove
+function CRecipientFilter:RemovePlayers(input)
 end
 
 ---  server
