@@ -1,4 +1,4 @@
---- This is the base panel for every other VGUI panel.  
+--- This is the base panel for every other [VGUI](vgui) panel.  
 --- It contains all of the basic methods, some of which may only work on certain VGUI elements. As their functionality is provided at the game's C/C++ level rather than by its Lua script extension, they are unfortunately unavailable for most practical purposes, however, they can still be obtained in a way similar to that provided by the baseclass library:  
 --- ```  
 --- -- Create a new panel type NewPanel that inherits all of its functionality from DLabel,  
@@ -89,6 +89,12 @@ function Panel:AppendText(txt)
 end
 
 ---  client|menu
+--- Appends text to a RichText element (exactly like Panel:AppendText), while also parsing and adding valid URLs (Panel:InsertClickableTextStart). This does not automatically add a new line.  
+--- @param txt string @The text to append (add on).
+function Panel:AppendTextWithURLs(txt)
+end
+
+---  client|menu
 --- Used by Panel:LoadGWENFile and Panel:LoadGWENString to apply a GWEN controls table to a panel object.  
 --- You can do this manually using file.Read and util.JSONToTable to import and create a GWEN table structure from a `.gwen` file. This method can then be called, passing the GWEN table's `Controls` member.  
 --- @param GWENTable table @The GWEN controls table to apply to the panel.
@@ -137,12 +143,6 @@ end
 --- @param delay number @Delay before start fading
 --- @param callback function @Function to execute when finished
 function Panel:ColorTo(color, length, delay, callback)
-end
-
----  client|menu
---- Sends an action command signal to the panel. The response is handled by PANEL:ActionSignal.  
---- @param command string @The command to send to the panel.
-function Panel:Command(command)
 end
 
 ---  client|menu
@@ -496,6 +496,7 @@ end
 ---  client|menu
 --- Returns the name of the font that the panel renders its text with.  
 --- This is the same font name set with Panel:SetFontInternal.  
+--- ℹ **NOTE**: Only works on Label and TextEntry and their derived panels by default (such as DLabel and DTextEntry), and on any panel that manually implemented the Panel:GetFont method.  
 --- @return string @fontName
 function Panel:GetFont()
 end
@@ -504,6 +505,12 @@ end
 --- Returns the panel's HTML material. Only works with Awesomium, HTML and DHTML panels that have been fully loaded.  
 --- @return IMaterial @The HTML material used by the panel
 function Panel:GetHTMLMaterial()
+end
+
+---  client|menu
+--- Returns the height of a single line of a RichText panel.  
+--- @return number @The line height.
+function Panel:GetLineHeight()
 end
 
 ---  client|menu
@@ -520,8 +527,8 @@ function Panel:GetName()
 end
 
 ---  client|menu
---- Returns the number of lines in a RichText. You must wait a couple frames before calling this after using Panel:AppendText or Panel:SetText, otherwise it will return the number of text lines before the text change.  
---- ℹ **NOTE**: Even though this function can be called on any panel, it will only work with RichText  
+--- Returns the number of lines in a RichText or a TextEntry.  
+--- You must wait a couple frames before calling this after using Panel:AppendText or Panel:SetText, otherwise it will return the number of text lines before the text change.  
 --- @return number @The number of lines.
 function Panel:GetNumLines()
 end
@@ -540,6 +547,13 @@ end
 --- @return number @X coordinate, relative to this panels parents top left corner.
 --- @return number @Y coordinate, relative to this panels parents top left corner.
 function Panel:GetPos()
+end
+
+---  client|menu
+--- Returns the vertical and horizontal start indexes of a TextEntry's visible text. This is useful when the panel is scrolled.  
+--- @return number @The horizontal start index
+--- @return number @The vertical start index
+function Panel:GetScrollStartIndexes()
 end
 
 ---  client|menu
@@ -694,7 +708,6 @@ end
 
 ---  client|menu
 --- Causes a RichText element to scroll to the top of its text.  
---- 🦟 **BUG**: [This does not work on the same frame as Panel:SetText.](https://github.com/Facepunch/garrysmod-issues/issues/2239)  
 function Panel:GotoTextStart()
 end
 
@@ -845,6 +858,12 @@ end
 --- Returns true if the panel can receive mouse input.  
 --- @return boolean @mouseInputEnabled
 function Panel:IsMouseInputEnabled()
+end
+
+---  client|menu
+--- Determines whether or not a TextEntry panel is in multi-line mode. This is set with Panel:SetMultiline.  
+--- @return boolean @Whether the object is in multi-line mode or not.
+function Panel:IsMultiline()
 end
 
 ---  client|menu
@@ -1072,7 +1091,7 @@ end
 
 ---  client|menu
 --- Instructs a HTML control to download and parse a HTML script using the passed URL.  
---- This function can also be used on [HTML](https://wiki.facepunch.com/gmod/HTML).  
+--- This function can only be used on [HTML](HTML) panel and its derivatives.  
 --- @param URL string @URL to open
 function Panel:OpenURL(URL)
 end
@@ -1080,7 +1099,7 @@ end
 ---  client|menu
 --- Paints a ghost copy of the panel at the given position.  
 --- ⚠ **WARNING**:   
---- Breaks Z pos of panel PANEL:SetZPos  
+--- This function sets Z pos of panel's children (PANEL:SetZPos)  
 --- @param posX number @The x coordinate to draw the panel from.
 --- @param posY number @The y coordinate to draw the panel from.
 function Panel:PaintAt(posX, posY)
@@ -1088,7 +1107,8 @@ end
 
 ---  client|menu
 --- Paints the panel at its current position. To use this you must call Panel:SetPaintedManually(true).  
-function Panel:PaintManual()
+--- @param unclamp? boolean @If set, overrides panels' clipping so that it can render fully when its size is larger than the game's resolution.
+function Panel:PaintManual(unclamp)
 end
 
 ---  client|menu
@@ -1121,16 +1141,6 @@ end
 --- @param panelObj Panel @The panel object to place to the right of the label.
 --- @return number @The distance from the top of the parent panel to the bottom of the tallest object (the `y` position plus the height of the label or passed p
 function Panel:PositionLabel(lblWidth, x, y, lbl, panelObj)
-end
-
----  client|menu
---- 🛑 **DEPRECATED**: Only used in deprecated Derma controls.  
---- Sends a command to the panel.  
---- @param messageName string @The name of the message.
---- @param valueType string @The type of the variable to post.
---- @param value string @The value to post.
---- @deprecated
-function Panel:PostMessage(messageName, valueType, value)
 end
 
 ---  client|menu
@@ -1216,23 +1226,26 @@ end
 
 ---  client|menu
 --- Selects all items within a panel or object. For text-based objects, selects all text.  
+--- ℹ **NOTE**: Only works on RichText and TextEntry and their derived panels by default (such as DTextEntry), and on any panel that manually reimplemented this method.  
 function Panel:SelectAll()
 end
 
 ---  client|menu
---- If called on a text entry, clicking the text entry for the first time will automatically select all of the text ready to be copied by the user.  
+--- If called on a TextEntry, clicking the text entry for the first time will automatically select all of the text ready to be copied by the user.  
 function Panel:SelectAllOnFocus()
 end
 
 ---  client|menu
 --- 🛑 **DEPRECATED**: Duplicate of Panel:SelectAll.  
 --- Selects all the text in a panel object. Will not select non-text items; for this, use Panel:SelectAll.  
+--- @param resetCursorPos boolean @Reset cursor pos?
 --- @deprecated
-function Panel:SelectAllText()
+function Panel:SelectAllText(resetCursorPos)
 end
 
 ---  client|menu
 --- Deselects all items in a panel object. For text-based objects, this will deselect all text.  
+--- ℹ **NOTE**: Only works on RichText and TextEntry and their derived panels by default (such as DTextEntry), and on any panel that manually reimplemented this method.  
 function Panel:SelectNone()
 end
 
@@ -1243,15 +1256,7 @@ function Panel:SetAchievement(id)
 end
 
 ---  client|menu
---- 🛑 **DEPRECATED**: Does nothing at all.  
---- Used in Button to call a function when the button is clicked and in Slider when the value changes.  
---- @param func function @Function to call when the Button is clicked or the Slider value is changed
---- @deprecated
-function Panel:SetActionFunction(func)
-end
-
----  client|menu
---- Configures a text input to allow user to type characters that are not included in the US-ASCII (7-bit ASCII) character set.  
+--- Configures a TextEntry to allow user to type characters that are not included in the US-ASCII (7-bit ASCII) character set.  
 --- Characters not included in US-ASCII are multi-byte characters in UTF-8. They can be accented characters, non-Latin characters and special characters.  
 --- @param allowed boolean @Set to true in order not to restrict input characters.
 function Panel:SetAllowNonAsciiCharacters(allowed)
@@ -1294,13 +1299,6 @@ function Panel:SetCaretPos(offset)
 end
 
 ---  client|menu
---- Sets the action signal command that's fired when a Button is clicked. The hook PANEL:ActionSignal is called as the click response.  
---- This has no effect on buttons unless it has had its `AddActionSignalTarget` method called (an internal function not available by default in Garry's Mod LUA).  
---- A better alternative is calling Panel:Command when a DButton is clicked.  
-function Panel:SetCommand()
-end
-
----  client|menu
 --- ⚠ **WARNING**: This function does not exist on all panels  
 --- ⚠ **WARNING**: This function cannot interact with serverside convars unless you are host  
 --- ℹ **NOTE**: Blocked convars will not work with this, see Blocked ConCommands  
@@ -1312,6 +1310,7 @@ end
 
 ---  client|menu
 --- Sets the alignment of the contents.  
+--- ℹ **NOTE**: This function only works on Label panels and its derivatives.  
 --- @param alignment number @The direction of the content, based on the number pad
 function Panel:SetContentAlignment(alignment)
 end
@@ -1348,6 +1347,20 @@ function Panel:SetDragParent(parent)
 end
 
 ---  client|menu
+--- Sets the visibility of the language selection box when typing in non-English mode.  
+--- See Panel:SetDrawLanguageIDAtLeft for a function that changes the position of the language selection box.  
+--- @param visible boolean @true to make it visible, false to hide it.
+function Panel:SetDrawLanguageID(visible)
+end
+
+---  client|menu
+--- Sets where to draw the language selection box.  
+--- See Panel:SetDrawLanguageID for a function that hides or shows the language selection box.  
+--- @param left boolean @true = left, false = right
+function Panel:SetDrawLanguageIDAtLeft(left)
+end
+
+---  client|menu
 --- Makes the panel render in front of all others, including the spawn menu and main menu.  
 --- Priority is given based on the last call, so of two panels that call this method, the second will draw in front of the first.  
 --- ℹ **NOTE**: This only makes the panel **draw** above other panels. If there's another panel that would have otherwise covered it, users will not be able to interact with it.  
@@ -1375,7 +1388,8 @@ function Panel:SetEnabled(enable)
 end
 
 ---  client|menu
---- Adds a shadow falling to the bottom right corner of the panel's text. This has no effect on panels that do not derive from Label.  
+--- Adds a shadow falling to the bottom right corner of the panel's text.  
+--- ℹ **NOTE**: This works only on  panels that derive from Label.  
 --- @param distance number @The distance of the shadow from the panel.
 --- @param Color table @The color of the shadow
 function Panel:SetExpensiveShadow(distance, Color)
@@ -1435,6 +1449,12 @@ function Panel:SetKeyboardInputEnabled(enable)
 end
 
 ---  client|menu
+--- Sets the height of a single line of a RichText panel.  
+--- @return number @The new line height
+function Panel:SetLineHeight()
+end
+
+---  client|menu
 --- Sets the maximum character count this panel should have.  
 --- This function will only work on RichText and TextEntry panels and their derivatives.  
 --- @param maxChar number @The new maximum amount of characters this panel is allowed to contain.
@@ -1467,6 +1487,12 @@ function Panel:SetMouseInputEnabled(mouseInput)
 end
 
 ---  client|menu
+--- Enables or disables the multi-line functionality of TextEntry panel and its derivatives.  
+--- @param multiline boolean @Whether to enable multiline or not.
+function Panel:SetMultiline(multiline)
+end
+
+---  client|menu
 --- Sets the internal name of the panel. Can be retrieved with Panel:GetName.  
 --- @param name string @The new name of the panel.
 function Panel:SetName(name)
@@ -1482,13 +1508,6 @@ end
 --- Sets whenever all the default border of the panel should be drawn or not.  
 --- @param paintBorder boolean @Whenever to draw the border or not.
 function Panel:SetPaintBorderEnabled(paintBorder)
-end
-
----  client|menu
---- 🛑 **DEPRECATED**: This function does nothing.  
---- This function does nothing.  
---- @deprecated
-function Panel:SetPaintFunction()
 end
 
 ---  client|menu
@@ -1800,6 +1819,11 @@ end
 ---  client|menu
 --- Stops all panel animations by clearing its animation list. This also clears all delayed animations.  
 function Panel:Stop()
+end
+
+---  client|menu
+--- Stops the loading of the HTML panel's current page.  
+function Panel:StopLoading()
 end
 
 ---  client|menu

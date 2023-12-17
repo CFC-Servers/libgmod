@@ -45,6 +45,22 @@ function DForm:ControlHelp(help)
 end
 
 ---  client|menu
+--- 🛑 **DEPRECATED**:   
+--- Does nothing.  
+--- @deprecated
+--- @return boolean 
+function DForm:GetAutoSize()
+end
+
+---  client|menu
+--- 🛑 **DEPRECATED**:   
+--- Does nothing.  
+--- @deprecated
+--- @return number 
+function DForm:GetSpacing()
+end
+
+---  client|menu
 --- Adds a DLabel onto the DForm as a helper  
 --- @param help string @The help message to be displayed
 --- @return Panel @The created DLabel
@@ -107,20 +123,5 @@ end
 --- Does nothing.  
 --- @deprecated
 function DForm:Rebuild()
-end
-
----  client|menu
---- Sets the title (header) name of the DForm. This is `Label` until set.  
---- @param name string @The new header name.
-function DForm:SetName(name)
-end
-
----  client|menu
---- Adds a DTextEntry to a DForm  
---- @param label string @The label to be next to the text entry
---- @param convar string @The console variable to be changed when the text entry is changed
---- @return Panel @The created DTextEntry
---- @return Panel @The created DLabel
-function DForm:TextEntry(label, convar)
 end
 

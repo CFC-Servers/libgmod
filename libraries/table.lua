@@ -83,6 +83,20 @@ function table.FindPrev(tbl, value)
 end
 
 ---  menu|client|server
+--- Flips key-value pairs of each element within a table, so that each value becomes the key, and each key becomes the value.  
+--- ⚠ **WARNING**: Take care when using this function, as a Lua table cannot contain multiple instances of the same key. As such, data loss is possible when using this function on tables with duplicate values.  
+--- ```  
+--- local test = { test = 1, test2 = 1 }  
+--- local f = table.Flip( test )  
+--- PrintTable( f )  
+--- -- Outputs "1	=	test2"  
+--- ```  
+--- @param input table @The table to flip items of.
+--- @return table @The flipped table.
+function table.Flip(input)
+end
+
+---  menu|client|server
 --- Inserts a value in to the given table even if the table is non-existent  
 --- @param tab? table @Table to insert value in to
 --- @param value any @Value to insert
@@ -165,7 +179,7 @@ end
 
 ---  menu|client|server
 --- Returns whether or not the given table is empty.  
---- This works on both sequential and non-sequential tables, and is a lot faster to use than `table.Count(tbl) == 0`.  
+--- This works on both sequential and non-sequential tables, and is a lot faster for non-sequential tables than `table.Count(tbl) == 0`.  
 --- If you want to check if a table is not empty, use `next(tbl) ~= nil`, as it is slightly faster.  
 --- @param tab table @Table to check.
 --- @return boolean @Is empty?
@@ -212,14 +226,23 @@ function table.MemberValuesFromKey(inputTable, keyName)
 end
 
 ---  menu|client|server
---- Merges the key-value pairs of the `source` table with the key-value pairs in the `destination` table.  
+--- Recursively merges the key-value pairs of the `source` table with the key-value pairs in the `destination` table.  
 --- See table.Inherit, which doesn't override existing values.  
 --- See also table.Add, which simply adds values of one table to another.  
 --- ℹ **NOTE**: This function can cause a stack overflow under certain circumstances.  
---- @param destination table @The table you want the source table to merge with
---- @param source table @The table you want to merge with the destination table
+--- @param destination table @The table you want the source table to merge with.
+--- @param source table @The table you want to merge with the destination table.
+--- @param forceOverride? boolean @If `true`, does not recursively merge sub-tables, and simply replaces them.
 --- @return table @Destination table
-function table.Merge(destination, source)
+function table.Merge(destination, source, forceOverride)
+end
+
+---  menu|client|server
+--- Packs a set of items into a table and returns the new table. It is meant as an alternative implementation of `table.pack` from newer versions of Lua.  
+--- @param ... any ... @The items to pack into a table.
+--- @return table @A table containing the `items`.
+--- @return number @The amount of items that were added to the table.
+function table.Pack(...)
 end
 
 ---  menu|client|server
@@ -310,7 +333,7 @@ end
 ---  menu|client|server
 --- 🛑 **DEPRECATED**: This was deprecated in Lua 5.1 and removed in 5.2. You should use Global.pairs instead.  
 ---  Iterates for each key-value pair in the table, calling the function with the key and value of the pair. If the function returns anything, the loop is broken.  
---- This is inherited from the original Lua implementation and is deprecated in Lua as of 5.1; see [here](http://lua-users.org/wiki/TableLibraryTutorial). You should use Global.pairs instead. The GLua interpretation of this is table.ForEach.  
+--- The GLua interpretation of this is table.ForEach.  
 --- @param tbl table @The table to iterate over.
 --- @param callback function @The function to run for each key and value.
 --- @deprecated
@@ -355,12 +378,11 @@ end
 
 ---  menu|client|server
 --- Moves elements from one part of a table to another part a given table. This is similar to assigning elements from the source table to the destination table in multiple assignments.  
---- ℹ **NOTE**: This is only available on the x86-64 versions, because of the difference in the LuaJIT version. [See here](jit.version)  
 --- @param sourceTbl table @The source table from which the elements are to be moved.
 --- @param from number @The start index of the source range from which the elements are to be moved.
 --- @param to number @The end index of the source range until which the elements are to be moved.
---- @param dest number @The index within the destination table where the moved elements should be inserted
---- @param destTbl table @The destination table to which the elements are to be moved
+--- @param dest number @The index within the destination table where the moved elements should be inserted.
+--- @param destTbl? table @The destination table to which the elements are to be moved
 --- @return table @The modified destination table.
 function table.move(sourceTbl, from, to, dest, destTbl)
 end
@@ -376,7 +398,7 @@ end
 
 ---  menu|client|server
 --- Sorts a sequential table either ascending or by the given sort function.  
---- ℹ **NOTE**: This function modifies the table you give to it.  
+--- ℹ **NOTE**: This function modifies the table you give to it and internally uses the [quick sort algorithm](http://www.lua.org/source/5.2/ltablib.c.html#sort).  
 --- @param tbl table @The table to sort.
 --- @param sorter function @If specified, the function will be called with 2 parameters each
 function table.sort(tbl, sorter)

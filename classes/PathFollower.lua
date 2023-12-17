@@ -18,7 +18,7 @@ function PathFollower:Compute(from, to, generator)
 end
 
 ---  server
---- Draws the path. This is meant for debugging - and uses debug overlay.  
+--- Draws the path. This is meant for debugging - and uses debugoverlay.  
 function PathFollower:Draw()
 end
 
@@ -154,6 +154,18 @@ end
 ---  server
 --- Moves the cursor to the end of the path  
 function PathFollower:MoveCursorToStart()
+end
+
+---  server
+--- Returns the next segment of the path.  
+--- @return table @A table with Structures/PathSegment.
+function PathFollower:NextSegment()
+end
+
+---  server
+--- Returns the previous segment of the path.  
+--- @return table @A table with Structures/PathSegment.
+function PathFollower:PriorSegment()
 end
 
 ---  server

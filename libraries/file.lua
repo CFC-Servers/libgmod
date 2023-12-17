@@ -50,6 +50,7 @@ end
 
 ---  menu|client|server
 --- Returns a list of files and directories inside a single folder.  
+--- ⚠ **WARNING**: It seems that paths with capital letters (e.g. lua/MyFolder/*) don't work as expected on Linux.  
 --- @param name string @The wildcard to search for
 --- @param path string @The path to look for the files and directories in
 --- @param sorting? string @The sorting to be used, **optional**

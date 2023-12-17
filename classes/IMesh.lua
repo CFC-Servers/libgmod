@@ -7,7 +7,10 @@
 local IMesh = {}
 ---  client
 --- Builds the mesh from a table mesh vertexes.  
+--- When modifying a previously built mesh, your new mesh must match the vertex count!  
 --- See Global.Mesh and util.GetModelMeshes for examples.  
+--- ⚠ **WARNING**: IMesh appears to have a limit of 65535 vertices. You should split your mesh into multiple meshes when above this limit.  
+--- Exceeding the limit may lead to undefined rendering behavior.  
 --- @param vertexes table @A table consisting of Structures/MeshVertexs.
 function IMesh:BuildFromTriangles(vertexes)
 end
