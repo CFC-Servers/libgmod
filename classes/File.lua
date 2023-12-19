@@ -71,6 +71,12 @@ function File:ReadShort()
 end
 
 ---  menu|client|server
+--- Reads an unsigned 64-bit integer from the file.  
+--- @return string @An unsigned 64-bit integer
+function File:ReadUInt64()
+end
+
+---  menu|client|server
 --- Reads an unsigned little-endian 32-bit integer from the file.  
 --- @return number @An unsigned 32-bit integer
 function File:ReadULong()
@@ -147,6 +153,12 @@ end
 --- Writes a signed little-endian 16-bit integer to the file.  
 --- @param int16 number @The 16-bit signed integer to be written to the file.
 function File:WriteShort(int16)
+end
+
+---  menu|client|server
+--- Writes an unsigned 64-bit integer to the file.  
+--- @param uint64 string @The unsigned 64-bit integer to be written to the file
+function File:WriteUInt64(uint64)
 end
 
 ---  menu|client|server

@@ -22,6 +22,14 @@
 --- This category lists functions available in the string *library*.  
 _G.string = {}
 ---  menu|client|server
+--- Converts a cardinal (`111`) number to its [ordinal/sequential variation](https://en.wikipedia.org/wiki/Ordinal_numeral) (`111th`).  
+--- See also Global.STNDRD for a function that returns just the suffix.  
+--- @param input number @A number to convert to ordinal.
+--- @return string @The ordinal numeral.
+function string.CardinalToOrdinal(input)
+end
+
+---  menu|client|server
 --- Inserts commas for every third digit of a given number.  
 --- @param value number @The input number to commafy
 --- @param separator? string @An optional string that will be used instead of the default comma.
@@ -381,7 +389,7 @@ end
 ---  menu|client|server
 --- Returns a sub-string, starting from the character at position `StartPos` of the string (inclusive), and optionally ending at the character at position `EndPos` of the string (also inclusive). If EndPos is not given, the rest of the string is returned.  
 --- @param string string @The string you'll take a sub-string out of.
---- @param StartPos number @The position of the first character that will be included in the sub-string.
+--- @param StartPos number @The position of the first character that will be included in the sub-string
 --- @param EndPos? number @The position of the last character to be included in the sub-string
 --- @return string @The substring.
 function string.sub(string, StartPos, EndPos)
