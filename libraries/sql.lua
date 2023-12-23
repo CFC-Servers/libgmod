@@ -54,13 +54,13 @@ function sql.Query(query)
 end
 
 ---  menu|client|server
---- Performs the query like sql.Query, but returns the first row found.  
---- Basically equivalent to :  
+--- Performs the sql.Query and returns the n'th row.  
+--- This function is equivalent to safely returning  
+--- ```lua  
+--- sql.Query(query)[row]  
 --- ```  
---- sql.Query( query .. " LIMIT 1;" )  
---- ```  
---- @param query string @The input query.
---- @param row? number @The row number
+--- @param query string @The query as used in sql.Query
+--- @param row? number @The row number.
 --- @return table @The returned row.
 function sql.QueryRow(query, row)
 end
