@@ -9,6 +9,17 @@ function derma.Color(name, pnl, default)
 end
 
 ---  client|menu
+--- This is NOT a function, it's a variable containing all derma controls, registered with derma.DefineControl.  
+--- Use derma.GetControlList to retrieve this list.  
+--- It's a list of tables, each having 3 keys, all from derma.DefineControl arguments:  
+--- * string ClassName - The class name of the panel  
+--- * string Description - The description of the panel  
+--- * string BaseClass - The base class of the panel  
+--- @return table @The list of all registered derma controls.
+function derma.Controls()
+end
+
+---  client|menu
 --- Defines a new Derma control with an optional base.  
 --- This calls vgui.Register internally, but also does the following:  
 --- * Adds the control to derma.GetControlList  
@@ -76,6 +87,12 @@ end
 --- @param h number @The height of the panel
 --- @return any @The returned variable from the skin hook
 function derma.SkinHook(type, name, panel, w, h)
+end
+
+---  client|menu
+--- This is NOT a function, it's a variable containing all registered via derma.DefineSkin derma skins.  
+--- @return table @The list of all registered derma skins.
+function derma.SkinList()
 end
 
 ---  client|menu

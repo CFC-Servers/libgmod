@@ -11,6 +11,7 @@ end
 
 ---  client
 --- Blurs the render target ( or a given texture )  
+--- ⚠ **WARNING**: Calling this on a RenderTarget created with TEXTUREFLAGS_POINTSAMPLE will result in strange visual glitching.  
 --- @param rendertarget ITexture @The texture to blur
 --- @param blurx number @Horizontal amount of blur
 --- @param blury number @Vertical amount of blur
@@ -35,7 +36,9 @@ function render.Capture(captureData)
 end
 
 ---  client
+--- 🟥 **NOTE**: Requires a 2D rendering context  
 --- Dumps the current render target and allows the pixels to be accessed by render.ReadPixel.  
+--- Capturing outside a render hook will return 0 0 0 255  
 function render.CapturePixels()
 end
 
@@ -63,8 +66,8 @@ end
 
 ---  client|menu
 --- Resets the depth buffer.  
---- 🦟 **BUG**: [This function also clears the stencil buffer. Use render.Clear in the meantime.](https://github.com/Facepunch/garrysmod-issues/issues/3317)  
-function render.ClearDepth()
+--- @param clearStencil? boolean @Whether to also clear the stencil buffer.
+function render.ClearDepth(clearStencil)
 end
 
 ---  client
@@ -105,6 +108,15 @@ end
 --- @param normal Vector @The normal of the surface to get the light from.
 --- @return Vector @A vector representing the light at that point.
 function render.ComputeLighting(position, normal)
+end
+
+---  client
+--- Calculates diameter of a 3D sphere on a 2D screen.  
+--- 🧱 **NOTE**: Requires a 3D rendering context  
+--- @param point Vector @The position of the sphere in 3D space.
+--- @param radius number @The radius of the sphere in 3D space.
+--- @return number @The diameter of the sphere in 2D screen space.
+function render.ComputePixelDiameterOfSphere(point, radius)
 end
 
 ---  client
@@ -376,7 +388,7 @@ function render.GetFogMode()
 end
 
 ---  client
---- Returns the _rt_FullFrameDepth texture. Alias of _rt_PowerOfTwoFB  
+--- Returns the `_rt_FullFrameDepth` texture. Alias of `_rt_PowerOfTwoFB`  
 --- @return ITexture 
 function render.GetFullScreenDepthTexture()
 end
@@ -498,9 +510,9 @@ function render.MaterialOverride(material)
 end
 
 ---  client
---- Similar to render.MaterialOverride, but overrides the materials per index.  
+--- Similar to render.MaterialOverride, but overrides the materials per index. Similar to Entity:SetSubMaterial  
 --- render.MaterialOverride overrides effects of this function.  
---- @param index number @Starts with 0, the index of the material to override
+--- @param index number @The index of the material to override, in range of 0 to 31.
 --- @param material IMaterial @The material to override with
 function render.MaterialOverrideByIndex(index, material)
 end
@@ -584,6 +596,7 @@ function render.OverrideDepthEnable(enable, shouldWrite)
 end
 
 ---  client|menu
+--- Perform stencil operations to every pixel on the screen.  
 function render.PerformFullScreenStencilOperation()
 end
 

@@ -13,7 +13,7 @@ end
 
 ---  client|server
 --- Gets all the current players in the server (not including connecting clients).  
---- ℹ **NOTE**: This function returns bots as well as human players. See player.GetBots and  player.GetHumans.  
+--- This function returns bots as well as human players. See player.GetBots and  player.GetHumans.  
 --- ℹ **NOTE**: This function returns a sequential table, meaning it should be looped with Global.ipairs instead of Global.pairs for efficiency reasons.  
 --- @return table @All Players currently in the server.
 function player.GetAll()
@@ -78,10 +78,19 @@ function player.GetCount()
 end
 
 ---  client|server
---- Returns a table of all human ( non bot/AI ) players.  
+--- Returns a table containing all human players (non-bot/AI).  
 --- Unlike player.GetAll, this does not include bots.  
 --- ℹ **NOTE**: This function returns a sequential table, meaning it should be looped with Global.ipairs instead of Global.pairs for efficiency reasons.  
---- @return table @A table of all human ( non bot/AI ) players.
+--- @return table @A table containing all human (non-bot/AI) players.
 function player.GetHumans()
+end
+
+---  client|server
+--- Returns an iterator for all players on the server.  
+--- This will be quite a bit faster than player.GetAll, especially when using the `break` keyword.  
+--- @return function @Iterator function
+--- @return table @Table of all existing Players.
+--- @return number @Will always be 0
+function player.Iterator()
 end
 
