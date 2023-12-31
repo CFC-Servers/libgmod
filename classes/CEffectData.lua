@@ -114,7 +114,7 @@ end
 --- Sets the "color" of the effect.  
 --- All this does is provide an addition 8 bits of data for the effect to use. What this will actually do will vary from effect to effect, depending on how a specific effect uses this given data, if at all.  
 --- ℹ **NOTE**: Internally stored as an integer, but only first 8 bits are networked, effectively limiting this function to 0-255 range.  
---- @param color Number @Color represented by a byte.
+--- @param color number @Color represented by a byte.
 function CEffectData:SetColor(color)
 end
 

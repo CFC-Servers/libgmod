@@ -55,13 +55,20 @@ function IGModAudioChannel:GetBitsPerSample()
 end
 
 ---  client
+--- Returns the buffered time of the sound channel in seconds, for online streaming sound channels. (sound.PlayURL)  
+--- For offline channels this will be equivalent to IGModAudioChannel:GetLength.  
+--- @return number @The current buffered time of the stream, in seconds.
+function IGModAudioChannel:GetBufferedTime()
+end
+
+---  client
 --- Returns the filename for the sound channel.  
 --- @return string @The file name
 function IGModAudioChannel:GetFileName()
 end
 
 ---  client
---- Returns the length of sound played by the sound channel.  
+--- Returns the length of sound played by the sound channel in seconds.  
 --- @return number @The length of the sound
 function IGModAudioChannel:GetLength()
 end
