@@ -71,6 +71,7 @@ end
 
 ---  menu|client|server
 --- Reverts ConVar to its default value  
+--- ℹ **NOTE**: This can only be ran on ConVars created from within Lua.  
 function ConVar:Revert()
 end
 

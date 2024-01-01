@@ -117,7 +117,8 @@ function CNewParticleEffect:SetControlPointUpVector(cpID, upward)
 end
 
 ---  client
---- @param isViewModel boolean 
+--- Set whether this particle effect is a view model effect or not. This will have an effect on attachment positioning and other things.  
+--- @param isViewModel boolean @Whether this particle effect is a view model effect or not.
 function CNewParticleEffect:SetIsViewModelEffect(isViewModel)
 end
 

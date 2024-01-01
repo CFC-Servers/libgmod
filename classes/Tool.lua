@@ -1,5 +1,5 @@
 --- A list of functions available inside a Sandbox Toolgun tool.  
---- You can find the hooks  and members here.  
+--- You can find the hooks here, and members here.  
 --- @class Tool
 local Tool = {}
 ---  client|server
