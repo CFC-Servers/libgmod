@@ -17,8 +17,13 @@ function NextBot:BodyMoveXY()
 end
 
 ---  server
+--- Clears this bot's last known area. See NextBot:GetLastKnownArea.  
+function NextBot:ClearLastKnownArea()
+end
+
+---  server
 --- Like NextBot:FindSpots but only returns a vector.  
---- @param type string @Either "random", "near", "far"
+--- @param type string @Either `"random"`, `"near"`, `"far"`.
 --- @param options table @This table should contain the search info
 --- @return Vector @If it finds a spot it will return a vector
 function NextBot:FindSpot(type, options)
@@ -41,6 +46,12 @@ end
 --- Returns the Field of View of the Nextbot NPC, used for its vision functionality, such as NextBot:IsAbleToSee.  
 --- @return number @The current FOV of the nextbot
 function NextBot:GetFOV()
+end
+
+---  server
+--- Returns this bots last known area. See also NextBot:ClearLastKnownArea.  
+--- @return CNavArea @The last area the bot is known to have been in.
+function NextBot:GetLastKnownArea()
 end
 
 ---  server
@@ -90,7 +101,7 @@ end
 --- To be called in the behaviour coroutine only! Will yield until the bot has reached the goal or is stuck  
 --- @param pos Vector @The position we want to get to
 --- @param options table @A table containing a bunch of tweakable options
---- @return string @Either "failed", "stuck", "timeout" or "ok" - depending on how the NPC got on
+--- @return string @Either `"failed"`, `"stuck"`, `"timeout"` or `"ok"` - depending on how the NPC got on
 function NextBot:MoveToPos(pos, options)
 end
 
