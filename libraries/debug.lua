@@ -56,9 +56,13 @@ function debug.getmetatable(object)
 end
 
 ---  menu|client|server
+--- 🛑 **DEPRECATED**:   
+--- This function **will** return an empty table.  
+--- If you get an error because of this see the example below for a workaround  
 --- Returns the internal Lua registry table.  
---- The Lua registry is used by the engine and binary modules to create references to Lua values. Avoid creating entries into the registry with a number as the key, as they are reserved for the reference system.  
---- ⚠ **WARNING**: Improper editing of the registry can result in unintended side effects, including crashing of the game.  
+--- The Lua registry is used by the engine and binary modules to create references to Lua values. The registry contains every global ran and used in the Lua environment. Avoid creating entries into the registry with a number as the key, as they are reserved for the reference system.  
+--- ⚠ **WARNING**: Improper editing of the registry can result in unintended side effects, including crashing the game.  
+--- @deprecated
 --- @return table @The Lua registry
 function debug.getregistry()
 end

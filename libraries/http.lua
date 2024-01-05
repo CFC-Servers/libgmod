@@ -12,8 +12,8 @@ _G.http = {}
 --- 🦟 **BUG**: [This cannot send or receive multiple headers with the same name.](https://github.com/Facepunch/garrysmod-issues/issues/2232)  
 --- ℹ **NOTE**: HTTP-requests that respond with a large body may return an `unsuccessful` error. Try using the [Range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range) header to download the file in chunks.  
 --- ℹ **NOTE**:   
---- HTTP-requests to destinations on private networks (such as `192.168.0.1`) won't work.  
---- To enable HTTP-requests to destinations on private networks use Command Line Parameters `-allowlocalhttp`.  
+--- HTTP-requests to destinations on private networks (such as `192.168.0.1`, or `127.0.0.1`) won't work.  
+--- To enable HTTP-requests to destinations on private networks use Command Line Parameters `-allowlocalhttp`. (Dedicated servers only)  
 --- @param url string @The URL of the website to fetch.
 --- @param onSuccess? function @Function to be called on success
 --- @param onFailure? function @Function to be called on failure
@@ -28,8 +28,8 @@ end
 --- 🦟 **BUG**: [This cannot send or receive multiple headers with the same name.](https://github.com/Facepunch/garrysmod-issues/issues/2232)  
 --- ℹ **NOTE**: HTTP-requests that respond with a large body may return an `unsuccessful` error. Try using the [Range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range) header to download the file in chunks.  
 --- ℹ **NOTE**:   
---- HTTP-requests to destinations on private networks (such as `192.168.0.1`) won't work.  
---- To enable HTTP-requests to destinations on private networks use Command Line Parameters `-allowlocalhttp`.  
+--- HTTP-requests to destinations on private networks (such as `192.168.0.1`, or `127.0.0.1`) won't work.  
+--- To enable HTTP-requests to destinations on private networks use Command Line Parameters `-allowlocalhttp`. (Dedicated servers only)  
 --- @param url string @The url to of the website to post.
 --- @param parameters table @The post parameters (x-www-form-urlencoded) to be send to the server
 --- @param onSuccess? function @Function to be called on success
