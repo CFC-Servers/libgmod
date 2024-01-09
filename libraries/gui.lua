@@ -6,7 +6,15 @@ function gui.ActivateGameUI()
 end
 
 ---  client
---- Enables the mouse cursor without restricting player movement, like using Sandbox's context menu.  
+--- Pushes text to the closed caption box.  
+--- @param text string @The caption to emit
+--- @param duration number @How long the caption should stay for
+--- @param fromPlayer? boolean @Is this caption coming from the player?
+function gui.AddCaption(text, duration, fromPlayer)
+end
+
+---  client
+--- Enables the mouse cursor without restricting player movement, like using Sandbox's context menu. See vgui.CursorVisible for a function to see if the cursor is visible or not.  
 --- ℹ **NOTE**:   
 --- Some CUserCmd functions will return incorrect values when this function is active because [the user input is getting overtaken by the vgui system](https://github.com/Facepunch/garrysmod-issues/issues/982#issuecomment-505671531).  
 --- @param enabled boolean @Whether the cursor should be enabled or not
@@ -111,7 +119,6 @@ end
 ---  client|menu
 --- Opens specified URL in the steam overlay browser.  
 --- ℹ **NOTE**: When called clientside, user will be asked for confirmation before the website will open.  
---- 🦟 **BUG**: [Will silently fail if the URL is more than 512 characters long.](https://github.com/Facepunch/garrysmod-issues/issues/4663)  
 --- @param url string @URL to open, it has to start with either `http://` or `https://`.
 function gui.OpenURL(url)
 end

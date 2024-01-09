@@ -1,4 +1,4 @@
---- The vgui library allows you to script and create your own panels using Valve's GUI system.  
+--- The **vgui** library allows you to script and create your own panels using **V**alve's **G**raphical **U**ser **I**nterface (VGUI) system.  
 --- For an alphabetically ordered list of VGUI panels, see VGUI Element List.  
 _G.vgui = {}
 ---  client|menu
@@ -22,7 +22,7 @@ end
 
 ---  client|menu
 --- Returns whenever the cursor is currently active and visible.  
---- @return boolean @isCursorVisible
+--- @return boolean @Whether the cursor is visible or not.
 function vgui.CursorVisible()
 end
 
