@@ -26,7 +26,7 @@ end
 
 ---  menu|client|server
 --- Calculates the cross product of this vector and the passed one.  
---- The cross product of two vectors is a 3-dimensional vector with a direction perpendicular (at right angles) to both of them (according to the right-hand rule), and magnitude equal to the area of parallelogram they span. This is defined as the product of the magnitudes, the sine of the angle between them, and unit (normal) vector `n` defined by the right-hand rule:  
+--- The cross product of two vectors is a 3-dimensional vector with a direction perpendicular (at right angles) to both of them (according to the [right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule)), and magnitude equal to the area of parallelogram they span. This is defined as the product of the magnitudes, the sine of the angle between them, and unit (normal) vector `n` defined by the right-hand rule:  
 --- :**a** × **b** = |**a**| |**b**| sin(θ) **n̂**  
 --- where **a** and **b** are vectors, and **n̂** is a unit vector (magnitude of 1) perpendicular to both.  
 --- @param otherVector Vector @Vector to calculate the cross product with.
@@ -44,11 +44,28 @@ function Vector:DistToSqr(otherVec)
 end
 
 ---  menu|client|server
---- Returns the euclidean distance between the vector and the other vector.  
+--- Returns the Euclidean distance between the vector and the other vector.  
 --- ℹ **NOTE**: This function is more expensive than Vector:DistToSqr. However, please see the notes for Vector:DistToSqr before using it as squared distances are not the same as euclidean distances.  
 --- @param otherVector Vector @The vector to get the distance to.
 --- @return number @Distance between the vectors.
 function Vector:Distance(otherVector)
+end
+
+---  menu|client|server
+--- Returns the Euclidean distance between the vector and the other vector in 2D space. The Z axis is ignored.  
+--- ℹ **NOTE**: This function is more expensive than Vector:Distance2DSqr. However, please see the notes for Vector:Distance2DSqr before using it as squared distances are not the same as Euclidean distances.  
+--- @param otherVector Vector @The vector to get the distance to.
+--- @return number @Distance between the vectors in 2D space.
+function Vector:Distance2D(otherVector)
+end
+
+---  menu|client|server
+--- Returns the squared distance between 2 vectors in 2D space, ignoring the Z axis. This is faster than Vector:Distance2D as calculating the square root is an expensive process.  
+--- ℹ **NOTE**: Squared distances should not be summed. If you need to sum distances, use Vector:Distance2D.  
+--- When performing a distance check, ensure the distance being checked against is squared.  
+--- @param otherVec Vector @The vector to calculate the distance to.
+--- @return number @Squared distance to the vector in 2D space.
+function Vector:Distance2DSqr(otherVec)
 end
 
 ---  menu|client|server
@@ -145,7 +162,7 @@ function Vector:LengthSqr()
 end
 
 ---  menu|client|server
---- Scales the vector by the given number (that means x, y and z are multiplied by that value) or Vector.  
+--- Scales the vector by the given number (that means x, y and z are multiplied by that value), a Vector (X, Y, and Z of each vector are multiplied) or a VMatrix (Transforms the vector by the matrix's rotation/translation).  
 --- @param multiplier number @The value to scale the vector with.
 function Vector:Mul(multiplier)
 end
