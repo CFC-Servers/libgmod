@@ -2,16 +2,6 @@
 --- ⚠ **WARNING**: Kinect feature works only on 32-bit version of the game.  
 _G.motionsensor = {}
 ---  client|server
---- @param translator table 
---- @param player Player 
---- @param rotation Angle 
---- @return Vector @Pos
---- @return Angle @ang
---- @return table @sensor
-function motionsensor.BuildSkeleton(translator, player, rotation)
-end
-
----  client|server
 --- @param ent Entity @Entity to choose builder for
 --- @return string @Chosen builder
 function motionsensor.ChooseBuilderFromEntity(ent)
@@ -24,6 +14,8 @@ function motionsensor.GetColourMaterial()
 end
 
 ---  client
+--- Returns players skeletal data if they are using Kinect. See Using The Kinect and Kinect developing.  
+--- @return table @The skeleton data.
 function motionsensor.GetSkeleton()
 end
 
@@ -37,34 +29,6 @@ end
 --- Returns true if we have detected that there's a kinect connected to the PC  
 --- @return boolean @Connected or not
 function motionsensor.IsAvailable()
-end
-
----  client|server
---- @param translator table 
---- @param sensor table 
---- @param pos Vector 
---- @param ang Angle 
---- @param special_vectors table 
---- @param boneid number 
---- @param v table 
---- @return boolean @Return nil on failure
-function motionsensor.ProcessAngle(translator, sensor, pos, ang, special_vectors, boneid, v)
-end
-
----  client|server
---- @param translator table 
---- @param sensor table 
---- @param pos Vector 
---- @param rotation Angle 
---- @return Angle @Ang
-function motionsensor.ProcessAnglesTable(translator, sensor, pos, rotation)
-end
-
----  client|server
---- @param translator table 
---- @param sensor table 
---- @return Vector @Pos
-function motionsensor.ProcessPositionTable(translator, sensor)
 end
 
 ---  client|menu
