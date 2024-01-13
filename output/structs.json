@@ -79,6 +79,11 @@
         "name": "Pos",
         "type": "Vector",
         "description": "Vector object"
+      },
+      {
+        "name": "Bone",
+        "type": "number",
+        "description": "The bone ID the attachment point is parented to."
       }
     ],
     "realms": [
@@ -274,7 +279,7 @@
         "name": "Callback",
         "type": "function",
         "default": "nil",
-        "description": "Function to be called **after** the bullet was fired but **before** the damage is applied (the callback is called even if no damage is applied). The arguments are:\n* <page>Entity</page> attacker\n* <page>table</page> tr - See <page>Structures/TraceResult</page>\n* <page>CTakeDamageInfo</page> dmgInfo"
+        "description": "Function to be called **after** the bullet was fired but **before** the damage is applied (the callback is called even if no damage is applied). The arguments are:\n* <page>Entity</page> attacker\n* <page>table</page> tr - See <page>Structures/TraceResult</page>\n* <page>CTakeDamageInfo</page> dmgInfo\n\nThe return value can be a table with following keys:\n* <page>boolean</page> effects - `false` to not do any of the effects.\n* <page>boolean</page> damage - `false` to not do any damage."
       },
       {
         "name": "Damage",
@@ -858,17 +863,22 @@
       {
         "name": "Type",
         "type": "string",
-        "description": "Type of the entity. This **must be one of these:**\n* **anim**\n* **brush**\n* **point**\n* **ai**\n* **nextbot**\n* **filter**\n\nSee <page>Scripted Entities</page> for a more detailed explanation of what each one is."
+        "description": "Type of the entity. This **must** be one of these:\n* **anim**\n* **brush**\n* **point**\n* **ai**\n* **nextbot**\n* **filter**\n\nSee <page>Scripted Entities</page> for a more detailed explanation of what each one is."
       },
       {
         "name": "ClassName",
         "type": "string",
-        "description": "Entity class name of the entity (File or folder name of your entity).\n**This is set automatically `after` the entity file is loaded.**"
+        "description": "The class name of the entity (File or folder name of your entity).\n**This is set automatically _after_ the entity file is loaded.**"
+      },
+      {
+        "name": "ClassNameOverride",
+        "type": "string",
+        "description": "If set, overrides the classname of the SWEP."
       },
       {
         "name": "Folder",
         "type": "string",
-        "description": "The folder from where the entity was loaded. This should always be \"entity/ent_myentity\", regardless whether your entity is stored as a file, or multiple files in a folder. **This is set automatically `before` the entity file is loaded.**"
+        "description": "The folder from where the entity was loaded. This should always be \"entity/ent_myentity\", regardless whether your entity is stored as a file, or multiple files in a folder. **This is set automatically _before_ the entity file is loaded.**"
       },
       {
         "name": "AutomaticFrameAdvance",
@@ -880,7 +890,7 @@
         "name": "Category",
         "type": "string",
         "default": "Other",
-        "description": "(Clientside) Spawnmenu category to put the entity into"
+        "description": "Spawnmenu category to put the entity into"
       },
       {
         "name": "Spawnable",
@@ -903,63 +913,68 @@
       {
         "name": "PrintName",
         "type": "string",
-        "description": "(Clientside) Nice name of the entity to appear in the spawn menu"
+        "description": "Nice name of the entity to appear in the spawn menu"
       },
       {
         "name": "Author",
         "type": "string",
-        "description": "(Clientside) The author of the entity"
+        "description": "The author of the entity"
       },
       {
         "name": "Contact",
         "type": "string",
-        "description": "(Clientside) The contacts of the entity creator"
+        "description": "The contacts of the entity creator"
       },
       {
         "name": "Purpose",
         "type": "string",
-        "description": "(Clientside) The purpose of the entity creation"
+        "description": "The purpose of the entity creation"
       },
       {
         "name": "Instructions",
         "type": "string",
-        "description": "(Clientside) How to use your entity"
+        "description": "How to use your entity"
       },
       {
         "name": "RenderGroup",
         "type": "number",
-        "default": "RENDERGROUP_OPAQUE",
-        "description": "(Clientside) The entity's render group, see <page>Enums/RENDERGROUP</page>."
+        "description": "The entity's render group, see <page>Enums/RENDERGROUP</page>. If unset, the engine will decide the render group based on the entity's model."
       },
       {
         "name": "DisableDuplicator",
         "type": "boolean",
         "default": "false",
-        "description": "(Serverside) Disable the ability for players to duplicate this entity."
+        "description": "Disable the ability for players to duplicate this entity."
       },
       {
         "name": "ScriptedEntityType",
         "type": "string",
-        "description": "(Clientside) Sets the spawnmenu content icon type for the entity, used by spawnmenu in the Sandbox-derived gamemodes.\nSee <page>spawnmenu.AddContentType</page> for more information."
+        "description": "Sets the spawnmenu content icon type for the entity, used by spawnmenu in the Sandbox-derived gamemodes.\nSee <page>spawnmenu.AddContentType</page> for more information."
       },
       {
         "name": "DoNotDuplicate",
         "type": "boolean",
         "default": "false",
-        "description": "(Serverside) If set, the entity will not be duplicated via the built-in duplicator system."
+        "description": "If set, the entity will not be duplicated via the built-in duplicator system."
       },
       {
         "name": "IconOverride",
         "type": "string",
         "default": "materials/entities/<ClassName>.png",
-        "description": "(Clientside) If set, overrides the icon path to be displayed in the Spawnmenu for this entity."
+        "description": "If set, overrides the icon path to be displayed in the Spawnmenu for this entity."
+      },
+      {
+        "name": "PhysgunDisabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "If set, the entity forbid physgun interaction."
       }
     ],
     "realms": [
       "client",
       "server"
     ],
-    "description": "Information about the ENT structure.\n\nTo learn more about scripted entities, <page text=\"see this page\">Scripted_Entities</page>.\n\nWhile some of the fields may be serverside or clientside only, it is recommended to provide them on both so addons could use their values.\n\n<note>Values defined in ENT table can't be changed per instance. Initialize default values in <page>ENTITY:Initialize</page> or other hook</note>",
+    "description": "Information about the ENT structure.\n\nTo learn more about scripted entities, <page text=\"see this page\">Scripted_Entities</page>.\n\nWhile some of the fields may be serverside or clientside only, it is recommended to provide them on both so addons could use their values.\n\n<note>Values defined in ENT table can't be changed per instance. Initialize default values in <page>ENTITY:Initialize</page> or other hook.</note>",
     "name": "ENT"
   },
   {
@@ -1058,7 +1073,7 @@
     "realms": [
       "server"
     ],
-    "description": "Data structure used by the <page>duplicator</page> to store and load entity data.\n\nIt is created by <page>duplicator.CopyEntTable</page> and can be loaded by <page>duplicator.CreateEntityFromTable</page>.\n\nIt also shows up in several other contexts:\n* <page>duplicator.RegisterEntityClass</page>\n* <page>ENTITY:OnEntityCopyTableFinish</page>\n* <page>ENTITY:OnDuplicated</page>\n\n<note>1=In addition to all fields listed here, any field saved on the entity will be saved as-is to this table. For example, if you set ent.FavoriteFood = \"Steak\" before duplicating it, this structure will also contain the field FavoriteFood with the value \"Steak\".</note>",
+    "description": "Data structure used by the <page>duplicator</page> to store and load entity data.\n\nIt is created by <page>duplicator.CopyEntTable</page> and can be loaded by <page>duplicator.CreateEntityFromTable</page>.\n\nIt also shows up in several other contexts:\n* <page>duplicator.RegisterEntityClass</page>\n* <page>ENTITY:OnEntityCopyTableFinish</page>\n* <page>ENTITY:OnDuplicated</page>\n\n<note>In addition to all fields listed here, any field saved on the entity will be saved as-is to this table. For example, if you set `ent.FavoriteFood = \"Steak\"` before duplicating it, this structure will also contain the field `FavoriteFood` with the value `\"Steak\"`.</note>",
     "name": "EntityCopyData"
   },
   {
@@ -1501,6 +1516,115 @@
   {
     "fields": [
       {
+        "name": "Name",
+        "type": "string",
+        "description": "The nice name of the NPC for UI display."
+      },
+      {
+        "name": "Class",
+        "type": "string",
+        "description": "Class name of the entity to spawn."
+      },
+      {
+        "name": "Category",
+        "type": "string",
+        "default": "Other",
+        "description": "Spawnmenu category to put the NPCinto."
+      },
+      {
+        "name": "Weapons",
+        "type": "table",
+        "default": "{}",
+        "description": "A list of weapons this NPC is typically meant to use. One will be picked on spawn at random, unless overwritten by the player."
+      },
+      {
+        "name": "KeyValues",
+        "type": "table",
+        "default": "{}",
+        "description": "Key-value pairs to apply to the NPC on spawn. See <page>Entity:SetKeyValue</page>."
+      },
+      {
+        "name": "Model",
+        "type": "string",
+        "default": "nil",
+        "description": "Model override for this NPC."
+      },
+      {
+        "name": "SpawnFlags",
+        "type": "number",
+        "default": "0",
+        "description": "Additional spawnflags for this NPC. See <page>Entity:GetSpawnFlags</page>.\n\nIgnored if `TotalSpawnFlags` key is present."
+      },
+      {
+        "name": "TotalSpawnFlags",
+        "type": "number",
+        "default": "nil",
+        "description": "Total spawnflags override for this NPC."
+      },
+      {
+        "name": "OnCeiling",
+        "type": "boolean",
+        "default": "false",
+        "description": "If set to `true`, this NPC can only be spawned on the ceiling. Stacks with `OnFloor`."
+      },
+      {
+        "name": "OnFloor",
+        "type": "boolean",
+        "default": "false",
+        "description": "If set to `true`, this NPC can only be spawned on the floor. Stacks with `OnCeiling`."
+      },
+      {
+        "name": "Offset",
+        "type": "number",
+        "default": "0",
+        "description": "Offset, in Hammer units, away from the surface where the player is looking at for the NPC spawn position."
+      },
+      {
+        "name": "Material",
+        "type": "string",
+        "description": "Material override for this NPC. See <page>Entity:SetMaterial</page>."
+      },
+      {
+        "name": "Skin",
+        "type": "number",
+        "default": "nil",
+        "description": "Skin override for the NPC. See <page>Entity:SetSkin</page>."
+      },
+      {
+        "name": "NoDrop",
+        "type": "boolean",
+        "default": "false",
+        "description": "If set to `true`, do not try to teleport the NPC to the ground."
+      },
+      {
+        "name": "Rotate",
+        "type": "Angle",
+        "default": "Angle( 0, 0, 0 )",
+        "description": "Used to add additional rotation the NPC post spawn. Usually all NPCs would be facing the player on spawn. Value of `Angle( 0, 180, 0 )` would make the NPC face away from the player."
+      },
+      {
+        "name": "Health",
+        "type": "number",
+        "default": "nil",
+        "description": "Health override for this NPC. Also sets <page>Entity:SetMaxHealth</page>."
+      },
+      {
+        "name": "OnDuplicated",
+        "type": "function",
+        "default": "nil",
+        "description": "If set, a function to be called when the NPC is pasted using the <page>duplicator</page> library."
+      }
+    ],
+    "realms": [
+      "client",
+      "server"
+    ],
+    "description": "Information about the NPC data structure, used to define spawnable NPCs for the Sandbox gamemode.\n\nExample usage:\n```\nlist.Set( \"NPC\", \"npc_tf2_ghost\", {\nName = \"Example NPC\",\nClass = \"npc_tf2_ghost\",\nCategory = \"Nextbot\"\n} )\n```",
+    "name": "NPCData"
+  },
+  {
+    "fields": [
+      {
         "name": "RPM",
         "type": "number",
         "description": "The current RPM of the vehicle"
@@ -1646,7 +1770,7 @@
       "client",
       "server"
     ],
-    "description": "Table used by <page>physenv.SetPerformanceSettings</page>.",
+    "description": "Table used by <page>physenv.SetPerformanceSettings</page> and <page>physenv.GetPerformanceSettings</page>.",
     "name": "PhysEnvPerformanceSettings"
   },
   {
@@ -1680,7 +1804,7 @@
     "realms": [
       "server"
     ],
-    "description": "Structure used in storing/restoring physics object attributes.\n<page>duplicator.GenericDuplicatorFunction</page> and <page>duplicator.DoGenericPhysics</page> use a table of PhysicsObjectSaves with the struct's index in the table being the physics object ID.\n\nPos and Angle are set by the following:\n\n```\nPos, Angle = WorldToLocal(phys:GetPos(), phys:GetAngle(), Vector( 0, 0, 0 ), Angle( 0, 0, 0 ))\n```",
+    "description": "Structure used in storing/restoring physics object attributes.\n<page>duplicator.GenericDuplicatorFunction</page> and <page>duplicator.DoGenericPhysics</page> use a table of **PhysicsObjectSave**s with the struct's index in the table being the physics object ID.\n\nPos and Angle are set by the following:\n\n```\nPos, Angle = WorldToLocal(phys:GetPos(), phys:GetAngle(), Vector( 0, 0, 0 ), Angle( 0, 0, 0 ))\n```",
     "name": "PhysicsObjectSave"
   },
   {
@@ -1865,7 +1989,7 @@
       {
         "name": "newAction",
         "type": "string",
-        "description": "What to do with addons not in the preset. Can be **enable** **disable** or nothing."
+        "description": "What to do with addons not in the preset. Can be `enable`, `disable` or nothing."
       }
     ],
     "realms": [
@@ -2059,7 +2183,7 @@
     "realms": [
       "client"
     ],
-    "description": "Used for <page>cam.Start</page>.\n\nUnless stated otherwise, the default values for all these keys would be inherited from the engine's current CViewSetup and do not have static representations.",
+    "description": "Used for <page>cam.Start</page>.\n\nUnless stated otherwise, the default values for all these keys would be inherited from the engine's current `CViewSetup` and do not have static representations.",
     "name": "RenderCamData"
   },
   {
@@ -2519,6 +2643,11 @@
         "description": "Entity class name of the SWEP (file or folder name of your SWEP). This is\nset automatically"
       },
       {
+        "name": "ClassNameOverride",
+        "type": "string",
+        "description": "If set, overrides the classname of the SWEP."
+      },
+      {
         "name": "Category",
         "type": "string",
         "default": "Other",
@@ -2588,7 +2717,7 @@
         "name": "ViewModel",
         "type": "string",
         "default": "models/weapons/v_pistol.mdl",
-        "description": "The client-side, relative path to the SWEP's view model."
+        "description": "Relative path to the SWEP's view model."
       },
       {
         "name": "ViewModelFlip",
@@ -2618,7 +2747,7 @@
         "name": "WorldModel",
         "type": "string",
         "default": "models/weapons/w_357.mdl",
-        "description": "The server-side, relative path to the SWEP's world model."
+        "description": "Relative path to the SWEP's world model."
       },
       {
         "name": "AutoSwitchFrom",
@@ -2677,8 +2806,7 @@
       {
         "name": "RenderGroup",
         "type": "number",
-        "default": "RENDERGROUP_OPAQUE",
-        "description": "The SWEP render group, see\n<page>Enums/RENDERGROUP</page>"
+        "description": "The SWEP render group, see <page>Enums/RENDERGROUP</page>. If unset, the engine will decide the render group based on the SWEPs world model."
       },
       {
         "name": "Slot",
@@ -2696,7 +2824,7 @@
         "name": "SpeechBubbleLid",
         "type": "number",
         "default": "surface.GetTextureID( 'gui/speech_lid' )",
-        "description": "(Clientside)\nInternal variable for drawing the info box in weapon selection"
+        "description": "Internal variable for drawing the info box in weapon selection"
       },
       {
         "name": "WepSelectIcon",
@@ -2714,12 +2842,12 @@
         "name": "CSMuzzleX",
         "type": "boolean",
         "default": "false",
-        "description": "Use the X shape muzzle flash instead of the\ndefault Counter-Strike muzzle flash. Requires CSMuzzleFlashes to be set to true"
+        "description": "Use the X shape muzzle flash instead of the\ndefault Counter-Strike muzzle flash. Requires <page text=\"CSMuzzleFlashes\">Structures/SWEP#CSMuzzleFlashes</page> to be set to true."
       },
       {
         "name": "Primary",
         "type": "table",
-        "description": "Primary attack settings. The table contains these fields:\n\n* <page>string</page> Ammo - Ammo type (\"Pistol\", \"SMG1\" etc)\n* <page>number</page> ClipSize - The maximum amount of bullets one clip can hold. Setting it to `-1` means\nweapon uses no clips, like a grenade or a rocket launch.\n* <page>number</page> DefaultClip - Default ammo in the clip, making it higher than ClipSize will give\nplayer additional ammo on spawn\n* <page>boolean</page> Automatic - If true makes the weapon shoot automatically as long as the player has\nprimary attack button held down"
+        "description": "Primary attack settings. The table contains these fields:\n\n* <page>string</page> `Ammo` - Ammo type (`Pistol`, `SMG1`, etc.) See <page>game.AddAmmoType</page>.\n* <page>number</page> `ClipSize` - The maximum amount of bullets one clip can hold. Setting it to `-1` means weapon uses no clips, like a grenade or a rocket launch.\n* <page>number</page> `DefaultClip` - Default ammo in the clip, making it higher than ClipSize will give player additional ammo on spawn\n* <page>boolean</page> `Automatic` - If true makes the weapon shoot automatically as long as the player has primary attack button held down"
       },
       {
         "name": "Secondary",
@@ -2765,14 +2893,14 @@
         "name": "IconOverride",
         "type": "string",
         "default": "materials/entities/<ClassName>.png",
-        "description": "(Clientside)If set,\noverrides the icon path to be displayed in the Spawnmenu for this entity."
+        "description": "If set,\noverrides the icon path to be displayed in the Spawnmenu for this entity."
       }
     ],
     "realms": [
       "client",
       "server"
     ],
-    "description": "Information about <page text=\"Scripted Weapons\">Scripted_Entities</page> (SWEPs),\nused by <page>SANDBOX:PlayerGiveSWEP</page> and in SWEP creation.\n\nFor list of callbacks, see <page text=\"WEAPON Hooks\">WEAPON_Hooks</page>\n\nWhile some of the fields may be serverside or clientside only, it is recommended to provide them on both so\naddons could use their values.",
+    "description": "Information about <page text=\"Scripted Weapons\">Scripted_Entities</page> (SWEPs),\nused by <page>SANDBOX:PlayerGiveSWEP</page> and in SWEP creation.\n\nFor list of callbacks, see <page text=\"WEAPON Hooks\">WEAPON_Hooks</page>.\n\nWhile some of the fields may be serverside or clientside only, it is recommended to provide them on both so\naddons could use their values.",
     "name": "SWEP"
   },
   {
@@ -2973,7 +3101,7 @@
       "client",
       "server"
     ],
-    "description": "The TOOL table is used in Sandbox tool creation. You can find a list of callbacks on the  page and a list of methods on the  page. Do note that some of the fields below have no effect on server-side operations.\n\nThe tool information box drawn on the HUD while your tool is selected has 2 values that are set by <page>language.Add</page>.\n* `tool.[tool mode].name` - The tool name (Note this is NOT the same as TOOL.Name)\n* `tool.[tool mode].desc` - The tool description\n\nEnsure that all tool file names are entirely lowercase.  Including capital letters can lead to unintended behavior.",
+    "description": "The **TOOL** table is used in Sandbox tool creation. You can find a list of callbacks on the  page and a list of methods on the  page. Do note that some of the fields below have no effect on server-side operations.\n\nThe tool information box drawn on the HUD while your tool is selected has 2 values that are set by <page>language.Add</page>.\n* `tool.[tool mode].name` - The tool name (Note this is NOT the same as TOOL.Name)\n* `tool.[tool mode].desc` - The tool description\n\nEnsure that all tool file names are entirely lowercase.  Including capital letters can lead to unintended behavior.",
     "name": "TOOL"
   },
   {
@@ -3705,44 +3833,59 @@
   {
     "fields": [
       {
-        "name": "Author",
-        "type": "string",
-        "default": "VALVe"
-      },
-      {
-        "name": "Model",
-        "type": "string",
-        "default": "models/nova/jeep_seat.mdl"
-      },
-      {
         "name": "Class",
         "type": "string",
-        "default": "prop_vehicle_prisoner_pod"
-      },
-      {
-        "name": "Category",
-        "type": "string",
-        "default": "Chairs"
-      },
-      {
-        "name": "Information",
-        "type": "string",
-        "default": "A Seat from VALVe's Jeep"
+        "description": "Entity class name for this vehicle."
       },
       {
         "name": "Name",
         "type": "string",
-        "default": "Jeep Seat"
+        "description": "Nice name for this vehicle, for UI purposes."
+      },
+      {
+        "name": "Model",
+        "type": "string",
+        "description": "Model of the vehicle."
       },
       {
         "name": "KeyValues",
         "type": "table",
-        "default": "{ ['vehiclescript'] = 'scripts/vehicles/prisoner_pod.txt' , ['limitview'] = 0}",
-        "description": "<validate>Do any other values belong in the KeyValues table?</validate>"
+        "description": "A list of key-value pairs to apply to the vehicle entity.\nPossible valid keys that can be set are:\n* `vehiclescript`\n* `limitview`\n* `vehiclelocked`\n* `cargovisible`\n* `enablegun`"
+      },
+      {
+        "name": "Offset",
+        "type": "number",
+        "default": "nil",
+        "description": "Offset away the surface player is looking at to spawn at."
+      },
+      {
+        "name": "Members",
+        "type": "table",
+        "default": "nil",
+        "description": "Set these members on the spawned vehicle's table (<page>Entity:GetTable</page>) to given values."
+      },
+      {
+        "name": "Author",
+        "type": "string",
+        "description": "Author of the vehicle, for UI purposes."
+      },
+      {
+        "name": "Category",
+        "type": "string",
+        "default": "Other",
+        "description": "Category of this vehicle, for UI purposes."
+      },
+      {
+        "name": "Information",
+        "type": "string",
+        "description": "A small description of the vehicle, for UI purposes."
       }
     ],
-    "realms": [],
-    "description": "Table structure passed to <page>SANDBOX:PlayerSpawnVehicle</page>",
+    "realms": [
+      "client",
+      "server"
+    ],
+    "description": "Table structure passed to <page>SANDBOX:PlayerSpawnVehicle</page>, describing a spawnable Vehicle in Sandbox gamemode.\n\nExample usage in defined a custom spawnable vehicle:\n```\nlist.Set( \"Vehicles\", \"Jeep\", {\n-- Required information\nName = \"Jeep\",\nModel = \"models/buggy.mdl\",\nClass = \"prop_vehicle_jeep_old\",\nCategory = \"Half-Life 2\",\n\n-- Optional information\nAuthor = \"VALVe\",\nInformation = \"The regular old jeep\",\n\nKeyValues = {\nvehiclescript = \"scripts/vehicles/jeep_test.txt\"\n}\n} )\n```",
     "name": "VehicleTable"
   },
   {
@@ -3802,7 +3945,7 @@
       "client",
       "menu"
     ],
-    "description": "Table used by <page>video.Record</page>.",
+    "description": "Table structure used by <page>video.Record</page>.",
     "name": "VideoData"
   },
   {
@@ -3926,6 +4069,12 @@
         "type": "boolean",
         "default": "true",
         "description": "Disables default engine bloom and pauses the \"brightness changes\" on HDR maps."
+      },
+      {
+        "name": "viewid",
+        "type": "number",
+        "default": "0",
+        "description": "This is identifying which logical part of the scene an entity is being redered in, see <page>Enums/VIEW</page>."
       },
       {
         "name": "offcenter",

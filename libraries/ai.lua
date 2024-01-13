@@ -15,16 +15,16 @@ function ai.GetSquadLeader(squad)
 end
 
 ---  server
---- Returns the amount of members a given squad has.  
+--- Returns the amount of members a given squad has. See also ai.GetSquadMembers.  
 --- @param squad string @The squad name.
 --- @return number @The member count.
 function ai.GetSquadMemberCount(squad)
 end
 
 ---  server
---- Returns all members of a given squad.  
+--- Returns all members of a given squad. See also ai.GetSquadMemberCount and NPC:GetSquad.  
 --- @param squad string @The squad name.
---- @return table @A table of NPCs.
+--- @return table @A table of NPCs in the given squad.
 function ai.GetSquadMembers(squad)
 end
 

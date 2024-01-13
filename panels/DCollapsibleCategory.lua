@@ -22,6 +22,14 @@ function DCollapsibleCategory:GetAnimTime()
 end
 
 ---  client|menu
+--- 🛑 **DEPRECATED**: You should use DCollapsibleCategory:GetPaintBackground instead.  
+--- Returns whether or not the panel background is being drawn. Alias of DCollapsibleCategory:GetPaintBackground.  
+--- @deprecated
+--- @return boolean @True if the panel background is drawn, false otherwise.
+function DCollapsibleCategory:GetDrawBackground()
+end
+
+---  client|menu
 --- Returns whether the DCollapsibleCategory is expanded or not.  
 --- @return boolean @If expanded it will return true.
 function DCollapsibleCategory:GetExpanded()
@@ -35,14 +43,18 @@ function DCollapsibleCategory:GetHeaderHeight()
 end
 
 ---  client|menu
---- No Description  
+--- 🛑 **DEPRECATED**:   
+--- Returns whatever is set by DCollapsibleCategory:SetList.  
+--- @deprecated
 --- @return Panel 
 function DCollapsibleCategory:GetList()
 end
 
 ---  client|menu
+--- 🛑 **DEPRECATED**:   
 --- Doesn't actually do anything.  
 --- Returns the number set by DCollapsibleCategory:SetPadding.  
+--- @deprecated
 --- @return number 
 function DCollapsibleCategory:GetPadding()
 end
@@ -54,7 +66,9 @@ function DCollapsibleCategory:GetPaintBackground()
 end
 
 ---  client|menu
---- No Description  
+--- 🛑 **DEPRECATED**:   
+--- Returns whatever was set by DCollapsibleCategory:SetStartHeight  
+--- @deprecated
 --- @return number 
 function DCollapsibleCategory:GetStartHeight()
 end
@@ -78,6 +92,14 @@ function DCollapsibleCategory:SetContents(pnl)
 end
 
 ---  client|menu
+--- 🛑 **DEPRECATED**: You should use DCollapsibleCategory:SetPaintBackground instead.  
+--- Sets whether or not to draw the panel background. Alias of DCollapsibleCategory:SetPaintBackground.  
+--- @param draw boolean @True to show the panel's background, false to hide it.
+--- @deprecated
+function DCollapsibleCategory:SetDrawBackground(draw)
+end
+
+---  client|menu
 --- Sets whether the DCollapsibleCategory is expanded or not upon opening the container.  
 --- You should use DCollapsibleCategory:Toggle or DCollapsibleCategory:DoExpansion instead.  
 --- @param expanded? boolean @Whether it shall be expanded or not by default
@@ -98,14 +120,18 @@ function DCollapsibleCategory:SetLabel(label)
 end
 
 ---  client|menu
---- No Description  
+--- 🛑 **DEPRECATED**: Unused in the base game. What is this for?  
+--- Sets a panel to call Panel:UnselectAll on, instead of calling it on itself.  
 --- @param pnl Panel 
+--- @deprecated
 function DCollapsibleCategory:SetList(pnl)
 end
 
 ---  client|menu
+--- 🛑 **DEPRECATED**:   
 --- Doesn't actually do anything.  
 --- @param padding number 
+--- @deprecated
 function DCollapsibleCategory:SetPadding(padding)
 end
 
@@ -116,8 +142,10 @@ function DCollapsibleCategory:SetPaintBackground(paint)
 end
 
 ---  client|menu
---- No Description  
+--- 🛑 **DEPRECATED**:   
+--- Does nothing.  
 --- @param height number 
+--- @deprecated
 function DCollapsibleCategory:SetStartHeight(height)
 end
 
@@ -125,10 +153,5 @@ end
 --- Toggles the expanded state of the DCollapsibleCategory.  
 --- See DCollapsibleCategory:GetExpanded for a function to retrieve the expanded state.  
 function DCollapsibleCategory:Toggle()
-end
-
----  client|menu
---- No Description  
-function DCollapsibleCategory:UnselectAll()
 end
 
