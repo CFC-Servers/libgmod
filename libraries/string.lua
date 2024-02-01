@@ -185,7 +185,7 @@ end
 
 ---  menu|client|server
 --- Splits the string into a table of strings, separated by the second argument.  
---- This is an alias of string.Explode.  
+--- This is an alias of string.Explode, but with flipped arguments.  
 --- @param Inputstring string @String to split
 --- @param Separator string @Character(s) to split with.
 --- @return table @Split table

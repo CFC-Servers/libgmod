@@ -63,6 +63,7 @@ end
 
 ---  menu|client|server
 --- Returns bytecode of a function at a position.  
+--- ℹ **NOTE**: This function only works for Lua defined functions.  
 --- @param func function @Function to retrieve bytecode from.
 --- @param pos number @Position of the bytecode to retrieve.
 --- @return number @bytecode instruction
@@ -95,28 +96,34 @@ end
 
 ---  menu|client|server
 --- Gets a constant at a certain index in a function.  
+--- 🛑 **DEPRECATED**: This function was disabled due to security concerns.  
 --- ⚠ **WARNING**: This function isn't officially documented on LuaJIT wiki, use it at your own risk.  
 --- ℹ **NOTE**: Numbers constants goes from 0 (included) to n-1, n being the value of nconsts in jit.util.funcinfo in other words, the consts goes from (nconsts-1) to -n  
 --- ℹ **NOTE**: This function only works for Lua defined functions.  
 --- @param func function @Function to get constant from
 --- @param index number @Constant index (counting down from the top of the function at -1)
+--- @deprecated
 --- @return any @The constant found
 function jit.util.funck(func, index)
 end
 
 ---  menu|client|server
+--- 🛑 **DEPRECATED**: This function was disabled due to security concerns.  
 --- Does the exact same thing as debug.getupvalue except it only returns the name, not the name and the object. The upvalue indexes also start at 0 rather than 1, so doing jit.util.funcuvname(func, 0) will get you the same name as debug.getupvalue(func, 1)  
 --- ⚠ **WARNING**: This function isn't officially documented on LuaJIT wiki, use it at your own risk.  
 --- @param func function @Function to get the upvalue indexed from
 --- @param index number @The upvalue index, starting from 0
+--- @deprecated
 --- @return string @The function returns nil if there is no upvalue with the given index, otherwise the name of the upvalue is returned
 function jit.util.funcuvname(func, index)
 end
 
 ---  menu|client|server
+--- 🛑 **DEPRECATED**: This function was disabled due to security concerns. It will always return 0.  
 --- Gets the address of a function from a list of functions, for the list see Ircalladdr Functions  
 --- ⚠ **WARNING**: This function isn't officially documented on LuaJIT wiki, use it at your own risk.  
 --- @param index number @The index of the function address to get from the ircalladdr func array (starting from 0)
+--- @deprecated
 --- @return number @The address of the function
 function jit.util.ircalladdr(index)
 end
@@ -128,6 +135,7 @@ function jit.util.traceexitstub(exitno)
 end
 
 ---  menu|client|server
+--- 🛑 **DEPRECATED**: This function was disabled due to security concerns.  
 --- Return table fields:  
 --- * link (number): the linked trace (0 for link types: none, return, interpreter)  
 --- * nk (number): the lowest IR constant (???)  
@@ -135,13 +143,16 @@ end
 --- * linktype (string): the link type (none, root, loop, tail-recursion, up-recursion, down-recursion, interpreter, return)  
 --- * nexit (number): number of snapshots (for use with jit.util.tracesnap)  
 --- @param trace number @trace index to retrieve info for (gotten via jit.attach)
+--- @deprecated
 --- @return table @trace info
 function jit.util.traceinfo(trace)
 end
 
 ---  menu|client|server
+--- 🛑 **DEPRECATED**: This function was disabled due to security concerns.  
 --- @param tr number 
 --- @param index number 
+--- @deprecated
 --- @return number @m
 --- @return number @ot
 --- @return number @op1
@@ -151,8 +162,10 @@ function jit.util.traceir(tr, index)
 end
 
 ---  menu|client|server
+--- 🛑 **DEPRECATED**: This function was disabled due to security concerns.  
 --- @param tr number 
 --- @param index number 
+--- @deprecated
 --- @return any @k
 --- @return number @t
 --- @return number @slot; optional
@@ -160,7 +173,9 @@ function jit.util.tracek(tr, index)
 end
 
 ---  menu|client|server
+--- 🛑 **DEPRECATED**: This function was disabled due to security concerns. It will always return 3 `0`s.  
 --- @param tr number 
+--- @deprecated
 --- @return string @mcode
 --- @return number @address
 --- @return number @loop
@@ -168,6 +183,7 @@ function jit.util.tracemc(tr)
 end
 
 ---  menu|client|server
+--- 🛑 **DEPRECATED**: This function was disabled due to security concerns.  
 --- Return table fields:  
 --- * 0 (ref) (number): first IR ref for the snapshot  
 --- * 1 (nslots) (number): the number of valid slots  
@@ -175,6 +191,7 @@ end
 --- * last index in table (number): -16777216 (255 << 24)  
 --- @param tr number @trace index to retrieve snapshot for (gotten via jit.attach)
 --- @param sn number @snapshot index for trace (starting from 0 to nexit - 1, nexit gotten via jit.util.traceinfo)
+--- @deprecated
 --- @return table @snapshot
 function jit.util.tracesnap(tr, sn)
 end

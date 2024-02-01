@@ -70,7 +70,7 @@ end
 
 ---  menu|client|server
 --- Creates an Angle object.  
---- ⚠ **WARNING**: This function is very expensive when used in often running hooks or in operations requiring very frequent calls (like loops for example). It is better to store the angle in a variable or to use the [default angle](https://wiki.facepunch.com/gmod/Global_Variables#misc) available.  
+--- ⚠ **WARNING**: This function is relatively expensive when used in often running hooks or in operations requiring very frequent calls (like loops for example) due to object creation and garbage collection. It is better to store the angle in a variable or to use the [default angle](https://wiki.facepunch.com/gmod/Global_Variables#misc) available. See Angle:Add.  
 --- @param pitch? number @The pitch value of the angle
 --- @param yaw? number @The yaw value of the angle.
 --- @param roll? number @The roll value of the angle.
@@ -113,7 +113,7 @@ end
 --- 🦟 **BUG**: [Parented clientside models will become detached if the parent entity leaves the PVS. **A workaround is available on its github page.**](https://github.com/Facepunch/garrysmod-issues/issues/861)  
 --- 🦟 **BUG**: [Clientside entities are not garbage-collected, thus you must store a reference to the object and call CSEnt:Remove manually. **To workaround this bug, you need to hold a reference (in a variable) to the entity and remove it when necessary.**](https://github.com/Facepunch/garrysmod-issues/issues/1387)  
 --- 🦟 **BUG**: [Clientside models will occasionally delete themselves during high server lag.](https://github.com/Facepunch/garrysmod-issues/issues/3184)  
---- @param model string @The file path to the model
+--- @param model string @The file path to the model.
 --- @param renderGroup? number @The render group of the entity for the clientside leaf system, see Enums/RENDERGROUP.
 --- @return CSEnt @Created client-side model (`C_BaseFlex`).
 function _G.ClientsideModel(model, renderGroup)
@@ -146,11 +146,11 @@ end
 
 ---  menu|client|server
 --- Creates a Color.  
---- ⚠ **WARNING**: This function is very expensive when used in rendering hooks or in operations requiring very frequent calls (like loops for example). It is better to store the color in a variable or to use the [default colors](https://wiki.facepunch.com/gmod/Global_Variables#misc) available.  
+--- ⚠ **WARNING**: This function is relatively expensive when used in rendering hooks or in operations requiring very frequent calls (like loops for example) due to object creation and garbage collection. It is better to store the color in a variable or to use the [default colors](https://wiki.facepunch.com/gmod/Global_Variables#misc) available.  
 --- @param r number @An integer from `0-255` describing the red value of the color.
 --- @param g number @An integer from `0-255` describing the green value of the color.
 --- @param b number @An integer from `0-255` describing the blue value of the color.
---- @param a? number @An integer from `0-255` describing the alpha (transparency) of the color.
+--- @param a? number @An integer from `0-255` describing the alpha (transparency) of the color.(default 255)
 --- @return table @The created Color.
 function _G.Color(r, g, b, a)
 end
@@ -1997,7 +1997,7 @@ end
 
 ---  menu|client|server
 --- Creates a Vector object.  
---- ⚠ **WARNING**: This function is very expensive when used in often running hooks or in operations requiring very frequent calls (like loops for example). It is better to store the vector in a variable or to use the [default vectors](https://wiki.facepunch.com/gmod/Global_Variables#misc) available.  
+--- ⚠ **WARNING**: Creating Vectors is relatively expensive when used in often running hooks or in operations requiring very frequent calls (like loops for example) due to object creation and garbage collection. It is better to store the vector in a variable or to use the [default vectors](https://wiki.facepunch.com/gmod/Global_Variables#misc) available. See Vector:Add.  
 --- @param x? number @The x component of the vector
 --- @param y? number @The y component of the vector.
 --- @param z? number @The z component of the vector.

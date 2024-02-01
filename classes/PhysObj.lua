@@ -428,6 +428,7 @@ end
 
 ---  client|server
 --- Sets the mass of the physics object.  
+--- ⚠ **WARNING**: This resets PhysObj:SetBuoyancyRatio (Recalculated based materials' and the physics objects' densities, latter of which is dependent on mass). This is a physics engine limitation.  
 --- @param mass number @The mass in kilograms, in range `[0, 50000]`
 function PhysObj:SetMass(mass)
 end

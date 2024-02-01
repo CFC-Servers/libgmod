@@ -222,7 +222,7 @@
       "client",
       "server"
     ],
-    "description": "Creates an <page>Angle</page> object.\n<warning>This function is very expensive when used in often running hooks or in operations requiring very frequent calls (like loops for example). It is better to store the angle in a variable or to use the [default angle](https://wiki.facepunch.com/gmod/Global_Variables#misc) available.</warning>",
+    "description": "Creates an <page>Angle</page> object.\n<warning>This function is relatively expensive when used in often running hooks or in operations requiring very frequent calls (like loops for example) due to object creation and garbage collection. It is better to store the angle in a variable or to use the [default angle](https://wiki.facepunch.com/gmod/Global_Variables#misc) available. See <page>Angle:Add</page>.</warning>",
     "arguments": [
       {
         "name": "pitch",
@@ -456,7 +456,7 @@
       {
         "name": "model",
         "type": "string",
-        "description": "The file path to the model.\n\n<warning>Model must be precached with <page>util.PrecacheModel</page> on the server before usage.</warning>"
+        "description": "The file path to the model."
       },
       {
         "name": "renderGroup",
@@ -483,7 +483,7 @@
       {
         "name": "model",
         "type": "string",
-        "description": "The file path to the model.\n\n<warning>Model must be precached with <page>util.PrecacheModel</page> on the server before usage.</warning>"
+        "description": "The file path to the model.\n\n<warning>Model must be precached with <page>util.PrecacheModel</page> on the server for physics to work. This will be fixed in the next update.</warning>"
       },
       {
         "name": "renderGroup",
@@ -571,7 +571,7 @@
       "client",
       "server"
     ],
-    "description": "Creates a <page>Color</page>.\n<warning>This function is very expensive when used in rendering hooks or in operations requiring very frequent calls (like loops for example). It is better to store the color in a variable or to use the [default colors](https://wiki.facepunch.com/gmod/Global_Variables#misc) available.</warning>",
+    "description": "Creates a <page>Color</page>.\n<warning>This function is relatively expensive when used in rendering hooks or in operations requiring very frequent calls (like loops for example) due to object creation and garbage collection. It is better to store the color in a variable or to use the [default colors](https://wiki.facepunch.com/gmod/Global_Variables#misc) available.</warning>",
     "arguments": [
       {
         "name": "r",
@@ -592,7 +592,7 @@
         "name": "a",
         "type": "number",
         "default": "255",
-        "description": "An integer from `0-255` describing the alpha (transparency) of the color."
+        "description": "An integer from `0-255` describing the alpha (transparency) of the color.(default 255)"
       }
     ],
     "returnValues": [
@@ -7150,7 +7150,7 @@
       "client",
       "server"
     ],
-    "description": "Creates a <page>Vector</page> object.\n<warning>This function is very expensive when used in often running hooks or in operations requiring very frequent calls (like loops for example). It is better to store the vector in a variable or to use the [default vectors](https://wiki.facepunch.com/gmod/Global_Variables#misc) available.</warning>",
+    "description": "Creates a <page>Vector</page> object.\n<warning>Creating Vectors is relatively expensive when used in often running hooks or in operations requiring very frequent calls (like loops for example) due to object creation and garbage collection. It is better to store the vector in a variable or to use the [default vectors](https://wiki.facepunch.com/gmod/Global_Variables#misc) available. See <page>Vector:Add</page>.</warning>",
     "arguments": [
       {
         "name": "x",

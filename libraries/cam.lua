@@ -83,8 +83,6 @@ end
 --- Sets up a new 3D rendering context. Must be finished by cam.End3D.  
 --- For more advanced settings such as an orthographic view, use cam.Start instead.  
 --- 🧱 **NOTE**: Provides a 3D rendering context  
---- ℹ **NOTE**: Both zNear and zFar need a value before any of them work.  
---- zNear also requires a value higher than 0.  
 --- 🦟 **BUG**: [Negative x/y values won't work.](https://github.com/Facepunch/garrysmod-issues/issues/1995)  
 --- 🦟 **BUG**: [This will not update current view properties.](https://github.com/Facepunch/garrysmod-issues/issues/2682)  
 --- @param pos? Vector @Render cam position.
@@ -94,7 +92,7 @@ end
 --- @param y? number @Y coordinate of where to start the new view port.
 --- @param w? number @Width of the new viewport.
 --- @param h? number @Height of the new viewport.
---- @param zNear? number @Distance to near clipping plane.
+--- @param zNear? number @Distance to near clipping plane
 --- @param zFar? number @Distance to far clipping plane.
 function cam.Start3D(pos, angles, fov, x, y, w, h, zNear, zFar)
 end
