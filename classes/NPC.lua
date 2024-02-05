@@ -296,19 +296,19 @@ end
 ---  server
 --- Returns all known enemies this NPC has.  
 --- See also NPC:GetKnownEnemyCount  
---- @return table @Table of entities that this NPC knowns as enemies.
+--- @return table @Table of entities that this NPC knows as enemies.
 function NPC:GetKnownEnemies()
 end
 
 ---  server
 --- Returns known enemy count of this NPC.  
 --- See also NPC:GetKnownEnemies  
---- @return number @Amount of entities that this NPC knowns as enemies.
+--- @return number @Amount of entities that this NPC knows as enemies.
 function NPC:GetKnownEnemyCount()
 end
 
 ---  server
---- Returns Global.CurTime based time since this NPC last received damage from given enemy.  
+--- Returns Global.CurTime based time since this NPC last received damage from given enemy. The last damage time is set when NPC:MarkTookDamageFromEnemy is called.  
 --- @param enemy? Entity @The enemy to test
 --- @return number @Time since this NPC last received damage from given enemy.
 function NPC:GetLastTimeTookDamageFromEnemy(enemy)

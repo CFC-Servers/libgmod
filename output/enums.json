@@ -8533,7 +8533,7 @@
       "client",
       "server"
     ],
-    "description": "Enumerations used by <page>concommand.Add</page>, <page>Global.CreateClientConVar</page> and <page>Global.CreateConVar</page>.",
+    "description": "Enumerations used by <page>Global.AddConsoleCommand</page>, <page>concommand.Add</page>, <page>Global.CreateClientConVar</page> and <page>Global.CreateConVar</page>.",
     "name": "FCVAR"
   },
   {

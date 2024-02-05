@@ -2061,9 +2061,9 @@ function Entity:IsFlagSet(flag)
 end
 
 ---  server
---- Returns whether the entity is inside a wall or outside of the map.  
+--- Returns whether the entity is in the world (not inside a wall or outside of the map).  
 --- ℹ **NOTE**: Internally this function uses util.IsInWorld, that means that this function only checks Entity:GetPos of the entity. If an entity is only partially inside a wall, or has a weird GetPos offset, this function may not give reliable output.  
---- @return boolean @Is the entity in world
+--- @return boolean @False if the entity is inside a wall or outside of the map, true otherwise.
 function Entity:IsInWorld()
 end
 

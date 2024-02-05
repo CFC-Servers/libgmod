@@ -1959,7 +1959,7 @@
         "realms": [
           "server"
         ],
-        "description": "Determines if the player can exit the vehicle.",
+        "description": "Determines if the player can exit the vehicle on their own. <page>Player:ExitVehicle</page> will bypass this hook.",
         "arguments": [
           {
             "name": "veh",
@@ -1985,17 +1985,17 @@
         "realms": [
           "server"
         ],
-        "description": "Determines whether or not the player can enter the vehicle.\n\nCalled just before <page>GM:PlayerEnteredVehicle</page>.",
+        "description": "Determines whether or not a given player player can enter the given vehicle. <page>Player:EnterVehicle</page> will bypass this hook.\n\nCalled just before <page>GM:PlayerEnteredVehicle</page>.",
         "arguments": [
           {
             "name": "player",
             "type": "Player",
-            "description": "The player."
+            "description": "The player that wants to enter a vehicle."
           },
           {
             "name": "vehicle",
             "type": "Vehicle",
-            "description": "The vehicle."
+            "description": "The vehicle in question."
           },
           {
             "name": "role",
@@ -3919,9 +3919,11 @@
         "name": "OnLuaError",
         "parent": "GM",
         "realms": [
-          "menu"
+          "menu",
+          "client",
+          "server"
         ],
-        "description": "Called when a Lua error occurs, only works in the Menu <page text=\"realm\">States</page>.\n\n<note>This will be available in all realms in a future update.</note>",
+        "description": "Called when a Lua error occurs.\n<note>On the <page text=\"server realm\">States</page>, this hook will only account for server-side errors, not client-side ones.</note>",
         "arguments": [
           {
             "name": "error",
@@ -6930,10 +6932,11 @@
         "name": "Think",
         "parent": "GM",
         "realms": [
+          "menu",
           "client",
           "server"
         ],
-        "description": "Called every frame on client and server. This will be the same as <page>GM:Tick</page> on the server when there is no lag, but will only be called once every processed server frame during lag.\n\nSee <page>GM:Tick</page> for a hook that runs every tick on both the client and server.\n\n<note>This hook **WILL NOT** run if the server is empty, unless you set the <page>ConVar</page> `sv_hibernate_think` to 1</note>"
+        "description": "Called every frame. This will be the same as <page>GM:Tick</page> on the server when there is no lag, but will only be called once every processed server frame during lag.\n\nSee <page>GM:Tick</page> for a hook that runs every tick on both the client and server.\n\n<note>On server, this hook **WILL NOT** run if the server is empty, unless you set the <page>ConVar</page> `sv_hibernate_think` to `1`.</note>"
       },
       {
         "name": "Tick",
@@ -9686,7 +9689,7 @@
         "returnValues": [
           {
             "type": "boolean",
-            "description": "Return true to allow switching away from this weapon using lastinv command"
+            "description": "Return true to allow switching away from this weapon using `lastinv` command"
           }
         ]
       },

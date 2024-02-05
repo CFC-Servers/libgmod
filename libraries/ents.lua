@@ -13,7 +13,7 @@ end
 --- Creates a clientside only prop. See also Global.ClientsideModel.  
 --- For physics to work you **must** use the _model_ argument, a simple `SetModel` call will not be enough.  
 --- 🦟 **BUG**: [Parented clientside prop will become detached if the parent entity leaves the PVS. **A workaround is available on its github page.**](https://github.com/Facepunch/garrysmod-issues/issues/861)  
---- @param model? string @The model for the entity to be created
+--- @param model? string @The model for the entity to be created.
 --- @return Entity @Created entity (`C_PhysPropClientside`).
 function ents.CreateClientProp(model)
 end

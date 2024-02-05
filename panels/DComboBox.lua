@@ -106,7 +106,7 @@ function DComboBox:OpenMenu()
 end
 
 ---  client|menu
---- Called when the player opens the dropdown menu.  
+--- Removes a choice added with DComboBox:AddChoice  
 --- @param index number @The index of the option to remove.
 --- @return string @The text of the removed option.
 --- @return any @The data of the removed option that was provided.

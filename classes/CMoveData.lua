@@ -260,7 +260,7 @@ end
 
 ---  client|server
 --- Sets the serverside move angles, making the movement keys act as if player was facing that direction.  
---- 🦟 **BUG**: [This does nothing clientside.](https://github.com/Facepunch/garrysmod-issues/issues/1181)  
+--- This function is predicted, and should be called shared with matching data on client and server.  
 --- @param dir Angle @The aim direction.
 function CMoveData:SetMoveAngles(dir)
 end

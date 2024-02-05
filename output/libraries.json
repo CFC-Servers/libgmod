@@ -899,7 +899,7 @@
         "realms": [
           "client"
         ],
-        "description": "Sets up a new 3D rendering context. Must be finished by <page>cam.End3D</page>.\n\nFor more advanced settings such as an orthographic view, use <page>cam.Start</page> instead.\n\n<rendercontext hook=\"true\" type=\"3D\"></rendercontext>\n<note>Both zNear and zFar need a value before any of them work.\n\nzNear also requires a value higher than 0.\n</note>\n<bug issue=\"1995\">Negative x/y values won't work.</bug>\n\n<bug issue=\"2682\">This will not update current view properties.</bug>",
+        "description": "Sets up a new 3D rendering context. Must be finished by <page>cam.End3D</page>.\n\nFor more advanced settings such as an orthographic view, use <page>cam.Start</page> instead.\n\n<rendercontext hook=\"true\" type=\"3D\"></rendercontext>\n\n<bug issue=\"1995\">Negative x/y values won't work.</bug>\n\n<bug issue=\"2682\">This will not update current view properties.</bug>",
         "arguments": [
           {
             "name": "pos",
@@ -947,7 +947,7 @@
             "name": "zNear",
             "type": "number",
             "default": "nil",
-            "description": "Distance to near clipping plane."
+            "description": "Distance to near clipping plane.\n\n\n<note>Both zNear and zFar need a value before any of them work.\n\nzNear also requires a value higher than 0.\n</note>"
           },
           {
             "name": "zFar",
@@ -7066,7 +7066,7 @@
             "name": "model",
             "type": "string",
             "default": "models/error.mdl",
-            "description": "The model for the entity to be created.\n<warning>Model must be precached with <page>util.PrecacheModel</page> on the server before usage.</warning>"
+            "description": "The model for the entity to be created."
           }
         ],
         "returnValues": [
@@ -9532,7 +9532,7 @@
           {
             "name": "identifier",
             "type": "any",
-            "description": "The unique identifier, usually a string. This can be used elsewhere in the code to replace or remove the hook. The identifier **should** be unique so that you do not accidentally override some other mods hook, unless that's what you are trying to do.\n\nThe identifier can be either a <page>string</page>, or a <page>table</page>/object with an IsValid function defined such as an <page>Entity</page> or <page>Panel</page>. <page>number</page>s and <page>boolean</page>s, for example, are not allowed.\n\nIf the identifier is a table/object, it will be inserted in front of the other arguments in the callback and the hook will be called as long as it's valid. However, as soon as IsValid( identifier ) returns false, the hook will be removed."
+            "description": "The unique identifier, usually a string. This can be used elsewhere in the code to replace or remove the hook. The identifier **should** be unique so that you do not accidentally override some other mods hook, unless that's what you are trying to do.\n\nThe identifier can be either a <page>string</page>, or a <page>table</page>/object with an IsValid function defined such as an <page>Entity</page> or <page>Panel</page>. <page>number</page>s and <page>boolean</page>s, for example, are not allowed.\n\nIf the identifier is a table/object, it will be inserted in front of the other arguments in the callback and the hook will be called as long as it's valid. However, if IsValid( identifier ) returns false when **any** eventName hook is called, the hook will be removed."
           },
           {
             "name": "func",
@@ -10321,7 +10321,7 @@
           "client",
           "server"
         ],
-        "description": "Returns bytecode of a function at a position.",
+        "description": "Returns bytecode of a function at a position.\n<note>This function only works for Lua defined functions.</note>",
         "arguments": [
           {
             "name": "func",
@@ -10381,7 +10381,7 @@
           "client",
           "server"
         ],
-        "description": "Gets a constant at a certain index in a function.\n<warning>This function isn't officially documented on LuaJIT wiki, use it at your own risk.</warning>\n<note>Numbers constants goes from 0 (included) to n-1, n being the value of nconsts in <page>jit.util.funcinfo</page> in other words, the consts goes from (nconsts-1) to -n</note>\n<note>This function only works for Lua defined functions.</note>",
+        "description": "Gets a constant at a certain index in a function.\n<deprecated>This function was disabled due to security concerns.</deprecated>\n\n<warning>This function isn't officially documented on LuaJIT wiki, use it at your own risk.</warning>\n<note>Numbers constants goes from 0 (included) to n-1, n being the value of nconsts in <page>jit.util.funcinfo</page> in other words, the consts goes from (nconsts-1) to -n</note>\n<note>This function only works for Lua defined functions.</note>",
         "arguments": [
           {
             "name": "func",
@@ -10409,7 +10409,7 @@
           "client",
           "server"
         ],
-        "description": "Does the exact same thing as debug.getupvalue except it only returns the name, not the name and the object. The upvalue indexes also start at 0 rather than 1, so doing jit.util.funcuvname(func, 0) will get you the same name as debug.getupvalue(func, 1)\n<warning>This function isn't officially documented on LuaJIT wiki, use it at your own risk.</warning>",
+        "description": "<deprecated>This function was disabled due to security concerns.</deprecated>\n\nDoes the exact same thing as debug.getupvalue except it only returns the name, not the name and the object. The upvalue indexes also start at 0 rather than 1, so doing jit.util.funcuvname(func, 0) will get you the same name as debug.getupvalue(func, 1)\n<warning>This function isn't officially documented on LuaJIT wiki, use it at your own risk.</warning>",
         "arguments": [
           {
             "name": "func",
@@ -10437,7 +10437,7 @@
           "client",
           "server"
         ],
-        "description": "Gets the address of a function from a list of functions, for the list see <page>Ircalladdr Functions</page>\n<warning>This function isn't officially documented on LuaJIT wiki, use it at your own risk.</warning>",
+        "description": "<deprecated>This function was disabled due to security concerns. It will always return 0.</deprecated>\n\nGets the address of a function from a list of functions, for the list see <page>Ircalladdr Functions</page>\n<warning>This function isn't officially documented on LuaJIT wiki, use it at your own risk.</warning>",
         "arguments": [
           {
             "name": "index",
@@ -10482,7 +10482,7 @@
           "client",
           "server"
         ],
-        "description": "Return table fields:\n* link (number): the linked trace (0 for link types: none, return, interpreter)\n* nk (number): the lowest IR constant (???)\n* nins (number): the next IR instruction (???)\n* linktype (string): the link type (none, root, loop, tail-recursion, up-recursion, down-recursion, interpreter, return)\n* nexit (number): number of snapshots (for use with <page>jit.util.tracesnap</page>)",
+        "description": "<deprecated>This function was disabled due to security concerns.</deprecated>\n\nReturn table fields:\n* link (number): the linked trace (0 for link types: none, return, interpreter)\n* nk (number): the lowest IR constant (???)\n* nins (number): the next IR instruction (???)\n* linktype (string): the link type (none, root, loop, tail-recursion, up-recursion, down-recursion, interpreter, return)\n* nexit (number): number of snapshots (for use with <page>jit.util.tracesnap</page>)",
         "arguments": [
           {
             "name": "trace",
@@ -10505,6 +10505,7 @@
           "client",
           "server"
         ],
+        "description": "<deprecated>This function was disabled due to security concerns.</deprecated>",
         "arguments": [
           {
             "name": "tr",
@@ -10546,6 +10547,7 @@
           "client",
           "server"
         ],
+        "description": "<deprecated>This function was disabled due to security concerns.</deprecated>",
         "arguments": [
           {
             "name": "tr",
@@ -10579,6 +10581,7 @@
           "client",
           "server"
         ],
+        "description": "<deprecated>This function was disabled due to security concerns. It will always return 3 `0`s.</deprecated>",
         "arguments": [
           {
             "name": "tr",
@@ -10608,7 +10611,7 @@
           "client",
           "server"
         ],
-        "description": "Return table fields:\n* 0 (ref) (number): first IR ref for the snapshot\n* 1 (nslots) (number): the number of valid slots\n* all indexes except first 2 and last (there might not be any of these): the snapshot map\n* last index in table (number): -16777216 (255 << 24)",
+        "description": "<deprecated>This function was disabled due to security concerns.</deprecated>\n\nReturn table fields:\n* 0 (ref) (number): first IR ref for the snapshot\n* 1 (nslots) (number): the number of valid slots\n* all indexes except first 2 and last (there might not be any of these): the snapshot map\n* last index in table (number): -16777216 (255 << 24)",
         "arguments": [
           {
             "name": "tr",
@@ -22719,7 +22722,7 @@
           "client",
           "server"
         ],
-        "description": "Splits the string into a table of strings, separated by the second argument.\n\nThis is an alias of <page>string.Explode</page>.",
+        "description": "Splits the string into a table of strings, separated by the second argument.\n\nThis is an alias of <page>string.Explode</page>, but with flipped arguments.",
         "arguments": [
           {
             "name": "Inputstring",

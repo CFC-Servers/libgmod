@@ -3375,7 +3375,7 @@
           "client",
           "menu"
         ],
-        "description": "Called when the player opens the dropdown menu.",
+        "description": "Removes a choice added with <page>DComboBox:AddChoice</page>",
         "arguments": [
           {
             "name": "index",

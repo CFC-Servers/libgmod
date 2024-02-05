@@ -273,7 +273,8 @@ function Player:DropWeapon(weapon, target, velocity)
 end
 
 ---  server
---- Enters the player into specified vehicle  
+--- Force puts the player into a specified vehicle.  
+--- This bypasses GM:CanPlayerEnterVehicle.  
 --- @param vehicle Vehicle @Vehicle the player will enter
 function Player:EnterVehicle(vehicle)
 end
@@ -287,7 +288,8 @@ function Player:EquipSuit()
 end
 
 ---  server
---- Makes the player exit the vehicle if they're in one.  
+--- Forces the player to exit the vehicle if they're in one.  
+--- This bypasses GM:CanExitVehicle.  
 function Player:ExitVehicle()
 end
 
@@ -1389,7 +1391,7 @@ end
 --- Slows down the player movement simulation by the timescale, this is used internally in the HL2 weapon stripping sequence.  
 --- It achieves such behavior by multiplying the Global.FrameTime by the specified timescale at the start of the movement simulation and then restoring it afterwards.  
 --- ℹ **NOTE**: This is reset to 1 on spawn.  
---- There is no weapon counterpart to this, you'll have to hardcode the multiplier in the weapon or call Weapon:SetNextPrimaryFire / Weapon:SetNextSecondaryFire manually from a.  
+--- There is no weapon counterpart to this, you'll have to hardcode the multiplier in the weapon or call Weapon:SetNextPrimaryFire / Weapon:SetNextSecondaryFire manually.  
 --- @param timescale number @The timescale multiplier.
 function Player:SetLaggedMovementValue(timescale)
 end

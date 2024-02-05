@@ -3099,7 +3099,7 @@
           "client",
           "server"
         ],
-        "description": "Sets the serverside move angles, making the movement keys act as if player was facing that direction.\n\n<bug issue=\"1181\">This does nothing clientside.</bug>",
+        "description": "Sets the serverside move angles, making the movement keys act as if player was facing that direction.\n\nThis function is predicted, and should be called shared with matching data on client and server.",
         "arguments": [
           {
             "name": "dir",
@@ -12302,11 +12302,11 @@
         "realms": [
           "server"
         ],
-        "description": "Returns whether the entity is inside a wall or outside of the map.\n\n<note>Internally this function uses <page>util.IsInWorld</page>, that means that this function only checks <page>Entity:GetPos</page> of the entity. If an entity is only partially inside a wall, or has a weird GetPos offset, this function may not give reliable output.</note>",
+        "description": "Returns whether the entity is in the world (not inside a wall or outside of the map).\n\n<note>Internally this function uses <page>util.IsInWorld</page>, that means that this function only checks <page>Entity:GetPos</page> of the entity. If an entity is only partially inside a wall, or has a weird GetPos offset, this function may not give reliable output.</note>",
         "returnValues": [
           {
             "type": "boolean",
-            "description": "Is the entity in world"
+            "description": "False if the entity is inside a wall or outside of the map, true otherwise."
           }
         ]
       },
@@ -14103,7 +14103,7 @@
           {
             "name": "color",
             "type": "table",
-            "default": "Color(255, 0, 255, 255)",
+            "default": "Color(255, 255, 255, 255)",
             "description": "The color to set. Uses the <page>Color</page>."
           }
         ]
@@ -17176,6 +17176,20 @@
   {
     "name": "ENTITY",
     "functions": [
+      {
+        "name": "GetNPCClass",
+        "parent": "ENTITY",
+        "realms": [
+          "server"
+        ],
+        "description": "Gets the NPC classification. Internally gets the `m_iClass` variable which is polled by the engine. This will be equivalent to <page>NPC:Classify</page>.\n\n<note>This is a helper function only available if your SENT is based on `base_ai`</note>",
+        "returnValues": [
+          {
+            "type": "number",
+            "description": "See <page>Enums/CLASS</page>"
+          }
+        ]
+      },
       {
         "name": "SetMaxYawSpeed",
         "parent": "ENTITY",
@@ -20599,7 +20613,7 @@
         "returnValues": [
           {
             "type": "table",
-            "description": "Table of entities that this NPC knowns as enemies."
+            "description": "Table of entities that this NPC knows as enemies."
           }
         ]
       },
@@ -20613,7 +20627,7 @@
         "returnValues": [
           {
             "type": "number",
-            "description": "Amount of entities that this NPC knowns as enemies."
+            "description": "Amount of entities that this NPC knows as enemies."
           }
         ]
       },
@@ -20623,7 +20637,7 @@
         "realms": [
           "server"
         ],
-        "description": "Returns <page>Global.CurTime</page> based time since this NPC last received damage from given enemy.",
+        "description": "Returns <page>Global.CurTime</page> based time since this NPC last received damage from given enemy. The last damage time is set when <page>NPC:MarkTookDamageFromEnemy</page> is called.",
         "arguments": [
           {
             "name": "enemy",
@@ -23730,7 +23744,7 @@
         "returnValues": [
           {
             "type": "IMaterial",
-            "description": "The HTML material used by the panel. Typically starts with \"__vgui_texture_\" followed by an incremental number."
+            "description": "The HTML material used by the panel. Typically starts with `__vgui_texture_` followed by an incremental number."
           }
         ]
       },
@@ -29035,7 +29049,7 @@
           "client",
           "server"
         ],
-        "description": "Sets the mass of the physics object.",
+        "description": "Sets the mass of the physics object.\n\n<warning>This resets <page>PhysObj:SetBuoyancyRatio</page> (Recalculated based materials' and the physics objects' densities, latter of which is dependent on mass). This is a physics engine limitation.</warning>",
         "arguments": [
           {
             "name": "mass",
@@ -29880,7 +29894,7 @@
         "realms": [
           "server"
         ],
-        "description": "Enters the player into specified vehicle",
+        "description": "Force puts the player into a specified vehicle.\nThis bypasses <page>GM:CanPlayerEnterVehicle</page>.",
         "arguments": [
           {
             "name": "vehicle",
@@ -29903,7 +29917,7 @@
         "realms": [
           "server"
         ],
-        "description": "Makes the player exit the vehicle if they're in one."
+        "description": "Forces the player to exit the vehicle if they're in one.\n\nThis bypasses <page>GM:CanExitVehicle</page>."
       },
       {
         "name": "Flashlight",
@@ -32534,7 +32548,7 @@
         "realms": [
           "server"
         ],
-        "description": "Slows down the player movement simulation by the timescale, this is used internally in the HL2 weapon stripping sequence.\n\nIt achieves such behavior by multiplying the <page>Global.FrameTime</page> by the specified timescale at the start of the movement simulation and then restoring it afterwards.\n\n<note>This is reset to 1 on spawn.\n\nThere is no weapon counterpart to this, you'll have to hardcode the multiplier in the weapon or call <page>Weapon:SetNextPrimaryFire</page> / <page>Weapon:SetNextSecondaryFire</page> manually from a.</note>",
+        "description": "Slows down the player movement simulation by the timescale, this is used internally in the HL2 weapon stripping sequence.\n\nIt achieves such behavior by multiplying the <page>Global.FrameTime</page> by the specified timescale at the start of the movement simulation and then restoring it afterwards.\n\n<note>This is reset to 1 on spawn.\n\nThere is no weapon counterpart to this, you'll have to hardcode the multiplier in the weapon or call <page>Weapon:SetNextPrimaryFire</page> / <page>Weapon:SetNextSecondaryFire</page> manually.</note>",
         "arguments": [
           {
             "name": "timescale",
