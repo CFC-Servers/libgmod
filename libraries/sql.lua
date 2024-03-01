@@ -74,7 +74,7 @@ end
 
 ---  menu|client|server
 --- Escapes dangerous characters and symbols from user input used in an SQLite SQL Query.  
---- ℹ **NOTE**: this function is not meant to be used with external database engines such as `MySQL`. Escaping strings with inadequate functions is dangerous!  
+--- ℹ **NOTE**: This function is not meant to be used with external database engines such as `MySQL`. Escaping strings with inadequate functions is dangerous!  
 --- @param string string @The string to be escaped.
 --- @param bNoQuotes? boolean @Set this as `true`, and the function will not wrap the input string in apostrophes.
 --- @return string @The escaped input.

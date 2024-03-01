@@ -83,10 +83,12 @@ end
 --- @param type string @The type of hook to run
 --- @param name string @The name of the hook to run
 --- @param panel Panel @The panel to call the hook for
---- @param w number @The width of the panel
---- @param h number @The height of the panel
+--- @param vararg1? any @First parameter for the panel hook
+--- @param vararg2? any @Second parameter for the panel hook
+--- @param vararg3? any @Third parameter for the panel hook.
+--- @param vararg4? any @Fourth parameter for the panel hook.
 --- @return any @The returned variable from the skin hook
-function derma.SkinHook(type, name, panel, w, h)
+function derma.SkinHook(type, name, panel, vararg1, vararg2, vararg3, vararg4)
 end
 
 ---  client|menu

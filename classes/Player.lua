@@ -13,36 +13,37 @@ function Player:AccountID()
 end
 
 ---  client|server
---- Adds an entity to the player's clean up list.  
---- @param type string @Cleanup type
---- @param ent Entity @Entity to add
+--- ℹ **NOTE**: This function is only available in Sandbox and its derivatives.  
+--- Adds an entity to the player's clean up list. This uses cleanup.Add internally.  
+--- @param type string @The Cleanup type for this Entity.
+--- @param ent Entity @The Entity to add.
 function Player:AddCleanup(type, ent)
 end
 
 ---  client|server
---- ℹ **NOTE**: See [GetCount](/gmod/Player:GetCount) for list of types  
---- Adds an entity to the total count of entities of same type.  
---- @param str string @Entity type
---- @param ent Entity @Entity
+--- ℹ **NOTE**: This function is only available in Sandbox and its derivatives.  
+--- Adds an entity to the player's list of entities of the same type. See Player:GetCount to get the current count of entities of an entity type added with this function.  
+--- @param str string @The type of this Entity.
+--- @param ent Entity @The Entity you want to add to the list.
 function Player:AddCount(str, ent)
 end
 
 ---  server
---- Add a certain amount to the player's death count  
---- @param count number @number of deaths to add
+--- Adds the provided amount to the player's death count.  
+--- @param count number @The amount to add to the death count.
 function Player:AddDeaths(count)
 end
 
 ---  server
---- Add a certain amount to the player's frag count (or kills count)  
---- @param count number @number of frags to add
+--- Adds the provided amount to the player's frag/kill count.  
+--- @param count number @The amount to add.
 function Player:AddFrags(count)
 end
 
 ---  server
---- Adds a entity to the player's list of frozen objects.  
---- @param ent Entity @Entity
---- @param physobj PhysObj @Physics object belonging to ent
+--- Adds an entity to the player's list of frozen objects.  
+--- @param ent Entity @The Entity to add.
+--- @param physobj PhysObj @The physics object of the Entity.
 function Player:AddFrozenPhysicsObject(ent, physobj)
 end
 
@@ -58,6 +59,7 @@ end
 
 ---  client|server
 --- Plays a sequence directly from a sequence number, similar to Player:AnimRestartGesture. This function has the advantage to play sequences that haven't been bound to an existing Enums/ACT  
+--- ⚠ **WARNING**: This is not automatically networked. This function has to be called on the client to be seen by said client.  
 --- @param slot number @Gesture slot using Enums/GESTURE_SLOT
 --- @param sequenceId number @The sequence ID to play, can be retrieved with Entity:LookupSequence.
 --- @param cycle number @The cycle to start the animation at, ranges from 0 to 1.
@@ -145,10 +147,12 @@ function Player:ChatPrint(message)
 end
 
 ---  client|server
---- Checks if the limit is hit or not. If it is, it will throw a notification saying so.  
---- @param limitType string @Limit type
---- @return boolean @Returns true if limit is not hit, false if it is hit
-function Player:CheckLimit(limitType)
+--- Checks if the limit of an entity type added by Player:AddCount is hit or not. If it's hit, it will call the GM:PlayerCheckLimit hook, and call Player:LimitHit if the hook doesn't return `false`.  
+--- This will always return `true` in singleplayer, as singleplayer does not have limits.  
+--- ℹ **NOTE**: This function is only available in Sandbox and its derivatives.  
+--- @param str string @The entity type to check the limit for
+--- @return boolean @Returns `true` if the limit of this type is not hit, `false` otherwise.
+function Player:CheckLimit(str)
 end
 
 ---  client|server
@@ -389,7 +393,8 @@ function Player:GetClassID()
 end
 
 ---  client|server
---- Gets total count of entities of same type.  
+--- ℹ **NOTE**: This function is only available in Sandbox and its derivatives.  
+--- Gets the total amount of entities of an entity type added by Player:AddCount.  
 --- Default types:  
 --- ```  
 --- balloons  

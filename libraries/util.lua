@@ -76,7 +76,7 @@ end
 --- Compresses the given string using the [LZMA](https://en.wikipedia.org/wiki/LZMA) algorithm.  
 --- Use with net.WriteData and net.ReadData for networking and  util.Decompress to decompress the data.  
 --- @param str string @String to compress.
---- @return string @The compressed string, or nil if the input string was zero length ("").
+--- @return string @The compressed string, or an empty string if the input string was zero length ("").
 function util.Compress(str)
 end
 
@@ -118,8 +118,8 @@ end
 ---  menu|client|server
 --- Decompresses the given string using [LZMA](https://en.wikipedia.org/wiki/LZMA) algorithm. Used to decompress strings previously compressed with util.Compress.  
 --- @param compressedString string @The compressed string to decompress.
---- @param maxSize? number @The maximal size in bytes it will decompress.
---- @return string @The original, decompressed string or an empty string on failure or invalid input.
+--- @param maxSize? number @The maximum size of uncompressed data in bytes, if greater it fails.
+--- @return string @The original, decompressed string or `nil` on failure or invalid input
 function util.Decompress(compressedString, maxSize)
 end
 
@@ -157,6 +157,13 @@ end
 --- @param player? Player @Used to determine if the text should be filtered according to local user's Steam chat filtering settings.
 --- @return string @The filtered text based on given settings.
 function util.FilterText(str, context, player)
+end
+
+---  server
+--- Returns a name for given automatically generated numerical animation event ID. This is useful for NPC models that define custom animation events.  
+--- @param id number @The ID of an animation event, typically from ENTITY:HandleAnimEvent.
+--- @return string @The associated name with given event ID.
+function util.GetAnimEventNameByID(id)
 end
 
 ---  client|server
@@ -344,6 +351,18 @@ end
 --- @param coneLength number @Length of the cone's axis.
 --- @return boolean @`true` if the point is within the cone, `false` otherwise.
 function util.IsPointInCone(point, coneOrigin, coneAxis, coneSine, coneLength)
+end
+
+---  client|server
+--- Performs a ray-ray intersection and returns whether there was an intersection or not.  
+--- @param ray1Start Vector @Start position of the first ray.
+--- @param ray1End Vector @End position of the first ray.
+--- @param ray2Start Vector @Start position of the second ray.
+--- @param ray2End Vector @End position of the second ray.
+--- @return boolean @`true` if there is an intersection, `false` otherwise.
+--- @return number @Distance from start of ray 1 to the intersection, if there was one.
+--- @return number @Distance from start of ray 2 to the intersection, if there was one.
+function util.IsRayIntersectingRay(ray1Start, ray1End, ray2Start, ray2End)
 end
 
 ---  client
@@ -589,8 +608,9 @@ end
 --- @param frequency number @How many times per second to change the direction of the camera wobble
 --- @param duration number @The duration of the effect in seconds.
 --- @param radius number @The range from the origin within which views will be affected, in Hammer units
---- @param airshake? boolean @whether players in the air should also be affected.
-function util.ScreenShake(pos, amplitude, frequency, duration, radius, airshake)
+--- @param airshake? boolean @Whether players in the air should also be affected
+--- @param filter? CRecipientFilter @If set, will only network the screen shake event to players present in the filter.
+function util.ScreenShake(pos, amplitude, frequency, duration, radius, airshake, filter)
 end
 
 ---  menu|client|server

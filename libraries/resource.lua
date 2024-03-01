@@ -14,21 +14,19 @@ end
 ---  server
 --- Adds the specified file to the files the client should download.  
 --- If you wish to add textures or models, consider using resource.AddFile to add all the files required for a texture/model.  
---- ⚠ **WARNING**: There's a 8192 downloadable file limit.   
---- ℹ **NOTE**: If you need more than 8192, consider using Workshop addons - resource.AddWorkshop. You should also consider the fact that you have way too many downloads. This limit is shared among all resource.Add functions.  
+--- ⚠ **WARNING**: There's a 8192 downloadable file limit. If you need more than 8192, consider using Workshop addons - resource.AddWorkshop. You should also consider the fact that you have way too many downloads. This limit is shared among all resource.Add functions.  
 --- ℹ **NOTE**: The file must exist on the server or players will not download it!  
 --- @param path string @Path of the file to be added, relative to garrysmod/
 function resource.AddSingleFile(path)
 end
 
 ---  server
---- Adds a workshop addon for the client to download before entering the server.  
+--- Adds a workshop addon for the client to download before entering the server. This will not "install" the addon on your server, see Workshop for Dedicated Servers for installing Steam Workshop addons onto your servers.  
 --- Having the raw files from a workshop item does not count as having already downloaded it.  
---- So players who previously downloaded a map through Fast Download will have to re-download it if you use the workshop.  
---- You should try to only add addons that have custom content ( models, sounds, etc ).  
---- Gamemodes that are workshop enabled are automatically added to this list - so there's no need to add them.  
---- The server's current map is also automatically added, if it is loaded from a workshop addon.  
---- ⚠ **WARNING**: This will not "install" the addon on your server, see Workshop for Dedicated Servers for installing Steam Workshop addons onto your servers  
+--- So players who previously downloaded a map through Fast Download will have to re-download it if it is part of a workshop addon.  
+--- You should try to only add addons that have custom content (models, sounds, etc).  
+--- Gamemodes that are workshop enabled and the current map are automatically added to this list, if they come from the servers' workshop collection - so there's no need to manually add them.  
+--- ⚠ **WARNING**: There's a 8192 downloadable file limit. If you need more than 8192.  
 --- @param workshopid string @The workshop id of the file
 function resource.AddWorkshop(workshopid)
 end

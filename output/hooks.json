@@ -948,7 +948,7 @@
           {
             "name": "failCode",
             "type": "number",
-            "description": "The fail code for the task."
+            "description": "The fail code for the task. It will be a [FAIL_ enum](https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/sp/src/game/server/ai_task.h#L26) or a generated code for a custom string. (second argument)"
           },
           {
             "name": "failReason",
@@ -1110,7 +1110,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called after the <page>duplicator</page> pastes the entity, after the bone/entity modifiers have been applied to the entity.\n\nThis hook is called after <page>ENTITY:OnDuplicated</page>.",
+        "description": "Called after the <page>duplicator</page> pastes the entity, after the bone/entity modifiers have been applied to the entity.\n\nThis hook is called after <page>ENTITY:OnDuplicated</page>. See also <page>ENTITY:PreEntityCopy</page>.",
         "arguments": [
           {
             "name": "ply",
@@ -1135,7 +1135,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called before the duplicator copies the entity.\n\nIf you are looking for a way to make the duplicator spawn another entity when duplicated. ( For example, you duplicate a \"prop_physics\", but you want the duplicator to spawn \"prop_physics_my\" ), you should add prop_physics.ClassOverride = \"prop_physics_my\". The duplication table should be also stored on that prop_physics, not on prop_physics_my."
+        "description": "Called before the duplicator copies the entity.\n\nIf you are looking for a way to make the duplicator spawn another entity when duplicated. (For example, you duplicate a `prop_physics`, but you want the duplicator to spawn `prop_physics_my`), you should add `prop_physics.ClassOverride = \"prop_physics_my\"`. The duplication table should be also stored on that `prop_physics`, not on `prop_physics_my`.\n\nSee also <page>ENTITY:PostEntityCopy</page>."
       },
       {
         "name": "RenderOverride",
@@ -2498,7 +2498,7 @@
           "client",
           "server"
         ],
-        "description": "Called whenever a sound has been played. This will not be called clientside if the server played the sound without the client also calling <page>Entity:EmitSound</page>.\n\n<bug issue=\"1021\">This is not called for scripted sentences. This was fixed.</bug>",
+        "description": "Called whenever a sound has been played. This will not be called clientside if the server played the sound without the client also calling <page>Entity:EmitSound</page>.",
         "arguments": [
           {
             "name": "data",
@@ -3550,7 +3550,7 @@
         "realms": [
           "server"
         ],
-        "description": "<internal></internal>Called from gm_load when the game should load a map.",
+        "description": "<internal></internal>Called from `gm_load` when the game should load a map.",
         "arguments": [
           {
             "name": "data",
@@ -5164,7 +5164,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called when the player spawns for the first time.\n\nSee <page>GM:PlayerSpawn</page> for a hook called every player spawn.\n\n<note>This hook is called before the player has fully loaded, when the player is still in seeing the `Starting Lua` screen. For example, trying to use the <page>Entity:GetModel</page> function will return the default model (`models/player.mdl`).</note>\n\n<note>You can send <page>net</page> messages starting from the player_activate event (see <page>Game_Events</page>).</note>\n\n<warning>Due to the above note, sending <page>net</page> messages to the spawned player in this hook are highly unreliable, and they most likely won't be received (more information here: https://github.com/Facepunch/garrysmod-requests/issues/718).\n\nWorkaround without networking:\n```\nlocal load_queue = {}\n\nhook.Add( \"PlayerInitialSpawn\", \"myAddonName/Load\", function( ply )\nload_queue[ ply ] = true\nend )\n\nhook.Add( \"SetupMove\", \"myAddonName/Load\", function( ply, _, cmd )\nif load_queue[ ply ] and not cmd:IsForced() then\nload_queue[ ply ] = nil\n\nmyAddon:OnPlayerNetReady( ply ) -- Send what you need here!\nend\nend )\n```\n\n\nWith networking:\n```\n-- CLIENT\nhook.Add( \"InitPostEntity\", \"Ready\", function()\nnet.Start( \"cool_addon_client_ready\" )\nnet.SendToServer()\nend )\n```\n```\n-- SERVER\nutil.AddNetworkString( \"cool_addon_client_ready\" )\n\nnet.Receive( \"cool_addon_client_ready\", function( len, ply )\n-- Send what you need here!\nend )\n```\n</warning>",
+        "description": "Called when the player spawns for the first time.\n\nSee <page>GM:PlayerSpawn</page> for a hook called every player spawn.\n\n<note>This hook is called before the player has fully loaded, when the player is still in seeing the `Starting Lua` screen. For example, trying to use the <page>Entity:GetModel</page> function will return the default model (`models/player.mdl`).</note>\n\n<warning>Due to the above note, sending <page>net</page> messages to the spawned player in this hook are highly unreliable, and they most likely won't be received (more information here: https://github.com/Facepunch/garrysmod-requests/issues/718).</warning>\n\n<note>If you look for a highly reliable way to send early <page>net</page> messages to a player on connection, consider using [player_activate](gameevent/player_activate) or [OnRequestFullUpdate](gameevent/OnRequestFullUpdate) game events.</note>",
         "arguments": [
           {
             "name": "player",
@@ -5497,7 +5497,7 @@
           {
             "name": "transition",
             "type": "boolean",
-            "description": "If true, the player just spawned from a map transition. You probably want to not touch player's weapons if this is set to true from this hook."
+            "description": "If true, the player just spawned from a map transition. You probably want to not touch player's weapons or positiom if this is set to `true`."
           }
         ]
       },

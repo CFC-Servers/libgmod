@@ -1,7 +1,7 @@
 --- The mesh library allows you to create meshes. A mesh is a set of vertices that define a 3D shape, for constant meshes you should use the IMesh object instead.  
 _G.mesh = {}
 ---  client
---- Pushes the new vertex data onto the render stack.  
+--- Pushes the currently set vertex data (via other `mesh.*` functions) into the mesh stack. See example on mesh.Begin.  
 function mesh.AdvanceVertex()
 end
 
@@ -68,26 +68,23 @@ function mesh.Specular(r, g, b, a)
 end
 
 ---  client
---- Sets the s tangent to be used.  
---- This function actually does nothing.  
---- @param sTanger Vector @The s tangent.
+--- Sets the "S" tangent to be used.  
+--- @param sTanger Vector @The S tangent.
 function mesh.TangentS(sTanger)
 end
 
 ---  client
---- Sets the T tangent to be used.  
---- This function actually does nothing.  
---- @param tTanger Vector @The t tangent.
+--- Sets the "T" tangent to be used.  
+--- @param tTanger Vector @The T tangent.
 function mesh.TangentT(tTanger)
 end
 
 ---  client
 --- Sets the texture coordinates for the next vertex.  
---- Non-zero values of stage require the currently bound material to support it. For example, any LightmappedGeneric material supports stages 1 and 2 (lightmap texture coordinates).  
---- @param stage number @The stage of the texture coordinate.
+--- @param set number @The texture coordinate set, 0 to 7
 --- @param u number @U coordinate.
 --- @param v number @V coordinate.
-function mesh.TexCoord(stage, u, v)
+function mesh.TexCoord(set, u, v)
 end
 
 ---  client
@@ -101,8 +98,8 @@ function mesh.UserData(tangentX, tangentY, tangentZ, tangentHandedness)
 end
 
 ---  client
---- Returns the amount of vertex that have yet been pushed.  
---- @return number @vertexCount
+--- Returns the amount of vertices that have been pushed via mesh.AdvanceVertex.  
+--- @return number @The amount of vertices.
 function mesh.VertexCount()
 end
 

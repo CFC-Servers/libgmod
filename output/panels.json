@@ -917,6 +917,7 @@
   {
     "name": "DButton",
     "parent": "DLabel",
+    "description": "A standard Derma button.\n\nBy default, a <page>DButton</page> is 22px tall.",
     "functions": [
       {
         "name": "DoClick",
@@ -983,6 +984,7 @@
           {
             "name": "args",
             "type": "string",
+            "default": "nil",
             "description": "The arguments for the command."
           }
         ]
@@ -1565,10 +1567,11 @@
           "client",
           "menu"
         ],
-        "description": "<deprecated></deprecated>\nReturns whatever is set by <page>DCollapsibleCategory:SetList</page>.",
+        "description": "If set, the <page>DCategoryList</page> that created this panel.\n\nSee also <page>DCollapsibleCategory:SetList</page>.",
         "returnValues": [
           {
-            "type": "Panel"
+            "type": "Panel",
+            "description": "The <page>DCategoryList</page> that created us."
           }
         ]
       },
@@ -1735,11 +1738,12 @@
           "client",
           "menu"
         ],
-        "description": "<deprecated>Unused in the base game. What is this for?</deprecated>\nSets a panel to call <page>Panel:UnselectAll</page> on, instead of calling it on itself.",
+        "description": "Used internally by <page>DCategoryList</page> when it creates a <page>DCollapsibleCategory</page> during <page>DCategoryList:Add</page>.\n\nIf set, <page>Panel:UnselectAll</page> will be called on the list, instead of calling it on the category panel itself when a category is clicked.",
         "arguments": [
           {
             "name": "pnl",
-            "type": "Panel"
+            "type": "Panel",
+            "description": "The <page>Panel:UnselectAll</page> that is the \"parent\" of this panel."
           }
         ]
       },
@@ -2153,11 +2157,13 @@
           {
             "name": "x",
             "type": "number",
+            "default": "nil",
             "description": "The x position to sample color from/the percentage of saturation to remove from the color (ranges from 0.0 to 1.0)."
           },
           {
             "name": "y",
             "type": "number",
+            "default": "nil",
             "description": "The y position to sample color from/the percentage of brightness or value to remove from the color (ranges from 0.0 to 1.0)."
           }
         ],
@@ -2537,15 +2543,6 @@
             "description": "Show / Hide the colors indicators"
           }
         ]
-      },
-      {
-        "name": "TranslateValues",
-        "parent": "DColorMixer",
-        "realms": [
-          "client",
-          "menu"
-        ],
-        "description": "<internal></internal>\n<deprecated></deprecated>\n\nDoes nothing."
       },
       {
         "name": "UpdateColor",
@@ -7076,6 +7073,7 @@
           {
             "name": "strBackup",
             "type": "string",
+            "default": "nil",
             "description": "The path of the backup image."
           }
         ]
@@ -7204,7 +7202,7 @@
   {
     "name": "DLabel",
     "parent": "Label",
-    "description": "A standard Derma text label. A lot of this panels functionality is a base for button elements, such as <page>DButton</page>",
+    "description": "A standard Derma text label. A lot of this panels functionality is a base for button elements, such as <page>DButton</page>\n\nDoes not support multiline text.",
     "functions": [
       {
         "name": "DoClick",
@@ -10157,6 +10155,19 @@
           "menu"
         ],
         "description": "Creates a sub <page>DMenu</page> and returns it. Has no duplicate call protection.",
+        "arguments": [
+          {
+            "name": "Name",
+            "type": "string",
+            "description": "Name of the sub menu."
+          },
+          {
+            "name": "func",
+            "type": "function",
+            "default": "nil",
+            "description": "Function to execute when this sub menu is clicked."
+          }
+        ],
         "returnValues": [
           {
             "type": "Panel",
@@ -10209,6 +10220,22 @@
         ]
       },
       {
+        "name": "GetRadio",
+        "parent": "DMenuOption",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "Returns whether this <page>DMenuOption</page> should act like a radio button, set by <page>DMenuOption:SetRadio</page>.",
+        "returnValues": [
+          {
+            "type": "boolean",
+            "name": "checked",
+            "description": "`true` to set as a radio button."
+          }
+        ]
+      },
+      {
         "name": "OnChecked",
         "parent": "DMenuOption",
         "realms": [
@@ -10231,7 +10258,7 @@
           "client",
           "menu"
         ],
-        "description": "Sets the checked state of the <page>DMenuOption</page>. Does not invoke <page>DMenuOption:OnChecked</page>.",
+        "description": "Sets the checked state of the <page>DMenuOption</page>.\n\nDoes not invoke <page>DMenuOption:OnChecked</page>. This will be fixed in the next update.",
         "arguments": [
           {
             "name": "checked",
@@ -10247,11 +10274,12 @@
           "client",
           "menu"
         ],
-        "description": "Sets whether the <page>DMenuOption</page> is a checkbox option or a normal button option.",
+        "description": "Sets whether the <page>DMenuOption</page> is a checkbox option or a normal button option.\n\nEnables automatic <page>DMenuOption:GetChecked</page> toggling with left/right clicks.",
         "arguments": [
           {
             "name": "checkable",
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether the menu option should allow the player to toggle itself."
           }
         ]
       },
@@ -10268,6 +10296,22 @@
             "name": "pnl",
             "type": "Panel",
             "description": "The <page>DMenu</page> for this option."
+          }
+        ]
+      },
+      {
+        "name": "SetRadio",
+        "parent": "DMenuOption",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "Sets whether this <page>DMenuOption</page> should act like a radio button.\n\nChecking a radio button automatically unchecks all adjacent radio buttons.",
+        "arguments": [
+          {
+            "name": "checked",
+            "type": "boolean",
+            "description": "`true` to set as a radio button."
           }
         ]
       },
@@ -12763,7 +12807,7 @@
   {
     "name": "DProperties",
     "parent": "Panel",
-    "description": "A grid for editing the properties of something using names and values. Properties can be categorized and strongly typed.\n\n![](http://wiki.garrysmod.com/images/9/99/DProperties.png)\n##  Associated controls\n* <page>DProperty_VectorColor</page>\n* <page>DProperty_Boolean</page>\n* <page>DProperty_Generic</page>\n* <page>DProperty_Combo</page>\n* <page>DProperty_Float</page>\n* <page>DProperty_Int</page>",
+    "description": "A grid for editing the properties of something using names and values. Properties can be categorized and strongly typed.\n\n<img src=\"ab571/8dc38978e7c3bbe.png\" alt=\"DProperties example\">\n##  Associated controls\n* <page>DProperty_VectorColor</page>\n* <page>DProperty_Boolean</page>\n* <page>DProperty_Generic</page>\n* <page>DProperty_Combo</page>\n* <page>DProperty_Float</page>\n* <page>DProperty_Int</page>",
     "functions": [
       {
         "name": "GetCanvas",
@@ -12795,6 +12839,7 @@
           {
             "name": "create",
             "type": "boolean",
+            "default": "false",
             "description": "Create a new category if it doesn't exist."
           }
         ],
@@ -13701,7 +13746,7 @@
         "description": "Returns whether the <page>DSizeToContents</page> panel should size to contents horizontally.",
         "returnValues": [
           {
-            "type": "number",
+            "type": "boolean",
             "description": "Whether the panel should size to contents horizontally."
           }
         ]
@@ -13716,7 +13761,7 @@
         "description": "Returns whether the <page>DSizeToContents</page> panel should size to contents vertically.",
         "returnValues": [
           {
-            "type": "number",
+            "type": "boolean",
             "description": "Whether the panel should size to contents vertically."
           }
         ]
@@ -13731,8 +13776,8 @@
         "description": "Sets whether the <page>DSizeToContents</page> panel should size to contents horizontally. This is `true` by default.",
         "arguments": [
           {
-            "name": "",
-            "type": "number",
+            "name": "sizeX",
+            "type": "boolean",
             "description": "Whether the panel should size to contents horizontally."
           }
         ]
@@ -13747,8 +13792,8 @@
         "description": "Sets whether the <page>DSizeToContents</page> panel should size to contents vertically. This is `true` by default.",
         "arguments": [
           {
-            "name": "",
-            "type": "number",
+            "name": "sizeY",
+            "type": "boolean",
             "description": "Whether the panel should size to contents vertically."
           }
         ]
@@ -14317,7 +14362,7 @@
   {
     "name": "DTab",
     "parent": "DButton",
-    "description": "<internal></internal>A tab for internal use on the <page>DPropertySheet</page>.",
+    "description": "<internal></internal>\nThis element is created within and only used in the <page>DPropertySheet</page> file.",
     "functions": [
       {
         "name": "GetPanel",

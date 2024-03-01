@@ -156,11 +156,14 @@ function ents.GetMapCreatedEntity(id)
 end
 
 ---  client|server
---- Returns an iterator for all existing entities.  
---- This will be quite a bit faster than ents.GetAll, especially when using the `break` keyword.  
---- @return function @Iterator function
---- @return table @Table of all existing Entitys.
---- @return number @Will always be `0`
+--- Returns a [Stateless Iterator](https://www.lua.org/pil/7.3.html) for all entities.  
+--- Intended for use in [Generic For Loops](https://www.lua.org/pil/4.3.5.html).  
+--- See player.Iterator for a similar function for all players.  
+--- Internally, this function uses cached values that exist entirely within lua, as opposed to ents.GetAll, which is a C++ function.  
+--- Because switching from lua to C++ (and vice versa) incurs a performance cost, this function will be somewhat more efficient than  
+--- @return function @The Iterator Function from ipairs
+--- @return table @Table of all existing Entities
+--- @return number @The starting index for the table of players
 function ents.Iterator()
 end
 

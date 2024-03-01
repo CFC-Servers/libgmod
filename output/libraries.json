@@ -1415,7 +1415,7 @@
         "realms": [
           "server"
         ],
-        "description": "Stores information about constraints in an entity's table.",
+        "description": "<internal></internal>\n\nStores information about constraints in an entity's table.",
         "arguments": [
           {
             "name": "ent1",
@@ -1453,7 +1453,7 @@
         "realms": [
           "server"
         ],
-        "description": "Stores info about the constraints on the entity's table. The only difference between this and <page>constraint.AddConstraintTable</page> is that the constraint does not get deleted when the entity is removed.",
+        "description": "<internal></internal>\n\nStores info about the constraints on the entity's table.\n\nThe only difference between this and <page>constraint.AddConstraintTable</page> is that the constraint does not get deleted when the entity is removed.",
         "arguments": [
           {
             "name": "ent1",
@@ -1491,108 +1491,116 @@
         "realms": [
           "server"
         ],
-        "description": "Creates an advanced ballsocket (ragdoll) constraint.\n\nUses a https://developer.valvesoftware.com/wiki/Phys_ragdollconstraint",
+        "description": "Creates an advanced ballsocket (ragdoll) constraint. See <page>constraint.Ballsocket</page> for the simpler version.",
         "arguments": [
           {
-            "name": "Ent1",
+            "name": "ent1",
             "type": "Entity",
             "description": "First entity."
           },
           {
-            "name": "Ent2",
+            "name": "ent2",
             "type": "Entity",
             "description": "Second entity."
           },
           {
-            "name": "Bone1",
+            "name": "bone1",
             "type": "number",
-            "description": "Bone of first entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of first entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "Bone2",
+            "name": "bone2",
             "type": "number",
-            "description": "Bone of second entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of second entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "LPos1",
+            "name": "localPos1",
             "type": "Vector",
-            "description": "Position on the first entity, in its local space coordinates."
+            "description": "Position relative to the the first physics object to constrain to."
           },
           {
-            "name": "LPos2",
+            "name": "localPos2",
             "type": "Vector",
-            "description": "Position on the second entity, in its local space coordinates."
+            "default": "nil",
+            "description": "Position relative to the the second physics object to constrain to.\n<warning>Does nothing!</warning>"
           },
           {
-            "name": "forcelimit",
+            "name": "forceLimit",
             "type": "number",
+            "default": "0",
             "description": "Amount of force until it breaks (0 = unbreakable)"
           },
           {
-            "name": "torquelimit",
+            "name": "torqueLimit",
             "type": "number",
+            "default": "0",
             "description": "Amount of torque (rotation speed) until it breaks (0 = unbreakable)"
           },
           {
-            "name": "xmin",
+            "name": "xMin",
             "type": "number",
             "description": "Minimum angle in rotations around the X axis local to the constraint."
           },
           {
-            "name": "ymin",
+            "name": "yMin",
             "type": "number",
             "description": "Minimum angle in rotations around the Y axis local to the constraint."
           },
           {
-            "name": "zmin",
+            "name": "zMin",
             "type": "number",
             "description": "Minimum angle in rotations around the Z axis local to the constraint."
           },
           {
-            "name": "xmax",
+            "name": "xMax",
             "type": "number",
             "description": "Maximum angle in rotations around the X axis local to the constraint."
           },
           {
-            "name": "ymax",
+            "name": "yMax",
             "type": "number",
             "description": "Maximum angle in rotations around the Y axis local to the constraint."
           },
           {
-            "name": "zmax",
+            "name": "zMax",
             "type": "number",
             "description": "Maximum angle in rotations around the Z axis local to the constraint."
           },
           {
-            "name": "xfric",
+            "name": "xFric",
             "type": "number",
+            "default": "0",
             "description": "Rotational friction in the X axis local to the constraint."
           },
           {
-            "name": "yfric",
+            "name": "yFric",
             "type": "number",
+            "default": "0",
             "description": "Rotational friction in the Y axis local to the constraint."
           },
           {
-            "name": "zfric",
+            "name": "zFric",
             "type": "number",
+            "default": "0",
             "description": "Rotational friction in the Z axis local to the constraint."
           },
           {
-            "name": "onlyrotation",
+            "name": "onlyRotation",
             "type": "number",
+            "default": "0",
             "description": "Only limit rotation, free movement."
           },
           {
-            "name": "nocollide",
+            "name": "noCollide",
             "type": "number",
+            "default": "0",
             "description": "Whether the entities should be no-collided."
           }
         ],
         "returnValues": [
           {
             "type": "Entity",
-            "description": "A phys_ragdollconstraint entity. Will return false if the constraint could not be created."
+            "description": "A [phys_ragdollconstraint](https://developer.valvesoftware.com/wiki/Phys_ragdollconstraint) entity. Will return `false` if the constraint could not be created."
           }
         ]
       },
@@ -1605,70 +1613,76 @@
         "description": "Creates an axis constraint.",
         "arguments": [
           {
-            "name": "Ent1",
+            "name": "ent1",
             "type": "Entity",
             "description": "First entity."
           },
           {
-            "name": "Ent2",
+            "name": "ent2",
             "type": "Entity",
             "description": "Second entity."
           },
           {
-            "name": "Bone1",
+            "name": "bone1",
             "type": "number",
-            "description": "Bone of first entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of first entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "Bone2",
+            "name": "bone2",
             "type": "number",
-            "description": "Bone of second entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of second entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "LPos1",
+            "name": "localPos1",
             "type": "Vector",
-            "description": "Position on the first entity, in its local space coordinates."
+            "description": "Position relative to the the first physics object to constrain to."
           },
           {
-            "name": "LPos2",
+            "name": "localPos2",
             "type": "Vector",
-            "description": "Position on the second entity, in its local space coordinates."
+            "description": "Position relative to the the second physics object to constrain to."
           },
           {
-            "name": "forcelimit",
+            "name": "forceLimit",
             "type": "number",
+            "default": "0",
             "description": "Amount of force until it breaks (0 = unbreakable)"
           },
           {
-            "name": "torquelimit",
+            "name": "torqueLimit",
             "type": "number",
+            "default": "0",
             "description": "Amount of torque (rotational force) until it breaks (0 = unbreakable)"
           },
           {
             "name": "friction",
             "type": "number",
+            "default": "0",
             "description": "Constraint friction."
           },
           {
-            "name": "nocollide",
+            "name": "noCollide",
             "type": "number",
+            "default": "0",
             "description": "Whether the entities should be no-collided."
           },
           {
-            "name": "LocalAxis",
+            "name": "localAxis",
             "type": "Vector",
+            "default": "nil",
             "description": "If you include the LocalAxis then LPos2 will not be used in the final constraint. However, LPos2 is still a required argument."
           },
           {
-            "name": "DontAddTable",
+            "name": "dontAddTable",
             "type": "boolean",
+            "default": "false",
             "description": "Whether or not to add the constraint info on the entity table. See <page>constraint.AddConstraintTable</page>."
           }
         ],
         "returnValues": [
           {
             "type": "Entity",
-            "description": "Constraint. Will return false if the constraint could not be created."
+            "description": "The created constraint. ([phys_hinge](https://developer.valvesoftware.com/wiki/Phys_hinge)) Will return `false` if the constraint could not be created."
           }
         ]
       },
@@ -1678,53 +1692,56 @@
         "realms": [
           "server"
         ],
-        "description": "Creates a ballsocket joint.",
+        "description": "Creates a ballsocket joint. See See <page>constraint.AdvBallsocket</page> if you also wish to limit rotation angles in some way.",
         "arguments": [
           {
-            "name": "Ent1",
+            "name": "ent1",
             "type": "Entity",
-            "description": "First entity"
+            "description": "First entity."
           },
           {
-            "name": "Ent2",
+            "name": "ent2",
             "type": "Entity",
-            "description": "Second entity"
+            "description": "Second entity."
           },
           {
-            "name": "Bone1",
+            "name": "bone1",
             "type": "number",
-            "description": "Bone of first entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of first entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "Bone2",
+            "name": "bone2",
             "type": "number",
-            "description": "Bone of second entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of second entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "LocalPos",
+            "name": "localPos",
             "type": "Vector",
-            "description": "Centerposition of the joint, relative to the **second** entity."
+            "description": "Center position of the joint, relative to the **second** entity's physics object."
           },
           {
             "name": "forcelimit",
             "type": "number",
+            "default": "0",
             "description": "Amount of force until it breaks (0 = unbreakable)"
           },
           {
             "name": "torquelimit",
             "type": "number",
+            "default": "0",
             "description": "Amount of torque (rotation speed) until it breaks (0 = unbreakable)"
           },
           {
             "name": "nocollide",
             "type": "number",
-            "description": "Whether the entities should be nocollided"
+            "default": "0",
+            "description": "Whether the constrained entities should collided with each other or not."
           }
         ],
         "returnValues": [
           {
             "type": "Entity",
-            "description": "Constraint. Will return false if the constraint could not be created."
+            "description": "The crated constraint. ([phys_ballsocket](https://developer.valvesoftware.com/wiki/Phys_ballsocket)) Will return `false` if the constraint could not be created."
           }
         ]
       },
@@ -1750,7 +1767,7 @@
         "returnValues": [
           {
             "type": "boolean",
-            "description": "shouldConstrain"
+            "description": "Whether a constraint can or should be created."
           }
         ]
       },
@@ -1765,7 +1782,7 @@
           {
             "name": "pos",
             "type": "Vector",
-            "description": "Starting position of the rope."
+            "description": "Position for the rope entity. Unknown effect, probably none."
           },
           {
             "name": "width",
@@ -1775,53 +1792,56 @@
           {
             "name": "material",
             "type": "string",
-            "description": "Material of the rope."
+            "default": "nil",
+            "description": "Material of the rope. If unset, will be solid black."
           },
           {
-            "name": "Constraint",
+            "name": "constraint",
             "type": "Entity",
-            "description": "Constraint for the rope."
+            "default": "nil",
+            "description": "Constraint for the rope. If set, the rope will be deleted when the constraint entity is."
           },
           {
-            "name": "Ent1",
+            "name": "ent1",
             "type": "Entity",
             "description": "First entity."
           },
           {
-            "name": "LPos1",
+            "name": "localPos1",
             "type": "Vector",
-            "description": "Position of first end of the rope. Local to Ent1."
+            "description": "Position relative to the the first physics object to constrain to."
           },
           {
-            "name": "Bone1",
+            "name": "bone1",
             "type": "number",
-            "description": "Bone of first entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of first entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "Ent2",
+            "name": "ent2",
             "type": "Entity",
             "description": "Second entity."
           },
           {
-            "name": "LPos2",
+            "name": "localPos2",
             "type": "Vector",
-            "description": "Position of second end of the rope. Local to Ent2."
+            "description": "Position relative to the the second physics object to constrain to."
           },
           {
-            "name": "Bone2",
+            "name": "bone2",
             "type": "number",
-            "description": "Bone of second entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of second entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "kv",
+            "name": "keyValues",
             "type": "table",
-            "description": "(Optional) Any additional key/values to be set on the rope."
+            "default": "nil",
+            "description": "Any additional key/values to be set on the rope."
           }
         ],
         "returnValues": [
           {
             "type": "Entity",
-            "description": "rope"
+            "description": "The created rope ([keyframe_rope](https://developer.valvesoftware.com/wiki/Keyframe_rope)), or `nil` or failure."
           }
         ]
       },
@@ -1842,19 +1862,19 @@
         "returnValues": [
           {
             "type": "Entity",
-            "description": "anchor"
+            "description": "The anchor entity. (`gmod_anchor`)"
           },
           {
             "type": "PhysObj",
-            "description": "physicsObject,"
+            "description": "The achor entity's physics object. (<page>Entity:GetPhysicsObject</page>)"
           },
           {
             "type": "number",
-            "description": "bone"
+            "description": "Always `0`."
           },
           {
             "type": "Vector",
-            "description": "LPos"
+            "description": "Always `vector_zero`."
           }
         ]
       },
@@ -1864,54 +1884,57 @@
         "realms": [
           "server"
         ],
-        "description": "Creates an elastic constraint.",
+        "description": "Creates an elastic rope constraint.",
         "arguments": [
           {
-            "name": "Ent1",
+            "name": "ent1",
             "type": "Entity",
             "description": "First entity."
           },
           {
-            "name": "Ent2",
+            "name": "ent2",
             "type": "Entity",
-            "description": "Second entity"
+            "description": "Second entity."
           },
           {
-            "name": "Bone1",
+            "name": "bone1",
             "type": "number",
-            "description": "Bone of first entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of first entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "Bone2",
+            "name": "bone2",
             "type": "number",
-            "description": "Bone of second entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of second entity to constrain to. (0 for non-ragdolls). Must be different from `bone1`.\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "LPos1",
+            "name": "localPos1",
             "type": "Vector",
-            "description": "Position of first end of the rope. Local to Ent1."
+            "description": "Position relative to the the first physics object to constrain to."
           },
           {
-            "name": "LPos2",
+            "name": "localPos2",
             "type": "Vector",
-            "description": "Position of second end of the rope. Local to Ent2."
+            "description": "Position relative to the the second physics object to constrain to."
           },
           {
             "name": "constant",
-            "type": "number"
+            "type": "number",
+            "description": "Stiffness of the elastic. The larger the number the less the elastic will stretch."
           },
           {
             "name": "damping",
-            "type": "number"
+            "type": "number",
+            "description": "How much energy the elastic loses. The larger the number, the less bouncy the elastic."
           },
           {
-            "name": "rdamping",
-            "type": "number"
+            "name": "relDamping",
+            "type": "number",
+            "description": "The amount of energy the elastic loses proportional to the relative velocity of the two objects the elastic is attached to."
           },
           {
             "name": "material",
             "type": "string",
-            "description": "The material of the rope."
+            "description": "The material of the rope. If unset, will be solid black."
           },
           {
             "name": "width",
@@ -1919,23 +1942,26 @@
             "description": "Width of rope."
           },
           {
-            "name": "stretchonly",
-            "type": "boolean"
+            "name": "stretchOnly",
+            "type": "boolean",
+            "default": "false",
+            "description": "Apply physics forces only on stretch."
           },
           {
             "name": "color",
             "type": "table",
+            "default": "color_white",
             "description": "The color of the rope. See <page>Global.Color</page>."
           }
         ],
         "returnValues": [
           {
             "type": "Entity",
-            "description": "Constraint. Will return false if the constraint could not be created."
+            "description": "The created constraint. ([phys_spring](https://developer.valvesoftware.com/wiki/Phys_spring)) Will return `false` if the constraint could not be created."
           },
           {
             "type": "Entity",
-            "description": "rope.  Will return nil if the constraint could not be created."
+            "description": "The crated rope. ([keyframe_rope](https://developer.valvesoftware.com/wiki/Keyframe_rope)) Will return `nil` if the constraint could not be created."
           }
         ]
       },
@@ -2087,7 +2113,7 @@
             "description": "The entity to check"
           },
           {
-            "name": "ResultTable",
+            "name": "resultTable",
             "type": "table",
             "default": "nil",
             "description": "Table used to return result. Optional."
@@ -2148,48 +2174,52 @@
         "realms": [
           "server"
         ],
-        "description": "Creates a Hydraulic constraint.",
+        "description": "Creates a controllable <page>constraint.Elastic</page>, aka a Hydraulic constraint.",
         "arguments": [
           {
-            "name": "pl",
+            "name": "player",
             "type": "Player",
-            "description": "The player that will be used to call <page>numpad.OnDown</page>."
+            "description": "The player that will be able to control the constraint. Used to call <page>numpad.OnDown</page>."
           },
           {
-            "name": "Ent1",
+            "name": "ent1",
             "type": "Entity",
             "description": "First entity."
           },
           {
-            "name": "Ent2",
+            "name": "ent2",
             "type": "Entity",
             "description": "Second entity."
           },
           {
-            "name": "Bone1",
+            "name": "bone1",
             "type": "number",
-            "description": "Bone of first entity (0 for non-ragdolls),"
+            "description": "<page>PhysObj</page> number of first entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "Bone2",
+            "name": "bone2",
             "type": "number",
-            "description": "Bone of second entity (0 for non-ragdolls)."
+            "description": "<page>PhysObj</page> number of second entity to constrain to. (0 for non-ragdolls). Must be different from `bone1`.\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "LPos1",
-            "type": "Vector"
+            "name": "localPos1",
+            "type": "Vector",
+            "description": "Position relative to the the first physics object to constrain to."
           },
           {
-            "name": "LPos2",
-            "type": "Vector"
+            "name": "localPos2",
+            "type": "Vector",
+            "description": "Position relative to the the second physics object to constrain to."
           },
           {
-            "name": "Length1",
-            "type": "number"
+            "name": "length1",
+            "type": "number",
+            "description": "Minimum length of the constraint."
           },
           {
-            "name": "Length2",
-            "type": "number"
+            "name": "length2",
+            "type": "number",
+            "description": "Maximum length of the constraint."
           },
           {
             "name": "width",
@@ -2202,41 +2232,43 @@
             "description": "The key binding, corresponding to an <page>Enums/KEY</page>"
           },
           {
-            "name": "fixed",
+            "name": "slider",
             "type": "number",
-            "description": "Whether the hydraulic is fixed."
+            "description": "Whether the hydraulic is fixed, i.e. cannot bend. Must be `1` to act as `true`."
           },
           {
             "name": "speed",
-            "type": "number"
+            "type": "number",
+            "description": "How fast it changes the length from `length1` to `length2` and backwards."
           },
           {
             "name": "material",
             "type": "string",
-            "description": "The material of the rope."
+            "description": "The material of the rope. If unset, will be solid black."
           },
           {
             "name": "color",
             "type": "table",
+            "default": "color_white",
             "description": "The color of the rope. See <page>Global.Color</page>."
           }
         ],
         "returnValues": [
           {
             "type": "Entity",
-            "description": "Constraint. Will return false if the constraint could not be created."
+            "description": "The created constraint. ([phys_spring](https://developer.valvesoftware.com/wiki/Phys_spring)) Will return `false` if the constraint could not be created."
           },
           {
             "type": "Entity",
-            "description": "rope. Will return nil if the constraint could not be created."
+            "description": "The crated rope. ([keyframe_rope](https://developer.valvesoftware.com/wiki/Keyframe_rope)) Will return `nil` if the constraint could not be created."
           },
           {
             "type": "Entity",
-            "description": "controller. Can return nil depending on how the constraint was created. Will return nil if the constraint could not be created."
+            "description": "The muscle controller. (`gmod_winch_controller`) Will return `nil` if the constraint could not be created."
           },
           {
             "type": "Entity",
-            "description": "slider. Can return nil depending on how the constraint was created. Will return nil if the constraint could not be created."
+            "description": "The slider ([phys_slideconstraint](https://developer.valvesoftware.com/wiki/Phys_slideconstraint)) if `fixed` was exactly `1`. Will return nil otherwise, or if the constraint could not be created."
           }
         ]
       },
@@ -2246,7 +2278,7 @@
         "realms": [
           "server"
         ],
-        "description": "Creates a keep upright constraint.\n\n<note>This function only works on prop_physics or prop_ragdoll.</note>",
+        "description": "Creates a keep upright constraint.\n\n<note>This function only works on prop_physics or prop_ragdoll. This restriction will be lifted in the next update.</note>",
         "arguments": [
           {
             "name": "ent",
@@ -2266,7 +2298,7 @@
           {
             "name": "angularLimit",
             "type": "number",
-            "description": "Basically, the strength of the constraint"
+            "description": "Basically, the strength of the constraint. Must be above 0."
           }
         ],
         "returnValues": [
@@ -2282,95 +2314,110 @@
         "realms": [
           "server"
         ],
-        "description": "Creates a motor constraint.",
+        "description": "Creates a motor constraint, a player controllable <page>constraint.Axis</page>.",
         "arguments": [
           {
-            "name": "Ent1",
+            "name": "ent1",
             "type": "Entity",
             "description": "First entity."
           },
           {
-            "name": "Ent2",
+            "name": "ent2",
             "type": "Entity",
             "description": "Second entity."
           },
           {
-            "name": "Bone1",
+            "name": "bone1",
             "type": "number",
-            "description": "Bone of first entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of first entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "Bone2",
+            "name": "bone2",
             "type": "number",
-            "description": "Bone of second entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of second entity to constrain to. (0 for non-ragdolls). Must be different from `bone1`.\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "LPos1",
-            "type": "Vector"
+            "name": "localPos1",
+            "type": "Vector",
+            "description": "Position relative to the the first physics object to constrain to."
           },
           {
-            "name": "LPos2",
-            "type": "Vector"
+            "name": "localPos2",
+            "type": "Vector",
+            "description": "Position relative to the the second physics object to constrain to."
           },
           {
             "name": "friction",
-            "type": "number"
+            "type": "number",
+            "description": "Motor friction."
           },
           {
             "name": "torque",
-            "type": "number"
+            "type": "number",
+            "description": "Motor torque."
           },
           {
             "name": "forcetime",
-            "type": "number"
+            "type": "number",
+            "description": "Automatic shut-off after this time has passed. A value of 0 means to stay on forever or until deactivated."
           },
           {
             "name": "nocollide",
             "type": "number",
+            "default": "0",
             "description": "Whether the entities should be no-collided."
           },
           {
             "name": "toggle",
             "type": "number",
+            "default": "false",
             "description": "Whether the constraint is on toggle."
           },
           {
-            "name": "pl",
+            "name": "player",
             "type": "Player",
-            "description": "The player that will be used to call <page>numpad.OnDown</page> and <page>numpad.OnUp</page>."
+            "default": "NULL",
+            "description": "The player that will control the motor. Used to to call <page>numpad.OnDown</page> and <page>numpad.OnUp</page>."
           },
           {
             "name": "forcelimit",
             "type": "number",
+            "default": "0",
             "description": "Amount of force until it breaks (0 = unbreakable)"
           },
           {
-            "name": "numpadkey_fwd",
+            "name": "key_fwd",
             "type": "number",
+            "default": "nil",
             "description": "The key binding for \"forward\", corresponding to an <page>Enums/KEY</page>"
           },
           {
-            "name": "numpadkey_bwd",
+            "name": "key_bwd",
             "type": "number",
+            "default": "nil",
             "description": "The key binding for \"backwards\", corresponding to an <page>Enums/KEY</page>"
           },
           {
             "name": "direction",
-            "type": "number"
+            "type": "number",
+            "default": "1",
+            "description": "Either `1` or `-1` signifying which direction the motor should spin."
           },
           {
-            "name": "LocalAxis",
-            "type": "Vector"
+            "name": "localAxis",
+            "type": "Vector",
+            "default": "nil",
+            "description": "Overrides axis of rotation?\n<validate></validate>"
           }
         ],
         "returnValues": [
           {
             "type": "Entity",
-            "description": "Constraint. Will return false if the constraint could not be created."
+            "description": "The created constraint. ([phys_torque](https://developer.valvesoftware.com/wiki/Phys_torque)) Will return `false` if the constraint could not be created."
           },
           {
             "type": "Entity",
-            "description": "axis. Will return nil if the constraint could not be created."
+            "description": "The created axis constraint. ([phys_hinge](https://developer.valvesoftware.com/wiki/Phys_hinge)) Will return `nil` if the constraint could not be created."
           }
         ]
       },
@@ -2380,48 +2427,52 @@
         "realms": [
           "server"
         ],
-        "description": "Creates a muscle constraint.",
+        "description": "Creates a muscle constraint.\n\nVery similar to <page>constraint.Hydraulic</page>, but instead of a toggle between fully expanded and contracted, it will continuously alternate between the 2 states while enabled.",
         "arguments": [
           {
-            "name": "pl",
+            "name": "player",
             "type": "Player",
-            "description": "The player that will be used to call <page>numpad.OnDown</page>."
+            "description": "The player that will be able to control the constraint. Used to call <page>numpad.OnDown</page>."
           },
           {
-            "name": "Ent1",
+            "name": "ent1",
             "type": "Entity",
             "description": "First entity."
           },
           {
-            "name": "Ent2",
+            "name": "ent2",
             "type": "Entity",
             "description": "Second entity."
           },
           {
-            "name": "Bone1",
+            "name": "bone1",
             "type": "number",
-            "description": "Bone of first entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of first entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "Bone2",
+            "name": "bone2",
             "type": "number",
-            "description": "Bone of second entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of second entity to constrain to. (0 for non-ragdolls). Must be different from `bone1`.\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "LPos1",
-            "type": "Vector"
+            "name": "localPos1",
+            "type": "Vector",
+            "description": "Position relative to the the first physics object to constrain to."
           },
           {
-            "name": "LPos2",
-            "type": "Vector"
+            "name": "localPos2",
+            "type": "Vector",
+            "description": "Position relative to the the second physics object to constrain to."
           },
           {
-            "name": "Length1",
-            "type": "number"
+            "name": "length1",
+            "type": "number",
+            "description": "Minimum length of the constraint."
           },
           {
-            "name": "Length2",
-            "type": "number"
+            "name": "length2",
+            "type": "number",
+            "description": "Maximum length of the constraint."
           },
           {
             "name": "width",
@@ -2431,52 +2482,57 @@
           {
             "name": "key",
             "type": "number",
-            "description": "The key binding, corresponding to an <page>Enums/KEY</page>"
+            "description": "The key binding, corresponding to an <page>Enums/KEY</page>."
           },
           {
             "name": "fixed",
             "type": "number",
-            "description": "Whether the constraint is fixed."
+            "description": "Whether the constraint is fixed, i.e. cannot bend. Must be `1` to act as `true`."
           },
           {
             "name": "period",
-            "type": "number"
+            "type": "number",
+            "description": "How often the \"contractions\" should happen."
           },
           {
             "name": "amplitude",
-            "type": "number"
+            "type": "number",
+            "description": "Amplification of the \"contractions\"?"
           },
           {
-            "name": "starton",
-            "type": "boolean"
+            "name": "startOn",
+            "type": "boolean",
+            "default": "false",
+            "description": "Whether the constraint should start activated. (i.e. spazzing)"
           },
           {
             "name": "material",
             "type": "string",
-            "description": "Material of the rope."
+            "description": "Material of the rope. If left unset, will be solid black."
           },
           {
             "name": "color",
             "type": "table",
+            "default": "color_white",
             "description": "The color of the rope. See <page>Global.Color</page>."
           }
         ],
         "returnValues": [
           {
             "type": "Entity",
-            "description": "Constraint. Will return false if the constraint could not be created."
+            "description": "The created constraint. ([phys_spring](https://developer.valvesoftware.com/wiki/Phys_spring)) Will return `false` if the constraint could not be created."
           },
           {
             "type": "Entity",
-            "description": "rope. Will return nil if the constraint could not be created."
+            "description": "The crated rope. ([keyframe_rope](https://developer.valvesoftware.com/wiki/Keyframe_rope)) Will return `nil` if the constraint could not be created."
           },
           {
             "type": "Entity",
-            "description": "controller. Will return nil if the constraint could not be created."
+            "description": "The muscle controller. (`gmod_winch_controller`) Will return `nil` if the constraint could not be created."
           },
           {
             "type": "Entity",
-            "description": "slider. Will return nil if the fixed argument is not 1 or if the constraint could not be created."
+            "description": "The slider ([phys_slideconstraint](https://developer.valvesoftware.com/wiki/Phys_slideconstraint)) if `fixed` was exactly `1`. Will return nil otherwise, or if the constraint could not be created."
           }
         ]
       },
@@ -2489,30 +2545,30 @@
         "description": "Creates an no-collide \"constraint\". Disables collision between two entities.\n<note>Does not work with players.</note>",
         "arguments": [
           {
-            "name": "Ent1",
+            "name": "ent1",
             "type": "Entity",
             "description": "First entity."
           },
           {
-            "name": "Ent2",
+            "name": "ent2",
             "type": "Entity",
             "description": "Second entity."
           },
           {
-            "name": "Bone1",
+            "name": "bone1",
             "type": "number",
-            "description": "Bone of first entity (0 for non-ragdolls)."
+            "description": "<page>PhysObj</page> number of first entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "Bone2",
+            "name": "bone2",
             "type": "number",
-            "description": "Bone of second entity (0 for non-ragdolls)."
+            "description": "<page>PhysObj</page> number of second entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           }
         ],
         "returnValues": [
           {
             "type": "Entity",
-            "description": "Constraint. Will return false if the constraint could not be created."
+            "description": "The created constraint. ([logic_collision_pair](https://developer.valvesoftware.com/wiki/Logic_collision_pair)) Will return `false` if the constraint could not be created."
           }
         ]
       },
@@ -2522,70 +2578,92 @@
         "realms": [
           "server"
         ],
-        "description": "Creates a pulley constraint.",
+        "description": "Creates a pulley constraint.\n\nIt consists of 3 rope segments, 2 of which have variable length, visually connected by a 3rd. Reducing length of one end will increase the length of the other end.\n\nYou can visualize the pulley like so\n```\nWPos2 --- WPos3\n|\t\t\t|\n|\t\t\t|\nEnt1\t   Ent4\n```",
         "arguments": [
           {
-            "name": "Ent1",
-            "type": "Entity"
+            "name": "ent1",
+            "type": "Entity",
+            "description": "First entity to constrain."
           },
           {
-            "name": "Ent4",
-            "type": "Entity"
+            "name": "ent4",
+            "type": "Entity",
+            "description": "The other entity to attach to."
           },
           {
-            "name": "Bone1",
-            "type": "number"
+            "name": "bone1",
+            "type": "number",
+            "description": "<page>PhysObj</page> number of first entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "Bone4",
-            "type": "number"
+            "name": "bone4",
+            "type": "number",
+            "description": "<page>PhysObj</page> number of second entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "LPos1",
-            "type": "Vector"
+            "name": "localPos1",
+            "type": "Vector",
+            "description": "Position relative to the the first physics object to constrain to."
           },
           {
-            "name": "LPos4",
-            "type": "Vector"
+            "name": "localPos4",
+            "type": "Vector",
+            "description": "Position relative to the the second physics object to constrain to."
           },
           {
-            "name": "WPos2",
-            "type": "Vector"
+            "name": "worldPos2",
+            "type": "Vector",
+            "description": "World position constrain the first entity to. This point will be static."
           },
           {
-            "name": "WPos3",
-            "type": "Vector"
+            "name": "worldPos3",
+            "type": "Vector",
+            "description": "World position constrain the second entity to. This point will be static."
           },
           {
-            "name": "forcelimit",
+            "name": "forceLimit",
             "type": "number",
             "description": "Amount of force until it breaks (0 = unbreakable)"
           },
           {
             "name": "rigid",
             "type": "boolean",
-            "description": "Whether the constraint is rigid."
+            "default": "false",
+            "description": "Whether the constraint is rigid, i.e. cannot bend."
           },
           {
             "name": "width",
             "type": "number",
-            "description": "Width of the rope."
+            "description": "Width of the rope. If below or at `0`, visual rope segments will not be created."
           },
           {
             "name": "material",
             "type": "string",
-            "description": "Material of the rope."
+            "description": "Material of the rope. If unset, will be solid black."
           },
           {
             "name": "color",
             "type": "table",
+            "default": "color_white",
             "description": "The color of the rope. See <page>Global.Color</page>."
           }
         ],
         "returnValues": [
           {
             "type": "Entity",
-            "description": "Constraint. Will return false if the constraint could not be created."
+            "description": "The created constraint. ([phys_pulleyconstraint](https://developer.valvesoftware.com/wiki/Phys_pulleyconstraint)) Will return `false` if the constraint could not be created."
+          },
+          {
+            "type": "Entity",
+            "description": "The first rope segment. ([keyframe_rope](https://developer.valvesoftware.com/wiki/Keyframe_rope)) Will return `nil` if the constraint or this rope segment could not be created."
+          },
+          {
+            "type": "Entity",
+            "description": "The second rope segment. ([keyframe_rope](https://developer.valvesoftware.com/wiki/Keyframe_rope)) Will return `nil` if the constraint or this rope segment could not be created."
+          },
+          {
+            "type": "Entity",
+            "description": "The third rope segment. ([keyframe_rope](https://developer.valvesoftware.com/wiki/Keyframe_rope)) Will return `nil` if the constraint or this rope segment could not be created."
           }
         ]
       },
@@ -2630,7 +2708,7 @@
           {
             "name": "type",
             "type": "string",
-            "description": "The constraint type to remove (eg. \"Weld\", \"Elastic\", \"NoCollide\")"
+            "description": "The constraint type to remove (eg. `\"Weld\"`, `\"Elastic\"`, `\"NoCollide\"`)"
           }
         ],
         "returnValues": [
@@ -2650,37 +2728,37 @@
         "realms": [
           "server"
         ],
-        "description": "Creates a rope constraint - with rope!",
+        "description": "Creates a simple rope (length) based constraint.",
         "arguments": [
           {
-            "name": "Ent1",
+            "name": "ent1",
             "type": "Entity",
             "description": "First entity"
           },
           {
-            "name": "Ent2",
+            "name": "ent2",
             "type": "Entity",
             "description": "Second entity"
           },
           {
-            "name": "Bone1",
+            "name": "bone1",
             "type": "number",
-            "description": "Bone of first entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of first entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "Bone2",
+            "name": "bone2",
             "type": "number",
-            "description": "Bone of second entity (0 for non-ragdolls)"
+            "description": "<page>PhysObj</page> number of second entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "LPos1",
+            "name": "localPos1",
             "type": "Vector",
-            "description": "Position of first end of the rope. Local to Ent1."
+            "description": "Position relative to the the first physics object to constrain to."
           },
           {
-            "name": "LPos2",
+            "name": "localPos2",
             "type": "Vector",
-            "description": "Position of second end of the rope. Local to Ent2."
+            "description": "Position relative to the the second physics object to constrain to."
           },
           {
             "name": "length",
@@ -2688,13 +2766,15 @@
             "description": "Length of the rope."
           },
           {
-            "name": "addlength",
+            "name": "addLength",
             "type": "number",
+            "default": "0",
             "description": "Amount to add to the length of the rope. Works as it does in the Rope tool."
           },
           {
-            "name": "forcelimit",
+            "name": "forceLimit",
             "type": "number",
+            "default": "0",
             "description": "Amount of force until it breaks (0 = unbreakable)."
           },
           {
@@ -2705,16 +2785,18 @@
           {
             "name": "material",
             "type": "string",
-            "description": "Material of the rope."
+            "description": "Material of the rope. If unset, will be solid black."
           },
           {
             "name": "rigid",
             "type": "boolean",
+            "default": "false",
             "description": "Whether the constraint is rigid."
           },
           {
             "name": "color",
             "type": "table",
+            "default": "color_white",
             "description": "The color of the rope. See <page>Global.Color</page>."
           }
         ],
@@ -2722,12 +2804,12 @@
           {
             "type": "Entity",
             "name": "constraint",
-            "description": "The constraint entity. Will be a `keyframe_rope` if you are roping to the same bone on the same entity. Will return `false` if the constraint could not be created."
+            "description": "The constraint entity ([phys_lengthconstraint](https://developer.valvesoftware.com/wiki/Phys_lengthconstraint)).\n\nWill be a `keyframe_rope` if you are roping to the same bone on the same entity. Will return `false` if the constraint could not be created."
           },
           {
             "type": "Entity",
             "name": "rope",
-            "description": "The rope entity. Will return `nil` if `constraint` return value is a `keyframe_rope` or if the constraint could not be created."
+            "description": "The rope entity. Will return `nil` if `constraint` return value is a [keyframe_rope](https://developer.valvesoftware.com/wiki/Keyframe_rope) or if the constraint could not be created."
           }
         ]
       },
@@ -2737,35 +2819,37 @@
         "realms": [
           "server"
         ],
-        "description": "Creates a slider constraint.",
+        "description": "Creates a slider constraint. A slider is like a rope, but allows the constrained object to move only in 1 direction.",
         "arguments": [
           {
-            "name": "Ent1",
+            "name": "ent1",
             "type": "Entity",
             "description": "First entity."
           },
           {
-            "name": "Ent2",
+            "name": "ent2",
             "type": "Entity",
             "description": "Second entity."
           },
           {
-            "name": "Bone1",
+            "name": "bone1",
             "type": "number",
-            "description": "Bone of first entity (0 for non-ragdolls),"
+            "description": "<page>PhysObj</page> number of first entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "Bone2",
+            "name": "bone2",
             "type": "number",
-            "description": "Bone of second entity (0 for non-ragdolls)."
+            "description": "<page>PhysObj</page> number of second entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "LPos1",
-            "type": "Vector"
+            "name": "localPos1",
+            "type": "Vector",
+            "description": "Position relative to the the first physics object to constrain to."
           },
           {
-            "name": "LPos2",
-            "type": "Vector"
+            "name": "localPos2",
+            "type": "Vector",
+            "description": "Position relative to the the second physics object to constrain to."
           },
           {
             "name": "width",
@@ -2775,22 +2859,23 @@
           {
             "name": "material",
             "type": "string",
-            "description": "The material of the rope."
+            "description": "The material of the rope. If unset, will be solid black."
           },
           {
             "name": "color",
             "type": "table",
+            "default": "color_white",
             "description": "The color of the rope. See <page>Global.Color</page>."
           }
         ],
         "returnValues": [
           {
             "type": "Entity",
-            "description": "Constraint. Will return false if the constraint could not be created."
+            "description": "The created constraint entity. ([phys_slideconstraint](https://developer.valvesoftware.com/wiki/Phys_slideconstraint)) Will return `false` if the constraint could not be created."
           },
           {
             "type": "Entity",
-            "description": "rope. Will return nil if the constraint could not be created."
+            "description": "The created rope. ([keyframe_rope](https://developer.valvesoftware.com/wiki/Keyframe_rope)) Will return `nil` if the constraint or the rope could not be created."
           }
         ]
       },
@@ -2800,7 +2885,7 @@
         "realms": [
           "server"
         ],
-        "description": "Creates a weld constraint",
+        "description": "Creates a weld constraint.",
         "arguments": [
           {
             "name": "ent1",
@@ -2815,33 +2900,36 @@
           {
             "name": "bone1",
             "type": "number",
-            "description": "The bonenumber of the first entity (0 for monoboned entities)\n\nPhysObj number for ragdolls, see: <page>Entity:TranslateBoneToPhysBone</page>."
+            "description": "<page>PhysObj</page> number of first entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
             "name": "bone2",
             "type": "number",
-            "description": "The bonenumber of the second entity"
+            "description": "<page>PhysObj</page> number of second entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "forcelimit",
+            "name": "forceLimit",
             "type": "number",
+            "default": "0",
             "description": "The amount of force appliable to the constraint before it will break (0 is never)"
           },
           {
-            "name": "nocollide",
+            "name": "noCollide",
             "type": "boolean",
-            "description": "Should ent1 be nocollided to ent2 via this constraint"
+            "default": "false",
+            "description": "Should `ent1` be nocollided to `ent2` via this constraint"
           },
           {
-            "name": "deleteent1onbreak",
+            "name": "deleteEnt1OnBreak",
             "type": "boolean",
-            "description": "If true, when ent2 is removed, ent1 will also be removed"
+            "default": "false",
+            "description": "If true, when `ent2` is removed, `ent1` will also be removed"
           }
         ],
         "returnValues": [
           {
             "type": "Entity",
-            "description": "constraint"
+            "description": "The crated constraint entity. ([phys_constraint](https://developer.valvesoftware.com/wiki/Phys_constraint))"
           }
         ]
       },
@@ -2851,40 +2939,42 @@
         "realms": [
           "server"
         ],
-        "description": "Creates a Winch constraint.",
+        "description": "Creates a winch constraint, a player controllable <page>constraint.Elastic</page>, allowing gradually increasing or decreasing the length.",
         "arguments": [
           {
-            "name": "pl",
+            "name": "player",
             "type": "Player",
             "description": "The player that will be used to call <page>numpad.OnDown</page> and <page>numpad.OnUp</page>."
           },
           {
-            "name": "Ent1",
+            "name": "ent1",
             "type": "Entity",
             "description": "First entity."
           },
           {
-            "name": "Ent2",
+            "name": "ent2",
             "type": "Entity",
             "description": "Second entity."
           },
           {
-            "name": "Bone1",
+            "name": "bone1",
             "type": "number",
-            "description": "Bone of first entity (0 for non-ragdolls),"
+            "description": "<page>PhysObj</page> number of first entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "Bone2",
+            "name": "bone2",
             "type": "number",
-            "description": "Bone of second entity (0 for non-ragdolls)."
+            "description": "<page>PhysObj</page> number of second entity to constrain to. (0 for non-ragdolls).\n\nSee <page>Entity:TranslateBoneToPhysBone</page>."
           },
           {
-            "name": "LPos1",
-            "type": "Vector"
+            "name": "localPos1",
+            "type": "Vector",
+            "description": "Position relative to the the first physics object to constrain to."
           },
           {
-            "name": "LPos2",
-            "type": "Vector"
+            "name": "localPos2",
+            "type": "Vector",
+            "description": "Position relative to the the second physics object to constrain to."
           },
           {
             "name": "width",
@@ -2892,53 +2982,55 @@
             "description": "The width of the rope."
           },
           {
-            "name": "fwd_bind",
+            "name": "fwdBind",
             "type": "number",
             "description": "The key binding for \"forward\", corresponding to an <page>Enums/KEY</page>"
           },
           {
-            "name": "bwd_bind",
+            "name": "bwdBind",
             "type": "number",
             "description": "The key binding for \"backwards\", corresponding to an <page>Enums/KEY</page>"
           },
           {
-            "name": "fwd_speed",
+            "name": "fwdSpeed",
             "type": "number",
             "description": "Forward speed."
           },
           {
-            "name": "bwd_speed",
+            "name": "bwdSpeed",
             "type": "number",
             "description": "Backwards speed."
           },
           {
             "name": "material",
             "type": "string",
-            "description": "The material of the rope."
+            "description": "The material of the rope. If unset, will be solid black."
           },
           {
             "name": "toggle",
             "type": "boolean",
+            "default": "false",
             "description": "Whether the winch should be on toggle."
           },
           {
             "name": "color",
             "type": "table",
+            "default": "color_white",
             "description": "The color of the rope. See <page>Global.Color</page>."
           }
         ],
         "returnValues": [
           {
             "type": "Entity",
-            "description": "Constraint. Can return nil. Will return false if the constraint could not be created."
+            "description": "The created constraint. ([phys_spring](https://developer.valvesoftware.com/wiki/Phys_spring)) Can return `nil`. Will return `false` if the constraint could not be created."
           },
           {
             "type": "Entity",
-            "description": "rope. Will return nil if the constraint could not be created."
+            "description": "The crated rope. ([keyframe_rope](https://developer.valvesoftware.com/wiki/Keyframe_rope)) Will return `nil` if the constraint could not be created."
           },
           {
             "type": "Entity",
-            "description": "controller. Can return nil."
+            "description": "The winch controller. (`gmod_winch_controller`) Can return `nil`."
           }
         ]
       }
@@ -3643,27 +3735,27 @@
           "client",
           "server"
         ],
-        "description": "<deprecated></deprecated>\n\nReturns the current hook settings of the passed thread. The thread argument can be omitted. This is completely different to gamemode hooks. More information on hooks can be found at http://www.lua.org/pil/23.2.html",
+        "description": "<deprecated></deprecated>\n\nReturns the current hook settings of the passed thread. The thread argument can be omitted. This is completely different to gamemode hooks. More information on hooks can be found at http://www.lua.org/pil/23.2.html. This function will simply return the function, mask, and count of the last called <page>debug.sethook</page>.",
         "arguments": [
           {
             "name": "thread",
             "type": "thread",
             "default": "nil",
-            "description": "Which thread to retrieve its hook from"
+            "description": "Which thread to retrieve it's hook from, doesn't seem to actually work."
           }
         ],
         "returnValues": [
           {
             "type": "function",
-            "description": "Hook function"
+            "description": "Hook function."
           },
           {
             "type": "string",
-            "description": "Hook mask"
+            "description": "Hook mask. This is reversed of the <page>debug.sethook</page> mask (\"clr\" would be \"rlc\")."
           },
           {
             "type": "number",
-            "description": "Hook count"
+            "description": "Hook count."
           }
         ]
       },
@@ -3680,13 +3772,18 @@
           {
             "name": "funcOrStackLevel",
             "type": "function",
-            "description": "Takes either a function or a number representing the stack level as an argument. Stack level 0 always corresponds to the debug.getinfo call, 1 would be the function calling debug.getinfo, and so on.\n\nReturns useful information about that function in a table."
+            "description": "Takes either a function or a number representing the stack level as an argument. Stack level 0 always corresponds to the debug.getinfo call, 1 would be the function calling debug.getinfo in most cases, and so on.\n\nReturns useful information about that function in a table."
           },
           {
             "name": "fields",
             "type": "string",
-            "default": "flnSu",
-            "description": "A string whose characters specify the information to be retrieved.\n\n* f - Populates the func field.\n* l - Populates the currentline field.\n* L - Populates the activelines field.\n* n - Populates the name and namewhat fields - only works if stack level is passed rather than function pointer.\n* S - Populates the location fields (lastlinedefined, linedefined, short_src, source and what).\n* u - Populates the argument and upvalue fields (isvararg, nparams, nups)"
+            "default": "flnSu>",
+            "description": "A string whose characters specify the information to be retrieved.\n\n* `f` - Populates the func field.\n* `l` - Populates the currentline field.\n* `L` - Populates the activelines field.\n* `n` - Populates the name and namewhat fields - only works if stack level is passed rather than function pointer.\n* `S` - Populates the location fields (lastlinedefined, linedefined, short_src, source and what).\n* `u` - Populates the argument and upvalue fields (isvararg, nparams, nups).\n* `>` - Causes this function to use the last argument to get the data from"
+          },
+          {
+            "name": "function",
+            "type": "function",
+            "description": "Function to use. (Only used by the `>` field)"
           }
         ],
         "returnValues": [
@@ -4750,14 +4847,28 @@
             "description": "The panel to call the hook for"
           },
           {
-            "name": "w",
-            "type": "number",
-            "description": "The width of the panel"
+            "name": "vararg1",
+            "type": "any",
+            "default": "nil",
+            "description": "First parameter for the panel hook. i.e. width of the panel for <page text=\"Paint\">PANEL:Paint</page> hooks."
           },
           {
-            "name": "h",
-            "type": "number",
-            "description": "The height of the panel"
+            "name": "vararg2",
+            "type": "any",
+            "default": "nil",
+            "description": "Second parameter for the panel hook. i.e. height of the panel for <page text=\"Paint\">PANEL:Paint</page> hooks."
+          },
+          {
+            "name": "vararg3",
+            "type": "any",
+            "default": "nil",
+            "description": "Third parameter for the panel hook."
+          },
+          {
+            "name": "vararg4",
+            "type": "any",
+            "default": "nil",
+            "description": "Fourth parameter for the panel hook."
           }
         ],
         "returnValues": [
@@ -5337,6 +5448,18 @@
             "default": "200",
             "description": "How visible the shadow is (0-255)."
           }
+        ],
+        "returnValues": [
+          {
+            "type": "number",
+            "name": "textWidth",
+            "description": "The width of drawn text."
+          },
+          {
+            "type": "number",
+            "name": "textHeight",
+            "description": "The height of drawn text."
+          }
         ]
       },
       {
@@ -5655,6 +5778,7 @@
           {
             "name": "base",
             "type": "string",
+            "default": "nil",
             "description": "The base of the drive."
           }
         ]
@@ -7008,7 +7132,7 @@
           {
             "name": "saveData",
             "type": "string",
-            "description": "Data generated by gmsave.SaveMap"
+            "description": "Data generated by <page>gmsave.SaveMap</page>."
           },
           {
             "name": "name",
@@ -7018,12 +7142,18 @@
           {
             "name": "time",
             "type": "number",
-            "description": "When the save was saved during the game (Put CurTime here)"
+            "description": "When the save was saved during the game (Put <page>Global.CurTime</page> here)"
           },
           {
             "name": "map",
             "type": "string",
             "description": "The map the save is used for."
+          },
+          {
+            "name": "workshopID",
+            "type": "string",
+            "default": "nil",
+            "description": "The workshop ID for the saves' map."
           }
         ]
       }
@@ -7479,19 +7609,19 @@
           "client",
           "server"
         ],
-        "description": "Returns an iterator for all existing entities.\n\nThis will be quite a bit faster than <page>ents.GetAll</page>, especially when using the `break` keyword.",
+        "description": "Returns a [Stateless Iterator](https://www.lua.org/pil/7.3.html) for all entities.\nIntended for use in [Generic For Loops](https://www.lua.org/pil/4.3.5.html).\nSee <page>player.Iterator</page> for a similar function for all players.\n\nInternally, this function uses cached values that exist entirely within lua, as opposed to <page>ents.GetAll</page>, which is a C++ function.\nBecause switching from lua to C++ (and vice versa) incurs a performance cost, this function will be somewhat more efficient than",
         "returnValues": [
           {
             "type": "function",
-            "description": "Iterator function"
+            "description": "The Iterator Function from <page text=\"ipairs\">Global.ipairs</page>"
           },
           {
             "type": "table",
-            "description": "Table of all existing <page>Entity</page>s."
+            "description": "Table of all existing <page text=\"Entities\">Entity</page>.  This is a cached copy of <page>ents.GetAll</page>"
           },
           {
             "type": "number",
-            "description": "Will always be `0`. Start index?"
+            "description": "The starting index for the table of players.\nThis is always `0` and is returned for the benefit of [Generic For Loops](https://www.lua.org/pil/4.3.5.html)"
           }
         ]
       }
@@ -8034,7 +8164,7 @@
           "client",
           "server"
         ],
-        "description": "If called serverside it will remove **ALL** entities which were not created by the map (not players or weapons held by players).\nIt won't remove Entities who have the <page text=\"EFL_KEEP_ON_RECREATE_ENTITIES\">enums/EFL</page> Flag set.\n\nOn the client it will remove decals, sounds, gibs, dead NPCs, and entities created via <page>ents.CreateClientProp</page>.\n\nThis function calls <page>GM:PreCleanupMap</page> before cleaning up the map and <page>GM:PostCleanupMap</page> after cleaning up the map.\n\n<bug issue=\"1142\">Calling this in a <page>ENTITY:StartTouch</page> or <page>ENTITY:Touch</page> hook will crash the game.</bug>\n\n<bug issue=\"2874\">Calling this destroys all BASS streams.</bug>\n\n<bug issue=\"3637\">This can crash when removing _firesmoke entities. **You can use the example below to workaround this issue.**</bug>",
+        "description": "If called serverside it will remove **ALL** entities which were not created by the map (not players or weapons held by players).\nIt won't remove Entities who have the <page text=\"EFL_KEEP_ON_RECREATE_ENTITIES\">enums/EFL</page> Flag set.\n\nOn the client it will remove decals, sounds, gibs, dead NPCs, and entities created via <page>ents.CreateClientProp</page>.\n\nThis function calls <page>GM:PreCleanupMap</page> before cleaning up the map and <page>GM:PostCleanupMap</page> after cleaning up the map.\n\n<bug issue=\"1142\">Calling this in a <page>ENTITY:StartTouch</page> or <page>ENTITY:Touch</page> hook will crash the game.</bug>\n\n<bug issue=\"2874\">Calling this destroys all BASS streams.</bug>\n\n<bug issue=\"3637\">This can crash when removing `_firesmoke` entities. **You can use the example below to workaround this issue.**</bug>",
         "arguments": [
           {
             "name": "dontSendToClients",
@@ -8047,6 +8177,12 @@
             "type": "table",
             "default": "{}",
             "description": "Entity classes not to reset during cleanup."
+          },
+          {
+            "name": "callback",
+            "type": "function",
+            "default": "nil",
+            "description": "If set, delays the map cleanup until the end of a server tick, allowing bypassing the entity limit on maps with large amounts of them. The callback function will be called after the map cleanup has been performed."
           }
         ]
       },
@@ -8441,7 +8577,7 @@
         "realms": [
           "server"
         ],
-        "description": "Loads the next map according to the nextlevel convar, or from the current mapcycle file set by the respective convar."
+        "description": "Loads the next map according to the `nextlevel` convar, or from the current `mapcyclefile` set by the respective convar."
       },
       {
         "name": "MapLoadType",
@@ -8998,7 +9134,7 @@
           {
             "name": "code",
             "type": "number",
-            "description": "ASCII code of symbol, see http://www.mikroe.com/img/publication/spa/pic-books/programming-in-basic/chapter/04/fig4-24.gif"
+            "description": "ASCII code of symbol, see [this chart](https://files.facepunch.com/wiki/files/ab571/8dc389806d65b98.gif)."
           }
         ]
       },
@@ -9559,11 +9695,13 @@
           {
             "name": "gamemodeTable",
             "type": "table",
+            "default": "nil",
             "description": "If the gamemode is specified, the gamemode hook within will be called, otherwise not."
           },
           {
             "name": "args",
             "type": "vararg",
+            "default": "nil",
             "description": "The arguments to be passed to the hooks."
           }
         ],
@@ -10821,6 +10959,7 @@
           {
             "name": "alpha",
             "type": "number",
+            "default": "255",
             "description": "Alpha/transparency value ( 0 - 255 ) of the icon"
           }
         ]
@@ -10903,11 +11042,13 @@
           {
             "name": "alpha",
             "type": "number",
+            "default": "255",
             "description": "Alpha/transparency value ( 0 - 255 ) of the icon"
           },
           {
             "name": "dontEqualizeHeight",
             "type": "number",
+            "default": "false",
             "description": "Do not rescale the icon to match the default kill icon font."
           }
         ]
@@ -11229,7 +11370,7 @@
   },
   {
     "name": "math",
-    "description": "An easing library that allows you to interpolate with various kinds of smoothing [functions](https://easings.net/). To use with <page>Global.Lerp</page>, input what you would to the fraction argument in one of these easing functions and then the output of that into the <page>Global.Lerp</page> fraction argument.\n<example>\n<description>Example usage with Lerp and <page>math.ease.InSine</page></description>\n<code>\n-- Define a wrapper function to make it easier to work with\nlocal function easedLerp(fraction, from, to)\nreturn Lerp(math.ease.InSine(fraction), from, to)\nend\n\n-- Compare with the non-eased version of Lerp\nprint(easedLerp(0.25, 0, 1))\nprint(Lerp(0.25, 0, 1))\n\nprint(easedLerp(0.25, 0, 5))\nprint(Lerp(0.25, 0, 5))\n</code>\n<output>\n```\n0.076120467488713\n0.25\n\n0.38060233744357\n1.25\n```\n</output>\n\n</example>\n<example>\nA brief visual example of different easing methods\n<img src=\"https://i.imgur.com/XZPgymK.gif\">\n</example>",
+    "description": "An easing library that allows you to interpolate with various kinds of smoothing [functions](https://easings.net/). To use with <page>Global.Lerp</page>, input what you would to the fraction argument in one of these easing functions and then the output of that into the <page>Global.Lerp</page> fraction argument.\n<example>\n<description>Example usage with Lerp and <page>math.ease.InSine</page></description>\n<code>\n-- Define a wrapper function to make it easier to work with\nlocal function easedLerp(fraction, from, to)\nreturn Lerp(math.ease.InSine(fraction), from, to)\nend\n\n-- Compare with the non-eased version of Lerp\nprint(easedLerp(0.25, 0, 1))\nprint(Lerp(0.25, 0, 1))\n\nprint(easedLerp(0.25, 0, 5))\nprint(Lerp(0.25, 0, 5))\n</code>\n<output>\n```\n0.076120467488713\n0.25\n\n0.38060233744357\n1.25\n```\n</output>\n\n</example>\n<example>\nA brief visual example of different easing methods\n<upload src=\"ab571/8dc38906fb4cfbe.gif\" size=\"4162886\" name=\"easing_examples.gif\">\n</upload></example>",
     "functions": [
       {
         "name": "abs",
@@ -13427,7 +13568,7 @@
   },
   {
     "name": "matproxy",
-    "description": "Add proxies to materials.",
+    "description": "A library that allows implementing custom [material proxies](https://developer.valvesoftware.com/wiki/Material_proxies) for materials.\n\nMaterial proxies allow programmatically setting specific `.vmt` shader parameters on a per-entity basis, rather being global across all instances of a material.",
     "functions": [
       {
         "name": "ActiveList",
@@ -13449,10 +13590,10 @@
         "realms": [
           "client"
         ],
-        "description": "Adds a material proxy.",
+        "description": "Register a material proxy. See <page>matproxy</page> for more general explanation of what they are.",
         "arguments": [
           {
-            "name": "MatProxyData",
+            "name": "matProxyData",
             "type": "table",
             "description": "The information about the proxy. See <page>Structures/MatProxyData</page>"
           }
@@ -13624,7 +13765,7 @@
         "realms": [
           "client"
         ],
-        "description": "Pushes the new vertex data onto the render stack."
+        "description": "Pushes the currently set vertex data (via other `mesh.*` functions) into the mesh stack. See example on <page>mesh.Begin</page>."
       },
       {
         "name": "Begin",
@@ -13816,12 +13957,12 @@
         "realms": [
           "client"
         ],
-        "description": "Sets the s tangent to be used.\n\nThis function actually does nothing.",
+        "description": "Sets the \"S\" tangent to be used.",
         "arguments": [
           {
             "name": "sTanger",
             "type": "Vector",
-            "description": "The s tangent."
+            "description": "The S tangent."
           }
         ]
       },
@@ -13831,12 +13972,12 @@
         "realms": [
           "client"
         ],
-        "description": "Sets the T tangent to be used.\n\nThis function actually does nothing.",
+        "description": "Sets the \"T\" tangent to be used.",
         "arguments": [
           {
             "name": "tTanger",
             "type": "Vector",
-            "description": "The t tangent."
+            "description": "The T tangent."
           }
         ]
       },
@@ -13846,12 +13987,12 @@
         "realms": [
           "client"
         ],
-        "description": "Sets the texture coordinates for the next vertex.\n\nNon-zero values of stage require the currently bound material to support it. For example, any LightmappedGeneric material supports stages 1 and 2 (lightmap texture coordinates).",
+        "description": "Sets the texture coordinates for the next vertex.",
         "arguments": [
           {
-            "name": "stage",
+            "name": "set",
             "type": "number",
-            "description": "The stage of the texture coordinate."
+            "description": "The texture coordinate set, 0 to 7.\n\nNon-zero values require the currently bound material to support it. For example, any `LightmappedGeneric` material supports sets 1 and 2 (lightmap texture coordinates and bump map texture coords?)."
           },
           {
             "name": "u",
@@ -13897,11 +14038,11 @@
         "realms": [
           "client"
         ],
-        "description": "Returns the amount of vertex that have yet been pushed.",
+        "description": "Returns the amount of vertices that have been pushed via <page>mesh.AdvanceVertex</page>.",
         "returnValues": [
           {
             "type": "number",
-            "description": "vertexCount"
+            "description": "The amount of vertices."
           }
         ]
       }
@@ -15517,12 +15658,12 @@
           "client",
           "server"
         ],
-        "description": "Appends an unsigned integer with 64 bits to the current net message.\n<note>\nThe limit for an uint64 is 18.446.744.073.709.551.615.\nEverything above the limit will be set to the limit.\n\nUnsigned numbers **do not** support negative numbers.\n</note>",
+        "description": "Appends an unsigned integer with 64 bits to the current net message.\n\nThe limit for an uint64 is 18'446'744'073'709'551'615.\nEverything above the limit will be set to the limit.\n\nUnsigned numbers **do not** support negative numbers.",
         "arguments": [
           {
             "name": "uint64",
             "type": "string",
-            "description": "The uint64 to be sent. Can be a number.\n<warning>\nSince Lua cannot store full 64-bit integers, this function returns a string. It is mainly aimed at usage with <page>Player:SteamID64</page>.\n\nIf your input is a number and not a string, it won't be networked correctly as soon as it has more than 13 digits.\nThis is because Lua represents numbers over 13 digits as `1e+14`(`100 000 000 000 000`)\nYou can do something like this to convert it to a string: `string.format(\"%.0f\", number)`.\nIf you try to use <page>Global.tostring</page> it will fail because it will create a result something like `1e+14` which doesn't work.\n</warning>"
+            "description": "The 64 bit value to be sent. Can be a number.\n<warning>\nSince Lua cannot store full 64-bit integers, this function takes a string. It is mainly aimed at usage with <page>Player:SteamID64</page>.\n\nIf your input is a number and not a string, it won't be networked correctly as soon as it has more than 13 digits.\nThis is because Lua represents numbers over 13 digits as `1e+14`(`100 000 000 000 000`)\nYou can do something like this to convert it to a string: `string.format(\"%.0f\", number)`.\nIf you try to use <page>Global.tostring</page> it will fail because it will create a result something like `1e+14` which doesn't work.\n</warning>"
           }
         ]
       },
@@ -15659,7 +15800,8 @@
           {
             "name": "isButton",
             "type": "boolean",
-            "description": "Should this keypress pretend to be a from a gmod_button? (causes <page>numpad.FromButton</page> to return true)"
+            "default": "false",
+            "description": "Should this keypress pretend to be a from a `gmod_button`? (causes <page>numpad.FromButton</page> to return `true`)"
           }
         ]
       },
@@ -15684,7 +15826,8 @@
           {
             "name": "isButton",
             "type": "boolean",
-            "description": "Should this keypress pretend to be a from a gmod_button? (causes <page>numpad.FromButton</page> to return true)"
+            "default": "false",
+            "description": "Should this keypress pretend to be a from a `gmod_button`? (causes <page>numpad.FromButton</page> to return `true`)"
           }
         ]
       },
@@ -16434,19 +16577,19 @@
           "client",
           "server"
         ],
-        "description": "Returns an iterator for all players on the server.\n\nThis will be quite a bit faster than <page>player.GetAll</page>, especially when using the `break` keyword.",
+        "description": "Returns a [Stateless Iterator](https://www.lua.org/pil/7.3.html) for all players on the server.\nIntended for use in [Generic For Loops](https://www.lua.org/pil/4.3.5.html).\nSee <page>ents.Iterator</page> for a similar function for all entities.\n\nInternally, this function uses cached values that exist entirely within lua, as opposed to <page>player.GetAll</page>, which is a C++ function.\nBecause switching from lua to C++ (and vice versa) incurs a performance cost, this function will be somewhat more efficient than <page>player.GetAll</page>.",
         "returnValues": [
           {
             "type": "function",
-            "description": "Iterator function"
+            "description": "The Iterator Function from <page text=\"ipairs\">Global.ipairs</page>"
           },
           {
             "type": "table",
-            "description": "Table of all existing <page>Player</page>s."
+            "description": "Table of all existing <page text=\"Players\">Player</page>.  This is a cached copy of <page>player.GetAll</page>"
           },
           {
             "type": "number",
-            "description": "Will always be 0. Start index?"
+            "description": "The starting index for the table of players.\nThis is always `0` and is returned for the benefit of [Generic For Loops](https://www.lua.org/pil/4.3.5.html)"
           }
         ]
       }
@@ -16523,7 +16666,13 @@
           "client",
           "server"
         ],
-        "description": "Returns the entire list of valid player models."
+        "description": "Returns the entire list of valid player models.",
+        "returnValues": [
+          {
+            "type": "table",
+            "description": "List of all valid player models."
+          }
+        ]
       },
       {
         "name": "ClearPlayerClass",
@@ -16590,7 +16739,12 @@
           {
             "name": "ply",
             "type": "Player",
-            "description": "Player to setup"
+            "description": "Player to setup."
+          },
+          {
+            "name": "transiton",
+            "type": "boolean",
+            "description": "If true, the player just spawned from a map transition. You probably want to not touch player's weapons or positiom if this is set to `true`."
           }
         ]
       },
@@ -17181,7 +17335,7 @@
           "client",
           "menu"
         ],
-        "description": "Clears the current rendertarget for obeying the current stencil buffer conditions.",
+        "description": "Clears the portion of the active Render Target that passes the current stencil buffer conditions.",
         "arguments": [
           {
             "name": "r",
@@ -17375,7 +17529,7 @@
         "realms": [
           "client"
         ],
-        "description": "Copies the currently active Render Target to the specified texture.",
+        "description": "Copies the currently active Render Target to the specified texture.\n<warning>This does not copy the Depth buffer, no method for that is known at this moment so a common workaround is to store the source texture somewhere else, perform your drawing operations, save the result somewhere else and reapply the source texture.\n</warning>",
         "arguments": [
           {
             "name": "Target",
@@ -17390,7 +17544,7 @@
         "realms": [
           "client"
         ],
-        "description": "Copies the contents of one texture to another. Only works with rendertargets.",
+        "description": "Copies the contents of one texture to another. Only works with rendertargets.\n<warning>This does not copy the Depth buffer, no method for that is known at this moment so a common workaround is to store the source texture somewhere else, perform your drawing operations, save the result somewhere else and reapply the source texture.\n</warning>",
         "arguments": [
           {
             "name": "texture_from",
@@ -17409,7 +17563,7 @@
           "client",
           "menu"
         ],
-        "description": "Changes the cull mode.",
+        "description": "Sets the cull mode. The culling mode defines how back faces are culled when rendering geometry.",
         "arguments": [
           {
             "name": "cullMode",
@@ -18020,10 +18174,11 @@
         "realms": [
           "client"
         ],
+        "description": "<internal>You can use <page>Global.GetRenderTargetEx</page> if you need to create a Render Target</internal>\nReturns the Render Target texture that is used internally for the <page text=\"Bloom\">Global.DrawBloom</page> <page text=\"Post Processing\">Post-Processing_Materials</page> effect.",
         "returnValues": [
           {
             "type": "ITexture",
-            "description": "The bloom texture"
+            "description": "The render target texture named `s_pBloomTex0`."
           }
         ]
       },
@@ -18033,9 +18188,11 @@
         "realms": [
           "client"
         ],
+        "description": "<internal>You probably want to just use a custom render target. See <page>Global.GetRenderTargetEx</page>.</internal>\n\nReturns the Render Target texture used internally for the <page text=\"Blur\">render.BlurRenderTarget</page> <page text=\"Post Processing\">Post-Processing_Materials</page> effect.\n\nDespite its name, this function is not used for the <page text=\"Bloom\">Global.DrawBloom</page> effect.",
         "returnValues": [
           {
-            "type": "ITexture"
+            "type": "ITexture",
+            "description": "The render target texture named `s_pBloomTex1`."
           }
         ]
       },
@@ -18140,10 +18297,11 @@
         "realms": [
           "client"
         ],
-        "description": "Returns the `_rt_FullFrameDepth` texture. Alias of `_rt_PowerOfTwoFB`",
+        "description": "Returns the full screen depth texture.",
         "returnValues": [
           {
-            "type": "ITexture"
+            "type": "ITexture",
+            "description": "The `_rt_FullFrameDepth` texture."
           }
         ]
       },
@@ -18189,9 +18347,11 @@
         "realms": [
           "client"
         ],
+        "description": "<internal>You probably want to just use a custom render target. See <page>Global.GetRenderTargetEx</page>.</internal>\n\nReturns the first render target texture that is used internally for Motion Blur and Frame Blend post processing effects.",
         "returnValues": [
           {
-            "type": "ITexture"
+            "type": "ITexture",
+            "description": "The render target named `s_pMoBlurTex0`."
           }
         ]
       },
@@ -18201,9 +18361,11 @@
         "realms": [
           "client"
         ],
+        "description": "<internal>You probably want to just use a custom render target. See <page>Global.GetRenderTargetEx</page>.</internal>\n\nReturns the second render target texture that is used internally for Motion Blur and Frame Blend post processing effects.",
         "returnValues": [
           {
-            "type": "ITexture"
+            "type": "ITexture",
+            "description": "The render target named `s_pMoBlurTex1`."
           }
         ]
       },
@@ -18213,9 +18375,11 @@
         "realms": [
           "client"
         ],
+        "description": "<internal>You probably want to just use a custom render target. See <page>Global.GetRenderTargetEx</page>.</internal>\n\nReturns the first render target texture that was used internally for Morph post processing effect\n\nThe post processing effect was removed from the base game at some point during development of Garry's Mod 13, but can still be found as a community mod: https://steamcommunity.com/sharedfiles/filedetails/?id=501088470",
         "returnValues": [
           {
-            "type": "ITexture"
+            "type": "ITexture",
+            "description": "The render target texture named `s_pMorphTexture0`."
           }
         ]
       },
@@ -18225,9 +18389,11 @@
         "realms": [
           "client"
         ],
+        "description": "<internal>You probably want to just use a custom render target. See <page>Global.GetRenderTargetEx</page>.</internal>\n\nReturns the second render target texture that was used internally for Morph post processing effect.\n\nSee <page>render.GetMorphTex0</page> for more information..",
         "returnValues": [
           {
-            "type": "ITexture"
+            "type": "ITexture",
+            "description": "The render target texture named `s_pMorphTexture1`."
           }
         ]
       },
@@ -18237,11 +18403,11 @@
         "realms": [
           "client"
         ],
-        "description": "Returns the render target's power of two texture.",
+        "description": "Returns the Power Of Two Frame Buffer texture.",
         "returnValues": [
           {
             "type": "ITexture",
-            "description": "The power of two texture, which is **_rt_poweroftwofb** by default."
+            "description": "The power of two texture, which is `_rt_PowerOfTwoFB` by default."
           }
         ]
       },
@@ -18251,10 +18417,11 @@
         "realms": [
           "client"
         ],
-        "description": "Alias of <page>render.GetPowerOfTwoTexture</page>.",
+        "description": "<deprecated>Alias of <page>render.GetPowerOfTwoTexture</page>.</deprecated>\n\nAlias of <page>render.GetPowerOfTwoTexture</page>.",
         "returnValues": [
           {
-            "type": "ITexture"
+            "type": "ITexture",
+            "description": "The <page>render.GetPowerOfTwoTexture</page>."
           }
         ]
       },
@@ -18314,9 +18481,11 @@
         "realms": [
           "client"
         ],
+        "description": "Returns the first quarter sized frame buffer texture.",
         "returnValues": [
           {
-            "type": "ITexture"
+            "type": "ITexture",
+            "description": "The render target texture named `_rt_SmallFB0`."
           }
         ]
       },
@@ -18326,9 +18495,11 @@
         "realms": [
           "client"
         ],
+        "description": "Returns the second quarter sized frame buffer texture.",
         "returnValues": [
           {
-            "type": "ITexture"
+            "type": "ITexture",
+            "description": "The render target texture named `_rt_SmallFB1`."
           }
         ]
       },
@@ -18338,11 +18509,11 @@
         "realms": [
           "client"
         ],
-        "description": "Returns a floating point texture the same resolution as the screen.\n\n<note>The <page>gmodscreenspace</page> doesn't behave as expected when drawing a floating-point texture to an integer texture (e.g. the default render target). Use an UnlitGeneric material instead</note>",
+        "description": "Returns a floating point texture (RGBA16161616F format) the same resolution as the screen.\n\n<note>The <page>gmodscreenspace</page> doesn't behave as expected when drawing a floating-point texture to an integer texture (e.g. the default render target). Use an UnlitGeneric material instead</note>",
         "returnValues": [
           {
             "type": "ITexture",
-            "description": "Render target named \"__rt_supertexture1\""
+            "description": "Render target named `__rt_SuperTexture1`"
           }
         ]
       },
@@ -18356,7 +18527,7 @@
         "returnValues": [
           {
             "type": "ITexture",
-            "description": "Render target named \"__rt_supertexture2\""
+            "description": "Render target named `__rt_SuperTexture2`."
           }
         ]
       },
@@ -18433,6 +18604,7 @@
           {
             "name": "material",
             "type": "IMaterial",
+            "default": "nil",
             "description": "The material to use as override, use nil to disable."
           }
         ]
@@ -18448,12 +18620,14 @@
           {
             "name": "index",
             "type": "number",
-            "description": "The index of the material to override, in range of 0 to 31."
+            "default": "nil",
+            "description": "The index of the material to override, in range of 0 to 31. `nil` will reset all overrides."
           },
           {
             "name": "material",
             "type": "IMaterial",
-            "description": "The material to override with"
+            "default": "nil",
+            "description": "The material to override with, `nil` will reset the override for given index."
           }
         ]
       },
@@ -18782,7 +18956,7 @@
         "realms": [
           "client"
         ],
-        "description": "Enables the flashlight projection for the upcoming rendering.\n\n<warning>This will leave models lit under specific conditions. You should use <page>render.RenderFlashlights</page> which is meant as a direct replacement for this function.</warning>",
+        "description": "Enables the flashlight projection for the upcoming rendering.\n\n<deprecated>This will leave models lit under specific conditions. You should use <page>render.RenderFlashlights</page> which is meant as a direct replacement for this function.</deprecated>",
         "arguments": [
           {
             "name": "enable",
@@ -19663,7 +19837,7 @@
         "returnValues": [
           {
             "type": "ITexture",
-            "description": "Returns <page>render.GetPowerOfTwoTexture</page>."
+            "description": "The <page>render.GetPowerOfTwoTexture</page>."
           }
         ]
       },
@@ -19733,7 +19907,7 @@
         "realms": [
           "server"
         ],
-        "description": "Adds the specified file to the files the client should download.\n\nIf you wish to add textures or models, consider using <page>resource.AddFile</page> to add all the files required for a texture/model.\n\n<warning>There's a 8192 downloadable file limit. </warning>\n<note>If you need more than 8192, consider using Workshop addons - <page>resource.AddWorkshop</page>. You should also consider the fact that you have way too many downloads. This limit is shared among all resource.Add functions.</note>\n\n<note>The file must exist on the server or players will not download it!</note>",
+        "description": "Adds the specified file to the files the client should download.\n\nIf you wish to add textures or models, consider using <page>resource.AddFile</page> to add all the files required for a texture/model.\n\n<warning>There's a 8192 downloadable file limit. If you need more than 8192, consider using Workshop addons - <page>resource.AddWorkshop</page>. You should also consider the fact that you have way too many downloads. This limit is shared among all resource.Add functions.</warning>\n\n<note>The file must exist on the server or players will not download it!</note>",
         "arguments": [
           {
             "name": "path",
@@ -19748,7 +19922,7 @@
         "realms": [
           "server"
         ],
-        "description": "Adds a workshop addon for the client to download before entering the server.\n\nHaving the raw files from a workshop item does not count as having already downloaded it.<br>\nSo players who previously downloaded a map through Fast Download will have to re-download it if you use the workshop.\n\nYou should try to only add addons that have custom content ( models, sounds, etc ).\n\nGamemodes that are <page text=\"workshop enabled\">Gamemode_Creation#Gamemode_Text_File</page> are automatically added to this list - so there's no need to add them.\n\n\nThe server's current map is also automatically added, if it is loaded from a workshop addon.\n\n<warning>This will not \"install\" the addon on your server, see <page>Workshop for Dedicated Servers</page> for installing Steam Workshop addons onto your servers</warning>",
+        "description": "Adds a workshop addon for the client to download before entering the server. This will not \"install\" the addon on your server, see <page>Workshop for Dedicated Servers</page> for installing Steam Workshop addons onto your servers.\n\nHaving the raw files from a workshop item does not count as having already downloaded it.<br>\nSo players who previously downloaded a map through Fast Download will have to re-download it if it is part of a workshop addon.\n\nYou should try to only add addons that have custom content (models, sounds, etc).\n\nGamemodes that are <page text=\"workshop enabled\">Gamemode_Creation#Gamemode_Text_File</page> and the current map are automatically added to this list, if they come from the servers' workshop collection - so there's no need to manually add them.\n\n<warning>There's a 8192 downloadable file limit. If you need more than 8192.</warning>",
         "arguments": [
           {
             "name": "workshopid",
@@ -20610,6 +20784,12 @@
             "type": "number",
             "default": "1",
             "description": "Output volume of the sound in range 0 to 1."
+          },
+          {
+            "name": "dsp",
+            "type": "number",
+            "default": "0",
+            "description": "The DSP preset for this sound. [List of DSP presets](https://developer.valvesoftware.com/wiki/Dsp_presets)"
           }
         ]
       },
@@ -20685,6 +20865,7 @@
           {
             "name": "menu_only",
             "type": "boolean",
+            "default": "false",
             "description": "Should we activate this tool in the menu only or also the toolgun? `true` = menu only,`false` = toolgun aswell"
           }
         ]
@@ -20739,7 +20920,7 @@
           {
             "name": "constructor",
             "type": "function",
-            "description": "A function that is called whenever we need create a new panel for this content type.\n\nIt has two arguments:\n\n\n<page>Panel</page> container - The container/parent of the new panel\n\n\n<page>table</page> data - Data for the content type passed from <page>spawnmenu.CreateContentIcon</page>"
+            "description": "A function that is called whenever we need create a new panel for this content type.\n\nIt has two arguments:\n* <page>Panel</page> container - The container/parent of the new panel from <page>spawnmenu.CreateContentIcon</page>.\n* <page>table</page> data - Data for the content type passed from <page>spawnmenu.CreateContentIcon</page>."
           }
         ]
       },
@@ -20955,18 +21136,19 @@
           {
             "name": "parent",
             "type": "Panel",
+            "default": "nil",
             "description": "The parent to add the content icon to."
           },
           {
             "name": "data",
             "type": "table",
-            "description": "The data to send to the content icon in <page>spawnmenu.AddContentType</page>"
+            "description": "The data to send to the content icon in <page>spawnmenu.AddContentType</page>."
           }
         ],
         "returnValues": [
           {
             "type": "Panel",
-            "description": "The created content icon, if it was returned by <page>spawnmenu.AddContentType</page>"
+            "description": "The created content icon, if it was returned by <page>spawnmenu.AddContentType</page>."
           }
         ]
       },
@@ -21157,7 +21339,7 @@
         "arguments": [
           {
             "name": "id",
-            "type": "number",
+            "type": "string",
             "description": "The tab ID to open"
           }
         ]
@@ -21325,7 +21507,7 @@
           "client",
           "server"
         ],
-        "description": "Escapes dangerous characters and symbols from user input used in an SQLite SQL Query.\n\n<note>this function is not meant to be used with external database engines such as `MySQL`. Escaping strings with inadequate functions is dangerous!</note>",
+        "description": "Escapes dangerous characters and symbols from user input used in an SQLite SQL Query.\n\n<note>This function is not meant to be used with external database engines such as `MySQL`. Escaping strings with inadequate functions is dangerous!</note>",
         "arguments": [
           {
             "name": "string",
@@ -21582,6 +21764,23 @@
             "name": "desc",
             "type": "string",
             "description": "Description of the Workshop submission"
+          },
+          {
+            "name": "callback",
+            "type": "function",
+            "description": "Callback for when the publishing process finishes. Has 2 args:\n* <page>number</page> fileID - If success, file id of the published item.\n* <page>string</page> error - On failure, the error message."
+          },
+          {
+            "name": "fileid",
+            "type": "number",
+            "default": "nil",
+            "description": "If set, the file ID to update"
+          },
+          {
+            "name": "changelist",
+            "type": "string",
+            "default": "None given.",
+            "description": "List of changes when updating an item."
           }
         ]
       },
@@ -22994,6 +23193,7 @@
           {
             "name": "char",
             "type": "string",
+            "default": "%s",
             "description": "Custom character to remove"
           }
         ],
@@ -23022,6 +23222,7 @@
           {
             "name": "char",
             "type": "string",
+            "default": "%s",
             "description": "Custom character to remove, default is a space"
           }
         ],
@@ -25930,7 +26131,7 @@
         "realms": [
           "server"
         ],
-        "description": "Writes an angle to the usermessage.",
+        "description": "<deprecated>You should be using the <page>net</page> instead</deprecated>\nWrites an angle to the usermessage.",
         "arguments": [
           {
             "name": "angle",
@@ -25945,7 +26146,7 @@
         "realms": [
           "server"
         ],
-        "description": "Writes a bool to the usermessage.",
+        "description": "<deprecated>You should be using the <page>net</page> instead</deprecated>\nWrites a bool to the usermessage.",
         "arguments": [
           {
             "name": "bool",
@@ -25960,7 +26161,7 @@
         "realms": [
           "server"
         ],
-        "description": "Writes a signed char to the usermessage.",
+        "description": "<deprecated>You should be using the <page>net</page> instead</deprecated>\nWrites a signed char to the usermessage.",
         "arguments": [
           {
             "name": "char",
@@ -25975,7 +26176,7 @@
         "realms": [
           "server"
         ],
-        "description": "Dispatches the usermessage to the client(s)."
+        "description": "<deprecated>You should be using the <page>net</page> instead</deprecated>\nDispatches the usermessage to the client(s)."
       },
       {
         "name": "Entity",
@@ -25983,7 +26184,7 @@
         "realms": [
           "server"
         ],
-        "description": "Writes an entity object to the usermessage.",
+        "description": "<deprecated>You should be using the <page>net</page> instead</deprecated>\nWrites an entity object to the usermessage.",
         "arguments": [
           {
             "name": "entity",
@@ -25998,7 +26199,7 @@
         "realms": [
           "server"
         ],
-        "description": "Writes a float to the usermessage.",
+        "description": "<deprecated>You should be using the <page>net</page> instead</deprecated>\n\nWrites a float to the usermessage.",
         "arguments": [
           {
             "name": "float",
@@ -26013,7 +26214,7 @@
         "realms": [
           "server"
         ],
-        "description": "Writes a signed int (32 bit) to the usermessage.",
+        "description": "<deprecated>You should be using the <page>net</page> instead</deprecated>\n\nWrites a signed int (32 bit) to the usermessage.",
         "arguments": [
           {
             "name": "int",
@@ -26043,7 +26244,7 @@
         "realms": [
           "server"
         ],
-        "description": "Writes a signed short (16 bit) to the usermessage.",
+        "description": "<deprecated>You should be using the <page>net</page> instead</deprecated>\n\nWrites a signed short (16 bit) to the usermessage.",
         "arguments": [
           {
             "name": "short",
@@ -26078,7 +26279,7 @@
         "realms": [
           "server"
         ],
-        "description": "Writes a null terminated string to the usermessage.",
+        "description": "<deprecated>You should be using the <page>net</page> instead</deprecated>\nWrites a null terminated string to the usermessage.",
         "arguments": [
           {
             "name": "string",
@@ -26093,7 +26294,7 @@
         "realms": [
           "server"
         ],
-        "description": "Writes a Vector to the usermessage.",
+        "description": "<deprecated>You should be using the <page>net</page> instead</deprecated>\n\nWrites a Vector to the usermessage.",
         "arguments": [
           {
             "name": "vector",
@@ -26108,7 +26309,7 @@
         "realms": [
           "server"
         ],
-        "description": "Writes a vector normal to the usermessage.",
+        "description": "<deprecated>You should be using the <page>net</page> instead</deprecated>\n\nWrites a vector normal to the usermessage.",
         "arguments": [
           {
             "name": "normal",
@@ -26205,7 +26406,8 @@
           {
             "name": "NiceText",
             "type": "string",
-            "description": "Text that appears in the player's undo history"
+            "default": "nil",
+            "description": "Text that appears in the player's undo history. If unset, is set to undo's name."
           }
         ]
       },
@@ -26309,11 +26511,11 @@
           "client",
           "server"
         ],
-        "description": "Returns a table of every usermessage hook",
+        "description": "<deprecated>You should be using <page>net</page> instead</deprecated>\n\nReturns a table of every usermessage hook",
         "returnValues": [
           {
             "type": "table",
-            "description": "hooks"
+            "description": "User message hooks"
           }
         ]
       },
@@ -26831,7 +27033,7 @@
         "returnValues": [
           {
             "type": "string",
-            "description": "The compressed string, or nil if the input string was zero length (\"\")."
+            "description": "The compressed string, or an empty string if the input string was zero length (\"\")."
           }
         ]
       },
@@ -26991,13 +27193,13 @@
             "name": "maxSize",
             "type": "number",
             "default": "nil",
-            "description": "The maximal size in bytes it will decompress."
+            "description": "The maximum size of uncompressed data in bytes, if greater it fails."
           }
         ],
         "returnValues": [
           {
             "type": "string",
-            "description": "The original, decompressed string or an empty string on failure or invalid input."
+            "description": "The original, decompressed string or `nil` on failure or invalid input. Also returns empty string if the input string was zero length (\"\")."
           }
         ]
       },
@@ -27053,7 +27255,7 @@
           {
             "name": "effectName",
             "type": "string",
-            "description": "The name of the effect to create.\n\nYou can find a list of <page text=\"built-in engine effects here\">Effects</page>. You can create your own, [example effects can be found here](https://github.com/garrynewman/garrysmod/tree/master/garrysmod/gamemodes/sandbox/entities/effects) and [here](https://github.com/garrynewman/garrysmod/tree/master/garrysmod/gamemodes/base/entities/effects)."
+            "description": "The name of the effect to create.\n\nYou can find a list of <page text=\"built-in engine effects here\">Default_Effects</page>. You can create your own, [example effects can be found here](https://github.com/garrynewman/garrysmod/tree/master/garrysmod/gamemodes/sandbox/entities/effects) and [here](https://github.com/garrynewman/garrysmod/tree/master/garrysmod/gamemodes/base/entities/effects)."
           },
           {
             "name": "effectData",
@@ -27132,6 +27334,27 @@
             "type": "string",
             "name": "relativepath",
             "description": "The relative path to the GMA file."
+          }
+        ]
+      },
+      {
+        "name": "GetAnimEventNameByID",
+        "parent": "util",
+        "realms": [
+          "server"
+        ],
+        "description": "Returns a name for given automatically generated numerical animation event ID. This is useful for NPC models that define custom animation events.",
+        "arguments": [
+          {
+            "name": "id",
+            "type": "number",
+            "description": "The ID of an animation event, typically from <page>ENTITY:HandleAnimEvent</page>."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "string",
+            "description": "The associated name with given event ID."
           }
         ]
       },
@@ -27702,6 +27925,51 @@
           {
             "type": "boolean",
             "description": "`true` if the point is within the cone, `false` otherwise."
+          }
+        ]
+      },
+      {
+        "name": "IsRayIntersectingRay",
+        "parent": "util",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Performs a ray-ray intersection and returns whether there was an intersection or not.",
+        "arguments": [
+          {
+            "name": "ray1Start",
+            "type": "Vector",
+            "description": "Start position of the first ray."
+          },
+          {
+            "name": "ray1End",
+            "type": "Vector",
+            "description": "End position of the first ray."
+          },
+          {
+            "name": "ray2Start",
+            "type": "Vector",
+            "description": "Start position of the second ray."
+          },
+          {
+            "name": "ray2End",
+            "type": "Vector",
+            "description": "End position of the second ray."
+          }
+        ],
+        "returnValues": [
+          {
+            "type": "boolean",
+            "description": "`true` if there is an intersection, `false` otherwise."
+          },
+          {
+            "type": "number",
+            "description": "Distance from start of ray 1 to the intersection, if there was one."
+          },
+          {
+            "type": "number",
+            "description": "Distance from start of ray 2 to the intersection, if there was one."
           }
         ]
       },
@@ -28406,7 +28674,7 @@
           {
             "name": "pos",
             "type": "Vector",
-            "description": "The origin of the effect.\n<note>Does nothing on client.</note>"
+            "description": "The origin of the effect.\n\nUsed serverside only, to determine which clients the event should be networked to."
           },
           {
             "name": "amplitude",
@@ -28426,13 +28694,19 @@
           {
             "name": "radius",
             "type": "number",
-            "description": "The range from the origin within which views will be affected, in Hammer units.\n<note>Does nothing on client.</note>"
+            "description": "The range from the origin within which views will be affected, in Hammer units.\n\nThis is used when networking the event to clients only."
           },
           {
             "name": "airshake",
             "type": "boolean",
             "default": "false",
-            "description": "whether players in the air should also be affected."
+            "description": "Whether players in the air should also be affected.\n\nUsed serverside only to determine which clients to send the event to."
+          },
+          {
+            "name": "filter",
+            "type": "CRecipientFilter",
+            "default": "nil",
+            "description": "If set, will only network the screen shake event to players present in the filter."
           }
         ]
       },
@@ -29027,7 +29301,7 @@
           "client",
           "menu"
         ],
-        "description": "Creates a panel from table. Typically used with <page>vgui.RegisterFile</page> and <page>vgui.RegisterTable</page>.",
+        "description": "Creates a panel from a table, used alongside <page>vgui.RegisterFile</page> and <page>vgui.RegisterTable</page> to efficiently define, register, and instantiate custom panels.",
         "arguments": [
           {
             "name": "metatable",
@@ -29296,7 +29570,7 @@
           {
             "name": "panel",
             "type": "table",
-            "description": "The PANEL table."
+            "description": "The <page>PANEL</page> table."
           },
           {
             "name": "base",
@@ -29308,7 +29582,7 @@
         "returnValues": [
           {
             "type": "table",
-            "description": "The PANEL table"
+            "description": "The <page>PANEL</page> table"
           }
         ]
       }

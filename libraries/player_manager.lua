@@ -20,6 +20,7 @@ end
 
 ---  client|server
 --- Returns the entire list of valid player models.  
+--- @return table @List of all valid player models.
 function player_manager.AllValidModels()
 end
 
@@ -45,8 +46,9 @@ end
 ---  client|server
 --- Applies basic class variables when the player spawns.  
 --- Called from GM:PlayerSpawn in the base gamemode.  
---- @param ply Player @Player to setup
-function player_manager.OnPlayerSpawn(ply)
+--- @param ply Player @Player to setup.
+--- @param transiton boolean @If true, the player just spawned from a map transition
+function player_manager.OnPlayerSpawn(ply, transiton)
 end
 
 ---  client|server

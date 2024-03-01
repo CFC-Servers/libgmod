@@ -55,7 +55,7 @@ function render.Clear(r, g, b, a, clearDepth, clearStencil)
 end
 
 ---  client|menu
---- Clears the current rendertarget for obeying the current stencil buffer conditions.  
+--- Clears the portion of the active Render Target that passes the current stencil buffer conditions.  
 --- @param r number @Value of the **red** channel to clear the current rt with.
 --- @param g number @Value of the **green** channel to clear the current rt with.
 --- @param b number @Value of the **blue** channel to clear the current rt with.
@@ -121,19 +121,21 @@ end
 
 ---  client
 --- Copies the currently active Render Target to the specified texture.  
+--- ⚠ **WARNING**: This does not copy the Depth buffer, no method for that is known at this moment so a common workaround is to store the source texture somewhere else, perform your drawing operations, save the result somewhere else and reapply the source texture.  
 --- @param Target ITexture @The texture to copy to
 function render.CopyRenderTargetToTexture(Target)
 end
 
 ---  client
 --- Copies the contents of one texture to another. Only works with rendertargets.  
+--- ⚠ **WARNING**: This does not copy the Depth buffer, no method for that is known at this moment so a common workaround is to store the source texture somewhere else, perform your drawing operations, save the result somewhere else and reapply the source texture.  
 --- @param texture_from ITexture 
 --- @param texture_to ITexture 
 function render.CopyTexture(texture_from, texture_to)
 end
 
 ---  client|menu
---- Changes the cull mode.  
+--- Sets the cull mode. The culling mode defines how back faces are culled when rendering geometry.  
 --- @param cullMode number @Cullmode, see Enums/MATERIAL_CULLMODE
 function render.CullMode(cullMode)
 end
@@ -342,16 +344,6 @@ function render.GetBlend()
 end
 
 ---  client
---- @return ITexture @The bloom texture
-function render.GetBloomTex0()
-end
-
----  client
---- @return ITexture 
-function render.GetBloomTex1()
-end
-
----  client
 --- Returns the current color modulation values as normals.  
 --- @return number @r
 --- @return number @g
@@ -388,8 +380,8 @@ function render.GetFogMode()
 end
 
 ---  client
---- Returns the `_rt_FullFrameDepth` texture. Alias of `_rt_PowerOfTwoFB`  
---- @return ITexture 
+--- Returns the full screen depth texture.  
+--- @return ITexture @The `_rt_FullFrameDepth` texture.
 function render.GetFullScreenDepthTexture()
 end
 
@@ -407,34 +399,16 @@ function render.GetLightColor(position)
 end
 
 ---  client
---- @return ITexture 
-function render.GetMoBlurTex0()
-end
-
----  client
---- @return ITexture 
-function render.GetMoBlurTex1()
-end
-
----  client
---- @return ITexture 
-function render.GetMorphTex0()
-end
-
----  client
---- @return ITexture 
-function render.GetMorphTex1()
-end
-
----  client
---- Returns the render target's power of two texture.  
---- @return ITexture @The power of two texture, which is **_rt_poweroftwofb** by default.
+--- Returns the Power Of Two Frame Buffer texture.  
+--- @return ITexture @The power of two texture, which is `_rt_PowerOfTwoFB` by default.
 function render.GetPowerOfTwoTexture()
 end
 
 ---  client
+--- 🛑 **DEPRECATED**: Alias of render.GetPowerOfTwoTexture.  
 --- Alias of render.GetPowerOfTwoTexture.  
---- @return ITexture 
+--- @deprecated
+--- @return ITexture @The render.GetPowerOfTwoTexture.
 function render.GetRefractTexture()
 end
 
@@ -460,25 +434,27 @@ function render.GetScreenEffectTexture(textureIndex)
 end
 
 ---  client
---- @return ITexture 
+--- Returns the first quarter sized frame buffer texture.  
+--- @return ITexture @The render target texture named `_rt_SmallFB0`.
 function render.GetSmallTex0()
 end
 
 ---  client
---- @return ITexture 
+--- Returns the second quarter sized frame buffer texture.  
+--- @return ITexture @The render target texture named `_rt_SmallFB1`.
 function render.GetSmallTex1()
 end
 
 ---  client
---- Returns a floating point texture the same resolution as the screen.  
+--- Returns a floating point texture (RGBA16161616F format) the same resolution as the screen.  
 --- ℹ **NOTE**: The gmodscreenspace doesn't behave as expected when drawing a floating-point texture to an integer texture (e.g. the default render target). Use an UnlitGeneric material instead  
---- @return ITexture @Render target named "__rt_supertexture1"
+--- @return ITexture @Render target named `__rt_SuperTexture1`
 function render.GetSuperFPTex()
 end
 
 ---  client
 --- See render.GetSuperFPTex  
---- @return ITexture @Render target named "__rt_supertexture2"
+--- @return ITexture @Render target named `__rt_SuperTexture2`.
 function render.GetSuperFPTex2()
 end
 
@@ -505,15 +481,15 @@ end
 
 ---  client
 --- Sets the render material override for all next calls of Entity:DrawModel. Also overrides render.MaterialOverrideByIndex.  
---- @param material IMaterial @The material to use as override, use nil to disable.
+--- @param material? IMaterial @The material to use as override, use nil to disable.
 function render.MaterialOverride(material)
 end
 
 ---  client
 --- Similar to render.MaterialOverride, but overrides the materials per index. Similar to Entity:SetSubMaterial  
 --- render.MaterialOverride overrides effects of this function.  
---- @param index number @The index of the material to override, in range of 0 to 31.
---- @param material IMaterial @The material to override with
+--- @param index? number @The index of the material to override, in range of 0 to 31
+--- @param material? IMaterial @The material to override with, `nil` will reset the override for given index.
 function render.MaterialOverrideByIndex(index, material)
 end
 
@@ -652,8 +628,9 @@ end
 
 ---  client
 --- Enables the flashlight projection for the upcoming rendering.  
---- ⚠ **WARNING**: This will leave models lit under specific conditions. You should use render.RenderFlashlights which is meant as a direct replacement for this function.  
+--- 🛑 **DEPRECATED**: This will leave models lit under specific conditions. You should use render.RenderFlashlights which is meant as a direct replacement for this function.  
 --- @param enable? boolean @Whether the flashlight mode should be enabled or disabled.
+--- @deprecated
 function render.PushFlashlightMode(enable)
 end
 
@@ -1022,7 +999,7 @@ end
 
 ---  client
 --- Updates the power of two texture.  
---- @return ITexture @Returns render.GetPowerOfTwoTexture.
+--- @return ITexture @The render.GetPowerOfTwoTexture.
 function render.UpdatePowerOfTwoTexture()
 end
 

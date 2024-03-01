@@ -86,11 +86,14 @@ function player.GetHumans()
 end
 
 ---  client|server
---- Returns an iterator for all players on the server.  
---- This will be quite a bit faster than player.GetAll, especially when using the `break` keyword.  
---- @return function @Iterator function
---- @return table @Table of all existing Players.
---- @return number @Will always be 0
+--- Returns a [Stateless Iterator](https://www.lua.org/pil/7.3.html) for all players on the server.  
+--- Intended for use in [Generic For Loops](https://www.lua.org/pil/4.3.5.html).  
+--- See ents.Iterator for a similar function for all entities.  
+--- Internally, this function uses cached values that exist entirely within lua, as opposed to player.GetAll, which is a C++ function.  
+--- Because switching from lua to C++ (and vice versa) incurs a performance cost, this function will be somewhat more efficient than player.GetAll.  
+--- @return function @The Iterator Function from ipairs
+--- @return table @Table of all existing Players
+--- @return number @The starting index for the table of players
 function player.Iterator()
 end
 

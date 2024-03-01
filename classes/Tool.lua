@@ -112,6 +112,14 @@ function Tool:GetPos(id)
 end
 
 ---  client|server
+--- 🛑 **DEPRECATED**: Use Tool:GetWeapon instead.  
+--- Returns the Tool Gun (`gmod_tool`) Scripted Weapon.  
+--- @deprecated
+--- @return Weapon @The tool gun weapon
+function Tool:GetSWEP()
+end
+
+---  client|server
 --- Attempts to grab a serverside tool ConVar.  
 --- This will not do anything on client, despite the function being defined shared.  
 --- @param name string @Name of the convar to retrieve
@@ -123,6 +131,12 @@ end
 --- Returns the current stage of the tool set by Tool:SetStage.  
 --- @return number @The current stage of the current operation the tool is at.
 function Tool:GetStage()
+end
+
+---  client|server
+--- Returns the Tool Gun (`gmod_tool`) Scripted Weapon.  
+--- @return Weapon @The tool gun weapon
+function Tool:GetWeapon()
 end
 
 ---  client|server

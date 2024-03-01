@@ -3,7 +3,7 @@ _G.spawnmenu = {}
 ---  client
 --- Activates a tool, opens context menu and brings up the tool gun.  
 --- @param tool string @Tool class/file name
---- @param menu_only boolean @Should we activate this tool in the menu only or also the toolgun? `true` = menu only,`false` = toolgun aswell
+--- @param menu_only? boolean @Should we activate this tool in the menu only or also the toolgun? `true` = menu only,`false` = toolgun aswell
 function spawnmenu.ActivateTool(tool, menu_only)
 end
 
@@ -92,9 +92,9 @@ end
 ---  client
 --- Creates a new content icon.  
 --- @param type string @The type of the content icon.
---- @param parent Panel @The parent to add the content icon to.
---- @param data table @The data to send to the content icon in spawnmenu.AddContentType
---- @return Panel @The created content icon, if it was returned by spawnmenu.AddContentType
+--- @param parent? Panel @The parent to add the content icon to.
+--- @param data table @The data to send to the content icon in spawnmenu.AddContentType.
+--- @return Panel @The created content icon, if it was returned by spawnmenu.AddContentType.
 function spawnmenu.CreateContentIcon(type, parent, data)
 end
 
@@ -149,7 +149,7 @@ end
 
 ---  client
 --- Switches the creation tab (left side of the spawnmenu) on the spawnmenu to the given tab.  
---- @param id number @The tab ID to open
+--- @param id string @The tab ID to open
 function spawnmenu.SwitchCreationTab(id)
 end
 

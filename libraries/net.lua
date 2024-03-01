@@ -315,11 +315,10 @@ end
 
 ---  client|server
 --- Appends an unsigned integer with 64 bits to the current net message.  
---- ℹ **NOTE**:   
---- The limit for an uint64 is 18.446.744.073.709.551.615.  
+--- The limit for an uint64 is 18'446'744'073'709'551'615.  
 --- Everything above the limit will be set to the limit.  
 --- Unsigned numbers **do not** support negative numbers.  
---- @param uint64 string @The uint64 to be sent
+--- @param uint64 string @The 64 bit value to be sent
 function net.WriteUInt64(uint64)
 end
 

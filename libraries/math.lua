@@ -23,7 +23,8 @@
 --- </example>  
 --- <example>  
 --- A brief visual example of different easing methods  
---- </example>  
+--- <upload src="ab571/8dc38906fb4cfbe.gif" size="4162886" name="easing_examples.gif">  
+--- </upload></example>  
 _G.math = {}
 ---  menu|client|server
 --- Calculates the difference between two angles.  

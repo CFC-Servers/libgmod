@@ -31,10 +31,11 @@ end
 --- This function calls GM:PreCleanupMap before cleaning up the map and GM:PostCleanupMap after cleaning up the map.  
 --- 🦟 **BUG**: [Calling this in a ENTITY:StartTouch or ENTITY:Touch hook will crash the game.](https://github.com/Facepunch/garrysmod-issues/issues/1142)  
 --- 🦟 **BUG**: [Calling this destroys all BASS streams.](https://github.com/Facepunch/garrysmod-issues/issues/2874)  
---- 🦟 **BUG**: [This can crash when removing _firesmoke entities. **You can use the example below to workaround this issue.**](https://github.com/Facepunch/garrysmod-issues/issues/3637)  
+--- 🦟 **BUG**: [This can crash when removing `_firesmoke` entities. **You can use the example below to workaround this issue.**](https://github.com/Facepunch/garrysmod-issues/issues/3637)  
 --- @param dontSendToClients? boolean @If set to `true`, don't run this functions on all clients.
 --- @param extraFilters? table @Entity classes not to reset during cleanup.
-function game.CleanUpMap(dontSendToClients, extraFilters)
+--- @param callback? function @If set, delays the map cleanup until the end of a server tick, allowing bypassing the entity limit on maps with large amounts of them
+function game.CleanUpMap(dontSendToClients, extraFilters, callback)
 end
 
 ---  server
@@ -192,7 +193,7 @@ function game.KickID(id, reason)
 end
 
 ---  server
---- Loads the next map according to the nextlevel convar, or from the current mapcycle file set by the respective convar.  
+--- Loads the next map according to the `nextlevel` convar, or from the current `mapcyclefile` set by the respective convar.  
 function game.LoadNextMap()
 end
 

@@ -62,7 +62,8 @@ end
 --- @param level? number @Sound level in decibels
 --- @param pitch? number @The sound pitch
 --- @param volume? number @Output volume of the sound in range 0 to 1.
-function sound.Play(snd, pos, level, pitch, volume)
+--- @param dsp? number @The DSP preset for this sound
+function sound.Play(snd, pos, level, pitch, volume, dsp)
 end
 
 ---  client

@@ -12,7 +12,7 @@ function vgui.Create(classname, parent, name)
 end
 
 ---  client|menu
---- Creates a panel from table. Typically used with vgui.RegisterFile and vgui.RegisterTable.  
+--- Creates a panel from a table, used alongside vgui.RegisterFile and vgui.RegisterTable to efficiently define, register, and instantiate custom panels.  
 --- @param metatable table @Your PANEL table.
 --- @param parent? Panel @Which panel to parent the newly created panel to.
 --- @param name? string @Custom name of the created panel for scripting/debugging purposes

@@ -297,8 +297,7 @@ end
 --- Flags an entity as using custom lua defined collisions. Fixes entities having spongy player collisions or not hitting traces, such as after Entity:PhysicsFromMesh  
 --- Internally identical to `Entity:AddSolidFlags( bit.bor( FSOLID_CUSTOMRAYTEST, FSOLID_CUSTOMBOXTEST ) )`  
 --- Do not confuse this function with Entity:SetCustomCollisionCheck, they are not the same.  
---- @param useCustom boolean @True to flag this entity
-function Entity:EnableCustomCollisions(useCustom)
+function Entity:EnableCustomCollisions()
 end
 
 ---  client
@@ -2209,8 +2208,8 @@ function Entity:IsWidget()
 end
 
 ---  client|server
---- Returns if the entity is the map's Entity[0] worldspawn  
---- @return boolean @isWorld
+--- Returns if this entity is the map entity `Entity[0] worldspawn`.  
+--- @return boolean @Whether this entity is the world entity.
 function Entity:IsWorld()
 end
 
@@ -4049,8 +4048,8 @@ end
 --- ⚠ **WARNING**: Calling this function on the victim entity in ENTITY:OnTakeDamage can cause infinite loops.  
 --- ⚠ **WARNING**: This function does not seem to do any damage if you apply it to a player who is driving a prop_vehicle_jeep or prop_vehicle_jeep_old vehicle. You need to call it on the vehicle instead.  
 --- @param damageAmount number @The amount of damage to be applied.
---- @param attacker Entity @The entity that initiated the attack that caused the damage.
---- @param inflictor Entity @The entity that applied the damage, eg
+--- @param attacker? Entity @The entity that initiated the attack that caused the damage.
+--- @param inflictor? Entity @The entity that applied the damage, eg
 function Entity:TakeDamage(damageAmount, attacker, inflictor)
 end
 
@@ -4078,10 +4077,10 @@ function Entity:TestPVS(testPoint)
 end
 
 ---  client|server
---- Returns the ID of a PhysObj attached to the given bone. To be used with Entity:GetPhysicsObjectNum.  
+--- Returns the ID of a PhysObj attached to the given bone.  
 --- See Entity:TranslatePhysBoneToBone for reverse function.  
 --- @param boneID number @The ID of a bone to look up the "physics root" bone of.
---- @return number @The PhysObj ID of the given bone
+--- @return number @The PhysObj ID of the given bone to be used with Entity:GetPhysicsObjectNum or `-1` if we cannot translate for some reason, such as a model 
 function Entity:TranslateBoneToPhysBone(boneID)
 end
 
@@ -4101,7 +4100,7 @@ function Entity:UpdateBoneFollowers()
 end
 
 ---  client
---- Updates the shadow of this entity.  
+--- Marks the render-to-texture (RTT) shadow of this entity as dirty, as well as any potential projected texture shadows related to this entity, so they will be updated as soon as possible.  
 function Entity:UpdateShadow()
 end
 

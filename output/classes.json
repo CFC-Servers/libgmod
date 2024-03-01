@@ -4375,7 +4375,7 @@
         "realms": [
           "server"
         ],
-        "description": "Removes this node from the Closed List.\n\nUsed in pathfinding via the [A* algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm).\n\n\nMore information can be found on the <page>Simple Pathfinding</page> page."
+        "description": "<deprecated>Does nothing</deprecated>\n\nRemoves this node from the Closed List.\n\nUsed in pathfinding via the [A* algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm).\n\n\nMore information can be found on the <page>Simple Pathfinding</page> page."
       },
       {
         "name": "SetAttributes",
@@ -7736,14 +7736,7 @@
           "client",
           "server"
         ],
-        "description": "Flags an entity as using custom lua defined collisions. Fixes entities having spongy player collisions or not hitting traces, such as after <page>Entity:PhysicsFromMesh</page>\n\nInternally identical to `Entity:AddSolidFlags( bit.bor( FSOLID_CUSTOMRAYTEST, FSOLID_CUSTOMBOXTEST ) )`\n\nDo not confuse this function with <page>Entity:SetCustomCollisionCheck</page>, they are not the same.",
-        "arguments": [
-          {
-            "name": "useCustom",
-            "type": "boolean",
-            "description": "True to flag this entity"
-          }
-        ]
+        "description": "Flags an entity as using custom lua defined collisions. Fixes entities having spongy player collisions or not hitting traces, such as after <page>Entity:PhysicsFromMesh</page>\n\nInternally identical to `Entity:AddSolidFlags( bit.bor( FSOLID_CUSTOMRAYTEST, FSOLID_CUSTOMBOXTEST ) )`\n\nDo not confuse this function with <page>Entity:SetCustomCollisionCheck</page>, they are not the same."
       },
       {
         "name": "EnableMatrix",
@@ -12642,11 +12635,11 @@
           "client",
           "server"
         ],
-        "description": "Returns if the entity is the map's Entity[0] worldspawn",
+        "description": "Returns if this entity is the map entity `Entity[0] worldspawn`.",
         "returnValues": [
           {
             "type": "boolean",
-            "description": "isWorld"
+            "description": "Whether this entity is the world entity."
           }
         ]
       },
@@ -16794,11 +16787,13 @@
           {
             "name": "attacker",
             "type": "Entity",
+            "default": "nil",
             "description": "The entity that initiated the attack that caused the damage."
           },
           {
             "name": "inflictor",
             "type": "Entity",
+            "default": "nil",
             "description": "The entity that applied the damage, eg. a weapon."
           }
         ]
@@ -16861,7 +16856,7 @@
           "client",
           "server"
         ],
-        "description": "Returns the ID of a <page>PhysObj</page> attached to the given bone. To be used with <page>Entity:GetPhysicsObjectNum</page>.\n\nSee <page>Entity:TranslatePhysBoneToBone</page> for reverse function.",
+        "description": "Returns the ID of a <page>PhysObj</page> attached to the given bone.\n\nSee <page>Entity:TranslatePhysBoneToBone</page> for reverse function.",
         "arguments": [
           {
             "name": "boneID",
@@ -16872,7 +16867,7 @@
         "returnValues": [
           {
             "type": "number",
-            "description": "The <page>PhysObj</page> ID of the given bone.\n\n* -1 if we somehow cannot translate"
+            "description": "The <page>PhysObj</page> ID of the given bone to be used with <page>Entity:GetPhysicsObjectNum</page> or `-1` if we cannot translate for some reason, such as a model bone having no physics object associated with it."
           }
         ]
       },
@@ -16912,7 +16907,7 @@
         "realms": [
           "client"
         ],
-        "description": "Updates the shadow of this entity."
+        "description": "Marks the render-to-texture (RTT) shadow of this entity as dirty, as well as any potential projected texture shadows related to this entity, so they will be updated as soon as possible."
       },
       {
         "name": "Use",
@@ -20590,6 +20585,20 @@
         ]
       },
       {
+        "name": "GetIdealSequence",
+        "parent": "NPC",
+        "realms": [
+          "server"
+        ],
+        "description": "Returns the ideal sequence the NPC currently wants to achieve.",
+        "returnValues": [
+          {
+            "type": "number",
+            "description": "The ideal sequence, specific to the NPCs model."
+          }
+        ]
+      },
+      {
         "name": "GetIdealYaw",
         "parent": "NPC",
         "realms": [
@@ -22172,7 +22181,8 @@
           {
             "name": "name",
             "type": "string",
-            "description": "The new squad name to set."
+            "default": "nil",
+            "description": "The new squad name to set. Do not provide this argument to reset the squad."
           }
         ]
       },
@@ -22434,7 +22444,7 @@
   },
   {
     "name": "Panel",
-    "description": "This is the base panel for every other [VGUI](vgui) panel.\n\nIt contains all of the basic methods, some of which may only work on certain VGUI elements. As their functionality is provided at the game's C/C++ level rather than by its Lua script extension, they are unfortunately unavailable for most practical purposes, however, they can still be obtained in a way similar to that provided by the <page>baseclass</page> library:\n\n```\n-- Create a new panel type NewPanel that inherits all of its functionality from DLabel,\n-- but has a different SetText method than DLabel does - all without the hassle of that\n-- old DLabel's default text getting in the way. Fun stuff.\n\nlocal PANEL = {}\n\nfunction PANEL:Init()\n\nself:SetText_Base( \"\" )\nself:SetText( \"Time for something different!\" )\n\nend\n\nfunction PANEL:Paint( aWide, aTall )\n\nlocal TextX, TextY = 0, 0\nlocal TextColor = Color( 255, 0, 0, 255 )\n\nsurface.SetFont( self:GetFont() or \"default\" )\nsurface.SetTextColor( TextColor )\nsurface.SetTextPos( TextX, TextY )\nsurface.DrawText( self:GetText() )\n\nend\n\n-- And here we go:\nPANEL.SetText_Base = FindMetaTable( \"Panel\" ).SetText\n\nfunction PANEL:SetText( aText )\n\nself.Text = tostring( aText )\n\nend\n\nfunction PANEL:GetText()\n\nreturn self.Text or \"\"\n\nend\n\nvgui.Register( \"NewPanel\", PANEL, \"DLabel\" )\n```",
+    "description": "This is the base panel for every other [VGUI](vgui) panel.\n\nIt contains all of the basic methods, some of which may only work on certain VGUI elements. See also <page>Panel Hooks</page>.\n\nAs their functionality is provided at the game's C/C++ level rather than by its Lua script extension, they are unfortunately unavailable for most practical purposes, however, they can still be obtained in a way similar to that provided by the <page>baseclass</page> library:\n\n```\n-- Create a new panel type NewPanel that inherits all of its functionality from DLabel,\n-- but has a different SetText method than DLabel does - all without the hassle of that\n-- old DLabel's default text getting in the way. Fun stuff.\n\nlocal PANEL = {}\n\nfunction PANEL:Init()\n\nself:SetText_Base( \"\" )\nself:SetText( \"Time for something different!\" )\n\nend\n\nfunction PANEL:Paint( aWide, aTall )\n\nlocal TextX, TextY = 0, 0\nlocal TextColor = Color( 255, 0, 0, 255 )\n\nsurface.SetFont( self:GetFont() or \"default\" )\nsurface.SetTextColor( TextColor )\nsurface.SetTextPos( TextX, TextY )\nsurface.DrawText( self:GetText() )\n\nend\n\n-- And here we go:\nPANEL.SetText_Base = FindMetaTable( \"Panel\" ).SetText\n\nfunction PANEL:SetText( aText )\n\nself.Text = tostring( aText )\n\nend\n\nfunction PANEL:GetText()\n\nreturn self.Text or \"\"\n\nend\n\nvgui.Register( \"NewPanel\", PANEL, \"DLabel\" )\n```",
     "functions": [
       {
         "name": "Add",
@@ -22647,7 +22657,7 @@
           "client",
           "menu"
         ],
-        "description": "Centers the panel on its parent."
+        "description": "Centers the panel on its parent.\n<note>This will center the panel using the current size of the panel so should be called AFTER setting or adjusting the size of the \tpanel</note>"
       },
       {
         "name": "CenterHorizontal",
@@ -22724,7 +22734,7 @@
           "client",
           "menu"
         ],
-        "description": "Marks all of the panel's children for deletion."
+        "description": "Removes all of the panel's children."
       },
       {
         "name": "ColorTo",
@@ -25402,7 +25412,7 @@
           "client",
           "menu"
         ],
-        "description": "Sets whether this panel's drawings should be clipped within the parent panel's bounds.\n\nSee also <page>Global.DisableClipping</page>.",
+        "description": "Sets whether this panel's drawings should be clipped within the parent panel's bounds.\n\n<note>\nThis only disabled clipping for the Paint Related functions (as far as i can tell at the current moment, more testing should be done) so things like the text of a <page>DLabel</page> will still be clipped to the parent.\n\nTo fully disable the clipping of any children see <page>Global.DisableClipping</page>.\n</note>",
         "arguments": [
           {
             "name": "clip",
@@ -26261,9 +26271,9 @@
         "description": "Allows you to set HTML code within a panel.",
         "arguments": [
           {
-            "name": "HTML code",
+            "name": "HTML",
             "type": "string",
-            "description": "The code to set."
+            "description": "The HTML code to set."
           }
         ]
       },
@@ -26375,6 +26385,7 @@
           {
             "name": "bodygroups",
             "type": "string",
+            "default": "nil",
             "description": "The body groups to set. Each single-digit number in the string represents a separate bodygroup, **This argument must be 9 characters in total**."
           }
         ]
@@ -26521,7 +26532,8 @@
           {
             "name": "size",
             "type": "number",
-            "description": "The size of the avatar to use. Acceptable sizes are 32, 64, 184."
+            "default": "32",
+            "description": "The size of the avatar to use. Acceptable sizes are `32`, `64`, `184`. Non matching sizes will be clamped down to the highest valid number."
           }
         ]
       },
@@ -27290,21 +27302,25 @@
           {
             "name": "offsetLeft",
             "type": "number",
+            "default": "nil",
             "description": "The left offset to the parent."
           },
           {
             "name": "offsetTop",
             "type": "number",
+            "default": "nil",
             "description": "The top offset to the parent."
           },
           {
             "name": "offsetRight",
             "type": "number",
+            "default": "nil",
             "description": "The right offset to the parent."
           },
           {
             "name": "offsetBottom",
             "type": "number",
+            "default": "nil",
             "description": "The bottom offset to the parent."
           }
         ]
@@ -29247,17 +29263,17 @@
           "client",
           "server"
         ],
-        "description": "Adds an entity to the player's clean up list.",
+        "description": "<note>This function is only available in Sandbox and its derivatives.</note>Adds an entity to the player's clean up list. This uses <page>cleanup.Add</page> internally.",
         "arguments": [
           {
             "name": "type",
             "type": "string",
-            "description": "Cleanup type"
+            "description": "The Cleanup type for this Entity."
           },
           {
             "name": "ent",
             "type": "Entity",
-            "description": "Entity to add"
+            "description": "The Entity to add."
           }
         ]
       },
@@ -29268,17 +29284,17 @@
           "client",
           "server"
         ],
-        "description": "<note>See [GetCount](/gmod/Player:GetCount) for list of types</note>Adds an entity to the total count of entities of same type.",
+        "description": "<note>This function is only available in Sandbox and its derivatives.</note>Adds an entity to the player's list of entities of the same type. See <page>Player:GetCount</page> to get the current count of entities of an entity type added with this function.",
         "arguments": [
           {
             "name": "str",
             "type": "string",
-            "description": "Entity type"
+            "description": "The type of this Entity."
           },
           {
             "name": "ent",
             "type": "Entity",
-            "description": "Entity"
+            "description": "The Entity you want to add to the list."
           }
         ]
       },
@@ -29288,12 +29304,12 @@
         "realms": [
           "server"
         ],
-        "description": "Add a certain amount to the player's death count",
+        "description": "Adds the provided amount to the player's death count.",
         "arguments": [
           {
             "name": "count",
             "type": "number",
-            "description": "number of deaths to add"
+            "description": "The amount to add to the death count."
           }
         ]
       },
@@ -29303,12 +29319,12 @@
         "realms": [
           "server"
         ],
-        "description": "Add a certain amount to the player's frag count (or kills count)",
+        "description": "Adds the provided amount to the player's frag/kill count.",
         "arguments": [
           {
             "name": "count",
             "type": "number",
-            "description": "number of frags to add"
+            "description": "The amount to add."
           }
         ]
       },
@@ -29318,17 +29334,17 @@
         "realms": [
           "server"
         ],
-        "description": "Adds a entity to the player's list of frozen objects.",
+        "description": "Adds an entity to the player's list of frozen objects.",
         "arguments": [
           {
             "name": "ent",
             "type": "Entity",
-            "description": "Entity"
+            "description": "The Entity to add."
           },
           {
             "name": "physobj",
             "type": "PhysObj",
-            "description": "Physics object belonging to ent"
+            "description": "The physics object of the Entity."
           }
         ]
       },
@@ -29369,7 +29385,7 @@
           "client",
           "server"
         ],
-        "description": "Plays a sequence directly from a sequence number, similar to <page>Player:AnimRestartGesture</page>. This function has the advantage to play sequences that haven't been bound to an existing <page>Enums/ACT</page>",
+        "description": "Plays a sequence directly from a sequence number, similar to <page>Player:AnimRestartGesture</page>. This function has the advantage to play sequences that haven't been bound to an existing <page>Enums/ACT</page>\n<warning>This is not automatically networked. This function has to be called on the client to be seen by said client.</warning>",
         "arguments": [
           {
             "name": "slot",
@@ -29608,18 +29624,18 @@
           "client",
           "server"
         ],
-        "description": "Checks if the limit is hit or not. If it is, it will throw a notification saying so.",
+        "description": "Checks if the limit of an entity type added by <page>Player:AddCount</page> is hit or not. If it's hit, it will call the <page>GM:PlayerCheckLimit</page> hook, and call <page>Player:LimitHit</page> if the hook doesn't return `false`.\n\nThis will always return `true` in singleplayer, as singleplayer does not have limits.\n\n<note>This function is only available in Sandbox and its derivatives.</note>",
         "arguments": [
           {
-            "name": "limitType",
+            "name": "str",
             "type": "string",
-            "description": "Limit type. In unmodified Sandbox possible values are:\n* \"props\"\n* \"ragdolls\"\n* \"vehicles\"\n* \"effects\"\n* \"balloons\"\n* \"cameras\"\n* \"npcs\"\n* \"sents\"\n* \"dynamite\"\n* \"lamps\"\n* \"lights\"\n* \"wheels\"\n* \"thrusters\"\n* \"hoverballs\"\n* \"buttons\"\n* \"emitters\""
+            "description": "The entity type to check the limit for. Default types:\n* \"props\"\n* \"ragdolls\"\n* \"vehicles\"\n* \"effects\"\n* \"balloons\"\n* \"cameras\"\n* \"npcs\"\n* \"sents\"\n* \"dynamite\"\n* \"lamps\"\n* \"lights\"\n* \"wheels\"\n* \"thrusters\"\n* \"hoverballs\"\n* \"buttons\"\n* \"emitters\""
           }
         ],
         "returnValues": [
           {
             "type": "boolean",
-            "description": "Returns true if limit is not hit, false if it is hit"
+            "description": "Returns `true` if the limit of this type is not hit, `false` otherwise."
           }
         ]
       },
@@ -30159,7 +30175,7 @@
           "client",
           "server"
         ],
-        "description": "Gets total count of entities of same type.\n\nDefault types:\n```\nballoons\nbuttons\ncameras\ndynamite\nemitters\nhoverballs\nlamps\nlights\nprops\nragdolls\nthrusters\nwheels\n```",
+        "description": "<note>This function is only available in Sandbox and its derivatives.</note>Gets the total amount of entities of an entity type added by <page>Player:AddCount</page>.\n\nDefault types:\n```\nballoons\nbuttons\ncameras\ndynamite\nemitters\nhoverballs\nlamps\nlights\nprops\nragdolls\nthrusters\nwheels\n```",
         "arguments": [
           {
             "name": "type",
@@ -34991,6 +35007,36 @@
         ]
       },
       {
+        "name": "GetSWEP",
+        "parent": "Tool",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "<deprecated>Use <page>Tool:GetWeapon</page> instead.</deprecated>\n\nReturns the Tool Gun (`gmod_tool`) Scripted <page>Weapon</page>.",
+        "returnValues": [
+          {
+            "type": "Weapon",
+            "description": "The tool gun weapon. (`gmod_tool`)"
+          }
+        ]
+      },
+      {
+        "name": "GetWeapon",
+        "parent": "Tool",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Returns the Tool Gun (`gmod_tool`) Scripted <page>Weapon</page>.",
+        "returnValues": [
+          {
+            "type": "Weapon",
+            "description": "The tool gun weapon. (`gmod_tool`)"
+          }
+        ]
+      },
+      {
         "name": "MakeGhostEntity",
         "parent": "Tool",
         "realms": [
@@ -35324,7 +35370,7 @@
           "client",
           "server"
         ],
-        "description": "Returns the squared distance of 2 vectors, this is faster than <page>Vector:Distance</page> as calculating the square root is an expensive process.\n\n<note>Squared distances should not be summed. If you need to sum distances, use <page>Vector:Distance</page>.\n\nWhen performing a distance check, ensure the distance being checked against is squared. See example code below.</note>",
+        "description": "Returns the squared distance of 2 vectors, this is quicker to call than <page>Vector:Distance</page> as DistToSqr does not need to calculate the square root, which is an expensive process.\n\n<note>Squared distances should not be summed. If you need to sum distances, use <page>Vector:Distance</page>.\n\nWhen performing a distance check, ensure the distance being checked against is squared. See example code below.</note>",
         "arguments": [
           {
             "name": "otherVec",
@@ -36626,7 +36672,7 @@
   },
   {
     "name": "VMatrix",
-    "description": "A 4x4 matrix.\n\nThis page lists all possible functions to manipulate matrices.\n\nThis object can be created by <page>Global.Matrix</page>.\n\nMetamethod | Second Operand | Description\n---------- | -------------- | -----------\n`__add` | <page>VMatrix</page> | Returns new <page>VMatrix</page> with the result of addition.\n`__eq` | <page>any</page> | Compares 2 operands, if they both are <page>VMatrix</page>, compares each individual component.\n`__mul` | <page>VMatrix</page> or <page>Vector</page> | Returns new <page>VMatrix</page> or <page>Vector</page> with the result of multiplication.\n`__sub` | <page>VMatrix</page> | Returns new <page>VMatrix</page> with the result of subtraction.\n`__tostring` |  | Returns a <page>string</page> in format `[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]`.",
+    "description": "A 4x4 matrix.\n\nThis page lists all possible functions to manipulate matrices.\n\nThis object can be created by <page>Global.Matrix</page>.\n\nMetamethod | Second Operand | Description\n---------- | -------------- | -----------\n`__add` | <page>VMatrix</page> | Returns new <page>VMatrix</page> with the result of addition.\n`__eq` | <page>any</page> | Compares 2 operands, if they both are <page>VMatrix</page>, compares each individual component.\n`__mul` | <page>VMatrix</page> or <page>Vector</page> | Returns new <page>VMatrix</page> or <page>Vector</page> with the result of multiplication.\n`__sub` | <page>VMatrix</page> | Returns new <page>VMatrix</page> with the result of subtraction.\n`__tostring` |  | Returns a <page>string</page> in format `[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]`.\n`__unm` | | Returns new <page>VMatrix</page> with the result of negation.",
     "functions": [
       {
         "name": "Add",

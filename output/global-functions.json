@@ -222,31 +222,31 @@
       "client",
       "server"
     ],
-    "description": "Creates an <page>Angle</page> object.\n<warning>This function is relatively expensive when used in often running hooks or in operations requiring very frequent calls (like loops for example) due to object creation and garbage collection. It is better to store the angle in a variable or to use the [default angle](https://wiki.facepunch.com/gmod/Global_Variables#misc) available. See <page>Angle:Add</page>.</warning>",
+    "description": "Creates an <page>Angle</page> object, representing a [Euler Angle](https://en.wikipedia.org/wiki/Euler_angles) made up of pitch, yaw, and roll components.\n\n<warning>\nThis function is relatively expensive, in terms of performance, in situations where it is being called multiple times every frame (Like a loop, for example.) This is due to the overhead associated with object creation and garbage collection.\nWhere possible, it is generally better to store an <page>Angle</page> in a variable and re-use that variable rather than re-creating it repeatedly.\nIn cases where an empty <page>Angle</page> is needed, the global variable `angle_zero` is the preferred solution instead of `Angle( 0, 0, 0 )`.\n</warning>",
     "arguments": [
       {
         "name": "pitch",
         "type": "number",
         "default": "0",
-        "description": "The pitch value of the angle.\n\n\nIf this is an <page>Angle</page>, this function will return a copy of the given angle.\n\n\nIf this is a <page>string</page>, this function will try to parse the string as a angle. If it fails, it returns a 0 angle.\n(See examples)"
+        "description": "This is an [Overloaded Function](https://en.wikipedia.org/wiki/Function_overloading) with these available first arguments:\n\n<page>Number</page> **pitch** = 0\nThe pitch value of the angle, in degrees.  Use this with the second and third arguments.\n\n<page>Angle</page> **angle**\nCreates a new <page>Angle</page> that is a copy of the <page>Angle</page> passed in.\n\n<page>String</page> **angleString**\nAttempts to parse the input <page>String</page> from the <page>Global.Print</page> format of an <page>Angle</page>.\nReturns an <page>Angle</page> with its pitch, yaw, and roll set to `0` if the <page>String</page> cannot be parsed."
       },
       {
         "name": "yaw",
         "type": "number",
         "default": "0",
-        "description": "The yaw value of the angle."
+        "description": "The yaw value of the angle, in degrees.\n**Note:** Only valid if the first argument is a <page>Number</page>."
       },
       {
         "name": "roll",
         "type": "number",
         "default": "0",
-        "description": "The roll value of the angle."
+        "description": "The roll value of the angle, in degrees.\n**Note:** Only valid if the first argument is a <page>Number</page>."
       }
     ],
     "returnValues": [
       {
         "type": "Angle",
-        "description": "Created angle"
+        "description": "The newly created <page>Angle</page>"
       }
     ]
   },
@@ -320,6 +320,22 @@
       {
         "type": "vararg",
         "description": "Returns any arguments past the error message."
+      }
+    ]
+  },
+  {
+    "name": "BRANCH",
+    "parent": "Global",
+    "realms": [
+      "menu",
+      "client",
+      "server"
+    ],
+    "description": "A variable containing a string indicating which (Beta) Branch of the game you are using.\n\nThis variable is only setup in **Client and Menu <page text=\"Realms\">States</page>** There is no steam client context on a dedicated server.\n\nFor more information on beta branches, see <page text=\"this page\">Dev_Branch</page>",
+    "returnValues": [
+      {
+        "type": "string",
+        "description": "The current branch."
       }
     ]
   },
@@ -597,7 +613,7 @@
     ],
     "returnValues": [
       {
-        "type": "table",
+        "type": "Color",
         "description": "The created <page>Color</page>."
       }
     ]
@@ -1537,7 +1553,7 @@
       "client",
       "menu"
     ],
-    "description": "Sets whether rendering should be limited to being inside a panel or not.\n\nSee also <page>Panel:NoClipping</page>.",
+    "description": "Sets whether rendering should be limited to being inside a panel or not. Needs to be used inside one of the <page>2d rendering hooks</page>\n\nSee also <page>Panel:NoClipping</page>.",
     "arguments": [
       {
         "name": "disable",
@@ -2720,7 +2736,7 @@
         "name": "location",
         "type": "function",
         "default": "1",
-        "description": "The object to get the enviroment from. Can also be a number that specifies the function at that stack level: Level 1 is the function calling getfenv."
+        "description": "The object to get the enviroment from. Can also be a number that specifies the function at that stack level: Level 1 is the function calling getfenv. Level 0 is the base Garry's Mod environment (_G)."
       }
     ],
     "returnValues": [
@@ -3317,7 +3333,7 @@
     "realms": [
       "client"
     ],
-    "description": "Creates or gets the rendertarget with the given name.\n\nSee <page>Global.GetRenderTargetEx</page> for an advanced version of this function with more options.\n\n<bug issue=\"2885\">This crashes when used on a cubemap texture.</bug>\n<warning>Rendertargets are not garbage-collected, which means they will remain in memory until you disconnect. So make sure to avoid creating new ones unecessarily and re-use as many of your existing rendertargets as possible to avoid filling up all your memory.</warning>\n<note>\nCalling this function is equivalent to\n```lua\nGetRenderTargetEx(name,\nwidth, height,\nRT_SIZE_NO_CHANGE,\nMATERIAL_RT_DEPTH_SEPARATE,\nbit.bor(2, 256),\n0,\nIMAGE_FORMAT_BGRA8888\n)\n```\n</note>",
+    "description": "Creates or gets the rendertarget with the given name.\n\nSee <page>Global.GetRenderTargetEx</page> for an advanced version of this function with more options.\n\n<bug issue=\"2885\">This crashes when used on a cubemap texture.</bug>\n<warning>Rendertargets are not garbage-collected, which means they will remain in memory until you disconnect. So make sure to avoid creating new ones unecessarily and re-use as many of your existing rendertargets as possible to avoid filling up all your memory.</warning>\n<warning>Drawing rendertargets on themself can produce odd and unexpected results.</warning>\n<note>\nCalling this function is equivalent to\n```lua\nGetRenderTargetEx(name,\nwidth, height,\nRT_SIZE_NO_CHANGE,\nMATERIAL_RT_DEPTH_SEPARATE,\nbit.bor(2, 256),\n0,\nIMAGE_FORMAT_BGRA8888\n)\n```\n</note>",
     "arguments": [
       {
         "name": "name",
@@ -3629,7 +3645,7 @@
       "client",
       "server"
     ],
-    "description": "Returns an iterator function for a for loop, to return ordered key-value pairs from a table.\n\nThis will only iterate though **numerical** keys, and these must also be **sequential**; starting at 1 with no gaps.\n\nFor unordered pairs, see <page>Global.pairs</page>.\n\nFor pairs sorted by key in alphabetical order, see <page>Global.SortedPairs</page>.",
+    "description": "Returns a [Stateless Iterator](https://www.lua.org/pil/7.3.html) for a [Generic For Loops](https://www.lua.org/pil/4.3.5.html), to return ordered key-value pairs from a table.\n\nThis will only iterate though **numerical** keys, and these must also be **sequential**; starting at 1 with no gaps.\n\nFor unordered pairs, see <page>Global.pairs</page>.\n\nFor pairs sorted by key in alphabetical order, see <page>Global.SortedPairs</page>.",
     "arguments": [
       {
         "name": "tab",
@@ -5016,7 +5032,7 @@
     "realms": [
       "client"
     ],
-    "description": "Creates a new <page>CLuaEmitter</page>.\n\n<note>Do not forget to delete the emitter with <page>CLuaEmitter:Finish</page> once you are done with it</note>",
+    "description": "Creates a new <page>CLuaEmitter</page>.\n\n<note>Do not forget to delete the emitter with <page>CLuaEmitter:Finish</page> once you are done with it</note>\n<warning>There is a limit of 4097 emitters that can be active at once, exceeding this limit will throw a non-halting error in console!</warning>",
     "arguments": [
       {
         "name": "position",
@@ -5640,7 +5656,7 @@
     "realms": [
       "menu"
     ],
-    "description": "<internal>Called by <page>permissions.AskToConnect</page></internal>\nIf the server has the permission \"connect\" granted, it will instantly connect you to the server.\nIf the permission is not granted it will, it opens a confirmation window to connect to the server.\n<img src=\"https://i.imgur.com/yJ2Q8o6.png\">",
+    "description": "<internal>Called by <page>permissions.AskToConnect</page></internal>\nIf the server has the permission \"connect\" granted, it will instantly connect you to the server.\nIf the permission is not granted it will, it opens a confirmation window to connect to the server.\n<upload src=\"ab571/8dc3890a88522bb.png\" size=\"16390\" name=\"connect_dialog.png\">\n</upload>",
     "arguments": [
       {
         "name": "serverip",
@@ -5655,7 +5671,7 @@
     "realms": [
       "menu"
     ],
-    "description": "<internal></internal>\nOpens a confirmation window to open the url.\n<img src=\"https://i.imgur.com/nEB1k7N.png\">",
+    "description": "<internal></internal>\nOpens a confirmation window to open the url.\n<upload src=\"ab571/8dc3890ccb8cfd4.png\" size=\"14654\" name=\"confirm_dialog.png\">\n</upload>",
     "arguments": [
       {
         "name": "url",
@@ -5670,7 +5686,7 @@
     "realms": [
       "menu"
     ],
-    "description": "<internal></internal>\nOpens a confirmation window to grant the requested permission.\n<img src=\"https://i.imgur.com/jq5emwh.png\">",
+    "description": "<internal></internal>\nOpens a confirmation window to grant the requested permission.\n<upload src=\"ab571/8dc3890f84fb468.png\" size=\"17108\" name=\"permission_request.png\">\n</upload>",
     "arguments": [
       {
         "name": "permission",
@@ -6635,7 +6651,7 @@
       "client",
       "server"
     ],
-    "description": "Returns the input value in an escaped form so that it can safely be used inside of queries. The returned value is surrounded by quotes unless noQuotes is true. Alias of <page>sql.SQLStr</page>",
+    "description": "Returns the input value in an escaped form so that it can safely be used inside of queries. The returned value is surrounded by quotes unless noQuotes is true. Alias of <page>sql.SQLStr</page>\n\n<note>This function is not meant to be used with external database engines such as `MySQL`. Escaping strings with inadequate functions is dangerous!</note>",
     "arguments": [
       {
         "name": "input",
@@ -6836,7 +6852,7 @@
     "description": "Attempts to return an appropriate boolean for the given value",
     "arguments": [
       {
-        "name": "val",
+        "name": "input",
         "type": "any",
         "description": "The object to be converted to a boolean"
       }
@@ -6844,7 +6860,7 @@
     "returnValues": [
       {
         "type": "boolean",
-        "description": "**false** for the boolean false.\n**false** for \"false\".\n**false** for \"0\".\n**false** for numeric 0.\n**false** for nil.\n**true** otherwise."
+        "description": "* `false` for the boolean `false`.\n* `false` for `\"false\"`.\n* `false` for `\"0\"`.\n* `false` for numeric `0`.\n* `false` for `nil`.\n* `true` otherwise."
       }
     ]
   },

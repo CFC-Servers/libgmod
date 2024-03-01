@@ -327,7 +327,7 @@
         "name": "TracerName",
         "type": "string",
         "default": "nil",
-        "description": "The tracer name. You can find a list of default effects <page text=\"here\">Effects</page>."
+        "description": "The tracer name. You can find a list of default effects <page text=\"here\">Default_Effects</page>."
       },
       {
         "name": "Dir",
@@ -1473,17 +1473,17 @@
       {
         "name": "normal",
         "type": "Vector",
-        "description": "The triangles normal required to calculate lighting(optional)."
+        "description": "The triangles normal required to calculate lighting (Optional)."
       },
       {
         "name": "tangent",
         "type": "Vector",
-        "description": "The triangles tangent. Not used by the VertexLitGeneric shader."
+        "description": "The triangles tangent. Not used by the `VertexLitGeneric` shader."
       },
       {
         "name": "binormal",
         "type": "Vector",
-        "description": "The triangles binormal. Not used by the VertexLitGeneric shader."
+        "description": "The triangles binormal. Not used by the `VertexLitGeneric` shader."
       },
       {
         "name": "pos",
@@ -1493,12 +1493,22 @@
       {
         "name": "u",
         "type": "number",
-        "description": "The u texture scale."
+        "description": "The U texture coordinate."
       },
       {
         "name": "v",
         "type": "number",
-        "description": "The v texture scale."
+        "description": "The V texture coordinate."
+      },
+      {
+        "name": "u1",
+        "type": "number",
+        "description": "The secondary U texture coordinate. Only works when passed to <page>IMesh:BuildFromTriangles</page>, Useful for `LightmappedGeneric` shader."
+      },
+      {
+        "name": "v1",
+        "type": "number",
+        "description": "The secondary V texture coordinate. Only works when passed to <page>IMesh:BuildFromTriangles</page>."
       },
       {
         "name": "userdata",
@@ -3415,6 +3425,26 @@
         "name": "error",
         "type": "number",
         "description": "If this key is set, no other data will be present in the response.\n\nValues above 0 represent Steam Error codes, values below 0 mean the following:\n* -1 means Failed to create query\n* -2 means Failed to send query\n* -3 means Received 0 or more than 1 result\n* -4 means Failed to get item data from the response\n* -5 means Workshop item ID in the response is invalid\n* -6 means Workshop item ID in response is mismatching the requested file ID"
+      },
+      {
+        "name": "up",
+        "type": "number",
+        "description": "Number of \"up\" votes for this item."
+      },
+      {
+        "name": "down",
+        "type": "number",
+        "description": "Number of \"down\" votes for this item."
+      },
+      {
+        "name": "total",
+        "type": "number",
+        "description": "Number of total votes (up and down) for this item. This is NOT `up - down`."
+      },
+      {
+        "name": "score",
+        "type": "number",
+        "description": "The up down vote ratio for this item, i.e. `1` is when every vote is `up`, `0.5` is when half of the total votes are the up votes, etc."
       }
     ],
     "realms": [

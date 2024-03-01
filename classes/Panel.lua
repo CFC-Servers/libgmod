@@ -1,5 +1,6 @@
 --- This is the base panel for every other [VGUI](vgui) panel.  
---- It contains all of the basic methods, some of which may only work on certain VGUI elements. As their functionality is provided at the game's C/C++ level rather than by its Lua script extension, they are unfortunately unavailable for most practical purposes, however, they can still be obtained in a way similar to that provided by the baseclass library:  
+--- It contains all of the basic methods, some of which may only work on certain VGUI elements. See also Panel Hooks.  
+--- As their functionality is provided at the game's C/C++ level rather than by its Lua script extension, they are unfortunately unavailable for most practical purposes, however, they can still be obtained in a way similar to that provided by the baseclass library:  
 --- ```  
 --- -- Create a new panel type NewPanel that inherits all of its functionality from DLabel,  
 --- -- but has a different SetText method than DLabel does - all without the hassle of that  
@@ -103,6 +104,7 @@ end
 
 ---  client|menu
 --- Centers the panel on its parent.  
+--- ℹ **NOTE**: This will center the panel using the current size of the panel so should be called AFTER setting or adjusting the size of the 	panel  
 function Panel:Center()
 end
 
@@ -132,7 +134,7 @@ function Panel:ChildrenSize()
 end
 
 ---  client|menu
---- Marks all of the panel's children for deletion.  
+--- Removes all of the panel's children.  
 function Panel:Clear()
 end
 
@@ -1078,7 +1080,9 @@ end
 
 ---  client|menu
 --- Sets whether this panel's drawings should be clipped within the parent panel's bounds.  
---- See also Global.DisableClipping.  
+--- ℹ **NOTE**:   
+--- This only disabled clipping for the Paint Related functions (as far as i can tell at the current moment, more testing should be done) so things like the text of a DLabel will still be clipped to the parent.  
+--- To fully disable the clipping of any children see Global.DisableClipping.  
 --- @param clip boolean @Whether to clip or not.
 function Panel:NoClipping(clip)
 end
@@ -1422,8 +1426,8 @@ end
 
 ---  client|menu
 --- Allows you to set HTML code within a panel.  
---- @param HTML_code string @The code to set.
-function Panel:SetHTML(HTML_code)
+--- @param HTML string @The HTML code to set.
+function Panel:SetHTML(HTML)
 end
 
 ---  client|menu
@@ -1475,7 +1479,7 @@ end
 --- ℹ **NOTE**: This must be called after setting size if you wish to use a different size spawnicon  
 --- @param ModelPath string @The path of the model to set
 --- @param skin? number @The skin to set
---- @param bodygroups string @The body groups to set
+--- @param bodygroups? string @The body groups to set
 function Panel:SetModel(ModelPath, skin, bodygroups)
 end
 
@@ -1526,7 +1530,7 @@ end
 ---  client
 --- Used by AvatarImage to load an avatar for given player.  
 --- @param player Player @The player to use avatar of.
---- @param size number @The size of the avatar to use
+--- @param size? number @The size of the avatar to use
 function Panel:SetPlayer(player, size)
 end
 
@@ -1842,10 +1846,10 @@ end
 
 ---  client|menu
 --- Sets the dimensions of the panel to fill its parent. It will only stretch in directions that aren't nil.  
---- @param offsetLeft number @The left offset to the parent.
---- @param offsetTop number @The top offset to the parent.
---- @param offsetRight number @The right offset to the parent.
---- @param offsetBottom number @The bottom offset to the parent.
+--- @param offsetLeft? number @The left offset to the parent.
+--- @param offsetTop? number @The top offset to the parent.
+--- @param offsetRight? number @The right offset to the parent.
+--- @param offsetBottom? number @The bottom offset to the parent.
 function Panel:StretchToParent(offsetLeft, offsetTop, offsetRight, offsetBottom)
 end
 
