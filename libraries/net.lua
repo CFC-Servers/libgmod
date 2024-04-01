@@ -8,7 +8,7 @@ function net.Abort()
 end
 
 ---  server
---- Sends the currently built net message to all connected players.  
+--- Sends the currently built net message (see net.Start) to all connected players.  
 --- More information can be found in Net Library Usage.  
 function net.Broadcast()
 end
@@ -138,9 +138,9 @@ end
 ---  client|server
 --- Reads an unsigned integer with the specified number of bits from the received net message.  
 --- ⚠ **WARNING**: You **must** read information in same order as you write it.  
---- @param numberOfBits number @The size of the integer to be read, in bits
+--- @param bitCount number @The size of the integer to be read, in bits
 --- @return number @The unsigned integer read, or `0` if the integer could not be read.
-function net.ReadUInt(numberOfBits)
+function net.ReadUInt(bitCount)
 end
 
 ---  client|server
@@ -159,8 +159,9 @@ end
 
 ---  client|server
 --- Adds a net message handler. Only one receiver can be used to receive the net message.  
+--- You can use the `net.Read*` functions within the message handler callback.  
 --- ℹ **NOTE**: The message-name is converted to lower-case so the message-names "`BigBlue`" and "`bigblue`" would be equal.  
---- ⚠ **WARNING**: You **must** put this function **outside** of any other function or hook for it to work properly unless you know what you are doing!  
+--- ⚠ **WARNING**: You **should** put this function **outside** of any other function or hook for it to work properly unless you know what you are doing!  
 --- You **must** read information in the same order as you write it.  
 --- Each net message has a length limit of **64KB**!  
 --- @param messageName string @The message name to hook to.
@@ -169,31 +170,31 @@ function net.Receive(messageName, callback)
 end
 
 ---  server
---- Sends the current message to the specified player, or to all players listed in the table.  
+--- Sends the current net message (see net.Start) to the specified player, or to all players listed in the table.  
 --- @param ply Player @The player(s) to send the message to
 function net.Send(ply)
 end
 
 ---  server
---- Sends the current message to all except the specified, or to all except all players in the table.  
+--- Sends the current message (see net.Start) to all except the specified, or to all except all players in the table.  
 --- @param ply Player @The player(s) to **NOT** send the message to
 function net.SendOmit(ply)
 end
 
 ---  server
---- Sends the message to all players that are in the same [Potentially Audible Set (PAS)](https://developer.valvesoftware.com/wiki/PAS) as the position, or simply said, it adds all players that can potentially hear sounds from this position.  
+--- Sends current net message (see net.Start) to all players that are in the same [Potentially Audible Set (PAS)](https://developer.valvesoftware.com/wiki/PAS) as the position, or simply said, it adds all players that can potentially hear sounds from this position.  
 --- @param position Vector @PAS position.
 function net.SendPAS(position)
 end
 
 ---  server
---- Sends the message to all players in the [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community") of the position, or, more simply said, sends the message to players that can potentially see this position.  
+--- Sends current net message (see net.Start) to all players in the [PVS (Potential Visibility Set)](https://developer.valvesoftware.com/wiki/PVS "PVS - Valve Developer Community") of the position, or, more simply said, sends the message to players that can potentially see this position.  
 --- @param position Vector @Position that must be in players' visibility set.
 function net.SendPVS(position)
 end
 
 ---  client
---- Sends the current message to the server.  
+--- Sends the current net message (see net.Start) to the server.  
 --- ⚠ **WARNING**: Each net message has a length limit of 65,533 bytes (approximately 64 KiB) and your net message will error and fail to send if it is larger than this.  
 --- The message name must be pooled with util.AddNetworkString beforehand!  
 function net.SendToServer()
@@ -201,7 +202,15 @@ end
 
 ---  client|server
 --- Begins a new net message. If another net message is already started and hasn't been sent yet, it will be discarded.  
+--- After calling this function, you will want to call `net.Write` functions to write your data, if any, and then finish with a call to one of the following functions:  
+--- * net.Send  
+--- * net.SendOmit  
+--- * net.SendPAS  
+--- * net.SendPVS  
+--- * net.Broadcast  
+--- * net.SendToServer  
 --- ⚠ **WARNING**: Each net message has a length limit of 65,533 bytes (approximately 64 KiB) and your net message will error and fail to send if it is larger than this.  
+--- The net library has an internal buffer that sent messages are added to that is capable of holding roughly 256 kb at a time. Trying to send more will lead to the client being kicked because of a buffer overflow. More information on net library limits can be found here.  
 --- The message name must be pooled with util.AddNetworkString beforehand!  
 --- Net messages will not reliably reach the client until the client's GM:InitPostEntity hook is called.  
 --- @param messageName string @The name of the message to send
@@ -309,17 +318,16 @@ end
 --- Use net.WriteInt if you want to send negative and positive numbers. Use net.WriteFloat for a non-whole number (e.g. `2.25`).  
 --- ℹ **NOTE**: Unsigned numbers **do not** support negative numbers.  
 --- @param unsignedInteger number @The unsigned integer to be sent.
---- @param numberOfBits number @The size of the integer to be sent, in bits
-function net.WriteUInt(unsignedInteger, numberOfBits)
+--- @param bitCount number @The size of the integer to be sent, in bits
+function net.WriteUInt(unsignedInteger, bitCount)
 end
 
 ---  client|server
 --- Appends an unsigned integer with 64 bits to the current net message.  
---- ℹ **NOTE**:   
---- The limit for an uint64 is 18.446.744.073.709.551.615.  
+--- The limit for an uint64 is 18'446'744'073'709'551'615.  
 --- Everything above the limit will be set to the limit.  
 --- Unsigned numbers **do not** support negative numbers.  
---- @param uint64 string @The uint64 to be sent
+--- @param uint64 string @The 64 bit value to be sent
 function net.WriteUInt64(uint64)
 end
 

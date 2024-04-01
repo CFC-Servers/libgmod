@@ -7655,7 +7655,7 @@
         "value": 44
       },
       {
-        "name": "COND-WEAPON_SIGHT_OCCLUDED",
+        "name": "COND.WEAPON_SIGHT_OCCLUDED",
         "value": 45
       }
     ],
@@ -8312,24 +8312,28 @@
       },
       {
         "name": "EFL_DIRTY_ABSTRANSFORM",
-        "value": 2048
+        "value": 2048,
+        "description": "Some 'dirty' bits with respect to absolute computations. Used internally by the engine when an entity's absolute position needs to be recalculated."
       },
       {
         "name": "EFL_DIRTY_ABSVELOCITY",
-        "value": 4096
+        "value": 4096,
+        "description": "Some 'dirty' bits with respect to absolute computations. Used internally by the engine when an entity's absolute velocity needs to be recalculated."
       },
       {
         "name": "EFL_DIRTY_ABSANGVELOCITY",
         "value": 8192,
-        "description": "Some dirty bits with respect to abs computations"
+        "description": "Some 'dirty' bits with respect to absolute computations. Used internally by the engine when an entity's absolute angular velocity needs to be recalculated."
       },
       {
         "name": "EFL_DIRTY_SURROUNDING_COLLISION_BOUNDS",
-        "value": 16384
+        "value": 16384,
+        "description": "Marks the entity as having a 'dirty' surrounding box. Used internally by the engine to recompute the entity's collision bounds."
       },
       {
         "name": "EFL_DIRTY_SPATIAL_PARTITION",
-        "value": 32768
+        "value": 32768,
+        "description": "Used internally by the engine when an entity's \"spatial partition\" needs to be recalculated."
       },
       {
         "name": "EFL_IN_SKYBOX",
@@ -8348,11 +8352,13 @@
       },
       {
         "name": "EFL_IS_BEING_LIFTED_BY_BARNACLE",
-        "value": 1048576
+        "value": 1048576,
+        "description": "The entity is currently being lifted by a Barnacle."
       },
       {
         "name": "EFL_NO_ROTORWASH_PUSH",
-        "value": 2097152
+        "value": 2097152,
+        "description": "The entity is not affected by 'rotorwash push'--the wind-push effect caused by helicopters close to the ground in Half-Life 2."
       },
       {
         "name": "EFL_NO_THINK_FUNCTION",
@@ -8361,11 +8367,13 @@
       },
       {
         "name": "EFL_NO_GAME_PHYSICS_SIMULATION",
-        "value": 8388608
+        "value": 8388608,
+        "description": "The entity is currently not simulating any physics."
       },
       {
         "name": "EFL_CHECK_UNTOUCH",
-        "value": 16777216
+        "value": 16777216,
+        "description": "The entity is about to have its untouch callback checked, e.g. when this entity stops touching another entity."
       },
       {
         "name": "EFL_DONTBLOCKLOS",
@@ -10499,12 +10507,12 @@
       {
         "name": "MATERIAL_CULLMODE_CCW",
         "value": 0,
-        "description": "Counter clock wise cull mode"
+        "description": "Cull back faces with counterclockwise vertices."
       },
       {
         "name": "MATERIAL_CULLMODE_CW",
         "value": 1,
-        "description": "Clock wise cull mode"
+        "description": "Cull back faces with clockwise vertices."
       }
     ],
     "realms": [
@@ -10592,7 +10600,7 @@
     "realms": [
       "client"
     ],
-    "description": "Enumerations used by <page>Global.GetRenderTargetEx</page>. Clientside only.",
+    "description": "Enumerations used by <page>Global.GetRenderTargetEx</page>. Clientside only.\n<warning>When Anti Aliasing is enabled then `MATERIAL_RT_DEPTH_SHARED` and `MATERIAL_RT_DEPTH_SEPARATE` will always create a new depth-stencil buffer because Render Targets do not have Anti Aliasing.\n</warning>",
     "name": "MATERIAL_RT_DEPTH"
   },
   {
@@ -11134,7 +11142,8 @@
       },
       {
         "name": "OBS_MODE_DEATHCAM",
-        "value": 1
+        "value": 1,
+        "description": "Camera doesn't move, but adjusts camera angles to follow the spectated target"
       },
       {
         "name": "OBS_MODE_FREEZECAM",
@@ -11555,7 +11564,8 @@
       },
       {
         "name": "RT_SIZE_LITERAL_PICMIP",
-        "value": 9
+        "value": 9,
+        "description": "Use the size passed in, don't clamp to the frame buffer size, but do apply picmip restrictions."
       }
     ],
     "realms": [
@@ -12377,7 +12387,7 @@
       {
         "name": "SND_CHANGE_VOL",
         "value": 1,
-        "description": "Change sound vol"
+        "description": "Change sound volume"
       },
       {
         "name": "SND_CHANGE_PITCH",
@@ -12411,7 +12421,8 @@
       },
       {
         "name": "SND_IGNORE_PHONEMES",
-        "value": 256
+        "value": 256,
+        "description": "If the sound has any associated phoneme (character lip-sync) data, ignore it."
       },
       {
         "name": "SND_IGNORE_NAME",
@@ -12420,7 +12431,8 @@
       },
       {
         "name": "SND_DO_NOT_OVERWRITE_EXISTING_ON_CHANNEL",
-        "value": 1024
+        "value": 1024,
+        "description": "Unused/legacy; does nothing."
       }
     ],
     "realms": [

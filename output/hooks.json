@@ -948,7 +948,7 @@
           {
             "name": "failCode",
             "type": "number",
-            "description": "The fail code for the task."
+            "description": "The fail code for the task. It will be a [FAIL_ enum](https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/sp/src/game/server/ai_task.h#L26) or a generated code for a custom string. (second argument)"
           },
           {
             "name": "failReason",
@@ -994,7 +994,7 @@
           {
             "name": "data",
             "type": "table",
-            "description": "Extra data for the movement. A table containing the following data:\n* <page>boolean</page> hasTraced - The result if a forward probing trace has been done\n* <page>number</page> expectedDist - The distance expected to move this think\n* <page>number</page> flags - AILMG flags\n* <page>number</page> maxDist - The distance maximum distance intended to travel in path length\n* <page>number</page> navType - <page>Enums/NAV</page>\n* <page>number</page> speed - The sequence ground speed. Note these need not always agree with \"target\"\n* <page>Entity</page> moveTarget- Target entity\n* <page>Vector</page> dir - The actual move. Note these need not always agree with \"target\"\n* <page>Vector</page> facing - The actual move. Note these need not always agree with \"target\"\n* <page>Vector</page> target - Object of the goal"
+            "description": "Extra data for the movement. A table containing the following data:\n* <page>boolean</page> hasTraced - The result if a forward probing trace has been done\n* <page>number</page> expectedDist - The distance expected to move this think\n* <page>number</page> flags - AILMG flags\n* <page>number</page> maxDist - The distance maximum distance intended to travel in path length\n* <page>number</page> navType - <page>Enums/NAV</page>\n* <page>number</page> speed - The sequence ground speed. Note these need not always agree with `target`\n* <page>Entity</page> moveTarget - Target entity\n* <page>Vector</page> dir - The actual move. Note these need not always agree with `target`\n* <page>Vector</page> facing - The actual move. Note these need not always agree with `target`\n* <page>Vector</page> target - Object of the goal"
           }
         ],
         "returnValues": [
@@ -1110,7 +1110,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called after the <page>duplicator</page> pastes the entity, after the bone/entity modifiers have been applied to the entity.\n\nThis hook is called after <page>ENTITY:OnDuplicated</page>.",
+        "description": "Called after the <page>duplicator</page> pastes the entity, after the bone/entity modifiers have been applied to the entity.\n\nThis hook is called after <page>ENTITY:OnDuplicated</page>. See also <page>ENTITY:PreEntityCopy</page>.",
         "arguments": [
           {
             "name": "ply",
@@ -1135,7 +1135,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called before the duplicator copies the entity.\n\nIf you are looking for a way to make the duplicator spawn another entity when duplicated. ( For example, you duplicate a \"prop_physics\", but you want the duplicator to spawn \"prop_physics_my\" ), you should add prop_physics.ClassOverride = \"prop_physics_my\". The duplication table should be also stored on that prop_physics, not on prop_physics_my."
+        "description": "Called before the duplicator copies the entity.\n\nIf you are looking for a way to make the duplicator spawn another entity when duplicated. (For example, you duplicate a `prop_physics`, but you want the duplicator to spawn `prop_physics_my`), you should add `prop_physics.ClassOverride = \"prop_physics_my\"`. The duplication table should be also stored on that `prop_physics`, not on `prop_physics_my`.\n\nSee also <page>ENTITY:PostEntityCopy</page>."
       },
       {
         "name": "RenderOverride",
@@ -1423,7 +1423,7 @@
           "client",
           "server"
         ],
-        "description": "Allows you to override trace result when a trace hits the entitys Bounding Box.\n\n<note>Your entity must have <page>Entity:EnableCustomCollisions</page> enabled for this hook to work.</note>\n<note>This hook is called for `anim` type only.</note>",
+        "description": "Allows you to override trace result when a trace hits the entity.\n\nYour entity **must** have <page>Entity:EnableCustomCollisions</page> enabled for this hook to work.\n\nYour entity must also be otherwise \"hit-able\" with a trace, so it should have <page text=\"SOLID_OBB\">Enums/SOLID#SOLID_OBB</page> or <page text=\"SOLID_VPHYSICS\">Enums/SOLID#SOLID_VPHYSICS</page> be set (as an example), and it must have its <page text=\"collision bounds\">Entity:SetCollisionBounds</page> be set accordingly.\n\n<note>This hook is called for `anim` type only.</note>",
         "arguments": [
           {
             "name": "startpos",
@@ -1443,7 +1443,7 @@
           {
             "name": "extents",
             "type": "Vector",
-            "description": "Size of the hull trace?"
+            "description": "Size of the hull trace, with the center of the Bounding Box being `0, 0, 0`, so mins are `-extents`, and maxs are `extents`."
           },
           {
             "name": "mask",
@@ -1454,7 +1454,7 @@
         "returnValues": [
           {
             "type": "table",
-            "description": "Returning a `table` will allow you to override trace results. Table should contain the following keys, all optional:\n* <page>Vector</page> `HitPos` - The new hitpos of the trace.\n* <page>number</page> `Fraction` - A number from `0` to `1`, describing how far the trace went from its origin point, `1` = did not hit.\n* <page>Vector</page> `Normal` - A unit vector (length=1) describing the direction perpendicular to the hit surface.\n\nReturning `true` will allow \"normal\" collisions to happen for `SOLID_VPHYSICS` and `SOLID_BBOX` entities.<br>\nReturning `nothing` or `false` allows the trace to ignore the entity completely."
+            "description": "Returning a `table` will allow you to override trace results. Table should contain the following keys: (All keys fallback to the original trace value)\n* <page>Vector</page> `HitPos` - The new hit position of the trace.\n* <page>number</page> `Fraction` - A number from `0` to `1`, describing how far the trace went from its origin point, `1` = did not hit.\n* Could be calculated like so : `Fraction = ( startpos + delta ):Length() / myCustomHitPos:Length()`\n* <page>Vector</page> `Normal` - A unit vector (length=1) describing the direction perpendicular to the hit surface.\n\nReturning `true` will allow \"normal\" collisions to happen for `SOLID_VPHYSICS` and `SOLID_OBB` entities.<br>\nReturning `nothing` or `false` allows the trace to ignore the entity completely."
           }
         ]
       },
@@ -1959,7 +1959,7 @@
         "realms": [
           "server"
         ],
-        "description": "Determines if the player can exit the vehicle on their own. <page>Player:ExitVehicle</page> will bypass this hook.",
+        "description": "Determines if the player can exit the vehicle on their own. <page>Player:ExitVehicle</page> will bypass this hook.\n\nSee <page>GM:CanPlayerEnterVehicle</page> for the opposite hook.\nSee also <page>GM:PlayerLeaveVehicle</page> for a hook that will be called whenever a player exits any vehicle for any reason.",
         "arguments": [
           {
             "name": "veh",
@@ -1985,7 +1985,7 @@
         "realms": [
           "server"
         ],
-        "description": "Determines whether or not a given player player can enter the given vehicle. <page>Player:EnterVehicle</page> will bypass this hook.\n\nCalled just before <page>GM:PlayerEnteredVehicle</page>.",
+        "description": "Determines whether or not a given player player can enter the given vehicle. <page>Player:EnterVehicle</page> will still call this hook.\n\nCalled just before <page>GM:PlayerEnteredVehicle</page>. See also <page>GM:CanExitVehicle</page>.",
         "arguments": [
           {
             "name": "player",
@@ -2498,7 +2498,7 @@
           "client",
           "server"
         ],
-        "description": "Called whenever a sound has been played. This will not be called clientside if the server played the sound without the client also calling <page>Entity:EmitSound</page>.\n\n<bug issue=\"1021\">This is not called for scripted sentences. This was fixed.</bug>",
+        "description": "Called whenever a sound has been played. This will not be called clientside if the server played the sound without the client also calling <page>Entity:EmitSound</page>.",
         "arguments": [
           {
             "name": "data",
@@ -2547,7 +2547,7 @@
           "client",
           "server"
         ],
-        "description": "Called when a key-value pair is set on an entity, either by the engine (for example when map spawns) or <page>Entity:SetKeyValue</page>.\n\nSee <page>ENTITY:KeyValue</page> for a hook that works for scripted entities.\n\n\nSee <page>WEAPON:KeyValue</page> for a hook that works for scripted weapons.",
+        "description": "Called when a key-value pair is set on an entity on map spawn. Is **not** called by <page>Entity:SetKeyValue</page>.\n\nSee <page>ENTITY:KeyValue</page> for a <page>scripted entities</page> hook, and its scripted weapon alternative: <page>WEAPON:KeyValue</page>.",
         "arguments": [
           {
             "name": "ent",
@@ -2579,7 +2579,7 @@
           "client",
           "server"
         ],
-        "description": "Called when an NW2Var is changed.\n<bug issue=\"5455\">If a NW2Var is set on an entity that is based on a Lua Entity could result in the NW2Var being mixed up with other ones and being updated multiple times.</bug>\n<note>This hook is fired before the client value is actually changed. Calling the GetNW2 function for the specified variable name within this hook will return the old value, not the current/updated one.</note>",
+        "description": "Called when an NW2Var is changed.\n<bug issue=\"5455\">If a NW2Var is set on an entity that is based on a Lua Entity could result in the NW2Var being mixed up with other ones and being updated multiple times.</bug>\n<note>\nThis hook is fired before the client value is actually changed. Calling the GetNW2 function for the specified variable name within this hook will return the old value, not the current/updated one.\n\nThis hook gets called for all NW2Vars on all Entities in a full update. The old value will be nil in this case.\nIf this hook seems to be called for no apparent reason, check if it's caused by a full update.\n</note>",
         "arguments": [
           {
             "name": "ent",
@@ -3550,7 +3550,7 @@
         "realms": [
           "server"
         ],
-        "description": "<internal></internal>Called from gm_load when the game should load a map.",
+        "description": "<internal></internal>Called from `gm_load` when the game should load a map.",
         "arguments": [
           {
             "name": "data",
@@ -3932,8 +3932,8 @@
           },
           {
             "name": "realm",
-            "type": "number",
-            "description": "Where the Lua error took place"
+            "type": "string",
+            "description": "Where the Lua error took place, \"client\", or \"server\""
           },
           {
             "name": "stack",
@@ -5164,7 +5164,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called when the player spawns for the first time.\n\nSee <page>GM:PlayerSpawn</page> for a hook called every player spawn.\n\n<note>This hook is called before the player has fully loaded, when the player is still in seeing the `Starting Lua` screen. For example, trying to use the <page>Entity:GetModel</page> function will return the default model (`models/player.mdl`).</note>\n\n<note>You can send <page>net</page> messages starting from the player_activate event (see <page>Game_Events</page>).</note>\n\n<warning>Due to the above note, sending <page>net</page> messages to the spawned player in this hook are highly unreliable, and they most likely won't be received (more information here: https://github.com/Facepunch/garrysmod-requests/issues/718).\n\nWorkaround without networking:\n```\nlocal load_queue = {}\n\nhook.Add( \"PlayerInitialSpawn\", \"myAddonName/Load\", function( ply )\nload_queue[ ply ] = true\nend )\n\nhook.Add( \"SetupMove\", \"myAddonName/Load\", function( ply, _, cmd )\nif load_queue[ ply ] and not cmd:IsForced() then\nload_queue[ ply ] = nil\n\nmyAddon:OnPlayerNetReady( ply ) -- Send what you need here!\nend\nend )\n```\n\n\nWith networking:\n```\n-- CLIENT\nhook.Add( \"InitPostEntity\", \"Ready\", function()\nnet.Start( \"cool_addon_client_ready\" )\nnet.SendToServer()\nend )\n```\n```\n-- SERVER\nutil.AddNetworkString( \"cool_addon_client_ready\" )\n\nnet.Receive( \"cool_addon_client_ready\", function( len, ply )\n-- Send what you need here!\nend )\n```\n</warning>",
+        "description": "Called when the player spawns for the first time.\n\nSee <page>GM:PlayerSpawn</page> for a hook called every player spawn.\n\n<note>This hook is called before the player has fully loaded, when the player is still in seeing the `Starting Lua` screen. For example, trying to use the <page>Entity:GetModel</page> function will return the default model (`models/player.mdl`).</note>\n\n<note>You can send <page>net</page> messages starting from the [player_activate](gameevent/player_activate) game event.</note>\n\n<warning>Due to the above note, sending <page>net</page> messages to the spawned player in this hook are highly unreliable, and they most likely won't be received (more information here: https://github.com/Facepunch/garrysmod-requests/issues/718).\n\nWorkaround without networking:\n```\nlocal load_queue = {}\n\nhook.Add( \"PlayerInitialSpawn\", \"myAddonName/Load\", function( ply )\nload_queue[ ply ] = true\nend )\n\nhook.Add( \"StartCommand\", \"myAddonName/Load\", function( ply, cmd )\nif load_queue[ ply ] and not cmd:IsForced() then\nload_queue[ ply ] = nil\n\n-- Send what you need here!\nend\nend )\n```\n\n\nWith networking:\n```\n-- CLIENT\nhook.Add( \"InitPostEntity\", \"Ready\", function()\nnet.Start( \"cool_addon_client_ready\" )\nnet.SendToServer()\nend )\n```\n```\n-- SERVER\nutil.AddNetworkString( \"cool_addon_client_ready\" )\n\nnet.Receive( \"cool_addon_client_ready\", function( len, ply )\n-- Send what you need here!\nend )\n```\n</warning>",
         "arguments": [
           {
             "name": "player",
@@ -5204,7 +5204,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called when a player leaves a vehicle.\n\n<note>For vehicles with exit animations, this will be called **at the end** of the animation, **not at the start**!</note>",
+        "description": "Called when a player leaves a vehicle for any reason, including <page>Player:ExitVehicle</page>.\n\nSee <page>GM:PlayerEnteredVehicle</page> for the opposite hook.\n\n<note>For vehicles with exit animations, this will be called **at the end** of the animation, **not at the start**!</note>",
         "arguments": [
           {
             "name": "ply",
@@ -5487,7 +5487,7 @@
         "realms": [
           "server"
         ],
-        "description": "Called whenever a player spawns, including respawns.\n\nSee <page>GM:PlayerInitialSpawn</page> for a hook called only the first time a player spawns.\n\nSee the <page text=\"player_spawn gameevent\">Game_Events</page> for a shared version of this hook.\n\n<warning>By default, in \"base\" derived gamemodes, this hook will also call <page>GM:PlayerLoadout</page> and <page>GM:PlayerSetModel</page>, which may override your <page>Entity:SetModel</page> and <page>Player:Give</page> calls. Consider using the other hooks or a 0-second timer.</warning>",
+        "description": "Called whenever a player spawns, including respawns.\n\nSee <page>GM:PlayerInitialSpawn</page> for a hook called only the first time a player spawns.\n\nSee the <page text=\"player_spawn gameevent\">gameevent/player_spawn</page> for a shared version of this hook.\n\n<warning>By default, in \"base\" derived gamemodes, this hook will also call <page>GM:PlayerLoadout</page> and <page>GM:PlayerSetModel</page>, which may override your <page>Entity:SetModel</page> and <page>Player:Give</page> calls. Consider using the other hooks or a 0-second timer.</warning>",
         "arguments": [
           {
             "name": "player",
@@ -5497,7 +5497,7 @@
           {
             "name": "transition",
             "type": "boolean",
-            "description": "If true, the player just spawned from a map transition. You probably want to not touch player's weapons if this is set to true from this hook."
+            "description": "If true, the player just spawned from a map transition. You probably want to not touch player's weapons or position if this is set to `true`."
           }
         ]
       },
@@ -5568,7 +5568,7 @@
         "realms": [
           "client"
         ],
-        "description": "Called when a player starts using voice chat.",
+        "description": "Called when a player starts using voice chat.\n<note>Set mp_show_voice_icons to 0, if you want disable icons above player.</note>",
         "arguments": [
           {
             "name": "ply",
@@ -6423,7 +6423,7 @@
           {
             "name": "attacker",
             "type": "Player",
-            "description": "The person who broke the prop."
+            "description": "The person who broke the prop. This can be a NULL entity for cases where the prop was not broken by a player."
           },
           {
             "name": "prop",
@@ -6712,7 +6712,7 @@
           "client",
           "server"
         ],
-        "description": "Called to decide whether a pair of entities should collide with each other. This is only called if <page>Entity:SetCustomCollisionCheck</page> was used on one or both entities.\n\nWhere applicable, consider using <page>constraint.NoCollide</page> or a [logic_collision_pair](https://developer.valvesoftware.com/wiki/Logic_collision_pair) entity instead - they are considerably easier to use and may be more appropriate in some situations.\n\n<warning>This hook **must** return the same value consistently for the same pair of entities. If an entity changed in such a way that its collision rules change, you **must** call <page>Entity:CollisionRulesChanged</page> on that entity immediately - **not in this hook.**</warning>\n\n<bug issue=\"642\">This hook can cause all physics to break under certain conditions.</bug>",
+        "description": "Called to decide whether a pair of entities should collide with each other. This is only called if <page>Entity:SetCustomCollisionCheck</page> was used on one or both entities.\n\nWhere applicable, consider using <page>constraint.NoCollide</page> or a [logic_collision_pair](https://developer.valvesoftware.com/wiki/Logic_collision_pair) entity instead - they are considerably easier to use and may be more appropriate in some situations.\n\n<warning>This hook **must** return the same value consistently for the same pair of entities. If an entity changed in such a way that its collision rules change, you **must** call <page>Entity:CollisionRulesChanged</page> on that entity immediately - **not in this hook and not in physics callbacks.**</warning>\n\n<warning>The default <page>Entity:CollisionRulesChanged</page> has been found to be ineffective in preventing issues in this hook, a more reliable alternative can be found in the examples below. As long as you religiously follow the rules set by the examples this hook will work reliably without breaking, even a small mistake will break physics.</warning>\n\n<bug issue=\"642\">This hook can cause all physics to break under certain conditions.</bug>",
         "arguments": [
           {
             "name": "ent1",
@@ -8060,7 +8060,7 @@
         "realms": [
           "client"
         ],
-        "description": "Called whenever the panels' layout needs to be performed again. This means all child panels must be re-positioned to fit the possibly new size of this panel.\n\nThis can be triggered in numerous ways:\n* <page>Panel:InvalidateLayout</page> was called this or previous frame (depending on the argument)\n* <page>Panel:SetPos</page> called more than once on the same panel ([Issue](https://github.com/Facepunch/garrysmod-issues/issues/5519))\n* A child element was added to this panel (TODO: Verify me)\n* The size of this panel has changed\n<warning>Do **NOT** call this function directly. Use <page>Panel:InvalidateLayout</page> instead!</warning>",
+        "description": "Called whenever the panels' layout needs to be performed again. This means all child panels must be re-positioned to fit the possibly new size of this panel.\n\nThis can be triggered in numerous ways:\n* <page>Panel:InvalidateLayout</page> was called this or previous frame (depending on the argument)\n* <page>Panel:SetPos</page> called more than once on the same panel ([Issue](https://github.com/Facepunch/garrysmod-issues/issues/5519))\n* A child element was added to this panel (TODO: Verify me)\n* The size of this panel has changed\n\nYou should not call this function directly. Use <page>Panel:InvalidateLayout</page> instead.\n\nYou can use `vgui_visualizelayout 1` to visualize panel layouts as they happen for debugging purposes. Panels should not be doing this every frame.",
         "arguments": [
           {
             "name": "width",

@@ -31,7 +31,7 @@ end
 --- Retrieves console variable as a number.  
 --- @param cvar string @Name of console variable
 --- @param default? any @The value to return if the console variable does not exist
---- @return number @Retrieved value
+--- @return number @Retrieved value or the second argument if the console variable does not exist
 function cvars.Number(cvar, default)
 end
 

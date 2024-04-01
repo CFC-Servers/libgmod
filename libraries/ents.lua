@@ -10,7 +10,7 @@ function ents.Create(class)
 end
 
 ---  client
---- Creates a clientside only prop. See also Global.ClientsideModel.  
+--- Creates a clientside only prop with optional physics. See also Global.ClientsideModel if physics is not needed.  
 --- For physics to work you **must** use the _model_ argument, a simple `SetModel` call will not be enough.  
 --- 🦟 **BUG**: [Parented clientside prop will become detached if the parent entity leaves the PVS. **A workaround is available on its github page.**](https://github.com/Facepunch/garrysmod-issues/issues/861)  
 --- @param model? string @The model for the entity to be created.
@@ -27,6 +27,7 @@ end
 
 ---  client|server
 --- Returns a table of all entities along the ray. The ray does not stop on collisions, meaning it will go through walls/entities.  
+--- ℹ **NOTE**: This internally uses a Spatial Partition to avoid looping through all entities.  
 --- @param start Vector @The start position of the ray
 --- @param end_ Vector @The end position of the ray
 --- @param mins? Vector @The mins corner of the ray
@@ -70,6 +71,7 @@ end
 
 ---  client|server
 --- Returns all entities within the specified box.  
+--- ℹ **NOTE**: This internally uses a Spatial Partition to avoid looping through all entities.  
 --- ℹ **NOTE**: Clientside entities will not be returned by this function.  
 --- ⚠ **WARNING**: There is a limit of 512 entities for the output!  
 --- @param boxMins Vector @The box minimum coordinates.
@@ -101,6 +103,7 @@ end
 
 ---  client|server
 --- Gets all entities within the specified sphere.  
+--- ℹ **NOTE**: This internally uses a Spatial Partition to avoid looping through all entities.  
 --- ℹ **NOTE**: Clientside entities will not be returned by this function.  
 --- ℹ **NOTE**: This function internally calls ents.FindInBox with some [radius checks](https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/sp/src/public/collisionutils.cpp#L256-L301).  
 --- @param origin Vector @Center of the sphere.
@@ -156,11 +159,17 @@ function ents.GetMapCreatedEntity(id)
 end
 
 ---  client|server
---- Returns an iterator for all existing entities.  
---- This will be quite a bit faster than ents.GetAll, especially when using the `break` keyword.  
---- @return function @Iterator function
---- @return table @Table of all existing Entitys.
---- @return number @Will always be `0`
+--- Returns a [Stateless Iterator](https://www.lua.org/pil/7.3.html) for all entities.  
+--- Intended for use in [Generic For Loops](https://www.lua.org/pil/4.3.5.html).  
+--- See player.Iterator for a similar function for all players.  
+--- Internally, this function uses cached values that exist entirely within lua, as opposed to ents.GetAll, which is a C++ function.  
+--- Because switching from lua to C++ (and vice versa) incurs a performance cost, this function will be somewhat more efficient than ents.GetAll.  
+--- ℹ **NOTE**: The GM:OnEntityCreated and GM:EntityRemoved hooks are used internally to invalidate this function's cache. Using this function inside those hooks is not guaranteed to use an up-to-date cache because hooks are currently executed in an arbitrary order.  
+--- ⚠ **WARNING**: An error being thrown inside the GM:OnEntityCreated or GM:EntityRemoved hooks is likely to break this function. Make it certain that no addons are causing any errors in those hooks.  
+--- ⚠ **WARNING**: Modifying the return table will affect all subsequent calls to this function until the cache is refreshed, replacing all of your ents.GetAll usages may come with unintended side effects because of this.  
+--- @return function @The Iterator Function from ipairs
+--- @return table @Table of all existing Entities
+--- @return number @The starting index for the table of players
 function ents.Iterator()
 end
 

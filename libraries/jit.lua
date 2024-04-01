@@ -8,11 +8,11 @@ end
 
 ---  menu|client|server
 --- You can attach callbacks to a number of compiler events with jit.attach. The callback can be called:  
---- * when a function has been compiled to bytecode ("bc");  
---- * when trace recording starts or stops ("trace");  
---- * as a trace is being recorded ("record");  
---- * or when a trace exits through a side exit ("texit").  
---- Set a callback with jit.attach(callback, "event") and clear the same callback with jit.attach(callback)  
+--- * when a function has been compiled to bytecode (`"bc"`);  
+--- * when trace recording starts or stops (`"trace"`);  
+--- * as a trace is being recorded (`"record"`);  
+--- * or when a trace exits through a side exit (`"texit"`).  
+--- Set a callback with `jit.attach(callback, "event")` and clear the same callback with `jit.attach(callback)`  
 --- ⚠ **WARNING**: This function isn't officially documented on LuaJIT wiki, use it at your own risk.  
 --- ⚠ **WARNING**: Using these constantly (especially bytecode) can be very performance heavy due to the constant stream of data being compiled at a time.  
 --- @param callback function @The callback function

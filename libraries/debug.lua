@@ -26,12 +26,12 @@ end
 
 ---  menu|client|server
 --- 🛑 **DEPRECATED**:   
---- Returns the current hook settings of the passed thread. The thread argument can be omitted. This is completely different to gamemode hooks. More information on hooks can be found at http://www.lua.org/pil/23.2.html  
---- @param thread? thread @Which thread to retrieve its hook from
+--- Returns the current hook settings of the passed thread. The thread argument can be omitted. This is completely different to gamemode hooks. More information on hooks can be found at http://www.lua.org/pil/23.2.html. This function will simply return the function, mask, and count of the last called debug.sethook.  
+--- @param thread? thread @Which thread to retrieve it's hook from, doesn't seem to actually work.
 --- @deprecated
---- @return function @Hook function
+--- @return function @Hook function.
 --- @return string @Hook mask
---- @return number @Hook count
+--- @return number @Hook count.
 function debug.gethook(thread)
 end
 
@@ -39,8 +39,9 @@ end
 --- Returns debug information about a function.  
 --- @param funcOrStackLevel function @Takes either a function or a number representing the stack level as an argument
 --- @param fields? string @A string whose characters specify the information to be retrieved
+--- @param func function @Function to use
 --- @return table @A table as a Structures/DebugInfo containing information about the function you passed
-function debug.getinfo(funcOrStackLevel, fields)
+function debug.getinfo(funcOrStackLevel, fields, func)
 end
 
 ---  menu|client|server

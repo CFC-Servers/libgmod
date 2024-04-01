@@ -49,7 +49,7 @@ end
 --- Returns a function which calling is equivalent with calling coroutine.resume with the coroutine and all extra parameters.  
 --- The values returned by the returned function only contain the values passed to the inner coroutine.yield call and do not include the *no error* status that coroutine.resume provides. In case of failure, an error is thrown instead.  
 --- @param coroutine function @Coroutine to resume.
---- @return function @func
+--- @return function 
 function coroutine.wrap(coroutine)
 end
 

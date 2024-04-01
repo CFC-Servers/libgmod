@@ -7,6 +7,7 @@ _G.baseclass = {}
 --- ```  
 --- local BaseClass = baseclass.Get  
 --- ```  
+--- ℹ **NOTE**: You should prefer using this instead of `self.BaseClass` to avoid infinite recursion.  
 --- @param name string @The child class.
 --- @return table @The base class's meta table.
 function baseclass.Get(name)
