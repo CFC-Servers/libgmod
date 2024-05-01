@@ -98,7 +98,7 @@ function cam.Start3D(pos, angles, fov, x, y, w, h, zNear, zFar)
 end
 
 ---  client
---- Sets up a new 2D rendering context. Must be finished by cam.End3D2D. This function pushes a new matrix onto the stack. (cam.PushModelMatrix)  
+--- Sets up the model transformation matrix to draw 2D content in 3D space and pushes it into the stack (cam.PushModelMatrix).  
 --- Matrix formula:  
 --- ```  
 --- local m = Matrix()  
@@ -106,9 +106,7 @@ end
 --- m:SetTranslation(pos)  
 --- m:SetScale(Vector(scale, -scale, 1))  
 --- ```  
---- 🟥 **NOTE**: Provides a 2D rendering context  
---- <rendercontext hook="true" type="3D"></rendercontext>  
---- ⚠ **WARNING**: This should be closed by cam.End3D2D otherwise the game crashes  
+--- ⚠ **WARNING**: This must be closed by cam.End3D2D. If not done so, unexpected issues might arise.  
 --- @param pos Vector @Origin of the 3D2D context, ie
 --- @param angles Angle @Angles of the 3D2D context
 --- @param scale number @The scale of the render context

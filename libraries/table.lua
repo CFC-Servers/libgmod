@@ -335,7 +335,7 @@ end
 ---  Iterates for each key-value pair in the table, calling the function with the key and value of the pair. If the function returns anything, the loop is broken.  
 --- The GLua interpretation of this is table.ForEach.  
 --- @param tbl table @The table to iterate over.
---- @param callback function @The function to run for each key and value.
+--- @param callback function @The function to run for each key and value
 --- @deprecated
 function table.foreach(tbl, callback)
 end
@@ -400,7 +400,7 @@ end
 --- Sorts a sequential table either ascending or by the given sort function.  
 --- ℹ **NOTE**: This function modifies the table you give to it and internally uses the [quick sort algorithm](http://www.lua.org/source/5.2/ltablib.c.html#sort).  
 --- @param tbl table @The table to sort.
---- @param sorter function @If specified, the function will be called with 2 parameters each
+--- @param sorter? function @If specified, the sorting function
 function table.sort(tbl, sorter)
 end
 

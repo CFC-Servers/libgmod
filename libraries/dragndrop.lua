@@ -13,7 +13,7 @@ function dragndrop.GetDroppable(name)
 end
 
 ---  client|menu
---- If returns true, calls dragndrop.StopDragging in dragndrop.Drop. Seems to be broken and does nothing. Is it for override?  
+--- Allows you to capture the panel that was dropped into the game (dropped onto the root panel). This function is meant to be overridden.  
 function dragndrop.HandleDroppedInGame()
 end
 

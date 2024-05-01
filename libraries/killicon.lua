@@ -43,7 +43,7 @@ end
 --- @param x number @X coordinate of the icon
 --- @param y number @Y coordinate of the icon
 --- @param name string @Classname of the kill icon
---- @param alpha number @Alpha/transparency value ( 0 - 255 ) of the icon
+--- @param alpha? number @Alpha/transparency value ( 0 - 255 ) of the icon
 --- @deprecated
 function killicon.Draw(x, y, name, alpha)
 end
@@ -69,8 +69,8 @@ end
 --- @param x number @X coordinate of the icon
 --- @param y number @Y coordinate of the icon
 --- @param name string @Classname of the kill icon
---- @param alpha number @Alpha/transparency value ( 0 - 255 ) of the icon
---- @param dontEqualizeHeight number @Do not rescale the icon to match the default kill icon font.
+--- @param alpha? number @Alpha/transparency value ( 0 - 255 ) of the icon
+--- @param dontEqualizeHeight? number @Do not rescale the icon to match the default kill icon font.
 function killicon.Render(x, y, name, alpha, dontEqualizeHeight)
 end
 

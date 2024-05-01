@@ -288,6 +288,12 @@ function NPC:GetIdealMoveSpeed()
 end
 
 ---  server
+--- Returns the ideal sequence the NPC currently wants to achieve.  
+--- @return number @The ideal sequence, specific to the NPCs model.
+function NPC:GetIdealSequence()
+end
+
+---  server
 --- Returns the ideal yaw (left right rotation) for this NPC at this moment.  
 --- @return number @The ideal yaw.
 function NPC:GetIdealYaw()
@@ -921,7 +927,7 @@ end
 --- Assigns the NPC to a new squad. A squad can have up to 16 NPCs. NPCs in a single squad should be friendly to each other.  
 --- See also ai.GetSquadMembers and NPC:GetSquad.  
 --- NPCs within the same squad are meant to function more effectively, tactics wise.  
---- @param name string @The new squad name to set.
+--- @param name? string @The new squad name to set
 function NPC:SetSquad(name)
 end
 

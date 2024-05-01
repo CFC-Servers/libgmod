@@ -13,36 +13,37 @@ function Player:AccountID()
 end
 
 ---  client|server
---- Adds an entity to the player's clean up list.  
---- @param type string @Cleanup type
---- @param ent Entity @Entity to add
+--- ℹ **NOTE**: This function is only available in Sandbox and its derivatives.  
+--- Adds an entity to the player's clean up list. This uses cleanup.Add internally.  
+--- @param type string @The Cleanup type for this Entity.
+--- @param ent Entity @The Entity to add.
 function Player:AddCleanup(type, ent)
 end
 
 ---  client|server
---- ℹ **NOTE**: See [GetCount](/gmod/Player:GetCount) for list of types  
---- Adds an entity to the total count of entities of same type.  
---- @param str string @Entity type
---- @param ent Entity @Entity
+--- ℹ **NOTE**: This function is only available in Sandbox and its derivatives.  
+--- Adds an entity to the player's list of entities of the same type. See Player:GetCount to get the current count of entities of an entity type added with this function.  
+--- @param str string @The type of this Entity.
+--- @param ent Entity @The Entity you want to add to the list.
 function Player:AddCount(str, ent)
 end
 
 ---  server
---- Add a certain amount to the player's death count  
---- @param count number @number of deaths to add
+--- Adds the provided amount to the player's death count.  
+--- @param count number @The amount to add to the death count.
 function Player:AddDeaths(count)
 end
 
 ---  server
---- Add a certain amount to the player's frag count (or kills count)  
---- @param count number @number of frags to add
+--- Adds the provided amount to the player's frag/kill count.  
+--- @param count number @The amount to add.
 function Player:AddFrags(count)
 end
 
 ---  server
---- Adds a entity to the player's list of frozen objects.  
---- @param ent Entity @Entity
---- @param physobj PhysObj @Physics object belonging to ent
+--- Adds an entity to the player's list of frozen objects.  
+--- @param ent Entity @The Entity to add.
+--- @param physobj PhysObj @The physics object of the Entity.
 function Player:AddFrozenPhysicsObject(ent, physobj)
 end
 
@@ -51,13 +52,14 @@ end
 --- This is a really barebone system. By calling this a vote gets started, when the player presses 0-9 the callback function gets called along with the key the player pressed. Use the draw callback to draw the vote panel.  
 --- @param name string @Name of the vote
 --- @param timeout number @Time until the vote expires
---- @param vote_callback function @The function to be run when the player presses 0-9 while a vote is active.
+--- @param vote_callback function @The function to be run when the player presses 0-9 while a vote is active
 --- @param draw_callback function @Used to draw the vote panel.
 function Player:AddPlayerOption(name, timeout, vote_callback, draw_callback)
 end
 
 ---  client|server
 --- Plays a sequence directly from a sequence number, similar to Player:AnimRestartGesture. This function has the advantage to play sequences that haven't been bound to an existing Enums/ACT  
+--- ⚠ **WARNING**: This is not automatically networked. This function has to be called on the client to be seen by said client.  
 --- @param slot number @Gesture slot using Enums/GESTURE_SLOT
 --- @param sequenceId number @The sequence ID to play, can be retrieved with Entity:LookupSequence.
 --- @param cycle number @The cycle to start the animation at, ranges from 0 to 1.
@@ -145,10 +147,12 @@ function Player:ChatPrint(message)
 end
 
 ---  client|server
---- Checks if the limit is hit or not. If it is, it will throw a notification saying so.  
---- @param limitType string @Limit type
---- @return boolean @Returns true if limit is not hit, false if it is hit
-function Player:CheckLimit(limitType)
+--- Checks if the limit of an entity type added by Player:AddCount is hit or not. If it's hit, it will call the GM:PlayerCheckLimit hook, and call Player:LimitHit if the hook doesn't return `false`.  
+--- This will always return `true` in singleplayer, as singleplayer does not have limits.  
+--- ℹ **NOTE**: This function is only available in Sandbox and its derivatives.  
+--- @param str string @The entity type to check the limit for
+--- @return boolean @Returns `true` if the limit of this type is not hit, `false` otherwise.
+function Player:CheckLimit(str)
 end
 
 ---  client|server
@@ -274,7 +278,7 @@ end
 
 ---  server
 --- Force puts the player into a specified vehicle.  
---- This bypasses GM:CanPlayerEnterVehicle.  
+--- This **does not** bypass GM:CanPlayerEnterVehicle.  
 --- @param vehicle Vehicle @Vehicle the player will enter
 function Player:EnterVehicle(vehicle)
 end
@@ -289,7 +293,7 @@ end
 
 ---  server
 --- Forces the player to exit the vehicle if they're in one.  
---- This bypasses GM:CanExitVehicle.  
+--- This function will bypass GM:CanExitVehicle. See also GM:PlayerLeaveVehicle  
 function Player:ExitVehicle()
 end
 
@@ -389,7 +393,8 @@ function Player:GetClassID()
 end
 
 ---  client|server
---- Gets total count of entities of same type.  
+--- ℹ **NOTE**: This function is only available in Sandbox and its derivatives.  
+--- Gets the total amount of entities of an entity type added by Player:AddCount.  
 --- Default types:  
 --- ```  
 --- balloons  
@@ -591,7 +596,7 @@ end
 ---  client|server
 --- Returns a **P**ersistent **Data** key-value pair from the SQL database. (`sv.db` when called on server, `cl.db` when called on client)  
 --- Internally uses the sql library. See util.GetPData for cases when the player is not currently on the server.  
---- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
+--- ℹ **NOTE**: This function internally uses Player:SteamID64, it previously utilized Player:UniqueID which can cause collisions (two or more players sharing the same PData entry). Player:SetPData now replaces all instances of Player:UniqueID with Player:SteamID64 when running Player:SetPData  
 --- ℹ **NOTE**: PData is not networked from servers to clients!  
 --- @param key string @Name of the PData key
 --- @param default? any @Default value if PData key doesn't exist.
@@ -799,7 +804,7 @@ end
 ---  client|server
 --- Returns a table of the player's weapons.  
 --- ℹ **NOTE**:   
---- This function returns a sequential table, meaning it should be looped with Global.ipairs instead of Global.pairs for efficiency reasons.  
+--- This function returns a sequential table. Prefer to loop it with Global.ipairs instead of the Global.pairs function.  
 --- @return table @All the weapons the player currently has.
 function Player:GetWeapons()
 end
@@ -1168,7 +1173,8 @@ end
 ---  client|server
 --- Removes a **P**ersistent **Data** key-value pair from the SQL database. (`sv.db` when called on server, `cl.db` when called on client)  
 --- Internally uses the sql library. See util.RemovePData for cases when the player is not currently on the server.  
---- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
+--- ℹ **NOTE**: This function internally uses Player:SteamID64, it previously utilized Player:UniqueID which can cause collisions (two or more players sharing the same PData entry). Player:SetPData now replaces all instances of Player:UniqueID with Player:SteamID64 when running Player:SetPData  
+--- ℹ **NOTE**: PData is not networked from servers to clients!  
 --- @param key string @Key to remove
 --- @return boolean @true is succeeded, false otherwise
 function Player:RemovePData(key)
@@ -1475,7 +1481,7 @@ end
 ---  client|server
 --- Sets the player's sprint speed.  
 --- See also Player:GetRunSpeed, Player:SetWalkSpeed and Player:SetMaxSpeed.  
---- ℹ **NOTE**: player_default class run speed is: `600`  
+--- ℹ **NOTE**: player_default class run speed is: `240`  
 --- @param runSpeed number @The new sprint speed when `sv_friction` is below `10`
 function Player:SetRunSpeed(runSpeed)
 end
@@ -1569,7 +1575,7 @@ end
 --- Sets the player's normal walking speed. Not sprinting, not slow walking `+walk`.  
 --- See also Player:SetSlowWalkSpeed, Player:GetWalkSpeed, Player:SetCrouchedWalkSpeed, Player:SetMaxSpeed and Player:SetRunSpeed.  
 --- 🦟 **BUG**: [Using a speed of `0` can lead to prediction errors.](https://github.com/Facepunch/garrysmod-issues/issues/2030)  
---- ℹ **NOTE**: `player_default` class walk speed is: `400`.  
+--- ℹ **NOTE**: `player_default` class walk speed is: `160`.  
 --- @param walkSpeed number @The new walk speed when `sv_friction` is below `10`
 function Player:SetWalkSpeed(walkSpeed)
 end

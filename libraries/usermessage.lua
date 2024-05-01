@@ -3,8 +3,10 @@
 --- ⚠ **WARNING**: Usermessages have a limit of only 256 bytes!  
 _G.usermessage = {}
 ---  client|server
+--- 🛑 **DEPRECATED**: You should be using net instead  
 --- Returns a table of every usermessage hook  
---- @return table @hooks
+--- @deprecated
+--- @return table @User message hooks
 function usermessage.GetTable()
 end
 

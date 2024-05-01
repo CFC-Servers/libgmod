@@ -25,7 +25,7 @@ end
 --- Registers a new entity drive.  
 --- @param name string @The name of the drive.
 --- @param data table @The data required to create the drive
---- @param base string @The base of the drive.
+--- @param base? string @The base of the drive.
 function drive.Register(name, data, base)
 end
 

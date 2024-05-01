@@ -10,11 +10,11 @@ end
 
 ---  server
 --- Compute shortest path from bot to 'goal' via A* algorithm.  
---- @param from NextBot @The nextbot we're generating for
---- @param to Vector @To point
---- @param generator? function @A funtion that allows you to alter the path generation
+--- @param bot NextBot @The nextbot we're generating for
+--- @param goal Vector @The target location, the goal.
+--- @param generator? function @A function that allows you to alter the path generation
 --- @return boolean @* If returns true, path was found to the goal position
-function PathFollower:Compute(from, to, generator)
+function PathFollower:Compute(bot, goal, generator)
 end
 
 ---  server

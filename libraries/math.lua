@@ -23,7 +23,8 @@
 --- </example>  
 --- <example>  
 --- A brief visual example of different easing methods  
---- </example>  
+--- <upload src="ab571/8dc38906fb4cfbe.gif" size="4162886" name="easing_examples.gif">  
+--- </upload></example>  
 _G.math = {}
 ---  menu|client|server
 --- Calculates the difference between two angles.  
@@ -492,7 +493,7 @@ end
 ---  menu|client|server
 --- Returns the [cosine](https://en.wikipedia.org/wiki/Trigonometric_functions#cos) of given angle.  
 --- @param number number @Angle in radians
---- @return number @Cosine of given angle
+--- @return number @Cosine of given angle in the range (-1, 1)
 function math.cos(number)
 end
 
@@ -653,7 +654,7 @@ end
 ---  menu|client|server
 --- Returns the [sine](https://en.wikipedia.org/wiki/Trigonometric_functions) of given angle.  
 --- @param number number @Angle in radians
---- @return number @Sine for given angle
+--- @return number @Sine for given angle in the range (-1, 1)
 function math.sin(number)
 end
 

@@ -2145,7 +2145,7 @@
           {
             "name": "collideFunc",
             "type": "function",
-            "description": "Collide callback, the arguments are:\n\n\n\n\n<page>CLuaParticle</page> particle - The particle itself\n\n<page>Vector</page> hitPos - Position of the collision\n\n<page>Vector</page> hitNormal - Direction of the collision, perpendicular to the hit surface"
+            "description": "The collision callback.\n\n<callback>\n<arg type=\"CLuaParticle\" name=\"particle\">The particle itself</arg>\n<arg type=\"Vector\" name=\"hitPos\">Position of the collision</arg>\n<arg type=\"Vector\" name=\"hitNormal\">Direction of the collision, perpendicular to the hit surface</arg>\n</callback>"
           }
         ]
       },
@@ -2410,7 +2410,7 @@
           {
             "name": "thinkFunc",
             "type": "function",
-            "description": "Think function. It has only one argument:\n\n\n<page>CLuaParticle</page> particle - The particle the think hook is set on"
+            "description": "Think function.\n\n<callback>\n<arg type=\"CLuaParticle\" name=\"particle\">The particle the think hook is set on</arg>\n</callback>"
           }
         ]
       },
@@ -4375,7 +4375,7 @@
         "realms": [
           "server"
         ],
-        "description": "Removes this node from the Closed List.\n\nUsed in pathfinding via the [A* algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm).\n\n\nMore information can be found on the <page>Simple Pathfinding</page> page."
+        "description": "<deprecated>Does nothing</deprecated>\n\nRemoves this node from the Closed List.\n\nUsed in pathfinding via the [A* algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm).\n\n\nMore information can be found on the <page>Simple Pathfinding</page> page."
       },
       {
         "name": "SetAttributes",
@@ -5285,19 +5285,22 @@
           "client",
           "server"
         ],
-        "description": "Converts a <page>Color</page> into HSV color space. This calls <page>Global.ColorToHSV</page> internally.",
+        "description": "Encodes a RGB <page>Color</page> into the HSV color space.\nThis function uses <page>Global.ColorToHSV</page> internally.",
         "returnValues": [
           {
             "type": "number",
-            "description": "The hue in degrees [0, 360)."
+            "name": "Hue",
+            "description": "Degrees in range [ 0 , 360 )"
           },
           {
             "type": "number",
-            "description": "The saturation in range [0, 1]."
+            "name": "Saturation",
+            "description": "Range [ 0 , 1 ]"
           },
           {
             "type": "number",
-            "description": "The value in range [0, 1]."
+            "name": "Brightness",
+            "description": "Range [ 0 , 1 ]"
           }
         ]
       },
@@ -7006,7 +7009,7 @@
           "client",
           "server"
         ],
-        "description": "Activates the entity. This needs to be used on some entities (like constraints) after being spawned.\n\n<note>For some entity types when this function is used after <page>Entity:SetModelScale</page>, the physics object will be recreated with the new scale. [Source-sdk-2013](https://github.com/ValveSoftware/source-sdk-2013/blob/55ed12f8d1eb6887d348be03aee5573d44177ffb/mp/src/game/server/baseanimating.cpp#L321-L327).\n\nCalling this method after <page>Entity:SetModelScale</page> will recreate a new scaled `SOLID_VPHYSICS` <page>PhysObj</page> on scripted entities. This can be a problem if you made a properly scaled <page>PhysObj</page> of another kind (using <page>Entity:PhysicsInitSphere</page> for instance) or if you edited the <page>PhysObj</page>'s properties. This is especially the behavior of the Sandbox spawn menu.</note>\n\n<bug issue=\"3372\">This crashes the game with scaled vehicles.</bug>"
+        "description": "Activates the entity. This needs to be used on some entities (like constraints) after being spawned.\n\n<note>For some entity types when this function is used after <page>Entity:SetModelScale</page>, the physics object will be recreated with the new scale. [Source-sdk-2013](https://github.com/ValveSoftware/source-sdk-2013/blob/55ed12f8d1eb6887d348be03aee5573d44177ffb/mp/src/game/server/baseanimating.cpp#L321-L327).\n\nCalling this method after <page>Entity:SetModelScale</page> will recreate a new scaled `SOLID_VPHYSICS` <page>PhysObj</page> on scripted entities. This can be a problem if you made a properly scaled <page>PhysObj</page> of another kind (using <page>Entity:PhysicsInitSphere</page> for instance) or if you edited the <page>PhysObj</page>'s properties. This is especially the behavior of the Sandbox spawn menu.</note>"
       },
       {
         "name": "AddCallback",
@@ -7025,7 +7028,7 @@
           {
             "name": "func",
             "type": "function",
-            "description": "The function to call"
+            "description": "The function to call. It's arguments and return values will depend on the hook specified in the first argument."
           }
         ],
         "returnValues": [
@@ -7396,7 +7399,7 @@
           {
             "name": "removeFunc",
             "type": "function",
-            "description": "Function to be called on remove"
+            "description": "Function to be called on remove.\n\n<callback>\n<arg type=\"Entity\" name=\"ent\">The entity about to be removed.</arg>\n<arg type=\"vararg\" name=\"data\">Data passed from the arguments to `CallOnRemove`.</arg>\n</callback>"
           },
           {
             "name": "args",
@@ -7736,14 +7739,7 @@
           "client",
           "server"
         ],
-        "description": "Flags an entity as using custom lua defined collisions. Fixes entities having spongy player collisions or not hitting traces, such as after <page>Entity:PhysicsFromMesh</page>\n\nInternally identical to `Entity:AddSolidFlags( bit.bor( FSOLID_CUSTOMRAYTEST, FSOLID_CUSTOMBOXTEST ) )`\n\nDo not confuse this function with <page>Entity:SetCustomCollisionCheck</page>, they are not the same.",
-        "arguments": [
-          {
-            "name": "useCustom",
-            "type": "boolean",
-            "description": "True to flag this entity"
-          }
-        ]
+        "description": "Flags an entity as using custom lua defined collisions. Fixes entities having spongy player collisions or not hitting traces, such as after <page>Entity:PhysicsFromMesh</page>\n\nInternally identical to `Entity:AddSolidFlags( bit.bor( FSOLID_CUSTOMRAYTEST, FSOLID_CUSTOMBOXTEST ) )`\n\nDo not confuse this function with <page>Entity:SetCustomCollisionCheck</page>, they are not the same."
       },
       {
         "name": "EnableMatrix",
@@ -7776,7 +7772,7 @@
         "returnValues": [
           {
             "type": "number",
-            "description": "The index of the entity.\n\n-1 for clientside-only or serverside-only entities."
+            "description": "The index of the entity.\n\n-1 for clientside-only or 0 for serverside-only entities."
           }
         ]
       },
@@ -8327,7 +8323,7 @@
           {
             "name": "bone",
             "type": "number",
-            "description": "The bode ID of the bone to get parent of, starting at index 0."
+            "description": "The bone ID of the bone to get parent of, starting at index 0."
           }
         ],
         "returnValues": [
@@ -9589,7 +9585,7 @@
           "client",
           "server"
         ],
-        "description": "Returns the material override for this entity.\n\nReturns an empty string if no material override exists. Use <page>Entity:GetMaterials</page> to list it's default materials.\n\n<bug issue=\"3362\">The server's value takes priority on the client.</bug>",
+        "description": "Returns the material override for this entity.\n\nReturns an empty string if no material override exists. Use <page>Entity:GetMaterials</page> to list its default materials.\n\n<bug issue=\"3362\">The server's value takes priority on the client.</bug>",
         "returnValues": [
           {
             "type": "string",
@@ -10049,7 +10045,7 @@
           "client",
           "server"
         ],
-        "description": "Returns callback function for given NWVar of this entity.",
+        "description": "<deprecated>You should be using <page>Entity:GetNW2VarProxy</page> instead.</deprecated>\n\nReturns callback function for given NWVar of this entity. Alias of <page>Entity:GetNW2VarProxy</page>",
         "arguments": [
           {
             "name": "key",
@@ -10309,7 +10305,7 @@
           "client",
           "server"
         ],
-        "description": "<removed>This function was superseded by <page>Entity:GetNetworked2VarProxy</page>. This page still exists an archive in case anybody ever stumbles across old code and needs to know what it is</removed>\nReturns callback function for given NWVar of this entity.",
+        "description": "<removed>This function was superseded by <page>Entity:GetNetworked2VarProxy</page>. This page still exists an archive in case anybody ever stumbles across old code and needs to know what it is</removed>\nReturns callback function for given NWVar of this entity, previously set by <page>Entity:SetNWVarProxy</page>.",
         "arguments": [
           {
             "name": "name",
@@ -10320,7 +10316,7 @@
         "returnValues": [
           {
             "type": "function",
-            "description": "The callback of given NWVar, if any."
+            "description": "The callback of given NWVar, if any.\n<callback>\n<arg type=\"Entity\" name=\"ent\">The entity</arg>\n<arg type=\"string\" name=\"name\">Name of the NWVar that has changed</arg>\n<arg type=\"any\" name=\"oldval\">The old value</arg>\n<arg type=\"any\" name=\"newval\">The new value</arg>\n</callback>"
           }
         ]
       },
@@ -10389,7 +10385,7 @@
           "client",
           "server"
         ],
-        "description": "Returns all network vars created by <page>Entity:NetworkVar</page> and <page>Entity:NetworkVarElement</page> and their current values.\n\nThis is used internally by the duplicator.\n\nFor NWVars see <page>Entity:GetNWVarTable</page>.\n\n<note>This function will only work on entities which had <page>Entity:InstallDataTable</page> called on them, which is done automatically for players and all <page>Scripted Entities</page></note>",
+        "description": "Returns all network vars created by <page>Entity:NetworkVar</page> and <page>Entity:NetworkVarElement</page> and their current values.\n\nThis is used internally by the duplicator. `Entity` type Network vars will not be returned!\n\nFor NWVars see <page>Entity:GetNWVarTable</page>.\n\n<note>This function will only work on entities which had <page>Entity:InstallDataTable</page> called on them, which is done automatically for players and all <page>Scripted Entities</page></note>",
         "returnValues": [
           {
             "type": "table",
@@ -10645,7 +10641,7 @@
           "client",
           "server"
         ],
-        "description": "Returns callback function for given NWVar of this entity.\nAlias of <page>Entity:GetNetworked2VarProxy</page>",
+        "description": "Returns callback function for given NWVar of this entity.",
         "arguments": [
           {
             "name": "key",
@@ -10656,7 +10652,7 @@
         "returnValues": [
           {
             "type": "function",
-            "description": "The callback of given NWVar, or nil if not found."
+            "description": "The callback of given NWVar, or nil if not found.\n\n<callback>\n<arg type=\"Entity\" name=\"ent\">The entity</arg>\n<arg type=\"string\" name=\"name\">Name of the NW2Var that has changed</arg>\n<arg type=\"any\" name=\"oldval\">The old value</arg>\n<arg type=\"any\" name=\"newval\">The new value</arg>\n</callback>"
           }
         ]
       },
@@ -10877,18 +10873,18 @@
           "client",
           "server"
         ],
-        "description": "Returns callback function for given NWVar of this entity.\n<removed>This function was superseded by <page>Entity:GetNW2VarProxy</page>. This page still exists an archive in case anybody ever stumbles across old code and needs to know what it is</removed>",
+        "description": "Returns callback function for given NWVar of this entity, previously set by <page>Entity:SetNWVarProxy</page>.\n<removed>This function was superseded by <page>Entity:GetNW2VarProxy</page>. This page still exists an archive in case anybody ever stumbles across old code and needs to know what it is</removed>",
         "arguments": [
           {
             "name": "key",
-            "type": "any",
+            "type": "string",
             "description": "The key of the NWVar to get callback of."
           }
         ],
         "returnValues": [
           {
             "type": "function",
-            "description": "The callback of given NWVar, or nil if not found."
+            "description": "The callback of given NWVar, or nil if not found.\n\n<callback>\n<arg type=\"Entity\" name=\"ent\">The entity</arg>\n<arg type=\"string\" name=\"name\">Name of the NWVar that has changed</arg>\n<arg type=\"any\" name=\"oldval\">The old value</arg>\n<arg type=\"any\" name=\"newval\">The new value</arg>\n</callback>"
           }
         ]
       },
@@ -10972,11 +10968,11 @@
           "client",
           "server"
         ],
-        "description": "Returns the attachment index of the entity's parent. Returns 0 if the entity is not parented to a specific attachment or if it isn't parented at all.\n\nThis is set by second argument of <page>Entity:SetParent</page> or the **SetParentAttachment** input.",
+        "description": "Returns the attachment/bone index of the entity's parent. Returns 0 if the entity is not parented to an attachment/bone or if it isn't parented at all.\n\nThis is set by second argument of <page>Entity:SetParent</page> or the **SetParentAttachment** input.",
         "returnValues": [
           {
             "type": "number",
-            "description": "The parented attachment index"
+            "description": "The parented attachment/bone index\n<note>Will return bone index instead of attachment index if the **EF_FOLLOWBONE** effect is active on the entity. See <page>Entity:IsEffectActive</page>.</note>"
           }
         ]
       },
@@ -12642,11 +12638,11 @@
           "client",
           "server"
         ],
-        "description": "Returns if the entity is the map's Entity[0] worldspawn",
+        "description": "Returns if this entity is the map entity `Entity[0] worldspawn`.",
         "returnValues": [
           {
             "type": "boolean",
-            "description": "isWorld"
+            "description": "Whether this entity is the world entity."
           }
         ]
       },
@@ -12976,7 +12972,7 @@
           {
             "name": "slot",
             "type": "number",
-            "description": "Each network variable has to have a unique slot. The slot is per type - so you can have an int in slot `0`, a bool in slot `0` and a float in slot `0` etc. You can't have two ints in slot `0`, instead you would do a int in slot `0` and another int in slot `1`.\n\nThe max slots right now are `32` - so you should pick a number between `0` and `31`. An exception to this is strings which has a max slots of `4`."
+            "description": "Each network variable has to have a unique slot. The slot is per type - so you can have an int in slot `0`, a bool in slot `0` and a float in slot `0` etc. You can't have two ints in slot `0`, instead you would do a int in slot `0` and another int in slot `1`.\n\nThe max slots right now are `32` - so you should pick a number between `0` and `31`. An exception to this is strings which has a max slots of `4`.\n\nThis can be omitted entirely (arguments will shift) and it will use the next available slot."
           },
           {
             "name": "name",
@@ -13035,7 +13031,7 @@
           "client",
           "server"
         ],
-        "description": "Creates a callback that will execute when the given network variable changes - that is, when the `Set<name>()` function is run.\n\n<note>The callback is executed **before** the value is changed, and is called even if the new and old values are the same.\n\nThis function does not exist on entities in which <page>Entity:InstallDataTable</page> has not been called. By default, this means this function only exists on SENTs (both serverside and clientside) and on players with a <page text=\"Player Class\">Player_Classes</page> (serverside and clientside <page>Global.LocalPlayer</page> only). It's therefore safest to only use this in <page>ENTITY:SetupDataTables</page>.</note>\n\n<bug request=\"324\">The callback will not be called clientside if the var is changed right after entity spawn.</bug>\n</name>",
+        "description": "Creates a callback that will execute when the given network variable changes - that is, when the `Set<name>()` function is run.\n\nThe callback is executed **before** the value is changed, and is called even if the new and old values are the same.\n\nThis function does not exist on entities in which <page>Entity:InstallDataTable</page> has not been called.\n\nBy default, this means this function only exists on SENTs (both serverside and clientside) and on players with a <page text=\"Player Class\">Player_Classes</page> (serverside and clientside <page>Global.LocalPlayer</page> only).\n\nIt's therefore safest to only use this in <page>ENTITY:SetupDataTables</page>.\n\n<bug request=\"324\">The callback will not be called clientside if the var is changed right after entity spawn.</bug>\n</name>",
         "arguments": [
           {
             "name": "name",
@@ -13045,7 +13041,7 @@
           {
             "name": "callback",
             "type": "function",
-            "description": "The function to call when the variable changes. It is passed 4 arguments:\n* <page>Entity</page> entity - Entity whos variable changed.\n* <page>string</page> name - Name of changed variable.\n* <page>any</page> old - Old/current variable value.\n* <page>any</page> new - New variable value that it was set to."
+            "description": "The function to call when the variable changes.\n\n<callback>\n<arg type=\"Entity\" name=\"entity\">Entity whos variable changed.</arg>\n<arg type=\"string\" name=\"name\">Name of changed variable.</arg>\n<arg type=\"any\" name=\"old\">Old/current variable value.</arg>\n<arg type=\"any\" name=\"new\">New variable value that it was set to.</arg>\n</callback>"
           }
         ]
       },
@@ -13654,7 +13650,6 @@
         "name": "RemoveInternalConstraint",
         "parent": "Entity",
         "realms": [
-          "client",
           "server"
         ],
         "description": "Breaks internal Ragdoll constrains, so you can for example separate an arm from the body of a ragdoll and preserve all physics.\n\nThe visual mesh will still stretch as if it was properly connected unless the ragdoll model is specifically designed to avoid that.",
@@ -15173,7 +15168,7 @@
           {
             "name": "callback",
             "type": "function",
-            "description": "The function to be called when the NW2Var changes. It has 4 arguments:\n* <page>Entity</page> ent - The entity\n* <page>string</page> name - Name of the NW2Var that has changed\n* <page>any</page> oldval - The old value\n* <page>any</page> newval - The new value"
+            "description": "The function to be called when the NW2Var changes.\n\n<callback>\n<arg type=\"Entity\" name=\"ent\">The entity</arg>\n<arg type=\"string\" name=\"name\">Name of the NW2Var that has changed</arg>\n<arg type=\"any\" name=\"oldval\">The old value</arg>\n<arg type=\"any\" name=\"newval\">The new value</arg>\n</callback>"
           }
         ]
       },
@@ -15388,7 +15383,7 @@
           {
             "name": "callback",
             "type": "function",
-            "description": "The function to be called when the NWVar changes."
+            "description": "The function to be called when the NWVar changes.\n\n<callback>\n<arg type=\"Entity\" name=\"ent\">The entity</arg>\n<arg type=\"string\" name=\"name\">Name of the NWVar that has changed</arg>\n<arg type=\"any\" name=\"oldval\">The old value</arg>\n<arg type=\"any\" name=\"newval\">The new value</arg>\n</callback>"
           }
         ]
       },
@@ -15635,7 +15630,7 @@
         "arguments": [
           {
             "name": "key",
-            "type": "any",
+            "type": "string",
             "description": "The key of the NW2Var to add callback for."
           },
           {
@@ -15803,13 +15798,13 @@
         "arguments": [
           {
             "name": "key",
-            "type": "any",
+            "type": "string",
             "description": "The key of the NWVar to add callback for."
           },
           {
             "name": "callback",
             "type": "function",
-            "description": "The function to be called when the NWVar changes. It has 4 arguments:\n* <page>Entity</page> ent - The entity\n* <page>string</page> name - Name of the NWVar that has changed\n* <page>any</page> oldval - The old value\n* <page>any</page> newval - The new value"
+            "description": "The function to be called when the NWVar changes.\n\n<callback>\n<arg type=\"Entity\" name=\"ent\">The entity</arg>\n<arg type=\"string\" name=\"name\">Name of the NWVar that has changed</arg>\n<arg type=\"any\" name=\"oldval\">The old value</arg>\n<arg type=\"any\" name=\"newval\">The new value</arg>\n</callback>"
           }
         ]
       },
@@ -15858,7 +15853,7 @@
           "client",
           "server"
         ],
-        "description": "Sets the parent of this entity, making it move with its parent. This will make the child entity non solid, nothing can interact with them, including traces.\n\n<note>This does not work on <page text=\"the world\">game.GetWorld</page>.</note>\n<warning>This can cause undefined physics behaviour when used on entities that don't support parenting. See the [Valve developer wiki](https://developer.valvesoftware.com/wiki/Entity_Hierarchy_(parenting)) for more information.</warning>",
+        "description": "Sets the parent of this entity, making it move with its parent. This will make the child entity non solid, nothing can interact with them, including traces.\n\n<note>This does not work on <page text=\"the world\">game.GetWorld</page>.</note>\n<warning>This can cause undefined physics behavior when used on entities that don't support parenting. See the [Valve developer wiki](https://developer.valvesoftware.com/wiki/Entity_Hierarchy_(parenting)) for more information.</warning>",
         "arguments": [
           {
             "name": "parent",
@@ -15867,10 +15862,10 @@
             "description": "The entity to parent to. Setting this to nil will clear the parent."
           },
           {
-            "name": "attachmentId",
+            "name": "attachmentOrBoneId",
             "type": "number",
             "default": "-1",
-            "description": "The attachment id to use when parenting, defaults to -1 or whatever the parent had set previously.\n\n\n<note>You must call <page>Entity:SetMoveType</page>( MOVETYPE_NONE ) on the child for this argument to have any effect!</note>"
+            "description": "The attachment or bone id to use when parenting. Defaults to -1 or whatever the parent had set previously.\n\nUse <page>Entity:AddEffects</page>( EF_FOLLOWBONE ) to treat this argument as a Bone ID instead of an Attachment ID. Similar to <page>Entity:FollowBone</page>.\n\n\n<note>You must call <page>Entity:SetMoveType</page>( MOVETYPE_NONE ) on the child for this argument to have any effect!</note>"
           }
         ]
       },
@@ -16061,12 +16056,12 @@
         "realms": [
           "server"
         ],
-        "description": "Sets the function to build the ragdoll. This is used alongside Kinect, for more info see ragdoll_motion entity.",
+        "description": "Sets the function to build the ragdoll. This is used alongside Kinect, for more info see `ragdoll_motion` entity in the game files.",
         "arguments": [
           {
-            "name": "func",
+            "name": "builder",
             "type": "function",
-            "description": "The build function. This function has one argument:\n* <page>Entity</page> ragdoll - The ragdoll to build"
+            "description": "The build function.\n\n<callback>\n<arg type=\"Entity\" name=\"ragdoll\">The ragdoll to build</arg>\n</callback>"
           }
         ]
       },
@@ -16794,11 +16789,13 @@
           {
             "name": "attacker",
             "type": "Entity",
+            "default": "nil",
             "description": "The entity that initiated the attack that caused the damage."
           },
           {
             "name": "inflictor",
             "type": "Entity",
+            "default": "nil",
             "description": "The entity that applied the damage, eg. a weapon."
           }
         ]
@@ -16861,7 +16858,7 @@
           "client",
           "server"
         ],
-        "description": "Returns the ID of a <page>PhysObj</page> attached to the given bone. To be used with <page>Entity:GetPhysicsObjectNum</page>.\n\nSee <page>Entity:TranslatePhysBoneToBone</page> for reverse function.",
+        "description": "Returns the ID of a <page>PhysObj</page> attached to the given bone.\n\nSee <page>Entity:TranslatePhysBoneToBone</page> for reverse function.",
         "arguments": [
           {
             "name": "boneID",
@@ -16872,7 +16869,7 @@
         "returnValues": [
           {
             "type": "number",
-            "description": "The <page>PhysObj</page> ID of the given bone.\n\n* -1 if we somehow cannot translate"
+            "description": "The <page>PhysObj</page> ID of the given bone to be used with <page>Entity:GetPhysicsObjectNum</page> or `-1` if we cannot translate for some reason, such as a model bone having no physics object associated with it."
           }
         ]
       },
@@ -16912,7 +16909,7 @@
         "realms": [
           "client"
         ],
-        "description": "Updates the shadow of this entity."
+        "description": "Marks the render-to-texture (RTT) shadow of this entity as dirty, as well as any potential projected texture shadows related to this entity, so they will be updated as soon as possible."
       },
       {
         "name": "Use",
@@ -18580,11 +18577,11 @@
           "client",
           "server"
         ],
-        "description": "Returns the height of the member texture set for $basetexture.",
+        "description": "Returns the height of the member texture set for `$basetexture`.",
         "returnValues": [
           {
             "type": "number",
-            "description": "height"
+            "description": "Height of the base texture."
           }
         ]
       },
@@ -18839,11 +18836,11 @@
           "client",
           "server"
         ],
-        "description": "Returns the width of the member texture set for $basetexture.",
+        "description": "Returns the width of the member texture set for `$basetexture`.",
         "returnValues": [
           {
             "type": "number",
-            "description": "width"
+            "description": "Width of the base texture."
           }
         ]
       }
@@ -20590,6 +20587,20 @@
         ]
       },
       {
+        "name": "GetIdealSequence",
+        "parent": "NPC",
+        "realms": [
+          "server"
+        ],
+        "description": "Returns the ideal sequence the NPC currently wants to achieve.",
+        "returnValues": [
+          {
+            "type": "number",
+            "description": "The ideal sequence, specific to the NPCs model."
+          }
+        ]
+      },
+      {
         "name": "GetIdealYaw",
         "parent": "NPC",
         "realms": [
@@ -22172,7 +22183,8 @@
           {
             "name": "name",
             "type": "string",
-            "description": "The new squad name to set."
+            "default": "nil",
+            "description": "The new squad name to set. Do not provide this argument to reset the squad."
           }
         ]
       },
@@ -22434,7 +22446,7 @@
   },
   {
     "name": "Panel",
-    "description": "This is the base panel for every other [VGUI](vgui) panel.\n\nIt contains all of the basic methods, some of which may only work on certain VGUI elements. As their functionality is provided at the game's C/C++ level rather than by its Lua script extension, they are unfortunately unavailable for most practical purposes, however, they can still be obtained in a way similar to that provided by the <page>baseclass</page> library:\n\n```\n-- Create a new panel type NewPanel that inherits all of its functionality from DLabel,\n-- but has a different SetText method than DLabel does - all without the hassle of that\n-- old DLabel's default text getting in the way. Fun stuff.\n\nlocal PANEL = {}\n\nfunction PANEL:Init()\n\nself:SetText_Base( \"\" )\nself:SetText( \"Time for something different!\" )\n\nend\n\nfunction PANEL:Paint( aWide, aTall )\n\nlocal TextX, TextY = 0, 0\nlocal TextColor = Color( 255, 0, 0, 255 )\n\nsurface.SetFont( self:GetFont() or \"default\" )\nsurface.SetTextColor( TextColor )\nsurface.SetTextPos( TextX, TextY )\nsurface.DrawText( self:GetText() )\n\nend\n\n-- And here we go:\nPANEL.SetText_Base = FindMetaTable( \"Panel\" ).SetText\n\nfunction PANEL:SetText( aText )\n\nself.Text = tostring( aText )\n\nend\n\nfunction PANEL:GetText()\n\nreturn self.Text or \"\"\n\nend\n\nvgui.Register( \"NewPanel\", PANEL, \"DLabel\" )\n```",
+    "description": "This is the base panel for every other [VGUI](vgui) panel.\n\nIt contains all of the basic methods, some of which may only work on certain VGUI elements. See also <page>Panel Hooks</page>.\n\nAs their functionality is provided at the game's C/C++ level rather than by its Lua script extension, they are unfortunately unavailable for most practical purposes, however, they can still be obtained in a way similar to that provided by the <page>baseclass</page> library:\n\n```\n-- Create a new panel type NewPanel that inherits all of its functionality from DLabel,\n-- but has a different SetText method than DLabel does - all without the hassle of that\n-- old DLabel's default text getting in the way. Fun stuff.\n\nlocal PANEL = {}\n\nfunction PANEL:Init()\n\nself:SetText_Base( \"\" )\nself:SetText( \"Time for something different!\" )\n\nend\n\nfunction PANEL:Paint( aWide, aTall )\n\nlocal TextX, TextY = 0, 0\nlocal TextColor = Color( 255, 0, 0, 255 )\n\nsurface.SetFont( self:GetFont() or \"default\" )\nsurface.SetTextColor( TextColor )\nsurface.SetTextPos( TextX, TextY )\nsurface.DrawText( self:GetText() )\n\nend\n\n-- And here we go:\nPANEL.SetText_Base = FindMetaTable( \"Panel\" ).SetText\n\nfunction PANEL:SetText( aText )\n\nself.Text = tostring( aText )\n\nend\n\nfunction PANEL:GetText()\n\nreturn self.Text or \"\"\n\nend\n\nvgui.Register( \"NewPanel\", PANEL, \"DLabel\" )\n```",
     "functions": [
       {
         "name": "Add",
@@ -22448,7 +22460,17 @@
           {
             "name": "object",
             "type": "Panel",
-            "description": "The panel to be added (parented). Can also be:\n* <page>string</page> Class Name - creates panel with the specified name and adds it to the panel.\n* <page>table</page> PANEL table - creates a panel from table and adds it to the panel."
+            "description": "The panel to be added (parented)."
+          },
+          {
+            "name": "class",
+            "type": "string",
+            "description": "The class to be added."
+          },
+          {
+            "name": "table",
+            "type": "table",
+            "description": "The table to create the panel from."
           }
         ],
         "returnValues": [
@@ -22564,7 +22586,7 @@
             "name": "callback",
             "type": "function",
             "default": "nil",
-            "description": "The function to be called once the animation finishes. Arguments are:\n* <page>table</page> animData - The AnimationData that was used. See <page>Structures/AnimationData</page>\n* <page>Panel</page> pnl - The panel object whose alpha was changed."
+            "description": "The function to be called once the animation finishes.\n\n<callback>\n<arg type=\"table\" name=\"animData\">The <page>Structures/AnimationData</page> that was used.</arg>\n<arg type=\"Panel\" name=\"targetPanel\">The panel object that was animated.</arg>\n</callback>"
           }
         ]
       },
@@ -22647,7 +22669,7 @@
           "client",
           "menu"
         ],
-        "description": "Centers the panel on its parent."
+        "description": "Centers the panel on its parent.\n<note>This will center the panel using the current size of the panel so should be called AFTER setting or adjusting the size of the \tpanel</note>"
       },
       {
         "name": "CenterHorizontal",
@@ -22724,7 +22746,7 @@
           "client",
           "menu"
         ],
-        "description": "Marks all of the panel's children for deletion."
+        "description": "Removes all of the panel's children."
       },
       {
         "name": "ColorTo",
@@ -22748,12 +22770,14 @@
           {
             "name": "delay",
             "type": "number",
+            "default": "0",
             "description": "Delay before start fading"
           },
           {
             "name": "callback",
             "type": "function",
-            "description": "Function to execute when finished"
+            "default": "nil",
+            "description": "Function to execute when finished\n<callback>\n<arg type=\"table\" name=\"animData\">The <page>Structures/AnimationData</page> that was used.</arg>\n<arg type=\"Panel\" name=\"targetPanel\">The panel object that was animated.</arg>\n</callback>"
           }
         ]
       },
@@ -25168,7 +25192,7 @@
             "name": "callback",
             "type": "function",
             "default": "nil",
-            "description": "The function to be called once the animation is complete. Arguments are:\n* <page>table</page> animData - The <page>AnimationData that was used.</page>\n* <page>Panel</page> pnl - The panel object that was moved."
+            "description": "The function to be called once the animation is complete.\n<callback>\n<arg type=\"table\" name=\"animData\">The <page>Structures/AnimationData</page> that was used.</arg>\n<arg type=\"Panel\" name=\"targetPanel\">The panel object that was animated.</arg>\n</callback>"
           }
         ]
       },
@@ -25255,7 +25279,8 @@
           {
             "name": "callback",
             "type": "function",
-            "description": "The function to be called once the animation finishes. Arguments are:\n* <page>table</page> animData - The <page>Structures/AnimationData</page> that was used.\n* <page>Panel</page> pnl - The panel object that was moved."
+            "default": "nil",
+            "description": "The function to be called once the animation finishes.\n<callback>\n<arg type=\"table\" name=\"animData\">The <page>Structures/AnimationData</page> that was used.</arg>\n<arg type=\"Panel\" name=\"targetPanel\">The panel object that was animated.</arg>\n</callback>"
           }
         ]
       },
@@ -25351,13 +25376,13 @@
             "name": "callback",
             "type": "function",
             "default": "nil",
-            "description": "The function to be called when the animation ends. Arguments passed are:\n* <page>table</page> animTable - The <page>Structures/AnimationData</page> that was used.\n* <page>Panel</page> tgtPanel - The panel object that was animated."
+            "description": "The function to be called when the animation ends.\n\n<callback>\n<arg type=\"table\" name=\"animData\">The <page>Structures/AnimationData</page> that was used.</arg>\n<arg type=\"Panel\" name=\"targetPanel\">The panel object that was animated.</arg>\n</callback>"
           }
         ],
         "returnValues": [
           {
             "type": "table",
-            "description": "Partially filled <page>Structures/AnimationData</page> with members:\n* <page>number</page> EndTime - Equal to `length` and `delay` arguments added together, plus either the <page>Global.SysTime</page> if there is no other animation queued or the end time of the last animation in the queue.\n* <page>number</page> StartTime - Equal to the `delay` argument, plus either the <page>Global.SysTime</page> if there is no other animation queued or the end time of the last animation in the queue.\n* <page>number</page> Ease - Equal to the `ease` argument.\n* <page>function</page> OnEnd - Equal to the `callback` argument."
+            "description": "Partially filled <page>Structures/AnimationData</page> with the following members:\n* <page>number</page> **EndTime** - Equal to `length` and `delay` arguments added together, plus either the <page>Global.SysTime</page> if there is no other animation queued or the end time of the last animation in the queue.\n* <page>number</page> **StartTime** - Equal to the `delay` argument, plus either the <page>Global.SysTime</page> if there is no other animation queued or the end time of the last animation in the queue.\n* <page>number</page> **Ease** - Equal to the `ease` argument.\n* <page>function</page> **OnEnd** - Equal to the `callback` argument."
           }
         ]
       },
@@ -25402,7 +25427,7 @@
           "client",
           "menu"
         ],
-        "description": "Sets whether this panel's drawings should be clipped within the parent panel's bounds.\n\nSee also <page>Global.DisableClipping</page>.",
+        "description": "Sets whether this panel's drawings should be clipped within the parent panel's bounds.\n\n<note>\nThis only disabled clipping for the Paint Related functions (as far as i can tell at the current moment, more testing should be done) so things like the text of a <page>DLabel</page> will still be clipped to the parent.\n\nTo fully disable the clipping of any children see <page>Global.DisableClipping</page>.\n</note>",
         "arguments": [
           {
             "name": "clip",
@@ -25597,7 +25622,7 @@
           {
             "name": "func",
             "type": "function",
-            "description": "This function is called whenever a panel with valid name is hovering above and dropped on this panel. It has next arguments:\n* <page>Panel</page> pnl - The receiver panel\n* <page>table</page> tbl - A table of panels dropped onto receiver panel\n* <page>boolean</page> dropped - False if hovering over, true if dropped onto\n* <page>number</page> menuIndex - Index of clicked menu item from third argument of <page>Panel:Receiver</page>\n* <page>number</page> x - Cursor pos, relative to the receiver\n* <page>number</page> y - Cursor pos, relative to the receiver"
+            "description": "This function is called whenever a panel with valid name is hovering above and dropped on this panel.\n\n<callback>\n<arg type=\"Panel\" name=\"pnl\">The receiver panel</arg>\n<arg type=\"table\" name=\"tbl\">A table of panels dropped onto receiver panel</arg>\n<arg type=\"boolean\" name=\"dropped\">False if hovering over, true if dropped onto</arg>\n<arg type=\"number\" name=\"menuIndex\">Index of clicked menu item from third argument of <page>Panel:Receiver</page></arg>\n<arg type=\"number\" name=\"x\">Cursor pos, relative to the receiver</arg>\n<arg type=\"number\" name=\"y\">Cursor pos, relative to the receiver</arg>\n</callback>"
           },
           {
             "name": "menu",
@@ -26261,9 +26286,9 @@
         "description": "Allows you to set HTML code within a panel.",
         "arguments": [
           {
-            "name": "HTML code",
+            "name": "HTML",
             "type": "string",
-            "description": "The code to set."
+            "description": "The HTML code to set."
           }
         ]
       },
@@ -26375,6 +26400,7 @@
           {
             "name": "bodygroups",
             "type": "string",
+            "default": "nil",
             "description": "The body groups to set. Each single-digit number in the string represents a separate bodygroup, **This argument must be 9 characters in total**."
           }
         ]
@@ -26521,7 +26547,8 @@
           {
             "name": "size",
             "type": "number",
-            "description": "The size of the avatar to use. Acceptable sizes are 32, 64, 184."
+            "default": "32",
+            "description": "The size of the avatar to use. Acceptable sizes are `32`, `64`, `184`. Non matching sizes will be clamped down to the highest valid number."
           }
         ]
       },
@@ -27105,7 +27132,8 @@
           {
             "name": "callback",
             "type": "function",
-            "description": "The function to be called once the animation finishes. Arguments are:\n* <page>table</page> animData - The <page>Structures/AnimationData</page> that was used.\n* <page>Panel</page> pnl - The panel object that was resized."
+            "default": "nil",
+            "description": "The function to be called once the animation finishes.\n<callback>\n<arg type=\"table\" name=\"animData\">The <page>Structures/AnimationData</page> that was used.</arg>\n<arg type=\"Panel\" name=\"targetPanel\">The panel object that was animated.</arg>\n</callback>"
           }
         ]
       },
@@ -27290,21 +27318,25 @@
           {
             "name": "offsetLeft",
             "type": "number",
+            "default": "nil",
             "description": "The left offset to the parent."
           },
           {
             "name": "offsetTop",
             "type": "number",
+            "default": "nil",
             "description": "The top offset to the parent."
           },
           {
             "name": "offsetRight",
             "type": "number",
+            "default": "nil",
             "description": "The right offset to the parent."
           },
           {
             "name": "offsetBottom",
             "type": "number",
+            "default": "nil",
             "description": "The bottom offset to the parent."
           }
         ]
@@ -27419,20 +27451,20 @@
         "description": "Compute shortest path from bot to 'goal' via A* algorithm.",
         "arguments": [
           {
-            "name": "from",
+            "name": "bot",
             "type": "NextBot",
             "description": "The nextbot we're generating for.  This can also be a nextbot player (<page>player.CreateNextbot</page>)."
           },
           {
-            "name": "to",
+            "name": "goal",
             "type": "Vector",
-            "description": "To point"
+            "description": "The target location, the goal."
           },
           {
             "name": "generator",
             "type": "function",
             "default": "nil",
-            "description": "A funtion that allows you to alter the path generation. See example below for the default function."
+            "description": "A function that allows you to alter the path generation. See example below for the default function.\n\n<callback>\n<arg name=\"area\" type=\"CNavArea\">The area to move to.</arg>\n<arg name=\"fromArea\" type=\"CNavArea\">The area to move from.</arg>\n<arg name=\"ladder\" type=\"CNavLadder\">The ladder to move to or from (Validation required), if any.</arg>\n<arg name=\"elevator\" type=\"Entity\">Will probably be always NULL</arg>\n<arg name=\"length\" type=\"number\">Precomputed length between `area` and `fromArea`.</arg>\n<ret name=\"cost\" type=\"number\">The cost of movement between `area` and `fromArea`.</ret>\n</callback>"
           }
         ],
         "returnValues": [
@@ -28154,7 +28186,7 @@
           {
             "name": "shadowparams",
             "type": "table",
-            "description": "The parameters for the shadow. See example code to see how its used."
+            "description": "The parameters for the shadow. See <page>Structures/ShadowControlParams</page>."
           }
         ]
       },
@@ -29247,17 +29279,17 @@
           "client",
           "server"
         ],
-        "description": "Adds an entity to the player's clean up list.",
+        "description": "<note>This function is only available in Sandbox and its derivatives.</note>Adds an entity to the player's clean up list. This uses <page>cleanup.Add</page> internally.",
         "arguments": [
           {
             "name": "type",
             "type": "string",
-            "description": "Cleanup type"
+            "description": "The Cleanup type for this Entity."
           },
           {
             "name": "ent",
             "type": "Entity",
-            "description": "Entity to add"
+            "description": "The Entity to add."
           }
         ]
       },
@@ -29268,17 +29300,17 @@
           "client",
           "server"
         ],
-        "description": "<note>See [GetCount](/gmod/Player:GetCount) for list of types</note>Adds an entity to the total count of entities of same type.",
+        "description": "<note>This function is only available in Sandbox and its derivatives.</note>Adds an entity to the player's list of entities of the same type. See <page>Player:GetCount</page> to get the current count of entities of an entity type added with this function.",
         "arguments": [
           {
             "name": "str",
             "type": "string",
-            "description": "Entity type"
+            "description": "The type of this Entity."
           },
           {
             "name": "ent",
             "type": "Entity",
-            "description": "Entity"
+            "description": "The Entity you want to add to the list."
           }
         ]
       },
@@ -29288,12 +29320,12 @@
         "realms": [
           "server"
         ],
-        "description": "Add a certain amount to the player's death count",
+        "description": "Adds the provided amount to the player's death count.",
         "arguments": [
           {
             "name": "count",
             "type": "number",
-            "description": "number of deaths to add"
+            "description": "The amount to add to the death count."
           }
         ]
       },
@@ -29303,12 +29335,12 @@
         "realms": [
           "server"
         ],
-        "description": "Add a certain amount to the player's frag count (or kills count)",
+        "description": "Adds the provided amount to the player's frag/kill count.",
         "arguments": [
           {
             "name": "count",
             "type": "number",
-            "description": "number of frags to add"
+            "description": "The amount to add."
           }
         ]
       },
@@ -29318,17 +29350,17 @@
         "realms": [
           "server"
         ],
-        "description": "Adds a entity to the player's list of frozen objects.",
+        "description": "Adds an entity to the player's list of frozen objects.",
         "arguments": [
           {
             "name": "ent",
             "type": "Entity",
-            "description": "Entity"
+            "description": "The Entity to add."
           },
           {
             "name": "physobj",
             "type": "PhysObj",
-            "description": "Physics object belonging to ent"
+            "description": "The physics object of the Entity."
           }
         ]
       },
@@ -29353,7 +29385,7 @@
           {
             "name": "vote_callback",
             "type": "function",
-            "description": "The function to be run when the player presses 0-9 while a vote is active."
+            "description": "The function to be run when the player presses 0-9 while a vote is active.\n\n<callback>\n<arg name=\"voteNum\" type=\"number\">Which option the player pressed, 1-9 and 0 being the very last option.</arg>\n<ret name type=\"boolean\">Return true to remove this option from the vote.</ret>\n</callback>"
           },
           {
             "name": "draw_callback",
@@ -29369,7 +29401,7 @@
           "client",
           "server"
         ],
-        "description": "Plays a sequence directly from a sequence number, similar to <page>Player:AnimRestartGesture</page>. This function has the advantage to play sequences that haven't been bound to an existing <page>Enums/ACT</page>",
+        "description": "Plays a sequence directly from a sequence number, similar to <page>Player:AnimRestartGesture</page>. This function has the advantage to play sequences that haven't been bound to an existing <page>Enums/ACT</page>\n<warning>This is not automatically networked. This function has to be called on the client to be seen by said client.</warning>",
         "arguments": [
           {
             "name": "slot",
@@ -29608,18 +29640,18 @@
           "client",
           "server"
         ],
-        "description": "Checks if the limit is hit or not. If it is, it will throw a notification saying so.",
+        "description": "Checks if the limit of an entity type added by <page>Player:AddCount</page> is hit or not. If it's hit, it will call the <page>GM:PlayerCheckLimit</page> hook, and call <page>Player:LimitHit</page> if the hook doesn't return `false`.\n\nThis will always return `true` in singleplayer, as singleplayer does not have limits.\n\n<note>This function is only available in Sandbox and its derivatives.</note>",
         "arguments": [
           {
-            "name": "limitType",
+            "name": "str",
             "type": "string",
-            "description": "Limit type. In unmodified Sandbox possible values are:\n* \"props\"\n* \"ragdolls\"\n* \"vehicles\"\n* \"effects\"\n* \"balloons\"\n* \"cameras\"\n* \"npcs\"\n* \"sents\"\n* \"dynamite\"\n* \"lamps\"\n* \"lights\"\n* \"wheels\"\n* \"thrusters\"\n* \"hoverballs\"\n* \"buttons\"\n* \"emitters\""
+            "description": "The entity type to check the limit for. Default types:\n* \"props\"\n* \"ragdolls\"\n* \"vehicles\"\n* \"effects\"\n* \"balloons\"\n* \"cameras\"\n* \"npcs\"\n* \"sents\"\n* \"dynamite\"\n* \"lamps\"\n* \"lights\"\n* \"wheels\"\n* \"thrusters\"\n* \"hoverballs\"\n* \"buttons\"\n* \"emitters\""
           }
         ],
         "returnValues": [
           {
             "type": "boolean",
-            "description": "Returns true if limit is not hit, false if it is hit"
+            "description": "Returns `true` if the limit of this type is not hit, `false` otherwise."
           }
         ]
       },
@@ -29894,7 +29926,7 @@
         "realms": [
           "server"
         ],
-        "description": "Force puts the player into a specified vehicle.\nThis bypasses <page>GM:CanPlayerEnterVehicle</page>.",
+        "description": "Force puts the player into a specified vehicle.\nThis **does not** bypass <page>GM:CanPlayerEnterVehicle</page>.",
         "arguments": [
           {
             "name": "vehicle",
@@ -29917,7 +29949,7 @@
         "realms": [
           "server"
         ],
-        "description": "Forces the player to exit the vehicle if they're in one.\n\nThis bypasses <page>GM:CanExitVehicle</page>."
+        "description": "Forces the player to exit the vehicle if they're in one.\n\nThis function will bypass <page>GM:CanExitVehicle</page>. See also <page>GM:PlayerLeaveVehicle</page>"
       },
       {
         "name": "Flashlight",
@@ -30159,7 +30191,7 @@
           "client",
           "server"
         ],
-        "description": "Gets total count of entities of same type.\n\nDefault types:\n```\nballoons\nbuttons\ncameras\ndynamite\nemitters\nhoverballs\nlamps\nlights\nprops\nragdolls\nthrusters\nwheels\n```",
+        "description": "<note>This function is only available in Sandbox and its derivatives.</note>Gets the total amount of entities of an entity type added by <page>Player:AddCount</page>.\n\nDefault types:\n```\nballoons\nbuttons\ncameras\ndynamite\nemitters\nhoverballs\nlamps\nlights\nprops\nragdolls\nthrusters\nwheels\n```",
         "arguments": [
           {
             "name": "type",
@@ -30606,7 +30638,7 @@
           "client",
           "server"
         ],
-        "description": "Returns a **P**ersistent **Data** key-value pair from the SQL database. (`sv.db` when called on server, `cl.db` when called on client)\n\nInternally uses the <page>sql</page> library. See <page>util.GetPData</page> for cases when the player is not currently on the server.\n\n<warning>This function internally uses <page>Player:UniqueID</page>, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.</warning>\n\n<note>PData is not networked from servers to clients!</note>",
+        "description": "Returns a **P**ersistent **Data** key-value pair from the SQL database. (`sv.db` when called on server, `cl.db` when called on client)\n\nInternally uses the <page>sql</page> library. See <page>util.GetPData</page> for cases when the player is not currently on the server.\n\n<note>This function internally uses <page>Player:SteamID64</page>, it previously utilized <page>Player:UniqueID</page> which can cause collisions (two or more players sharing the same PData entry). <page>Player:SetPData</page> now replaces all instances of <page>Player:UniqueID</page> with <page>Player:SteamID64</page> when running <page>Player:SetPData</page></note>\n\n<note>PData is not networked from servers to clients!</note>",
         "arguments": [
           {
             "name": "key",
@@ -31099,7 +31131,7 @@
           "client",
           "server"
         ],
-        "description": "Returns a table of the player's weapons.\n<note>\nThis function returns a sequential table, meaning it should be looped with <page>Global.ipairs</page> instead of <page>Global.pairs</page> for efficiency reasons.\n</note>",
+        "description": "Returns a table of the player's weapons.\n<note>\nThis function returns a sequential table. Prefer to loop it with <page>Global.ipairs</page> instead of the <page>Global.pairs</page> function.\n</note>",
         "returnValues": [
           {
             "type": "table",
@@ -31974,7 +32006,7 @@
           "client",
           "server"
         ],
-        "description": "Removes a **P**ersistent **Data** key-value pair from the SQL database. (`sv.db` when called on server, `cl.db` when called on client)\n\nInternally uses the <page>sql</page> library. See <page>util.RemovePData</page> for cases when the player is not currently on the server.\n\n<warning>This function internally uses <page>Player:UniqueID</page>, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.</warning>",
+        "description": "Removes a **P**ersistent **Data** key-value pair from the SQL database. (`sv.db` when called on server, `cl.db` when called on client)\n\nInternally uses the <page>sql</page> library. See <page>util.RemovePData</page> for cases when the player is not currently on the server.\n\n<note>This function internally uses <page>Player:SteamID64</page>, it previously utilized <page>Player:UniqueID</page> which can cause collisions (two or more players sharing the same PData entry). <page>Player:SetPData</page> now replaces all instances of <page>Player:UniqueID</page> with <page>Player:SteamID64</page> when running <page>Player:SetPData</page></note>\n<note>PData is not networked from servers to clients!</note>",
         "arguments": [
           {
             "name": "key",
@@ -32748,7 +32780,7 @@
           "client",
           "server"
         ],
-        "description": "Sets the player's sprint speed.\n\nSee also <page>Player:GetRunSpeed</page>, <page>Player:SetWalkSpeed</page> and <page>Player:SetMaxSpeed</page>.\n<note>player_default class run speed is: `600`</note>",
+        "description": "Sets the player's sprint speed.\n\nSee also <page>Player:GetRunSpeed</page>, <page>Player:SetWalkSpeed</page> and <page>Player:SetMaxSpeed</page>.\n<note>player_default class run speed is: `240`</note>",
         "arguments": [
           {
             "name": "runSpeed",
@@ -32983,7 +33015,7 @@
           "client",
           "server"
         ],
-        "description": "Sets the player's normal walking speed. Not sprinting, not slow walking <key>+walk</key>.\n\nSee also <page>Player:SetSlowWalkSpeed</page>, <page>Player:GetWalkSpeed</page>, <page>Player:SetCrouchedWalkSpeed</page>, <page>Player:SetMaxSpeed</page> and <page>Player:SetRunSpeed</page>.\n\n<bug issue=\"2030\">Using a speed of `0` can lead to prediction errors.</bug>\n\n<note>`player_default` class walk speed is: `400`.</note>",
+        "description": "Sets the player's normal walking speed. Not sprinting, not slow walking <key>+walk</key>.\n\nSee also <page>Player:SetSlowWalkSpeed</page>, <page>Player:GetWalkSpeed</page>, <page>Player:SetCrouchedWalkSpeed</page>, <page>Player:SetMaxSpeed</page> and <page>Player:SetRunSpeed</page>.\n\n<bug issue=\"2030\">Using a speed of `0` can lead to prediction errors.</bug>\n\n<note>`player_default` class walk speed is: `160`.</note>",
         "arguments": [
           {
             "name": "walkSpeed",
@@ -34308,9 +34340,9 @@
         ],
         "returnValues": [
           {
-            "type": "number",
-            "name": "newlength",
-            "description": "New length of the stack."
+            "type": "any",
+            "name": "object",
+            "description": "Latest popped item."
           }
         ]
       },
@@ -34904,7 +34936,7 @@
         "description": "Returns the owner of this tool.",
         "returnValues": [
           {
-            "type": "Entity",
+            "type": "Player",
             "description": "Player using the tool"
           }
         ]
@@ -34987,6 +35019,36 @@
           {
             "type": "number",
             "description": "The current stage of the current operation the tool is at."
+          }
+        ]
+      },
+      {
+        "name": "GetSWEP",
+        "parent": "Tool",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "<deprecated>Use <page>Tool:GetWeapon</page> instead.</deprecated>\n\nReturns the Tool Gun (`gmod_tool`) Scripted <page>Weapon</page>.",
+        "returnValues": [
+          {
+            "type": "Weapon",
+            "description": "The tool gun weapon. (`gmod_tool`)"
+          }
+        ]
+      },
+      {
+        "name": "GetWeapon",
+        "parent": "Tool",
+        "realms": [
+          "client",
+          "server"
+        ],
+        "description": "Returns the Tool Gun (`gmod_tool`) Scripted <page>Weapon</page>.",
+        "returnValues": [
+          {
+            "type": "Weapon",
+            "description": "The tool gun weapon. (`gmod_tool`)"
           }
         ]
       },
@@ -35324,7 +35386,7 @@
           "client",
           "server"
         ],
-        "description": "Returns the squared distance of 2 vectors, this is faster than <page>Vector:Distance</page> as calculating the square root is an expensive process.\n\n<note>Squared distances should not be summed. If you need to sum distances, use <page>Vector:Distance</page>.\n\nWhen performing a distance check, ensure the distance being checked against is squared. See example code below.</note>",
+        "description": "Returns the squared distance of 2 vectors, this is quicker to call than <page>Vector:Distance</page> as DistToSqr does not need to calculate the square root, which is an expensive process.\n\n<note>Squared distances should not be summed. If you need to sum distances, use <page>Vector:Distance</page>.\n\nWhen performing a distance check, ensure the distance being checked against is squared. See example code below.</note>",
         "arguments": [
           {
             "name": "otherVec",
@@ -36626,7 +36688,7 @@
   },
   {
     "name": "VMatrix",
-    "description": "A 4x4 matrix.\n\nThis page lists all possible functions to manipulate matrices.\n\nThis object can be created by <page>Global.Matrix</page>.\n\nMetamethod | Second Operand | Description\n---------- | -------------- | -----------\n`__add` | <page>VMatrix</page> | Returns new <page>VMatrix</page> with the result of addition.\n`__eq` | <page>any</page> | Compares 2 operands, if they both are <page>VMatrix</page>, compares each individual component.\n`__mul` | <page>VMatrix</page> or <page>Vector</page> | Returns new <page>VMatrix</page> or <page>Vector</page> with the result of multiplication.\n`__sub` | <page>VMatrix</page> | Returns new <page>VMatrix</page> with the result of subtraction.\n`__tostring` |  | Returns a <page>string</page> in format `[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]`.",
+    "description": "A 4x4 matrix.\n\nThis page lists all possible functions to manipulate matrices.\n\nThis object can be created by <page>Global.Matrix</page>.\n\nMetamethod | Second Operand | Description\n---------- | -------------- | -----------\n`__add` | <page>VMatrix</page> | Returns new <page>VMatrix</page> with the result of addition.\n`__eq` | <page>any</page> | Compares 2 operands, if they both are <page>VMatrix</page>, compares each individual component.\n`__mul` | <page>VMatrix</page> or <page>Vector</page> | Returns new <page>VMatrix</page> or <page>Vector</page> with the result of multiplication.\n`__sub` | <page>VMatrix</page> | Returns new <page>VMatrix</page> with the result of subtraction.\n`__tostring` |  | Returns a <page>string</page> in format `[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]\\n[%f,\\t%f,\\t%f,\\t%f]`.\n`__unm` | | Returns new <page>VMatrix</page> with the result of negation.",
     "functions": [
       {
         "name": "Add",

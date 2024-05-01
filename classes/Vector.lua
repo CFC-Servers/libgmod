@@ -35,7 +35,7 @@ function Vector:Cross(otherVector)
 end
 
 ---  menu|client|server
---- Returns the squared distance of 2 vectors, this is faster than Vector:Distance as calculating the square root is an expensive process.  
+--- Returns the squared distance of 2 vectors, this is quicker to call than Vector:Distance as DistToSqr does not need to calculate the square root, which is an expensive process.  
 --- ℹ **NOTE**: Squared distances should not be summed. If you need to sum distances, use Vector:Distance.  
 --- When performing a distance check, ensure the distance being checked against is squared. See example code below.  
 --- @param otherVec Vector @The vector to calculate the distance to.
