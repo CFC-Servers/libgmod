@@ -10,3 +10,8 @@ local ContentHeader = {}
 function ContentHeader:OpenMenu(style, hookname)
 end
 
+---  client
+--- @param bigtable table 
+function ContentHeader:ToTable(bigtable)
+end
+

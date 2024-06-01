@@ -76,7 +76,7 @@ end
 --- Compresses the given string using the [LZMA](https://en.wikipedia.org/wiki/LZMA) algorithm.  
 --- Use with net.WriteData and net.ReadData for networking and  util.Decompress to decompress the data.  
 --- @param str string @String to compress.
---- @return string @The compressed string, or nil if the input string was zero length ("").
+--- @return string @The compressed string, or an empty string if the input string was zero length ("").
 function util.Compress(str)
 end
 
@@ -118,8 +118,8 @@ end
 ---  menu|client|server
 --- Decompresses the given string using [LZMA](https://en.wikipedia.org/wiki/LZMA) algorithm. Used to decompress strings previously compressed with util.Compress.  
 --- @param compressedString string @The compressed string to decompress.
---- @param maxSize? number @The maximal size in bytes it will decompress.
---- @return string @The original, decompressed string or an empty string on failure or invalid input.
+--- @param maxSize? number @The maximum size of uncompressed data in bytes, if greater it fails.
+--- @return string @The original, decompressed string or `nil` on failure or invalid input
 function util.Decompress(compressedString, maxSize)
 end
 
@@ -160,6 +160,39 @@ function util.FilterText(str, context, player)
 end
 
 ---  client|server
+--- Returns the ID of a custom model activity. This is useful for models that define custom ones.  
+--- See util.GetActivityNameByID for a function that does the opposite.  
+--- @param  string @The name of an activity, as defined in the model's `.qc` at compile time.
+--- @return number @The ID of the activity
+function util.GetActivityIDByName()
+end
+
+---  client|server
+--- Returns a name for given activity ID. This is useful for models that define custom animation events.  
+--- See util.GetActivityIDByName for a function that does the opposite.  
+--- @param id number @The ID of an activity from some hook
+--- @return string @The associated name with given activity ID.
+function util.GetActivityNameByID(id)
+end
+
+---  client|server
+--- Returns the ID of a custom model animation event. This is useful for models that define custom animation events.  
+--- See util.GetAnimEventNameByID for a function that does the opposite.  
+--- @param  string @The name of an model animation event, as defined in the model's `.qc` at compile time.
+--- @return number @The ID of an animation event, typically for usage with ENTITY:HandleAnimEvent.
+function util.GetAnimEventNameByID()
+end
+
+---  server
+--- Returns a name for given automatically generated numerical animation event ID. This is useful for models that define custom animation events.  
+--- See util.GetAnimEventIDByName for a function that does the opposite.  
+--- This function will be shared in the next update.  
+--- @param id number @The ID of an animation event, typically from ENTITY:HandleAnimEvent.
+--- @return string @The associated name with given event ID.
+function util.GetAnimEventNameByID(id)
+end
+
+---  client|server
 --- Returns a table containing the info about the model.  
 --- ℹ **NOTE**: This function will silently fail if used on models with following strings in them:  
 --- * _shared  
@@ -194,7 +227,7 @@ end
 --- Gets persistent data of an offline player using their SteamID.  
 --- See also Player:GetPData for a more convenient version of this function for online players, util.RemovePData and  
 --- util.SetPData for the other accompanying functions.  
---- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
+--- ℹ **NOTE**: This function internally uses util.SteamIDTo64, it previously utilized Player:UniqueID which can cause collisions (two or more players sharing the same PData entry). This function now only uses the old method as a fallback if the name isn't found.  
 --- @param steamID string @SteamID of the player, in the `STEAM_0:0:0` format
 --- @param name string @Variable name to get the value of
 --- @param default string @The default value, in case there's nothing stored
@@ -210,6 +243,7 @@ end
 
 ---  menu|client|server
 --- Utility function to quickly generate a trace table that starts at the players view position, and ends `32768` units along a specified direction.  
+--- For usage with util.TraceLine and similar functions.  
 --- @param ply Player @The player the trace should be based on
 --- @param dir? Vector @The direction of the trace
 --- @return table @The trace data
@@ -346,6 +380,18 @@ end
 function util.IsPointInCone(point, coneOrigin, coneAxis, coneSine, coneLength)
 end
 
+---  client|server
+--- Performs a ray-ray intersection and returns whether there was an intersection or not.  
+--- @param ray1Start Vector @Start position of the first ray.
+--- @param ray1End Vector @End position of the first ray.
+--- @param ray2Start Vector @Start position of the second ray.
+--- @param ray2End Vector @End position of the second ray.
+--- @return boolean @`true` if there is an intersection, `false` otherwise.
+--- @return number @Distance from start of ray 1 to the intersection, if there was one.
+--- @return number @Distance from start of ray 2 to the intersection, if there was one.
+function util.IsRayIntersectingRay(ray1Start, ray1End, ray2Start, ray2End)
+end
+
 ---  client
 --- Check whether the skybox is visible from the point specified.  
 --- ℹ **NOTE**: This will always return true in fullbright maps.  
@@ -382,16 +428,16 @@ end
 --- * Starts with a space or **maps**  
 --- * Doesn't start with **models**  
 --- * Contains any of the following:  
---- * * _gestures  
---- * * _animations  
---- * * _postures  
---- * * _gst  
---- * * _pst  
---- * * _shd  
---- * * _ss  
---- * * _anm  
---- * * .bsp  
---- * * cs_fix  
+--- * `_gestures`  
+--- * `_animations`  
+--- * `_postures`  
+--- * `_gst`  
+--- * `_pst`  
+--- * `_shd`  
+--- * `_ss`  
+--- * `_anm`  
+--- * `.bsp`  
+--- * `cs_fix`  
 --- * If the model isn't precached on the server, AND if the model file doesn't exist on disk  
 --- * If precache failed  
 --- * Model is the error model  
@@ -560,7 +606,7 @@ end
 --- Removes persistent data of an offline player using their SteamID.  
 --- See also Player:RemovePData for a more convenient version of this function for online players, util.SetPData and  
 --- util.GetPData for the other accompanying functions.  
---- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
+--- ℹ **NOTE**: This function internally uses util.SteamIDTo64, it previously utilized Player:UniqueID which can cause collisions (two or more players sharing the same PData entry). This function now tries to remove both old and new entries.  
 --- @param steamID string @SteamID of the player to remove data of, in the `STEAM_0:0:0` format
 --- @param name string @Variable name to remove
 function util.RemovePData(steamID, name)
@@ -589,15 +635,16 @@ end
 --- @param frequency number @How many times per second to change the direction of the camera wobble
 --- @param duration number @The duration of the effect in seconds.
 --- @param radius number @The range from the origin within which views will be affected, in Hammer units
---- @param airshake? boolean @whether players in the air should also be affected.
-function util.ScreenShake(pos, amplitude, frequency, duration, radius, airshake)
+--- @param airshake? boolean @Whether players in the air should also be affected
+--- @param filter? CRecipientFilter @If set, will only network the screen shake event to players present in the filter.
+function util.ScreenShake(pos, amplitude, frequency, duration, radius, airshake, filter)
 end
 
 ---  menu|client|server
 --- Sets persistent data for offline player using their SteamID.  
 --- See also Player:SetPData for a more convenient version of this function for online players, util.RemovePData and  
 --- util.GetPData for the other accompanying functions.  
---- ⚠ **WARNING**: This function internally uses Player:UniqueID, which can cause collisions (two or more players sharing the same PData entry). It's recommended that you don't use it. See the related wiki page for more information.  
+--- ℹ **NOTE**: This function internally uses util.SteamIDTo64, it previously utilized Player:UniqueID which can cause collisions (two or more players sharing the same PData entry).  
 --- @param steamID string @SteamID of the player, in the `STEAM_0:0:0` format
 --- @param name string @Variable name to store the value in.
 --- @param value any @The value to store.
@@ -721,12 +768,15 @@ function util.TraceHull(TraceData)
 end
 
 ---  client|server
---- Performs a trace with the given trace data.  
---- ℹ **NOTE**: Clientside entities will not be hit by traces.  
---- When server side trace starts inside a solid, it will hit the most inner solid the beam start position is located in. Traces are triggered by change of boundary.  
---- @param TraceData table @The trace data to use
---- @return table @Trace result
-function util.TraceLine(TraceData)
+--- Performs an infinitely thin, invisible Ray Trace (or "Trace") in a line based on an input Trace Structure table and returns a Trace Result table that contains information about what, if anything, the Trace line hit or intersected.  
+--- Traces intersect with the Physics Meshes of Solid, Server-side, Entities (including the Game World) but cannot detect Client-side-only Entities.  
+--- For a way to detect Client-side Entities, see ents.FindAlongRay.  
+--- Traces do not differentiate between the inside and the outside faces of Physics Meshes.  Because of this, if a Trace starts within a Solid Physics Mesh it will hit the inside faces of the Physics Mesh and may return unexpected values as a result.  
+--- See Also:  
+--- util.TraceHull  
+--- @param traceConfig table @A table of data that configures the Trace
+--- @return table @A table of information detailing where and what the Trace line intersected, or `nil` if the trace is being done before the GM:InitPostEntity
+function util.TraceLine(traceConfig)
 end
 
 ---  menu|client|server

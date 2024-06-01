@@ -83,10 +83,12 @@ end
 --- @param type string @The type of hook to run
 --- @param name string @The name of the hook to run
 --- @param panel Panel @The panel to call the hook for
---- @param w number @The width of the panel
---- @param h number @The height of the panel
+--- @param vararg1? any @First parameter for the panel hook
+--- @param vararg2? any @Second parameter for the panel hook
+--- @param vararg3? any @Third parameter for the panel hook.
+--- @param vararg4? any @Fourth parameter for the panel hook.
 --- @return any @The returned variable from the skin hook
-function derma.SkinHook(type, name, panel, w, h)
+function derma.SkinHook(type, name, panel, vararg1, vararg2, vararg3, vararg4)
 end
 
 ---  client|menu
@@ -97,10 +99,11 @@ end
 
 ---  client|menu
 --- Returns a function to draw a specified texture of panels skin.  
+--- These are usually generated via GWEN.CreateTextureBorder and similar.  
 --- @param name string @The identifier of the texture
 --- @param pnl Panel @Panel to get the skin of.
---- @param fallback? any @What to return if we failed to retrieve the texture
---- @return function @A function that is created with the GWEN to draw a texture.
+--- @param fallback? function @What to return if we failed to retrieve the texture
+--- @return function @A function that is created with the GWEN library to draw a texture
 function derma.SkinTexture(name, pnl, fallback)
 end
 

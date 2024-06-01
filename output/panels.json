@@ -17,7 +17,7 @@
   {
     "name": "Button",
     "parent": "DButton",
-    "description": "<deprecated>\nOnly exists for backwards compatibility with <page>Panel:SetActionFunction</page>. Use <page>DButton</page> instead.\n</deprecated>\n\nCreates a button that players can click on."
+    "description": "<deprecated>\nOnly exists for backwards compatibility with <page>Panel:SetActionFunction</page>. Use <page>DButton</page> instead.\n</deprecated>\nCreates a button that players can click on.\n[Cant seem to figure out why the source link wont do line highlighting on this one so here is github permalink](https://github.com/Facepunch/garrysmod/blob/fff01df0cfaf6152336f5026d0bedf5225052bbe/garrysmod/lua/vgui/dbutton.lua#L154C1-L166C76)"
   },
   {
     "name": "CheckButton",
@@ -48,6 +48,20 @@
             "description": "A Populate Hook like PopulateEntities"
           }
         ]
+      },
+      {
+        "name": "ToTable",
+        "parent": "ContentHeader",
+        "realms": [
+          "client"
+        ],
+        "description": "",
+        "arguments": [
+          {
+            "name": "bigtable",
+            "type": "table"
+          }
+        ]
       }
     ]
   },
@@ -62,7 +76,7 @@
         "realms": [
           "client"
         ],
-        "description": "Returns the color set by <page>ContentIcon:SetColor</page>",
+        "description": "An <page>Global.AccessorFunc</page> that returns the color set by <page>ContentIcon:SetColor</page>",
         "returnValues": [
           {
             "type": "table",
@@ -76,7 +90,7 @@
         "realms": [
           "client"
         ],
-        "description": "Returns the content type used to save and restore the content icon in a spawnlist.",
+        "description": "An <page>Global.AccessorFunc</page> that returns the content type used to save and restore the content icon in a spawnlist.",
         "returnValues": [
           {
             "type": "string",
@@ -90,7 +104,7 @@
         "realms": [
           "client"
         ],
-        "description": "Returns a table of weapon classes for the content icon with \"NPC\" content type to be randomly chosen from when user tries to spawn the NPC.",
+        "description": "An <page>Global.AccessorFunc</page> that returns a table of weapon classes for the content icon with \"NPC\" content type to be randomly chosen from when user tries to spawn the NPC.",
         "returnValues": [
           {
             "type": "table",
@@ -104,7 +118,7 @@
         "realms": [
           "client"
         ],
-        "description": "Returns the internal \"name\" for the content icon, usually a class name for an entity.",
+        "description": "An <page>Global.AccessorFunc</page> that returns the internal \"name\" for the content icon, usually a class name for an entity.",
         "returnValues": [
           {
             "type": "string",
@@ -126,7 +140,7 @@
         "realms": [
           "client"
         ],
-        "description": "Sets whether the content item is admin only. This makes the icon to display a admin icon in the top left corner of the icon.",
+        "description": "An <page>Global.AccessorFunc</page> that sets whether the content item is admin only. This makes the icon to display a admin icon in the top left corner of the icon.",
         "arguments": [
           {
             "name": "adminOnly",
@@ -141,7 +155,7 @@
         "realms": [
           "client"
         ],
-        "description": "Sets the color for the content icon. Currently is not used by the content icon panel.",
+        "description": "An <page>Global.AccessorFunc</page> that sets the color for the content icon. Currently is not used by the content icon panel.",
         "arguments": [
           {
             "name": "clr",
@@ -156,7 +170,7 @@
         "realms": [
           "client"
         ],
-        "description": "Sets the content type used to save and restore the content icon in a spawnlist.",
+        "description": "An <page>Global.AccessorFunc</page> that sets the content type used to save and restore the content icon in a spawnlist.",
         "arguments": [
           {
             "name": "type",
@@ -201,7 +215,7 @@
         "realms": [
           "client"
         ],
-        "description": "Sets a table of weapon classes for the content icon with \"NPC\" content type to be randomly chosen from when user tries to spawn the NPC.",
+        "description": "An <page>Global.AccessorFunc</page> that sets a table of weapon classes for the content icon with \"NPC\" content type to be randomly chosen from when user tries to spawn the NPC.",
         "arguments": [
           {
             "name": "weapons",
@@ -216,7 +230,7 @@
         "realms": [
           "client"
         ],
-        "description": "Sets the internal \"name\" for the content icon, usually a class name for an entity.",
+        "description": "An <page>Global.AccessorFunc</page> that sets the internal \"name\" for the content icon, usually a class name for an entity.",
         "arguments": [
           {
             "name": "name",
@@ -462,12 +476,12 @@
         "realms": [
           "client"
         ],
-        "description": "Calls the given function with this panel as the only argument. Used by the spawnmenu to populate the control panel.",
+        "description": "Calls the given function with this panel as the only argument. Used by the spawnmenu to populate the control panel.\n\n<deprecated>This is dumb. Just call the builder function directly.</deprecated>",
         "arguments": [
           {
             "name": "func",
             "type": "function",
-            "description": "A function that takes one argument:\n* <page>ControlPanel</page> panelToPopulate"
+            "description": "The builder function.\n\n<callback>\n<arg type=\"ControlPanel\" name=\"panelToPopulate\"></arg>\n</callback>"
           }
         ]
       },
@@ -688,6 +702,20 @@
         ]
       },
       {
+        "name": "GetMovementScale",
+        "parent": "DAdjustableModelPanel",
+        "realms": [
+          "client"
+        ],
+        "description": "Returns the movement speed multiplier set by <page>DAdjustableModelPanel:SetMovementScale</page>.",
+        "returnValues": [
+          {
+            "type": "number",
+            "description": "The movement scale, where `1` is normal, `2` is double, etc."
+          }
+        ]
+      },
+      {
         "name": "SetFirstPerson",
         "parent": "DAdjustableModelPanel",
         "realms": [
@@ -699,6 +727,21 @@
             "name": "enable",
             "type": "boolean",
             "description": "Whether to enable/disable first person controls. See <page>DAdjustableModelPanel:FirstPersonControls</page>."
+          }
+        ]
+      },
+      {
+        "name": "SetMovementScale",
+        "parent": "DAdjustableModelPanel",
+        "realms": [
+          "client"
+        ],
+        "description": "Sets the movement speed multiplier. Currently this only affects first person camera controls.",
+        "arguments": [
+          {
+            "name": "",
+            "type": "number",
+            "description": "The movement scale, where `1` is normal, `2` is double, etc."
           }
         ]
       }
@@ -917,25 +960,8 @@
   {
     "name": "DButton",
     "parent": "DLabel",
+    "description": "A standard Derma button.\n\nBy default, a <page>DButton</page> is 22px tall.",
     "functions": [
-      {
-        "name": "DoClick",
-        "parent": "DButton",
-        "realms": [
-          "client",
-          "menu"
-        ],
-        "description": "Called when the button is left clicked (on key release) by the player.\n\nThis will be called after <page>DButton:IsDown</page>.\n\nSee also <page>DButton:DoRightClick</page>."
-      },
-      {
-        "name": "DoRightClick",
-        "parent": "DButton",
-        "realms": [
-          "client",
-          "menu"
-        ],
-        "description": "Called when the button is right clicked (on key release) by the player.\n\nSee also <page>DButton:DoClick</page>."
-      },
       {
         "name": "GetDrawBorder",
         "parent": "DButton",
@@ -983,6 +1009,7 @@
           {
             "name": "args",
             "type": "string",
+            "default": "nil",
             "description": "The arguments for the command."
           }
         ]
@@ -1565,10 +1592,11 @@
           "client",
           "menu"
         ],
-        "description": "<deprecated></deprecated>\nReturns whatever is set by <page>DCollapsibleCategory:SetList</page>.",
+        "description": "If set, the <page>DCategoryList</page> that created this panel.\n\nSee also <page>DCollapsibleCategory:SetList</page>.",
         "returnValues": [
           {
-            "type": "Panel"
+            "type": "Panel",
+            "description": "The <page>DCategoryList</page> that created us."
           }
         ]
       },
@@ -1735,11 +1763,12 @@
           "client",
           "menu"
         ],
-        "description": "<deprecated>Unused in the base game. What is this for?</deprecated>\nSets a panel to call <page>Panel:UnselectAll</page> on, instead of calling it on itself.",
+        "description": "Used internally by <page>DCategoryList</page> when it creates a <page>DCollapsibleCategory</page> during <page>DCategoryList:Add</page>.\n\nIf set, <page>Panel:UnselectAll</page> will be called on the list, instead of calling it on the category panel itself when a category is clicked.",
         "arguments": [
           {
             "name": "pnl",
-            "type": "Panel"
+            "type": "Panel",
+            "description": "The <page>Panel:UnselectAll</page> that is the \"parent\" of this panel."
           }
         ]
       },
@@ -2034,6 +2063,21 @@
         ]
       },
       {
+        "name": "GetDefaultColor",
+        "parent": "DColorCube",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "Returns the color cube's default color. By default, it is set to white. (255 255 255 RGB)",
+        "returnValues": [
+          {
+            "type": "table",
+            "description": "The default <page>Color</page>."
+          }
+        ]
+      },
+      {
         "name": "GetHue",
         "parent": "DColorCube",
         "realms": [
@@ -2111,6 +2155,22 @@
         ]
       },
       {
+        "name": "SetDefaultColor",
+        "parent": "DColorCube",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "Sets the color cube's default color. This value will be used to reset to on middle mouse click of the color cube's draggable slider.",
+        "arguments": [
+          {
+            "name": "",
+            "type": "table",
+            "description": "The new default <page>Color</page>."
+          }
+        ]
+      },
+      {
         "name": "SetHue",
         "parent": "DColorCube",
         "realms": [
@@ -2153,11 +2213,13 @@
           {
             "name": "x",
             "type": "number",
+            "default": "nil",
             "description": "The x position to sample color from/the percentage of saturation to remove from the color (ranges from 0.0 to 1.0)."
           },
           {
             "name": "y",
             "type": "number",
+            "default": "nil",
             "description": "The y position to sample color from/the percentage of brightness or value to remove from the color (ranges from 0.0 to 1.0)."
           }
         ],
@@ -2537,15 +2599,6 @@
             "description": "Show / Hide the colors indicators"
           }
         ]
-      },
-      {
-        "name": "TranslateValues",
-        "parent": "DColorMixer",
-        "realms": [
-          "client",
-          "menu"
-        ],
-        "description": "<internal></internal>\n<deprecated></deprecated>\n\nDoes nothing."
       },
       {
         "name": "UpdateColor",
@@ -3023,7 +3076,7 @@
         "returnValues": [
           {
             "type": "table",
-            "description": "A table containing the following keys:\n* <page>Panel</page> Button - The created tab button that will switch to the given panel\n* <page>Panel</page> Panel - The given panel to switch to when the button is pressed"
+            "description": "A table containing the following keys:\n* <page>Panel</page> Tab - The created tab button that will switch to the given panel\n* <page>Panel</page> Panel - The given panel to switch to when the button is pressed"
           }
         ]
       },
@@ -4437,7 +4490,7 @@
           "client",
           "menu"
         ],
-        "description": "<deprecated></deprecated>\n\nDoes nothing.",
+        "description": "<deprecated></deprecated>\nAn Accessor Function in DForm that does nothing.",
         "returnValues": [
           {
             "type": "boolean"
@@ -4451,7 +4504,7 @@
           "client",
           "menu"
         ],
-        "description": "<deprecated></deprecated>\n\nDoes nothing.",
+        "description": "<deprecated></deprecated>\nAn <page>Global.AccessorFunc</page> that does nothing.",
         "returnValues": [
           {
             "type": "number"
@@ -4665,7 +4718,7 @@
           "client",
           "menu"
         ],
-        "description": "<deprecated></deprecated>\n\nDoes nothing.",
+        "description": "<deprecated></deprecated>\n\nan <page>Global.AccessorFunc</page> that does nothing",
         "arguments": [
           {
             "type": "boolean"
@@ -4695,7 +4748,7 @@
           "client",
           "menu"
         ],
-        "description": "<deprecated></deprecated>\n\nDoes nothing.",
+        "description": "<deprecated></deprecated>\n\nAn <page>Global.AccessorFunc</page> that does nothing.",
         "arguments": [
           {
             "type": "number"
@@ -7076,6 +7129,7 @@
           {
             "name": "strBackup",
             "type": "string",
+            "default": "nil",
             "description": "The path of the backup image."
           }
         ]
@@ -7204,7 +7258,7 @@
   {
     "name": "DLabel",
     "parent": "Label",
-    "description": "A standard Derma text label. A lot of this panels functionality is a base for button elements, such as <page>DButton</page>",
+    "description": "A standard Derma text label. A lot of this panels functionality is a base for button elements, such as <page>DButton</page>\n\nDoes not support multiline text.",
     "functions": [
       {
         "name": "DoClick",
@@ -9468,7 +9522,7 @@
             "name": "funcFunction",
             "type": "function",
             "default": "nil",
-            "description": "If set, the function will be called every time the option is pressed/clicked/selected.\n\nIt will have only one argument:\n<page>Panel</page> pnl - The created <page>DMenuOptionCVar</page>"
+            "description": "If set, the function will be called every time the option is pressed/clicked/selected.\n\n<callback>\n<arg type=\"Panel\" name=\"pnl\">The <page>DMenuOptionCVar</page> that was clicked.</arg>\n</callback>"
           }
         ],
         "returnValues": [
@@ -9496,7 +9550,7 @@
             "name": "func",
             "type": "function",
             "default": "nil",
-            "description": "Function to execute when this option is clicked."
+            "description": "Function to execute when this option is clicked.\n\n<callback>\n<arg type=\"Panel\" name=\"pnl\">The <page>DMenuOption</page> that was clicked.</arg>\n</callback>"
           }
         ],
         "returnValues": [
@@ -9549,7 +9603,7 @@
             "name": "func",
             "type": "function",
             "default": "nil",
-            "description": "Function to execute when this sub menu is clicked."
+            "description": "Function to execute when this sub menu is clicked.\n\n<callback>\n<arg type=\"Panel\" name=\"pnl\">The <page>DMenuOption</page> that was clicked.</arg>\n</callback>"
           }
         ],
         "returnValues": [
@@ -10209,6 +10263,22 @@
         ]
       },
       {
+        "name": "GetRadio",
+        "parent": "DMenuOption",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "Returns whether this <page>DMenuOption</page> should act like a radio button, set by <page>DMenuOption:SetRadio</page>.",
+        "returnValues": [
+          {
+            "type": "boolean",
+            "name": "checked",
+            "description": "`true` to set as a radio button."
+          }
+        ]
+      },
+      {
         "name": "OnChecked",
         "parent": "DMenuOption",
         "realms": [
@@ -10231,7 +10301,7 @@
           "client",
           "menu"
         ],
-        "description": "Sets the checked state of the <page>DMenuOption</page>. Does not invoke <page>DMenuOption:OnChecked</page>.",
+        "description": "Sets the checked state of the <page>DMenuOption</page>.\n\nInvokes <page>DMenuOption:OnChecked</page>.",
         "arguments": [
           {
             "name": "checked",
@@ -10247,11 +10317,12 @@
           "client",
           "menu"
         ],
-        "description": "Sets whether the <page>DMenuOption</page> is a checkbox option or a normal button option.",
+        "description": "Sets whether the <page>DMenuOption</page> is a checkbox option or a normal button option.\n\nEnables automatic <page>DMenuOption:GetChecked</page> toggling with left/right clicks.",
         "arguments": [
           {
             "name": "checkable",
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether the menu option should allow the player to toggle itself."
           }
         ]
       },
@@ -10268,6 +10339,22 @@
             "name": "pnl",
             "type": "Panel",
             "description": "The <page>DMenu</page> for this option."
+          }
+        ]
+      },
+      {
+        "name": "SetRadio",
+        "parent": "DMenuOption",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "Sets whether this <page>DMenuOption</page> should act like a radio button.\n\nChecking a radio button automatically unchecks all adjacent radio buttons.",
+        "arguments": [
+          {
+            "name": "checked",
+            "type": "boolean",
+            "description": "`true` to set as a radio button."
           }
         ]
       },
@@ -10395,7 +10482,7 @@
   {
     "name": "DModelPanel",
     "parent": "DButton",
-    "description": "DModelPanel is a VGUI element that projects a 3D model onto a 2D plane.",
+    "description": "DModelPanel is a VGUI element that projects a 3D model onto a 2D plane. See also <page>DAdjustableModelPanel</page>",
     "functions": [
       {
         "name": "DrawModel",
@@ -11757,7 +11844,7 @@
   {
     "name": "DNumSlider",
     "parent": "Panel",
-    "description": "The DNumSlider allows you to create a slider, allowing the user to slide it to set a value, or changing the value in the box.",
+    "description": "The **DNumSlider** allows you to create a slider, allowing the user to slide it to set a value, or changing the value in the box.",
     "functions": [
       {
         "name": "GetDecimals",
@@ -12763,7 +12850,7 @@
   {
     "name": "DProperties",
     "parent": "Panel",
-    "description": "A grid for editing the properties of something using names and values. Properties can be categorized and strongly typed.\n\n![](http://wiki.garrysmod.com/images/9/99/DProperties.png)\n##  Associated controls\n* <page>DProperty_VectorColor</page>\n* <page>DProperty_Boolean</page>\n* <page>DProperty_Generic</page>\n* <page>DProperty_Combo</page>\n* <page>DProperty_Float</page>\n* <page>DProperty_Int</page>",
+    "description": "A grid for editing the properties of something using names and values. Properties can be categorized and strongly typed.\n\n<img src=\"ab571/8dc38978e7c3bbe.png\" alt=\"DProperties example\">\n##  Associated controls\n* <page>DProperty_VectorColor</page>\n* <page>DProperty_Boolean</page>\n* <page>DProperty_Generic</page>\n* <page>DProperty_Combo</page>\n* <page>DProperty_Float</page>\n* <page>DProperty_Int</page>",
     "functions": [
       {
         "name": "GetCanvas",
@@ -12795,6 +12882,7 @@
           {
             "name": "create",
             "type": "boolean",
+            "default": "false",
             "description": "Create a new category if it doesn't exist."
           }
         ],
@@ -13701,7 +13789,7 @@
         "description": "Returns whether the <page>DSizeToContents</page> panel should size to contents horizontally.",
         "returnValues": [
           {
-            "type": "number",
+            "type": "boolean",
             "description": "Whether the panel should size to contents horizontally."
           }
         ]
@@ -13716,7 +13804,7 @@
         "description": "Returns whether the <page>DSizeToContents</page> panel should size to contents vertically.",
         "returnValues": [
           {
-            "type": "number",
+            "type": "boolean",
             "description": "Whether the panel should size to contents vertically."
           }
         ]
@@ -13731,8 +13819,8 @@
         "description": "Sets whether the <page>DSizeToContents</page> panel should size to contents horizontally. This is `true` by default.",
         "arguments": [
           {
-            "name": "",
-            "type": "number",
+            "name": "sizeX",
+            "type": "boolean",
             "description": "Whether the panel should size to contents horizontally."
           }
         ]
@@ -13747,8 +13835,8 @@
         "description": "Sets whether the <page>DSizeToContents</page> panel should size to contents vertically. This is `true` by default.",
         "arguments": [
           {
-            "name": "",
-            "type": "number",
+            "name": "sizeY",
+            "type": "boolean",
             "description": "Whether the panel should size to contents vertically."
           }
         ]
@@ -13951,6 +14039,15 @@
           "menu"
         ],
         "description": "<internal></internal>\n\nUsed internally to fire <page>DSlider:OnValueChanged</page>"
+      },
+      {
+        "name": "ResetToDefaultValue",
+        "parent": "DSlider",
+        "realms": [
+          "client",
+          "menu"
+        ],
+        "description": "This function is called by the <page>DSlider</page> when user middle mouse clicks on the draggable knob of the slider.\n\nYou are meant to override this function to do reset the slider to desired defaults on both axes.\n\nBy default, will reset the slider to `0.5` on both axes."
       },
       {
         "name": "SetBackground",
@@ -14317,7 +14414,7 @@
   {
     "name": "DTab",
     "parent": "DButton",
-    "description": "<internal></internal>A tab for internal use on the <page>DPropertySheet</page>.",
+    "description": "<internal></internal>\nThis element is created within and only used in the <page>DPropertySheet</page> file.",
     "functions": [
       {
         "name": "GetPanel",
@@ -18304,6 +18401,137 @@
     "name": "TGAImage",
     "parent": "Panel",
     "description": "A panel capable of loading .tga images."
+  },
+  {
+    "name": "UGCPublishWindow",
+    "parent": "DFrame",
+    "description": "A window that is used to publish dupes and saves\n<upload src=\"b04e5/8dc6d3d77422fbe.png\" size=\"94866\" name=\"image.png\">\n</upload>",
+    "functions": [
+      {
+        "name": "CheckInput",
+        "parent": "UGCPublishWindow",
+        "realms": [
+          "menu"
+        ],
+        "description": "Checks if the Tags and Title are valid and if so it enables the publish button."
+      },
+      {
+        "name": "DisplayError",
+        "parent": "UGCPublishWindow",
+        "realms": [
+          "menu"
+        ],
+        "description": "Displays the given error message.",
+        "arguments": [
+          {
+            "name": "err",
+            "type": "string",
+            "description": "The error message."
+          }
+        ]
+      },
+      {
+        "name": "DoPublish",
+        "parent": "UGCPublishWindow",
+        "realms": [
+          "menu"
+        ],
+        "description": "Publishes the Item or throws an error if the Title or Tags are invalid",
+        "arguments": [
+          {
+            "name": "wsid",
+            "type": "string",
+            "description": "The workshop id"
+          },
+          {
+            "name": "err",
+            "type": "string",
+            "description": "If wsid is nil, this will be the error message"
+          }
+        ]
+      },
+      {
+        "name": "FitContents",
+        "parent": "UGCPublishWindow",
+        "realms": [
+          "menu"
+        ],
+        "description": "Rezises the panel to nicely fit all children"
+      },
+      {
+        "name": "GetChosenTag",
+        "parent": "UGCPublishWindow",
+        "realms": [
+          "menu"
+        ],
+        "description": "Returns the name of the current selected tag.",
+        "returnValues": [
+          {
+            "type": "string",
+            "name": "tag",
+            "description": "The choosen tag, or nil if none is selected."
+          }
+        ]
+      },
+      {
+        "name": "OnPublishFinished",
+        "parent": "UGCPublishWindow",
+        "realms": [
+          "menu"
+        ],
+        "description": "Called when the Item was published or if any error occurred while publishing",
+        "arguments": [
+          {
+            "name": "wsid",
+            "type": "string",
+            "description": "The workshop id"
+          },
+          {
+            "name": "err",
+            "type": "string",
+            "description": "If wsid is nil, this will be the error message"
+          }
+        ]
+      },
+      {
+        "name": "Setup",
+        "parent": "UGCPublishWindow",
+        "realms": [
+          "menu"
+        ],
+        "description": "updated the Workshop items list.",
+        "arguments": [
+          {
+            "name": "ugcType",
+            "type": "",
+            "description": "The type / namespace of the <page>WorkshopFileBase</page> that created this panel"
+          },
+          {
+            "name": "file",
+            "type": "string",
+            "description": "The File to publish"
+          },
+          {
+            "name": "imageFile",
+            "type": "string",
+            "description": "The Image"
+          },
+          {
+            "name": "handler",
+            "type": "WorkshopFileBase",
+            "description": "The <page>WorkshopFileBase</page> that created this panel"
+          }
+        ]
+      },
+      {
+        "name": "UpdateWorkshopItems",
+        "parent": "UGCPublishWindow",
+        "realms": [
+          "menu"
+        ],
+        "description": "updated the Workshop items list."
+      }
+    ]
   },
   {
     "name": "URLLabel",

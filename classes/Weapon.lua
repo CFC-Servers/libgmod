@@ -15,11 +15,11 @@ function Weapon:AllowsAutoSwitchTo()
 end
 
 ---  client|server
---- Calls a SWEP function on client.  
+--- Calls a SWEP function on client. Does nothing on client.  
 --- ⚠ **WARNING**: This uses the usermessage internally, because of that, the combined length of the arguments of this function may not exceed 254 bytes/characters or the function will cease to function!  
 --- @param functionName string @Name of function to call
---- @param arguments string @Arguments for the function, separated by spaces
-function Weapon:CallOnClient(functionName, arguments)
+--- @param data string @Custom data to be passed to the target SWEP function as the first argument.
+function Weapon:CallOnClient(functionName, data)
 end
 
 ---  client|server

@@ -6,7 +6,6 @@ local Entity = {}
 --- Activates the entity. This needs to be used on some entities (like constraints) after being spawned.  
 --- ℹ **NOTE**: For some entity types when this function is used after Entity:SetModelScale, the physics object will be recreated with the new scale. [Source-sdk-2013](https://github.com/ValveSoftware/source-sdk-2013/blob/55ed12f8d1eb6887d348be03aee5573d44177ffb/mp/src/game/server/baseanimating.cpp#L321-L327).  
 --- Calling this method after Entity:SetModelScale will recreate a new scaled `SOLID_VPHYSICS` PhysObj on scripted entities. This can be a problem if you made a properly scaled PhysObj of another kind (using Entity:PhysicsInitSphere for instance) or if you edited the PhysObj's properties. This is especially the behavior of the Sandbox spawn menu.  
---- 🦟 **BUG**: [This crashes the game with scaled vehicles.](https://github.com/Facepunch/garrysmod-issues/issues/3372)  
 function Entity:Activate()
 end
 
@@ -179,6 +178,7 @@ end
 ---  server
 --- Creates bone followers based on the current entity model.  
 --- Bone followers are physics objects that follow the visual mesh. This is what is used by `prop_dynamic` for things like big combine doors for vehicles with multiple physics objects which follow the visual mesh of the door when it animates.  
+--- Be mindful that bone followers create a separate entity (`phys_bone_follower`) for each physics object.  
 --- You must call Entity:UpdateBoneFollowers every tick for bone followers to update their positions.  
 --- ℹ **NOTE**: This function only works on `anim` type entities.  
 function Entity:CreateBoneFollowers()
@@ -232,8 +232,9 @@ function Entity:DisableMatrix(matrixType)
 end
 
 ---  client|server
---- Performs a trace attack towards the entity this function is called on. Visually identical to Entity:TakeDamageInfo.  
+--- Performs a trace attack towards the entity this function is called on, as if an invisible bullet is shot towards it. Visually identical to Entity:TakeDamageInfo.  
 --- ⚠ **WARNING**: Calling this function on the victim entity in ENTITY:OnTakeDamage can cause infinite loops.  
+--- ℹ **NOTE**: This function correctly applies damage to [func_breakable_surf](https://developer.valvesoftware.com/wiki/Func_breakable_surf) entities, unlike Entity:TakeDamageInfo.  
 --- @param damageInfo CTakeDamageInfo @The damage to apply.
 --- @param traceRes table @Trace result to use to deal damage
 --- @param dir? Vector @Direction of the attack.
@@ -251,7 +252,7 @@ end
 --- Draws the entity or model.  
 --- If called inside ENTITY:Draw or ENTITY:DrawTranslucent, it only draws the entity's model itself.  
 --- If called outside of those hooks, it will call both of said hooks depending on Entity:GetRenderGroup, drawing the entire entity again.  
---- ℹ **NOTE**: When drawing an entity more than once per frame in different positions, you should call Entity:SetupBones before each draw; Otherwise, the entity will retain its first drawn position.  
+--- When drawing an entity more than once per frame in different positions, you should call Entity:SetupBones before each draw; Otherwise, the entity will retain its first drawn position.  
 --- 🧱 **NOTE**: Requires a 3D rendering context  
 --- 🦟 **BUG**: [Calling this on entities with EF_BONEMERGE and EF_NODRAW applied causes a crash.](https://github.com/Facepunch/garrysmod-issues/issues/1558)  
 --- 🦟 **BUG**: [Using this with a map model (game.GetWorld():GetModel()) crashes the game.](https://github.com/Facepunch/garrysmod-issues/issues/2688)  
@@ -297,8 +298,7 @@ end
 --- Flags an entity as using custom lua defined collisions. Fixes entities having spongy player collisions or not hitting traces, such as after Entity:PhysicsFromMesh  
 --- Internally identical to `Entity:AddSolidFlags( bit.bor( FSOLID_CUSTOMRAYTEST, FSOLID_CUSTOMBOXTEST ) )`  
 --- Do not confuse this function with Entity:SetCustomCollisionCheck, they are not the same.  
---- @param useCustom boolean @True to flag this entity
-function Entity:EnableCustomCollisions(useCustom)
+function Entity:EnableCustomCollisions()
 end
 
 ---  client
@@ -549,7 +549,7 @@ end
 ---  client|server
 --- Returns parent bone of given bone.  
 --- ℹ **NOTE**: Will return -1 for Global.ClientsideModel until Entity:SetupBones is called on the entity.  
---- @param bone number @The bode ID of the bone to get parent of, starting at index 0.
+--- @param bone number @The bone ID of the bone to get parent of, starting at index 0.
 --- @return number @Parent bone ID or -1 if we failed for some reason.
 function Entity:GetBoneParent(bone)
 end
@@ -657,16 +657,6 @@ end
 --- Returns the color the entity is set to.  
 --- @return table @The color of the entity as a Color.
 function Entity:GetColor()
-end
-
----  client|server
---- Returns the color the entity is set to without using a color object.  
---- Internally used to implement Entity:GetColor.  
---- @return number 
---- @return number 
---- @return number 
---- @return number 
-function Entity:GetColor4Part()
 end
 
 ---  server
@@ -994,7 +984,7 @@ end
 
 ---  client|server
 --- Returns the material override for this entity.  
---- Returns an empty string if no material override exists. Use Entity:GetMaterials to list it's default materials.  
+--- Returns an empty string if no material override exists. Use Entity:GetMaterials to list its default materials.  
 --- 🦟 **BUG**: [The server's value takes priority on the client.](https://github.com/Facepunch/garrysmod-issues/issues/3362)  
 --- @return string @material
 function Entity:GetMaterial()
@@ -1154,9 +1144,8 @@ end
 
 ---  client|server
 --- Returns callback function for given NWVar of this entity.  
---- Alias of Entity:GetNetworked2VarProxy  
 --- @param key any @The key of the NWVar to get callback of.
---- @return function @The callback of given NWVar, or nil if not found.
+--- @return function @The callback of given NWVar, or nil if not found
 function Entity:GetNW2VarProxy(key)
 end
 
@@ -1225,10 +1214,10 @@ function Entity:GetNWString(key, fallback)
 end
 
 ---  client|server
---- Returns callback function for given NWVar of this entity.  
+--- Returns callback function for given NWVar of this entity, previously set by Entity:SetNWVarProxy.  
 --- <removed>This function was superseded by Entity:GetNW2VarProxy. This page still exists an archive in case anybody ever stumbles across old code and needs to know what it is</removed>  
---- @param key any @The key of the NWVar to get callback of.
---- @return function @The callback of given NWVar, or nil if not found.
+--- @param key string @The key of the NWVar to get callback of.
+--- @return function @The callback of given NWVar, or nil if not found
 function Entity:GetNWVarProxy(key)
 end
 
@@ -1266,7 +1255,7 @@ end
 
 ---  client|server
 --- Returns all network vars created by Entity:NetworkVar and Entity:NetworkVarElement and their current values.  
---- This is used internally by the duplicator.  
+--- This is used internally by the duplicator. `Entity` type Network vars will not be returned!  
 --- For NWVars see Entity:GetNWVarTable.  
 --- ℹ **NOTE**: This function will only work on entities which had Entity:InstallDataTable called on them, which is done automatically for players and all Scripted Entities  
 --- @return table @The Key-Value formatted table of network var names and their current values
@@ -1345,8 +1334,10 @@ function Entity:GetNetworked2Var(key, fallback)
 end
 
 ---  client|server
---- Returns callback function for given NWVar of this entity.  
+--- 🛑 **DEPRECATED**: You should be using Entity:GetNW2VarProxy instead.  
+--- Returns callback function for given NWVar of this entity. Alias of Entity:GetNW2VarProxy  
 --- @param key any @The key of the NWVar to get callback of.
+--- @deprecated
 --- @return function @The callback of given NWVar, or nil if not found.
 function Entity:GetNetworked2VarProxy(key)
 end
@@ -1442,9 +1433,9 @@ end
 
 ---  client|server
 --- <removed>This function was superseded by Entity:GetNetworked2VarProxy. This page still exists an archive in case anybody ever stumbles across old code and needs to know what it is</removed>  
---- Returns callback function for given NWVar of this entity.  
+--- Returns callback function for given NWVar of this entity, previously set by Entity:SetNWVarProxy.  
 --- @param name string @The name of the NWVar to get callback of.
---- @return function @The callback of given NWVar, if any.
+--- @return function @The callback of given NWVar, if any
 function Entity:GetNetworkedVarProxy(name)
 end
 
@@ -1500,9 +1491,9 @@ function Entity:GetParent()
 end
 
 ---  client|server
---- Returns the attachment index of the entity's parent. Returns 0 if the entity is not parented to a specific attachment or if it isn't parented at all.  
+--- Returns the attachment/bone index of the entity's parent. Returns 0 if the entity is not parented to an attachment/bone or if it isn't parented at all.  
 --- This is set by second argument of Entity:SetParent or the **SetParentAttachment** input.  
---- @return number @The parented attachment index
+--- @return number @The parented attachment/bone index
 function Entity:GetParentAttachment()
 end
 
@@ -2209,8 +2200,8 @@ function Entity:IsWidget()
 end
 
 ---  client|server
---- Returns if the entity is the map's Entity[0] worldspawn  
---- @return boolean @isWorld
+--- Returns if this entity is the map entity `Entity[0] worldspawn`.  
+--- @return boolean @Whether this entity is the world entity.
 function Entity:IsWorld()
 end
 
@@ -2354,8 +2345,10 @@ end
 
 ---  client|server
 --- Creates a callback that will execute when the given network variable changes - that is, when the `Set<name>()` function is run.  
---- ℹ **NOTE**: The callback is executed **before** the value is changed, and is called even if the new and old values are the same.  
---- This function does not exist on entities in which Entity:InstallDataTable has not been called. By default, this means this function only exists on SENTs (both serverside and clientside) and on players with a Player Class (serverside and clientside Global.LocalPlayer only). It's therefore safest to only use this in ENTITY:SetupDataTables.  
+--- The callback is executed **before** the value is changed, and is called even if the new and old values are the same.  
+--- This function does not exist on entities in which Entity:InstallDataTable has not been called.  
+--- By default, this means this function only exists on SENTs (both serverside and clientside) and on players with a Player Class (serverside and clientside Global.LocalPlayer only).  
+--- It's therefore safest to only use this in ENTITY:SetupDataTables.  
 --- 🦟 **BUG**: [The callback will not be called clientside if the var is changed right after entity spawn.](https://github.com/Facepunch/garrysmod-requests/issues/324)  
 --- </name>  
 --- @param name string @Name of variable to track changes of.
@@ -2510,6 +2503,7 @@ end
 ---  client|server
 --- Initializes the entity's physics object as a physics shadow. Removes the previous physics object if successful. This is used internally for the Player's and NPC's physics object, and certain HL2 entities such as the crane.  
 --- A physics shadow can be used to have static entities that never move by setting both arguments to false.  
+--- The created physics object will depend on the entity's solidity `SOLID_NONE` will not create a physics object, `SOLID_BBOX` will create a Axis-Aligned BBox one, `SOLID_OBB` will create Orientated Bounding Box one, and anything else will use the models' physics mesh.  
 --- 🦟 **BUG**: [Clientside physics objects are broken and do not move properly in some cases. Physics objects should only created on the server or you will experience incorrect physgun beam position, prediction issues, and other unexpected behavior.](https://github.com/Facepunch/garrysmod-issues/issues/5060)  
 --- A workaround is available on the Entity:PhysicsInitConvex page.  
 --- @param allowPhysicsMovement? boolean @Whether to allow the physics shadow to move under stress.
@@ -2643,7 +2637,7 @@ end
 function Entity:RemoveGesture(activity)
 end
 
----  client|server
+---  server
 --- Breaks internal Ragdoll constrains, so you can for example separate an arm from the body of a ragdoll and preserve all physics.  
 --- The visual mesh will still stretch as if it was properly connected unless the ragdoll model is specifically designed to avoid that.  
 --- @param num? number @Which constraint to break, values below 0 mean break them all
@@ -2832,16 +2826,6 @@ end
 --- Entities also must have a proper [render group](Enums/RENDERGROUP) set for transparency to work.  
 --- @param color? table @The color to set
 function Entity:SetColor(color)
-end
-
----  client|server
---- Sets the color of an entity without usage of a Global.Color object.  
---- Used internally to implement Entity:SetColor.  
---- @param r number 
---- @param g number 
---- @param b number 
---- @param a number 
-function Entity:SetColor4Part(r, g, b, a)
 end
 
 ---  server
@@ -3251,7 +3235,7 @@ end
 --- 🦟 **BUG**: [You should not use the NW2 System on entities that are based on a Lua Entity, or else this will be called multiple times and the NW2Var could get mixed up with other ones.](https://github.com/Facepunch/garrysmod-issues/issues/5455)  
 --- ℹ **NOTE**: Only one NW2VarProxy can be set per-var  
 --- Running this function will only set it for the realm it is called on.  
---- @param key any @The key of the NW2Var to add callback for.
+--- @param key string @The key of the NW2Var to add callback for.
 --- @param callback function @The function to be called when the NW2Var changes
 function Entity:SetNW2VarProxy(key, callback)
 end
@@ -3336,7 +3320,7 @@ end
 --- ℹ **NOTE**: Only one NWVarProxy can be set per-var  
 --- Running this function will only set it for the realm it is called on.  
 --- Sets a function to be called when the NWVar changes.  
---- @param key any @The key of the NWVar to add callback for.
+--- @param key string @The key of the NWVar to add callback for.
 --- @param callback function @The function to be called when the NWVar changes
 function Entity:SetNWVarProxy(key, callback)
 end
@@ -3604,7 +3588,7 @@ end
 --- 🛑 **DEPRECATED**: You should be using Entity:SetNWVarProxy instead.  
 --- Sets callback function to be called when given NWVar changes.  
 --- @param name string @The name of the NWVar to add callback for.
---- @param callback function @The function to be called when the NWVar changes.
+--- @param callback function @The function to be called when the NWVar changes
 --- @deprecated
 function Entity:SetNetworkedVarProxy(name, callback)
 end
@@ -3649,10 +3633,10 @@ end
 ---  client|server
 --- Sets the parent of this entity, making it move with its parent. This will make the child entity non solid, nothing can interact with them, including traces.  
 --- ℹ **NOTE**: This does not work on the world.  
---- ⚠ **WARNING**: This can cause undefined physics behaviour when used on entities that don't support parenting. See the [Valve developer wiki](https://developer.valvesoftware.com/wiki/Entity_Hierarchy_(parenting)) for more information.  
+--- ⚠ **WARNING**: This can cause undefined physics behavior when used on entities that don't support parenting. See the [Valve developer wiki](https://developer.valvesoftware.com/wiki/Entity_Hierarchy_(parenting)) for more information.  
 --- @param parent? Entity @The entity to parent to
---- @param attachmentId? number @The attachment id to use when parenting, defaults to -1 or whatever the parent had set previously
-function Entity:SetParent(parent, attachmentId)
+--- @param attachmentOrBoneId? number @The attachment or bone id to use when parenting
+function Entity:SetParent(parent, attachmentOrBoneId)
 end
 
 ---  client|server
@@ -3729,7 +3713,7 @@ end
 --- ℹ **NOTE**: You must also call this function on a player's children if you would like to prevent transmission for players. See Entity:GetChildren.  
 --- 🦟 **BUG**: [This does not work for nextbots unless you recursively loop their children and update them too.](https://github.com/Facepunch/garrysmod-issues/issues/1736)  
 --- ⁉ **VALIDATE**: When using this function, Entity:SetFlexScale will conflict with this function. Instead, consider using Entity:SetFlexScale on the client.  
---- @param player Player @The player to stop networking the entity to.
+--- @param player Player @The player to stop networking the entity to
 --- @param stopTransmitting boolean @true to stop the entity from networking, false to make it network again.
 function Entity:SetPreventTransmit(player, stopTransmitting)
 end
@@ -3742,9 +3726,9 @@ function Entity:SetRagdollAng(boneid, pos)
 end
 
 ---  server
---- Sets the function to build the ragdoll. This is used alongside Kinect, for more info see ragdoll_motion entity.  
---- @param func function @The build function
-function Entity:SetRagdollBuildFunction(func)
+--- Sets the function to build the ragdoll. This is used alongside Kinect, for more info see `ragdoll_motion` entity in the game files.  
+--- @param builder function @The build function
+function Entity:SetRagdollBuildFunction(builder)
 end
 
 ---  server
@@ -4049,8 +4033,8 @@ end
 --- ⚠ **WARNING**: Calling this function on the victim entity in ENTITY:OnTakeDamage can cause infinite loops.  
 --- ⚠ **WARNING**: This function does not seem to do any damage if you apply it to a player who is driving a prop_vehicle_jeep or prop_vehicle_jeep_old vehicle. You need to call it on the vehicle instead.  
 --- @param damageAmount number @The amount of damage to be applied.
---- @param attacker Entity @The entity that initiated the attack that caused the damage.
---- @param inflictor Entity @The entity that applied the damage, eg
+--- @param attacker? Entity @The entity that initiated the attack that caused the damage.
+--- @param inflictor? Entity @The entity that applied the damage, eg
 function Entity:TakeDamage(damageAmount, attacker, inflictor)
 end
 
@@ -4058,6 +4042,7 @@ end
 --- Applies the damage specified by the damage info to the entity.  
 --- ⚠ **WARNING**: Calling this function on the victim entity in ENTITY:OnTakeDamage can cause infinite loops.  
 --- ⚠ **WARNING**: This function does not seem to do any damage if you apply it to a player who is driving a prop_vehicle_jeep or prop_vehicle_jeep_old vehicle. You need to call it on the vehicle instead.  
+--- ℹ **NOTE**: This function does not apply damage to [func_breakable_surf](https://developer.valvesoftware.com/wiki/Func_breakable_surf) entities correctly. To do this, you will need to use Entity:DispatchTraceAttack instead.  
 --- @param damageInfo CTakeDamageInfo @The damage to apply.
 function Entity:TakeDamageInfo(damageInfo)
 end
@@ -4078,10 +4063,10 @@ function Entity:TestPVS(testPoint)
 end
 
 ---  client|server
---- Returns the ID of a PhysObj attached to the given bone. To be used with Entity:GetPhysicsObjectNum.  
+--- Returns the ID of a PhysObj attached to the given bone.  
 --- See Entity:TranslatePhysBoneToBone for reverse function.  
 --- @param boneID number @The ID of a bone to look up the "physics root" bone of.
---- @return number @The PhysObj ID of the given bone
+--- @return number @The PhysObj ID of the given bone to be used with Entity:GetPhysicsObjectNum or `-1` if we cannot translate for some reason, such as a model 
 function Entity:TranslateBoneToPhysBone(boneID)
 end
 
@@ -4101,7 +4086,7 @@ function Entity:UpdateBoneFollowers()
 end
 
 ---  client
---- Updates the shadow of this entity.  
+--- Marks the render-to-texture (RTT) shadow of this entity as dirty, as well as any potential projected texture shadows related to this entity, so they will be updated as soon as possible.  
 function Entity:UpdateShadow()
 end
 

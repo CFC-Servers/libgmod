@@ -6418,7 +6418,7 @@
       {
         "name": "LAST_SHARED_ACTIVITY",
         "value": 2045,
-        "description": "The largest activity number"
+        "description": "The last shared activity number. IDs after this are \"private\" activities registered at runtime, and will have random IDs associated with specific ACTivities."
       }
     ],
     "realms": [
@@ -7073,177 +7073,177 @@
       {
         "name": "CLASS_PLAYER",
         "value": 1,
-        "description": "Players."
+        "description": "Players"
       },
       {
         "name": "CLASS_PLAYER_ALLY",
         "value": 2,
-        "description": "HL2 player allies - monster_barney, npc_citizen, hacked npc_manhack, and friendly npc_turret_floor."
+        "description": "HL2 - **Allies**\n- `monster_barney`\n- `npc_citizen`\n- `npc_manhack` ( Hacked )\n- `npc_turret_floor` ( Friendly )"
       },
       {
         "name": "CLASS_PLAYER_ALLY_VITAL",
         "value": 3,
-        "description": "HL2 vital player allies - npc_magnusson, npc_gman, npc_fisherman, npc_eli, npc_barney, npc_kleiner, npc_mossman, npc_alyx, npc_monk, npc_dog, and npc_vortigaunt at the end of EP2 (controlled by \"MakeGameEndAlly\" input)."
+        "description": "HL2 - **Vital Allies**\n- `npc_magnusson`\n- `npc_gman`\n- `npc_fisherman`\n- `npc_eli`\n- `npc_barney`\n- `npc_kleiner`\n- `npc_mossman`\n- `npc_alyx`\n- `npc_monk`\n- `npc_dog`\n- `npc_vortigaunt` at the end of EP2 (controlled by `MakeGameEndAlly` input)"
       },
       {
         "name": "CLASS_ANTLION",
         "value": 4,
-        "description": "HL2 antlions - npc_antlion, npc_antlionguard, and npc_ichthyosaur."
+        "description": "HL2 - **Antlions**\n- `npc_antlion`\n- `npc_antlionguard`\n- `npc_antlionguard`"
       },
       {
         "name": "CLASS_BARNACLE",
         "value": 5,
-        "description": "HL2 barnacles - npc_barnacle."
+        "description": "HL2 - **Barnacles**\n- `npc_barnacle`"
       },
       {
         "name": "CLASS_BULLSEYE",
         "value": 6,
-        "description": "HL2 bullseyes - npc_bullseye."
+        "description": "HL2 - **Bullseyes**\n- `npc_bullseye`"
       },
       {
         "name": "CLASS_CITIZEN_PASSIVE",
         "value": 7,
-        "description": "HL2 passive/non-rebel citizens - npc_citizen in the beginning of HL2."
+        "description": "HL2 - **Passive / Non-Rebel Citizens**\n- `npc_citizen` in the beginning of HL2."
       },
       {
         "name": "CLASS_CITIZEN_REBEL",
         "value": 8,
-        "description": "HL2 unused."
+        "description": "HL2 - <key> Unused </key>"
       },
       {
         "name": "CLASS_COMBINE",
         "value": 9,
-        "description": "HL2 combine troops - npc_combine, npc_advisor, apc_missile, npc_apcdriver, hostile npc_turret_floor, hostile npc_rollermine, npc_turret_ground when active, npc_turret_ceiling when active, and npc_strider when active (not being carried by the gunship)."
+        "description": "HL2 - **Combine Troops**\n- `npc_combine`\n- `npc_advisor`\n- `apc_missile`\n- `npc_apcdriver`\n- `npc_turret_floor` ( Hostile )\n- `npc_rollermine` ( Hostile )\n- `npc_turret_ground` ( Active )\n- `npc_turret_ceiling` ( Active )\n- `npc_strider` ( Active - Not being carried by the gunship )"
       },
       {
         "name": "CLASS_COMBINE_GUNSHIP",
         "value": 10,
-        "description": "HL2 combine aircrafts - npc_combinegunship, npc_combinedropship, and npc_helicopter."
+        "description": "HL2 - **Combine Aircrafts**\n- `npc_combinegunship`\n- `npc_combinedropship`\n- `npc_helicopter`"
       },
       {
         "name": "CLASS_CONSCRIPT",
         "value": 11,
-        "description": "HL2 unused."
+        "description": "HL2 - <key> Unused </key>"
       },
       {
         "name": "CLASS_HEADCRAB",
         "value": 12,
-        "description": "HL2 headcrabs - visible npc_headcrab."
+        "description": "HL2 - **Headcrabs**\n- `npc_headcrab` ( Visible )"
       },
       {
         "name": "CLASS_MANHACK",
         "value": 13,
-        "description": "HL2 manhacks - hostile npc_manhack not held by the gravity gun."
+        "description": "HL2 - **Manhacks**\n- `npc_manhack` ( Hostile - Not held by the gravity gun )"
       },
       {
         "name": "CLASS_METROPOLICE",
         "value": 14,
-        "description": "HL2 metro police - npc_metropolice and npc_vehicledriver."
+        "description": "HL2 - **Metro Police**\n- `npc_metropolice`\n- `npc_vehicledriver`"
       },
       {
         "name": "CLASS_MILITARY",
         "value": 15,
-        "description": "HL2 combine military objects - func_guntarget, npc_spotlight, and active npc_combine_camera."
+        "description": "HL2 - **Combine Military Objects**\n- `func_guntarget`\n- `npc_spotlight`\n- `npc_combine_camera` ( Active )"
       },
       {
         "name": "CLASS_SCANNER",
         "value": 16,
-        "description": "HL2 combine scanners - npc_cscanner and npc_clawscanner."
+        "description": "HL2 - **Combine Scanners**\n- `npc_cscanner`\n- `npc_clawscanner`"
       },
       {
         "name": "CLASS_STALKER",
         "value": 17,
-        "description": "HL2 stalkers - npc_stalker."
+        "description": "HL2 - **Stalkers**\n- `npc_stalker`"
       },
       {
         "name": "CLASS_VORTIGAUNT",
         "value": 18,
-        "description": "HL2 vortigaunts - npc_vortigaunt before the end of EP2 (controlled by \"MakeGameEndAlly\" input)."
+        "description": "HL2 - **Vortigaunts**\n- `npc_vortigaunt` before the end of EP2 ( Controlled by `MakeGameEndAlly` input )"
       },
       {
         "name": "CLASS_ZOMBIE",
         "value": 19,
-        "description": "HL2 zombies - unslumped npc_zombie, npc_poisonzombie, npc_fastzombie, npc_fastzombie_torso, and npc_zombine."
+        "description": "HL2 - **Zombies**\n- `npc_zombie` ( Unslumped )\n- `npc_poisonzombie`\n- `npc_fastzombie`\n- `npc_fastzombie_torso`\n- `npc_zombine`"
       },
       {
         "name": "CLASS_PROTOSNIPER",
         "value": 20,
-        "description": "HL2 snipers - npc_sniper and proto_sniper."
+        "description": "HL2 - **Snipers**\n- `npc_sniper`\n- `proto_sniper`"
       },
       {
         "name": "CLASS_MISSILE",
         "value": 21,
-        "description": "HL2 missiles - rpg_missile, apc_missile, and grenade_pathfollower."
+        "description": "HL2 - **Missiles**\n- `rpg_missile`\n- `apc_missile`\n- `grenade_pathfollower`"
       },
       {
         "name": "CLASS_FLARE",
         "value": 22,
-        "description": "HL2 flares - env_flare."
+        "description": "HL2 - **Flares**\n- `env_flare`"
       },
       {
         "name": "CLASS_EARTH_FAUNA",
         "value": 23,
-        "description": "HL2 animals - npc_crow, npc_seagull, and npc_pigeon."
+        "description": "HL2 - **Animals**\n- `npc_crow`\n- `npc_seagull`\n- `npc_pigeon`"
       },
       {
         "name": "CLASS_HACKED_ROLLERMINE",
         "value": 24,
-        "description": "HL2 friendly rollermines - hacked npc_rollermine."
+        "description": "HL2 - **Friendly Rollermines**\n- `npc_rollermine` ( Hacked )"
       },
       {
         "name": "CLASS_COMBINE_HUNTER",
         "value": 25,
-        "description": "HL2 hunters - npc_hunter."
+        "description": "HL2 - **Hunters**\n- `npc_hunter`"
       },
       {
         "name": "CLASS_MACHINE",
         "value": 26,
-        "description": "HL:S turrets - monster_turret, monster_miniturret, monster_sentry."
+        "description": "HL:S - **Turrets**\n- `monster_turret`\n- `monster_miniturret`\n- `monster_sentry`"
       },
       {
         "name": "CLASS_HUMAN_PASSIVE",
         "value": 27,
-        "description": "HL:S friendly humans - monster_scientist."
+        "description": "HL:S - **Friendly Humans**\n- `monster_scientist`"
       },
       {
         "name": "CLASS_HUMAN_MILITARY",
         "value": 28,
-        "description": "HL:S human military - monster_human_grunt and monster_apache."
+        "description": "HL:S - **Human Military**\n- `monster_human_grunt`\n- `monster_apache`"
       },
       {
         "name": "CLASS_ALIEN_MILITARY",
         "value": 29,
-        "description": "HL:S alien military - monster_alien_controller, monster_vortigaunt, monster_alien_grunt, monster_nihilanth, and monster_snark if it has an enemy of class CLASS_PLAYER, CLASS_HUMAN_PASSIVE, or CLASS_HUMAN_MILITARY."
+        "description": "HL:S - **Alien Military**\n- `monster_alien_controller`\n- `monster_vortigaunt`\n- `monster_alien_grunt`\n- `monster_nihilanth`\n- `monster_snark` if it has an enemy of class <br> `CLASS_PLAYER` , `CLASS_HUMAN_PASSIVE` or `CLASS_HUMAN_MILITARY`"
       },
       {
         "name": "CLASS_ALIEN_MONSTER",
         "value": 30,
-        "description": "HL:S monsters - monster_tentacle, monster_barnacle, monster_zombie, monster_gargantua, monster_houndeye, monster_ichthyosaur, and monster_bigmomma."
+        "description": "HL:S - **Monsters**\n- `monster_tentacle`\n- `monster_barnacle`\n- `monster_zombie`\n- `monster_gargantua`\n- `monster_houndeye`\n- `monster_ichthyosaur`\n- `monster_bigmomma`"
       },
       {
         "name": "CLASS_ALIEN_PREY",
         "value": 31,
-        "description": "HL:S headcrabs - monster_headcrab."
+        "description": "HL:S - **Headcrabs**\n- `monster_headcrab`"
       },
       {
         "name": "CLASS_ALIEN_PREDATOR",
         "value": 32,
-        "description": "HL:S alien predators - monster_bullsquid, xen_tree, and xen_hull."
+        "description": "HL:S - **Alien Predators**\n- `monster_bullsquid`\n- `xen_tree`\n- `xen_hull`"
       },
       {
         "name": "CLASS_INSECT",
         "value": 33,
-        "description": "HL:S insects - montser_roach and monster_leech."
+        "description": "HL:S - **Insects**\n- `montser_roach`\n- `monster_leech`"
       },
       {
         "name": "CLASS_PLAYER_BIOWEAPON",
         "value": 34,
-        "description": "HL:S player bioweapons - hornet fired by a player."
+        "description": "HL:S - **Player Bioweapons**\n- `hornet` fired by a player"
       },
       {
         "name": "CLASS_ALIEN_BIOWEAPON",
         "value": 35,
-        "description": "HL:S enemy bioweapons - hornet fired by anyone but a player, or monster_snark with no enemy or an enemy without the class CLASS_PLAYER, CLASS_HUMAN_PASSIVE, or CLASS_HUMAN_MILITARY."
+        "description": "HL:S - **Enemy Bioweapons**\n- `horne`t fired by anyone but a player\n- `monster_snark` with no enemy or an enemy without the class <br> `CLASS_PLAYER` , `CLASS_HUMAN_PASSIVE` or `CLASS_HUMAN_MILITARY`"
       }
     ],
     "realms": [
@@ -7655,7 +7655,7 @@
         "value": 44
       },
       {
-        "name": "COND-WEAPON_SIGHT_OCCLUDED",
+        "name": "COND.WEAPON_SIGHT_OCCLUDED",
         "value": 45
       }
     ],
@@ -8312,24 +8312,28 @@
       },
       {
         "name": "EFL_DIRTY_ABSTRANSFORM",
-        "value": 2048
+        "value": 2048,
+        "description": "Some 'dirty' bits with respect to absolute computations. Used internally by the engine when an entity's absolute position needs to be recalculated."
       },
       {
         "name": "EFL_DIRTY_ABSVELOCITY",
-        "value": 4096
+        "value": 4096,
+        "description": "Some 'dirty' bits with respect to absolute computations. Used internally by the engine when an entity's absolute velocity needs to be recalculated."
       },
       {
         "name": "EFL_DIRTY_ABSANGVELOCITY",
         "value": 8192,
-        "description": "Some dirty bits with respect to abs computations"
+        "description": "Some 'dirty' bits with respect to absolute computations. Used internally by the engine when an entity's absolute angular velocity needs to be recalculated."
       },
       {
         "name": "EFL_DIRTY_SURROUNDING_COLLISION_BOUNDS",
-        "value": 16384
+        "value": 16384,
+        "description": "Marks the entity as having a 'dirty' surrounding box. Used internally by the engine to recompute the entity's collision bounds."
       },
       {
         "name": "EFL_DIRTY_SPATIAL_PARTITION",
-        "value": 32768
+        "value": 32768,
+        "description": "Used internally by the engine when an entity's \"spatial partition\" needs to be recalculated."
       },
       {
         "name": "EFL_IN_SKYBOX",
@@ -8348,11 +8352,13 @@
       },
       {
         "name": "EFL_IS_BEING_LIFTED_BY_BARNACLE",
-        "value": 1048576
+        "value": 1048576,
+        "description": "The entity is currently being lifted by a Barnacle."
       },
       {
         "name": "EFL_NO_ROTORWASH_PUSH",
-        "value": 2097152
+        "value": 2097152,
+        "description": "The entity is not affected by 'rotorwash push'--the wind-push effect caused by helicopters close to the ground in Half-Life 2."
       },
       {
         "name": "EFL_NO_THINK_FUNCTION",
@@ -8361,11 +8367,13 @@
       },
       {
         "name": "EFL_NO_GAME_PHYSICS_SIMULATION",
-        "value": 8388608
+        "value": 8388608,
+        "description": "The entity is currently not simulating any physics."
       },
       {
         "name": "EFL_CHECK_UNTOUCH",
-        "value": 16777216
+        "value": 16777216,
+        "description": "The entity is about to have its untouch callback checked, e.g. when this entity stops touching another entity."
       },
       {
         "name": "EFL_DONTBLOCKLOS",
@@ -10456,28 +10464,12 @@
   {
     "fields": [
       {
-        "name": "MATERIAL_LINES",
-        "value": 1
-      },
-      {
-        "name": "MATERIAL_LINE_LOOP",
-        "value": 5
-      },
-      {
-        "name": "MATERIAL_LINE_STRIP",
-        "value": 4
-      },
-      {
         "name": "MATERIAL_POINTS",
         "value": 0
       },
       {
-        "name": "MATERIAL_POLYGON",
-        "value": 6
-      },
-      {
-        "name": "MATERIAL_QUADS",
-        "value": 7
+        "name": "MATERIAL_LINES",
+        "value": 1
       },
       {
         "name": "MATERIAL_TRIANGLES",
@@ -10486,6 +10478,22 @@
       {
         "name": "MATERIAL_TRIANGLE_STRIP",
         "value": 3
+      },
+      {
+        "name": "MATERIAL_LINE_STRIP",
+        "value": 4
+      },
+      {
+        "name": "MATERIAL_LINE_LOOP",
+        "value": 5
+      },
+      {
+        "name": "MATERIAL_POLYGON",
+        "value": 6
+      },
+      {
+        "name": "MATERIAL_QUADS",
+        "value": 7
       }
     ],
     "realms": [
@@ -10499,12 +10507,12 @@
       {
         "name": "MATERIAL_CULLMODE_CCW",
         "value": 0,
-        "description": "Counter clock wise cull mode"
+        "description": "Cull back faces with counterclockwise vertices."
       },
       {
         "name": "MATERIAL_CULLMODE_CW",
         "value": 1,
-        "description": "Clock wise cull mode"
+        "description": "Cull back faces with clockwise vertices."
       }
     ],
     "realms": [
@@ -10592,7 +10600,7 @@
     "realms": [
       "client"
     ],
-    "description": "Enumerations used by <page>Global.GetRenderTargetEx</page>. Clientside only.",
+    "description": "Enumerations used by <page>Global.GetRenderTargetEx</page>. Clientside only.\n<warning>When Anti Aliasing is enabled then `MATERIAL_RT_DEPTH_SHARED` and `MATERIAL_RT_DEPTH_SEPARATE` will always create a new depth-stencil buffer because Render Targets do not have Anti Aliasing.\n</warning>",
     "name": "MATERIAL_RT_DEPTH"
   },
   {
@@ -10731,7 +10739,7 @@
       {
         "name": "MOVETYPE_PUSH",
         "value": 7,
-        "description": "No clip to world, but pushes and crushes things. Need ent:SetSaveValue(\"m_flMoveDoneTime\", somenumberbiggerthancurtime) or the entity won't move."
+        "description": "Doesn't collide with the world, but does push and crush entities.\nThis is what is used by the engine for elevators, trains, doors, moving water, etc.\n\nIn order to work properly, the entity needs to have specific Save Values/Internal Variables set which tell it how long it should be moving for.\n\n**Note:** This same process can be done for both position and angle.\n\n1. You'll need to <page text=\"Get an existing Save Value\">Entity:GetInternalVariable</page> called `ltime`\n2. Calculate how long (in seconds) the entity will be moving before it reaches its destination.\nAs a simple example, this can be done via `duration = distance / speed`\n3. <page text=\"Set the Save Value\">Entity:SetSaveValue</page> for `m_flMoveDoneTime` to the value you retrieved for `ltime` plus the duration calculated in step 2.\nPut more simply: `m_flMoveDoneTime = ltime + duration`\n4. Set the entity's velocity to move it to the destination at the speed used in step 2.\n\nOnce the duration of the move has elapsed, the entity will stop moving.  If you have done your calculations correctly, it should stop exactly at the desired destination.\n\n<note>\nMOVETYPE_PUSH entities only move during <page>Entity:Think</page> so if you want smooth movement, you need to set <page>Entity:NextThink</page> to <page>Global.CurTime</page>, which instructs the entity to execute <page>Entity:Think</page> as quickly as possible.\n</note>"
       },
       {
         "name": "MOVETYPE_NOCLIP",
@@ -11134,7 +11142,8 @@
       },
       {
         "name": "OBS_MODE_DEATHCAM",
-        "value": 1
+        "value": 1,
+        "description": "Camera doesn't move, but adjusts camera angles to follow the spectated target"
       },
       {
         "name": "OBS_MODE_FREEZECAM",
@@ -11555,7 +11564,8 @@
       },
       {
         "name": "RT_SIZE_LITERAL_PICMIP",
-        "value": 9
+        "value": 9,
+        "description": "Use the size passed in, don't clamp to the frame buffer size, but do apply picmip restrictions."
       }
     ],
     "realms": [
@@ -12377,7 +12387,7 @@
       {
         "name": "SND_CHANGE_VOL",
         "value": 1,
-        "description": "Change sound vol"
+        "description": "Change sound volume"
       },
       {
         "name": "SND_CHANGE_PITCH",
@@ -12411,7 +12421,8 @@
       },
       {
         "name": "SND_IGNORE_PHONEMES",
-        "value": 256
+        "value": 256,
+        "description": "If the sound has any associated phoneme (character lip-sync) data, ignore it."
       },
       {
         "name": "SND_IGNORE_NAME",
@@ -12420,7 +12431,8 @@
       },
       {
         "name": "SND_DO_NOT_OVERWRITE_EXISTING_ON_CHANNEL",
-        "value": 1024
+        "value": 1024,
+        "description": "Unused/legacy; does nothing."
       }
     ],
     "realms": [
@@ -13388,17 +13400,19 @@
         "value": 262144
       },
       {
-        "name": "TEXTUREFLAGS_UNUSED_00080000",
-        "value": 524288
+        "name": "TEXTUREFLAGS_STAGING_MEMORY",
+        "value": 524288,
+        "description": "<deprecated notag=\"1\"></deprecated>\n\nAka TEXTUREFLAGS_UNUSED_00080000"
       },
       {
         "name": "TEXTUREFLAGS_IMMEDIATE_CLEANUP",
         "value": 1048576,
-        "description": "<deprecated notag=\"1\"></deprecated>\nImmediately destroy this texture when its reference count hits zero\n\n(aka TEXTUREFLAGS_UNUSED_00100000)"
+        "description": "<deprecated notag=\"1\"></deprecated>\nImmediately destroy this texture when its reference count hits zero.\n\nAka TEXTUREFLAGS_UNUSED_00100000"
       },
       {
-        "name": "TEXTUREFLAGS_UNUSED_00200000",
-        "value": 2097152
+        "name": "TEXTUREFLAGS_IGNORE_PICMIP",
+        "value": 2097152,
+        "description": "<deprecated notag=\"1\"></deprecated>\n\nAka TEXTUREFLAGS_UNUSED_00200000"
       },
       {
         "name": "TEXTUREFLAGS_UNUSED_00400000",
@@ -13438,12 +13452,14 @@
         "description": "Clamp to border colour on all texture coordinates"
       },
       {
-        "name": "TEXTUREFLAGS_UNUSED_40000000",
-        "value": 1073741824
+        "name": "TEXTUREFLAGS_STREAMABLE_COARSE",
+        "value": 1073741824,
+        "description": "<deprecated notag=\"1\"></deprecated>\n\nAka TEXTUREFLAGS_UNUSED_40000000"
       },
       {
-        "name": "TEXTUREFLAGS_UNUSED_80000000",
-        "value": 2147483648
+        "name": "TEXTUREFLAGS_STREAMABLE_FINE",
+        "value": 2147483648,
+        "description": "<deprecated notag=\"1\"></deprecated>\n\nAka TEXTUREFLAGS_UNUSED_80000000"
       }
     ],
     "realms": [
@@ -13537,7 +13553,7 @@
       {
         "name": "TYPE_LIGHTUSERDATA",
         "value": 2,
-        "description": "<page>light userdata</page>"
+        "description": "<page text=\"light userdata\">userdata#lightuserdata</page>"
       },
       {
         "name": "TYPE_NUMBER",

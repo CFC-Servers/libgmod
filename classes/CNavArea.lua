@@ -480,9 +480,11 @@ function CNavArea:RemoveAttributes(attribs)
 end
 
 ---  server
+--- 🛑 **DEPRECATED**: Does nothing  
 --- Removes this node from the Closed List.  
 --- Used in pathfinding via the [A* algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm).  
 --- More information can be found on the Simple Pathfinding page.  
+--- @deprecated
 function CNavArea:RemoveFromClosedList()
 end
 

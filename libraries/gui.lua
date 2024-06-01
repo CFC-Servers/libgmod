@@ -7,6 +7,7 @@ end
 
 ---  client
 --- Pushes text to the closed caption box.  
+--- ℹ **NOTE**: The function will not work, if the console command variable "closecaption" is set to 0.  
 --- @param text string @The caption to emit
 --- @param duration number @How long the caption should stay for
 --- @param fromPlayer? boolean @Is this caption coming from the player?
@@ -55,7 +56,7 @@ end
 --- Simulates an ASCII symbol writing.  
 --- Use to write text in the chat or in VGUI.  
 --- Doesn't work while the main menu is open!  
---- @param code number @ASCII code of symbol, see http://www.mikroe.com/img/publication/spa/pic-books/programming-in-basic/chapter/04/fig4-24.gif
+--- @param code number @ASCII code of symbol, see [this chart](https://files.facepunch.com/wiki/files/ab571/8dc389806d65b98.gif).
 function gui.InternalKeyTyped(code)
 end
 

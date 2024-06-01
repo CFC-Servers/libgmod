@@ -104,6 +104,8 @@ end
 --- @param textdata table @The text properties
 --- @param distance number @How far away the shadow appears.
 --- @param alpha? number @How visible the shadow is (0-255).
+--- @return number @The width of drawn text.
+--- @return number @The height of drawn text.
 function draw.TextShadow(textdata, distance, alpha)
 end
 

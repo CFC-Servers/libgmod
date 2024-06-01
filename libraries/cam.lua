@@ -37,8 +37,7 @@ end
 
 ---  client
 --- Returns a copy of the model matrix that is at the top of the stack.  
---- ℹ **NOTE**: Editing the matrix **will not** edit the current view. To do so, you will have to **push** it.  
---- ℹ **NOTE**: This function essentially returns the copy of the last pushed model matrix.  
+--- ℹ **NOTE**: Editing the matrix **will not** edit the current view. To do so, you will have to use cam.PushModelMatrix.  
 --- @return VMatrix @The currently active matrix.
 function cam.GetModelMatrix()
 end
@@ -81,7 +80,7 @@ end
 
 ---  client
 --- Sets up a new 3D rendering context. Must be finished by cam.End3D.  
---- For more advanced settings such as an orthographic view, use cam.Start instead.  
+--- For more advanced settings such as an orthographic view, use cam.Start instead, which this is an alias of basically.  
 --- 🧱 **NOTE**: Provides a 3D rendering context  
 --- 🦟 **BUG**: [Negative x/y values won't work.](https://github.com/Facepunch/garrysmod-issues/issues/1995)  
 --- 🦟 **BUG**: [This will not update current view properties.](https://github.com/Facepunch/garrysmod-issues/issues/2682)  
@@ -98,7 +97,7 @@ function cam.Start3D(pos, angles, fov, x, y, w, h, zNear, zFar)
 end
 
 ---  client
---- Sets up a new 2D rendering context. Must be finished by cam.End3D2D. This function pushes a new matrix onto the stack. (cam.PushModelMatrix)  
+--- Sets up the model transformation matrix to draw 2D content in 3D space and pushes it into the stack (cam.PushModelMatrix).  
 --- Matrix formula:  
 --- ```  
 --- local m = Matrix()  
@@ -106,9 +105,7 @@ end
 --- m:SetTranslation(pos)  
 --- m:SetScale(Vector(scale, -scale, 1))  
 --- ```  
---- 🟥 **NOTE**: Provides a 2D rendering context  
---- <rendercontext hook="true" type="3D"></rendercontext>  
---- ⚠ **WARNING**: This should be closed by cam.End3D2D otherwise the game crashes  
+--- ⚠ **WARNING**: This must be closed by cam.End3D2D. If not done so, unexpected issues might arise.  
 --- @param pos Vector @Origin of the 3D2D context, ie
 --- @param angles Angle @Angles of the 3D2D context
 --- @param scale number @The scale of the render context

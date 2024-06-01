@@ -1,9 +1,20 @@
---- Used to store permanent variables/settings on clients that will persist between servers. They are stored in the `cl.db`, `sv.db`, or `mn.db` SQLite databases depending on the realm, located in the root Garry's Mod folder.  
+--- Functions to persist data on a user's computer.  
+--- The data will be read / written to / from a database  
+--- corresponding to the realm the library was used in.  
+--- | Realm | Database File |  
+--- |:-----:|:-----|  
+--- | [Server] | `garrysmod/sv.db`  
+--- | [Client] | `garrysmod/cl.db`  
+--- |  [Menu]  | `garrysmod/mn.db`  
+--- [Server]: /gmod/States#server  
+--- [Client]: /gmod/States#client  
+--- [Menu]: /gmod/States#menu  
 _G.cookie = {}
 ---  menu|client|server
---- Deletes a cookie on the client.  
---- @param name string @The name of the cookie that you want to delete.
-function cookie.Delete(name)
+--- Removes any cookie with the given name.  
+--- Does nothing if the cookie doesn't exist.  
+--- @param key string @The name of the cookie that you want to delete.
+function cookie.Delete(key)
 end
 
 ---  menu|client|server
@@ -23,10 +34,9 @@ function cookie.GetString(name, default)
 end
 
 ---  menu|client|server
---- Sets the value of a cookie, which is saved automatically by the sql.  
---- These are stored in the *.db files - cl.db for clients, mn.db for menu state and sv.db for servers.  
---- @param key string @The name of the cookie that you want to set.
---- @param value string @Value to store in the cookie.
+--- Creates / updates a cookie in the Database.  
+--- @param key string @The name of the cookie.
+--- @param value string @The data stored in the cookie.
 function cookie.Set(key, value)
 end
 

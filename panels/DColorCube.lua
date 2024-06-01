@@ -8,6 +8,12 @@ function DColorCube:GetBaseRGB()
 end
 
 ---  client|menu
+--- Returns the color cube's default color. By default, it is set to white. (255 255 255 RGB)  
+--- @return table @The default Color.
+function DColorCube:GetDefaultColor()
+end
+
+---  client|menu
 --- 🛑 **DEPRECATED**:   
 --- Returns the value set by DColorCube:SetHue.  
 --- @deprecated
@@ -38,6 +44,12 @@ end
 --- Sets the base color of the color cube and updates the slider position.  
 --- @param color table @The color to set, uses Color.
 function DColorCube:SetColor(color)
+end
+
+---  client|menu
+--- Sets the color cube's default color. This value will be used to reset to on middle mouse click of the color cube's draggable slider.  
+--- @param  table @The new default Color.
+function DColorCube:SetDefaultColor()
 end
 
 ---  client|menu

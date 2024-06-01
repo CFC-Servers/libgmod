@@ -1,7 +1,7 @@
 --- The timer library is a very useful set of functions which allow you to run a function periodically or after a given delay.  
 _G.timer = {}
 ---  menu|client|server
---- Adjusts the timer if the timer with the given identifier exists.  
+--- Adjusts a previously created (timer.Create) timer with the given identifier.  
 --- @param identifier any @Identifier of the timer to adjust.
 --- @param delay number @The delay interval in seconds
 --- @param repetitions? number @Repetitions
@@ -39,6 +39,11 @@ end
 
 ---  menu|client|server
 --- Returns whenever the given timer exists or not.  
+--- For debugging purposes you can use the following commands:  
+--- * `lua_dumptimers_cl`  
+--- * `lua_dumptimers_sv`  
+--- * `lua_dumptimers_menu`  
+--- These will list all active timers in each realm.  
 --- @param identifier string @Identifier of the timer.
 --- @return boolean @Returns true if the timer exists, false if it doesn't
 function timer.Exists(identifier)

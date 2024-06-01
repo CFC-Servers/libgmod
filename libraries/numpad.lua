@@ -4,7 +4,7 @@ _G.numpad = {}
 --- Activates numpad key owned by the player  
 --- @param ply Player @The player whose numpad should be simulated
 --- @param key number @The key to press, see Enums/KEY
---- @param isButton boolean @Should this keypress pretend to be a from a gmod_button? (causes numpad.FromButton to return true)
+--- @param isButton? boolean @Should this keypress pretend to be a from a `gmod_button`? (causes numpad.FromButton to return `true`)
 function numpad.Activate(ply, key, isButton)
 end
 
@@ -12,7 +12,7 @@ end
 --- Deactivates numpad key owned by the player  
 --- @param ply Player @The player whose numpad should be simulated
 --- @param key number @The key to press, corresponding to Enums/KEY
---- @param isButton boolean @Should this keypress pretend to be a from a gmod_button? (causes numpad.FromButton to return true)
+--- @param isButton? boolean @Should this keypress pretend to be a from a `gmod_button`? (causes numpad.FromButton to return `true`)
 function numpad.Deactivate(ply, key, isButton)
 end
 

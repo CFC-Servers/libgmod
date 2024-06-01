@@ -2,7 +2,7 @@
 --- @class PathFollower
 local PathFollower = {}
 ---  server
---- If you created your path with type "Chase" this functions should be used in place of PathFollower:Update to cause the bot to chase the specified entity.  
+--- If you created your path with type `"Chase"` this functions should be used in place of PathFollower:Update to cause the bot to chase the specified entity.  
 --- @param bot NextBot @The bot to update along the path
 --- @param ent Entity @The entity we want to chase
 function PathFollower:Chase(bot, ent)
@@ -10,11 +10,11 @@ end
 
 ---  server
 --- Compute shortest path from bot to 'goal' via A* algorithm.  
---- @param from NextBot @The nextbot we're generating for
---- @param to Vector @To point
---- @param generator? function @A funtion that allows you to alter the path generation
+--- @param bot NextBot @The nextbot we're generating for
+--- @param goal Vector @The target location, the goal.
+--- @param generator? function @A function that allows you to alter the path generation
 --- @return boolean @* If returns true, path was found to the goal position
-function PathFollower:Compute(from, to, generator)
+function PathFollower:Compute(bot, goal, generator)
 end
 
 ---  server
