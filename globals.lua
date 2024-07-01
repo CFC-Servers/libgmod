@@ -62,20 +62,26 @@ function _G.Add_NPC_Class(name)
 end
 
 ---  client|menu
---- Loads the specified image from the `/cache` folder, used in combination steamworks.Download. Most addons will provide a 512x512 png image.  
+--- Loads the specified image from the `/cache` folder, used in combination with steamworks.Download. Most addons will provide a 512x512 png image.  
+--- ℹ **NOTE**: This works with any image file with the `.cache` file extension, even outside of the `/cache` folder.  
 --- @param name string @The name of the file.
 --- @return IMaterial @The material, returns `nil` if the cached file is not an image.
 function _G.AddonMaterial(name)
 end
 
 ---  menu|client|server
---- Creates an Angle object.  
---- ⚠ **WARNING**: This function is relatively expensive when used in often running hooks or in operations requiring very frequent calls (like loops for example) due to object creation and garbage collection. It is better to store the angle in a variable or to use the [default angle](https://wiki.facepunch.com/gmod/Global_Variables#misc) available. See Angle:Add.  
---- @param pitch? number @The pitch value of the angle
---- @param yaw? number @The yaw value of the angle.
---- @param roll? number @The roll value of the angle.
---- @return Angle @Created angle
-function _G.Angle(pitch, yaw, roll)
+--- Creates an Angle object, representing a [Euler Angle](https://en.wikipedia.org/wiki/Euler_angles) made up of pitch, yaw, and roll components.  
+--- ⚠ **WARNING**:   
+--- This function is relatively expensive, in terms of performance, in situations where it is being called multiple times every frame (Like a loop, for example.) This is due to the overhead associated with object creation and garbage collection.  
+--- Where possible, it is generally better to store an Angle in a variable and re-use that variable rather than re-creating it repeatedly.  
+--- In cases where an empty Angle is needed, the global variable `angle_zero` is the preferred solution instead of `Angle( 0, 0, 0 )`.  
+--- @param pitch number @The pitch value of the angle, in degrees.
+--- @param yaw? number @The yaw value of the angle, in degrees.
+--- @param roll? number @The roll value of the angle, in degrees.
+--- @param angle Angle @Creates a new Angle that is a copy of the Angle passed in.
+--- @param angleString string @Attempts to parse the input string from the Global.print format of an Angle
+--- @return Angle @The newly created Angle
+function _G.Angle(pitch, yaw, roll, angle, angleString)
 end
 
 ---  menu|client|server
@@ -84,6 +90,15 @@ end
 --- @param max? number @Max bound exclusive.
 --- @return Angle @The randomly generated angle.
 function _G.AngleRand(min, max)
+end
+
+---  menu|client|server
+--- A variable containing a string indicating which (Beta) Branch of the game you are using.  
+--- While this variable is always available in the Client & Menu  
+--- realms, it is only defined in the Server  realm on local servers.  
+--- For more information on beta branches, see this page  
+--- @return string @The current branch.
+function _G.BRANCH()
 end
 
 ---  client|server
@@ -123,11 +138,10 @@ end
 --- Creates a fully clientside ragdoll.  
 --- ℹ **NOTE**: The ragdoll initially starts as hidden and with shadows disabled, see the example for how to enable it.  
 --- There's no need to call Entity:Spawn on this entity.  
---- The physics won't initialize at all if the model hasn't been precached serverside first.  
 --- 🦟 **BUG**: [Clientside entities are not garbage-collected, thus you must store a reference to the object and call CSEnt:Remove manually.](https://github.com/Facepunch/garrysmod-issues/issues/1387)  
---- @param model string @The file path to the model
+--- @param model string @The file path to the model.
 --- @param renderGroup? number @The Enums/RENDERGROUP to assign.
---- @return CSEnt @The newly created client-side ragdoll
+--- @return CSEnt @The newly created client-side only ragdoll
 function _G.ClientsideRagdoll(model, renderGroup)
 end
 
@@ -151,7 +165,7 @@ end
 --- @param g number @An integer from `0-255` describing the green value of the color.
 --- @param b number @An integer from `0-255` describing the blue value of the color.
 --- @param a? number @An integer from `0-255` describing the alpha (transparency) of the color.(default 255)
---- @return table @The created Color.
+--- @return Color @The created Color.
 function _G.Color(r, g, b, a)
 end
 
@@ -200,9 +214,9 @@ end
 --- Please note that this function will not automatically execute the given code after compiling it.  
 --- @param code string @The code to compile.
 --- @param identifier string @An identifier in case an error is thrown
---- @param HandleError? boolean @If false this function will return an error string instead of throwing an error.
+--- @param handleError? boolean @If false this function will return an error string instead of throwing an error.
 --- @return function @A function that, when called, will execute the given code
-function _G.CompileString(code, identifier, HandleError)
+function _G.CompileString(code, identifier, handleError)
 end
 
 ---  menu|client|server
@@ -254,7 +268,7 @@ function _G.CreateMaterial(name, shaderName, materialData)
 end
 
 ---  client
---- Creates a new particle system. See also Entity:CreateParticleEffect  
+--- Creates a new particle system. See also Entity:CreateParticleEffect, Global.ParticleEffectAttach and Global.CreateParticleSystemNoEntity.  
 --- ℹ **NOTE**: The particle effect must be precached with Global.PrecacheParticleSystem and the file its from must be added via game.AddParticles before it can be used!  
 --- @param ent Entity @The entity to attach the control point to.
 --- @param effect string @The name of the effect to create
@@ -299,7 +313,7 @@ end
 --- `Unsupported 32-bit wave file your_sound.wav` and  
 --- `Invalid sample rate (48000) for sound 'your_sound.wav'`  
 --- @param targetEnt Entity @The target entity.
---- @param soundName string @The sound to play.
+--- @param soundName string @The sound to play
 --- @param filter? CRecipientFilter @A CRecipientFilter of the players that will have this sound networked to them
 --- @return CSoundPatch @The sound object
 function _G.CreateSound(targetEnt, soundName, filter)
@@ -314,7 +328,7 @@ end
 
 ---  menu|client|server
 --- Returns the uptime of the server in seconds (to at least 4 decimal places)  
---- This is a synchronised value and affected by various factors such as host_timescale (or game.GetTimeScale) and the server being paused - either by sv_pausable or all players disconnecting.  
+--- This is a synchronised value and affected by various factors such as host_timescale (or game.GetTimeScale) and the server being paused - either by `sv_pausable` or all players disconnecting.  
 --- You should use this function for timing in-game events but not for real-world events.  
 --- See also: Global.RealTime, Global.SysTime  
 --- ℹ **NOTE**: This is internally defined as a float, and as such it will be affected by precision loss if your server uptime is more than 6 hours, which will cause jittery movement of players and props and inaccuracy of timers, it is highly encouraged to refresh or change the map when that happens (a server restart is not necessary).  
@@ -325,14 +339,15 @@ function _G.CurTime()
 end
 
 ---  menu|client|server
---- This is not a function. This is a preprocessor keyword that translates to:  
+--- A preprocessor keyword that is directly replaced with the following text:  
+--- ```lua  
+--- local BaseClass = baseclass.Get  
 --- ```  
---- local BaseClass = baseclass.Get( "my_weapon" )  
---- ```  
---- If you type `DEFINE_BASECLASS( "my_weapon" )` in your script.  
+--- Because this is a simple preprocessor keyword and not a function, it will cause problems if not used properly  
 --- See baseclass.Get for more information.  
 --- ⚠ **WARNING**: The preprocessor is not smart enough to know when substitution doesn't make sense, such as: table keys and strings.  
 --- Running `print("DEFINE_BASECLASS")` will result in `local BaseClass = baseclass.Get`  
+--- For more information, including usage examples, see the BaseClasses reference page.  
 --- @param value string @Baseclass name
 function _G.DEFINE_BASECLASS(value)
 end
@@ -373,7 +388,7 @@ function _G.DebugInfo(slot, info)
 end
 
 ---  client|server
---- Loads and registers the specified gamemode, setting the GM table's DerivedFrom field to the value provided, if the table exists. The DerivedFrom field is used post-gamemode-load as the "derived" parameter for gamemode.Register.  
+--- Loads and registers the specified gamemode, setting the GM table's DerivedFrom field to the value provided, if the table exists. The DerivedFrom field is used post-gamemode-load as the "derived" parameter for gamemode.Register. See  Gamemode_Creation#derivinggamemodes for more information about deriving gamemodes.  
 --- @param base string @Gamemode name to derive from.
 function _G.DeriveGamemode(base)
 end
@@ -455,9 +470,9 @@ end
 ---  client|menu
 --- Creates a derma window asking players to input a string.  
 --- @param title string @The title of the created panel.
---- @param subtitle string @The text above the input box
+--- @param subtitle string @The text above the input box.
 --- @param default string @The default text for the input box.
---- @param confirm function @The function to be called once the user has confirmed their input.
+--- @param confirm function @The function to be called once the user has confirmed their input
 --- @param cancel? function @The function to be called once the user has cancelled their input
 --- @param confirmText? string @Allows you to override text of the "OK" button
 --- @param cancelText? string @Allows you to override text of the "Cancel" button
@@ -466,7 +481,7 @@ function _G.Derma_StringRequest(title, subtitle, default, confirm, cancel, confi
 end
 
 ---  client|menu
---- Sets whether rendering should be limited to being inside a panel or not.  
+--- Sets whether rendering should be limited to being inside a panel or not. Needs to be used inside one of the 2d rendering hooks  
 --- See also Panel:NoClipping.  
 --- @param disable boolean @Whether or not clipping should be disabled
 --- @return boolean @Whether the clipping was enabled or not before this function call
@@ -931,6 +946,7 @@ end
 --- See Global.GetRenderTargetEx for an advanced version of this function with more options.  
 --- 🦟 **BUG**: [This crashes when used on a cubemap texture.](https://github.com/Facepunch/garrysmod-issues/issues/2885)  
 --- ⚠ **WARNING**: Rendertargets are not garbage-collected, which means they will remain in memory until you disconnect. So make sure to avoid creating new ones unecessarily and re-use as many of your existing rendertargets as possible to avoid filling up all your memory.  
+--- ⚠ **WARNING**: Drawing rendertargets on themself can produce odd and unexpected results.  
 --- ℹ **NOTE**:   
 --- Calling this function is equivalent to  
 --- ```lua  
@@ -1253,10 +1269,14 @@ end
 
 ---  menu|client|server
 --- Either returns the material with the given name, or loads the material interpreting the first argument as the path.  
---- ℹ **NOTE**: When using .png or .jpg textures, try to make their sizes Power Of 2 (1, 2, 4, 8, 16, 32, 64, etc). While images are no longer scaled to Power of 2 sizes since February 2019, it is a good practice for things like icons, etc.  
---- ℹ **NOTE**: Server-side, the Material function can consistently return an invalid material (with '__error') depending on the file type loaded; however, .vtf and .vmt files appear unaffected.  
---- ⚠ **WARNING**: This function is very expensive when used in rendering hooks or in operations requiring very frequent calls. It is better to store the Material in a variable (like in the examples).  
---- @param materialName string @The material name or path
+--- ## .png, .jpg and other image formats  
+--- This function is capable to loading `.png` or `.jpg` images, generating a texture and material for them on the fly.  
+--- PNG, JPEG, GIF, and TGA files will work, but only if they have the `.png` or `.jpg` file extensions (even if the actual image format doesn't match the file extension)  
+--- Use Global.AddonMaterial for image files with the `.cache` file extension. (from steamworks.Download)  
+--- While images are no longer scaled to Power of 2 (sizes of 8, 16, 32, 64, 128, etc.) sizes since February 2019, it is still a good practice for things like icons, etc.  
+--- ⚠ **WARNING**: Server-side, this function can consistently return an invalid material (with '__error') depending on the file type loaded.  
+--- ⚠ **WARNING**: This function is very expensive when used in rendering hooks or in operations requiring very frequent calls. It is a good idea to cache the material in a variable (like in the examples).  
+--- @param materialName string @The material name or path relative to the `materials/` folder
 --- @param pngParameters? string @A string containing space separated keywords which will be used to add material parameters
 --- @return IMaterial @Generated material.
 --- @return number @How long it took for the function to run.
@@ -1354,7 +1374,7 @@ function _G.ParticleEffect(particleName, position, angles, parent)
 end
 
 ---  client|server
---- Creates a particle effect with specialized parameters.  
+--- Creates a particle effect with specialized parameters. See also Entity:CreateParticleEffect and Global.CreateParticleSystem.  
 --- ℹ **NOTE**: The particle effect must be precached **serverside** with Global.PrecacheParticleSystem and the file its from must be added via game.AddParticles before it can be used!  
 --- @param particleName string @The name of the particle effect.
 --- @param attachType number @Attachment type using Enums/PATTACH.
@@ -1366,6 +1386,7 @@ end
 ---  client
 --- Creates a new CLuaEmitter.  
 --- ℹ **NOTE**: Do not forget to delete the emitter with CLuaEmitter:Finish once you are done with it  
+--- ⚠ **WARNING**: There is a limit of 4097 emitters that can be active at once, exceeding this limit will throw a non-halting error in console!  
 --- @param position Vector @The start position of the emitter
 --- @param use3D? boolean @Whenever to render the particles in 2D or 3D mode
 --- @return CLuaEmitter @The new particle emitter.
@@ -1450,8 +1471,9 @@ end
 --- Runs a function without stopping the whole script on error.  
 --- This function is similar to Global.pcall and Global.xpcall except the errors are still printed and sent to the error handler (i.e. sent to server console if clientside and GM:OnLuaError called).  
 --- @param func function @Function to run
+--- @param ... any ... @Arguments to call the function with.
 --- @return boolean @Whether the function executed successfully or not
-function _G.ProtectedCall(func)
+function _G.ProtectedCall(func, ...)
 end
 
 ---  menu|client|server
@@ -1571,6 +1593,7 @@ end
 
 ---  menu|client|server
 --- Returns the input value in an escaped form so that it can safely be used inside of queries. The returned value is surrounded by quotes unless noQuotes is true. Alias of sql.SQLStr  
+--- ℹ **NOTE**: This function is not meant to be used with external database engines such as `MySQL`. Escaping strings with inadequate functions is dangerous!  
 --- @param input string @String to be escaped
 --- @param noQuotes? boolean @Whether the returned value should be surrounded in quotes or not
 --- @return string @Escaped input
@@ -1613,12 +1636,14 @@ end
 
 ---  client|menu
 --- Gets the height of the game's window (in pixels).  
+--- ℹ **NOTE**: ScrH() returns the height from the current viewport, this can be changed via render.SetViewPort, inside Render Targets and cam.Start contexts.  
 --- @return number @The height of the game's window in pixels
 function _G.ScrH()
 end
 
 ---  client|menu
 --- Gets the width of the game's window (in pixels).  
+--- ℹ **NOTE**: ScrW() returns the width from the current viewport, this can be changed via render.SetViewPort, inside Render Targets and cam.Start contexts.  
 --- @return number @The width of the game's window in pixels
 function _G.ScrW()
 end
@@ -1934,8 +1959,10 @@ end
 
 ---  client|server
 --- Gets the associated type ID of the variable. Unlike Global.type, this does not work with no value - an argument must be provided.  
+--- ⚠ **WARNING**: This will return `TYPE_TABLE` for Color objects.  
+--- ⚠ **WARNING**: This will return `TYPE_STRING` for vararg objects.  
 --- 🦟 **BUG**: [This returns garbage for _LOADLIB objects.](https://github.com/Facepunch/garrysmod-requests/issues/1120)  
---- 🦟 **BUG**: [This returns TYPE_NIL for protos.](https://github.com/Facepunch/garrysmod-requests/issues/1459)  
+--- 🦟 **BUG**: [This returns `TYPE_NIL` for protos.](https://github.com/Facepunch/garrysmod-requests/issues/1459)  
 --- @param variable any @The variable to get the type ID of.
 --- @return number @The type ID of the variable
 function _G.TypeID(variable)
@@ -1943,6 +1970,7 @@ end
 
 ---  menu|client|server
 --- 🛑 **DEPRECATED**: You should use Global.IsUselessModel instead.  
+--- This function is an alias of Global.IsUselessModel.  
 --- Returns whether or not a model is useless by checking that the file path is that of a proper model.  
 --- If the string ".mdl" is not found in the model name, the function will return true.  
 --- The function will also return true if any of the following strings are found in the given model name:  
@@ -1973,7 +2001,7 @@ function _G.UnPredictedCurTime()
 end
 
 ---  menu|client|server
---- Returns the time in seconds it took to render the VGUI.  
+--- Identical to Global.SysTime.  
 function _G.VGUIFrameTime()
 end
 
@@ -1998,11 +2026,13 @@ end
 ---  menu|client|server
 --- Creates a Vector object.  
 --- ⚠ **WARNING**: Creating Vectors is relatively expensive when used in often running hooks or in operations requiring very frequent calls (like loops for example) due to object creation and garbage collection. It is better to store the vector in a variable or to use the [default vectors](https://wiki.facepunch.com/gmod/Global_Variables#misc) available. See Vector:Add.  
---- @param x? number @The x component of the vector
+--- @param x? number @The x component of the vector.
 --- @param y? number @The y component of the vector.
 --- @param z? number @The z component of the vector.
+--- @param vector Vector @Creates a new Vector that is a copy of the given Vector.
+--- @param vectorString string @Attempts to parse the input string from the Global.print format of an Vector
 --- @return Vector @The created vector object.
-function _G.Vector(x, y, z)
+function _G.Vector(x, y, z, vector, vectorString)
 end
 
 ---  menu|client|server
@@ -2076,9 +2106,8 @@ end
 
 ---  menu|client|server
 --- Executes a Lua script.  
---- ℹ **NOTE**: Addon files (.gma files) do not support relative parent folders (`..` notation).  
 --- This function will try to load local client file if `sv_allowcslua` is **1**.  
---- ⚠ **WARNING**: The file you are attempting to include **MUST NOT** be empty or the include will fail. Files over a certain size may fail as well.  
+--- ⚠ **WARNING**: The file you are attempting to include **MUST NOT** be empty or the include will fail. Files over a certain size (64KB compressed) may fail clientside as well.  
 --- If the file you are including is clientside or shared, it **must** be Global.AddCSLuaFile'd or this function will error saying the file doesn't exist.  
 --- @param fileName string @The name of the script to be executed
 --- @return any ... @Anything that the executed Lua script returns.
@@ -2086,7 +2115,7 @@ function _G.include(fileName)
 end
 
 ---  menu|client|server
---- Returns an iterator function for a for loop, to return ordered key-value pairs from a table.  
+--- Returns a [Stateless Iterator](https://www.lua.org/pil/7.3.html) for a [Generic For Loops](https://www.lua.org/pil/4.3.5.html), to return ordered key-value pairs from a table.  
 --- This will only iterate though **numerical** keys, and these must also be **sequential**; starting at 1 with no gaps.  
 --- For unordered pairs, see Global.pairs.  
 --- For pairs sorted by key in alphabetical order, see Global.SortedPairs.  
@@ -2177,10 +2206,11 @@ function _G.module(name, ...)
 end
 
 ---  menu|client|server
---- Returns a new userdata object.  
---- @param addMetatable? boolean @If true, the userdata will get its own metatable automatically
+--- Creates a new userdata object.  
+--- @param addMetatable? boolean @If true, the created userdata will be given its own metatable.
+--- @param userData userdata @Creates a new userdata with the same metatable the userdata passed in had
 --- @return userdata @The newly created userdata.
-function _G.newproxy(addMetatable)
+function _G.newproxy(addMetatable, userData)
 end
 
 ---  menu|client|server
@@ -2286,9 +2316,9 @@ end
 
 ---  menu|client|server
 --- Attempts to return an appropriate boolean for the given value  
---- @param val any @The object to be converted to a boolean
---- @return boolean @**false** for the boolean false
-function _G.tobool(val)
+--- @param input any @The object to be converted to a boolean
+--- @return boolean @* `false` for the boolean `false`
+function _G.tobool(input)
 end
 
 ---  menu|client|server

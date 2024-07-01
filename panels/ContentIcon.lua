@@ -5,25 +5,25 @@
 --- @class ContentIcon : DButton
 local ContentIcon = {}
 ---  client
---- Returns the color set by ContentIcon:SetColor  
+--- An Global.AccessorFunc that returns the color set by ContentIcon:SetColor  
 --- @return table @See Color
 function ContentIcon:GetColor()
 end
 
 ---  client
---- Returns the content type used to save and restore the content icon in a spawnlist.  
+--- An Global.AccessorFunc that returns the content type used to save and restore the content icon in a spawnlist.  
 --- @return string @The content type, for example "entity" or "weapon".
 function ContentIcon:GetContentType()
 end
 
 ---  client
---- Returns a table of weapon classes for the content icon with "NPC" content type to be randomly chosen from when user tries to spawn the NPC.  
+--- An Global.AccessorFunc that returns a table of weapon classes for the content icon with "NPC" content type to be randomly chosen from when user tries to spawn the NPC.  
 --- @return table @A table of weapon classes to be chosen from when user tries to spawn the NPC.
 function ContentIcon:GetNPCWeapon()
 end
 
 ---  client
---- Returns the internal "name" for the content icon, usually a class name for an entity.  
+--- An Global.AccessorFunc that returns the internal "name" for the content icon, usually a class name for an entity.  
 --- @return string @Internal "name" to be used when user left clicks the icon.
 function ContentIcon:GetSpawnName()
 end
@@ -34,19 +34,19 @@ function ContentIcon:OpenMenu()
 end
 
 ---  client
---- Sets whether the content item is admin only. This makes the icon to display a admin icon in the top left corner of the icon.  
+--- An Global.AccessorFunc that sets whether the content item is admin only. This makes the icon to display a admin icon in the top left corner of the icon.  
 --- @param adminOnly boolean @Whether this content should be admin only or not
 function ContentIcon:SetAdminOnly(adminOnly)
 end
 
 ---  client
---- Sets the color for the content icon. Currently is not used by the content icon panel.  
+--- An Global.AccessorFunc that sets the color for the content icon. Currently is not used by the content icon panel.  
 --- @param clr table @The color to set
 function ContentIcon:SetColor(clr)
 end
 
 ---  client
---- Sets the content type used to save and restore the content icon in a spawnlist.  
+--- An Global.AccessorFunc that sets the content type used to save and restore the content icon in a spawnlist.  
 --- @param type string @The content type, for example "entity" or "weapon"
 function ContentIcon:SetContentType(type)
 end
@@ -58,7 +58,7 @@ function ContentIcon:SetMaterial(path)
 end
 
 ---  client
---- Sets a table of weapon classes for the content icon with "NPC" content type to be randomly chosen from when user tries to spawn the NPC.  
+--- An Global.AccessorFunc that sets a table of weapon classes for the content icon with "NPC" content type to be randomly chosen from when user tries to spawn the NPC.  
 --- @param weapons table @A table of weapon classes to be chosen from when user tries to spawn the NPC.
 function ContentIcon:SetNPCWeapon(weapons)
 end
@@ -70,7 +70,7 @@ function ContentIcon:SetName(name)
 end
 
 ---  client
---- Sets the internal "name" for the content icon, usually a class name for an entity.  
+--- An Global.AccessorFunc that sets the internal "name" for the content icon, usually a class name for an entity.  
 --- @param name string @Internal "name" to be used when user left clicks the icon.
 function ContentIcon:SetSpawnName(name)
 end

@@ -162,7 +162,7 @@ end
 --- @param str string @The string we are seeking to replace an occurrence(s).
 --- @param find string @What we are seeking to replace.
 --- @param replace string @What to replace find with.
---- @return string @string
+--- @return string @The processed string with replacements.
 function string.Replace(str, find, replace)
 end
 
@@ -257,7 +257,7 @@ end
 ---  menu|client|server
 --- Removes leading spaces/characters from a string.  
 --- @param str string @String to trim
---- @param char string @Custom character to remove
+--- @param char? string @Custom character to remove
 --- @return string @Trimmed string
 function string.TrimLeft(str, char)
 end
@@ -265,7 +265,7 @@ end
 ---  menu|client|server
 --- Removes trailing spaces/passed character from a string.  
 --- @param str string @String to remove from
---- @param char string @Custom character to remove, default is a space
+--- @param char? string @Custom character to remove, default is a space
 --- @return string @Trimmed string
 function string.TrimRight(str, char)
 end

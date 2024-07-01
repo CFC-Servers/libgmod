@@ -12,7 +12,7 @@ function vgui.Create(classname, parent, name)
 end
 
 ---  client|menu
---- Creates a panel from table. Typically used with vgui.RegisterFile and vgui.RegisterTable.  
+--- Creates a panel from a table, used alongside vgui.RegisterFile and vgui.RegisterTable to efficiently define, register, and instantiate custom panels.  
 --- @param metatable table @Your PANEL table.
 --- @param parent? Panel @Which panel to parent the newly created panel to.
 --- @param name? string @Custom name of the created panel for scripting/debugging purposes
@@ -38,6 +38,13 @@ end
 --- @param parent Panel @The parent panel to check the currently focused one against
 --- @return boolean @Whether or not the focused panel is a child of the passed one.
 function vgui.FocusedHasParent(parent)
+end
+
+---  client|menu
+--- Returns all Lua-created panels.  
+--- Used internally for PANEL:PreAutoRefresh and PANEL:PostAutoRefresh.  
+--- @return table @List of all Lua created panels.
+function vgui.GetAll()
 end
 
 ---  client|menu

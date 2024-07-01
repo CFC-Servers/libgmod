@@ -46,7 +46,7 @@ end
 
 ---  client|menu
 --- 🛑 **DEPRECATED**:   
---- Does nothing.  
+--- An Accessor Function in DForm that does nothing.  
 --- @deprecated
 --- @return boolean 
 function DForm:GetAutoSize()
@@ -54,7 +54,7 @@ end
 
 ---  client|menu
 --- 🛑 **DEPRECATED**:   
---- Does nothing.  
+--- An Global.AccessorFunc that does nothing.  
 --- @deprecated
 --- @return number 
 function DForm:GetSpacing()

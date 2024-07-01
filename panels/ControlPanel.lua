@@ -43,7 +43,9 @@ end
 
 ---  client
 --- Calls the given function with this panel as the only argument. Used by the spawnmenu to populate the control panel.  
---- @param func function @A function that takes one argument:
+--- 🛑 **DEPRECATED**: This is dumb. Just call the builder function directly.  
+--- @param func function @The builder function
+--- @deprecated
 function ControlPanel:FillViaFunction(func)
 end
 

@@ -95,8 +95,8 @@ function IMaterial:GetVectorLinear(materialVector)
 end
 
 ---  menu|client|server
---- Returns the height of the member texture set for $basetexture.  
---- @return number @height
+--- Returns the height of the member texture set for `$basetexture`.  
+--- @return number @Height of the base texture.
 function IMaterial:Height()
 end
 
@@ -180,8 +180,8 @@ function IMaterial:SetVector4D(name, x, y, z, w)
 end
 
 ---  menu|client|server
---- Returns the width of the member texture set for $basetexture.  
---- @return number @width
+--- Returns the width of the member texture set for `$basetexture`.  
+--- @return number @Width of the base texture.
 function IMaterial:Width()
 end
 

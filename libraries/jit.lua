@@ -8,11 +8,11 @@ end
 
 ---  menu|client|server
 --- You can attach callbacks to a number of compiler events with jit.attach. The callback can be called:  
---- * when a function has been compiled to bytecode ("bc");  
---- * when trace recording starts or stops ("trace");  
---- * as a trace is being recorded ("record");  
---- * or when a trace exits through a side exit ("texit").  
---- Set a callback with jit.attach(callback, "event") and clear the same callback with jit.attach(callback)  
+--- * when a function has been compiled to bytecode (`"bc"`);  
+--- * when trace recording starts or stops (`"trace"`);  
+--- * as a trace is being recorded (`"record"`);  
+--- * or when a trace exits through a side exit (`"texit"`).  
+--- Set a callback with `jit.attach(callback, "event")` and clear the same callback with `jit.attach(callback)`  
 --- ⚠ **WARNING**: This function isn't officially documented on LuaJIT wiki, use it at your own risk.  
 --- ⚠ **WARNING**: Using these constantly (especially bytecode) can be very performance heavy due to the constant stream of data being compiled at a time.  
 --- @param callback function @The callback function
@@ -109,7 +109,7 @@ end
 
 ---  menu|client|server
 --- 🛑 **DEPRECATED**: This function was disabled due to security concerns.  
---- Does the exact same thing as debug.getupvalue except it only returns the name, not the name and the object. The upvalue indexes also start at 0 rather than 1, so doing jit.util.funcuvname(func, 0) will get you the same name as debug.getupvalue(func, 1)  
+--- Does the exact same thing as debug.getupvalue except it only returns the name, not the name and the object. The upvalue indexes also start at 0 rather than 1, so doing `jit.util.funcuvname(func, 0)` will get you the same name as `debug.getupvalue(func, 1)`  
 --- ⚠ **WARNING**: This function isn't officially documented on LuaJIT wiki, use it at your own risk.  
 --- @param func function @Function to get the upvalue indexed from
 --- @param index number @The upvalue index, starting from 0
@@ -119,17 +119,19 @@ function jit.util.funcuvname(func, index)
 end
 
 ---  menu|client|server
---- 🛑 **DEPRECATED**: This function was disabled due to security concerns. It will always return 0.  
---- Gets the address of a function from a list of functions, for the list see Ircalladdr Functions  
---- ⚠ **WARNING**: This function isn't officially documented on LuaJIT wiki, use it at your own risk.  
---- @param index number @The index of the function address to get from the ircalladdr func array (starting from 0)
+--- 🛑 **DEPRECATED**: This function was disabled due to security concerns.  
+--- Previously got the address of a function from a set list of functions, but now always returns `0` as it is deprecated.  
+--- @param index number @This arugment is ignored.
 --- @deprecated
---- @return number @The address of the function
+--- @return number @Always returns `0`
 function jit.util.ircalladdr(index)
 end
 
 ---  menu|client|server
+--- 🛑 **DEPRECATED**: This function was disabled due to security concerns. It will always return 0.  
+--- Grabs the address of a function based on it's trace exit number. Grabbed via jit.attach (with the texit event).  
 --- @param exitno number @exit number to retrieve exit stub address from (gotten via jit.attach with the texit event)
+--- @deprecated
 --- @return number @exitstub trace address
 function jit.util.traceexitstub(exitno)
 end

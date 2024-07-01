@@ -3,6 +3,7 @@ _G.sound = {}
 ---  client|server
 --- Creates a sound script. It can also override sounds, which seems to only work when set on the server.  
 --- You can find a list of common sound scripts that are shipped with the game by default here: Common Sounds.  
+--- A list of sound scripts can be retrieved with sound.GetTable.  
 --- @param soundData table @The sounds properties
 function sound.Add(soundData)
 end
@@ -19,7 +20,7 @@ end
 --- @param pos Vector @The position to emit the hint at
 --- @param volume number @The volume or radius of the hint
 --- @param duration number @The duration of the hint in seconds
---- @param owner? Entity 
+--- @param owner? Entity @If set, the sound hint will be ignored/deleted when the given entity is destroyed.
 function sound.EmitHint(hint, pos, volume, duration, owner)
 end
 
@@ -49,6 +50,7 @@ end
 
 ---  client|server
 --- Returns a list of all registered sound scripts.  
+--- New ones can be registered using sound.Add, and detailed information about each one can be retrieved via sound.GetProperties.  
 --- @return table @The list/array of all registered sound scripts ( No other information is provided )
 function sound.GetTable()
 end
@@ -62,7 +64,8 @@ end
 --- @param level? number @Sound level in decibels
 --- @param pitch? number @The sound pitch
 --- @param volume? number @Output volume of the sound in range 0 to 1.
-function sound.Play(snd, pos, level, pitch, volume)
+--- @param dsp? number @The DSP preset for this sound
+function sound.Play(snd, pos, level, pitch, volume, dsp)
 end
 
 ---  client

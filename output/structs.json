@@ -114,12 +114,12 @@
       {
         "name": "OnEnd",
         "type": "function",
-        "description": "The callback function that will be called upon completion of the animation. The arguments passed to it are:\n* <page>table</page> animData - This structure.\n* <page>Panel</page> tgtPanel - The panel the animation was run on."
+        "description": "The callback function that will be called upon completion of the animation.\n\n<callback>\n<arg type=\"table\" name=\"animData\">This structure.</arg>\n<arg type=\"Panel\" name=\"tgtPanel\">The panel the animation was run on.</arg>\n</callback>"
       },
       {
         "name": "Think",
         "type": "function",
-        "description": "The `think` function called every frame that will animate the panel object. This varies based on the animation. You can create a custom function for this if you aren't using the stock panel methods. The arguments passed to it are:\n* <page>table</page> animData - This structure.\n* <page>Panel</page> tgtPanel - The panel the animation is being run on.\n* <page>number</page> fraction - The progress fraction of the animation, between 0 and 1. The change rate of this number will not be linear if you are easing."
+        "description": "The `think` function called every frame that will animate the panel object. This varies based on the animation. You can create a custom function for this if you aren't using the stock panel methods.\n\n<callback>\n<arg type=\"table\" name=\"animData\">This structure.</arg>\n<arg type=\"Panel\" name=\"tgtPanel\">The panel the animation is being run on.</arg>\n</callback>\n<arg type=\"number\" name=\"fraction\">The progress fraction of the animation, between 0 and 1. The change rate of this number will not be linear if you are easing.</arg>"
       },
       {
         "name": "Pos",
@@ -279,7 +279,7 @@
         "name": "Callback",
         "type": "function",
         "default": "nil",
-        "description": "Function to be called **after** the bullet was fired but **before** the damage is applied (the callback is called even if no damage is applied). The arguments are:\n* <page>Entity</page> attacker\n* <page>table</page> tr - See <page>Structures/TraceResult</page>\n* <page>CTakeDamageInfo</page> dmgInfo\n\nThe return value can be a table with following keys:\n* <page>boolean</page> effects - `false` to not do any of the effects.\n* <page>boolean</page> damage - `false` to not do any damage."
+        "description": "Function to be called **after** the bullet was fired but **before** the damage is applied (the callback is called even if no damage is applied).\n\n<callback>\n<arg type=\"Entity\" name=\"attacker\"></arg>\n<arg type=\"table\" name=\"tr\">See <page>Structures/TraceResult</page></arg>\n<arg type=\"CTakeDamageInfo\" name=\"dmgInfo\"></arg>\n<ret type=\"table\">\nThe return value can be a table with following keys:\n* <page>boolean</page> effects - `false` to not do any of the effects.\n* <page>boolean</page> damage - `false` to not do any damage.\n</ret>\n</callback>"
       },
       {
         "name": "Damage",
@@ -327,7 +327,7 @@
         "name": "TracerName",
         "type": "string",
         "default": "nil",
-        "description": "The tracer name. You can find a list of default effects <page text=\"here\">Effects</page>."
+        "description": "The tracer name. You can find a list of default effects <page text=\"here\">Default_Effects</page>."
       },
       {
         "name": "Dir",
@@ -532,7 +532,7 @@
       {
         "name": "Function",
         "type": "function",
-        "description": "The function used to generate the content of the tab."
+        "description": "The function used to generate the content of the tab.\n\n<callback>\n<ret type=\"Panel\" name=\"content\">A container panel that holds all of the content for the new tab.</ret>\n</callback>"
       },
       {
         "name": "Icon",
@@ -941,6 +941,12 @@
         "description": "The entity's render group, see <page>Enums/RENDERGROUP</page>. If unset, the engine will decide the render group based on the entity's model."
       },
       {
+        "name": "WantsTranslucency",
+        "type": "boolean",
+        "default": "false",
+        "description": "If set and RenderGroup is not, will switch the render group to <page text=\"RENDERGROUP_BOTH\">Enums/RENDERGROUP#RENDERGROUP_BOTH</page> when appropriate."
+      },
+      {
         "name": "DisableDuplicator",
         "type": "boolean",
         "default": "false",
@@ -960,8 +966,8 @@
       {
         "name": "IconOverride",
         "type": "string",
-        "default": "materials/entities/<ClassName>.png",
-        "description": "If set, overrides the icon path to be displayed in the Spawnmenu for this entity."
+        "default": "entities/<ClassName>.png",
+        "description": "If set, overrides the icon path to be displayed in the Spawnmenu for this entity.\n\nLike many functions, this expects a path relative to the `materials/` folder, do not include `materials/` in the provided string."
       },
       {
         "name": "PhysgunDisabled",
@@ -974,7 +980,7 @@
       "client",
       "server"
     ],
-    "description": "Information about the ENT structure.\n\nTo learn more about scripted entities, <page text=\"see this page\">Scripted_Entities</page>.\n\nWhile some of the fields may be serverside or clientside only, it is recommended to provide them on both so addons could use their values.\n\n<note>Values defined in ENT table can't be changed per instance. Initialize default values in <page>ENTITY:Initialize</page> or other hook.</note>",
+    "description": "Information about the ENT structure, which represents a Scripted Entity class definition.\n\nTo learn more about scripted entities, <page text=\"see this page\">Scripted_Entities</page>.\n\nSee also <page>ENTITY Hooks</page> for a list of events scripted entities can have. See <page>Custom Entity Fields</page> for a list of events and fields all entities can have.\n\nWhile some of the fields may be serverside or clientside only, it is recommended to provide them on both so addons could use their values.\n\n<note>Values defined in ENT table can't be changed per instance. Initialize default values in <page>ENTITY:Initialize</page> or other hook.</note>",
     "name": "ENT"
   },
   {
@@ -1241,12 +1247,12 @@
       {
         "name": "failed",
         "type": "function",
-        "description": "Function to be called on failure. Arguments are\n* <page>string</page> reason"
+        "description": "Function to be called on failure.\n<callback>\n<arg type=\"string\" name=\"reason\">Reason for the failure.</arg>\n</callback>"
       },
       {
         "name": "success",
         "type": "function",
-        "description": "Function to be called on success. Arguments are\n* <page>number</page> code\n* <page>string</page> body\n* <page>table</page> headers"
+        "description": "Function to be called on success.\n<callback>\n<arg type=\"number\" name=\"code\">The HTTP result code</arg>\n<arg type=\"string\" name=\"body\">The document data, usually HTML or JSON contents.</arg>\n<arg type=\"table\" name=\"headers\">List of headers the server provided.</arg>\n</callback>"
       },
       {
         "name": "method",
@@ -1449,12 +1455,12 @@
       {
         "name": "init",
         "type": "function",
-        "description": "The function used to get variables from the \".vmt\". Called once per each \".vmt\". Arguments are:\n* <page>table</page> self\n* <page>string</page> materialName\n* <page>table</page> values"
+        "description": "The function used to get variables from the \".vmt\". Called once per each \".vmt\".\n\n<callback>\n<arg type=\"table\" name=\"self\">The table structure itself</arg>\n<arg type=\"string\" name=\"name\">The material name</arg>\n<arg type=\"table\" name=\"values\">The material key values</arg>\n</callback>"
       },
       {
         "name": "bind",
         "type": "function",
-        "description": "The function used to apply the proxy. This is called every frame while any materials with this proxy are used in world. Arguments are:\n* <page>table</page> self\n* <page>string</page> materialName\n* <page>Entity</page> ent"
+        "description": "The function used to apply the proxy. This is called every frame while any materials with this proxy are used in world.\n\n<callback>\n<arg type=\"table\" name=\"self\">The table structure itself.</arg>\n<arg type=\"string\" name=\"name\">The material name.</arg>\n<arg type=\"Entity\" name=\"ent\">The entity the material instance is applied to, if any.</arg>\n</callback>"
       }
     ],
     "realms": [
@@ -1473,17 +1479,17 @@
       {
         "name": "normal",
         "type": "Vector",
-        "description": "The triangles normal required to calculate lighting(optional)."
+        "description": "The triangles normal required to calculate lighting (Optional)."
       },
       {
         "name": "tangent",
         "type": "Vector",
-        "description": "The triangles tangent. Not used by the VertexLitGeneric shader."
+        "description": "The triangles tangent. Not used by the `VertexLitGeneric` shader."
       },
       {
         "name": "binormal",
         "type": "Vector",
-        "description": "The triangles binormal. Not used by the VertexLitGeneric shader."
+        "description": "The triangles binormal. Not used by the `VertexLitGeneric` shader."
       },
       {
         "name": "pos",
@@ -1493,12 +1499,22 @@
       {
         "name": "u",
         "type": "number",
-        "description": "The u texture scale."
+        "description": "The U texture coordinate."
       },
       {
         "name": "v",
         "type": "number",
-        "description": "The v texture scale."
+        "description": "The V texture coordinate."
+      },
+      {
+        "name": "u1",
+        "type": "number",
+        "description": "The secondary U texture coordinate. Only works when passed to <page>IMesh:BuildFromTriangles</page>, Useful for `LightmappedGeneric` shader."
+      },
+      {
+        "name": "v1",
+        "type": "number",
+        "description": "The secondary V texture coordinate. Only works when passed to <page>IMesh:BuildFromTriangles</page>."
       },
       {
         "name": "userdata",
@@ -1728,49 +1744,57 @@
       {
         "name": "LookAheadTimeObjectsVsObject",
         "type": "number",
-        "description": "Maximum amount of seconds to precalculate collisions with objects."
+        "default": "nil",
+        "description": "Maximum amount of seconds to precalculate collisions with objects.\n\nDefault value for this setting is `0.5`."
       },
       {
         "name": "LookAheadTimeObjectsVsWorld",
         "type": "number",
-        "description": "Maximum amount of seconds to precalculate collisions with world."
-      },
-      {
-        "name": "MaxAngularVelocity",
-        "type": "number",
-        "description": "Maximum rotation velocity."
+        "default": "nil",
+        "description": "Maximum amount of seconds to precalculate collisions with world.\n\nDefault value for this setting is `1`."
       },
       {
         "name": "MaxCollisionChecksPerTimestep",
         "type": "number",
-        "description": "Maximum collision checks per tick."
+        "default": "nil",
+        "description": "Maximum collision checks per tick.\n\nObjects may penetrate after this many collision checks\n\nDefault value for this setting is `50000`."
       },
       {
         "name": "MaxCollisionsPerObjectPerTimestep",
         "type": "number",
-        "description": "Maximum collision per object per tick."
-      },
-      {
-        "name": "MaxFrictionMass",
-        "type": "number",
-        "description": "Maximum mass of an object to be affected by friction."
+        "default": "nil",
+        "description": "Maximum collision per object per tick.\n\nObject will be frozen after this many collisions (visual hitching vs. CPU cost)\n\nDefault value for this setting is `10`."
       },
       {
         "name": "MaxVelocity",
         "type": "number",
-        "description": "Maximum speed of an object."
+        "default": "nil",
+        "description": "Maximum world-space speed of an object in inches per second.\n\nDefault value for this setting is `4000`."
+      },
+      {
+        "name": "MaxAngularVelocity",
+        "type": "number",
+        "default": "nil",
+        "description": "Maximum world-space rotational velocity in degrees per second.\n\nDefault value for this setting is `7200`."
       },
       {
         "name": "MinFrictionMass",
         "type": "number",
-        "description": "Minimum mass of an object to be affected by friction."
+        "default": "nil",
+        "description": "Minimum mass of an object to be affected by friction.\n\nDefault value for this setting is `10`."
+      },
+      {
+        "name": "MaxFrictionMass",
+        "type": "number",
+        "default": "nil",
+        "description": "Maximum mass of an object to be affected by friction.\n\nDefault value for this setting is `2500`."
       }
     ],
     "realms": [
       "client",
       "server"
     ],
-    "description": "Table used by <page>physenv.SetPerformanceSettings</page> and <page>physenv.GetPerformanceSettings</page>.",
+    "description": "Table used by <page>physenv.SetPerformanceSettings</page> and <page>physenv.GetPerformanceSettings</page>.\n\nWhen setting the settings, omitting any key will fallback to its current value. (can be retrieved via the get function)",
     "name": "PhysEnvPerformanceSettings"
   },
   {
@@ -2064,32 +2088,32 @@
       {
         "name": "Filter",
         "type": "function",
-        "description": "Used **clientside** to decide whether this property should be shown for an entity. Gets these arguments:\n* <page>table</page> self - the property table\n* <page>Entity</page> ent - the entity the player clicked\n* <page>Global.LocalPlayer</page> player - the localplayer\n\nReturn true if the property should be shown for this entity. It's good practice to call <page>SANDBOX:CanProperty</page> in this hook via <page>gamemode.Call</page> or <page>hook.Run</page>."
+        "description": "Used **clientside** to decide whether this property should be shown for an entity.\n\nIt's good practice to call <page>GM:CanProperty</page> in this hook via <page>gamemode.Call</page> or <page>hook.Run</page>.\n\n<callback>\n<arg type=\"table\" name=\"self\">the property table</arg>\n<arg type=\"Entity\" name=\"ent\">the entity the player clicked</arg>\n<arg type=\"Global.LocalPlayer\" name=\"player\">the localplayer</arg>\n<ret type=\"boolean\" name=\"check\">Return true if the property should be shown for this entity.</ret>\n</callback>"
       },
       {
         "name": "Checked",
         "type": "function",
-        "description": "Required for toggle properties (clientside). Must return a boolean value to either check or uncheck the toggle property.\n* <page>table</page> self - the property table\n* <page>Entity</page> ent - the entity the player clicked\n* <page>table</page> tr - the player's eye trace"
+        "description": "Required for toggle properties (clientside).\n\n<callback>\n<arg type=\"table\" name=\"self\">the property table</arg>\n<arg type=\"Entity\" name=\"ent\">the entity the player clicked</arg>\n<arg type=\"table\" name=\"tr\">the player's eye trace</arg>\n<ret type=\"boolean\" name=\"check\">Return true if the property should appear checked in the UI.</ret>\n</callback>"
       },
       {
         "name": "Action",
         "type": "function",
-        "description": "Called **clientside** when the property is clicked with these arguments:\n* <page>table</page> self - the property table\n* <page>Entity</page> ent - the entity the player clicked\n* <page>table</page> tr - the player's eye trace\n\nWhen appropriate, within this function you can call self:MsgStart(), write data with the <page>net</page> 'Write' functions, and finish with self:MsgEnd(). This will activate the 'Receive' function on the server. In most cases, you will want to send the entity to the server, as it's not done by default."
+        "description": "Called **clientside** when the property is clicked\n<callback>\n<arg type=\"table\" name=\"self\">the property table</arg>\n<arg type=\"Entity\" name=\"ent\">the entity the player clicked</arg>\n<arg type=\"table\" name=\"tr\">the player's eye trace</arg>\n</callback>\n\nWhen appropriate, within this function you can call `self:MsgStart()`, write data with the <page>net</page>.`Write*` functions, and finish with `self:MsgEnd()`. This will activate the `Receive` function on the server. In most cases, you will want to send the entity to the server, as it's not done by default."
       },
       {
         "name": "Receive",
         "type": "function",
-        "description": "Called **serverside** if the client sends a message in the 'Action' function (see above).\n* <page>table</page> self - the property table\n* <page>number</page> len - the net message length, although this includes the property identifier used internally (the name of the property)\n* <page>Player</page> ply - the player who clicked the property\n\nYou can read data received from the client with the <page>net</page> 'Read' functions. It's good practice to check <page>SANDBOX:CanProperty</page> here via <page>gamemode.Call</page> or <page>hook.Run</page>."
+        "description": "Called **serverside** if the client sends a message in the `Action` function (see above).\n\n<callback>\n<arg type=\"table\" name=\"self\">the property table</arg>\n<arg type=\"number\" name=\"len\">the net message length, although this includes the property identifier used internally (the name of the property)</arg>\n<arg type=\"Player\" name=\"ply\">the player who clicked the property</arg>\n</callback>\n\nYou can read data received from the client with the <page>net</page>.`Read*` functions. It's good practice to check <page>GM:CanProperty</page> here via <page>gamemode.Call</page> or <page>hook.Run</page>."
       },
       {
         "name": "MenuOpen",
         "type": "function",
-        "description": "Called **clientside** when the property option has been created in the right-click menu. This is not called for toggle properties!\n* <page>table</page> self - the property table\n* <page>DMenuOption</page> option - the menu option\n* <page>Entity</page> ent - the entity the player right-clicked\n* <page>table</page> tr - the player's eye trace"
+        "description": "Called **clientside** when the property option has been created in the right-click menu. This is not called for toggle properties!\n<callback>\n<arg type=\"table\" name=\"self\">the property table</arg>\n<arg type=\"DMenuOption\" name=\"option\">the menu option</arg>\n<arg type=\"Entity\" name=\"ent\">the entity the player right-clicked</arg>\n<arg type=\"table\" name=\"tr\">the player's eye trace</arg>\n</callback>"
       },
       {
         "name": "OnCreate",
         "type": "function",
-        "description": "Same as MenuOpen, but also called for toggle properties and has different arguments. This is called immediately after MenuOpen, but nothing happens in between so you should only ever use one or the other.\n* <page>table</page> self - the property table\n* <page>DMenu</page> menu - the property menu\n* <page>DMenuOption</page> option - the menu option"
+        "description": "Same as `MenuOpen`, but also called for toggle properties and has different arguments. This is called immediately after `MenuOpen`, but nothing happens in between so you should only ever use one or the other.\n<callback>\n<arg type=\"table\" name=\"self\">the property table</arg>\n<arg type=\"DMenu\" name=\"menu\">the property menu</arg>\n<arg type=\"DMenuOption\" name=\"option\">the menu option</arg>\n</callback>"
       }
     ],
     "realms": [
@@ -2104,21 +2128,25 @@
       {
         "name": "x",
         "type": "number",
+        "default": "nil",
         "description": "The x position of the view port"
       },
       {
         "name": "y",
         "type": "number",
+        "default": "nil",
         "description": "The y position of the view port"
       },
       {
         "name": "w",
         "type": "number",
+        "default": "nil",
         "description": "The width of the view port"
       },
       {
         "name": "h",
         "type": "number",
+        "default": "nil",
         "description": "The height of the view port"
       },
       {
@@ -2130,37 +2158,43 @@
       {
         "name": "origin",
         "type": "Vector",
+        "default": "nil",
         "description": "The position to render from"
       },
       {
         "name": "angles",
         "type": "Angle",
+        "default": "nil",
         "description": "The angles to render from"
       },
       {
         "name": "fov",
         "type": "number",
+        "default": "nil",
         "description": "The field of view"
       },
       {
         "name": "aspect",
         "type": "number",
+        "default": "nil",
         "description": "The aspect ratio of the view port (Note that this is NOT set to w/h by default)"
       },
       {
         "name": "zfar",
         "type": "number",
+        "default": "nil",
         "description": "The distance to the far clipping plane"
       },
       {
         "name": "znear",
         "type": "number",
+        "default": "nil",
         "description": "The distance to the near clipping plane"
       },
       {
         "name": "subrect",
         "type": "boolean",
-        "default": "false",
+        "default": "nil",
         "description": "Set to true if this is to draw into a subrect of the larger screen."
       },
       {
@@ -2172,11 +2206,13 @@
       {
         "name": "offcenter",
         "type": "table",
+        "default": "nil",
         "description": "A table having these keys: ( all floats )\n* left\n* right\n* bottom\n* top"
       },
       {
         "name": "ortho",
         "type": "table",
+        "default": "nil",
         "description": "If set, makes the view/camera orthogonal. A table having these keys: ( all floats )\n* left\n* right\n* bottom\n* top"
       }
     ],
@@ -2356,7 +2392,7 @@
       {
         "name": "Callback",
         "type": "function",
-        "description": "Called when a new server is found and queried. Arguments:\n\n<page>number</page> ping - Latency to the server.\n\n\n<page>string</page> name - Name of the server\n\n\n<page>string</page> desc - \"Nice\" gamemode name\n\n\n<page>string</page> map - Current map\n\n\n<page>number</page> players - Total player number ( bot + human )\n\n\n<page>number</page> maxplayers - Maximum reported amount of players\n\n\n<page>number</page> botplayers - Amount of bots on the server\n\n\n<page>boolean</page> pass - Whether this server has password or not\n\n\n<page>number</page> lastplayed - Time when you last played on this server, as UNIX timestamp or 0\n\n\n<page>string</page> address - IP Address of the server\n\n\n<page>string</page> gamemode - Gamemode folder name\n\n\n<page>number</page> workshopid - Gamemode Steam Workshop ID\n\n\n<page>boolean</page> isanon - Is the server signed into an anonymous account?\n\n\n<page>string</page> version - Version number, same format as <page>jit.version_num</page>\n\n\n<page>string</page> localization - Two digit country code, `us` if <page>nil</page>\n\n\n<page>string</page> gmcategory - Category of the gamemode, ex. `pvp`, `pve`, `rp` or `roleplay`\n\n\nReturn false to stop the query."
+        "description": "Called when a new server is found and queried.\n\n<callback>\n<arg type=\"number\" name=\"ping\">Latency to the server.</arg>\n<arg type=\"string\" name=\"name\">Name of the server</arg>\n<arg type=\"string\" name=\"desc\">\"Nice\" gamemode name</arg>\n<arg type=\"string\" name=\"map\">Current map</arg>\n<arg type=\"number\" name=\"players\">Total player number ( bot + human )</arg>\n<arg type=\"number\" name=\"maxplayers\">Maximum reported amount of players</arg>\n<arg type=\"number\" name=\"botplayers\">Amount of bots on the server</arg>\n<arg type=\"boolean\" name=\"pass\">Whether this server has password or not</arg>\n<arg type=\"number\" name=\"lastplayed\">Time when you last played on this server, as UNIX timestamp or 0</arg>\n<arg type=\"string\" name=\"address\">IP Address of the server</arg>\n<arg type=\"string\" name=\"gamemode\">Gamemode folder name</arg>\n<arg type=\"number\" name=\"workshopid\">Gamemode Steam Workshop ID</arg>\n<arg type=\"boolean\" name=\"isanon\">Is the server signed into an anonymous account?</arg>\n<arg type=\"string\" name=\"version\">Version number, same format as <page>jit.version_num</page></arg>\n<arg type=\"string\" name=\"localization\">Two digit country code, `us` if <page>nil</page></arg>\n<arg type=\"string\" name=\"gmcategory\">Category of the gamemode, ex. `pvp`, `pve`, `rp` or `roleplay`</arg>\n\n<ret type=\"boolean\" name=\"stop\">Return `false` to stop the query.</ret>\n</callback>"
       },
       {
         "name": "CallbackFailed",
@@ -2374,6 +2410,76 @@
     ],
     "description": "Used for <page>serverlist.Query</page>.",
     "name": "ServerQueryData"
+  },
+  {
+    "fields": [
+      {
+        "name": "secondstoarrive",
+        "type": "number",
+        "default": "TICK_INTERVAL * 2",
+        "description": "How long it takes to move to pos and rotate accordingly - only if it could move as fast as it want - damping and max speed/angular will make this invalid (Cannot be 0! Will give errors if you do)"
+      },
+      {
+        "name": "delta",
+        "type": "number",
+        "default": "0.1",
+        "description": "The time it should use - just use the one from <page>ENTITY:PhysicsSimulate</page>."
+      },
+      {
+        "name": "pos",
+        "type": "Vector",
+        "default": "vector_origin",
+        "description": "Where you want to move to."
+      },
+      {
+        "name": "angle",
+        "type": "Angle",
+        "default": "angle_zero",
+        "description": "Angle you want to move to."
+      },
+      {
+        "name": "maxangular",
+        "type": "number",
+        "default": "1",
+        "description": "What should be the maximal angular force applied."
+      },
+      {
+        "name": "maxangulardamp",
+        "type": "number",
+        "default": "1",
+        "description": "At which force/speed should it start damping the rotation."
+      },
+      {
+        "name": "maxspeed",
+        "type": "number",
+        "default": "1",
+        "description": "Maximum linear force applied"
+      },
+      {
+        "name": "maxspeeddamp",
+        "type": "number",
+        "default": "1",
+        "description": "Maximum linear force/speed before damping."
+      },
+      {
+        "name": "dampfactor",
+        "type": "number",
+        "default": "1",
+        "description": "The percentage it should damp the linear/angular force if it reaches it's max amount"
+      },
+      {
+        "name": "teleportdistance",
+        "type": "number",
+        "default": "0",
+        "description": "If it's further away than this it'll teleport (Set to 0 to not teleport)"
+      }
+    ],
+    "realms": [
+      "client",
+      "server"
+    ],
+    "description": "Table used by <page>PhysObj:ComputeShadowControl</page>. Default values are given if the table element is omitted.",
+    "name": "ShadowControlParams"
   },
   {
     "fields": [
@@ -3146,7 +3252,7 @@
         "name": "filter",
         "type": "Entity",
         "default": "{}",
-        "description": "Things the trace should not hit. Can also be a table of entities or a function with one argument:\n\n\n* <page>Entity</page> ent - The entity that the trace hit\n\nReturn true in the function to hit the entity, false to skip it.\n\n<warning>Using a function here is super slow - try to avoid it.</warning>"
+        "description": "Things the trace should not hit. Can also be a table of entities and classname strings, or a function with one argument:\n\n\n* <page>Entity</page> ent - The entity that the trace hit\n\nReturn true in the function to hit the entity, false to skip it.\n\n<warning>Using a function here is super slow - try to avoid it.</warning>"
       },
       {
         "name": "mask",
@@ -3165,6 +3271,18 @@
         "type": "boolean",
         "default": "false",
         "description": "Should the trace ignore world or not"
+      },
+      {
+        "name": "hitclientonly",
+        "type": "boolean",
+        "default": "false",
+        "description": "Should the trace hit clientside-only entities or not"
+      },
+      {
+        "name": "whitelist",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the filter field into a whitelist instead of an ignore list, does not affect function filters"
       },
       {
         "name": "output",
@@ -3415,6 +3533,26 @@
         "name": "error",
         "type": "number",
         "description": "If this key is set, no other data will be present in the response.\n\nValues above 0 represent Steam Error codes, values below 0 mean the following:\n* -1 means Failed to create query\n* -2 means Failed to send query\n* -3 means Received 0 or more than 1 result\n* -4 means Failed to get item data from the response\n* -5 means Workshop item ID in the response is invalid\n* -6 means Workshop item ID in response is mismatching the requested file ID"
+      },
+      {
+        "name": "up",
+        "type": "number",
+        "description": "Number of \"up\" votes for this item."
+      },
+      {
+        "name": "down",
+        "type": "number",
+        "description": "Number of \"down\" votes for this item."
+      },
+      {
+        "name": "total",
+        "type": "number",
+        "description": "Number of total votes (up and down) for this item. This is NOT `up - down`."
+      },
+      {
+        "name": "score",
+        "type": "number",
+        "description": "The up down vote ratio for this item, i.e. `1` is when every vote is `up`, `0.5` is when half of the total votes are the up votes, etc."
       }
     ],
     "realms": [
