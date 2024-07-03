@@ -48,6 +48,8 @@ end
 
 ---  menu|client|server
 --- Performs a query on the local SQLite database, returns a table as result set, nil if result is empty and false on error.  
+--- ⚠ **WARNING**:   
+--- To run SQL queries with this function safely, it is crucial to ensure that the concatenated variables in the query string are safe to avoid vulnerabilities like SQL injections. For this, it is recommended to use the sql.SQLStr, which allows arguments to be escaped correctly.  
 --- @param query string @The query to execute.
 --- @return table @false is returned if there is an error, nil if the query returned no data.
 function sql.Query(query)
@@ -74,7 +76,7 @@ end
 
 ---  menu|client|server
 --- Escapes dangerous characters and symbols from user input used in an SQLite SQL Query.  
---- ℹ **NOTE**: this function is not meant to be used with external database engines such as `MySQL`. Escaping strings with inadequate functions is dangerous!  
+--- ℹ **NOTE**: This function is not meant to be used with external database engines such as `MySQL`. Escaping strings with inadequate functions is dangerous!  
 --- @param string string @The string to be escaped.
 --- @param bNoQuotes? boolean @Set this as `true`, and the function will not wrap the input string in apostrophes.
 --- @return string @The escaped input.

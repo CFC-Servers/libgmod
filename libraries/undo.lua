@@ -29,7 +29,7 @@ end
 
 ---  server
 --- Completes an undo entry, and registers it with the player's client  
---- @param NiceText string @Text that appears in the player's undo history
+--- @param NiceText? string @Text that appears in the player's undo history
 function undo.Finish(NiceText)
 end
 

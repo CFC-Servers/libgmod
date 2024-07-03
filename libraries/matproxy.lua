@@ -1,9 +1,10 @@
---- Add proxies to materials.  
+--- A library that allows implementing custom [material proxies](https://developer.valvesoftware.com/wiki/Material_proxies) for materials.  
+--- Material proxies allow programmatically setting specific `.vmt` shader parameters on a per-entity basis, rather being global across all instances of a material.  
 _G.matproxy = {}
 ---  client
---- Adds a material proxy.  
---- @param MatProxyData table @The information about the proxy
-function matproxy.Add(MatProxyData)
+--- Register a material proxy. See matproxy for more general explanation of what they are.  
+--- @param matProxyData table @The information about the proxy
+function matproxy.Add(matProxyData)
 end
 
 ---  client

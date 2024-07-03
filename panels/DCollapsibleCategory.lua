@@ -43,10 +43,9 @@ function DCollapsibleCategory:GetHeaderHeight()
 end
 
 ---  client|menu
---- 🛑 **DEPRECATED**:   
---- Returns whatever is set by DCollapsibleCategory:SetList.  
---- @deprecated
---- @return Panel 
+--- If set, the DCategoryList that created this panel.  
+--- See also DCollapsibleCategory:SetList.  
+--- @return Panel @The DCategoryList that created us.
 function DCollapsibleCategory:GetList()
 end
 
@@ -120,10 +119,9 @@ function DCollapsibleCategory:SetLabel(label)
 end
 
 ---  client|menu
---- 🛑 **DEPRECATED**: Unused in the base game. What is this for?  
---- Sets a panel to call Panel:UnselectAll on, instead of calling it on itself.  
---- @param pnl Panel 
---- @deprecated
+--- Used internally by DCategoryList when it creates a DCollapsibleCategory during DCategoryList:Add.  
+--- If set, Panel:UnselectAll will be called on the list, instead of calling it on the category panel itself when a category is clicked.  
+--- @param pnl Panel @The Panel:UnselectAll that is the "parent" of this panel.
 function DCollapsibleCategory:SetList(pnl)
 end
 

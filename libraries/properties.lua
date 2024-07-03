@@ -1,7 +1,7 @@
 --- The properties library gives you access to the menu that shows up when right clicking entities while holding C.  
 _G.properties = {}
 ---  client|server
---- Add properties to the properties module  
+--- Add properties to the properties module. Properties can be blocked via GM:CanProperty.  
 --- @param name string @A unique name used to identify the property
 --- @param propertyData table @A table that defines the property
 function properties.Add(name, propertyData)

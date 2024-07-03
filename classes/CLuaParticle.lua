@@ -153,7 +153,7 @@ end
 
 ---  client
 --- Sets the function that gets called whenever the particle collides with the world.  
---- @param collideFunc function @Collide callback, the arguments are:
+--- @param collideFunc function @The collision callback
 function CLuaParticle:SetCollideCallback(collideFunc)
 end
 

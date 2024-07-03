@@ -21,10 +21,8 @@ function DCheckBoxLabel:OnChange(bVal)
 end
 
 ---  client|menu
---- 🛑 **DEPRECATED**: You really should be using DCheckBoxLabel:SetTextColor instead  
 --- Sets the color of the DCheckBoxLabel's text to the bright text color defined in the skin.  
 --- @param bright boolean @true makes the text bright.
---- @deprecated
 function DCheckBoxLabel:SetBright(bright)
 end
 
@@ -41,10 +39,8 @@ function DCheckBoxLabel:SetConVar(convar)
 end
 
 ---  client|menu
---- 🛑 **DEPRECATED**: You really should be using DCheckBoxLabel:SetTextColor instread  
---- Sets the text of the DCheckBoxLabel to be dark colored.  
+--- Sets the text of the DCheckBoxLabel to be dark colored in accordance with the currently active Derma skin.  
 --- @param darkify boolean @True to be dark, false to be default
---- @deprecated
 function DCheckBoxLabel:SetDark(darkify)
 end
 

@@ -26,10 +26,11 @@ function Color:ToHSL()
 end
 
 ---  menu|client|server
---- Converts a Color into HSV color space. This calls Global.ColorToHSV internally.  
---- @return number @The hue in degrees [0, 360).
---- @return number @The saturation in range [0, 1].
---- @return number @The value in range [0, 1].
+--- Encodes a RGB Color into the HSV color space.  
+--- This function uses Global.ColorToHSV internally.  
+--- @return number @Degrees in range [ 0 , 360 )
+--- @return number @Range [ 0 , 1 ]
+--- @return number @Range [ 0 , 1 ]
 function Color:ToHSV()
 end
 

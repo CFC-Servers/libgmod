@@ -95,9 +95,10 @@ function file.Rename(orignalFileName, targetFileName)
 end
 
 ---  menu|client|server
---- Returns the file's size in bytes. If the file is not found, returns `-1`.  
+--- Returns the file's size in bytes.  
 --- @param fileName string @The file's name.
 --- @param gamePath string @The path to look for the files and directories in
+--- @return number @The file size in bytes, or `-1` if the file is not found.
 function file.Size(fileName, gamePath)
 end
 
@@ -105,7 +106,7 @@ end
 --- Returns when the file or folder was last modified in Unix time.  
 --- @param path string @The **file** or **folder** path.
 --- @param gamePath string @The path to look for the files and directories in
---- @return number @Seconds passed since Unix epoch.
+--- @return number @Seconds passed since Unix epoch, or `0` if the file is not found.
 function file.Time(path, gamePath)
 end
 

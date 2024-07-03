@@ -89,7 +89,7 @@ end
 ---  client|menu
 --- Draw a textured rectangle with the given position and dimensions on the screen, using the current active texture set with surface.SetMaterial. It is also affected by surface.SetDrawColor.  
 --- See also render.SetMaterial and render.DrawScreenQuadEx.  
---- See also surface.DrawTexturedRectUV.  
+--- See also surface.DrawTexturedRectUV and surface.DrawTexturedRectRotated.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param x number @The X integer co-ordinate.
 --- @param y number @The Y integer co-ordinate.
@@ -100,6 +100,7 @@ end
 
 ---  client|menu
 --- Draw a textured rotated rectangle with the given position and dimensions and angle on the screen, using the current active texture.  
+--- See also surface.DrawTexturedRectUV and surface.DrawTexturedRect.  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- @param x number @The X integer co-ordinate, representing the center of the rectangle.
 --- @param y number @The Y integer co-ordinate, representing the center of the rectangle.
@@ -111,7 +112,7 @@ end
 
 ---  client|menu
 --- Draws a textured rectangle with a repeated or partial texture.  
---- u and v refer to texture coordinates.  
+--- `u` and `v` refer to texture coordinates.  
 --- * (u, v) = (0, 0) is the top left  
 --- * (u, v) = (1, 0) is the top right  
 --- * (u, v) = (1, 1) is the bottom right  
@@ -119,8 +120,9 @@ end
 --- Using a start point of (1, 0) and an end point to (0, 1), you can draw an image flipped horizontally, same goes with other directions. Going above 1 will tile the texture. Negative values are allowed as well.  
 --- Here's a helper image:  
 --- <upload src="70c/8d7bba248dc08bd.png" size="183359" name="image.png">  
+--- See also surface.DrawTexturedRect and surface.DrawTexturedRectRotated.  
 --- ℹ **NOTE**: If you are using a .png image, you need supply the "noclamp" flag as second parameter for Global.Material if you intend to use tiling.  
---- ℹ **NOTE**: If you find that surface.DrawTexturedRectUV is getting your texture coordinates (u0, v0), (u1, v1) wrong and you're rendering with a material created with Global.CreateMaterial, try adjusting them with the following code:  
+--- ℹ **NOTE**: If you find that `surface.DrawTexturedRectUV` is getting your texture coordinates (u0, v0), (u1, v1) wrong and you're rendering with a material created with Global.CreateMaterial, try adjusting them with the following code:  
 --- ```  
 --- local du = 0.5 / 32 -- half pixel anticorrection  
 --- local dv = 0.5 / 32 -- half pixel anticorrection  
@@ -128,7 +130,7 @@ end
 --- local u1, v1 = (u1 - du) / (1 - 2 * du), (v1 - dv) / (1 - 2 * dv)  
 --- ```  
 --- **Explanation:**  
---- surface.DrawTexturedRectUV tries to correct the texture coordinates by half a pixel (something to do with sampling) and computes the correction using IMaterial::GetMappingWidth()/GetMappingHeight(). If the material was created without a $basetexture, then GetMappingWidth()/GetMappingHeight() uses the width and height of the error material (which is 32x32).  
+--- `surface.DrawTexturedRectUV` tries to correct the texture coordinates by half a pixel (something to do with sampling) and computes the correction using `IMaterial::GetMappingWidth()`/`GetMappingHeight()`. If the material was created without a `$basetexture`, then `GetMappingWidth()`/`GetMappingHeight()` uses the width and height of the error material (which is 32x32).  
 --- 🟥 **NOTE**: Requires a 2D rendering context  
 --- 🦟 **BUG**: [The UV offsets might require (sub-)pixel correction for accurate tiling results.](https://github.com/Facepunch/garrysmod-issues/issues/3173)  
 --- </upload>  
@@ -157,9 +159,10 @@ function surface.GetDrawColor()
 end
 
 ---  client
---- Gets the [HUD icon](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/scripts/hud_textures.txt) TextureID with the specified name.  
+--- Returns the [HUD icon](https://github.com/Facepunch/garrysmod/blob/master/garrysmod/scripts/hud_textures.txt) TextureID of a texture with the specified name.  
+--- You probably want to use Global.Material and surface.SetMaterial.  
 --- @param name string @The name of the texture.
---- @return number 
+--- @return number @The texture ID, for use with surface.SetTexture.
 function surface.GetHUDTexture(name)
 end
 
@@ -246,16 +249,16 @@ function surface.SetAlphaMultiplier(multiplier)
 end
 
 ---  client|menu
---- Set the color of any future shapes to be drawn, can be set by either using R, G, B, A as separate values or by a Color. Using a color structure is not recommended to be created procedurally.  
---- ℹ **NOTE**: Providing a Color structure is slower than providing four numbers. You may use Color:Unpack for this.  
+--- Set the color of any future shapes to be drawn, can be set by either using R, G, B, A as separate values or by a Color.  
 --- ℹ **NOTE**: The alpha value may not work properly if you're using a material without `$vertexalpha`.  
 --- ℹ **NOTE**: Due to post processing and gamma correction the color you set with this function may appear differently when rendered. This problem does not occur on materials drawn with surface.DrawTexturedRect.  
---- @param r number @The red value of color, or a Color.
---- @param g number @The green value of color
---- @param b number @The blue value of color
---- @param a? number @The alpha value of color
+--- @param r number @The red value of color.
+--- @param g number @The green value of color.
+--- @param b number @The blue value of color.
+--- @param a? number @The alpha value of color.
+--- @param color table @A Color object/table to read the color from
 --- @overload fun(color: table)
-function surface.SetDrawColor(r, g, b, a)
+function surface.SetDrawColor(r, g, b, a, color)
 end
 
 ---  client|menu
@@ -270,23 +273,18 @@ end
 --- Not to be confused with render.SetMaterial.  
 --- If you need to unset the texture, use the draw.NoTexture convenience function.  
 --- ⚠ **WARNING**: Global.Material function calls are expensive to be done inside this function or inside rendering context, you should be caching the results of Global.Material calls  
---- ℹ **NOTE**: When using render.PushRenderTarget or render.SetRenderTarget, `material` should have the `$ignorez` flag set to make it visible. If the material is not used in 3D rendering, it is probably safe to add it with this code:  
---- ```lua  
---- material:SetInt( "$flags", bit.bor( material:GetInt( "$flags" ), 32768 ) )  
---- ```  
---- @param material IMaterial @The material to be used.
+--- @param material IMaterial @The material to be used
 function surface.SetMaterial(material)
 end
 
 ---  client|menu
 --- Set the color of any future text to be drawn, can be set by either using R, G, B, A as separate numbers or by a Color.  
---- Using a color structure is not recommended to be created procedurally.  
---- ℹ **NOTE**: Providing a Color structure is slower than providing four numbers. You may use Color:Unpack for this.  
---- @param r number @The red value of color, or a Color.
+--- @param r number @The red value of color.
 --- @param g number @The green value of color
 --- @param b number @The blue value of color
 --- @param a? number @The alpha value of color
-function surface.SetTextColor(r, g, b, a)
+--- @param color table @A Color object/table to read the color from
+function surface.SetTextColor(r, g, b, a, color)
 end
 
 ---  client|menu
@@ -298,8 +296,7 @@ end
 
 ---  client|menu
 --- Sets the texture to be used in all upcoming draw operations using the surface library.  
---- See surface.SetMaterial for an IMaterial alternative.  
---- ℹ **NOTE**: It's probably best to use the alternative mentioned above.  
+--- This is a legacy method, and should probably not be used, see surface.SetMaterial and IMaterial for a better alternative.  
 --- @param textureID number @The ID of the texture to draw with returned by surface.GetTextureID.
 function surface.SetTexture(textureID)
 end

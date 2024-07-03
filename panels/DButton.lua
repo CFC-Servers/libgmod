@@ -1,18 +1,7 @@
+--- A standard Derma button.  
+--- By default, a DButton is 22px tall.  
 --- @class DButton : DLabel
 local DButton = {}
----  client|menu
---- Called when the button is left clicked (on key release) by the player.  
---- This will be called after DButton:IsDown.  
---- See also DButton:DoRightClick.  
-function DButton:DoClick()
-end
-
----  client|menu
---- Called when the button is right clicked (on key release) by the player.  
---- See also DButton:DoClick.  
-function DButton:DoRightClick()
-end
-
 ---  client|menu
 --- 🛑 **DEPRECATED**:   
 --- Returns value set by DButton:SetDrawBorder. See that page for more info.  
@@ -31,7 +20,7 @@ end
 --- Sets a console command to be called when the button is clicked.  
 --- This overrides the button's `DoClick` method.  
 --- @param command string @The console command to be called.
---- @param args string @The arguments for the command.
+--- @param args? string @The arguments for the command.
 function DButton:SetConsoleCommand(command, args)
 end
 

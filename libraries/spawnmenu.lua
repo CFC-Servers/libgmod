@@ -3,7 +3,7 @@ _G.spawnmenu = {}
 ---  client
 --- Activates a tool, opens context menu and brings up the tool gun.  
 --- @param tool string @Tool class/file name
---- @param menu_only boolean @Should we activate this tool in the menu only or also the toolgun? `true` = menu only,`false` = toolgun aswell
+--- @param menu_only? boolean @Should we activate this tool in the menu only or also the toolgun? `true` = menu only,`false` = toolgun aswell
 function spawnmenu.ActivateTool(tool, menu_only)
 end
 
@@ -30,8 +30,8 @@ end
 
 ---  client
 --- Inserts a new tab into the CreationMenus table, which will be used by the creation menu to generate its tabs (Spawnlists, Weapons, Entities, etc.)  
---- @param name string @What text will appear on the tab (I.E Spawnlists).
---- @param func function @The function called to generate the content of the tab.
+--- @param name string @What text will appear on the tab (i.e Spawnlists).
+--- @param func function @The function called to generate the content of the tab
 --- @param material? string @Path to the material that will be used as an icon on the tab.
 --- @param order? number @The order in which this tab should be shown relative to the other tabs on the creation menu.
 --- @param tooltip? string @The tooltip to be shown for this tab.
@@ -90,17 +90,19 @@ function spawnmenu.ClearToolMenus()
 end
 
 ---  client
---- Creates a new content icon.  
---- @param type string @The type of the content icon.
---- @param parent Panel @The parent to add the content icon to.
+--- Creates a new content icon, previously defined via spawnmenu.AddContentType.  
+--- @param type string @The type of the content icon
+--- @param parent? Panel @The parent to add the content icon to.
 --- @param data table @The data to send to the content icon in spawnmenu.AddContentType
---- @return Panel @The created content icon, if it was returned by spawnmenu.AddContentType
+--- @return Panel @The created content icon, if it was returned by spawnmenu.AddContentType.
 function spawnmenu.CreateContentIcon(type, parent, data)
 end
 
 ---  client
---- Returns the function to create an vgui element for a specified content type  
---- @param contentType string 
+--- Returns the function to create an vgui element for a specified content type, previously defined by spawnmenu.AddContentType.  
+--- If a content type doesn't exist, a dummy function will be returned, and a warning printed to the console.  
+--- You probably want to use spawnmenu.CreateContentIcon to create icons.  
+--- @param contentType string @The content type name.
 --- @return function @The panel creation function
 function spawnmenu.GetContentType(contentType)
 end
@@ -142,14 +144,8 @@ function spawnmenu.GetTools()
 end
 
 ---  client
---- Loads spawnlists from text files.  
---- @param callback function @The function to call
-function spawnmenu.PopulateFromTextFiles(callback)
-end
-
----  client
 --- Switches the creation tab (left side of the spawnmenu) on the spawnmenu to the given tab.  
---- @param id number @The tab ID to open
+--- @param id string @The tab ID to open
 function spawnmenu.SwitchCreationTab(id)
 end
 

@@ -6,7 +6,7 @@ local Stack = {}
 ---  menu|client|server
 --- Pop an item from the stack  
 --- @param amount? number @Amount of items you want to pop.
---- @return number @New length of the stack.
+--- @return any @Latest popped item.
 function Stack:Pop(amount)
 end
 
