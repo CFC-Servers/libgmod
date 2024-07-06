@@ -1,2 +1,0 @@
---- @class DTextEntry
-local DTextEntry = {}
