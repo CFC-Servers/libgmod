@@ -1,7 +1,5 @@
 name: Scrape
 on:
-    schedule:
-        - cron: '0 0 1 * *'
     workflow_dispatch:
 
 jobs:
@@ -15,9 +13,7 @@ jobs:
             - run: |
                 npm install
             - run: |
-                npx gmod-wiki-scraper
-            - run: |
-                npm run start
+                npm run build
             - name: Check for changes
               run: |
                 git add .
